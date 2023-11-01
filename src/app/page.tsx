@@ -3,6 +3,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import ThemeSwitcher from "./ThemeSwitcher.tsx";
 import MenuButton from "./components/MenuButton.tsx";
+import Header from "./components/Header.tsx";
+import Skills from "./components/Skills.tsx";
+import Projects from "./components/Projects.tsx";
+import Timeline from "./components/Timeline.tsx";
+import Footer from "./components/Footer.tsx";
 
 export default function Home() {
   const [showThemeSwitcher, setShowThemeSwitcher] = useState(false);
@@ -53,12 +58,22 @@ export default function Home() {
           </div>
         )}
       </div>
-      <div id="mainContainer" className="w-full max-w-5xl bg-yellow-300">
-        <div
-          id="MenuButtonContainer"
-          className="w-full bg-sky-400 flex flex-row justify-end"
-        />
-        Bonjour
+      <div id="mainContainer" className="w-full max-w-5xl">
+        <div id="headerContainer" className="w-full max-w-5xl">
+          <Header />
+        </div>
+        <div id="skillsContainer" className="w-full max-w-5xl">
+          <Skills />
+        </div>
+        <div id="projectsContainer" className="w-full max-w-5xl">
+          <Projects />
+        </div>
+        <div id="timelineContainer" className="w-full max-w-5xl">
+          <Timeline />
+        </div>
+        <div id="footerContainer" className="w-full max-w-5xl">
+          <Footer />
+        </div>
       </div>
     </main>
   );
