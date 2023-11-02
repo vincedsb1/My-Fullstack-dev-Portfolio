@@ -59,10 +59,16 @@ export default function Home() {
         )}
       </div>
       <div id="mainContainer" className="w-full max-w-5xl">
-        <div id="headerContainer" className="w-full max-w-5xl">
+        <div
+          id="headerContainer"
+          className="w-full max-w-5xl flex flex-col items-center mb-32"
+        >
           <Header />
         </div>
-        <div id="skillsContainer" className="w-full max-w-5xl">
+        <div
+          id="skillsContainer"
+          className="w-full max-w-5xl flex flex-col items-center"
+        >
           <Skills />
         </div>
         <div id="projectsContainer" className="w-full max-w-5xl">
