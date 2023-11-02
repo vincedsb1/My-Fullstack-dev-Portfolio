@@ -1,8 +1,12 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import Providers from "./Providers.tsx";
+import "./globals.css";
+
+config.autoAddCss = false;
 
 const inter = Inter({ subsets: ["latin"] });
 
