@@ -26,7 +26,7 @@ function ThemeSwitcher() {
   }
 
   return (
-    <div className="bg-neutral-300 w-48 dark:bg-neutral-800 relative px-8 py-6 rounded-2xl flex flex-col bg-opacity-30 dark:bg-opacity-30 backdrop-filter backdrop-blur-xl">
+    <div className="bg-neutral-300 w-48 dark:bg-neutral-800 relative px-8 py-6 rounded-2xl flex flex-col bg-opacity-30 dark:bg-opacity-30 backdrop-filter backdrop-blur-xl shadow-lg">
       <div
         className={`flex flex-row justify-start cursor-pointer mb-2 hover:text-neutral-700 dark:hover:text-neutral-400 ${
           theme === "light" ? "font-bold" : ""
