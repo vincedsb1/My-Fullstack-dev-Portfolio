@@ -43,7 +43,7 @@ function Skills() {
       </div>
       <div
         id="skillsContainer"
-        className="flex flex-row w-full text-xl text-neutral-400 dark:bg-neutral-500 ml-28 mb-8"
+        className="flex flex-row w-full text-xl text-neutral-400 dark:text-neutral-500 ml-28 mb-8"
       >
         I&apos;ve got a few tricks up my sleeve when it comes to skills.
       </div>
