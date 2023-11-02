@@ -39,7 +39,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="w-full h-screen bg-neutral-100 dark:bg-neutral-900 flex flex-col items-center">
+    <main className="w-full bg-neutral-100 dark:bg-neutral-900 flex flex-col items-center">
       <div className="relative w-full flex justify-end">
         <div ref={buttonRef}>
           <MenuButton onMenuClick={toggleThemeSwitcher} />
@@ -67,17 +67,26 @@ export default function Home() {
         </div>
         <div
           id="skillsContainer"
-          className="w-full max-w-5xl flex flex-col items-center"
+          className="w-full max-w-5xl flex flex-col items-center mb-32"
         >
           <Skills />
         </div>
-        <div id="projectsContainer" className="w-full max-w-5xl">
+        <div
+          id="projectsContainer"
+          className="w-full max-w-5xl flex flex-col items-center mb-32"
+        >
           <Projects />
         </div>
-        <div id="timelineContainer" className="w-full max-w-5xl">
+        <div
+          id="timelineContainer"
+          className="w-full max-w-5xl flex flex-col items-center mb-32"
+        >
           <Timeline />
         </div>
-        <div id="footerContainer" className="w-full max-w-5xl">
+        <div
+          id="footerContainer"
+          className="w-full max-w-5xl flex flex-col items-center mb-32"
+        >
           <Footer />
         </div>
       </div>
