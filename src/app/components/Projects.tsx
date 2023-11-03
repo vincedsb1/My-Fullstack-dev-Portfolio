@@ -29,7 +29,7 @@ function Projects() {
           className="w-full flex flex-row  mb-4 h-96"
         >
           <div
-            id="project1Cards"
+            id="project1Card"
             className="w-3/5 mr-4 rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
             onClick={() =>
               window.open("https://isteslaworthit.vercel.app/", "_blank")
@@ -82,7 +82,7 @@ function Projects() {
           </div>
 
           <div
-            id="project2Cards"
+            id="project2Card"
             className="w-2/5 mr-4 rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 dark:hover:border-opacity-100 hover:border-opacity-100 border-opacity-50 dark:border-neutral-700 flex flex-col overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
             onClick={() =>
               window.open("https://emmaus-connect-bay.vercel.app/", "_blank")
@@ -164,7 +164,8 @@ function Projects() {
                 id="project3Description"
                 className="text-md  text-neutral-500 dark:text-neutral-400 pl-6 leading-tight w-full pr-4"
               >
-                A timed web quiz app challenging users to match film release dates accurately for high scores.
+                A timed web quiz app challenging users to match film release
+                dates accurately for high scores.
               </div>
             </div>
             <div
@@ -185,12 +186,58 @@ function Projects() {
             </div>
           </div>
 
-
           <div
-            id="project1Cards"
-            className="w-3/5 rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 border-opacity-50 dark:border-neutral-700"
+            id="project4Card"
+            className="w-3/5 mr-4 rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            onClick={() =>
+              window.open("http://vps-d5babf40.vps.ovh.net:5021/", "_blank")
+            }
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                window.open("http://vps-d5babf40.vps.ovh.net:5021/", "_blank");
+              }
+            }}
+            role="link"
+            tabIndex={0}
           >
-            Project 4
+            <div
+              id="project4Text"
+              className="w-1/3 h-full flex flex-col left-0 group-hover:left-3 relative transition-all"
+            >
+              <div
+                id="project4TextBot"
+                className="h-full flex flex-col justify-center"
+              >
+                <div
+                  id="project4Title"
+                  className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2"
+                >
+                  QuickFlow
+                </div>
+                <div
+                  id="project4Description"
+                  className="text-md  text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
+                >
+                  Ideation platform streamlining democratic decision-making.
+                </div>
+              </div>
+            </div>
+            <div
+              id="project4ImageContainer"
+              className="w-2/3 h-full flex justify-center pt-10 transition-all items-center relative "
+            >
+              <div
+                id="project4ImageWrapper"
+                className="w-72 transition-all absolute -right-3 group-hover:-right-1 filter drop-shadow-2xl "
+              >
+                <Image
+                  src="/project4.png"
+                  width={615}
+                  height={730}
+                  alt="Is Tesla Worth It?"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
