@@ -31,7 +31,7 @@ function Header() {
         <div id="headerTextContainer" className="flex flex-col w-2/3">
           <div
             id="headerHi"
-            className="flex flex-col text-2xl font-bold text-neutral-600 dark:text-neutral-300 mb-6"
+            className="flex flex-col text-2xl font-bold text-neutral-500 dark:text-neutral-400 mb-3"
           >
             Hi there! I’m
           </div>
@@ -75,7 +75,7 @@ function Header() {
           type="button"
           onClick={handleCopyEmail}
           onKeyPress={handleCopyEmail}
-          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl w-28 px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5"
+          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl w-28 px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
           tabIndex={0}
         >
           {isCopied ? (
@@ -89,7 +89,7 @@ function Header() {
         <button
           id="linkedIn"
           type="button"
-          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5"
+          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
           tabIndex={0}
           onClick={() =>
             window.open(
@@ -103,7 +103,7 @@ function Header() {
         <button
           id="github"
           type="button"
-          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5"
+          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
           tabIndex={0}
           onClick={() => window.open("https://github.com/vincedsb1", "_blank")}
         >
@@ -112,7 +112,7 @@ function Header() {
         <button
           id="twitter"
           type="button"
-          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5"
+          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
           tabIndex={0}
           onClick={() => window.open("https://twitter.com/vincedsb", "_blank")}
         >
@@ -121,7 +121,7 @@ function Header() {
         <button
           id="malt"
           type="button"
-          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5"
+          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
           tabIndex={0}
           onClick={() =>
             window.open(
@@ -135,7 +135,7 @@ function Header() {
         <button
           id="cv"
           type="button"
-          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5"
+          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
           tabIndex={0}
           onClick={() => {
             const fileName = "CV Vincent DESBROSSES.pdf";
