@@ -31,27 +31,34 @@ import {
 function Skills() {
   return (
     <div
-      id="skillsContainer"
+      id="skillsGlobalContainer"
       className="flex flex-col w-[815px] justify-center items-center"
     >
       <div
-        id="SkillsTitleContainer"
-        className="w-full text-neutral-700 dark:text-neutral-300 font-bold text-3xl flex flex-row items-center mb-1"
+        id="skillsTitleTopContainer"
+        className="w-full text-neutral-700 dark:text-neutral-300 font-bold text-2xl flex flex-row items-center mb-2"
       >
-        <Code2 size={32} className="mr-6 text-5xl" />
-        <span className="">Skills</span>
+        <div id="skillsIcon" className="w-12">
+          <Code2 size={32} className="mr-6 text-5xl" />
+        </div>
+        <div id="skillsTitle" className="text-3xl">
+          Skills
+        </div>
+      </div>
+      <div id="skillsTitleBotContainer" className="w-full flex flex-row">
+        <div id="skillsIconBlank" className="w-12" />
+        <div
+          id="skillsIntroContainer"
+          className="flex flex-row text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
+        >
+          I&apos;ve got a few tricks up my sleeve when it comes to skills.
+        </div>
       </div>
       <div
         id="skillsContainer"
-        className="flex flex-row w-full text-xl text-neutral-400 dark:text-neutral-500 ml-28 mb-16"
-      >
-        I&apos;ve got a few tricks up my sleeve when it comes to skills.
-      </div>
-      <div
-        id="SkillsContainer"
         className="w-full  flex flex-row justify-between"
       >
-        <div id="designContainer" className="flex flex-col ">
+        <div id="designContainer" className="flex flex-col w-40">
           <div
             id="designTitle"
             className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
@@ -60,7 +67,7 @@ function Skills() {
           </div>
           <div
             id="desigSkillsContainer"
-            className="flex flex-col  text-base text-neutral-700 dark:text-neutral-300"
+            className="flex flex-col  text-base text-neutral-600 dark:text-neutral-400"
           >
             <div id="figma" className="flex flex-row justify-start mb-1">
               <div
@@ -101,7 +108,7 @@ function Skills() {
           </div>
         </div>
 
-        <div id="frontContainer" className="flex flex-col">
+        <div id="frontContainer" className="flex flex-col w-40">
           <div
             id="frontTitle"
             className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
@@ -110,7 +117,7 @@ function Skills() {
           </div>
           <div
             id="frontSkillsContainer"
-            className="flex flex-col text-base text-neutral-700 dark:text-neutral-300"
+            className="flex flex-col text-base text-neutral-600 dark:text-neutral-400"
           >
             <div id="react" className="flex flex-row justify-start mb-1">
               <div
@@ -187,7 +194,7 @@ function Skills() {
           </div>
         </div>
 
-        <div id="backContainer" className="flex flex-col">
+        <div id="backContainer" className="flex flex-col w-40">
           <div
             id="backTitle"
             className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
@@ -196,7 +203,7 @@ function Skills() {
           </div>
           <div
             id="backSkillsContainer"
-            className="flex flex-col text-base text-neutral-700 dark:text-neutral-300"
+            className="flex flex-col text-base text-neutral-600 dark:text-neutral-400"
           >
             <div id="node" className="flex flex-row justify-start mb-1">
               <div
@@ -273,7 +280,7 @@ function Skills() {
           </div>
         </div>
 
-        <div id="otherContainer" className="flex flex-col">
+        <div id="otherContainer" className="flex flex-col w-40">
           <div
             id="otherTitle"
             className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
@@ -282,7 +289,7 @@ function Skills() {
           </div>
           <div
             id="otherSkillsContainer"
-            className="flex flex-col text-base text-neutral-700 dark:text-neutral-300"
+            className="flex flex-col text-base text-neutral-600 dark:text-neutral-400"
           >
             <div id="git" className="flex flex-row justify-start mb-1">
               <div
