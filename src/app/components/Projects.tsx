@@ -10,18 +10,25 @@ function Projects() {
       className="flex flex-col w-[835px] justify-center items-center"
     >
       <div
-        id="projectsTitleContainer"
-        className="w-[815px] text-neutral-700 dark:text-neutral-300 font-bold text-2xl flex flex-row items-center mb-2"
+        id="projectsTitleTopContainer"
+        className="w-full text-neutral-700 dark:text-neutral-300 font-bold text-2xl flex flex-row items-center mb-2"
       >
-        <FontAwesomeIcon icon={faRocket} className="mr-6" />
-        <span className="text-3xl">Projects</span>
+        <div id="projectsIcon" className="w-12">
+          <FontAwesomeIcon icon={faRocket} className="" />
+        </div>
+        <div id="projectsTitle" className="text-3xl">
+          Projects
+        </div>
       </div>
-      <div
-        id="projectsIntroContainer"
-        className="flex flex-row w-full text-xl text-neutral-400 dark:text-neutral-500 ml-28 mb-16 leading-tight"
-      >
-        I&apos;ve navigated a range of projects from start to finish.
-        <br /> Take a look at some of my recent work.
+      <div id="projectsTitleBotContainer" className="w-full flex flex-row">
+        <div id="projectsIconBlank" className="w-12" />
+        <div
+          id="projectsIntroContainer"
+          className="flex flex-row text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
+        >
+          I&apos;ve navigated a range of projects from start to finish.
+          <br /> Take a look at some of my recent work.
+        </div>
       </div>
       <div id="projectsCardsContainer" className="w-full flex flex-col ">
         <div

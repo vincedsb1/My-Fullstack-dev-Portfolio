@@ -49,7 +49,7 @@ function Header() {
           </div>
           <div
             id="headerPresentation"
-            className="flex flex-col text-2xl text-neutral-700 dark:text-neutral-300 leading-tight"
+            className="flex flex-col text-2xl text-neutral-700 dark:text-neutral-300 leading-tight mb-3"
           >
             From ideation to completion, my skillset covers the full lifecycle
             of a web project. Let’s talk about your next project.
