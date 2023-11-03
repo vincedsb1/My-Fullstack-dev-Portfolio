@@ -43,7 +43,7 @@ function Skills() {
       </div>
       <div
         id="skillsContainer"
-        className="flex flex-row w-full text-xl text-neutral-400 dark:text-neutral-500 ml-28 mb-8"
+        className="flex flex-row w-full text-xl text-neutral-400 dark:text-neutral-500 ml-28 mb-16"
       >
         I&apos;ve got a few tricks up my sleeve when it comes to skills.
       </div>
@@ -52,7 +52,10 @@ function Skills() {
         className="w-full  flex flex-row justify-between"
       >
         <div id="designContainer" className="flex flex-col ">
-          <div id="designTitle" className="text-xl font-bold  mb-3">
+          <div
+            id="designTitle"
+            className="text-xl font-bold  mb-3 text-neutral-700 dark:text-neutral-300"
+          >
             Design
           </div>
           <div
@@ -96,7 +99,10 @@ function Skills() {
         </div>
 
         <div id="frontContainer" className="flex flex-col">
-          <div id="frontTitle" className="text-xl font-bold  mb-3">
+          <div
+            id="frontTitle"
+            className="text-xl font-bold  mb-3 text-neutral-700 dark:text-neutral-300"
+          >
             Front-end
           </div>
           <div
@@ -173,7 +179,10 @@ function Skills() {
         </div>
 
         <div id="backContainer" className="flex flex-col">
-          <div id="backTitle" className="text-xl font-bold mb-3">
+          <div
+            id="backTitle"
+            className="text-xl font-bold mb-3 text-neutral-700 dark:text-neutral-300"
+          >
             Back-end
           </div>
           <div
@@ -250,7 +259,10 @@ function Skills() {
         </div>
 
         <div id="otherContainer" className="flex flex-col">
-          <div id="otherTitle" className="text-xl font-bold mb-3">
+          <div
+            id="otherTitle"
+            className="text-xl font-bold mb-3 text-neutral-700 dark:text-neutral-300"
+          >
             Other
           </div>
           <div
