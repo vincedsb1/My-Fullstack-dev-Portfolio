@@ -137,11 +137,55 @@ function Projects() {
           className="w-full flex flex-row bg-grey-200 h-96"
         >
           <div
-            id="project3Cards"
-            className="w-2/5 mr-4 rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 border-opacity-50 dark:border-neutral-700"
+            id="project3Card"
+            className="w-2/5 mr-4 rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 dark:hover:border-opacity-100 hover:border-opacity-100 border-opacity-50 dark:border-neutral-700 flex flex-col overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            onClick={() =>
+              window.open("https://wilders-game.vercel.app/", "_blank")
+            }
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                window.open("https://wilders-game.vercel.app/", "_blank");
+              }
+            }}
+            role="link"
+            tabIndex={0}
           >
-            Project 3
+            <div
+              id="project3Text"
+              className="h-1/3 w-full flex flex-col top-0 group-hover:top-2 relative transition-all"
+            >
+              <div
+                id="project3Title"
+                className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2  w-full pt-8"
+              >
+                Wilder Game
+              </div>
+              <div
+                id="project3Description"
+                className="text-md  text-neutral-500 dark:text-neutral-400 pl-6 leading-tight w-full pr-4"
+              >
+                A timed web quiz app challenging users to match film release dates accurately for high scores.
+              </div>
+            </div>
+            <div
+              id="project3ImageContainer"
+              className="h-2/3 w-full flex justify-center pt-10 transition-all items-end relative"
+            >
+              <div
+                id="project3ImageWrapper"
+                className="w-36 transition-all absolute -bottom-4 group-hover:-bottom-2 filter drop-shadow-2xl "
+              >
+                <Image
+                  src="/project3.png"
+                  width={615}
+                  height={730}
+                  alt="Emmaüs connect"
+                />
+              </div>
+            </div>
           </div>
+
+
           <div
             id="project1Cards"
             className="w-3/5 rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 border-opacity-50 dark:border-neutral-700"
