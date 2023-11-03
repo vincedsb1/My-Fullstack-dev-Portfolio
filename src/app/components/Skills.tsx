@@ -54,7 +54,7 @@ function Skills() {
         <div id="designContainer" className="flex flex-col ">
           <div
             id="designTitle"
-            className="text-xl font-bold  mb-3 text-neutral-700 dark:text-neutral-300"
+            className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
           >
             Design
           </div>
@@ -69,7 +69,10 @@ function Skills() {
               >
                 <Figma size={20} />
               </div>
-              <div id="figmaLabel" className="flex flex-row">
+              <div
+                id="figmaLabel"
+                className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
+              >
                 Figma
               </div>
             </div>
@@ -101,7 +104,7 @@ function Skills() {
         <div id="frontContainer" className="flex flex-col">
           <div
             id="frontTitle"
-            className="text-xl font-bold  mb-3 text-neutral-700 dark:text-neutral-300"
+            className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
           >
             Front-end
           </div>
@@ -116,7 +119,10 @@ function Skills() {
               >
                 <FontAwesomeIcon icon={faReact} />
               </div>
-              <div id="reactLabel" className="flex flex-row">
+              <div
+                id="reactLabel"
+                className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
+              >
                 ReactJS
               </div>
             </div>
@@ -127,7 +133,10 @@ function Skills() {
               >
                 <Brush size={18} />
               </div>
-              <div id="tailwindLabel" className="flex flex-row">
+              <div
+                id="tailwindLabel"
+                className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
+              >
                 Tailwind
               </div>
             </div>
@@ -181,7 +190,7 @@ function Skills() {
         <div id="backContainer" className="flex flex-col">
           <div
             id="backTitle"
-            className="text-xl font-bold mb-3 text-neutral-700 dark:text-neutral-300"
+            className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
           >
             Back-end
           </div>
@@ -196,7 +205,10 @@ function Skills() {
               >
                 <FontAwesomeIcon icon={faNodeJs} />
               </div>
-              <div id="reactLabel" className="flex flex-row">
+              <div
+                id="reactLabel"
+                className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
+              >
                 NodeJS
               </div>
             </div>
@@ -207,7 +219,10 @@ function Skills() {
               >
                 <FontAwesomeIcon icon={faDatabase} />
               </div>
-              <div id="sqlLabel" className="flex flex-row">
+              <div
+                id="sqlLabel"
+                className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
+              >
                 MySQL
               </div>
             </div>
@@ -261,7 +276,7 @@ function Skills() {
         <div id="otherContainer" className="flex flex-col">
           <div
             id="otherTitle"
-            className="text-xl font-bold mb-3 text-neutral-700 dark:text-neutral-300"
+            className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
           >
             Other
           </div>
@@ -276,7 +291,10 @@ function Skills() {
               >
                 <FontAwesomeIcon icon={faGithub} />
               </div>
-              <div id="gitLabel" className="flex flex-row">
+              <div
+                id="gitLabel"
+                className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
+              >
                 Git/GitHub
               </div>
             </div>
@@ -287,7 +305,10 @@ function Skills() {
               >
                 <Triangle />
               </div>
-              <div id="vercelLabel" className="flex flex-row">
+              <div
+                id="vercelLabel"
+                className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
+              >
                 Vercel
               </div>
             </div>
@@ -298,7 +319,10 @@ function Skills() {
               >
                 <FontAwesomeIcon icon={faSailboat} />
               </div>
-              <div id="agileLabel" className="flex flex-row">
+              <div
+                id="agileLabel"
+                className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
+              >
                 Agile / Scrum
               </div>
             </div>
