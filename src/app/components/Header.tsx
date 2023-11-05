@@ -26,8 +26,11 @@ function Header() {
   };
 
   return (
-    <div id="header" className="w-[815px] flex flex-col justify-center">
-      <div id="headerTop" className="w-full flex flex-row justify-between mb-3">
+    <div
+      id="header"
+      className="w-[815px] xs:w-full flex flex-col justify-center"
+    >
+      <div id="headerTop" className="w-full flex flex-col sm:flex-row justify-between mb-3">
         <div id="headerTextContainer" className="flex flex-col w-2/3">
           <div
             id="headerHi"
@@ -69,7 +72,7 @@ function Header() {
           </div>
         </div>
       </div>
-      <div id="headerSocialsContainer" className="w-full flex flex-row">
+      <div id="headerSocialsContainer" className="w-full flex flex-wrap">
         <button
           id="email"
           type="button"
