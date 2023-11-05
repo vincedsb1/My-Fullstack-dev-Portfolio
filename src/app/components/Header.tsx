@@ -30,7 +30,10 @@ function Header() {
       id="header"
       className="w-[815px] xs:w-full flex flex-col justify-center"
     >
-      <div id="headerTop" className="w-full flex flex-col sm:flex-row justify-between mb-3">
+      <div
+        id="headerTop"
+        className="w-full flex flex-col sm:flex-row justify-between mb-3"
+      >
         <div id="headerTextContainer" className="flex flex-col w-2/3">
           <div
             id="headerHi"
