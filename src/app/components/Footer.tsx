@@ -7,6 +7,12 @@ function Footer() {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyEmail = async () => {
+    if (!navigator.clipboard) {
+      console.error("Clipboard API not available");
+      // Ici, vous pouvez afficher un message à l'utilisateur ou implémenter une solution de repli
+      return;
+    }
+
     try {
       await navigator.clipboard.writeText("vincedsb@gmail.com");
       setIsCopied(true);
