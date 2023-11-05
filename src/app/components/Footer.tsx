@@ -27,11 +27,11 @@ function Footer() {
   return (
     <div
       id="footerContainer"
-      className="flex flex-col w-[815px] justify-center items-center  "
+      className="flex flex-col w-[815px] xs:w-full justify-center items-center  "
     >
       <div
         id="footerCard"
-        className="w-full h-64 text-neutral-700 dark:text-neutral-300 flex flex-row items-center mb-2 bg-neutral-200 dark:bg-neutral-800 rounded-3xl"
+        className="w-full sm:h-64 text-neutral-700 dark:text-neutral-300 flex flex-col sm:flex-row items-center mb-2 bg-neutral-200 dark:bg-neutral-800 rounded-3xl"
       >
         <div
           id="footerPhotoContainer"
@@ -46,7 +46,10 @@ function Footer() {
             />
           </div>
         </div>
-        <div id="footerRightContainer" className="flex flex-col w-[533px]">
+        <div
+          id="footerRightContainer"
+          className="flex flex-col w-[533px] xs:w-full"
+        >
           <div
             id="footerTitle"
             className="text-2xl text-neutral-700 dark:text-neutral-300 font-bold mb-3"

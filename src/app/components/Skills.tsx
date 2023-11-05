@@ -32,7 +32,7 @@ function Skills() {
   return (
     <div
       id="skillsGlobalContainer"
-      className="flex flex-col w-[815px] justify-center items-center"
+      className="flex flex-col w-[815px] xs:w-full justify-center items-center"
     >
       <div
         id="skillsTitleTopContainer"
@@ -56,7 +56,7 @@ function Skills() {
       </div>
       <div
         id="skillsContainer"
-        className="w-full  flex flex-row justify-between"
+        className="w-full  flex flex-wrap justify-between"
       >
         <div id="designContainer" className="flex flex-col w-40">
           <div
