@@ -6,7 +6,7 @@ function Timeline() {
   return (
     <div
       id="timelineContainer"
-      className="flex flex-col w-[815px] justify-center items-center"
+      className="flex flex-col w-[815px] xs:w-full justify-center items-center"
     >
       <div
         id="projectsTitleTopContainer"
@@ -29,7 +29,10 @@ function Timeline() {
         </div>
       </div>
 
-      <div id="timelineCardsContainer1" className="w-[770px] flex flex-col ">
+      <div
+        id="timelineCardsContainer1"
+        className="w-[770px] xs:w-full flex flex-col "
+      >
         <div
           id="timelineCard1"
           className="w-full flex flex-row hover:bg-gradient-to-r hover:from-transparent hover:to-neutral-200 dark:hover:to-neutral-800 h-48  rounded-2xl items-center group"
@@ -89,7 +92,10 @@ function Timeline() {
           </div>
         </div>
       </div>
-      <div id="timelineCardsContainer2" className="w-[770px] flex flex-col ">
+      <div
+        id="timelineCardsContainer2"
+        className="w-[770px] xs:w-full flex flex-col "
+      >
         <div
           id="timelineCard2"
           className="w-full flex flex-row hover:bg-gradient-to-r hover:from-transparent hover:to-neutral-200 dark:hover:to-neutral-800 h-48  rounded-2xl items-center group"
@@ -153,7 +159,10 @@ function Timeline() {
           </div>
         </div>
       </div>
-      <div id="timelineCardsContainer3" className="w-[770px] flex flex-col ">
+      <div
+        id="timelineCardsContainer3"
+        className="w-[770px] xs:w-full flex flex-col "
+      >
         <div
           id="timelineCard3"
           className="w-full flex flex-row hover:bg-gradient-to-r hover:from-transparent hover:to-neutral-200 dark:hover:to-neutral-800 h-48  rounded-2xl items-center group"
@@ -218,7 +227,10 @@ function Timeline() {
           </div>
         </div>
       </div>
-      <div id="timelineCardsContainer4" className="w-[770px] flex flex-col ">
+      <div
+        id="timelineCardsContainer4"
+        className="w-[770px] xs:w-full flex flex-col "
+      >
         <div
           id="timelineCard4"
           className="w-full flex flex-row hover:bg-gradient-to-r hover:from-transparent hover:to-neutral-200 dark:hover:to-neutral-800 h-48  rounded-2xl items-center group"
@@ -283,7 +295,10 @@ function Timeline() {
           </div>
         </div>
       </div>
-      <div id="timelineCardsContainer5" className="w-[770px] flex flex-col ">
+      <div
+        id="timelineCardsContainer5"
+        className="w-[770px] xs:w-full flex flex-col "
+      >
         <div
           id="timelineCard5"
           className="w-full flex flex-row hover:bg-gradient-to-r hover:from-transparent hover:to-neutral-200 dark:hover:to-neutral-800 h-48  rounded-2xl items-center group"
@@ -347,7 +362,10 @@ function Timeline() {
           </div>
         </div>
       </div>
-      <div id="timelineCardsContainer6" className="w-[770px] flex flex-col ">
+      <div
+        id="timelineCardsContainer6"
+        className="w-[770px] xs:w-full flex flex-col "
+      >
         <div
           id="timelineCard6"
           className="w-full flex flex-row hover:bg-gradient-to-r hover:from-transparent hover:to-neutral-200 dark:hover:to-neutral-800 h-48  rounded-2xl items-center group"
