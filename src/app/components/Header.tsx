@@ -34,28 +34,31 @@ function Header() {
         id="headerTop"
         className="w-full flex flex-col-reverse sm:flex-row justify-center sm:justify-between mb-3 px-4 lg:px-0 "
       >
-        <div id="headerTextContainer" className="flex flex-col w-fit sm:w-2/3 ">
+        <div
+          id="headerTextContainer"
+          className="flex flex-col w-full lg:w-fit sm:w-2/3 "
+        >
           <div
             id="headerHi"
-            className="flex flex-col text-2xl font-bold text-neutral-500 dark:text-neutral-400 mb-3"
+            className="flex flex-col text-xl 3xs:text-2xl font-bold text-neutral-500 dark:text-neutral-400 mb-3"
           >
             Hi there! I’m
           </div>
           <div
             id="headerName"
-            className="flex flex-col text-5xl font-bold bg-slate-200 w-96 bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400 leading-[1.15] mb-3"
+            className="flex flex-col text-4xl 3xs:text-5xl font-bold bg-slate-200 w-96 bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400 leading-[1.15] mb-3"
           >
             Vincent DESBROSSES
           </div>
           <div
             id="headerJob"
-            className="flex flex-col text-2xl text-red-500 font-bold mb-3"
+            className="flex flex-col text-xl 3xs:text-2xl text-red-500 font-bold mb-3"
           >
             Fullstack developer
           </div>
           <div
             id="headerPresentation"
-            className="flex flex-col text-2xl text-neutral-700 dark:text-neutral-300 leading-tight mb-3"
+            className="flex text-xl 3xs:text-2xl text-neutral-700 dark:text-neutral-300 leading-tight mb-3"
           >
             From ideation to completion, my skillset covers the full lifecycle
             of a web project. Let’s talk about your next project.
