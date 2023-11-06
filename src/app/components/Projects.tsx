@@ -16,7 +16,7 @@ function Projects() {
         <div id="projectsIcon" className="w-12">
           <FontAwesomeIcon icon={faRocket} className="" />
         </div>
-        <div id="projectsTitle" className="text-3xl">
+        <div id="projectsTitle" className="text-2xl 3xs:text-3xl">
           Projects
         </div>
       </div>
@@ -24,7 +24,7 @@ function Projects() {
         <div id="projectsIconBlank" className="w-12" />
         <div
           id="projectsIntroContainer"
-          className="flex flex-row text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
+          className="flex flex-row text-base 3xs:text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
         >
           I&apos;ve navigated a range of projects from start to finish.
           <br /> Take a look at some of my recent work.
@@ -53,8 +53,11 @@ function Projects() {
               id="project1Text"
               className="w-1/3 h-full flex flex-col left-0 group-hover:left-3 relative transition-all"
             >
-              <div id="project1TextTop" className="h-1/2" />
-              <div id="project1TextBot" className="h-1/2 flex flex-col">
+              <div id="project1TextTop" className="h-1/6 sm:h-1/2" />
+              <div
+                id="project1TextBot"
+                className="h-5/6 sm:h-1/2 flex flex-col"
+              >
                 <div
                   id="project1Title"
                   className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2"
@@ -63,7 +66,7 @@ function Projects() {
                 </div>
                 <div
                   id="project1Description"
-                  className="text-md  text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
+                  className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
                 >
                   Compare 2 cars and find out which one has a better value over
                   time.
@@ -76,14 +79,16 @@ function Projects() {
             >
               <div
                 id="project1ImageWrapper"
-                className="w-64 transition-all absolute -bottom-3 group-hover:bottom-0 filter drop-shadow-2xl "
+                className="w-64 transition-all absolute -bottom-3 group-hover:bottom-0 filter drop-shadow-2xl flex flex-row justify-end"
               >
-                <Image
-                  src="/project1.png"
-                  width={615}
-                  height={730}
-                  alt="Is Tesla Worth It?"
-                />
+                <div className="w-48 2xs:w-fit">
+                  <Image
+                    src="/project1.png"
+                    width={615}
+                    height={730}
+                    alt="Is Tesla Worth It?"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -119,7 +124,7 @@ function Projects() {
               </div>
               <div
                 id="project2Description"
-                className="text-md  text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
+                className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
               >
                 Platform that catalogs and values reclaimed smartphones for
                 resale.
@@ -131,14 +136,16 @@ function Projects() {
             >
               <div
                 id="project2ImageWrapper"
-                className="w-64 transition-all absolute -right-3 group-hover:right-0 filter drop-shadow-2xl "
+                className="w-64 transition-all absolute -right-3 group-hover:right-0 filter drop-shadow-2xl flex flex-row justify-end"
               >
-                <Image
-                  src="/project2.png"
-                  width={615}
-                  height={730}
-                  alt="Emmaüs connect"
-                />
+                <div className="w-56 2xs:w-fit">
+                  <Image
+                    src="/project2.png"
+                    width={615}
+                    height={730}
+                    alt="Emmaüs connect"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -174,7 +181,7 @@ function Projects() {
               </div>
               <div
                 id="project3Description"
-                className="text-md  text-neutral-500 dark:text-neutral-400 pl-6 leading-tight w-full pr-4"
+                className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight w-full pr-4"
               >
                 A timed web quiz app challenging users to match film release
                 dates accurately for high scores.
@@ -186,14 +193,16 @@ function Projects() {
             >
               <div
                 id="project3ImageWrapper"
-                className="w-36 transition-all absolute -bottom-4 group-hover:-bottom-2 filter drop-shadow-2xl "
+                className="w-36 transition-all absolute -bottom-4 group-hover:-bottom-2 filter drop-shadow-2xl flex flex-row justify-center"
               >
-                <Image
-                  src="/project3.png"
-                  width={615}
-                  height={730}
-                  alt="Emmaüs connect"
-                />
+                <div className="w-32 2xs:w-fit">
+                  <Image
+                    src="/project3.png"
+                    width={615}
+                    height={730}
+                    alt="Wilder Game"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -233,7 +242,7 @@ function Projects() {
                 </div>
                 <div
                   id="project4Description"
-                  className="text-md  text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
+                  className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
                 >
                   Ideation platform streamlining democratic decision-making.
                 </div>
@@ -245,14 +254,16 @@ function Projects() {
             >
               <div
                 id="project4ImageWrapper"
-                className="w-72 transition-all absolute -right-3 group-hover:-right-1 filter drop-shadow-2xl "
+                className="w-72 transition-all absolute -right-3 group-hover:-right-1 filter drop-shadow-2xl flex flex-row justify-end"
               >
-                <Image
-                  src="/project4.png"
-                  width={615}
-                  height={730}
-                  alt="Is Tesla Worth It?"
-                />
+                <div className="w-32 2xs:w-fit">
+                  <Image
+                    src="/project4.png"
+                    width={615}
+                    height={730}
+                    alt="QuickFlow"
+                  />
+                </div>
               </div>
             </div>
           </div>

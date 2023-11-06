@@ -41,7 +41,7 @@ function Skills() {
         <div id="skillsIcon" className="w-12">
           <Code2 size={32} className="mr-6 text-5xl" />
         </div>
-        <div id="skillsTitle" className="text-3xl">
+        <div id="skillsTitle" className="text-2xl 3xs:text-3xl">
           Skills
         </div>
       </div>
@@ -49,7 +49,7 @@ function Skills() {
         <div id="skillsIconBlank" className="w-12" />
         <div
           id="skillsIntroContainer"
-          className="flex flex-row text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
+          className="flex flex-row text-base 3xs:text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
         >
           I&apos;ve got a few tricks up my sleeve when it comes to skills.
         </div>
