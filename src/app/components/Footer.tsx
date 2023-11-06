@@ -27,7 +27,7 @@ function Footer() {
   return (
     <div
       id="footerContainer"
-      className="flex flex-col w-[815px] xs:w-full justify-center items-center  "
+      className="flex flex-col w-[815px] xs:w-full justify-center items-center  px-4 lg:px-0 "
     >
       <div
         id="footerCard"
