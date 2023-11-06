@@ -56,7 +56,7 @@ function Skills() {
       </div>
       <div
         id="skillsContainer"
-        className="w-full  flex flex-wrap justify-between"
+        className="w-full flex flex-wrap justify-center 2xs:justify-between"
       >
         <div id="designContainer" className="flex flex-col w-40 mb-6 md:mb-0">
           <div
