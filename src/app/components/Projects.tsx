@@ -7,7 +7,7 @@ function Projects() {
   return (
     <div
       id="projectsContainer"
-      className="flex flex-col w-[835px] xs:w-full justify-center items-center"
+      className="flex flex-col w-[835px] xs:w-full justify-center items-center px-4 lg:px-0"
     >
       <div
         id="projectsTitleTopContainer"
