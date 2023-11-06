@@ -7,7 +7,7 @@ function Projects() {
   return (
     <div
       id="projectsContainer"
-      className="flex flex-col w-[835px] xs:w-full justify-center items-center px-4 lg:px-0"
+      className="flex flex-col w-[835px] xs:w-full justify-center items-center pl-4 lg:px-0"
     >
       <div
         id="projectsTitleTopContainer"
@@ -20,7 +20,7 @@ function Projects() {
           Projects
         </div>
       </div>
-      <div id="projectsTitleBotContainer" className="w-full flex flex-row">
+      <div id="projectsTitleBotContainer" className="w-full flex flex-row pr-4">
         <div id="projectsIconBlank" className="w-12" />
         <div
           id="projectsIntroContainer"
@@ -30,14 +30,14 @@ function Projects() {
           <br /> Take a look at some of my recent work.
         </div>
       </div>
-      <div id="projectsCardsContainer" className="w-full flex flex-col ">
+      <div id="projectsCardsContainer" className="w-full flex flex-wrap ">
         <div
-          id="projectsCardsTopContainer"
-          className="w-full flex flex-row  mb-4 h-96"
+          id="project1Container"
+          className="w-full lg:w-2/3 h-96 pr-4 pb-4 transition-all"
         >
           <div
             id="project1Card"
-            className="w-3/5 mr-4 rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            className="w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
             onClick={() =>
               window.open("https://isteslaworthit.vercel.app/", "_blank")
             }
@@ -87,10 +87,15 @@ function Projects() {
               </div>
             </div>
           </div>
+        </div>
 
+        <div
+          id="project2Container"
+          className="w-full md:w-1/2 lg:w-1/3 h-96 pr-4 pb-4 transition-all"
+        >
           <div
             id="project2Card"
-            className="w-2/5 mr-4 rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 dark:hover:border-opacity-100 hover:border-opacity-100 border-opacity-50 dark:border-neutral-700 flex flex-col overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            className="w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 dark:hover:border-opacity-100 hover:border-opacity-100 border-opacity-50 dark:border-neutral-700 flex flex-col overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
             onClick={() =>
               window.open("https://emmaus-connect-bay.vercel.app/", "_blank")
             }
@@ -140,12 +145,12 @@ function Projects() {
         </div>
 
         <div
-          id="projectsCardsBotContainer"
-          className="w-full flex flex-row bg-grey-200 h-96"
+          id="project3Container"
+          className="w-full md:w-1/2 lg:w-1/3 h-96 pr-4 pb-4 transition-all"
         >
           <div
             id="project3Card"
-            className="w-2/5 mr-4 rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 dark:hover:border-opacity-100 hover:border-opacity-100 border-opacity-50 dark:border-neutral-700 flex flex-col overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            className="w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 dark:hover:border-opacity-100 hover:border-opacity-100 border-opacity-50 dark:border-neutral-700 flex flex-col overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
             onClick={() =>
               window.open("https://wilders-game.vercel.app/", "_blank")
             }
@@ -192,10 +197,15 @@ function Projects() {
               </div>
             </div>
           </div>
+        </div>
 
+        <div
+          id="project4Container"
+          className="w-full lg:w-2/3 rounded-3xl h-96 pr-4 pb-4 transition-all"
+        >
           <div
             id="project4Card"
-            className="w-3/5 mr-4 rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            className="w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
             onClick={() =>
               window.open("http://vps-d5babf40.vps.ovh.net:5021/", "_blank")
             }
