@@ -32,9 +32,9 @@ function Header() {
     >
       <div
         id="headerTop"
-        className="w-full flex flex-col sm:flex-row justify-between mb-3"
+        className="w-full flex flex-col-reverse sm:flex-row justify-center sm:justify-between mb-3 px-4 lg:px-0 "
       >
-        <div id="headerTextContainer" className="flex flex-col w-2/3">
+        <div id="headerTextContainer" className="flex flex-col w-fit sm:w-2/3 ">
           <div
             id="headerHi"
             className="flex flex-col text-2xl font-bold text-neutral-500 dark:text-neutral-400 mb-3"
@@ -63,9 +63,9 @@ function Header() {
         </div>
         <div
           id="headerPhotoMainContainer"
-          className="flex flex-row justify-end items-center w-1/3"
+          className="flex flex-row justify-center sm:justify-end items-center w-full sm:w-1/3"
         >
-          <div id="headerPhotoContainer" className="w-60">
+          <div id="headerPhotoContainer" className="sm:w-60 w-48 mb-4 sm:mb-0 ">
             <Image
               src={pp}
               alt="Vincent DESBROSSES"
@@ -75,13 +75,16 @@ function Header() {
           </div>
         </div>
       </div>
-      <div id="headerSocialsContainer" className="w-full flex flex-wrap">
+      <div
+        id="headerSocialsContainer"
+        className="w-full flex flex-wrap px-4 lg:px-0"
+      >
         <button
           id="email"
           type="button"
           onClick={handleCopyEmail}
           onKeyPress={handleCopyEmail}
-          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl w-28 px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
+          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl w-28 px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
           tabIndex={0}
         >
           {isCopied ? (
@@ -95,7 +98,7 @@ function Header() {
         <button
           id="linkedIn"
           type="button"
-          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
+          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
           tabIndex={0}
           onClick={() =>
             window.open(
@@ -109,7 +112,7 @@ function Header() {
         <button
           id="github"
           type="button"
-          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
+          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
           tabIndex={0}
           onClick={() => window.open("https://github.com/vincedsb1", "_blank")}
         >
@@ -118,7 +121,7 @@ function Header() {
         <button
           id="twitter"
           type="button"
-          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
+          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
           tabIndex={0}
           onClick={() => window.open("https://twitter.com/vincedsb", "_blank")}
         >
@@ -127,7 +130,7 @@ function Header() {
         <button
           id="malt"
           type="button"
-          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
+          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
           tabIndex={0}
           onClick={() =>
             window.open(
@@ -141,7 +144,7 @@ function Header() {
         <button
           id="cv"
           type="button"
-          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
+          className="flex justify-center items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
           tabIndex={0}
           onClick={() => {
             const fileName = "CV Vincent DESBROSSES.pdf";

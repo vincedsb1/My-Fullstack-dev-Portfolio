@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <main className="w-full bg-neutral-100 dark:bg-neutral-900 flex flex-col items-center">
-      <div className="relative w-full flex justify-end">
+      <div id="menuContainer" className="relative w-full flex justify-end">
         <div ref={buttonRef}>
           <MenuButton onMenuClick={toggleThemeSwitcher} />
         </div>
@@ -58,7 +58,7 @@ export default function Home() {
           </div>
         )}
       </div>
-      <div id="mainContainer" className="w-full max-w-5xl">
+      <div id="mainContainer" className="w-full flex flex-col max-w-5xl">
         <div
           id="headerContainer"
           className="w-full max-w-5xl flex flex-col items-center mb-32"

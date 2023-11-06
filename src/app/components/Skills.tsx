@@ -32,7 +32,7 @@ function Skills() {
   return (
     <div
       id="skillsGlobalContainer"
-      className="flex flex-col w-[815px] xs:w-full justify-center items-center"
+      className="flex flex-col w-[815px] xs:w-full justify-center items-center px-4 lg:px-0"
     >
       <div
         id="skillsTitleTopContainer"
@@ -58,7 +58,7 @@ function Skills() {
         id="skillsContainer"
         className="w-full  flex flex-wrap justify-between"
       >
-        <div id="designContainer" className="flex flex-col w-40">
+        <div id="designContainer" className="flex flex-col w-40 mb-6 md:mb-0">
           <div
             id="designTitle"
             className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
@@ -108,7 +108,7 @@ function Skills() {
           </div>
         </div>
 
-        <div id="frontContainer" className="flex flex-col w-40">
+        <div id="frontContainer" className="flex flex-col w-40 mb-6 md:mb-0">
           <div
             id="frontTitle"
             className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
@@ -194,7 +194,7 @@ function Skills() {
           </div>
         </div>
 
-        <div id="backContainer" className="flex flex-col w-40">
+        <div id="backContainer" className="flex flex-col w-40 mb-6 md:mb-0">
           <div
             id="backTitle"
             className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
@@ -280,7 +280,7 @@ function Skills() {
           </div>
         </div>
 
-        <div id="otherContainer" className="flex flex-col w-40">
+        <div id="otherContainer" className="flex flex-col w-40 mb-6 md:mb-0">
           <div
             id="otherTitle"
             className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
