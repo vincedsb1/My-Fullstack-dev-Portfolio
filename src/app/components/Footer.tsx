@@ -31,13 +31,13 @@ function Footer() {
     >
       <div
         id="footerCard"
-        className="w-full sm:h-64 text-neutral-700 dark:text-neutral-300 flex flex-col sm:flex-row items-center mb-2 bg-neutral-200 dark:bg-neutral-800 rounded-3xl"
+        className="w-full sm:h-64 p-4 md:p-0 text-neutral-700 dark:text-neutral-300 flex flex-col sm:flex-row items-center mb-2 bg-neutral-200 dark:bg-neutral-800 rounded-3xl"
       >
         <div
           id="footerPhotoContainer"
           className="w-56 h-full flex items-center justify-center"
         >
-          <div id="footerPhotoContainer" className="w-36">
+          <div id="footerPhotoContainer" className="w-36 mb-4 sm:mb-0">
             <Image
               src={pp}
               alt="Vincent DESBROSSES"
