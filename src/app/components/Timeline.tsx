@@ -1,8 +1,18 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimeline } from "@fortawesome/free-solid-svg-icons";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 function Timeline() {
+  useEffect(() => {
+    AOS.init({
+      duration: 300,
+    });
+  }, []);
+
   return (
     <div
       id="timelineContainer"
@@ -11,6 +21,7 @@ function Timeline() {
       <div
         id="projectsTitleTopContainer"
         className="w-full text-neutral-700 dark:text-neutral-300 font-bold text-2xl flex flex-row items-center mb-2"
+        data-aos="fade-up"
       >
         <div id="timelineIcon" className="w-12">
           <FontAwesomeIcon icon={faTimeline} className="" />
@@ -24,6 +35,7 @@ function Timeline() {
         <div
           id="projectsIntroContainer"
           className="flex flex-row text-base 3xs:text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
+          data-aos="fade-up"
         >
           Take a stroll down my career lane and see where I&apos;ve been!
         </div>
@@ -32,6 +44,7 @@ function Timeline() {
       <div
         id="timelineCardsContainer1"
         className="w-[770px] xs:w-full flex flex-col"
+        data-aos="fade-up"
       >
         <div
           id="timelineCard1"
@@ -99,6 +112,7 @@ function Timeline() {
       <div
         id="timelineCardsContainer2"
         className="w-[770px] xs:w-full flex flex-col"
+        data-aos="fade-up"
       >
         <div
           id="timelineCard2"
@@ -168,6 +182,7 @@ function Timeline() {
       <div
         id="timelineCardsContainer3"
         className="w-[770px] xs:w-full flex flex-col"
+        data-aos="fade-up"
       >
         <div
           id="timelineCard3"
@@ -236,6 +251,7 @@ function Timeline() {
       <div
         id="timelineCardsContainer4"
         className="w-[770px] xs:w-full flex flex-col"
+        data-aos="fade-up"
       >
         <div
           id="timelineCard4"
@@ -305,6 +321,7 @@ function Timeline() {
       <div
         id="timelineCardsContainer5"
         className="w-[770px] xs:w-full flex flex-col"
+        data-aos="fade-up"
       >
         <div
           id="timelineCard5"
@@ -374,6 +391,7 @@ function Timeline() {
       <div
         id="timelineCardsContainer6"
         className="w-[770px] xs:w-full flex flex-col"
+        data-aos="fade-up"
       >
         <div
           id="timelineCard6"
