@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Mail, Linkedin } from "lucide-react";
 import pp from "../../../public/pp.jpg";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 function Footer() {
   const [isCopied, setIsCopied] = useState(false);
@@ -24,10 +28,17 @@ function Footer() {
     }
   };
 
+  useEffect(() => {
+    AOS.init({
+      duration: 300,
+    });
+  }, []);
+
   return (
     <div
       id="footerContainer"
-      className="flex flex-col w-[815px] xs:w-full justify-center items-center  px-4 lg:px-0 "
+      className="flex flex-col w-[815px] xs:w-full justify-center items-center  px-4 lg:px-0"
+      data-aos="fade-up"
     >
       <div
         id="footerCard"
