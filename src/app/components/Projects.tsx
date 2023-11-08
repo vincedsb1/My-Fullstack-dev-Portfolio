@@ -256,7 +256,7 @@ function Projects() {
                 id="project4ImageWrapper"
                 className="w-72 transition-all absolute -right-3 group-hover:-right-1 filter drop-shadow-2xl flex flex-row justify-end"
               >
-                <div className="w-32 2xs:w-fit">
+                <div className="w-32 2xs:w-44 3xs:w-fit">
                   <Image
                     src="/project4.png"
                     width={615}
