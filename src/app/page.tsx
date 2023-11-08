@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import AOS from "aos";
 import ThemeSwitcher from "./ThemeSwitcher.tsx";
 import MenuButton from "./components/MenuButton.tsx";
 import Header from "./components/Header.tsx";
@@ -8,6 +9,7 @@ import Skills from "./components/Skills.tsx";
 import Projects from "./components/Projects.tsx";
 import Timeline from "./components/Timeline.tsx";
 import Footer from "./components/Footer.tsx";
+import "aos/dist/aos.css";
 
 export default function Home() {
   const [showThemeSwitcher, setShowThemeSwitcher] = useState(false);
@@ -38,6 +40,12 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 200,
+    });
+  }, []);
+
   return (
     <main className="w-full bg-neutral-100 dark:bg-neutral-900 flex flex-col items-center">
       <div id="menuContainer" className="relative w-full flex justify-end">
@@ -61,31 +69,31 @@ export default function Home() {
       <div id="mainContainer" className="w-full flex flex-col max-w-5xl">
         <div
           id="headerContainer"
-          className="w-full max-w-5xl flex flex-col items-center mb-32"
+          className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
         >
           <Header />
         </div>
         <div
           id="skillsContainer"
-          className="w-full max-w-5xl flex flex-col items-center mb-32"
+          className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
         >
           <Skills />
         </div>
         <div
           id="projectsContainer"
-          className="w-full max-w-5xl flex flex-col items-center mb-32"
+          className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
         >
           <Projects />
         </div>
         <div
           id="timelineContainer"
-          className="w-full max-w-5xl flex flex-col items-center mb-32"
+          className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
         >
           <Timeline />
         </div>
         <div
           id="footerContainer"
-          className="w-full max-w-5xl flex flex-col items-center mb-32"
+          className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
         >
           <Footer />
         </div>

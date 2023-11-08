@@ -1,17 +1,27 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 function Projects() {
+  useEffect(() => {
+    AOS.init({
+      duration: 300,
+    });
+  }, []);
   return (
     <div
       id="projectsContainer"
-      className="flex flex-col w-[835px] xs:w-full justify-center items-center pl-4 lg:px-0"
+      className="flex flex-col w-[835px] xs:w-full justify-center items-center pl-4 lg:px-0 3xs:px-10"
     >
       <div
         id="projectsTitleTopContainer"
         className="w-full text-neutral-700 dark:text-neutral-300 font-bold text-2xl flex flex-row items-center mb-2"
+        data-aos="fade-up"
       >
         <div id="projectsIcon" className="w-12">
           <FontAwesomeIcon icon={faRocket} className="" />
@@ -25,15 +35,17 @@ function Projects() {
         <div
           id="projectsIntroContainer"
           className="flex flex-row text-base 3xs:text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
+          data-aos="fade-up"
         >
           I&apos;ve navigated a range of projects from start to finish.
           <br /> Take a look at some of my recent work.
         </div>
       </div>
-      <div id="projectsCardsContainer" className="w-full flex flex-wrap ">
+      <div id="projectsCardsContainer" className="w-full flex flex-wrap">
         <div
           id="project1Container"
-          className="w-full lg:w-2/3 h-96 pr-4 pb-4 transition-all"
+          className="w-full lg:w-2/3 h-96 pr-4 3xs:pr-0 md:pr-4 pb-4 transition-all"
+          data-aos="fade-up"
         >
           <div
             id="project1Card"
@@ -96,7 +108,8 @@ function Projects() {
 
         <div
           id="project2Container"
-          className="w-full md:w-1/2 lg:w-1/3 h-96 pr-4 pb-4 transition-all"
+          className="w-full md:w-1/2 lg:w-1/3 h-96 pr-4 3xs:pr-0 md:pr-4 pb-4 transition-all"
+          data-aos="fade-up"
         >
           <div
             id="project2Card"
@@ -154,6 +167,7 @@ function Projects() {
         <div
           id="project3Container"
           className="w-full md:w-1/2 lg:w-1/3 h-96 pr-4 pb-4 transition-all"
+          data-aos="fade-up"
         >
           <div
             id="project3Card"
@@ -211,6 +225,7 @@ function Projects() {
         <div
           id="project4Container"
           className="w-full lg:w-2/3 rounded-3xl h-96 pr-4 pb-4 transition-all"
+          data-aos="fade-up"
         >
           <div
             id="project4Card"
