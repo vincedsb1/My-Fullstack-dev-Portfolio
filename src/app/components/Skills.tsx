@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import {
   Code2,
   Figma,
@@ -27,8 +29,15 @@ import {
   faGithub,
   faJira,
 } from "@fortawesome/free-brands-svg-icons";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 function Skills() {
+  useEffect(() => {
+    AOS.init({
+      duration: 300,
+    });
+  }, []);
   return (
     <div
       id="skillsGlobalContainer"
@@ -37,6 +46,7 @@ function Skills() {
       <div
         id="skillsTitleTopContainer"
         className="w-full text-neutral-700 dark:text-neutral-300 font-bold text-2xl flex flex-row items-center mb-2"
+        data-aos="fade-up"
       >
         <div id="skillsIcon" className="w-12">
           <Code2 size={32} className="mr-6 text-5xl" />
@@ -50,6 +60,7 @@ function Skills() {
         <div
           id="skillsIntroContainer"
           className="flex flex-row text-base 3xs:text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
+          data-aos="fade-up"
         >
           I&apos;ve got a few tricks up my sleeve when it comes to skills.
         </div>
@@ -66,6 +77,7 @@ function Skills() {
             <div
               id="designTitle"
               className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
+              data-aos="fade-up"
             >
               Design
             </div>
@@ -73,7 +85,11 @@ function Skills() {
               id="desigSkillsContainer"
               className="flex flex-col  text-base text-neutral-600 dark:text-neutral-400"
             >
-              <div id="figma" className="flex flex-row justify-start mb-1">
+              <div
+                id="figma"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="figmaIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
@@ -87,7 +103,11 @@ function Skills() {
                   Figma
                 </div>
               </div>
-              <div id="AdobeXd" className="flex flex-row justify-start mb-1">
+              <div
+                id="AdobeXd"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="AdobeXdIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
@@ -98,7 +118,11 @@ function Skills() {
                   Adobe xD
                 </div>
               </div>
-              <div id="zeplin" className="flex flex-row justify-start mb-1">
+              <div
+                id="zeplin"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="zeplinIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
@@ -116,6 +140,7 @@ function Skills() {
             <div
               id="frontTitle"
               className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
+              data-aos="fade-up"
             >
               Front-end
             </div>
@@ -123,7 +148,11 @@ function Skills() {
               id="frontSkillsContainer"
               className="flex flex-col text-base text-neutral-600 dark:text-neutral-400"
             >
-              <div id="react" className="flex flex-row justify-start mb-1">
+              <div
+                id="react"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="reactIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
@@ -137,7 +166,11 @@ function Skills() {
                   ReactJS
                 </div>
               </div>
-              <div id="tailwind" className="flex flex-row justify-start mb-1">
+              <div
+                id="tailwind"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="tailwindIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
@@ -151,7 +184,11 @@ function Skills() {
                   Tailwind
                 </div>
               </div>
-              <div id="next" className="flex flex-row justify-start mb-1">
+              <div
+                id="next"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="nextIcon"
                   className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
@@ -162,7 +199,11 @@ function Skills() {
                   NextJS
                 </div>
               </div>
-              <div id="javascript" className="flex flex-row justify-start mb-1">
+              <div
+                id="javascript"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="javascriptIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
@@ -173,7 +214,11 @@ function Skills() {
                   Javascript
                 </div>
               </div>
-              <div id="css" className="flex flex-row justify-start mb-1">
+              <div
+                id="css"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="cssIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
@@ -184,7 +229,11 @@ function Skills() {
                   CSS / SCSS
                 </div>
               </div>
-              <div id="next" className="flex flex-row justify-start mb-1">
+              <div
+                id="next"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="nextIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
@@ -207,6 +256,7 @@ function Skills() {
             <div
               id="backTitle"
               className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
+              data-aos="fade-up"
             >
               Back-end
             </div>
@@ -214,7 +264,11 @@ function Skills() {
               id="backSkillsContainer"
               className="flex flex-col text-base text-neutral-600 dark:text-neutral-400"
             >
-              <div id="node" className="flex flex-row justify-start mb-1">
+              <div
+                id="node"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="nodeIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
@@ -228,7 +282,11 @@ function Skills() {
                   NodeJS
                 </div>
               </div>
-              <div id="sql" className="flex flex-row justify-start mb-1">
+              <div
+                id="sql"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="sqlIcon"
                   className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
@@ -242,7 +300,11 @@ function Skills() {
                   MySQL
                 </div>
               </div>
-              <div id="api" className="flex flex-row justify-start mb-1">
+              <div
+                id="api"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="apiIcon"
                   className="flex flex-row items-center mr-2 w-6 text-md justify-center"
@@ -253,7 +315,11 @@ function Skills() {
                   RESTful API
                 </div>
               </div>
-              <div id="express" className="flex flex-row justify-start mb-1">
+              <div
+                id="express"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="expressIcon"
                   className="flex flex-row items-center mr-2 w-6 text-md justify-center"
@@ -264,7 +330,11 @@ function Skills() {
                   ExpressJS
                 </div>
               </div>
-              <div id="jenkins" className="flex flex-row justify-start mb-1">
+              <div
+                id="jenkins"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="jenkinsIcon"
                   className="flex flex-row items-center mr-2 w-6 text-md justify-center"
@@ -275,7 +345,11 @@ function Skills() {
                   Jenkins
                 </div>
               </div>
-              <div id="postman" className="flex flex-row justify-start mb-1">
+              <div
+                id="postman"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="postmanIcon"
                   className="flex flex-row items-center mr-2 w-6 text-md justify-center"
@@ -293,6 +367,7 @@ function Skills() {
             <div
               id="otherTitle"
               className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
+              data-aos="fade-up"
             >
               Other
             </div>
@@ -300,7 +375,11 @@ function Skills() {
               id="otherSkillsContainer"
               className="flex flex-col text-base text-neutral-600 dark:text-neutral-400"
             >
-              <div id="git" className="flex flex-row justify-start mb-1">
+              <div
+                id="git"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="gitIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
@@ -314,7 +393,11 @@ function Skills() {
                   Git/GitHub
                 </div>
               </div>
-              <div id="tailwind" className="flex flex-row justify-start mb-1">
+              <div
+                id="tailwind"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="vercelIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
@@ -328,7 +411,11 @@ function Skills() {
                   Vercel
                 </div>
               </div>
-              <div id="agile" className="flex flex-row justify-start mb-1">
+              <div
+                id="agile"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="agileIcon"
                   className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
@@ -342,7 +429,11 @@ function Skills() {
                   Agile / Scrum
                 </div>
               </div>
-              <div id="jira" className="flex flex-row justify-start mb-1">
+              <div
+                id="jira"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="jiraIcon"
                   className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
@@ -353,7 +444,11 @@ function Skills() {
                   Jira
                 </div>
               </div>
-              <div id="product" className="flex flex-row justify-start mb-1">
+              <div
+                id="product"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
                 <div
                   id="productIcon"
                   className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
