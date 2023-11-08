@@ -31,13 +31,16 @@ function Footer() {
     >
       <div
         id="footerCard"
-        className="w-full sm:h-64 p-4 md:p-0 text-neutral-700 dark:text-neutral-300 flex flex-col sm:flex-row items-center mb-2 bg-neutral-200 dark:bg-neutral-800 rounded-3xl"
+        className="w-full sm:h-64 p-8 md:p-0 text-neutral-700 dark:text-neutral-300 flex flex-col sm:flex-row items-center mb-2 bg-neutral-200 dark:bg-neutral-800 rounded-3xl"
       >
         <div
           id="footerPhotoContainer"
           className="w-56 h-full flex items-center justify-center"
         >
-          <div id="footerPhotoContainer" className="w-36 mb-4 sm:mb-0">
+          <div
+            id="footerPhotoContainer"
+            className="w-36 mb-6 sm:mb-0 sm:mr-6 md:mx-8"
+          >
             <Image
               src={pp}
               alt="Vincent DESBROSSES"
@@ -64,9 +67,11 @@ function Footer() {
             to lead development projects end-to-end. Excited to discuss your
             upcoming project; reach out to me!
           </div>
-          <div id="footerButtons" className="flex flex-row">
-            <div id="footerEmailButton" className="flex flex-row" />
-            <div id="footerLinkedInButton" className="flex flex-row">
+          <div
+            id="footerButtons"
+            className="flex flex-col items-center 2xs:flex-wrap 2xs:flex-row"
+          >
+            <div id="footerEmailButton" className="flex flex-row mb-3 2xs:mb-0">
               <button
                 id="email"
                 type="button"
@@ -83,6 +88,8 @@ function Footer() {
                   </>
                 )}
               </button>
+            </div>
+            <div id="footerLinkedInButton" className="flex flex-row">
               <button
                 id="linkedIn"
                 type="button"
