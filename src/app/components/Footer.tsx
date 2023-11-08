@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Mail, Linkedin } from "lucide-react";
-import pp from "../../../public/pp.jpg";
 import "aos/dist/aos.css";
 import AOS from "aos";
+import pp from "../../../public/pp.jpg";
 
 function Footer() {
   const [isCopied, setIsCopied] = useState(false);
