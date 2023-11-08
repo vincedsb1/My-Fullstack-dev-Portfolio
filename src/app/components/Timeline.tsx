@@ -220,7 +220,7 @@ function Timeline() {
             >
               <div
                 id="timelineLine3"
-                className="w-1 h-[164px] bg-neutral-200 dark:bg-neutral-800 -mt-6 3xs:-mt-2 z-10"
+                className="w-1 h-[182px] 3xs:h-[164px] bg-neutral-200 dark:bg-neutral-800 -mt-6 3xs:-mt-2 z-10"
               />
             </div>
             <div
@@ -288,7 +288,7 @@ function Timeline() {
             >
               <div
                 id="timelineLine4"
-                className="w-1 h-[164px] bg-neutral-200 dark:bg-neutral-800 -mt-6 3xs:-mt-2 z-10"
+                className="w-1 h-[182px] 3xs:h-[164px] bg-neutral-200 dark:bg-neutral-800 -mt-6 3xs:-mt-2 z-10"
               />
             </div>
             <div
@@ -357,7 +357,7 @@ function Timeline() {
             >
               <div
                 id="timelineLine5"
-                className="w-1 h-[164px] bg-neutral-200 dark:bg-neutral-800 -mt-6 3xs:-mt-2 z-10"
+                className="w-1 h-[182px] 3xs:h-[164px] bg-neutral-200 dark:bg-neutral-800 -mt-6 3xs:-mt-2 z-10"
               />
             </div>
             <div
