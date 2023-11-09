@@ -431,7 +431,7 @@ function Timeline() {
               id="timelinePeriod6"
               className="h-full flex items-start justify-end font-bold text-neutral-500 text-sm dark:text-neutral-300 pr-8 group-hover:pr-5 transition-all"
             >
-              2014 → 2018
+              2007
             </div>
           </div>
           <div
