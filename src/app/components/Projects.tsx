@@ -230,12 +230,10 @@ function Projects() {
           <div
             id="project4Card"
             className="w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
-            onClick={() =>
-              window.open("http://vps-d5babf40.vps.ovh.net:5021/", "_blank")
-            }
+            onClick={() => window.open("http://5.250.176.153/", "_blank")}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
-                window.open("http://vps-d5babf40.vps.ovh.net:5021/", "_blank");
+                window.open("http://5.250.176.153/", "_blank");
               }
             }}
             role="link"
