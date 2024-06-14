@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faN,
   faDatabase,
+  faServer,
   faRightLeft,
   faE,
   faUserAstronaut,
@@ -149,6 +150,24 @@ function Skills() {
               className="flex flex-col text-base text-neutral-600 dark:text-neutral-400"
             >
               <div
+                id="next"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
+                <div
+                  id="nextIcon"
+                  className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
+                >
+                  <FontAwesomeIcon icon={faN} />
+                </div>
+                <div
+                  id="nextLabel"
+                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
+                >
+                  NextJS
+                </div>
+              </div>
+              <div
                 id="react"
                 className="flex flex-row justify-start mb-1"
                 data-aos="fade-up"
@@ -184,21 +203,7 @@ function Skills() {
                   Tailwind
                 </div>
               </div>
-              <div
-                id="next"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="nextIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
-                >
-                  <FontAwesomeIcon icon={faN} />
-                </div>
-                <div id="nextLabel" className="flex flex-row">
-                  NextJS
-                </div>
-              </div>
+
               <div
                 id="javascript"
                 className="flex flex-row justify-start mb-1"
@@ -283,6 +288,24 @@ function Skills() {
                 </div>
               </div>
               <div
+                id="postgresql"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
+                <div
+                  id="postgresqlIcon"
+                  className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
+                >
+                  <FontAwesomeIcon icon={faServer} />
+                </div>
+                <div
+                  id="postgresqlLabel"
+                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
+                >
+                  PostgreSQL
+                </div>
+              </div>
+              <div
                 id="sql"
                 className="flex flex-row justify-start mb-1"
                 data-aos="fade-up"
@@ -328,21 +351,6 @@ function Skills() {
                 </div>
                 <div id="expressLabel" className="flex flex-row">
                   ExpressJS
-                </div>
-              </div>
-              <div
-                id="jenkins"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="jenkinsIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-md justify-center"
-                >
-                  <FontAwesomeIcon icon={faJenkins} />
-                </div>
-                <div id="jenkinsLabel" className="flex flex-row">
-                  Jenkins
                 </div>
               </div>
               <div
@@ -457,6 +465,21 @@ function Skills() {
                 </div>
                 <div id="productLabel" className="flex flex-row">
                   Product thinking
+                </div>
+              </div>
+              <div
+                id="jenkins"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
+                <div
+                  id="jenkinsIcon"
+                  className="flex flex-row items-center mr-2 w-6 text-md justify-center"
+                >
+                  <FontAwesomeIcon icon={faJenkins} />
+                </div>
+                <div id="jenkinsLabel" className="flex flex-row">
+                  Jenkins
                 </div>
               </div>
             </div>
