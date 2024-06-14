@@ -43,6 +43,123 @@ function Projects() {
       </div>
       <div id="projectsCardsContainer" className="w-full flex flex-wrap">
         <div
+          id="project5Container"
+          className="w-full md:w-1/2 lg:w-1/3 h-96 pr-4 pb-4 transition-all"
+          data-aos="fade-up"
+        >
+          <div
+            id="project5Card"
+            className="w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 dark:hover:border-opacity-100 hover:border-opacity-100 border-opacity-50 dark:border-neutral-700 flex flex-col overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            onClick={() => window.open("https://decor-nature.fr/", "_blank")}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                window.open("https://decor-nature.fr/", "_blank");
+              }
+            }}
+            role="link"
+            tabIndex={0}
+          >
+            <div
+              id="project5Text"
+              className="h-1/3 w-full flex flex-col top-0 group-hover:top-2 relative transition-all"
+            >
+              <div
+                id="project5Title"
+                className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2  w-full pt-8"
+              >
+                Décor Nature
+              </div>
+              <div
+                id="project5Description"
+                className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight w-full pr-4"
+              >
+                Painting and decorating company website.
+              </div>
+            </div>
+            <div
+              id="project5ImageContainer"
+              className="h-2/3 w-full flex justify-center pt-10 transition-all items-end relative"
+            >
+              <div
+                id="project5ImageWrapper"
+                className="w-56 transition-all absolute -bottom-4 group-hover:-bottom-2 filter drop-shadow-2xl flex flex-row justify-center"
+              >
+                <div className="w-32 2xs:w-fit">
+                  <Image
+                    src="/project5.png"
+                    width={815}
+                    height={730}
+                    alt="Décor Nature"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="project6Container"
+          className="w-full md:w-1/2 lg:w-2/3 rounded-3xl h-96 pr-4 pb-4 transition-all"
+          data-aos="fade-up"
+        >
+          <div
+            id="project6Card"
+            className="w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            onClick={() =>
+              window.open("https://www.smartflow-app.com/", "_blank")
+            }
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                window.open("https://www.smartflow-app.com/", "_blank");
+              }
+            }}
+            role="link"
+            tabIndex={0}
+          >
+            <div
+              id="project6Text"
+              className="w-1/3 h-full flex flex-col left-0 group-hover:left-3 relative transition-all"
+            >
+              <div
+                id="project6TextBot"
+                className="h-full flex flex-col justify-center"
+              >
+                <div
+                  id="project6Title"
+                  className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2"
+                >
+                  SmartFlow
+                </div>
+                <div
+                  id="project6Description"
+                  className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
+                >
+                  Platform offering an effective learning method.
+                </div>
+              </div>
+            </div>
+            <div
+              id="project6ImageContainer"
+              className="w-2/3 h-full flex justify-center pt-10 transition-all items-center relative "
+            >
+              <div
+                id="project6ImageWrapper"
+                className="w-56 md:w-76 transition-all absolute md:-right-3 -right-3 lg:-right-0 group-hover:scale-105 md:group-hover:scale-110 md:group-hover:-right-1 filter drop-shadow-2xl flex flex-row justify-end"
+              >
+                <div className="w-28 2xs:w-44 3xs:w-fit md:w-96 ">
+                  <Image
+                    src="/project6-2.png"
+                    width={800}
+                    height={600}
+                    alt="QuickFlow"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
           id="project1Container"
           className="w-full lg:w-2/3 h-96 pr-4 3xs:pr-0 md:pr-4 pb-4 transition-all"
           data-aos="fade-up"
