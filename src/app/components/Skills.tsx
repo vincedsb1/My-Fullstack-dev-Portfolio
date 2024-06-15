@@ -9,6 +9,7 @@ import {
   Brush,
   Type,
   Triangle,
+  Pyramid,
 } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,7 +18,6 @@ import {
   faServer,
   faRightLeft,
   faE,
-  faUserAstronaut,
   faSailboat,
   faLightbulb,
 } from "@fortawesome/free-solid-svg-icons";
@@ -354,18 +354,21 @@ function Skills() {
                 </div>
               </div>
               <div
-                id="postman"
+                id="prisma"
                 className="flex flex-row justify-start mb-1"
                 data-aos="fade-up"
               >
                 <div
-                  id="postmanIcon"
+                  id="prismaIcon"
                   className="flex flex-row items-center mr-2 w-6 text-md justify-center"
                 >
-                  <FontAwesomeIcon icon={faUserAstronaut} />
+                  <Pyramid size={18} />
                 </div>
-                <div id="postmanLabel" className="flex flex-row">
-                  Postman
+                <div
+                  id="prismaLabel"
+                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
+                >
+                  Prisma
                 </div>
               </div>
             </div>
