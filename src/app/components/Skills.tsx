@@ -18,7 +18,6 @@ import {
   faServer,
   faRightLeft,
   faE,
-  faUserAstronaut,
   faSailboat,
   faLightbulb,
 } from "@fortawesome/free-solid-svg-icons";
@@ -372,21 +371,6 @@ function Skills() {
                   Prisma
                 </div>
               </div>
-              {/* <div
-                id="postman"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="postmanIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-md justify-center"
-                >
-                  <FontAwesomeIcon icon={faUserAstronaut} />
-                </div>
-                <div id="postmanLabel" className="flex flex-row">
-                  Postman
-                </div>
-              </div> */}
             </div>
           </div>
 
