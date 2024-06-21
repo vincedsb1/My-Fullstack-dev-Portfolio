@@ -20,6 +20,7 @@ import {
   faE,
   faSailboat,
   faLightbulb,
+  faS,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faReact,
@@ -102,6 +103,21 @@ function Skills() {
                   className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
                 >
                   Figma
+                </div>
+              </div>
+              <div
+                id="storybook"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
+                <div
+                  id="storybookIcon"
+                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
+                >
+                  <FontAwesomeIcon icon={faS} />
+                </div>
+                <div id="storybookLabel" className="flex flex-row">
+                  Storybook
                 </div>
               </div>
               <div
