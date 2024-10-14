@@ -42,6 +42,74 @@ function Timeline() {
       </div>
 
       <div
+        id="timelineCardsContainer0"
+        className="w-[770px] xs:w-full flex flex-col"
+        data-aos="fade-up"
+      >
+        <div
+          id="timelineCard0"
+          className="w-full flex flex-col hover:bg-gradient-to-r hover:from-transparent hover:to-neutral-200 dark:hover:to-neutral-800 min-h-48 rounded-2xl items-center group"
+        >
+          <div
+            id="timelineCard0Top"
+            className="w-full h-10 flex flex-row mt-12 mb-3"
+          >
+            <div
+              id="timelinePuceContainer0"
+              className="w-6 h-full flex justify-center items-center mx-4 2xs:mx-6 3xs:mx-10"
+            >
+              <div
+                id="timelinePuce0"
+                className="w-6 h-6 rounded-full bg-neutral-300 dark:bg-neutral-700 shrink-0 group-hover:bg-red-500 hover:ring-2 group-hover:ring-neutral-300 dark:group-hover:ring-neutral-400 ring-0 ring-inset group-hover:ring-4 transition-all"
+              />
+            </div>
+            <div
+              id="timelineCompagnyNameJob"
+              className="h-full flex flex-col flex-grow justify-center font-bold text-neutral-700 dark:text-neutral-300 group-hover:pl-3 transition-all"
+            >
+              <div
+                id="timelineCompagny0"
+                className="text-md 3xs:text-xl flex flex-grow justify-start items-center"
+              >
+                Allaw
+              </div>
+              <div
+                id="timelineJob0"
+                className="text-md flex flex-grow items-center"
+              >
+                Fullstack developper
+              </div>
+            </div>
+            <div
+              id="timelinePeriod0"
+              className="h-full flex items-start justify-end font-bold text-neutral-500 text-sm dark:text-neutral-300 pr-8 group-hover:pr-5 transition-all"
+            >
+              Juil. 2024 → now
+            </div>
+          </div>
+          <div
+            id="timelineCard0Bot"
+            className="w-full h-28 flex flex-row mt-3 3xs:mt-0"
+          >
+            <div
+              id="timelineLineContainer"
+              className="h-28 w-6 w-min-28 flex justify-center flex-shrink-0 mx-4 2xs:mx-6 3xs:mx-10"
+            >
+              <div
+                id="timelineLine0"
+                className="w-1 h-[182px] 3xs:h-[164px] bg-neutral-200 dark:bg-neutral-800 -mt-6 3xs:-mt-2 z-10"
+              />
+            </div>
+            <div
+              id="timelineDescf0"
+              className="text-neutral-400 dark:text-neutral-500 text-xs 2xs:text-sm 3xs:text-base pt-3 2xs:pt-0 flex flex-grow flex-shrink group-hover:pl-3 transition-all"
+            >
+              Making law accessible to everyone through the platform allaw.fr
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
         id="timelineCardsContainer1"
         className="w-[770px] xs:w-full flex flex-col"
         data-aos="fade-up"
@@ -84,7 +152,7 @@ function Timeline() {
               id="timelinePeriod1"
               className="h-full flex items-start justify-end font-bold text-neutral-500 text-sm dark:text-neutral-300 pr-8 group-hover:pr-5 transition-all"
             >
-              Sept. 2023 → now
+              Sept. 2023 → Juil. 2024
             </div>
           </div>
           <div
