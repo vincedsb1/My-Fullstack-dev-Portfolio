@@ -116,7 +116,10 @@ function Skills() {
                 >
                   <FontAwesomeIcon icon={faS} />
                 </div>
-                <div id="storybookLabel" className="flex flex-row">
+                <div
+                  id="storybookLabel"
+                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
+                >
                   Storybook
                 </div>
               </div>
