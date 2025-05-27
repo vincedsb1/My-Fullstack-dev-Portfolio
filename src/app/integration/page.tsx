@@ -43,7 +43,7 @@ export default function Integration() {
     // Charger le script dynamiquement
     const script = document.createElement("script");
     script.src =
-      "https://allaw.fr/embed.js?profession=avocat&profile=Vincent_DESBROSSES_ee5";
+      "https://www.allaw.fr/embed.js?profession=avocat&profile=Vincent_DESBROSSES_ee5";
     script.async = true;
     const container = document.getElementById("allaw-container");
     container?.appendChild(script);
