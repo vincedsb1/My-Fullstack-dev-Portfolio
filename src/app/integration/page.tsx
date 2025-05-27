@@ -4,11 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import AOS from "aos";
 import ThemeSwitcher from "../ThemeSwitcher.tsx";
 import MenuButton from "../components/MenuButton.tsx";
-import Header from "../components/Header.tsx";
-import Skills from "../components/Skills.tsx";
-import Projects from "../components/Projects.tsx";
-import Timeline from "../components/Timeline.tsx";
-import Footer from "../components/Footer.tsx";
 import "aos/dist/aos.css";
 
 export default function Integration() {
@@ -48,7 +43,7 @@ export default function Integration() {
     // Charger le script dynamiquement
     const script = document.createElement("script");
     script.src =
-      "https://develop.allaw.fr/embed.js?profession=avocat&profile=Vincent_DESBROSSES_ee5";
+      "https://allaw.fr/embed.js?profession=avocat&profile=Vincent_DESBROSSES_ee5";
     script.async = true;
     const container = document.getElementById("allaw-container");
     container?.appendChild(script);
@@ -83,40 +78,10 @@ export default function Integration() {
       </div>
       <div id="mainContainer" className="w-full flex flex-col max-w-5xl">
         <div
-          id="headerContainer"
-          className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
-        >
-          <Header />
-        </div>
-        <div
-          id="skillsContainer"
-          className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
-        >
-          <Skills />
-        </div>
-        <div
-          id="projectsContainer"
-          className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
-        >
-          <Projects />
-        </div>
-        <div
-          id="timelineContainer"
-          className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
-        >
-          <Timeline />
-        </div>
-        <div
           id="integrationContainer"
           className="w-full max-w-5xl items-center mb-16 sm:mb-32"
         >
-          <div id="allaw-container" />
-        </div>
-        <div
-          id="footerContainer"
-          className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
-        >
-          <Footer />
+          <div id="allaw-container" className="p-8 rounded-xl" />
         </div>
       </div>
     </main>
