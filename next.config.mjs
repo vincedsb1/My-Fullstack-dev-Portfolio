@@ -6,6 +6,13 @@ const withNextIntl = createNextIntlPlugin(
 );
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 31536000, // 1 year cache for optimized images
+  },
+  compress: true,
+  poweredByHeader: false,
+};
 
 export default withNextIntl(nextConfig);

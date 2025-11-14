@@ -93,8 +93,10 @@ function Header() {
             <Image
               src={pp}
               alt="Vincent DESBROSSES"
-              quality={100}
+              quality={80}
+              sizes="(max-width: 640px) 192px, 240px"
               className="rounded-full ring-4 ring-red-500 p-2"
+              priority
             />
           </div>
         </div>
