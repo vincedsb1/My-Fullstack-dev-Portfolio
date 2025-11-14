@@ -108,27 +108,23 @@
     "items": [
       {
         "question": "What inspired you to work in web development?",
-        "answer": "The ability to create something concrete quickly attracted me from the start. I love transforming an idea into a functional and intuitive interface, and the web offers a freedom and creativity that motivates me daily."
+        "answer": "Discovering computers early made me love creating and experimenting. The web showed me a space where creativity and technical problem-solving meet, and that blend is what inspired me to pursue it as a career."
       },
       {
         "question": "What do you look for in a professional environment to do your best work?",
-        "answer": "A clear framework, good autonomy, few unnecessary interruptions, and a well-defined product vision. I progress better when the objective is clear and everyone can focus on what they do best."
+        "answer": "I perform at my best when there’s trust, real autonomy, a clear product vision, and a healthy work environment where everyone can move forward with focus."
       },
       {
         "question": "What type of organization allows you to be most effective in your daily work?",
         "answer": "Asynchronous operations with well-planned checkpoints. I'm at my best when I can organize my focus blocks, document properly, and move forward without constant interruptions."
       },
       {
-        "question": "What makes your profile interesting to a recruiter?",
-        "answer": "I combine real-world experience, great autonomy, solid product vision, and the ability to quickly ramp up on a project. I enjoy both building and optimizing, and I always strive to deliver something reliable, clear, and sustainable."
+        "question": "What makes my profile an asset for a company?",
+        "answer": "I’m autonomous across the entire workflow: concept, design, specs, code, tests, and delivery. I bring a pragmatic product mindset, integrate quickly, take initiative, and enjoy both building and refining a project."
       },
       {
         "question": "What role do AI tools play in how you work today?",
-        "answer": "They're part of my daily routine. I regularly test new models, use them to save time, explore approaches, or verify ideas. The field evolves quickly and I like staying ahead to keep my work more efficient and creative."
-      },
-      {
-        "question": "Do you have any other questions for me?",
-        "answer": "If you have any other questions or would like to discuss a project, feel free to reach out. I'd be happy to help and explore collaboration opportunities together."
+        "answer": "They’re central to my workflow. I regularly test new models to save time, explore ideas, and maximize efficiency in a field that evolves extremely fast."
       }
     ]
   },
