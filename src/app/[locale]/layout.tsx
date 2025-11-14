@@ -37,7 +37,8 @@ export default async function RootLayout({
   params,
 }: RootLayoutProps) {
   setRequestLocale(params.locale);
-  const messages = await getMessages();
+  // Import messages directly to ensure correct locale is used
+  const messages = (await import(`../../i18n/${params.locale}.json`)).default;
 
   return (
     <html lang={params.locale}>
