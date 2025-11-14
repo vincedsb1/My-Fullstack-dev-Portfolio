@@ -16,17 +16,12 @@ import {
   Server,
   ArrowRightLeft,
   Lightbulb,
+  Github,
+  Layers,
+  Package,
+  Wrench,
+  Grid3x3,
 } from "lucide-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faReact,
-  faSquareJs,
-  faCss3Alt,
-  faNodeJs,
-  faJenkins,
-  faGithub,
-  faJira,
-} from "@fortawesome/free-brands-svg-icons";
 import "aos/dist/aos.css";
 import AOS from "aos";
 
@@ -193,7 +188,7 @@ function Skills() {
                   id="reactIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
                 >
-                  <FontAwesomeIcon icon={faReact} />
+                  <Code2 size={18} />
                 </div>
                 <div
                   id="reactLabel"
@@ -230,7 +225,7 @@ function Skills() {
                   id="javascriptIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
                 >
-                  <FontAwesomeIcon icon={faSquareJs} />
+                  <Code2 size={18} />
                 </div>
                 <div id="javascriptLabel" className="flex flex-row">
                   Javascript
@@ -245,7 +240,7 @@ function Skills() {
                   id="cssIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
                 >
-                  <FontAwesomeIcon icon={faCss3Alt} />
+                  <Type size={18} />
                 </div>
                 <div id="cssLabel" className="flex flex-row">
                   CSS / SCSS
@@ -295,7 +290,7 @@ function Skills() {
                   id="nodeIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
                 >
-                  <FontAwesomeIcon icon={faNodeJs} />
+                  <Package size={18} />
                 </div>
                 <div
                   id="reactLabel"
@@ -412,7 +407,7 @@ function Skills() {
                   id="gitIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
                 >
-                  <FontAwesomeIcon icon={faGithub} />
+                  <Github size={18} />
                 </div>
                 <div
                   id="gitLabel"
@@ -466,7 +461,7 @@ function Skills() {
                   id="jiraIcon"
                   className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
                 >
-                  <FontAwesomeIcon icon={faJira} />
+                  <Grid3x3 size={18} />
                 </div>
                 <div id="jiraleLabel" className="flex flex-row">
                   Jira
@@ -496,7 +491,7 @@ function Skills() {
                   id="jenkinsIcon"
                   className="flex flex-row items-center mr-2 w-6 text-md justify-center"
                 >
-                  <FontAwesomeIcon icon={faJenkins} />
+                  <Wrench size={18} />
                 </div>
                 <div id="jenkinsLabel" className="flex flex-row">
                   Jenkins
