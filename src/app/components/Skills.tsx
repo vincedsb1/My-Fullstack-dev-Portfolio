@@ -46,9 +46,9 @@ function Skills() {
         <div id="skillsIcon" className="w-12">
           <Code2 size={32} className="mr-6 text-5xl" />
         </div>
-        <div id="skillsTitle" className="text-2xl 3xs:text-3xl">
+        <h2 id="skillsTitle" className="text-2xl 3xs:text-3xl">
           {t("title")}
-        </div>
+        </h2>
       </div>
       <div id="skillsTitleBotContainer" className="w-full flex flex-row">
         <div id="skillsIconBlank" className="w-12" />
@@ -69,13 +69,13 @@ function Skills() {
           className="flex flex-col 2xs:flex-row items-center 2xs:items-start 2xs:justify-around w-full md:w-1/2"
         >
           <div id="designContainer" className="flex flex-col w-40 mb-8 md:mb-0">
-            <div
+            <h3
               id="designTitle"
               className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
               data-aos="fade-up"
             >
               {t("design")}
-            </div>
+            </h3>
             <div
               id="desigSkillsContainer"
               className="flex flex-col  text-base text-neutral-600 dark:text-neutral-400"
@@ -150,13 +150,13 @@ function Skills() {
           </div>
 
           <div id="frontContainer" className="flex flex-col w-40 mb-8 md:mb-0">
-            <div
+            <h3
               id="frontTitle"
               className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
               data-aos="fade-up"
             >
               {t("frontend")}
-            </div>
+            </h3>
             <div
               id="frontSkillsContainer"
               className="flex flex-col text-base text-neutral-600 dark:text-neutral-400"
@@ -270,13 +270,13 @@ function Skills() {
           className="flex flex-col 2xs:flex-row items-center 2xs:items-start 2xs:justify-around w-full md:w-1/2"
         >
           <div id="backContainer" className="flex flex-col w-40 mb-8 md:mb-0">
-            <div
+            <h3
               id="backTitle"
               className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
               data-aos="fade-up"
             >
               {t("backend")}
-            </div>
+            </h3>
             <div
               id="backSkillsContainer"
               className="flex flex-col text-base text-neutral-600 dark:text-neutral-400"
@@ -387,13 +387,13 @@ function Skills() {
           </div>
 
           <div id="otherContainer" className="flex flex-col w-40 mb-8 md:mb-0">
-            <div
+            <h3
               id="otherTitle"
               className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
               data-aos="fade-up"
             >
               {t("other")}
-            </div>
+            </h3>
             <div
               id="otherSkillsContainer"
               className="flex flex-col text-base text-neutral-600 dark:text-neutral-400"

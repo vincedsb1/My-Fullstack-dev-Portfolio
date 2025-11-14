@@ -20,6 +20,8 @@ function AccordionItemComponent({
     <div className="border-b border-neutral-200 dark:border-neutral-800">
       <button
         onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={`faq-panel-${question.replace(/\s+/g, "-").toLowerCase()}`}
         className="w-full flex items-center justify-between py-6 px-0 text-left hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
       >
         <h3 className="text-base 3xs:text-lg font-semibold text-neutral-700 dark:text-neutral-300 flex-1">
@@ -27,12 +29,15 @@ function AccordionItemComponent({
         </h3>
         <ChevronDown
           size={20}
+          aria-hidden="true"
           className={`ml-4 shrink-0 transition-transform duration-300 ${
             isOpen ? "rotate-180" : ""
           } text-neutral-600 dark:text-neutral-400`}
         />
       </button>
       <div
+        id={`faq-panel-${question.replace(/\s+/g, "-").toLowerCase()}`}
+        aria-hidden={!isOpen}
         className={`overflow-hidden transition-all duration-300 ease-out ${
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}

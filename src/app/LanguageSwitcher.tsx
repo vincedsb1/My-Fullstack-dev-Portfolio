@@ -57,6 +57,8 @@ function LanguageSwitcher() {
         onKeyDown={(e) => handleKeyDown(e, "en")}
         role="button"
         tabIndex={0}
+        aria-label="Select English language"
+        aria-current={isEnglish ? "page" : undefined}
       >
         🇬🇧 English
       </div>
@@ -68,6 +70,8 @@ function LanguageSwitcher() {
         onKeyDown={(e) => handleKeyDown(e, "fr")}
         role="button"
         tabIndex={0}
+        aria-label="Select French language"
+        aria-current={isFrench ? "page" : undefined}
       >
         🇫🇷 Français
       </div>

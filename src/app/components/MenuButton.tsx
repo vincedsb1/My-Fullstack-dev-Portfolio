@@ -20,6 +20,7 @@ function MenuButton({ onMenuClick }: MenuButtonProps) {
         onKeyDown={handleKeyDown}
         role="button"
         tabIndex={0}
+        aria-label="Open menu"
         className="bg-neutral-200 dark:bg-neutral-800 rounded-xl w-12 h-11 flex justify-center items-end mt-5 mr-5"
       >
         <MoreHorizontal className="mb-1" />
