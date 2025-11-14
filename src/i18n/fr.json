@@ -103,7 +103,8 @@
     ]
   },
   "faq": {
-    "heading": "Vous avez des questions ?",
+    "title": "Vous avez des questions ?",
+    "intro": "Retrouvez les réponses aux questions les plus fréquemment posées.",
     "items": [
       {
         "question": "Qu'est-ce qui t'a donné envie de travailler dans le développement web ?",

@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { HelpCircle } from "lucide-react";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import {
@@ -60,35 +61,56 @@ function FAQ() {
   ];
 
   return (
-    <section
-      id="faq"
-      className="w-[815px] xs:w-full flex flex-col justify-center px-4 lg:px-0 py-16 md:py-32"
+    <div
+      id="faqGlobalContainer"
+      className="flex flex-col w-[815px] xs:w-full justify-center items-center px-4 lg:px-0"
     >
       <div
-        className="flex flex-col max-w-3xl"
+        id="faqTitleTopContainer"
+        className="w-full text-neutral-700 dark:text-neutral-300 font-bold text-2xl flex flex-row items-center mb-2"
         data-aos="fade-up"
       >
-        <h2 className="mb-4 text-3xl font-bold text-neutral-900 dark:text-neutral-100 md:mb-11 md:text-4xl">
-          {t("heading")}
-        </h2>
-        <Accordion type="single" collapsible>
+        <div id="faqIcon" className="w-12">
+          <HelpCircle size={32} className="mr-6" />
+        </div>
+        <div id="faqTitle" className="text-2xl 3xs:text-3xl">
+          {t("title")}
+        </div>
+      </div>
+      <div id="faqTitleBotContainer" className="w-full flex flex-row">
+        <div id="faqIconBlank" className="w-12" />
+        <div
+          id="faqIntroContainer"
+          className="flex flex-row text-base 3xs:text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
+          data-aos="fade-up"
+        >
+          {t("intro")}
+        </div>
+      </div>
+
+      <div
+        id="faqContainer"
+        className="w-[770px] xs:w-full flex flex-col max-w-3xl"
+        data-aos="fade-up"
+      >
+        <Accordion type="single" collapsible className="w-full">
           {items.map((item, index) => (
             <AccordionItem
               key={index}
               value={`item-${index}`}
               className="border-b border-neutral-200 dark:border-neutral-800"
             >
-              <AccordionTrigger className="font-semibold text-neutral-900 dark:text-neutral-100 hover:text-neutral-700 dark:hover:text-neutral-300 hover:no-underline">
+              <AccordionTrigger className="font-semibold text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 hover:no-underline py-4">
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className="text-neutral-600 dark:text-neutral-400">
+              <AccordionContent className="text-neutral-600 dark:text-neutral-400 pb-4">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
       </div>
-    </section>
+    </div>
   );
 }
 

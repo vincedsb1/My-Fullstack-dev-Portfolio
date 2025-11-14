@@ -103,7 +103,8 @@
     ]
   },
   "faq": {
-    "heading": "Do you have any questions?",
+    "title": "Do you have any questions?",
+    "intro": "Find answers to the most frequently asked questions.",
     "items": [
       {
         "question": "What inspired you to work in web development?",
