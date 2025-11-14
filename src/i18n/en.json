@@ -20,7 +20,7 @@
   },
   "skills": {
     "title": "Skills",
-    "intro": "I've got a few tricks up my sleeve when it comes to skills.",
+    "intro": "A diverse set of strong skills for your projects.",
     "design": "Design",
     "frontend": "Front-end",
     "backend": "Back-end",
@@ -28,7 +28,7 @@
   },
   "projects": {
     "title": "Projects",
-    "intro": "I've navigated a range of projects from start to finish. Take a look at some of my recent work.",
+    "intro": "I've successfully delivered a variety of projects. Here's a snapshot of my recent work.",
     "project1": {
       "name": "Is Tesla worth it?",
       "description": "Compare 2 cars and find out which one has a better value over time."
@@ -55,8 +55,8 @@
     }
   },
   "timeline": {
-    "title": "Timeline",
-    "intro": "Take a stroll down my career lane and see where I've been!",
+    "title": "Journey",
+    "intro": "Explore my professional journey and discover my experience.",
     "experiences": [
       {
         "company": "Allaw",
