@@ -9,6 +9,7 @@ import Header from "../components/Header.tsx";
 import Skills from "../components/Skills.tsx";
 import Projects from "../components/Projects.tsx";
 import Timeline from "../components/Timeline.tsx";
+import FAQ from "../components/FAQ.tsx";
 import Footer from "../components/Footer.tsx";
 import "aos/dist/aos.css";
 
@@ -91,6 +92,12 @@ export default function Home() {
           className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
         >
           <Timeline />
+        </div>
+        <div
+          id="faqContainer"
+          className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
+        >
+          <FAQ />
         </div>
         <div
           id="footerContainer"

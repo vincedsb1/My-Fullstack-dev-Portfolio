@@ -102,6 +102,35 @@
       }
     ]
   },
+  "faq": {
+    "heading": "Vous avez des questions ?",
+    "items": [
+      {
+        "question": "Qu'est-ce qui t'a donné envie de travailler dans le développement web ?",
+        "answer": "La possibilité de créer rapidement quelque chose de concret m'a attiré dès le début. J'aime transformer une idée en interface fonctionnelle et intuitive, et le web offre une liberté et une créativité qui me motivent au quotidien."
+      },
+      {
+        "question": "Que recherches-tu dans un environnement professionnel pour donner le meilleur de toi-même ?",
+        "answer": "Un cadre clair, une bonne autonomie, peu d'interruptions inutiles et une vision produit bien définie. J'avance mieux quand l'objectif est net et que chacun peut se concentrer sur ce qu'il fait de mieux."
+      },
+      {
+        "question": "Quel type d'organisation te permet d'être le plus efficace dans ton travail au quotidien ?",
+        "answer": "Un fonctionnement asynchrone avec des points d'étape bien planifiés. Je suis à mon meilleur quand je peux organiser mes blocs de concentration, documenter proprement et avancer sans être coupé en permanence."
+      },
+      {
+        "question": "Qu'est-ce qui fait de mon profil un profil intéressant pour un recruteur ?",
+        "answer": "Je combine une vraie expérience terrain, une grande autonomie, une vision produit solide et une capacité à entrer vite dans un projet. J'aime autant construire qu'optimiser, et je cherche toujours à livrer quelque chose de fiable, clair et durable."
+      },
+      {
+        "question": "Quelle place occupent les outils d'IA dans ta manière de travailler aujourd'hui ?",
+        "answer": "Ils font partie de mon quotidien. Je teste régulièrement les nouveaux modèles, je les utilise pour gagner du temps, explorer des approches ou vérifier des idées. Le métier évolue vite et j'aime rester en avance pour garder un travail plus efficace et plus créatif."
+      },
+      {
+        "question": "As-tu d'autres questions pour moi ?",
+        "answer": "Si vous avez d'autres questions ou si vous souhaitez discuter d'un projet, n'hésitez pas à me contacter. Je serais ravi de vous aider et d'explorer les opportunités de collaboration ensemble."
+      }
+    ]
+  },
   "metadata": {
     "title": "Portfolio de Vincent",
     "description": "Plongez dans mon monde de créativité, d'expérience et de connexions numériques."
