@@ -59,13 +59,13 @@ function Header() {
           >
             {t("greeting")}
           </div>
-          <div
+          <h1
             id="headerName"
             className="flex flex-col text-4xl 3xs:text-5xl font-bold bg-slate-200 bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400 leading-[1.15] mb-3"
             data-aos="fade-up"
           >
             {t("name")}
-          </div>
+          </h1>
           <div
             id="headerJob"
             className="flex flex-col text-xl 3xs:text-2xl text-red-500 font-bold mb-3"
