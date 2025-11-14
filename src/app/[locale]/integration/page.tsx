@@ -6,7 +6,7 @@ import ThemeSwitcher from "../../ThemeSwitcher.tsx";
 import MenuButton from "../../components/MenuButton.tsx";
 import "aos/dist/aos.css";
 
-export default function Integration() {
+function IntegrationClient() {
   const [showThemeSwitcher, setShowThemeSwitcher] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -86,4 +86,8 @@ export default function Integration() {
       </div>
     </main>
   );
+}
+
+export default function Integration() {
+  return <IntegrationClient />;
 }

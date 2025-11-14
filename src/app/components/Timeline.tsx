@@ -2,8 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimeline } from "@fortawesome/free-solid-svg-icons";
+import { Calendar } from "lucide-react";
 import "aos/dist/aos.css";
 import AOS from "aos";
 
@@ -35,11 +34,11 @@ function Timeline() {
         data-aos="fade-up"
       >
         <div id="timelineIcon" className="w-12">
-          <FontAwesomeIcon icon={faTimeline} className="" />
+          <Calendar size={32} className="mr-6 text-5xl" />
         </div>
-        <div id="timelineTitle" className="text-2xl 3xs:text-3xl">
+        <h2 id="timelineTitle" className="text-2xl 3xs:text-3xl">
           {t("title")}
-        </div>
+        </h2>
       </div>
       <div id="projectsTitleBotContainer" className="w-full flex flex-row">
         <div id="timelineIconBlank" className="w-12" />
@@ -81,12 +80,12 @@ function Timeline() {
                   id="timelineCompagnyNameJob"
                   className="h-full flex flex-col flex-grow justify-center font-bold text-neutral-700 dark:text-neutral-300 group-hover:pl-3 transition-all"
                 >
-                  <div
+                  <h3
                     id={`timelineCompagny${experience.company}`}
                     className="text-md 3xs:text-xl flex flex-grow justify-start items-center"
                   >
                     {experience.company}
-                  </div>
+                  </h3>
                   <div
                     id={`timelineJob${experience.company}`}
                     className="text-md flex flex-grow items-center"

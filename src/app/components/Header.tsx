@@ -109,6 +109,7 @@ function Header() {
           type="button"
           onClick={handleCopyEmail}
           onKeyPress={handleCopyEmail}
+          aria-label="Copy email to clipboard"
           className="flex justify-center h-10 3xs:h-12 items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl w-28 px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
           tabIndex={0}
           data-aos="fade-up"

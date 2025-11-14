@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRocket } from "@fortawesome/free-solid-svg-icons";
+import { Rocket } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import "aos/dist/aos.css";
@@ -27,11 +26,11 @@ function Projects() {
         data-aos="fade-up"
       >
         <div id="projectsIcon" className="w-12">
-          <FontAwesomeIcon icon={faRocket} className="" />
+          <Rocket size={32} className="mr-6 text-5xl" />
         </div>
-        <div id="projectsTitle" className="text-2xl 3xs:text-3xl">
+        <h2 id="projectsTitle" className="text-2xl 3xs:text-3xl">
           {t("title")}
-        </div>
+        </h2>
       </div>
       <div id="projectsTitleBotContainer" className="w-full flex flex-row pr-4">
         <div id="projectsIconBlank" className="w-12" />
@@ -65,12 +64,12 @@ function Projects() {
               id="project5Text"
               className="h-1/3 w-full flex flex-col top-0 group-hover:top-2 relative transition-all"
             >
-              <div
+              <h3
                 id="project5Title"
                 className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2  w-full pt-8"
               >
                 {t("project5.name")}
-              </div>
+              </h3>
               <div
                 id="project5Description"
                 className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight w-full pr-4"
@@ -126,12 +125,12 @@ function Projects() {
                 id="project6TextBot"
                 className="h-full flex flex-col justify-center"
               >
-                <div
+                <h3
                   id="project6Title"
                   className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2"
                 >
                   {t("project6.name")}
-                </div>
+                </h3>
                 <div
                   id="project6Description"
                   className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
@@ -189,12 +188,12 @@ function Projects() {
                 id="project1TextBot"
                 className="h-5/6 sm:h-1/2 flex flex-col"
               >
-                <div
+                <h3
                   id="project1Title"
                   className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2"
                 >
                   {t("project1.name")}
-                </div>
+                </h3>
                 <div
                   id="project1Description"
                   className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
@@ -247,12 +246,12 @@ function Projects() {
               id="project2Text"
               className="h-1/3 w-full flex flex-col top-0 group-hover:top-2 relative transition-all"
             >
-              <div
+              <h3
                 id="project2Title"
                 className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2  w-1/2 pt-8"
               >
                 {t("project2.name")}
-              </div>
+              </h3>
               <div
                 id="project2Description"
                 className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
@@ -304,12 +303,12 @@ function Projects() {
               id="project3Text"
               className="h-1/3 w-full flex flex-col top-0 group-hover:top-2 relative transition-all"
             >
-              <div
+              <h3
                 id="project3Title"
                 className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2  w-full pt-8"
               >
                 {t("project3.name")}
-              </div>
+              </h3>
               <div
                 id="project3Description"
                 className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight w-full pr-4"
@@ -363,12 +362,12 @@ function Projects() {
                 id="project4TextBot"
                 className="h-full flex flex-col justify-center"
               >
-                <div
+                <h3
                   id="project4Title"
                   className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2"
                 >
                   {t("project4.name")}
-                </div>
+                </h3>
                 <div
                   id="project4Description"
                   className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
@@ -390,7 +389,7 @@ function Projects() {
                     src="/project4.png"
                     width={615}
                     height={730}
-                    alt="QuickFlow"
+                    alt="Legal Directory Management System"
                   />
                 </div>
               </div>
