@@ -39,7 +39,7 @@
     },
     "project3": {
       "name": "Wilder Game",
-      "description": "Une application web de quiz chronométré mettant les utilisateurs au défi de faire correspondre les dates de sortie des films avec précision pour des scores élevés."
+      "description": "Web app mettant les utilisateurs au défi de faire de trouver les dates de sortie des films."
     },
     "project4": {
       "name": "QuickFlow",
@@ -51,7 +51,7 @@
     },
     "project6": {
       "name": "SmartFlow",
-      "description": "Plateforme offrant une méthode d'apprentissage efficace."
+      "description": "Plateforme por apprendre plus vite et durablement grâce à la méthode Leitner."
     }
   },
   "timeline": {
