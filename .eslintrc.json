@@ -12,7 +12,6 @@
     "es6": true
   },
   "extends": [
-    "airbnb",
     "eslint:recommended",
     "next",
     "plugin:prettier/recommended",
