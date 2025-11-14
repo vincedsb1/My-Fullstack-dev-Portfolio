@@ -90,6 +90,8 @@ function Projects() {
                     src="/project5.png"
                     width={815}
                     height={730}
+                    quality={80}
+                    sizes="(max-width: 640px) 128px, (max-width: 768px) 256px, 448px"
                     alt="Décor Nature"
                   />
                 </div>
@@ -152,6 +154,8 @@ function Projects() {
                     src="/project6-2.png"
                     width={800}
                     height={600}
+                    quality={80}
+                    sizes="(max-width: 640px) 112px, (max-width: 768px) 352px, 768px"
                     alt="QuickFlow"
                   />
                 </div>
@@ -215,6 +219,8 @@ function Projects() {
                     src="/project1.png"
                     width={615}
                     height={730}
+                    quality={80}
+                    sizes="(max-width: 640px) 192px, (max-width: 768px) 256px, 615px"
                     alt="Is Tesla Worth It?"
                   />
                 </div>
@@ -272,6 +278,8 @@ function Projects() {
                     src="/project2.png"
                     width={615}
                     height={730}
+                    quality={80}
+                    sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, 615px"
                     alt="Emmaüs connect"
                   />
                 </div>
@@ -329,6 +337,8 @@ function Projects() {
                     src="/project3.png"
                     width={615}
                     height={730}
+                    quality={80}
+                    sizes="(max-width: 640px) 128px, (max-width: 768px) 256px, 615px"
                     alt="Wilder Game"
                   />
                 </div>
@@ -389,6 +399,8 @@ function Projects() {
                     src="/project4.png"
                     width={615}
                     height={730}
+                    quality={80}
+                    sizes="(max-width: 640px) 128px, (max-width: 768px) 352px, 615px"
                     alt="Legal Directory Management System"
                   />
                 </div>
