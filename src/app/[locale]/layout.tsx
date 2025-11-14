@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import Providers from "../Providers.tsx";
@@ -36,6 +36,7 @@ export default async function RootLayout({
   children,
   params,
 }: RootLayoutProps) {
+  setRequestLocale(params.locale);
   const messages = await getMessages();
 
   return (
