@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Mail, Linkedin } from "lucide-react";
 import "aos/dist/aos.css";
 import AOS from "aos";
@@ -11,6 +11,7 @@ import pp from "../../../public/pp.jpg";
 function Footer() {
   const t = useTranslations("footer");
   const tc = useTranslations("common");
+  const locale = useLocale();
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyEmail = async () => {
@@ -108,7 +109,9 @@ function Footer() {
                 tabIndex={0}
                 onClick={() =>
                   window.open(
-                    "https://www.linkedin.com/in/vincent-desbrosses/",
+                    locale === "en"
+                      ? "https://www.linkedin.com/in/vincent-desbrosses/?locale=en_US"
+                      : "https://www.linkedin.com/in/vincent-desbrosses/",
                     "_blank",
                   )
                 }
