@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import {
   Mail,
   Linkedin,
@@ -18,6 +18,7 @@ import pp from "../../../public/pp.jpg";
 function Header() {
   const t = useTranslations("header");
   const tc = useTranslations("common");
+  const locale = useLocale();
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyEmail = async () => {
@@ -128,7 +129,9 @@ function Header() {
           data-aos="fade-up"
           onClick={() =>
             window.open(
-              "https://www.linkedin.com/in/vincent-desbrosses/",
+              locale === "en"
+                ? "https://www.linkedin.com/in/vincent-desbrosses/?locale=en_US"
+                : "https://www.linkedin.com/in/vincent-desbrosses/",
               "_blank",
             )
           }
@@ -177,7 +180,7 @@ function Header() {
           tabIndex={0}
           data-aos="fade-up"
           onClick={() => {
-            const fileName = "CV Vincent DESBROSSES.pdf";
+            const fileName = locale === "en" ? "Resume_Vincent_DESBROSSES.pdf" : "CV Vincent DESBROSSES.pdf";
             const link = document.createElement("a");
             link.href = `/${encodeURIComponent(fileName)}`;
             link.download = fileName;
