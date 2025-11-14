@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { useTranslations } from "next-intl";
-import { HelpCircle } from "lucide-react";
-import "aos/dist/aos.css";
 import AOS from "aos";
+import "aos/dist/aos.css";
+import { HelpCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useEffect } from "react";
 import CustomAccordion from "./CustomAccordion";
 
 interface FaqItem {
@@ -47,11 +47,6 @@ function FAQ() {
       id: "faq-5",
       question: t("items.4.question"),
       answer: t("items.4.answer"),
-    },
-    {
-      id: "faq-6",
-      question: t("items.5.question"),
-      answer: t("items.5.answer"),
     },
   ];
 
