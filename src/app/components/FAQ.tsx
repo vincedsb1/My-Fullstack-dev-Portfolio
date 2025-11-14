@@ -5,12 +5,7 @@ import { useTranslations } from "next-intl";
 import { HelpCircle } from "lucide-react";
 import "aos/dist/aos.css";
 import AOS from "aos";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import CustomAccordion from "./CustomAccordion";
 
 interface FaqItem {
   id: string;
@@ -93,22 +88,7 @@ function FAQ() {
         className="w-[770px] xs:w-full flex flex-col max-w-3xl"
         data-aos="fade-up"
       >
-        <Accordion type="single" collapsible className="w-full">
-          {items.map((item, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className="border-b border-neutral-200 dark:border-neutral-800"
-            >
-              <AccordionTrigger className="font-semibold text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 hover:no-underline py-4">
-                {item.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-neutral-600 dark:text-neutral-400 pb-4">
-                {item.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <CustomAccordion items={items} />
       </div>
     </div>
   );
