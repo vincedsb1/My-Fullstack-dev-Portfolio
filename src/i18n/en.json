@@ -1,0 +1,109 @@
+{
+  "common": {
+    "email": "Email",
+    "copied": "Copied!",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "twitter": "X",
+    "malt": "Malt",
+    "cv": "CV"
+  },
+  "header": {
+    "greeting": "Hi there! I'm",
+    "name": "Vincent DESBROSSES",
+    "jobTitle": "Fullstack developer",
+    "description": "From ideation to completion, my skillset covers the full lifecycle of a web project. Let's talk about your next project."
+  },
+  "footer": {
+    "title": "Interested in working together?",
+    "description": "I'm deeply passionate about tech and have honed various skills to lead development projects end-to-end. Excited to discuss your upcoming project; reach out to me!"
+  },
+  "skills": {
+    "title": "Skills",
+    "intro": "I've got a few tricks up my sleeve when it comes to skills.",
+    "design": "Design",
+    "frontend": "Front-end",
+    "backend": "Back-end",
+    "other": "Other"
+  },
+  "projects": {
+    "title": "Projects",
+    "intro": "I've navigated a range of projects from start to finish. Take a look at some of my recent work.",
+    "project1": {
+      "name": "Is Tesla worth it?",
+      "description": "Compare 2 cars and find out which one has a better value over time."
+    },
+    "project2": {
+      "name": "Emmaüs connect",
+      "description": "Platform that catalogs and values reclaimed smartphones for resale."
+    },
+    "project3": {
+      "name": "Wilder Game",
+      "description": "A timed web quiz app challenging users to match film release dates accurately for high scores."
+    },
+    "project4": {
+      "name": "QuickFlow",
+      "description": "Ideation platform streamlining democratic decision-making."
+    },
+    "project5": {
+      "name": "Décor Nature",
+      "description": "Painting and decorating company website."
+    },
+    "project6": {
+      "name": "SmartFlow",
+      "description": "Platform offering an effective learning method."
+    }
+  },
+  "timeline": {
+    "title": "Timeline",
+    "intro": "Take a stroll down my career lane and see where I've been!",
+    "experiences": [
+      {
+        "company": "Allaw",
+        "position": "Fullstack developper",
+        "period": "Juil. 2024 → now",
+        "description": "Making law accessible to everyone through the platform allaw.fr"
+      },
+      {
+        "company": "Twenty Soft",
+        "position": "Fullstack developper",
+        "period": "Sept. 2023 → Juil. 2024",
+        "description": "I offer my freelance services as a fullstack JavaScript developer."
+      },
+      {
+        "company": "Jurisoft",
+        "position": "Fullstack developper",
+        "period": "Jul. 2023 → Sep. 2023",
+        "description": "Focused on elevating the front-end experience for legalconstat.fr using a tech stack that included ReactJS, Symfony, and SCSS."
+      },
+      {
+        "company": "Alpha Web",
+        "position": "Product owner",
+        "period": "2018 → 2023",
+        "description": "Managed five web/mobile apps using Scrum, focusing on UX/UI design and API architecture"
+      },
+      {
+        "company": "Hair Net system",
+        "position": "Customer Support Manager",
+        "period": "2014 → 2018",
+        "description": "Guided a tech team, resolving issues with developers, using HTML5/CSS for data analysis and solution development."
+      },
+      {
+        "company": "Bolloré Ports",
+        "position": "System Administrator",
+        "period": "2008 → 2010",
+        "description": "Managed multi-site server environments, working closely with web developers to ensure optimized storage and security features."
+      },
+      {
+        "company": "Town Hall of Thorigny",
+        "position": "Fullstack developper",
+        "period": "2007",
+        "description": "Focused on end-to-end web solutions using PHP, MySQL, HTML, CSS, and JavaScript for a municipal website project."
+      }
+    ]
+  },
+  "metadata": {
+    "title": "Vincent's portfolio",
+    "description": "Dive into my world of creativity, experience, and digital connections."
+  }
+}

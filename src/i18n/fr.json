@@ -1,0 +1,109 @@
+{
+  "common": {
+    "email": "Email",
+    "copied": "Copié !",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "twitter": "X",
+    "malt": "Malt",
+    "cv": "CV"
+  },
+  "header": {
+    "greeting": "Salut ! Je suis",
+    "name": "Vincent DESBROSSES",
+    "jobTitle": "Développeur Fullstack",
+    "description": "De l'idée à la réalisation, mes compétences couvrent l'ensemble du cycle de vie d'un projet web. Parlons de votre prochain projet."
+  },
+  "footer": {
+    "title": "Envie de travailler ensemble ?",
+    "description": "Je suis passionné par la technologie et j'ai développé diverses compétences pour diriger des projets de développement de bout en bout. Enthousiaste à l'idée de discuter de votre prochain projet, contactez-moi !"
+  },
+  "skills": {
+    "title": "Compétences",
+    "intro": "J'ai plus d'un tour dans mon sac quand il s'agit de compétences.",
+    "design": "Design",
+    "frontend": "Front-end",
+    "backend": "Back-end",
+    "other": "Autres"
+  },
+  "projects": {
+    "title": "Projets",
+    "intro": "J'ai navigué une gamme de projets du début à la fin. Jetez un coup d'œil à certains de mes travaux récents.",
+    "project1": {
+      "name": "Is Tesla worth it?",
+      "description": "Comparez 2 voitures et découvrez laquelle offre une meilleure valeur au fil du temps."
+    },
+    "project2": {
+      "name": "Emmaüs connect",
+      "description": "Plateforme qui catalogue et valorise les smartphones recondationnés à la revente."
+    },
+    "project3": {
+      "name": "Wilder Game",
+      "description": "Une application web de quiz chronométré mettant les utilisateurs au défi de faire correspondre les dates de sortie des films avec précision pour des scores élevés."
+    },
+    "project4": {
+      "name": "QuickFlow",
+      "description": "Plateforme d'idéation rationalisant la prise de décision démocratique."
+    },
+    "project5": {
+      "name": "Décor Nature",
+      "description": "Site web d'une entreprise de peinture et de décoration."
+    },
+    "project6": {
+      "name": "SmartFlow",
+      "description": "Plateforme offrant une méthode d'apprentissage efficace."
+    }
+  },
+  "timeline": {
+    "title": "Parcours",
+    "intro": "Faites un tour dans mon parcours professionnel et découvrez mes expériences !",
+    "experiences": [
+      {
+        "company": "Allaw",
+        "position": "Développeur Fullstack",
+        "period": "Juil. 2024 → aujourd'hui",
+        "description": "Rendre le droit accessible à tous via la plateforme allaw.fr"
+      },
+      {
+        "company": "Twenty Soft",
+        "position": "Développeur Fullstack",
+        "period": "Sept. 2023 → Juil. 2024",
+        "description": "J'offre mes services en tant que développeur JavaScript fullstack en freelance."
+      },
+      {
+        "company": "Jurisoft",
+        "position": "Développeur Fullstack",
+        "period": "Juil. 2023 → Sept. 2023",
+        "description": "Concentré sur l'amélioration de l'expérience front-end pour legalconstat.fr en utilisant une pile technologique incluant ReactJS, Symfony et SCSS."
+      },
+      {
+        "company": "Alpha Web",
+        "position": "Product Owner",
+        "period": "2018 → 2023",
+        "description": "Gestion de cinq applications web/mobile avec la méthodologie Scrum, en mettant l'accent sur la conception UX/UI et l'architecture API"
+      },
+      {
+        "company": "Hair Net system",
+        "position": "Responsable Support Client",
+        "period": "2014 → 2018",
+        "description": "Responsable d'une équipe technique, résolution de problèmes avec les développeurs, utilisation de HTML5/CSS pour l'analyse de données et le développement de solutions."
+      },
+      {
+        "company": "Bolloré Ports",
+        "position": "Administrateur Système",
+        "period": "2008 → 2010",
+        "description": "Gestion d'environnements serveurs multi-sites, travail étroit avec les développeurs web pour assurer l'optimisation du stockage et la sécurité."
+      },
+      {
+        "company": "Mairie de Thorigny",
+        "position": "Développeur Fullstack",
+        "period": "2007",
+        "description": "Concentration sur les solutions web de bout en bout utilisant PHP, MySQL, HTML, CSS et JavaScript pour un projet de site web municipal."
+      }
+    ]
+  },
+  "metadata": {
+    "title": "Portfolio de Vincent",
+    "description": "Plongez dans mon monde de créativité, d'expérience et de connexions numériques."
+  }
+}

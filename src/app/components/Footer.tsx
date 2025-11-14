@@ -2,18 +2,20 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Mail, Linkedin } from "lucide-react";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import pp from "../../../public/pp.jpg";
 
 function Footer() {
+  const t = useTranslations("footer");
+  const tc = useTranslations("common");
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyEmail = async () => {
     if (!navigator.clipboard) {
       console.error("Clipboard API not available");
-      // Ici, vous pouvez afficher un message à l'utilisateur ou implémenter une solution de repli
       return;
     }
 
@@ -68,15 +70,13 @@ function Footer() {
             id="footerTitle"
             className="text-2xl text-neutral-700 dark:text-neutral-300 font-bold mb-3"
           >
-            Interested in working together?
+            {t("title")}
           </div>
           <div
             id="footerText"
             className="leading-tight text-neutral-400 dark:text-neutral-500 mb-5"
           >
-            I&apos;m deeply passionate about tech and have honed various skills
-            to lead development projects end-to-end. Excited to discuss your
-            upcoming project; reach out to me!
+            {t("description")}
           </div>
           <div
             id="footerButtons"
@@ -92,10 +92,10 @@ function Footer() {
                 tabIndex={0}
               >
                 {isCopied ? (
-                  <span>Copied!</span>
+                  <span>{tc("copied")}</span>
                 ) : (
                   <>
-                    <Mail className="mr-2" /> Email
+                    <Mail className="mr-2" /> {tc("email")}
                   </>
                 )}
               </button>
@@ -113,7 +113,7 @@ function Footer() {
                   )
                 }
               >
-                <Linkedin className="mr-2 pb-1" /> LinkedIn
+                <Linkedin className="mr-2 pb-1" /> {tc("linkedin")}
               </button>
             </div>
           </div>

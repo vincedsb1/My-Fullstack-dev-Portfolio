@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import { useTranslations } from "next-intl";
 import {
   Code2,
   Figma,
@@ -35,6 +36,8 @@ import "aos/dist/aos.css";
 import AOS from "aos";
 
 function Skills() {
+  const t = useTranslations("skills");
+
   useEffect(() => {
     AOS.init({
       duration: 300,
@@ -54,7 +57,7 @@ function Skills() {
           <Code2 size={32} className="mr-6 text-5xl" />
         </div>
         <div id="skillsTitle" className="text-2xl 3xs:text-3xl">
-          Skills
+          {t("title")}
         </div>
       </div>
       <div id="skillsTitleBotContainer" className="w-full flex flex-row">
@@ -64,7 +67,7 @@ function Skills() {
           className="flex flex-row text-base 3xs:text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
           data-aos="fade-up"
         >
-          I&apos;ve got a few tricks up my sleeve when it comes to skills.
+          {t("intro")}
         </div>
       </div>
       <div
@@ -81,7 +84,7 @@ function Skills() {
               className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
               data-aos="fade-up"
             >
-              Design
+              {t("design")}
             </div>
             <div
               id="desigSkillsContainer"
@@ -162,7 +165,7 @@ function Skills() {
               className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
               data-aos="fade-up"
             >
-              Front-end
+              {t("frontend")}
             </div>
             <div
               id="frontSkillsContainer"
@@ -282,7 +285,7 @@ function Skills() {
               className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
               data-aos="fade-up"
             >
-              Back-end
+              {t("backend")}
             </div>
             <div
               id="backSkillsContainer"
@@ -399,7 +402,7 @@ function Skills() {
               className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
               data-aos="fade-up"
             >
-              Other
+              {t("other")}
             </div>
             <div
               id="otherSkillsContainer"
