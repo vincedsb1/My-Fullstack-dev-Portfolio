@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import {
   Mail,
   Linkedin,
@@ -15,6 +16,8 @@ import {
 import pp from "../../../public/pp.jpg";
 
 function Header() {
+  const t = useTranslations("header");
+  const tc = useTranslations("common");
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyEmail = async () => {
@@ -23,7 +26,7 @@ function Header() {
       setIsCopied(true);
       setTimeout(() => {
         setIsCopied(false);
-      }, 2000); // Remet isCopied à false après 2 secondes
+      }, 2000);
     } catch (err) {
       console.error("Failed to copy text: ", err);
     }
@@ -53,29 +56,28 @@ function Header() {
             className="flex flex-col text-xl 3xs:text-2xl font-bold text-neutral-500 dark:text-neutral-400 mb-3"
             data-aos="fade-up"
           >
-            Hi there! I’m
+            {t("greeting")}
           </div>
           <div
             id="headerName"
             className="flex flex-col text-4xl 3xs:text-5xl font-bold bg-slate-200 bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400 leading-[1.15] mb-3"
             data-aos="fade-up"
           >
-            Vincent DESBROSSES
+            {t("name")}
           </div>
           <div
             id="headerJob"
             className="flex flex-col text-xl 3xs:text-2xl text-red-500 font-bold mb-3"
             data-aos="fade-up"
           >
-            Fullstack developer
+            {t("jobTitle")}
           </div>
           <div
             id="headerPresentation"
             className="flex text-xl 3xs:text-2xl text-neutral-700 dark:text-neutral-300 leading-tight mb-3"
             data-aos="fade-up"
           >
-            From ideation to completion, my skillset covers the full lifecycle
-            of a web project. Let’s talk about your next project.
+            {t("description")}
           </div>
         </div>
         <div
@@ -111,10 +113,10 @@ function Header() {
           data-aos="fade-up"
         >
           {isCopied ? (
-            <span>Copied!</span>
+            <span>{tc("copied")}</span>
           ) : (
             <>
-              <Mail className="mr-2" /> Email
+              <Mail className="mr-2" /> {tc("email")}
             </>
           )}
         </button>
@@ -131,7 +133,7 @@ function Header() {
             )
           }
         >
-          <Linkedin className="mr-2 pb-1" /> LinkedIn
+          <Linkedin className="mr-2 pb-1" /> {tc("linkedin")}
         </button>
         <button
           id="github"
@@ -141,7 +143,7 @@ function Header() {
           data-aos="fade-up"
           onClick={() => window.open("https://github.com/vincedsb1", "_blank")}
         >
-          <Github className="mr-2" /> GitHub
+          <Github className="mr-2" /> {tc("github")}
         </button>
         <button
           id="twitter"
@@ -151,7 +153,7 @@ function Header() {
           data-aos="fade-up"
           onClick={() => window.open("https://twitter.com/vincedsb", "_blank")}
         >
-          <Twitter className="mr-2" /> X
+          <Twitter className="mr-2" /> {tc("twitter")}
         </button>
         <button
           id="malt"
@@ -166,7 +168,7 @@ function Header() {
             )
           }
         >
-          <Briefcase className="mr-2" /> Malt
+          <Briefcase className="mr-2" /> {tc("malt")}
         </button>
         <button
           id="cv"
@@ -184,7 +186,7 @@ function Header() {
             document.body.removeChild(link);
           }}
         >
-          <DownloadCloud className="mr-2" /> CV
+          <DownloadCloud className="mr-2" /> {tc("cv")}
         </button>
       </div>
     </div>

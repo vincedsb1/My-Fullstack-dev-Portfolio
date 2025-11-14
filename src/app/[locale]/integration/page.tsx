@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import AOS from "aos";
-import ThemeSwitcher from "../ThemeSwitcher.tsx";
-import MenuButton from "../components/MenuButton.tsx";
+import ThemeSwitcher from "../../ThemeSwitcher.tsx";
+import MenuButton from "../../components/MenuButton.tsx";
 import "aos/dist/aos.css";
 
 export default function Integration() {
