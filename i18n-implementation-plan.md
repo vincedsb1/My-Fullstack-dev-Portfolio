@@ -23,6 +23,7 @@
 ## Résumé de l'audit
 
 ### État actuel
+
 - ✅ **Architecture:** Next.js 14 App Router (moderne)
 - ✅ **Langage:** TypeScript 5 (type-safe)
 - ❌ **i18n:** Zéro configuration existante
@@ -31,12 +32,15 @@
 - ❌ **Stockage de préférence:** Aucun
 
 ### Volume de contenu
+
 - **Nombre de chaînes à traduire:** ~150 (estimation: 140-160)
 - **Fichiers concernés:** 7 composants + 1 layout
 - **Types de contenu:** Titres, descriptions, labels, boutons, dates
 
 ### Verdict
+
 ✅ **EXCELLENT CANDIDAT** pour i18n
+
 - Petite codebase (facile à migrer)
 - Bonne séparation des composants
 - Pas de complexité API/backend
@@ -49,6 +53,7 @@
 ### Répartition par composant
 
 #### Header (Header.tsx) - ~12 chaînes
+
 ```
 - "Hi there! I'm"
 - "Vincent DESBROSSES"
@@ -65,6 +70,7 @@
 ```
 
 #### Footer (Footer.tsx) - ~8 chaînes
+
 ```
 - "Interested in working together?"
 - "I'm deeply passionate about tech and have honed various skills to lead development projects end-to-end. Excited to discuss your upcoming project; reach out to me!"
@@ -74,6 +80,7 @@
 ```
 
 #### Skills (Skills.tsx) - ~35 chaînes
+
 ```
 Titres:
 - "Skills"
@@ -93,6 +100,7 @@ Technologies (pas de traduction):
 ```
 
 #### Timeline (Timeline.tsx) - ~45 chaînes
+
 ```
 Titres:
 - "Timeline"
@@ -136,6 +144,7 @@ Expériences (7 employeurs):
 ```
 
 #### Projects (Projects.tsx) - ~18 chaînes
+
 ```
 Titre:
 - "Projects"
@@ -162,12 +171,14 @@ Projets (6 au total):
 ```
 
 #### Metadata (layout.tsx) - ~2 chaînes
+
 ```
 - "Vincent's portfolio"
 - "Dive into my world of creativity, experience, and digital connections."
 ```
 
 #### Menu (MenuButton.tsx) - ~3 chaînes (approximé)
+
 ```
 - "Light"
 - "Dark"
@@ -176,6 +187,7 @@ Projets (6 au total):
 ```
 
 #### Integration Page (integration/page.tsx)
+
 ```
 - Titre de page (à vérifier)
 - Contenu (à vérifier)
@@ -188,6 +200,7 @@ Projets (6 au total):
 ## État technique actuel
 
 ### Architecture
+
 ```
 src/app/
 ├── components/
@@ -205,12 +218,14 @@ src/app/
 ```
 
 ### Dépendances existantes
+
 - **next-themes:** Gestion du thème (dark/light) ✅
 - **AOS:** Animations au scroll ✅
 - **Lucide React:** Icônes ✅
 - **FontAwesome:** Icônes ✅
 
 ### Points de détection de locale
+
 1. **URL path:** `/fr/` vs `/en/` (à implémenter)
 2. **Headers serveur:** `Accept-Language` (middleware)
 3. **localStorage:** Préférence utilisateur stockée
@@ -238,6 +253,7 @@ src/app/
 ### Approche: URL-based + Fallback
 
 **Stratégie de détection (par ordre):**
+
 1. **URL path:** `/en/page`, `/fr/page` (source de vérité)
 2. **Middleware:** Détecte `Accept-Language` et redirige
 3. **localStorage:** Persiste le choix utilisateur
@@ -245,6 +261,7 @@ src/app/
 5. **Défaut:** 'en' (anglais)
 
 **Exemple de routing:**
+
 ```
 /en/                    → Anglais (défaut)
 /fr/                    → Français
@@ -255,6 +272,7 @@ src/app/
 ### Fichiers JSON de traduction
 
 **Structure:**
+
 ```
 src/i18n/
 ├── en.json
@@ -262,6 +280,7 @@ src/i18n/
 ```
 
 **Format:**
+
 ```json
 {
   "header": {
@@ -287,17 +306,20 @@ src/i18n/
 **Objectif:** Préparer les ressources et dépendances
 
 **Tâches:**
+
 - [ ] Installer `next-intl`
 - [ ] Créer la structure de dossiers pour i18n
 - [ ] Créer les fichiers JSON vides (en.json, fr.json)
 
 **Commandes:**
+
 ```bash
 npm install next-intl
 mkdir -p src/i18n
 ```
 
 **Fichiers à créer:**
+
 - `src/i18n/en.json` (vide)
 - `src/i18n/fr.json` (vide)
 - `middleware.ts` (route interception)
@@ -314,6 +336,7 @@ mkdir -p src/i18n
 **Objectif:** Mettre en place le routing multilingue avec middleware
 
 **Tâches:**
+
 - [ ] Créer `middleware.ts` pour la détection de locale
 - [ ] Configurer `next.config.js` pour next-intl
 - [ ] Créer `i18n.config.ts` (configuration)
@@ -321,6 +344,7 @@ mkdir -p src/i18n
 - [ ] Tester la redirection automatique
 
 **Fichiers à créer:**
+
 ```
 middleware.ts
 i18n.config.ts
@@ -328,6 +352,7 @@ next.config.js (mise à jour)
 ```
 
 **Fichiers à modifier:**
+
 ```
 src/app/layout.tsx          (déplacer dans route groups)
 src/app/page.tsx            (déplacer)
@@ -335,6 +360,7 @@ src/app/integration/        (déplacer)
 ```
 
 **Nouvelle structure:**
+
 ```
 src/app/
 ├── [locale]/                    (route group NOUVEAU)
@@ -358,15 +384,16 @@ i18n.config.ts                  (nouveau)
 **Code exemple:**
 
 `middleware.ts`:
+
 ```typescript
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // Vérifier si locale est déjà dans l'URL
-  const pathnameHasLocale = ['/en', '/fr'].some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  const pathnameHasLocale = ["/en", "/fr"].some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
   if (pathnameHasLocale) return NextResponse.next();
@@ -375,39 +402,39 @@ export function middleware(request: NextRequest) {
   const locale = getLocaleFromRequest(request);
 
   // Rediriger vers la locale appropriée
-  return NextResponse.redirect(
-    new URL(`/${locale}${pathname}`, request.url)
-  );
+  return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
 }
 
 function getLocaleFromRequest(request: NextRequest): string {
   // Vérifier localStorage (via cookie)
-  const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value;
-  if (cookieLocale && ['en', 'fr'].includes(cookieLocale)) {
+  const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
+  if (cookieLocale && ["en", "fr"].includes(cookieLocale)) {
     return cookieLocale;
   }
 
   // Déterminer via Accept-Language
-  const acceptLanguage = request.headers.get('accept-language') || '';
-  if (acceptLanguage.includes('fr')) return 'fr';
+  const acceptLanguage = request.headers.get("accept-language") || "";
+  if (acceptLanguage.includes("fr")) return "fr";
 
-  return 'en'; // Défaut
+  return "en"; // Défaut
 }
 
 export const config = {
-  matcher: ['/((?!_next|api|public|favicon).*)'],
+  matcher: ["/((?!_next|api|public|favicon).*)"],
 };
 ```
 
 `i18n.config.ts`:
+
 ```typescript
-export const locales = ['en', 'fr'] as const;
-export const defaultLocale = 'en' as const;
+export const locales = ["en", "fr"] as const;
+export const defaultLocale = "en" as const;
 
 export type Locale = (typeof locales)[number];
 ```
 
 **Tests:**
+
 ```bash
 # Test 1: Accès à /projects → redirection vers /en/projects
 # Test 2: Accès à /fr/projects → reste /fr/projects
@@ -426,6 +453,7 @@ export type Locale = (typeof locales)[number];
 **Objectif:** Extraire tous les textes hardcodés en anglais et créer les fichiers de traduction
 
 **Tâches:**
+
 - [ ] Scanner tous les composants et extraire les chaînes anglaises
 - [ ] Créer l'inventaire complet
 - [ ] Traduire en français (FR)
@@ -434,6 +462,7 @@ export type Locale = (typeof locales)[number];
 - [ ] Valider la complétude des traductions
 
 **Extraction - Inventaire à créer:**
+
 ```json
 {
   "header": {},
@@ -450,6 +479,7 @@ export type Locale = (typeof locales)[number];
 **Structure des fichiers JSON:**
 
 `src/i18n/en.json`:
+
 ```json
 {
   "common": {
@@ -563,6 +593,7 @@ export type Locale = (typeof locales)[number];
 ```
 
 `src/i18n/fr.json`: (Traduction française complète)
+
 ```json
 {
   "common": {
@@ -686,6 +717,7 @@ export type Locale = (typeof locales)[number];
 **Objectif:** Remplacer tous les textes hardcodés par des appels au hook `useTranslations()`
 
 **Tâches par composant:**
+
 - [ ] **Header.tsx** → Ajouter hook useTranslations
 - [ ] **Footer.tsx** → Intégrer traductions
 - [ ] **Skills.tsx** → Traduire titres et catégories
@@ -697,11 +729,13 @@ export type Locale = (typeof locales)[number];
 **Code exemple (Header.tsx):**
 
 AVANT:
+
 ```typescript
 <div id="headerHi">Hi there! I'm</div>
 ```
 
 APRÈS:
+
 ```typescript
 'use client';
 import { useTranslations } from 'next-intl';
@@ -716,6 +750,7 @@ function Header() {
 ```
 
 **Pseudo-code pour tous les composants:**
+
 ```typescript
 import { useTranslations } from 'next-intl';
 
@@ -735,30 +770,39 @@ function Component() {
 **Modifications layout.tsx:**
 
 AVANT:
+
 ```typescript
 export const metadata: Metadata = {
   title: "Vincent's portfolio",
-  description: "Dive into my world of creativity, experience, and digital connections.",
+  description:
+    "Dive into my world of creativity, experience, and digital connections.",
 };
 ```
 
 APRÈS:
-```typescript
-import { getTranslations } from 'next-intl/server';
 
-export async function generateMetadata(
-  { params }: { params: { locale: string } }
-): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'metadata' });
+```typescript
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({
+    locale: params.locale,
+    namespace: "metadata",
+  });
 
   return {
-    title: t('title'),
-    description: t('description'),
+    title: t("title"),
+    description: t("description"),
   };
 }
 ```
 
 **Tests:**
+
 ```bash
 # Test 1: Accès /en/ → Vérifier tous les textes en anglais
 # Test 2: Accès /fr/ → Vérifier tous les textes en français
@@ -768,6 +812,7 @@ export async function generateMetadata(
 ```
 
 **Checklist d'intégration:**
+
 - [ ] Header: 5/5 chaînes
 - [ ] Footer: 3/3 chaînes
 - [ ] Skills: 7/7 chaînes
@@ -787,6 +832,7 @@ export async function generateMetadata(
 **Objectif:** Ajouter un switcher de langue dans le menu `MenuButton.tsx`
 
 **Tâches:**
+
 - [ ] Créer composant `LanguageSwitcher.tsx`
 - [ ] Intégrer dans `MenuButton.tsx`
 - [ ] Permettre changement rapide EN ↔ FR
@@ -841,6 +887,7 @@ export default function LanguageSwitcher() {
 ```
 
 **Intégration dans MenuButton.tsx:**
+
 ```typescript
 import LanguageSwitcher from './LanguageSwitcher';
 import ThemeSwitcher from './ThemeSwitcher';
@@ -856,6 +903,7 @@ export default function MenuButton() {
 ```
 
 **Tests:**
+
 ```bash
 # Test 1: Cliquer EN → URL change /fr/ → /en/
 # Test 2: Cliquer FR → URL change /en/ → /fr/
@@ -875,6 +923,7 @@ export default function MenuButton() {
 **Objectif:** Valider l'implémentation complète et optimiser
 
 **Tâches:**
+
 - [ ] Test complet E2E (toutes les pages en EN et FR)
 - [ ] Vérifier non-traductions (noms d'entreprises, technologies)
 - [ ] Tester SSR/SSG (builds correctes)
@@ -885,6 +934,7 @@ export default function MenuButton() {
 - [ ] Cas limites (localStorage vide, cookies bloqués)
 
 **Checklist E2E:**
+
 - [ ] Page d'accueil EN → tout en anglais
 - [ ] Page d'accueil FR → tout en français
 - [ ] Projects EN → descriptions anglaises
@@ -897,6 +947,7 @@ export default function MenuButton() {
 - [ ] Animations AOS: Fonctionnent dans les 2 langues
 
 **Tests de fallback:**
+
 ```bash
 # Test: Navigateur sans Accept-Language → défaut EN
 # Test: localStorage = fr → accès /en → /fr/
@@ -906,12 +957,14 @@ export default function MenuButton() {
 ```
 
 **Optimisations possibles:**
+
 - Ajouter classe `lang="en"` ou `lang="fr"` au HTML
 - Ajouter `hreflang` pour SEO multilingue
 - Pré-charger les ressources de la locale suivante
 - Cache les traductions en localStorage
 
 **Build test:**
+
 ```bash
 npm run build
 npm start
@@ -930,6 +983,7 @@ npm start
 **Objectif:** Finaliser et documenter
 
 **Tâches:**
+
 - [ ] Supprimer anciens fichiers JSX non utilisés
 - [ ] Documenter dans CLAUDE.md (mise à jour)
 - [ ] Documenter process pour ajouter nouvelles langues
@@ -937,9 +991,11 @@ npm start
 - [ ] Mettre à jour README
 
 **Fichiers à nettoyer:**
+
 - Aucun, structure claire
 
 **Documentation à ajouter à CLAUDE.md:**
+
 ```markdown
 ## Internationalisation (i18n)
 
@@ -950,6 +1006,7 @@ npm start
 - **Hook:** `useTranslations()` dans composants clients
 
 ### Ajouter une nouvelle langue:
+
 1. Créer src/i18n/xx.json
 2. Ajouter locale à locales[] dans i18n.config.ts
 3. Créer route group (xx)/ dans src/app/
@@ -966,30 +1023,30 @@ npm start
 
 ### ✨ Fichiers à CRÉER (8 fichiers)
 
-| Fichier | Type | Description |
-|---------|------|-------------|
-| `middleware.ts` | Config | Détection/redirection locale |
-| `i18n.config.ts` | Config | Config next-intl |
-| `src/i18n/en.json` | Data | Traductions anglaises |
-| `src/i18n/fr.json` | Data | Traductions françaises |
-| `src/app/[locale]/layout.tsx` | Layout | Root layout (nouveau groupe) |
-| `src/app/[locale]/page.tsx` | Page | Home (nouveau groupe) |
-| `src/app/[locale]/integration/page.tsx` | Page | Integration (nouveau groupe) |
-| `src/app/components/LanguageSwitcher.tsx` | Component | Sélecteur langue |
+| Fichier                                   | Type      | Description                  |
+| ----------------------------------------- | --------- | ---------------------------- |
+| `middleware.ts`                           | Config    | Détection/redirection locale |
+| `i18n.config.ts`                          | Config    | Config next-intl             |
+| `src/i18n/en.json`                        | Data      | Traductions anglaises        |
+| `src/i18n/fr.json`                        | Data      | Traductions françaises       |
+| `src/app/[locale]/layout.tsx`             | Layout    | Root layout (nouveau groupe) |
+| `src/app/[locale]/page.tsx`               | Page      | Home (nouveau groupe)        |
+| `src/app/[locale]/integration/page.tsx`   | Page      | Integration (nouveau groupe) |
+| `src/app/components/LanguageSwitcher.tsx` | Component | Sélecteur langue             |
 
 ### 📝 Fichiers à MODIFIER (6 fichiers)
 
-| Fichier | Modifications |
-|---------|---------------|
-| `next.config.js` | Ajouter plugin next-intl |
-| `package.json` | Ajouter dépendance next-intl |
-| `src/app/components/Header.tsx` | Remplacer textes par t() |
-| `src/app/components/Footer.tsx` | Remplacer textes par t() |
-| `src/app/components/Skills.tsx` | Remplacer textes par t() |
-| `src/app/components/Projects.tsx` | Remplacer textes par t() |
-| `src/app/components/Timeline.tsx` | Remplacer textes par t() |
-| `src/app/components/MenuButton.tsx` | Intégrer LanguageSwitcher |
-| `CLAUDE.md` | Documenter i18n |
+| Fichier                             | Modifications                |
+| ----------------------------------- | ---------------------------- |
+| `next.config.js`                    | Ajouter plugin next-intl     |
+| `package.json`                      | Ajouter dépendance next-intl |
+| `src/app/components/Header.tsx`     | Remplacer textes par t()     |
+| `src/app/components/Footer.tsx`     | Remplacer textes par t()     |
+| `src/app/components/Skills.tsx`     | Remplacer textes par t()     |
+| `src/app/components/Projects.tsx`   | Remplacer textes par t()     |
+| `src/app/components/Timeline.tsx`   | Remplacer textes par t()     |
+| `src/app/components/MenuButton.tsx` | Intégrer LanguageSwitcher    |
+| `CLAUDE.md`                         | Documenter i18n              |
 
 ### ℹ️ Fichiers NON impactés
 
@@ -1004,22 +1061,24 @@ npm start
 
 ### Timeline totale: **8-10 heures**
 
-| Phase | Description | Durée | Testable |
-|-------|-------------|-------|----------|
-| **0** | Préparation | 30 min | ❌ |
-| **1** | Configuration routing | 1h | ✅ |
-| **2** | Traductions | 2h30 | ❌ |
-| **3** | Intégration composants | 2h | ✅ |
-| **4** | Sélecteur langue | 1h | ✅ |
-| **5** | Tests E2E | 1h | ✅ |
-| **6** | Documentation | 30 min | ❌ |
-| | **TOTAL** | **~8h30** | |
+| Phase | Description            | Durée     | Testable |
+| ----- | ---------------------- | --------- | -------- |
+| **0** | Préparation            | 30 min    | ❌       |
+| **1** | Configuration routing  | 1h        | ✅       |
+| **2** | Traductions            | 2h30      | ❌       |
+| **3** | Intégration composants | 2h        | ✅       |
+| **4** | Sélecteur langue       | 1h        | ✅       |
+| **5** | Tests E2E              | 1h        | ✅       |
+| **6** | Documentation          | 30 min    | ❌       |
+|       | **TOTAL**              | **~8h30** |          |
 
 ### Par personne
+
 - **Développeur:** 6-8h (Phase 1, 3, 4, 5)
 - **Traducteur/QA:** 2-3h (Phase 2, 5)
 
 ### Dépendances entre phases
+
 ```
 Phase 0 (Prep)
     ↓
@@ -1035,6 +1094,7 @@ Phase 6 (Doc)
 ```
 
 ### Facteurs de risque
+
 - ⚠️ Oublier une chaîne → Inclure une seconde passe d'extraction
 - ⚠️ Typos en français → Relire avant commit
 - ⚠️ URL inconsistentes → Tester toutes les routes
@@ -1045,6 +1105,7 @@ Phase 6 (Doc)
 ## Checklist de validation
 
 ### ✅ Phase 1 - Routing
+
 - [ ] Middleware détecte Accept-Language
 - [ ] Accès `/projects` → redirige `/en/projects`
 - [ ] Accès `/fr/projects` → reste `/fr/projects`
@@ -1052,6 +1113,7 @@ Phase 6 (Doc)
 - [ ] Aucune 404 sur les routes groupées
 
 ### ✅ Phase 3 - Composants
+
 - [ ] Aucun texte en anglais dur dans les JSX
 - [ ] Hook `useTranslations()` importé dans tous les composants
 - [ ] Tous les t() appellent une clé valide en en.json et fr.json
@@ -1059,6 +1121,7 @@ Phase 6 (Doc)
 - [ ] Les alt-text des images restent constants
 
 ### ✅ Phase 4 - Sélecteur
+
 - [ ] Bouton EN visible dans le menu
 - [ ] Bouton FR visible dans le menu
 - [ ] Cliquer EN → URL change, textes changent
@@ -1067,6 +1130,7 @@ Phase 6 (Doc)
 - [ ] Style du bouton actif clair
 
 ### ✅ Phase 5 - Tests complets
+
 - [ ] Page home EN affiche anglais
 - [ ] Page home FR affiche français
 - [ ] Toutes les sections présentes dans les 2 langues
@@ -1076,6 +1140,7 @@ Phase 6 (Doc)
 - [ ] Pas de dégradation performance
 
 ### ✅ Déploiement
+
 - [ ] Code mergé sur main
 - [ ] Vercel rebuild réussi
 - [ ] Test live EN et FR
@@ -1086,20 +1151,24 @@ Phase 6 (Doc)
 ## Notes supplémentaires
 
 ### SEO & Internationalisation
+
 ```html
 <!-- Dans layout.tsx, ajouter: -->
-<link rel="alternate" hrefLang="en" href="https://example.com/en/" />
-<link rel="alternate" hrefLang="fr" href="https://example.com/fr/" />
-<link rel="alternate" hrefLang="x-default" href="https://example.com/en/" />
+<link rel="alternate" hreflang="en" href="https://example.com/en/" />
+<link rel="alternate" hreflang="fr" href="https://example.com/fr/" />
+<link rel="alternate" hreflang="x-default" href="https://example.com/en/" />
 ```
 
 ### Performance
+
 - Bundle size: +35KB (next-intl)
 - LCP: Pas de dégradation (pas d'appels API)
 - TTI: Pas d'impact (traductions en JSON)
 
 ### Évolutivité
+
 Pour ajouter une nouvelle langue (ex: ES):
+
 1. Créer `src/i18n/es.json`
 2. Ajouter `'es'` à `locales` dans `i18n.config.ts`
 3. Créer dossier `src/app/[locale]/(es)/`
@@ -1121,3 +1190,4 @@ Pour ajouter une nouvelle langue (ex: ES):
 - **Documentation next-intl:** https://next-intl-docs.vercel.app/
 - **Next.js App Router:** https://nextjs.org/docs/app
 - **Tailwind multi-lang:** Pas d'impact (CSS, pas de textes)
+  //yo
