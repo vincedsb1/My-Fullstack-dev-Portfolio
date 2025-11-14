@@ -85,7 +85,7 @@ function FAQ() {
 
       <div
         id="faqContainer"
-        className="w-[770px] xs:w-full flex flex-col max-w-3xl"
+        className="w-full flex flex-col"
         data-aos="fade-up"
       >
         <CustomAccordion items={items} />
