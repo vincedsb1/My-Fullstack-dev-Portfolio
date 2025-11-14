@@ -11,18 +11,13 @@ import {
   Type,
   Triangle,
   Pyramid,
+  Zap,
+  Database,
+  Server,
+  ArrowRightLeft,
+  Lightbulb,
 } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faN,
-  faDatabase,
-  faServer,
-  faRightLeft,
-  faE,
-  faSailboat,
-  faLightbulb,
-  faS,
-} from "@fortawesome/free-solid-svg-icons";
 import {
   faReact,
   faSquareJs,
@@ -117,7 +112,7 @@ function Skills() {
                   id="storybookIcon"
                   className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
                 >
-                  <FontAwesomeIcon icon={faS} />
+                  <Code2 size={20} />
                 </div>
                 <div
                   id="storybookLabel"
@@ -180,7 +175,7 @@ function Skills() {
                   id="nextIcon"
                   className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
                 >
-                  <FontAwesomeIcon icon={faN} />
+                  <Zap size={18} />
                 </div>
                 <div
                   id="nextLabel"
@@ -318,7 +313,7 @@ function Skills() {
                   id="postgresqlIcon"
                   className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
                 >
-                  <FontAwesomeIcon icon={faServer} />
+                  <Server size={18} />
                 </div>
                 <div
                   id="postgresqlLabel"
@@ -336,7 +331,7 @@ function Skills() {
                   id="sqlIcon"
                   className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
                 >
-                  <FontAwesomeIcon icon={faDatabase} />
+                  <Database size={18} />
                 </div>
                 <div
                   id="sqlLabel"
@@ -354,7 +349,7 @@ function Skills() {
                   id="apiIcon"
                   className="flex flex-row items-center mr-2 w-6 text-md justify-center"
                 >
-                  <FontAwesomeIcon icon={faRightLeft} />
+                  <ArrowRightLeft size={18} />
                 </div>
                 <div id="apiLabel" className="flex flex-row">
                   RESTful API
@@ -369,7 +364,7 @@ function Skills() {
                   id="expressIcon"
                   className="flex flex-row items-center mr-2 w-6 text-md justify-center"
                 >
-                  <FontAwesomeIcon icon={faE} />
+                  <Lightbulb size={18} />
                 </div>
                 <div id="expressLabel" className="flex flex-row">
                   ExpressJS
@@ -453,7 +448,7 @@ function Skills() {
                   id="agileIcon"
                   className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
                 >
-                  <FontAwesomeIcon icon={faSailboat} />
+                  <Code2 size={18} />
                 </div>
                 <div
                   id="agileLabel"
@@ -486,7 +481,7 @@ function Skills() {
                   id="productIcon"
                   className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
                 >
-                  <FontAwesomeIcon icon={faLightbulb} />
+                  <Lightbulb size={18} />
                 </div>
                 <div id="productLabel" className="flex flex-row">
                   Product thinking
