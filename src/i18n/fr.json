@@ -9,18 +9,18 @@
     "cv": "CV"
   },
   "header": {
-    "greeting": "Salut ! Je suis",
+    "greeting": "Salut, moi c'est",
     "name": "Vincent DESBROSSES",
     "jobTitle": "Développeur Fullstack",
-    "description": "De l'idée à la réalisation, mes compétences couvrent l'ensemble du cycle de vie d'un projet web. Parlons de votre prochain projet."
+    "description": "Je maîtrise tout le cycle de développement web, de la conception à la livraison. Parlons de votre prochain projet."
   },
   "footer": {
     "title": "Envie de travailler ensemble ?",
-    "description": "Je suis passionné par la technologie et j'ai développé diverses compétences pour diriger des projets de développement de bout en bout. Enthousiaste à l'idée de discuter de votre prochain projet, contactez-moi !"
+    "description": "Passionné par la technologie et le développement, je maîtrise les projets web du début à la fin. Discutons de votre prochain projet !"
   },
   "skills": {
     "title": "Compétences",
-    "intro": "J'ai plus d'un tour dans mon sac quand il s'agit de compétences.",
+    "intro": "Une palette de compétences variées et solides pour vos projets.",
     "design": "Design",
     "frontend": "Front-end",
     "backend": "Back-end",
@@ -28,7 +28,7 @@
   },
   "projects": {
     "title": "Projets",
-    "intro": "J'ai navigué une gamme de projets du début à la fin. Jetez un coup d'œil à certains de mes travaux récents.",
+    "intro": "J'ai mené à bien une variété de projets. Voici un aperçu de mes réalisations récentes.",
     "project1": {
       "name": "Is Tesla worth it?",
       "description": "Comparez 2 voitures et découvrez laquelle offre une meilleure valeur au fil du temps."
@@ -56,7 +56,7 @@
   },
   "timeline": {
     "title": "Parcours",
-    "intro": "Faites un tour dans mon parcours professionnel et découvrez mes expériences !",
+    "intro": "Explorez mon parcours professionnel et découvrez mon expérience.",
     "experiences": [
       {
         "company": "Allaw",

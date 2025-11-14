@@ -4,10 +4,13 @@ import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRocket } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import "aos/dist/aos.css";
 import AOS from "aos";
 
 function Projects() {
+  const t = useTranslations("projects");
+
   useEffect(() => {
     AOS.init({
       duration: 300,
@@ -27,7 +30,7 @@ function Projects() {
           <FontAwesomeIcon icon={faRocket} className="" />
         </div>
         <div id="projectsTitle" className="text-2xl 3xs:text-3xl">
-          Projects
+          {t("title")}
         </div>
       </div>
       <div id="projectsTitleBotContainer" className="w-full flex flex-row pr-4">
@@ -37,8 +40,7 @@ function Projects() {
           className="flex flex-row text-base 3xs:text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
           data-aos="fade-up"
         >
-          I&apos;ve navigated a range of projects from start to finish.
-          <br /> Take a look at some of my recent work.
+          {t("intro")}
         </div>
       </div>
       <div id="projectsCardsContainer" className="w-full flex flex-wrap">
@@ -67,13 +69,13 @@ function Projects() {
                 id="project5Title"
                 className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2  w-full pt-8"
               >
-                Décor Nature
+                {t("project5.name")}
               </div>
               <div
                 id="project5Description"
                 className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight w-full pr-4"
               >
-                Painting and decorating company website.
+                {t("project5.description")}
               </div>
             </div>
             <div
@@ -128,13 +130,13 @@ function Projects() {
                   id="project6Title"
                   className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2"
                 >
-                  SmartFlow
+                  {t("project6.name")}
                 </div>
                 <div
                   id="project6Description"
                   className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
                 >
-                  Platform offering an effective learning method.
+                  {t("project6.description")}
                 </div>
               </div>
             </div>
@@ -191,14 +193,13 @@ function Projects() {
                   id="project1Title"
                   className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2"
                 >
-                  Is Tesla worth it?
+                  {t("project1.name")}
                 </div>
                 <div
                   id="project1Description"
                   className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
                 >
-                  Compare 2 cars and find out which one has a better value over
-                  time.
+                  {t("project1.description")}
                 </div>
               </div>
             </div>
@@ -250,14 +251,13 @@ function Projects() {
                 id="project2Title"
                 className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2  w-1/2 pt-8"
               >
-                Emmaüs connect
+                {t("project2.name")}
               </div>
               <div
                 id="project2Description"
                 className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
               >
-                Platform that catalogs and values reclaimed smartphones for
-                resale.
+                {t("project2.description")}
               </div>
             </div>
             <div
@@ -308,14 +308,13 @@ function Projects() {
                 id="project3Title"
                 className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2  w-full pt-8"
               >
-                Wilder Game
+                {t("project3.name")}
               </div>
               <div
                 id="project3Description"
                 className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight w-full pr-4"
               >
-                A timed web quiz app challenging users to match film release
-                dates accurately for high scores.
+                {t("project3.description")}
               </div>
             </div>
             <div
@@ -368,13 +367,13 @@ function Projects() {
                   id="project4Title"
                   className="font-bold text-2xl text-neutral-700 dark:text-neutral-300 pl-6 leading-tight mb-2"
                 >
-                  QuickFlow
+                  {t("project4.name")}
                 </div>
                 <div
                   id="project4Description"
                   className="text-sm 2xs:text-base text-neutral-500 dark:text-neutral-400 pl-6 leading-tight"
                 >
-                  Ideation platform streamlining democratic decision-making.
+                  {t("project4.description")}
                 </div>
               </div>
             </div>
