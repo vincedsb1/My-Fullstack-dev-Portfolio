@@ -22,7 +22,7 @@ function AccordionItemComponent({
         onClick={onToggle}
         aria-expanded={isOpen}
         aria-controls={`faq-panel-${question.replace(/\s+/g, "-").toLowerCase()}`}
-        className="w-full flex items-center justify-between py-6 px-0 text-left hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
+        className="w-full flex items-center justify-between py-6 px-4 text-left hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-800/50 transition-colors rounded-lg"
       >
         <h3 className="text-base 3xs:text-lg font-semibold text-neutral-700 dark:text-neutral-300 flex-1">
           {question}
@@ -42,7 +42,7 @@ function AccordionItemComponent({
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="pb-6 px-0 text-neutral-600 dark:text-neutral-400 text-base leading-relaxed">
+        <div className="pb-6 px-4 text-neutral-600 dark:text-neutral-400 text-base leading-relaxed">
           {answer}
         </div>
       </div>

@@ -95,7 +95,7 @@ function Header() {
               alt="Vincent DESBROSSES"
               quality={80}
               sizes="(max-width: 640px) 192px, 240px"
-              className="rounded-full ring-4 ring-red-500 p-2"
+              className="rounded-full ring-4 ring-red-500 p-2 transition-all duration-300 hover:ring-red-400 dark:hover:ring-red-600"
               priority
             />
           </div>

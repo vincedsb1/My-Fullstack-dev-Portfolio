@@ -6,7 +6,9 @@
     "github": "GitHub",
     "twitter": "X",
     "malt": "Malt",
-    "cv": "CV"
+    "cv": "CV",
+    "phone": "Phone",
+    "copy": "Copy"
   },
   "header": {
     "greeting": "Hi there! I'm",
