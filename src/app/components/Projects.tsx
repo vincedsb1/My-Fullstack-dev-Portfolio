@@ -1,7 +1,18 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { Rocket } from "lucide-react";
+import {
+  Rocket,
+  FileCode,
+  Palette,
+  Server,
+  Database,
+  Type, // For Typescript
+  Atom, // For ReactJS
+  LineChart, // For Recharts
+  Code, // For Javascript
+  Braces, // For JSON
+} from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import "aos/dist/aos.css";
@@ -9,6 +20,43 @@ import AOS from "aos";
 
 function Projects() {
   const t = useTranslations("projects");
+
+  const projectTechnologies = {
+    project5: [
+      { name: "Next.js", icon: <FileCode size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "TailwindCSS", icon: <Palette size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "PostgreSQL", icon: <Database size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "Typescript", icon: <Type size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+    ],
+    project6: [
+      { name: "Next.js", icon: <FileCode size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "TailwindCSS", icon: <Palette size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "PostgreSQL", icon: <Database size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "Typescript", icon: <Type size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+    ],
+    project1: [
+      { name: "Next.js", icon: <FileCode size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "Recharts", icon: <LineChart size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "Typescript", icon: <Type size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+    ],
+    project2: [
+      { name: "ReactJS", icon: <Atom size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "Javascript", icon: <Code size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "JSON", icon: <Braces size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+    ],
+    project3: [
+      { name: "ReactJS", icon: <Atom size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "Javascript", icon: <Code size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "Node.js", icon: <Server size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "MySQL", icon: <Database size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+    ],
+    project4: [ // Keeping default for project4 as no specific list was provided
+      { name: "Next.js", icon: <FileCode size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "Tailwind CSS", icon: <Palette size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "Node.js", icon: <Server size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      { name: "PostgreSQL", icon: <Database size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+    ],
+  };
 
   useEffect(() => {
     AOS.init({
@@ -50,7 +98,7 @@ function Projects() {
         >
           <div
             id="project5Card"
-            className="w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 dark:hover:border-opacity-100 hover:border-opacity-100 border-opacity-50 dark:border-neutral-700 flex flex-col overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            className="relative w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 dark:hover:border-opacity-100 hover:border-opacity-100 border-opacity-50 dark:border-neutral-700 flex flex-col overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
             onClick={() => window.open("https://decor-nature.fr/", "_blank")}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
@@ -97,6 +145,19 @@ function Projects() {
                 </div>
               </div>
             </div>
+            <div className="absolute bottom-0 left-0 w-full h-[84px] bg-neutral-100/50 dark:bg-neutral-950/50 backdrop-blur-sm p-6 flex flex-col justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+              <div className="flex flex-wrap gap-x-6 gap-y-3">
+                {projectTechnologies.project5.map((tech) => (
+                  <div
+                    key={tech.name}
+                    className="flex items-center gap-2 text-neutral-900 dark:text-neutral-100"
+                  >
+                    {tech.icon}
+                    <span className="text-sm">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -107,7 +168,7 @@ function Projects() {
         >
           <div
             id="project6Card"
-            className="w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            className="relative w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
             onClick={() =>
               window.open("https://www.smartflow-app.com/", "_blank")
             }
@@ -161,6 +222,19 @@ function Projects() {
                 </div>
               </div>
             </div>
+            <div className="absolute bottom-0 left-0 w-full h-[84px] bg-neutral-100/50 dark:bg-neutral-950/50 backdrop-blur-sm p-6 flex flex-col justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+              <div className="flex flex-wrap gap-x-6 gap-y-3">
+                {projectTechnologies.project6.map((tech) => (
+                  <div
+                    key={tech.name}
+                    className="flex items-center gap-2 text-neutral-900 dark:text-neutral-100"
+                  >
+                    {tech.icon}
+                    <span className="text-sm">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -171,7 +245,7 @@ function Projects() {
         >
           <div
             id="project1Card"
-            className="w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            className="relative w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
             onClick={() =>
               window.open("https://isteslaworthit.vercel.app/", "_blank")
             }
@@ -226,6 +300,19 @@ function Projects() {
                 </div>
               </div>
             </div>
+            <div className="absolute bottom-0 left-0 w-full h-[84px] bg-neutral-100/50 dark:bg-neutral-950/50 backdrop-blur-sm p-6 flex flex-col justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+              <div className="flex flex-wrap gap-x-6 gap-y-3">
+                {projectTechnologies.project1.map((tech) => (
+                  <div
+                    key={tech.name}
+                    className="flex items-center gap-2 text-neutral-900 dark:text-neutral-100"
+                  >
+                    {tech.icon}
+                    <span className="text-sm">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -236,7 +323,7 @@ function Projects() {
         >
           <div
             id="project2Card"
-            className="w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 dark:hover:border-opacity-100 hover:border-opacity-100 border-opacity-50 dark:border-neutral-700 flex flex-col overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            className="relative w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 dark:hover:border-opacity-100 hover:border-opacity-100 border-opacity-50 dark:border-neutral-700 flex flex-col overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
             onClick={() =>
               window.open("https://emmaus-connect-bay.vercel.app/", "_blank")
             }
@@ -285,6 +372,19 @@ function Projects() {
                 </div>
               </div>
             </div>
+            <div className="absolute bottom-0 left-0 w-full h-[84px] bg-neutral-100/50 dark:bg-neutral-950/50 backdrop-blur-sm p-6 flex flex-col justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+              <div className="flex flex-wrap gap-x-6 gap-y-3">
+                {projectTechnologies.project2.map((tech) => (
+                  <div
+                    key={tech.name}
+                    className="flex items-center gap-2 text-neutral-900 dark:text-neutral-100"
+                  >
+                    {tech.icon}
+                    <span className="text-sm">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -295,7 +395,7 @@ function Projects() {
         >
           <div
             id="project3Card"
-            className="w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 dark:hover:border-opacity-100 hover:border-opacity-100 border-opacity-50 dark:border-neutral-700 flex flex-col overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            className="relative w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 border-neutral-400 dark:hover:border-opacity-100 hover:border-opacity-100 border-opacity-50 dark:border-neutral-700 flex flex-col overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
             onClick={() =>
               window.open("https://wilders-game.vercel.app/", "_blank")
             }
@@ -344,6 +444,19 @@ function Projects() {
                 </div>
               </div>
             </div>
+            <div className="absolute bottom-0 left-0 w-full h-[84px] bg-neutral-100/50 dark:bg-neutral-950/50 backdrop-blur-sm p-6 flex flex-col justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+              <div className="flex flex-wrap gap-x-6 gap-y-3">
+                {projectTechnologies.project3.map((tech) => (
+                  <div
+                    key={tech.name}
+                    className="flex items-center gap-2 text-neutral-900 dark:text-neutral-100"
+                  >
+                    {tech.icon}
+                    <span className="text-sm">{tech.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -354,7 +467,7 @@ function Projects() {
         >
           <div
             id="project4Card"
-            className="w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
+            className="relative w-full h-full rounded-3xl bg-neutral-200 dark:bg-neutral-800 border border-1 hover:border-opacity-100 border-neutral-400 border-opacity-50 dark:border-neutral-700 flex flex-row overflow-hidden hover:ring ring-neutral-400 dark:ring-neutral-700 transition-all group cursor-pointer"
             onClick={() => window.open("http://5.250.176.153:5000/", "_blank")}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
@@ -404,6 +517,19 @@ function Projects() {
                     alt="Legal Directory Management System"
                   />
                 </div>
+              </div>
+            </div>
+            <div className="absolute bottom-0 left-0 w-full h-[84px] bg-neutral-100/50 dark:bg-neutral-950/50 backdrop-blur-sm p-6 flex flex-col justify-center transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+              <div className="flex flex-wrap gap-x-6 gap-y-3">
+                {projectTechnologies.project4.map((tech) => (
+                  <div
+                    key={tech.name}
+                    className="flex items-center gap-2 text-neutral-900 dark:text-neutral-100"
+                  >
+                    {tech.icon}
+                    <span className="text-sm">{tech.name}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
