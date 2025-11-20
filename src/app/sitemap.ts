@@ -1,13 +1,14 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vincent-desbrosses.com'
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://vincent-desbrosses.com";
 
   return [
     {
       url: `${baseUrl}/en`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 1,
       alternates: {
         languages: {
@@ -18,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/fr`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 1,
       alternates: {
         languages: {
@@ -29,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/en/integration`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 0.8,
       alternates: {
         languages: {
@@ -40,7 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/fr/integration`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 0.8,
       alternates: {
         languages: {
@@ -48,5 +49,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
-  ]
+  ];
 }

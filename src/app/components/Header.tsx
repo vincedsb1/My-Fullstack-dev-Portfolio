@@ -183,7 +183,10 @@ function Header() {
           tabIndex={0}
           data-aos="fade-up"
           onClick={() => {
-            const fileName = locale === "en" ? "Resume_Vincent_DESBROSSES.pdf" : "CV Vincent DESBROSSES.pdf";
+            const fileName =
+              locale === "en"
+                ? "Resume_Vincent_DESBROSSES.pdf"
+                : "CV Vincent DESBROSSES.pdf";
             const link = document.createElement("a");
             link.href = `/${encodeURIComponent(fileName)}`;
             link.download = fileName;

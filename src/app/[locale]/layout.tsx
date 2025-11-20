@@ -26,21 +26,23 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://vincent-desbrosses.com'
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://vincent-desbrosses.com";
 
   const title = "Vincent's portfolio";
-  const description = "Dive into my world of creativity, experience, and digital connections.";
+  const description =
+    "Dive into my world of creativity, experience, and digital connections.";
   const ogImage = `${baseUrl}/pp.jpg`;
 
   return {
     title,
     description,
-    viewport: 'width=device-width, initial-scale=1',
+    viewport: "width=device-width, initial-scale=1",
     alternates: {
       languages: {
-        'en': `${baseUrl}/en`,
-        'fr': `${baseUrl}/fr`,
-        'x-default': `${baseUrl}/en`,
+        en: `${baseUrl}/en`,
+        fr: `${baseUrl}/fr`,
+        "x-default": `${baseUrl}/en`,
       },
       canonical: `${baseUrl}/${locale}`,
     },
@@ -54,46 +56,47 @@ export async function generateMetadata({
           url: ogImage,
           width: 819,
           height: 823,
-          alt: 'Vincent DESBROSSES - Fullstack Developer',
-          type: 'image/jpeg',
+          alt: "Vincent DESBROSSES - Fullstack Developer",
+          type: "image/jpeg",
         },
       ],
-      type: 'website',
-      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
-      alternateLocale: locale === 'fr' ? 'en_US' : 'fr_FR',
+      type: "website",
+      locale: locale === "fr" ? "fr_FR" : "en_US",
+      alternateLocale: locale === "fr" ? "en_US" : "fr_FR",
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
       images: [ogImage],
-      creator: '@vincedsb',
-      site: '@vincedsb',
+      creator: "@vincedsb",
+      site: "@vincedsb",
     },
     other: {
-      'application/ld+json': JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Person',
-        name: 'Vincent DESBROSSES',
+      "application/ld+json": JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Vincent DESBROSSES",
         url: baseUrl,
-        jobTitle: 'Fullstack Developer',
-        description: 'From ideation to completion, my skillset covers the full lifecycle of a web project.',
+        jobTitle: "Fullstack Developer",
+        description:
+          "From ideation to completion, my skillset covers the full lifecycle of a web project.",
         image: ogImage,
-        email: 'vincedsb@gmail.com',
+        email: "vincedsb@gmail.com",
         sameAs: [
-          'https://www.linkedin.com/in/vincent-desbrosses/',
-          'https://github.com/vincedsb1',
-          'https://twitter.com/vincedsb',
+          "https://www.linkedin.com/in/vincent-desbrosses/",
+          "https://github.com/vincedsb1",
+          "https://twitter.com/vincedsb",
         ],
         knowsAbout: [
-          'JavaScript',
-          'TypeScript',
-          'React',
-          'Next.js',
-          'Node.js',
-          'PostgreSQL',
-          'Web Development',
-          'Fullstack Development',
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Next.js",
+          "Node.js",
+          "PostgreSQL",
+          "Web Development",
+          "Fullstack Development",
         ],
       }),
     },

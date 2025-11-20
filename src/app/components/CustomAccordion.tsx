@@ -21,7 +21,9 @@ function AccordionItemComponent({
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
-        aria-controls={`faq-panel-${question.replace(/\s+/g, "-").toLowerCase()}`}
+        aria-controls={`faq-panel-${question
+          .replace(/\s+/g, "-")
+          .toLowerCase()}`}
         className="w-full flex items-center justify-between py-6 px-4 text-left hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-800/50 transition-colors rounded-lg"
       >
         <h3 className="text-base 3xs:text-lg font-semibold text-neutral-700 dark:text-neutral-300 flex-1">

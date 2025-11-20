@@ -30,30 +30,57 @@
   },
   "projects": {
     "title": "Projects",
-    "intro": "I've successfully delivered a variety of projects. Here's a snapshot of my recent work.",
-    "project1": {
-      "name": "Is Tesla worth it?",
-      "description": "Compare 2 cars and find out which one has a better value over time."
+    "subtitle": "I've successfully delivered a variety of projects. Here's a snapshot of my recent work.",
+    "othersTitle": "Other Projects",
+    "viewProject": "View Project",
+    "previousProjectAriaLabel": "Previous Project",
+    "nextProjectAriaLabel": "Next Project",
+    "goToProjectAriaLabel": "Go to project",
+    "viewProjectAriaLabel": "View project",
+    "openProject": "Open project",
+    "allaw": {
+      "name": "Allaw",
+      "description": "Platform connecting individuals with legal professionals + CRM."
     },
-    "project2": {
-      "name": "Emmaüs connect",
-      "description": "Platform that catalogs and values reclaimed smartphones for resale."
+    "truthify": {
+      "name": "Truthify",
+      "description": "Tool for analyzing arguments and fact-checking videos/texts."
     },
-    "project3": {
-      "name": "Wilder Game",
-      "description": "A timed web quiz app challenging users to match film release dates accurately for high scores."
+    "legalConstat": {
+      "name": "Légal Constat",
+      "description": "Platform connecting individuals with bailiffs + CRM."
     },
-    "project4": {
-      "name": "QuickFlow",
-      "description": "Ideation platform streamlining democratic decision-making."
+    "smartflow": {
+      "name": "Smartflow",
+      "description": "Management and automation tool for business processes."
     },
-    "project5": {
+    "decorNature": {
       "name": "Décor Nature",
-      "description": "Painting and decorating company website."
+      "description": "Showcase website for a painting and decoration company."
     },
-    "project6": {
-      "name": "SmartFlow",
-      "description": "Platform offering an effective learning method."
+    "aimoto": {
+      "name": "Aimoto",
+      "description": "Predictive analysis tool for Bitcoin prices via an AI time-series model."
+    },
+    "liic": {
+      "name": "LIIC",
+      "description": "Chrome extension for generating AI-powered LinkedIn comments."
+    },
+    "teslaApp": {
+      "name": "Is Tesla Worth It?",
+      "description": "A calculator to compare the total cost of ownership between two vehicles."
+    },
+    "emmausConnect": {
+      "name": "Emmaüs Connect",
+      "description": "Platform for managing and refurbishing donated smartphones."
+    },
+    "wilderGame": {
+      "name": "Wilder Game",
+      "description": "A web-based quiz game about movie release dates."
+    },
+    "legalDirectory": {
+      "name": "Legal Directory",
+      "description": "A professional directory tool for the legal field."
     }
   },
   "timeline": {
