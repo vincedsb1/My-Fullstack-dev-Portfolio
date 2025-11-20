@@ -60,7 +60,7 @@
     },
     "aimoto": {
       "name": "Aimoto",
-      "description": "Aimoto is a full-stack Bitcoin price forecasting platform combining AI-driven modeling and interactive web visualization. It features a Python FastAPI backend managing Chronos and LightGBM models, a Next.js 14 frontend for real-time analysis, a traceable experiment pipeline, detailed performance metrics, and live monitoring - built for both research and production environments."
+      "description": "Aimoto is a full-stack Bitcoin price forecasting platform combining AI-driven modeling and interactive web visualization. It features a Python FastAPI backend managing Chronos and LightGBM models, a Next.js frontend for real-time analysis, a traceable experiment pipeline, detailed performance metrics, and live monitoring - built for both research and production environments."
     },
     "liic": {
       "name": "LIIC",

@@ -3,7 +3,7 @@
 **Date:** 2025-11-14
 **Statut:** Planification
 **Langues cibles:** Français (FR) & Anglais (EN)
-**Framework:** Next.js 14 (App Router)
+**Framework:** Next.js 16 (App Router)
 
 ---
 
@@ -24,7 +24,7 @@
 
 ### État actuel
 
-- ✅ **Architecture:** Next.js 14 App Router (moderne)
+- ✅ **Architecture:** Next.js 16 App Router (moderne)
 - ✅ **Langage:** TypeScript 5 (type-safe)
 - ❌ **i18n:** Zéro configuration existante
 - ❌ **Contenu:** 100% en anglais, hardcodé dans les JSX
