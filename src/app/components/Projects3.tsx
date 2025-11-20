@@ -183,7 +183,7 @@ const projects: Project[] = [
   },
   {
     id: "emmausConnect",
-    order: 7,
+    order: 11,
     isFeatured: false,
     i18nNameKey: "emmausConnect.name",
     i18nDescriptionKey: "emmausConnect.description",
@@ -231,7 +231,7 @@ const projects: Project[] = [
   },
   {
     id: "liic",
-    order: 11,
+    order: 7,
     isFeatured: false,
     i18nNameKey: "liic.name",
     i18nDescriptionKey: "liic.description",
@@ -261,7 +261,7 @@ function OtherProjectCard({ project, t }: { project: Project; t: any }) {
   return (
     <article
       data-aos="fade-up"
-      className="flex flex-col h-full rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-800 p-5 md:p-6 shadow-sm hover:shadow-md transition-transform transition-shadow duration-200 hover:-translate-y-1 cursor-pointer"
+      className="group flex flex-col h-full rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-800 p-5 md:p-6 shadow-sm hover:shadow-md transition-transform transition-shadow duration-200 hover:-translate-y-1 cursor-pointer"
       role="link"
       tabIndex={0}
       onClick={handleCardClick}
@@ -269,7 +269,7 @@ function OtherProjectCard({ project, t }: { project: Project; t: any }) {
       aria-label={`${t("viewProjectAriaLabel")}: ${t(project.i18nNameKey)}`}
     >
       <div className="flex-grow">
-        <h4 className="font-semibold text-2xl 3xs:text-3xl text-neutral-900 dark:text-neutral-50 mb-1">
+        <h4 className="font-semibold text-2xl 3xs:text-3xl text-neutral-900 dark:text-neutral-50 mb-3">
           {t(project.i18nNameKey)}
         </h4>
         <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-3 line-clamp-2">
@@ -288,6 +288,7 @@ function OtherProjectCard({ project, t }: { project: Project; t: any }) {
           layout="fill"
           objectFit="cover"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="transition-transform duration-500 group-hover:scale-[1.02]"
         />
       </div>
     </article>
