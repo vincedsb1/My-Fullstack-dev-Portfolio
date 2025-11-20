@@ -9,20 +9,25 @@ This is a personal portfolio website built with [Next.js](https://nextjs.org/) a
 To get the project running locally, follow these steps:
 
 1.  **Install Dependencies:**
+
     ```bash
     npm install
     ```
 
 2.  **Run the Development Server:**
+
     ```bash
     npm run dev
     ```
+
     The application will be available at `http://localhost:3000`.
 
 3.  **Build for Production:**
+
     ```bash
     npm run build
     ```
+
     This command creates an optimized production build of the application.
 
 4.  **Run Production Server:**
@@ -37,25 +42,27 @@ To get the project running locally, follow these steps:
 
 The project uses ESLint and Prettier to enforce a consistent code style.
 
-*   **Linting:**
-    ```bash
-    npm run lint
-    ```
-    This command checks the codebase for linting errors.
+- **Linting:**
 
-*   **Fix Linting Errors:**
-    ```bash
-    npm run fix
-    ```
-    This command automatically fixes linting and formatting issues.
+  ```bash
+  npm run lint
+  ```
+
+  This command checks the codebase for linting errors.
+
+- **Fix Linting Errors:**
+  ```bash
+  npm run fix
+  ```
+  This command automatically fixes linting and formatting issues.
 
 ### Internationalization (i18n)
 
 Internationalization is managed using `next-intl`.
 
-*   **Locales:** The supported locales are `en` (English) and `fr` (French).
-*   **Translation Files:** Translation strings are stored in JSON files located at `src/i18n/`.
-*   **Usage:** The `useTranslations` hook from `next-intl` is used in components to access translated strings.
+- **Locales:** The supported locales are `en` (English) and `fr` (French).
+- **Translation Files:** Translation strings are stored in JSON files located at `src/i18n/`.
+- **Usage:** The `useTranslations` hook from `next-intl` is used in components to access translated strings.
 
 ### Theming
 

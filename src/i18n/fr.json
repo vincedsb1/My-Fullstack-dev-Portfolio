@@ -30,30 +30,57 @@
   },
   "projects": {
     "title": "Projets",
-    "intro": "J'ai mené à bien une variété de projets. Voici un aperçu de mes réalisations récentes.",
-    "project1": {
-      "name": "Is Tesla worth it?",
-      "description": "Comparez 2 voitures et découvrez laquelle offre une meilleure valeur au fil du temps."
+    "subtitle": "J'ai mené à bien une variété de projets. Voici un aperçu de mes réalisations récentes.",
+    "othersTitle": "Autres Projets",
+    "viewProject": "Voir le projet",
+    "previousProjectAriaLabel": "Projet précédent",
+    "nextProjectAriaLabel": "Projet suivant",
+    "goToProjectAriaLabel": "Aller au projet",
+    "viewProjectAriaLabel": "Voir le projet",
+    "openProject": "Ouvrir le projet",
+    "allaw": {
+      "name": "Allaw",
+      "description": "Plateforme de mise en relation particuliers / pros du droit + CRM."
     },
-    "project2": {
-      "name": "Emmaüs connect",
-      "description": "Plateforme qui catalogue et valorise les smartphones recondationnés à la revente."
+    "truthify": {
+      "name": "Truthify",
+      "description": "Outil d'analyse d'arguments et de fact-checking de vidéos et textes."
     },
-    "project3": {
-      "name": "Wilder Game",
-      "description": "Web app mettant les utilisateurs au défi de faire de trouver les dates de sortie des films."
+    "legalConstat": {
+      "name": "Légal Constat",
+      "description": "Plateforme de mise en relation particuliers / commissaires de justice + CRM."
     },
-    "project4": {
-      "name": "QuickFlow",
-      "description": "Plateforme d'idéation rationalisant la prise de décision démocratique."
+    "smartflow": {
+      "name": "Smartflow",
+      "description": "Outil de gestion et d'automatisation des processus métier."
     },
-    "project5": {
+    "decorNature": {
       "name": "Décor Nature",
-      "description": "Site web d'une entreprise de peinture et de décoration."
+      "description": "Site vitrine pour une entreprise de peinture et décoration."
     },
-    "project6": {
-      "name": "SmartFlow",
-      "description": "Plateforme por apprendre plus vite et durablement grâce à la méthode Leitner."
+    "aimoto": {
+      "name": "Aimoto",
+      "description": "Outil d'analyse prédictive du prix du Bitcoin via un modèle IA sur séries temporelles."
+    },
+    "liic": {
+      "name": "LIIC",
+      "description": "Extension Chrome pour générer des commentaires LinkedIn via IA."
+    },
+    "teslaApp": {
+      "name": "Is Tesla Worth It?",
+      "description": "Un calculateur pour comparer le coût total de possession entre deux véhicules."
+    },
+    "emmausConnect": {
+      "name": "Emmaüs Connect",
+      "description": "Plateforme pour la gestion et le reconditionnement de smartphones."
+    },
+    "wilderGame": {
+      "name": "Wilder Game",
+      "description": "Un jeu de quiz en ligne sur les dates de sortie de films."
+    },
+    "legalDirectory": {
+      "name": "Annuaire Légal",
+      "description": "Un outil d'annuaire professionnel pour le domaine juridique."
     }
   },
   "timeline": {

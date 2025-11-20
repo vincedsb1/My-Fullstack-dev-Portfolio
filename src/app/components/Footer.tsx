@@ -179,7 +179,9 @@ function Footer() {
               onClick={handleCopyPhone}
               className="w-full mt-6 flex justify-center items-center bg-red-500 rounded-xl px-5 py-3 text-neutral-100 cursor-pointer hover:bg-red-600 transition-all"
             >
-              {isPhoneCopied ? tc("copied") : tc("copy", { ns: "common" }) || "Copy"}
+              {isPhoneCopied
+                ? tc("copied")
+                : tc("copy", { ns: "common" }) || "Copy"}
             </button>
           </div>
         </div>

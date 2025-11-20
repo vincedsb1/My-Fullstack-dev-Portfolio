@@ -23,38 +23,194 @@ function Projects() {
 
   const projectTechnologies = {
     project5: [
-      { name: "Next.js", icon: <FileCode size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "TailwindCSS", icon: <Palette size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "PostgreSQL", icon: <Database size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "Typescript", icon: <Type size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      {
+        name: "Next.js",
+        icon: (
+          <FileCode
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
+      {
+        name: "TailwindCSS",
+        icon: (
+          <Palette
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
+      {
+        name: "PostgreSQL",
+        icon: (
+          <Database
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
+      {
+        name: "Typescript",
+        icon: (
+          <Type size={20} className="text-neutral-900 dark:text-neutral-100" />
+        ),
+      },
     ],
     project6: [
-      { name: "Next.js", icon: <FileCode size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "TailwindCSS", icon: <Palette size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "PostgreSQL", icon: <Database size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "Typescript", icon: <Type size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      {
+        name: "Next.js",
+        icon: (
+          <FileCode
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
+      {
+        name: "TailwindCSS",
+        icon: (
+          <Palette
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
+      {
+        name: "PostgreSQL",
+        icon: (
+          <Database
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
+      {
+        name: "Typescript",
+        icon: (
+          <Type size={20} className="text-neutral-900 dark:text-neutral-100" />
+        ),
+      },
     ],
     project1: [
-      { name: "Next.js", icon: <FileCode size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "Recharts", icon: <LineChart size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "Typescript", icon: <Type size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      {
+        name: "Next.js",
+        icon: (
+          <FileCode
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
+      {
+        name: "Recharts",
+        icon: (
+          <LineChart
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
+      {
+        name: "Typescript",
+        icon: (
+          <Type size={20} className="text-neutral-900 dark:text-neutral-100" />
+        ),
+      },
     ],
     project2: [
-      { name: "ReactJS", icon: <Atom size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "Javascript", icon: <Code size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "JSON", icon: <Braces size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      {
+        name: "ReactJS",
+        icon: (
+          <Atom size={20} className="text-neutral-900 dark:text-neutral-100" />
+        ),
+      },
+      {
+        name: "Javascript",
+        icon: (
+          <Code size={20} className="text-neutral-900 dark:text-neutral-100" />
+        ),
+      },
+      {
+        name: "JSON",
+        icon: (
+          <Braces
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
     ],
     project3: [
-      { name: "ReactJS", icon: <Atom size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "Javascript", icon: <Code size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "Node.js", icon: <Server size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "MySQL", icon: <Database size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+      {
+        name: "ReactJS",
+        icon: (
+          <Atom size={20} className="text-neutral-900 dark:text-neutral-100" />
+        ),
+      },
+      {
+        name: "Javascript",
+        icon: (
+          <Code size={20} className="text-neutral-900 dark:text-neutral-100" />
+        ),
+      },
+      {
+        name: "Node.js",
+        icon: (
+          <Server
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
+      {
+        name: "MySQL",
+        icon: (
+          <Database
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
     ],
-    project4: [ // Keeping default for project4 as no specific list was provided
-      { name: "Next.js", icon: <FileCode size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "Tailwind CSS", icon: <Palette size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "Node.js", icon: <Server size={20} className="text-neutral-900 dark:text-neutral-100" /> },
-      { name: "PostgreSQL", icon: <Database size={20} className="text-neutral-900 dark:text-neutral-100" /> },
+    project4: [
+      // Keeping default for project4 as no specific list was provided
+      {
+        name: "Next.js",
+        icon: (
+          <FileCode
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
+      {
+        name: "Tailwind CSS",
+        icon: (
+          <Palette
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
+      {
+        name: "Node.js",
+        icon: (
+          <Server
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
+      {
+        name: "PostgreSQL",
+        icon: (
+          <Database
+            size={20}
+            className="text-neutral-900 dark:text-neutral-100"
+          />
+        ),
+      },
     ],
   };
 

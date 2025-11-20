@@ -77,9 +77,14 @@ export async function generateMetadata({
 ```
 
 **Actual HTML Output:**
+
 ```html
-<meta name="google-site-verification" content="PW82MjVgB5OXOfa6RcjIX06LfN3lZ1arROcD41Ao1z4" />
-<html lang="en">  <!-- Dynamic locale -->
+<meta
+  name="google-site-verification"
+  content="PW82MjVgB5OXOfa6RcjIX06LfN3lZ1arROcD41Ao1z4"
+/>
+<html lang="en">
+  <!-- Dynamic locale -->
   <head>
     <!-- Missing: OG tags, canonical, hreflang, robots, etc. -->
   </head>
@@ -108,6 +113,7 @@ export async function generateMetadata({
 ### By Component
 
 **Header.tsx (Lines 42-196)**
+
 ```typescript
 // Line 57-60: Greeting (DIV instead of H1 intro)
 <div id="headerHi" className="...text-xl...font-bold...">
@@ -131,6 +137,7 @@ export async function generateMetadata({
 ```
 
 **Skills.tsx (Lines 36-50)**
+
 ```typescript
 // DIV heading structure
 <div id="skillsTitleTopContainer" className="...text-2xl...font-bold...">
@@ -147,6 +154,7 @@ export async function generateMetadata({
 ```
 
 **Projects.tsx (Lines 19-34)**
+
 ```typescript
 // DIV heading (should be H2)
 <div id="projectsTitle" className="...text-2xl...3xs:text-3xl">
@@ -160,6 +168,7 @@ export async function generateMetadata({
 ```
 
 **Timeline.tsx (Lines 27-42)**
+
 ```typescript
 // DIV heading (should be H2)
 <div id="timelineTitle" className="...text-2xl...3xs:text-3xl">
@@ -178,6 +187,7 @@ export async function generateMetadata({
 ```
 
 **FAQ.tsx (Lines 59-82) & CustomAccordion.tsx (Lines 13-45)**
+
 ```typescript
 // FAQ section heading (DIV)
 <div id="faqTitle" className="...text-2xl...3xs:text-3xl">
@@ -192,6 +202,7 @@ export async function generateMetadata({
 ```
 
 **Summary of Heading Issues:**
+
 - 0 H1 tags found (CRITICAL)
 - H2 equivalent: 5 sections (all as DIVs)
 - H3 equivalent: ~20 items (19 as DIVs, 1 as H3 in FAQ)
@@ -202,22 +213,23 @@ export async function generateMetadata({
 
 ### Image Files in /public
 
-| File | Size | Format | Type |
-|------|------|--------|------|
-| pp.jpg | 162 KB | JPEG | Profile picture |
-| project1.png | 194 KB | PNG | Card image |
-| project2.png | 252 KB | PNG | Card image |
-| project3.png | 401 KB | PNG | Card image (largest) |
-| project4.png | 317 KB | PNG | Card image |
-| project5.png | 171 KB | PNG | Card image |
-| project6-2.png | 262 KB | PNG | Card image |
-| Resume_Vincent_DESBROSSES.pdf | 138 KB | PDF | EN CV |
-| CV Vincent DESBROSSES.pdf | 141 KB | PDF | FR CV |
-| **TOTAL IMAGES** | **2.1 MB** | - | - |
+| File                          | Size       | Format | Type                 |
+| ----------------------------- | ---------- | ------ | -------------------- |
+| pp.jpg                        | 162 KB     | JPEG   | Profile picture      |
+| project1.png                  | 194 KB     | PNG    | Card image           |
+| project2.png                  | 252 KB     | PNG    | Card image           |
+| project3.png                  | 401 KB     | PNG    | Card image (largest) |
+| project4.png                  | 317 KB     | PNG    | Card image           |
+| project5.png                  | 171 KB     | PNG    | Card image           |
+| project6-2.png                | 262 KB     | PNG    | Card image           |
+| Resume_Vincent_DESBROSSES.pdf | 138 KB     | PDF    | EN CV                |
+| CV Vincent DESBROSSES.pdf     | 141 KB     | PDF    | FR CV                |
+| **TOTAL IMAGES**              | **2.1 MB** | -      | -                    |
 
 ### Image Implementation
 
 **Header.tsx (Lines 93-98)**
+
 ```typescript
 <Image
   src={pp}
@@ -228,6 +240,7 @@ export async function generateMetadata({
 ```
 
 **Projects.tsx - Examples**
+
 ```typescript
 // Project 5 (Lines 90-96)
 <Image
@@ -247,6 +260,7 @@ export async function generateMetadata({
 ```
 
 **Issues:**
+
 - Quality set to 100 (unnecessary for web)
 - No `sizes` attribute for responsive images
 - No format configuration (no AVIF/WebP fallback)
@@ -260,6 +274,7 @@ export async function generateMetadata({
 ### Missing ARIA Labels
 
 **MenuButton.tsx (Lines 8-28)**
+
 ```typescript
 <div
   id="buttonMenuBg"
@@ -277,6 +292,7 @@ export async function generateMetadata({
 ```
 
 **LanguageSwitcher.tsx (Lines 47-73)**
+
 ```typescript
 <div className="...">
   <div className="...font-bold...">
@@ -294,6 +310,7 @@ export async function generateMetadata({
 ```
 
 **Header.tsx - Email Copy Button (Lines 107-123)**
+
 ```typescript
 <button
   id="email"
@@ -314,6 +331,7 @@ export async function generateMetadata({
 ```
 
 **FAQ CustomAccordion.tsx (Lines 20-44)**
+
 ```typescript
 <button
   onClick={onToggle}
@@ -343,16 +361,33 @@ export async function generateMetadata({
 ### Translation Files
 
 **en.json (140 lines)**
+
 ```json
 {
-  "common": { /* 9 keys */ },
-  "header": { /* 4 keys */ },
-  "footer": { /* 2 keys */ },
-  "skills": { /* 6 keys */ },
-  "projects": { /* 6 projects with 2 keys each = 12 keys */ },
-  "timeline": { /* 1 key + 7 experiences with 4 keys each */ },
-  "faq": { /* 1 key + 6 items with 2 keys each */ },
-  "metadata": { /* 2 keys (unused!) */ }
+  "common": {
+    /* 9 keys */
+  },
+  "header": {
+    /* 4 keys */
+  },
+  "footer": {
+    /* 2 keys */
+  },
+  "skills": {
+    /* 6 keys */
+  },
+  "projects": {
+    /* 6 projects with 2 keys each = 12 keys */
+  },
+  "timeline": {
+    /* 1 key + 7 experiences with 4 keys each */
+  },
+  "faq": {
+    /* 1 key + 6 items with 2 keys each */
+  },
+  "metadata": {
+    /* 2 keys (unused!) */
+  }
 }
 ```
 
@@ -361,6 +396,7 @@ export async function generateMetadata({
 ### i18n Configuration
 
 **middleware.ts (Lines 1-38)**
+
 ```typescript
 // Locale detection chain:
 // 1. URL pathname (already localized)
@@ -374,12 +410,14 @@ export const config = {
 ```
 
 **i18n.config.ts**
+
 ```typescript
-export const locales = ['en', 'fr'] as const;
-export const defaultLocale = 'en' as const;
+export const locales = ["en", "fr"] as const;
+export const defaultLocale = "en" as const;
 ```
 
 **i18n.ts**
+
 ```typescript
 return {
   locale: validLocale,
@@ -390,6 +428,7 @@ return {
 ### Hreflang Missing
 
 **No alternate language links implemented:**
+
 ```html
 <!-- MISSING from <head> -->
 <link rel="alternate" hreflang="en" href="https://yoursite.com/en" />
@@ -398,6 +437,7 @@ return {
 ```
 
 **Not in metadata:**
+
 ```typescript
 // MISSING from generateMetadata()
 alternates: {
@@ -414,6 +454,7 @@ alternates: {
 ## Performance Configuration
 
 ### Next.js Defaults Being Used
+
 - ✅ Image optimization (via Image component)
 - ✅ Code splitting (App Router)
 - ✅ Font optimization (Inter)
@@ -421,23 +462,25 @@ alternates: {
 - ✅ Compression (handled by Vercel)
 
 ### next.config.mjs (Minimal)
+
 ```javascript
-import createNextIntlPlugin from 'next-intl/plugin';
+import createNextIntlPlugin from "next-intl/plugin";
 
-const withNextIntl = createNextIntlPlugin('./i18n.ts');
+const withNextIntl = createNextIntlPlugin("./i18n.ts");
 
-const nextConfig = {};  // Empty config!
+const nextConfig = {}; // Empty config!
 
 export default withNextIntl(nextConfig);
 ```
 
 **What's Missing:**
+
 ```javascript
 // Could add:
 const nextConfig = {
   images: {
-    formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 31536000,  // 1 year
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 31536000, // 1 year
   },
   compress: true,
   poweredByHeader: false,
@@ -452,19 +495,23 @@ const nextConfig = {
 ### Loaded Resources
 
 1. **FontAwesome** (6.4.2)
+
    - Used in Projects, Timeline components
    - File: @fortawesome/fontawesome-svg-core/styles.css
    - Issue: Unused icons (migration started to lucide-react)
 
 2. **lucide-react** (0.291.0)
+
    - Primary icon library
    - No SEO impact
 
 3. **next-intl** (4.5.3)
+
    - i18n handling
    - Good for SEO with locale routing
 
 4. **next-themes** (0.2.1)
+
    - Dark mode support
    - No SEO impact
 
@@ -479,11 +526,12 @@ const nextConfig = {
 ### Estimated Scores (Before Fixes)
 
 **Google Lighthouse:**
+
 - SEO Score: ~60/100
   - Missing: H1, meta tags, schema, alt text quality
   - Deductions: ~40 points
-  
 - Performance Score: ~78/100
+
   - Large images (project3.png: 401 KB)
   - Quality: 100 for images unnecessary
   - Potential: 85-90 with optimization
@@ -494,6 +542,7 @@ const nextConfig = {
   - Potential: 90+ with aria fixes
 
 **Web Core Vitals (estimated):**
+
 - LCP: ~2.5s (acceptable)
 - FID: <100ms (good)
 - CLS: ~0.1 (good)
@@ -530,12 +579,14 @@ const config: Config = {
 ```
 
 **Custom Breakpoints:**
+
 - xs: 320px (mobile)
 - 2xs: 390px (mobile)
 - 3xs: 480px (mobile)
 - sm, md, lg, xl, 2xl (Tailwind defaults)
 
 **SEO Impact:**
+
 - ✅ Responsive design (mobile-first)
 - ✅ Dark mode doesn't impact SEO
 - ⚠️ All styling via Tailwind (no accessibility issues, but check contrast)
@@ -545,6 +596,7 @@ const config: Config = {
 ## Summary: Critical Findings
 
 ### Must Fix (SEO Impact)
+
 1. **Add H1 tag** - Search engines expect H1
 2. **Add Schema markup** - No structured data at all
 3. **Add meta tags** - OG, Twitter, canonical
@@ -552,11 +604,13 @@ const config: Config = {
 5. **Add robots.txt & sitemap** - Enable indexing
 
 ### Should Fix (Accessibility)
+
 6. **Add ARIA labels** - Screen reader support
 7. **Add aria-expanded** - Accordion/menu state
 8. **Improve alt text** - More descriptive
 
 ### Nice to Have (Performance)
+
 9. **Optimize images** - AVIF/WebP, compression
 10. **Add analytics** - Track user behavior
 
@@ -565,6 +619,7 @@ const config: Config = {
 ## Verification
 
 All file paths confirmed in:
+
 - `/Users/vincentdesbrosses/Documents/Projects/Test-po/portfolio/`
 - Git branch: main
 - Status: M package-lock.json (modified dependencies only)

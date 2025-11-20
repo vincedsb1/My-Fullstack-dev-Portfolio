@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
 import AOS from "aos";
-import ThemeSwitcher from "../ThemeSwitcher.tsx";
+import "aos/dist/aos.css";
+import { useEffect, useRef, useState } from "react";
 import LanguageSwitcher from "../LanguageSwitcher.tsx";
-import MenuButton from "../components/MenuButton.tsx";
-import Header from "../components/Header.tsx";
-import Skills from "../components/Skills.tsx";
-import Projects from "../components/Projects.tsx";
-import Timeline from "../components/Timeline.tsx";
+import ThemeSwitcher from "../ThemeSwitcher.tsx";
 import FAQ from "../components/FAQ.tsx";
 import Footer from "../components/Footer.tsx";
-import "aos/dist/aos.css";
+import Header from "../components/Header.tsx";
+import MenuButton from "../components/MenuButton.tsx";
+import Projects3 from "../components/Projects3.tsx";
+import Skills from "../components/Skills.tsx";
+import Timeline from "../components/Timeline.tsx";
 
 export default function Home() {
   const [showMenu, setShowMenu] = useState(false);
@@ -85,7 +85,7 @@ export default function Home() {
           id="projectsContainer"
           className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
         >
-          <Projects />
+          <Projects3 />
         </div>
         <div
           id="timelineContainer"
