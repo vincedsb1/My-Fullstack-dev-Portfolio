@@ -345,9 +345,11 @@ function Projects3() {
             <div className="rounded-3xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-6 md:p-10 lg:p-12 shadow-sm md:shadow">
               <div className="flex flex-col gap-8 md:grid md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:gap-10">
                 {/* Left Column (Text) */}
-                <div className="flex flex-col justify-center order-2 md:order-1">
-                  <span className="text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-2">
-                    {activeProject.kind}
+                <div className="flex flex-col order-2 md:order-1">
+                  <span
+                    className="inline-flex items-center rounded-full bg-neutral-100 dark:bg-neutral-800 px-4 py-1 text-xs font-medium text-neutral-700 dark:text-neutral-100 mb-4"
+                  >
+                    {activeProject.kind.charAt(0).toUpperCase() + activeProject.kind.slice(1)}
                   </span>
                   <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 mb-3">
                     {t(activeProject.i18nNameKey)}
