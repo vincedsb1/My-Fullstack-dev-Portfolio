@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **Next.js 14 personal portfolio website** built with **TypeScript** and **Tailwind CSS**. It's a modern, responsive single-page application showcasing professional work, skills, and experience with dark mode support and scroll-triggered animations.
+This is a **Next.js 16 personal portfolio website** built with **TypeScript** and **Tailwind CSS**. It's a modern, responsive single-page application showcasing professional work, skills, and experience with dark mode support and scroll-triggered animations.
 
 ## Technology Stack
 
-- **Framework:** Next.js 14.0.1 (App Router)
+- **Framework:** Next.js 16.0.1 (App Router)
 - **Language:** TypeScript 5
 - **Styling:** Tailwind CSS 3.3.0 + PostCSS
 - **UI Libraries:** React 18, Lucide React, FontAwesome
@@ -55,7 +55,7 @@ src/app/
 
 ### 1. **App Router & Page Structure**
 
-- Uses modern Next.js 14 App Router, not Pages Router
+- Uses modern Next.js 16 App Router, not Pages Router
 - Root layout in `layout.tsx` wraps all pages
 - Home page in `page.tsx`
 - Nested pages in subdirectories (e.g., `integration/page.tsx`)

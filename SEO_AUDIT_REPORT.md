@@ -1,8 +1,8 @@
 # Comprehensive SEO Audit Report
 
-## Vincent's Next.js 14 Portfolio
+## Vincent's Next.js 16 Portfolio
 
-**Date:** November 14, 2025
+**Date:** November 16, 2025
 **Framework:** Next.js 14.0.1 with TypeScript
 **Tech Stack:** React 18, Tailwind CSS, next-intl, next-themes
 **Internationalization:** English & French (EN/FR)
@@ -302,7 +302,7 @@ alt="Is Tesla Worth It - Car Comparison App Interface"
 
 ### Implemented:
 
-**Next.js 14 Defaults:**
+**Next.js 16 Defaults:**
 
 - ✅ Automatic image optimization via Image component
 - ✅ App Router (no legacy Pages Router)
