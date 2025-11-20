@@ -40,11 +40,11 @@
     "openProject": "Open project",
     "allaw": {
       "name": "Allaw",
-      "description": "Platform connecting individuals with legal professionals + CRM."
+      "description": "Allaw is a web platform for notaries, lawyers and judicial officers. It centralizes online visibility, office hours, appointment management and study information. Allaw Connect adds an advanced CRM to manage cases, clients, messages, commercial pipeline, internal organization and daily operational tracking through a modern, streamlined interface."
     },
     "truthify": {
       "name": "Truthify",
-      "description": "Tool for analyzing arguments and fact-checking videos/texts."
+      "description": "Truthify is a critical-analysis platform designed to break down video transcripts and assess the strength of arguments. It identifies facts, errors, fallacies, and flawed reasoning, then produces a clear, structured report. The goal is to provide a reliable tool to understand the quality of discourse, compare perspectives, and enhance analytical thinking."
     },
     "legalConstat": {
       "name": "Légal Constat",
@@ -52,7 +52,7 @@
     },
     "smartflow": {
       "name": "Smartflow",
-      "description": "Management and automation tool for business processes."
+      "description": "SmartFlow is a web application designed to optimize learning using the Leitner method. It lets users create flashcards, follow an automated spaced-repetition level system, and receive smart reminders to strengthen long-term memory. The goal is simple: help students and curious learners study faster, retain knowledge longer, and structure their learning sessions with clarity and efficiency."
     },
     "decorNature": {
       "name": "Décor Nature",
@@ -60,7 +60,7 @@
     },
     "aimoto": {
       "name": "Aimoto",
-      "description": "Predictive analysis tool for Bitcoin prices via an AI time-series model."
+      "description": "Aimoto is a full-stack Bitcoin price forecasting platform combining AI-driven modeling and interactive web visualization. It features a Python FastAPI backend managing Chronos and LightGBM models, a Next.js 14 frontend for real-time analysis, a traceable experiment pipeline, detailed performance metrics, and live monitoring - built for both research and production environments."
     },
     "liic": {
       "name": "LIIC",
@@ -79,8 +79,8 @@
       "description": "A web-based quiz game about movie release dates."
     },
     "legalDirectory": {
-      "name": "Legal Directory",
-      "description": "A professional directory tool for the legal field."
+      "name": "Quickflow",
+      "description": "Ideation platform streamlining democratic decision-making."
     }
   },
   "timeline": {
