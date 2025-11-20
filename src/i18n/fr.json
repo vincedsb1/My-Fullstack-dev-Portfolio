@@ -40,11 +40,11 @@
     "openProject": "Ouvrir le projet",
     "allaw": {
       "name": "Allaw",
-      "description": "Plateforme de mise en relation particuliers / pros du droit + CRM."
+      "description": "Allaw est une plateforme web pour notaires, avocats et commissaires de justice. Elle centralise la visibilité en ligne, les horaires, la prise de rendez-vous et les informations d'étude. Allaw Connect ajoute un CRM avancé pour gérer dossiers, clients, échanges, pipeline commercial, organisation interne et suivi opérationnel au quotidien via une interface moderne."
     },
     "truthify": {
       "name": "Truthify",
-      "description": "Outil d'analyse d'arguments et de fact-checking de vidéos et textes."
+      "description": "Truthify est une plateforme d'analyse critique conçue pour décortiquer des transcripts de vidéos et évaluer la solidité des arguments. Elle identifie faits, erreurs, sophismes et raisonnements biaisés, puis génère un rapport structuré et clair. L'objectif est d'offrir un outil fiable pour comprendre la qualité d'un discours, comparer plusieurs points de vue et renforcer la pensée analytique."
     },
     "legalConstat": {
       "name": "Légal Constat",
@@ -52,7 +52,7 @@
     },
     "smartflow": {
       "name": "Smartflow",
-      "description": "Outil de gestion et d'automatisation des processus métier."
+      "description": "SmartFlow est une application web conçue pour optimiser l'apprentissage grâce à la méthode de Leitner. Elle permet de créer des fiches recto-verso, de suivre automatiquement un système de niveaux et de révisions espacées, et de recevoir des rappels intelligents pour renforcer la mémorisation. L'objectif est simple : aider les étudiants et les passionnés à apprendre plus vite, retenir plus longtemps et structurer efficacement leurs sessions d'étude."
     },
     "decorNature": {
       "name": "Décor Nature",
@@ -60,7 +60,7 @@
     },
     "aimoto": {
       "name": "Aimoto",
-      "description": "Outil d'analyse prédictive du prix du Bitcoin via un modèle IA sur séries temporelles."
+      "description": "Aimoto est une plateforme complète de prévision du prix du Bitcoin combinant intelligence artificielle et visualisation web. Elle intègre un backend FastAPI en Python pour la gestion des modèles de forecast (Chronos, LightGBM), un frontend Next.js 14 pour l'analyse interactive, un pipeline d'expériences traçable, des métriques de performance et un système de monitoring en temps réel, le tout conçu pour un usage recherche et production."
     },
     "liic": {
       "name": "LIIC",
@@ -79,8 +79,8 @@
       "description": "Un jeu de quiz en ligne sur les dates de sortie de films."
     },
     "legalDirectory": {
-      "name": "Annuaire Légal",
-      "description": "Un outil d'annuaire professionnel pour le domaine juridique."
+      "name": "Quickflow",
+      "description": "Plateforme d'idéation rationalisant la prise de décision démocratique."
     }
   },
   "timeline": {
