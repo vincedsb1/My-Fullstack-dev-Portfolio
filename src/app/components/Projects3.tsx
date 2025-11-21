@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import {
@@ -20,7 +21,6 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
-// Step 5: Technology mapping and badge component
 const technologyMeta: Record<
   TechnologyId,
   { label: string; icon?: JSX.Element }
@@ -43,7 +43,7 @@ const technologyMeta: Record<
 
 function TechBadge({ techId }: { techId: TechnologyId }) {
   const tech = technologyMeta[techId];
-  if (!tech) return null; // Or some fallback UI
+  if (!tech) return null;
   return (
     <span className="inline-flex items-center gap-1 rounded-full bg-neutral-200 text-neutral-700 px-3 py-1 text-xs font-medium dark:bg-neutral-700 dark:text-neutral-100">
       {tech.icon && <span>{tech.icon}</span>}
@@ -62,7 +62,6 @@ function SimpleTechBadge({ techId }: { techId: TechnologyId }) {
   );
 }
 
-// Step 2: Define the data model as per the plan.
 type ProjectId =
   | "allaw"
   | "truthify"
@@ -105,9 +104,7 @@ type Project = {
   order: number;
 };
 
-// Step 3: Populate the project data array.
 const projects: Project[] = [
-  // Featured Projects
   {
     id: "allaw",
     order: 1,
@@ -156,7 +153,6 @@ const projects: Project[] = [
     technologies: ["nextjs", "tailwind", "postgresql", "typescript"],
     kind: "tool",
   },
-  // Other Projects
   {
     id: "decorNature",
     order: 5,
@@ -243,7 +239,6 @@ const projects: Project[] = [
   },
 ];
 
-// Step 8: Other Projects Grid Card
 function OtherProjectCard({ project, t }: { project: Project; t: any }) {
   const handleCardClick = () => {
     if (project.url) {
@@ -295,9 +290,79 @@ function OtherProjectCard({ project, t }: { project: Project; t: any }) {
   );
 }
 
+type FeaturedPanelProps = {
+  project: Project;
+  t: ReturnType<typeof useTranslations>;
+};
+
+function FeaturedPanel({ project, t }: FeaturedPanelProps) {
+  return (
+    <div className="h-full flex flex-col">
+      <div className="flex flex-col gap-8 md:grid md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:gap-10 flex-1">
+        {/* Colonne gauche : texte */}
+        <div className="flex flex-col items-start order-2 md:order-1">
+          <span className="inline-flex items-center rounded-full bg-neutral-100 dark:bg-neutral-700 px-4 py-1 text-xs font-medium text-neutral-700 dark:text-neutral-100 mb-4">
+            {project.kind.charAt(0).toUpperCase() + project.kind.slice(1)}
+          </span>
+
+          <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 mb-3">
+            {t(project.i18nNameKey)}
+          </h3>
+
+          <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300 mb-6 md:mb-8">
+            {t.rich(project.i18nDescriptionKey, {
+              strong: (chunks) => <strong>{chunks}</strong>,
+              break: () => <br />,
+            })}
+          </p>
+
+          <div className="mt-auto">
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center justify-center px-5 md:px-6 py-2.5 md:py-3 text-sm md:text-base font-medium rounded-full bg-neutral-900 text-white hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-200 ${
+                !project.url ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              aria-disabled={!project.url}
+              onClick={(e) => {
+                if (!project.url) e.preventDefault();
+              }}
+            >
+              {t("viewProject")}
+            </a>
+          </div>
+        </div>
+
+        {/* Colonne droite : image + badges */}
+        <div className="order-1 md:order-2 flex flex-col">
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 mb-4">
+            <Image
+              src={project.imageSrc}
+              alt={project.imageAlt}
+              layout="fill"
+              objectFit="cover"
+              sizes="(max-width: 768px) 100vw, 45vw"
+            />
+          </div>
+          <div className="flex flex-wrap items-center gap-2 md:gap-3">
+            {project.technologies.map((techId) => (
+              <TechBadge key={techId} techId={techId} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Projects3() {
   const t = useTranslations("projects");
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [[activeIndex, direction], setActiveIndex] = useState<[number, 1 | -1]>([
+    0,
+    1,
+  ]);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     AOS.init({ duration: 300 });
@@ -310,18 +375,44 @@ function Projects3() {
     .filter((p) => !p.isFeatured)
     .sort((a, b) => a.order - b.order);
 
-  const handlePrevious = () => {
-    setActiveIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + featuredProjects.length) % featuredProjects.length,
-    );
+  const goToIndex = (nextIndex: number, nextDirection: 1 | -1) => {
+    if (isAnimating || nextIndex === activeIndex) return;
+    setIsAnimating(true);
+    setActiveIndex([nextIndex, nextDirection]);
   };
 
   const handleNext = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % featuredProjects.length);
+    const nextIndex = (activeIndex + 1) % featuredProjects.length;
+    goToIndex(nextIndex, 1);
+  };
+
+  const handlePrevious = () => {
+    const nextIndex =
+      (activeIndex - 1 + featuredProjects.length) % featuredProjects.length;
+    goToIndex(nextIndex, -1);
   };
 
   const activeProject = featuredProjects[activeIndex];
+
+  const slideVariants = {
+    enter: (direction: 1 | -1) => ({
+      x: direction === 1 ? "100%" : "-100%",
+      opacity: 1,
+    }),
+    center: {
+      x: "0%",
+      opacity: 1,
+    },
+    exit: (direction: 1 | -1) => ({
+      x: direction === 1 ? "-100%" : "100%",
+      opacity: 0.6,
+    }),
+  };
+
+  const slideTransition = {
+    x: { type: "tween", duration: 0.5, ease: [0.4, 0, 0.2, 1] },
+    opacity: { type: "tween", duration: 0.5, ease: [0.4, 0, 0.2, 1] },
+  };
 
   return (
     <section
@@ -357,113 +448,86 @@ function Projects3() {
           </div>
         </div>
 
-        {/* Step 7: Featured Projects Carousel */}
+        {/* Featured Projects Carousel */}
         {activeProject && (
-          <div data-aos="fade-up" className="max-w-5xl mx-auto mb-16">
+          <div className="max-w-5xl mx-auto" data-aos="fade-up">
             <div className="rounded-3xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-6 md:p-10 lg:p-12 shadow-sm md:shadow">
-              <div className="flex flex-col gap-8 md:grid md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:gap-10">
-                {/* Left Column (Text) */}
-                <div className="flex flex-col items-start order-2 md:order-1">
-                  <span className="inline-flex items-center rounded-full bg-neutral-100 dark:bg-neutral-700 px-4 py-1 text-xs font-medium text-neutral-700 dark:text-neutral-100 mb-4">
-                    {activeProject.kind.charAt(0).toUpperCase() +
-                      activeProject.kind.slice(1)}
-                  </span>
-                  <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 mb-3">
-                    {t(activeProject.i18nNameKey)}
-                  </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300 mb-6 md:mb-8 md:min-h-56">
-                    {t.rich(activeProject.i18nDescriptionKey, {
-                      strong: (chunks) => <strong>{chunks}</strong>,
-                      break: () => <br />,
-                    })}
-                  </p>
-                  <div className="flex gap-4">
-                    <a
-                      href={activeProject.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center justify-center px-5 md:px-6 py-2.5 md:py-3 text-sm md:text-base font-medium rounded-full bg-neutral-900 text-white hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-200 ${
-                        !activeProject.url
-                          ? "opacity-50 cursor-not-allowed"
-                          : ""
-                      }`}
-                      aria-disabled={!activeProject.url}
-                      onClick={(e) => {
-                        if (!activeProject.url) e.preventDefault();
-                      }}
+              <div className="flex flex-col gap-6 md:gap-8">
+                <div className="relative overflow-hidden min-h-[500px] md:min-h-[450px]">
+                  <AnimatePresence
+                    custom={direction}
+                    initial={false}
+                    onExitComplete={() => setIsAnimating(false)}
+                  >
+                    <motion.div
+                      key={activeProject.id}
+                      custom={direction}
+                      variants={slideVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={slideTransition}
+                      className="absolute inset-0 w-full h-full"
                     >
-                      {t("viewProject")}
-                    </a>
-                  </div>
+                      <FeaturedPanel project={activeProject} t={t} />
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
 
-                {/* Right Column (Visual) */}
-                <div className="order-1 md:order-2">
-                  <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 mb-4">
-                    <Image
-                      src={activeProject.imageSrc}
-                      alt={activeProject.imageAlt}
-                      layout="fill"
-                      objectFit="cover"
-                      sizes="(max-width: 768px) 100vw, 45vw"
-                      className="transition-transform duration-500 hover:scale-[1.02]"
-                    />
-                  </div>
-                  <div className="flex flex-wrap items-center justify-start md:justify-start gap-2 md:gap-3">
-                    {activeProject.technologies.map((techId) => (
-                      <TechBadge key={techId} techId={techId} />
+                <div className="flex items-center justify-center gap-4">
+                  <button
+                    type="button"
+                    onClick={handlePrevious}
+                    aria-label={t("previousProjectAriaLabel")}
+                    className="p-2 rounded-full text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
+                    disabled={isAnimating}
+                  >
+                    <ChevronLeft size={20} />
+                  </button>
+
+                  <div className="flex gap-2">
+                    {featuredProjects.map((project, index) => (
+                      <button
+                        key={project.id}
+                        type="button"
+                        onClick={() =>
+                          goToIndex(index, index > activeIndex ? 1 : -1)
+                        }
+                        aria-pressed={activeIndex === index}
+                        aria-label={`${t(
+                          "goToProjectAriaLabel",
+                        )} ${t(project.i18nNameKey)}`}
+                        className="w-4 h-4 flex items-center justify-center"
+                        disabled={isAnimating}
+                      >
+                        <span
+                          className={`block rounded-full transition-all ${
+                            activeIndex === index
+                              ? "w-3 h-3 bg-neutral-900 dark:bg-neutral-50"
+                              : "w-2 h-2 bg-neutral-300 dark:bg-neutral-600 hover:bg-neutral-400 dark:hover:bg-neutral-500 hover:w-3 hover:h-3"
+                          }`}
+                        />
+                      </button>
                     ))}
                   </div>
-                </div>
-              </div>
 
-              {/* Navigation */}
-              <div className="flex items-center justify-center gap-4 mt-6 md:mt-8">
-                <button
-                  type="button"
-                  onClick={handlePrevious}
-                  aria-label={t("previousProjectAriaLabel")}
-                  className="p-2 rounded-full text-neutral-500 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600"
-                >
-                  <ChevronLeft size={24} />
-                </button>
-                <div className="flex gap-2">
-                  {featuredProjects.map((project, index) => (
-                    <button
-                      type="button"
-                      key={project.id}
-                      onClick={() => setActiveIndex(index)}
-                      aria-label={`${t("goToProjectAriaLabel")} ${t(
-                        project.i18nNameKey,
-                      )}`}
-                      aria-pressed={activeIndex === index}
-                      className="w-4 h-4 rounded-full flex items-center justify-center"
-                    >
-                      <span
-                        className={`block rounded-full transition-all ${
-                          activeIndex === index
-                            ? "w-3 h-3 bg-neutral-900 dark:bg-neutral-50"
-                            : "w-2 h-2 bg-neutral-300 dark:bg-neutral-600 hover:dark:bg-neutral-500 hover:bg-neutral-400 hover:w-3 hover:h-3"
-                        }`}
-                      ></span>
-                    </button>
-                  ))}
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    aria-label={t("nextProjectAriaLabel")}
+                    className="p-2 rounded-full text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
+                    disabled={isAnimating}
+                  >
+                    <ChevronRight size={20} />
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  onClick={handleNext}
-                  aria-label={t("nextProjectAriaLabel")}
-                  className="p-2 rounded-full text-neutral-500 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-600"
-                >
-                  <ChevronRight size={24} />
-                </button>
               </div>
             </div>
           </div>
         )}
 
-        {/* Step 8: Other Projects Grid */}
-        <div data-aos="fade-up">
+        {/* Other Projects Grid */}
+        <div data-aos="fade-up" className="mt-16">
           <h3 className="mt-12 md:mt-16 mb-6 text-2xl md:text-3xl font-semibold text-neutral-900 dark:text-neutral-50 text-left">
             {t("othersTitle")}
           </h3>
