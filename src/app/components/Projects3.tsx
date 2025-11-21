@@ -301,11 +301,21 @@ function FeaturedPanel({ project, t }: FeaturedPanelProps) {
       <div className="flex flex-col gap-8 md:grid md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:gap-10 flex-1">
         {/* Colonne gauche : texte */}
         <div className="flex flex-col items-start order-2 md:order-1">
-          <span className="inline-flex items-center rounded-full bg-neutral-100 dark:bg-neutral-700 px-4 py-1 text-xs font-medium text-neutral-700 dark:text-neutral-100 mb-4">
+          {/* Mobile/Tablet view: Title then Tag */}
+          <div className="md:hidden flex items-center gap-x-3 mb-3">
+            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
+              {t(project.i18nNameKey)}
+            </h3>
+            <span className="inline-flex items-center rounded-full bg-neutral-100 dark:bg-neutral-700 px-4 py-1 text-xs font-medium text-neutral-700 dark:text-neutral-100">
+              {project.kind.charAt(0).toUpperCase() + project.kind.slice(1)}
+            </span>
+          </div>
+
+          {/* Desktop view: Tag then Title */}
+          <span className="hidden md:inline-flex items-center rounded-full bg-neutral-100 dark:bg-neutral-700 px-4 py-1 text-xs font-medium text-neutral-700 dark:text-neutral-100 mb-4">
             {project.kind.charAt(0).toUpperCase() + project.kind.slice(1)}
           </span>
-
-          <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 mb-3">
+          <h3 className="hidden md:block text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 mb-3">
             {t(project.i18nNameKey)}
           </h3>
 
@@ -316,7 +326,7 @@ function FeaturedPanel({ project, t }: FeaturedPanelProps) {
             })}
           </p>
 
-          <div className="mt-auto">
+          <div>
             <a
               href={project.url}
               target="_blank"
@@ -453,7 +463,7 @@ function Projects3() {
           <div className="max-w-5xl mx-auto" data-aos="fade-up">
             <div className="rounded-3xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-6 md:p-10 lg:p-12 shadow-sm md:shadow">
               <div className="flex flex-col gap-6 md:gap-8">
-                <div className="relative overflow-hidden min-h-[500px] md:min-h-[450px]">
+                <div className="relative grid overflow-hidden">
                   <AnimatePresence
                     custom={direction}
                     initial={false}
@@ -467,7 +477,7 @@ function Projects3() {
                       animate="center"
                       exit="exit"
                       transition={slideTransition}
-                      className="absolute inset-0 w-full h-full"
+                      className="w-full h-full col-start-1 row-start-1"
                     >
                       <FeaturedPanel project={activeProject} t={t} />
                     </motion.div>
@@ -479,7 +489,7 @@ function Projects3() {
                     type="button"
                     onClick={handlePrevious}
                     aria-label={t("previousProjectAriaLabel")}
-                    className="p-2 rounded-full text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
+                    className="p-2 rounded-full text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
                     disabled={isAnimating}
                   >
                     <ChevronLeft size={20} />
@@ -515,7 +525,7 @@ function Projects3() {
                     type="button"
                     onClick={handleNext}
                     aria-label={t("nextProjectAriaLabel")}
-                    className="p-2 rounded-full text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
+                    className="p-2 rounded-full text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
                     disabled={isAnimating}
                   >
                     <ChevronRight size={20} />
