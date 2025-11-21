@@ -1,8 +1,8 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   Atom,
   Braces,
@@ -100,7 +100,7 @@ type Project = {
   imageAlt: string;
   technologies: TechnologyId[];
   isFeatured: boolean;
-  kind: "platform" | "tool" | "extension" | "showcase";
+  kind: "platform" | "tool" | "extension" | "showcase" | "Web app";
   order: number;
 };
 
@@ -127,7 +127,7 @@ const projects: Project[] = [
     imageSrc: "/truthify.png",
     imageAlt: "Screenshot of the Truthify project",
     technologies: ["nextjs", "typescript", "tailwind", "postgresql"],
-    kind: "tool",
+    kind: "Web app",
   },
   {
     id: "aimoto",
@@ -151,7 +151,7 @@ const projects: Project[] = [
     imageSrc: "/smartflow.png",
     imageAlt: "Screenshot of the Smartflow project",
     technologies: ["nextjs", "tailwind", "postgresql", "typescript"],
-    kind: "tool",
+    kind: "Web app",
   },
   {
     id: "decorNature",
@@ -319,7 +319,7 @@ function FeaturedPanel({ project, t }: FeaturedPanelProps) {
             {t(project.i18nNameKey)}
           </h3>
 
-          <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300 mb-6 md:mb-8">
+          <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300 mb-6 md:mb-8 min-h-80 sm:min-h-48 md:min-h-56 xs:min-h-56 2xs:min-h-72">
             {t.rich(project.i18nDescriptionKey, {
               strong: (chunks) => <strong>{chunks}</strong>,
               break: () => <br />,
@@ -368,10 +368,9 @@ function FeaturedPanel({ project, t }: FeaturedPanelProps) {
 
 function Projects3() {
   const t = useTranslations("projects");
-  const [[activeIndex, direction], setActiveIndex] = useState<[number, 1 | -1]>([
-    0,
-    1,
-  ]);
+  const [[activeIndex, direction], setActiveIndex] = useState<[number, 1 | -1]>(
+    [0, 1],
+  );
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
@@ -504,9 +503,9 @@ function Projects3() {
                           goToIndex(index, index > activeIndex ? 1 : -1)
                         }
                         aria-pressed={activeIndex === index}
-                        aria-label={`${t(
-                          "goToProjectAriaLabel",
-                        )} ${t(project.i18nNameKey)}`}
+                        aria-label={`${t("goToProjectAriaLabel")} ${t(
+                          project.i18nNameKey,
+                        )}`}
                         className="w-4 h-4 flex items-center justify-center"
                         disabled={isAnimating}
                       >
