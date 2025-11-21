@@ -419,8 +419,8 @@ function Projects3() {
   };
 
   const slideTransition = {
-    x: { type: "tween", duration: 0.5, ease: [0.4, 0, 0.2, 1] },
-    opacity: { type: "tween", duration: 0.5, ease: [0.4, 0, 0.2, 1] },
+    x: { type: "tween" as const, duration: 0.5, ease: [0.4, 0, 0.2, 1] as const },
+    opacity: { type: "tween" as const, duration: 0.5, ease: [0.4, 0, 0.2, 1] as const },
   };
 
   return (
