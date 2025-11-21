@@ -272,7 +272,7 @@ function OtherProjectCard({ project, t }: { project: Project; t: any }) {
         <h4 className="font-semibold text-2xl 3xs:text-3xl text-neutral-900 dark:text-neutral-50 mb-3">
           {t(project.i18nNameKey)}
         </h4>
-        <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-3 line-clamp-2">
+        <p className="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-5 line-clamp-2">
           {t(project.i18nDescriptionKey)}
         </p>
         <div className="flex flex-wrap gap-2 mb-4">
@@ -371,8 +371,11 @@ function Projects3() {
                   <h3 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 mb-3">
                     {t(activeProject.i18nNameKey)}
                   </h3>
-                  <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300 mb-6 md:mb-8">
-                    {t(activeProject.i18nDescriptionKey)}
+                  <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300 mb-6 md:mb-8 md:min-h-56">
+                    {t.rich(activeProject.i18nDescriptionKey, {
+                      strong: (chunks) => <strong>{chunks}</strong>,
+                      break: () => <br />,
+                    })}
                   </p>
                   <div className="flex gap-4">
                     <a

@@ -40,11 +40,11 @@
     "openProject": "Ouvrir le projet",
     "allaw": {
       "name": "Allaw",
-      "description": "Allaw est une plateforme web pour notaires, avocats et commissaires de justice. Elle centralise la visibilité en ligne, les horaires, la prise de rendez-vous et les informations d'étude. Allaw Connect ajoute un CRM avancé pour gérer dossiers, clients, échanges, pipeline commercial, organisation interne et suivi opérationnel au quotidien via une interface moderne."
+      "description": "Allaw est une plateforme web pour les professionnels du droit, centralisant la <strong>visibilité</strong>, les <strong>horaires</strong>, les <strong>rendez-vous</strong> et les informations d'étude, tout en offrant une interface moderne et efficace.<break></break><break></break>J'y ai appliqué un <strong>design system</strong> structurant dès les débuts, ajouté des fonctionnalités clés, optimisé le SEO et renforcé la cohérence de l'expérience pour soutenir la croissance produit."
     },
     "truthify": {
       "name": "Truthify",
-      "description": "Truthify est une plateforme d'analyse critique conçue pour décortiquer des transcripts de vidéos et évaluer la solidité des arguments. Elle identifie faits, erreurs, sophismes et raisonnements biaisés, puis génère un rapport structuré et clair. L'objectif est d'offrir un outil fiable pour comprendre la qualité d'un discours, comparer plusieurs points de vue et renforcer la pensée analytique."
+      "description": "Truthify est une plateforme d'analyse qui met en lumière les <strong>arguments</strong>, les <strong>sophismes</strong>, les <strong>faits</strong> et la <strong>logique</strong> d'un discours pour offrir une compréhension fiable.<break></break><break></break>J'ai conçu l'architecture, développé les modules d'analyse, construit le moteur de rapports structurés et intégré le front afin d'assurer une expérience claire."
     },
     "legalConstat": {
       "name": "Légal Constat",
@@ -52,7 +52,7 @@
     },
     "smartflow": {
       "name": "Smartflow",
-      "description": "SmartFlow est une application web conçue pour optimiser l'apprentissage grâce à la méthode de Leitner. Elle permet de créer des fiches recto-verso, de suivre automatiquement un système de niveaux et de révisions espacées, et de recevoir des rappels intelligents pour renforcer la mémorisation. L'objectif est simple : aider les étudiants et les passionnés à apprendre plus vite, retenir plus longtemps et structurer efficacement leurs sessions d'étude."
+      "description": "SmartFlow est une application web d'apprentissage optimisée par la méthode de <strong>Leitner</strong>, permettant d'améliorer la <strong>mémorisation</strong> grâce à des révisions intelligemment espacées.<break></break><break></break>En tant que développeur, j'ai réalisé la <strong>conception</strong>, l'architecture du projet, le choix de la <strong>stack</strong>, la création des maquettes, la mise en place des tests et le delivery complet."
     },
     "decorNature": {
       "name": "Décor Nature",
@@ -60,7 +60,7 @@
     },
     "aimoto": {
       "name": "Aimoto",
-      "description": "Aimoto est une plateforme complète de prévision du prix du Bitcoin combinant intelligence artificielle et visualisation web. Elle intègre un backend FastAPI en Python pour la gestion des modèles de forecast (Chronos, LightGBM), un frontend Next.js pour l'analyse interactive, un pipeline d'expériences traçable, des métriques de performance et un système de monitoring en temps réel, le tout conçu pour un usage recherche et production."
+      "description": "AImoto est un <strong>outil personnel</strong> de prévision BTC construit avec <strong>FastAPI</strong> et <strong>Next.js</strong>, générant des <strong>prévisions probabilistes</strong> sur 180 jours. Backtesting OOS et rendu unifié des bandes/médiane.<break></break><break></break><strong>Ce que j'ai fait</strong> - Mise en place du pipeline de bout en bout, jobs de training et backtest, forecast walk-forward, chart Recharts harmonisé, garde-fous anti-fuite temporelle, logs/metrics, CI légère, tests ciblés, code modulaire."
     },
     "liic": {
       "name": "LIIC",
