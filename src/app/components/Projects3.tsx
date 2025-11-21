@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { AnimatePresence, motion } from "framer-motion";
 import {
+  ArrowUpRight,
   Atom,
   Braces,
   ChevronLeft,
@@ -23,16 +24,32 @@ import React, { useEffect, useState } from "react";
 
 const technologyMeta: Record<
   TechnologyId,
-  { label: string; icon?: JSX.Element }
+  { label: string; shortLabel?: string; icon?: JSX.Element }
 > = {
   nextjs: { label: "Next.js", icon: <FileCode size={16} /> },
   react: { label: "React", icon: <Atom size={16} /> },
-  typescript: { label: "TypeScript", icon: <Type size={16} /> },
-  javascript: { label: "JavaScript", icon: <Code size={16} /> },
-  tailwind: { label: "Tailwind CSS", icon: <Palette size={16} /> },
+  typescript: {
+    label: "TypeScript",
+    shortLabel: "TypeScript",
+    icon: <Type size={16} />,
+  },
+  javascript: {
+    label: "JavaScript",
+    shortLabel: "JS",
+    icon: <Code size={16} />,
+  },
+  tailwind: {
+    label: "Tailwind CSS",
+    shortLabel: "Tailwind",
+    icon: <Palette size={16} />,
+  },
   nodejs: { label: "Node.js", icon: <Server size={16} /> },
   mongodb: { label: "MongoDB", icon: <Database size={16} /> },
-  postgresql: { label: "PostgreSQL", icon: <Database size={16} /> },
+  postgresql: {
+    label: "PostgreSQL",
+    shortLabel: "Postgre",
+    icon: <Database size={16} />,
+  },
   mysql: { label: "MySQL", icon: <Database size={16} /> },
   json: { label: "JSON", icon: <Braces size={16} /> },
   python: { label: "Python", icon: <Code size={16} /> },
@@ -47,7 +64,14 @@ function TechBadge({ techId }: { techId: TechnologyId }) {
   return (
     <span className="inline-flex items-center gap-1 rounded-full bg-neutral-200 text-neutral-700 px-3 py-1 text-xs font-medium dark:bg-neutral-700 dark:text-neutral-100">
       {tech.icon && <span>{tech.icon}</span>}
-      <span>{tech.label}</span>
+      {tech.shortLabel ? (
+        <>
+          <span className="hidden 2xs:inline">{tech.label}</span>
+          <span className="2xs:hidden">{tech.shortLabel}</span>
+        </>
+      ) : (
+        <span>{tech.label}</span>
+      )}
     </span>
   );
 }
@@ -57,7 +81,14 @@ function SimpleTechBadge({ techId }: { techId: TechnologyId }) {
   if (!tech) return null;
   return (
     <span className="inline-flex items-center rounded-full bg-neutral-100 dark:bg-neutral-700 px-3 py-1 text-xs font-medium text-neutral-800 dark:text-neutral-100">
-      {tech.label}
+      {tech.shortLabel ? (
+        <>
+          <span className="hidden 2xs:inline">{tech.label}</span>
+          <span className="2xs:hidden">{tech.shortLabel}</span>
+        </>
+      ) : (
+        <span>{tech.label}</span>
+      )}
     </span>
   );
 }
@@ -319,14 +350,14 @@ function FeaturedPanel({ project, t }: FeaturedPanelProps) {
             {t(project.i18nNameKey)}
           </h3>
 
-          <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300 xs:mb-0 2xs:mb-0 md:mb-8 min-h-80 sm:min-h-48 md:min-h-56 xs:min-h-56 2xs:min-h-72">
+          <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300 min-h-80 3xs:min-h-60 sm:min-h-48 md:min-h-56">
             {t.rich(project.i18nDescriptionKey, {
               strong: (chunks) => <strong>{chunks}</strong>,
               break: () => <br />,
             })}
           </p>
 
-          <div>
+          <div className="hidden 3xs:block">
             <a
               href={project.url}
               target="_blank"
@@ -354,6 +385,17 @@ function FeaturedPanel({ project, t }: FeaturedPanelProps) {
               objectFit="cover"
               sizes="(max-width: 768px) 100vw, 45vw"
             />
+            {project.url && (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-3 right-3 inline-flex 3xs:hidden items-center justify-center bg-neutral-900/70 text-white rounded-full w-10 h-10 backdrop-blur-sm hover:bg-neutral-900 transition-colors"
+                aria-label={t("viewProject")}
+              >
+                <ArrowUpRight size={20} />
+              </a>
+            )}
           </div>
           <div className="flex flex-wrap items-center gap-2 md:gap-3">
             {project.technologies.map((techId) => (
@@ -484,7 +526,7 @@ function Projects3() {
                       animate="center"
                       exit="exit"
                       transition={slideTransition}
-                      className="w-full h-full col-start-1 row-start-1"
+                      className="w-full col-start-1 row-start-1"
                     >
                       <FeaturedPanel project={activeProject} t={t} />
                     </motion.div>
