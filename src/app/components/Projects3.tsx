@@ -350,7 +350,7 @@ function FeaturedPanel({ project, t }: FeaturedPanelProps) {
             {t(project.i18nNameKey)}
           </h3>
 
-          <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300 min-h-80 3xs:min-h-60 sm:min-h-48 md:min-h-56">
+          <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300 min-h-[273px] 3xs:min-h-60 sm:min-h-48 md:min-h-80 ">
             {t.rich(project.i18nDescriptionKey, {
               strong: (chunks) => <strong>{chunks}</strong>,
               break: () => <br />,
