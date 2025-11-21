@@ -443,6 +443,18 @@ function Projects3() {
     goToIndex(nextIndex, -1);
   };
 
+  const handleDragEnd = (
+    e: any,
+    { offset, velocity }: { offset: { x: number; y: number }; velocity: { x: number; y: number } },
+  ) => {
+    const swipeThreshold = 50;
+    if (offset.x < -swipeThreshold) {
+      handleNext();
+    } else if (offset.x > swipeThreshold) {
+      handlePrevious();
+    }
+  };
+
   const activeProject = featuredProjects[activeIndex];
 
   const slideVariants = {
@@ -526,7 +538,11 @@ function Projects3() {
                       animate="center"
                       exit="exit"
                       transition={slideTransition}
-                      className="w-full col-start-1 row-start-1"
+                      drag="x"
+                      dragConstraints={{ left: 0, right: 0 }}
+                      dragElastic={0.1}
+                      onDragEnd={handleDragEnd}
+                      className="w-full col-start-1 row-start-1 cursor-grab"
                     >
                       <FeaturedPanel project={activeProject} t={t} />
                     </motion.div>
