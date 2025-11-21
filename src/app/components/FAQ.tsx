@@ -22,7 +22,7 @@ function FAQ() {
     });
   }, []);
 
-  const items: FaqItem[] = [
+  const faqItems: FaqItem[] = [
     {
       id: "faq-1",
       question: t("items.0.question"),
@@ -50,6 +50,11 @@ function FAQ() {
     },
   ];
 
+  const items = faqItems.map((item) => ({
+    ...item,
+    question: item.question.replace(/ \?/g, "\u00A0?"),
+  }));
+
   return (
     <div
       id="faqGlobalContainer"
@@ -64,7 +69,7 @@ function FAQ() {
           <HelpCircle size={32} className="mr-6" />
         </div>
         <div id="faqTitle" className="text-2xl 3xs:text-3xl">
-          {t("title")}
+          {t("title").replace(/ \?/g, "\u00A0?")}
         </div>
       </div>
       <div id="faqTitleBotContainer" className="w-full flex flex-row">

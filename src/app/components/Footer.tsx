@@ -67,7 +67,7 @@ function Footer() {
       >
         <div
           id="footerCard"
-          className="w-full sm:h-64 p-8 md:p-0 text-neutral-700 dark:text-neutral-300 flex flex-col sm:flex-row items-center mb-2 bg-neutral-200 dark:bg-neutral-800 rounded-3xl"
+          className="w-full sm:min-h-64 p-8 md:p-0 text-neutral-700 dark:text-neutral-300 flex flex-col sm:flex-row items-center mb-2 bg-neutral-200 dark:bg-neutral-800 rounded-3xl"
         >
           <div
             id="footerPhotoContainer"
@@ -93,7 +93,7 @@ function Footer() {
               id="footerTitle"
               className="text-2xl text-neutral-700 dark:text-neutral-300 font-bold mb-3"
             >
-              {t("title")}
+              {t("title").replace(/ \?/g, "\u00A0?")}
             </div>
             <div
               id="footerText"
