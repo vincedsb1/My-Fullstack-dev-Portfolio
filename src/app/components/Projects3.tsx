@@ -319,7 +319,7 @@ function FeaturedPanel({ project, t }: FeaturedPanelProps) {
             {t(project.i18nNameKey)}
           </h3>
 
-          <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300 mb-6 md:mb-8 min-h-80 sm:min-h-48 md:min-h-56 xs:min-h-56 2xs:min-h-72">
+          <p className="text-sm md:text-base leading-relaxed text-neutral-600 dark:text-neutral-300 xs:mb-0 2xs:mb-0 md:mb-8 min-h-80 sm:min-h-48 md:min-h-56 xs:min-h-56 2xs:min-h-72">
             {t.rich(project.i18nDescriptionKey, {
               strong: (chunks) => <strong>{chunks}</strong>,
               break: () => <br />,
@@ -419,8 +419,16 @@ function Projects3() {
   };
 
   const slideTransition = {
-    x: { type: "tween" as const, duration: 0.5, ease: [0.4, 0, 0.2, 1] as const },
-    opacity: { type: "tween" as const, duration: 0.5, ease: [0.4, 0, 0.2, 1] as const },
+    x: {
+      type: "tween" as const,
+      duration: 0.5,
+      ease: [0.4, 0, 0.2, 1] as const,
+    },
+    opacity: {
+      type: "tween" as const,
+      duration: 0.5,
+      ease: [0.4, 0, 0.2, 1] as const,
+    },
   };
 
   return (
