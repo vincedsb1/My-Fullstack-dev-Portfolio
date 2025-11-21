@@ -40,11 +40,11 @@
     "openProject": "Open project",
     "allaw": {
       "name": "Allaw",
-      "description": "Allaw is a web platform for notaries, lawyers and judicial officers. It centralizes online visibility, office hours, appointment management and study information. Allaw Connect adds an advanced CRM to manage cases, clients, messages, commercial pipeline, internal organization and daily operational tracking through a modern, streamlined interface."
+      "description": "Allaw is a web platform for legal professionals, unifying <strong>visibility</strong>, <strong>scheduling</strong>, <strong>appointments</strong> and essential office data within a clean and modern interface.<break></break><break></break>I implemented a strong <strong>design system</strong> early on, added key features, improved SEO and enhanced overall consistency to boost product efficiency and support company growth."
     },
     "truthify": {
       "name": "Truthify",
-      "description": "Truthify is a critical-analysis platform designed to break down video transcripts and assess the strength of arguments. It identifies facts, errors, fallacies, and flawed reasoning, then produces a clear, structured report. The goal is to provide a reliable tool to understand the quality of discourse, compare perspectives, and enhance analytical thinking."
+      "description": "Truthify is a platform that highlights <strong>arguments</strong>, <strong>fallacies</strong>, <strong>facts</strong> and overall <strong>logic</strong> to deliver a clear view of any discourse.<break></break><break></break>I designed the architecture, built the analysis modules, developed the structured report engine, and integrated the front-end to ensure a smooth and readable experience."
     },
     "legalConstat": {
       "name": "Légal Constat",
@@ -52,7 +52,7 @@
     },
     "smartflow": {
       "name": "Smartflow",
-      "description": "SmartFlow is a web application designed to optimize learning using the Leitner method. It lets users create flashcards, follow an automated spaced-repetition level system, and receive smart reminders to strengthen long-term memory. The goal is simple: help students and curious learners study faster, retain knowledge longer, and structure their learning sessions with clarity and efficiency."
+      "description": "SmartFlow is a web app designed to enhance learning through the <strong>Leitner</strong> method, helping users improve <strong>retention</strong> with intelligently spaced reviews.<break></break><break></break>As the developer, I handled the <strong>architecture</strong>, overall design, tech <strong>stack</strong> selection, UI wireframes, testing setup, and complete delivery of the project."
     },
     "decorNature": {
       "name": "Décor Nature",
@@ -60,7 +60,7 @@
     },
     "aimoto": {
       "name": "Aimoto",
-      "description": "Aimoto is a full-stack Bitcoin price forecasting platform combining AI-driven modeling and interactive web visualization. It features a Python FastAPI backend managing Chronos and LightGBM models, a Next.js frontend for real-time analysis, a traceable experiment pipeline, detailed performance metrics, and live monitoring - built for both research and production environments."
+      "description": "AImoto is a <strong>personal tool</strong> for BTC forecasting built with <strong>FastAPI</strong> and <strong>Next.js</strong>, delivering <strong>probabilistic forecasts</strong> over 180 days. OOS backtesting and unified band/median rendering.<break></break><break></break><strong>What I built</strong> - Implemented the end-to-end pipeline, training/backtest jobs, walk-forward forecasting, refined Recharts chart, time-leak guards, logging/metrics, lightweight CI, targeted tests, and a modular codebase."
     },
     "liic": {
       "name": "LIIC",
