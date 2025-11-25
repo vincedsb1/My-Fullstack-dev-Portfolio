@@ -14,11 +14,11 @@
     "greeting": "Salut, moi c'est",
     "name": "Vincent DESBROSSES",
     "jobTitle": "Développeur Fullstack",
-    "description": "Je maîtrise tout le cycle de développement web, de la conception à la livraison. Parlons de votre prochain projet."
+    "description": "Je conçois et développe des applications web modernes et performantes, optimisées SEO, avec un vrai souci d’UX/UI et de maintenabilité. Parlons de votre prochain projet."
   },
   "footer": {
     "title": "Envie de travailler ensemble ?",
-    "description": "Passionné par la technologie et le développement, je maîtrise les projets web du début à la fin. Discutons de votre prochain projet !"
+    "description": "Mon objectif : livrer des expériences web rapides, claires et robustes, qui servent vraiment vos enjeux business. Discutons de votre prochain projet."
   },
   "skills": {
     "title": "Compétences",
@@ -60,7 +60,7 @@
     },
     "aimoto": {
       "name": "Aimoto",
-      "description": "AImoto est un <strong>outil personnel</strong> de prévision BTC construit avec <strong>FastAPI</strong> et <strong>Next.js</strong>, générant des <strong>prévisions probabilistes</strong> sur 180 jours. Backtesting OOS et rendu unifié des bandes/médiane.<break></break><break></break><strong>Ce que j'ai fait</strong> - Mise en place du pipeline de bout en bout, jobs de training et backtest, forecast walk-forward, chart Recharts harmonisé, garde-fous anti-fuite temporelle, logs/metrics, CI légère, tests ciblés, code modulaire."
+      "description": "AImoto est un <strong>outil personnel</strong> de prévision BTC construit avec <strong>FastAPI</strong> et <strong>Next.js</strong>, générant des <strong>prévisions probabilistes</strong> sur 180 jours. Backtesting OOS et rendu unifié des bandes/médiane.<break></break><break></break>J'ai mis en place le <strong>pipeline</strong> de bout en bout, jobs de training et backtest, forecast walk-forward, chart Recharts harmonisé, garde-fous anti-fuite temporelle, logs/metrics, CI légère, tests ciblés, code modulaire."
     },
     "liic": {
       "name": "LIIC",
