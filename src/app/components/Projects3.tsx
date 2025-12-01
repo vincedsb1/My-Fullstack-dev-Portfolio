@@ -28,6 +28,7 @@ const technologyMeta: Record<
 > = {
   nextjs: { label: "Next.js", icon: <FileCode size={16} /> },
   react: { label: "React", icon: <Atom size={16} /> },
+  vue: { label: "Vue.js", icon: <Code size={16} /> },
   typescript: {
     label: "TypeScript",
     shortLabel: "TypeScript",
@@ -94,6 +95,7 @@ function SimpleTechBadge({ techId }: { techId: TechnologyId }) {
 }
 
 type ProjectId =
+  | "codeMaster"
   | "allaw"
   | "truthify"
   | "aimoto"
@@ -109,6 +111,7 @@ type ProjectId =
 type TechnologyId =
   | "nextjs"
   | "react"
+  | "vue"
   | "typescript"
   | "javascript"
   | "tailwind"
@@ -185,6 +188,18 @@ const projects: Project[] = [
     kind: "Web app",
   },
   {
+    id: "codeMaster",
+    order: 1,
+    isFeatured: false,
+    i18nNameKey: "codeMaster.name",
+    i18nDescriptionKey: "codeMaster.description",
+    url: "https://codemaster-henna.vercel.app/",
+    imageSrc: "/codemaster.png",
+    imageAlt: "Screenshot of the CodeMaster project",
+    technologies: ["vue", "typescript", "tailwind", "json"],
+    kind: "Web app",
+  },
+  {
     id: "decorNature",
     order: 5,
     isFeatured: false,
@@ -209,16 +224,16 @@ const projects: Project[] = [
     kind: "showcase",
   },
   {
-    id: "emmausConnect",
-    order: 11,
+    id: "liic",
+    order: 7,
     isFeatured: false,
-    i18nNameKey: "emmausConnect.name",
-    i18nDescriptionKey: "emmausConnect.description",
-    url: "https://emmaus-connect-bay.vercel.app/",
-    imageSrc: "/emmausconnect.png",
-    imageAlt: "Screenshot of the Emmaus Connect project",
-    technologies: ["react", "javascript", "json"],
-    kind: "showcase",
+    i18nNameKey: "liic.name",
+    i18nDescriptionKey: "liic.description",
+    url: undefined,
+    imageSrc: "/liic.png",
+    imageAlt: "LIIC project placeholder",
+    technologies: ["typescript", "json", "nodejs"],
+    kind: "extension",
   },
   {
     id: "wilderGame",
@@ -257,16 +272,16 @@ const projects: Project[] = [
     kind: "tool",
   },
   {
-    id: "liic",
-    order: 7,
+    id: "emmausConnect",
+    order: 11,
     isFeatured: false,
-    i18nNameKey: "liic.name",
-    i18nDescriptionKey: "liic.description",
-    url: undefined,
-    imageSrc: "/liic.png",
-    imageAlt: "LIIC project placeholder",
-    technologies: ["typescript", "json", "nodejs"],
-    kind: "extension",
+    i18nNameKey: "emmausConnect.name",
+    i18nDescriptionKey: "emmausConnect.description",
+    url: "https://emmaus-connect-bay.vercel.app/",
+    imageSrc: "/emmausconnect.png",
+    imageAlt: "Screenshot of the Emmaus Connect project",
+    technologies: ["react", "javascript", "json"],
+    kind: "showcase",
   },
 ];
 
