@@ -38,6 +38,10 @@
     "goToProjectAriaLabel": "Go to project",
     "viewProjectAriaLabel": "View project",
     "openProject": "Open project",
+    "codeMaster": {
+      "name": "CodeMaster",
+      "description": "PWA for technical training via interactive quizzes with gamification."
+    },
     "allaw": {
       "name": "Allaw",
       "description": "Allaw is a web platform for legal professionals, unifying <strong>visibility</strong>, <strong>scheduling</strong>, <strong>appointments</strong> and essential office data within a clean and modern interface.<break></break><break></break>I implemented a strong <strong>design system</strong> early on, added key features, improved SEO and enhanced overall consistency to boost product efficiency and support company growth."

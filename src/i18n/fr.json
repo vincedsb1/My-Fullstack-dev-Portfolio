@@ -38,6 +38,10 @@
     "goToProjectAriaLabel": "Aller au projet",
     "viewProjectAriaLabel": "Voir le projet",
     "openProject": "Ouvrir le projet",
+    "codeMaster": {
+      "name": "CodeMaster",
+      "description": "PWA d'entraînement technique via quiz interactifs et gamification."
+    },
     "allaw": {
       "name": "Allaw",
       "description": "Allaw est une plateforme web pour les professionnels du droit, centralisant la <strong>visibilité</strong>, les <strong>horaires</strong>, les <strong>rendez-vous</strong> et les informations d'étude, tout en offrant une interface moderne et efficace.<break></break><break></break>J'y ai appliqué un <strong>design system</strong> structurant dès les débuts, ajouté des fonctionnalités clés, optimisé le SEO et renforcé la cohérence de l'expérience pour soutenir la croissance produit."
