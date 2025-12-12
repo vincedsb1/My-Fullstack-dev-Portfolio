@@ -21,6 +21,7 @@ import {
   Package,
   Wrench,
   Grid3x3,
+  Container,
 } from "lucide-react";
 import "aos/dist/aos.css";
 import AOS from "aos";
@@ -450,6 +451,21 @@ function Skills() {
                   className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
                 >
                   Agile / Scrum
+                </div>
+              </div>
+              <div
+                id="docker"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
+                <div
+                  id="dockerIcon"
+                  className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
+                >
+                  <Container size={18} />
+                </div>
+                <div id="dockerLabel" className="flex flex-row">
+                  Docker
                 </div>
               </div>
               <div
