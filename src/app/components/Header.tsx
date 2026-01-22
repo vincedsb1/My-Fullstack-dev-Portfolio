@@ -142,6 +142,27 @@ function Header() {
           <Linkedin className="mr-2 pb-1" /> {tc("linkedin")}
         </button>
         <button
+          id="cv"
+          type="button"
+          className="flex justify-center h-10 3xs:h-12 items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
+          tabIndex={0}
+          data-aos="fade-up"
+          onClick={() => {
+            const fileName =
+              locale === "en"
+                ? "Resume_Vincent_DESBROSSES.pdf"
+                : "CV Vincent DESBROSSES.pdf";
+            const link = document.createElement("a");
+            link.href = `/${encodeURIComponent(fileName)}`;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }}
+        >
+          <DownloadCloud className="mr-2" /> {tc("cv")}
+        </button>
+        <button
           id="github"
           type="button"
           className="flex justify-center h-10 3xs:h-12 items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
@@ -175,27 +196,6 @@ function Header() {
           }
         >
           <Briefcase className="mr-2" /> {tc("malt")}
-        </button>
-        <button
-          id="cv"
-          type="button"
-          className="flex justify-center h-10 3xs:h-12 items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
-          tabIndex={0}
-          data-aos="fade-up"
-          onClick={() => {
-            const fileName =
-              locale === "en"
-                ? "Resume_Vincent_DESBROSSES.pdf"
-                : "CV Vincent DESBROSSES.pdf";
-            const link = document.createElement("a");
-            link.href = `/${encodeURIComponent(fileName)}`;
-            link.download = fileName;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          }}
-        >
-          <DownloadCloud className="mr-2" /> {tc("cv")}
         </button>
       </div>
     </div>
