@@ -39,21 +39,6 @@ function IntegrationClient() {
     AOS.init({
       duration: 200,
     });
-
-    // Charger le script dynamiquement
-    const script = document.createElement("script");
-    script.src =
-      "https://www.allaw.fr/embed.js?profession=avocat&profile=Vincent_DESBROSSES_ee5";
-    script.async = true;
-    const container = document.getElementById("allaw-container");
-    container?.appendChild(script);
-
-    // Nettoyage du script lors du démontage
-    return () => {
-      if (container && container.contains(script)) {
-        container.removeChild(script);
-      }
-    };
   }, []);
 
   return (
@@ -76,12 +61,20 @@ function IntegrationClient() {
           </div>
         )}
       </div>
-      <div id="mainContainer" className="w-full flex flex-col max-w-5xl">
+      <div
+        id="mainContainer"
+        className="w-full flex flex-col max-w-5xl min-h-screen"
+      >
         <div
           id="integrationContainer"
-          className="w-full max-w-5xl items-center mb-16 sm:mb-32"
+          className="w-full max-w-5xl items-center mb-16 sm:mb-32 min-h-screen"
         >
-          <div id="allaw-container" className="p-8 rounded-xl" />
+          <div id="allaw-container" className="w-full min-h-screen">
+            <script
+              src="https://develop.allaw.fr/embed-develop.js?profession=avocat&profile=Vincent_DESBROSSES_ee5"
+              async
+            />
+          </div>
         </div>
       </div>
     </main>
