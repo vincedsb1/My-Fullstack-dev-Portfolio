@@ -16,7 +16,6 @@ function IntegrationClient() {
   };
 
   useEffect(() => {
-    // Utilisez simplement MouseEvent ici
     const handleClickOutside = (event: MouseEvent) => {
       if (
         menuRef.current &&
@@ -39,6 +38,40 @@ function IntegrationClient() {
     AOS.init({
       duration: 200,
     });
+  }, []);
+
+  // Injection dynamique du widget Allaw avec logs de contrôle
+  useEffect(() => {
+    const container = document.getElementById("allaw-container");
+    if (!container) return;
+
+    const profession = "avocat";
+    const profile = "Vincent_DESBROSSES_ee5";
+    
+    // Log console pour vérifier les attributs demandés
+    console.log(`[Allaw Widget] Tentative de chargement - Profession: ${profession}, Profile: ${profile}`);
+
+    const script = document.createElement("script");
+    script.src = `https://develop.allaw.fr/embed-develop.js?profession=${profession}&profile=${profile}`;
+    script.async = true;
+
+    // Log réseau/chargement - Succès
+    script.onload = () => {
+      console.log("[Allaw Widget] Script chargé avec succès.");
+    };
+
+    // Log réseau/chargement - Erreur (404, CORS, etc.)
+    script.onerror = (e) => {
+      console.error("[Allaw Widget] Erreur lors du chargement du script (404, CORS ou réseau) :", e);
+    };
+
+    container.appendChild(script);
+
+    return () => {
+      if (container.contains(script)) {
+        container.removeChild(script);
+      }
+    };
   }, []);
 
   return (
@@ -70,10 +103,7 @@ function IntegrationClient() {
           className="w-full max-w-5xl items-center mb-16 sm:mb-32 min-h-screen"
         >
           <div id="allaw-container" className="w-full min-h-screen">
-            <script
-              src="https://develop.allaw.fr/embed-develop.js?profession=avocat&profile=Vincent_DESBROSSES_ee5"
-              async
-            />
+            {/* Le script est maintenant injecté dynamiquement via useEffect */}
           </div>
         </div>
       </div>
