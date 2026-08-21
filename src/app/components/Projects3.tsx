@@ -12,10 +12,12 @@ import {
   Code,
   Database,
   FileCode,
+  Laptop,
   LineChart,
   Palette,
   Rocket,
   Server,
+  Terminal,
   Type,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -54,6 +56,9 @@ const technologyMeta: Record<
   mysql: { label: "MySQL", icon: <Database size={16} /> },
   json: { label: "JSON", icon: <Braces size={16} /> },
   python: { label: "Python", icon: <Code size={16} /> },
+  swift: { label: "Swift", icon: <Code size={16} /> },
+  xcode: { label: "Xcode", icon: <Laptop size={16} /> },
+  bash: { label: "Bash", icon: <Terminal size={16} /> },
   symfony: { label: "Symfony" },
   css: { label: "CSS" },
   recharts: { label: "Recharts", icon: <LineChart size={16} /> },
@@ -95,6 +100,7 @@ function SimpleTechBadge({ techId }: { techId: TechnologyId }) {
 }
 
 type ProjectId =
+  | "aiSystem"
   | "codeMaster"
   | "allaw"
   | "truthify"
@@ -121,6 +127,9 @@ type TechnologyId =
   | "mysql"
   | "json"
   | "python"
+  | "swift"
+  | "xcode"
+  | "bash"
   | "symfony"
   | "css"
   | "recharts";
@@ -139,6 +148,18 @@ type Project = {
 };
 
 const projects: Project[] = [
+  {
+    id: "aiSystem",
+    order: 1,
+    isFeatured: false,
+    i18nNameKey: "aiSystem.name",
+    i18nDescriptionKey: "aiSystem.description",
+    url: "https://github.com/vincedsb1/ai-system",
+    imageSrc: "/aiSystem.png",
+    imageAlt: "Screenshot of the AiSystem macOS application",
+    technologies: ["swift", "xcode", "python", "bash"],
+    kind: "tool",
+  },
   {
     id: "allaw",
     order: 1,
@@ -189,7 +210,7 @@ const projects: Project[] = [
   },
   {
     id: "codeMaster",
-    order: 1,
+    order: 2,
     isFeatured: false,
     i18nNameKey: "codeMaster.name",
     i18nDescriptionKey: "codeMaster.description",

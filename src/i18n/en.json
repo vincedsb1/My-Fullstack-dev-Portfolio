@@ -38,6 +38,10 @@
     "goToProjectAriaLabel": "Go to project",
     "viewProjectAriaLabel": "View project",
     "openProject": "Open project",
+    "aiSystem": {
+      "name": "AiSystem",
+      "description": "Local macOS control plane for AI skills and project automation."
+    },
     "codeMaster": {
       "name": "CodeMaster",
       "description": "PWA for technical training via interactive quizzes with gamification."
@@ -92,10 +96,16 @@
     "intro": "Explore my professional journey and discover my experience.",
     "experiences": [
       {
+        "company": "Independent",
+        "position": "Entrepreneur & Fullstack Developer",
+        "period": "Jun. 2026 → now",
+        "description": "I design and build applications independently, handling the full lifecycle from product idea and architecture to development, testing, and deployment."
+      },
+      {
         "company": "Allaw",
-        "position": "Fullstack developper",
-        "period": "Juil. 2024 → now",
-        "description": "Making law accessible to everyone through the platform allaw.fr"
+        "position": "Fullstack Developer",
+        "period": "Jul. 2024 → Jun. 2026",
+        "description": "Developed and improved fullstack web experiences, contributing across product, interface, and application architecture."
       },
       {
         "company": "Twenty Soft",

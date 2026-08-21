@@ -17,8 +17,10 @@ import {
   ArrowRightLeft,
   Lightbulb,
   Github,
+  Laptop,
   Layers,
   Package,
+  Terminal,
   Wrench,
   Grid3x3,
   Container,
@@ -301,6 +303,24 @@ function Skills() {
                 </div>
               </div>
               <div
+                id="python"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
+                <div
+                  id="pythonIcon"
+                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
+                >
+                  <Terminal size={18} />
+                </div>
+                <div
+                  id="pythonLabel"
+                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
+                >
+                  Python
+                </div>
+              </div>
+              <div
                 id="postgresql"
                 className="flex flex-row justify-start mb-1"
                 data-aos="fade-up"
@@ -511,6 +531,36 @@ function Skills() {
                 </div>
                 <div id="jenkinsLabel" className="flex flex-row">
                   Jenkins
+                </div>
+              </div>
+              <div
+                id="swift"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
+                <div
+                  id="swiftIcon"
+                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
+                >
+                  <Code2 size={18} />
+                </div>
+                <div id="swiftLabel" className="flex flex-row">
+                  Swift
+                </div>
+              </div>
+              <div
+                id="xcode"
+                className="flex flex-row justify-start mb-1"
+                data-aos="fade-up"
+              >
+                <div
+                  id="xcodeIcon"
+                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
+                >
+                  <Laptop size={18} />
+                </div>
+                <div id="xcodeLabel" className="flex flex-row">
+                  Xcode
                 </div>
               </div>
             </div>
