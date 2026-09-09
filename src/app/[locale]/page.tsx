@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
 
 import HomeContent from "./HomeContent.tsx";
 
@@ -11,8 +10,10 @@ export async function generateMetadata({
   const { locale } = await params;
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL || "https://vincent.desbrosses.net";
-  const t = await getTranslations({ locale, namespace: "metadata" });
 
+  // Only `alternates` is overridden here. Page-level metadata REPLACES the
+  // parent object rather than deep-merging it, so redeclaring a partial
+  // `openGraph` would drop og:image, og:type, og:site_name and og:locale.
   return {
     alternates: {
       canonical: `${baseUrl}/${locale}`,
@@ -21,11 +22,6 @@ export async function generateMetadata({
         fr: `${baseUrl}/fr`,
         "x-default": `${baseUrl}/en`,
       },
-    },
-    openGraph: {
-      title: t("title"),
-      description: t("description"),
-      url: `${baseUrl}/${locale}`,
     },
   };
 }
