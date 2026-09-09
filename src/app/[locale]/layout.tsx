@@ -25,6 +25,8 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+const SITE_NAME = "Vincent DESBROSSES";
+
 const getBaseUrl = () =>
   process.env.NEXT_PUBLIC_SITE_URL || "https://vincent.desbrosses.net";
 
@@ -54,18 +56,19 @@ export async function generateMetadata({
   const ogImage = `${baseUrl}/pp.jpg`;
 
   return {
+    metadataBase: new URL(baseUrl),
     title,
     description,
     openGraph: {
       title,
       description,
       url: `${baseUrl}/${locale}`,
-      siteName: title,
+      siteName: SITE_NAME,
       images: [
         {
           url: ogImage,
-          width: 819,
-          height: 823,
+          width: 1084,
+          height: 1084,
           alt: "Vincent DESBROSSES - Fullstack Developer",
           type: "image/jpeg",
         },
@@ -100,16 +103,18 @@ export default async function RootLayout({
   const messages = (await import(`../../i18n/${locale}.json`)).default;
 
   const baseUrl = getBaseUrl();
+  const th = await getTranslations({ locale, namespace: "header" });
+
+  // Every value below is rendered on the page: name and jobTitle in the hero,
+  // description as the hero paragraph, image as the profile picture.
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Vincent DESBROSSES",
+    name: th("name"),
     url: `${baseUrl}/${locale}`,
-    jobTitle: "Fullstack Developer",
-    description:
-      "From ideation to completion, my skillset covers the full lifecycle of a web project.",
+    jobTitle: th("jobTitle"),
+    description: th("description"),
     image: `${baseUrl}/pp.jpg`,
-    email: "vincedsb@gmail.com",
     sameAs: [
       "https://www.linkedin.com/in/vincent-desbrosses/",
       "https://github.com/vincedsb1",
@@ -128,6 +133,14 @@ export default async function RootLayout({
     ],
   };
 
+  const webSiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    alternateName: ["Vincent Desbrosses", "vincent.desbrosses.net"],
+    url: "https://vincent.desbrosses.net/",
+  };
+
   return (
     <html lang={locale}>
       <head>
@@ -143,6 +156,10 @@ export default async function RootLayout({
             }}
           />
         </noscript>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
