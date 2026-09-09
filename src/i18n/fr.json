@@ -23,10 +23,12 @@
   "skills": {
     "title": "Compétences",
     "intro": "Une palette de compétences variées et solides pour vos projets.",
-    "design": "Design",
+    "designProduct": "Design & Product",
     "frontend": "Front-end",
     "backend": "Back-end",
-    "other": "Autres"
+    "desktop": "Desktop",
+    "devops": "DevOps",
+    "aiAssistedDevelopment": "AI-assisted Development"
   },
   "projects": {
     "title": "Projets",

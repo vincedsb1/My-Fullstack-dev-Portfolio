@@ -15,6 +15,9 @@ import {
 } from "lucide-react";
 import pp from "../../../public/pp.jpg";
 
+const linkClass =
+  "flex justify-center h-10 3xs:h-12 items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all";
+
 function Header() {
   const t = useTranslations("header");
   const tc = useTranslations("common");
@@ -124,79 +127,63 @@ function Header() {
             </>
           )}
         </button>
-        <button
+        <a
           id="linkedIn"
-          type="button"
-          className="flex justify-center h-10 3xs:h-12 items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
-          tabIndex={0}
-          data-aos="fade-up"
-          onClick={() =>
-            window.open(
-              locale === "en"
-                ? "https://www.linkedin.com/in/vincent-desbrosses/?locale=en_US"
-                : "https://www.linkedin.com/in/vincent-desbrosses/",
-              "_blank",
-            )
+          href={
+            locale === "en"
+              ? "https://www.linkedin.com/in/vincent-desbrosses/?locale=en_US"
+              : "https://www.linkedin.com/in/vincent-desbrosses/"
           }
+          target="_blank"
+          rel="noopener noreferrer me"
+          className={linkClass}
+          data-aos="fade-up"
         >
           <Linkedin className="mr-2 pb-1" /> {tc("linkedin")}
-        </button>
-        <button
+        </a>
+        <a
           id="cv"
-          type="button"
-          className="flex justify-center h-10 3xs:h-12 items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
-          tabIndex={0}
+          href={`/${encodeURIComponent(
+            locale === "en"
+              ? "Resume_Vincent_DESBROSSES.pdf"
+              : "CV Vincent DESBROSSES.pdf",
+          )}`}
+          download
+          className={linkClass}
           data-aos="fade-up"
-          onClick={() => {
-            const fileName =
-              locale === "en"
-                ? "Resume_Vincent_DESBROSSES.pdf"
-                : "CV Vincent DESBROSSES.pdf";
-            const link = document.createElement("a");
-            link.href = `/${encodeURIComponent(fileName)}`;
-            link.download = fileName;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          }}
         >
           <DownloadCloud className="mr-2" /> {tc("cv")}
-        </button>
-        <button
+        </a>
+        <a
           id="github"
-          type="button"
-          className="flex justify-center h-10 3xs:h-12 items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
-          tabIndex={0}
+          href="https://github.com/vincedsb1"
+          target="_blank"
+          rel="noopener noreferrer me"
+          className={linkClass}
           data-aos="fade-up"
-          onClick={() => window.open("https://github.com/vincedsb1", "_blank")}
         >
           <Github className="mr-2" /> {tc("github")}
-        </button>
-        <button
+        </a>
+        <a
           id="twitter"
-          type="button"
-          className="flex justify-center h-10 3xs:h-12 items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
-          tabIndex={0}
+          href="https://twitter.com/vincedsb"
+          target="_blank"
+          rel="noopener noreferrer me"
+          className={linkClass}
           data-aos="fade-up"
-          onClick={() => window.open("https://twitter.com/vincedsb", "_blank")}
         >
           <Twitter className="mr-2" /> {tc("twitter")}
-        </button>
-        <button
+        </a>
+        <a
           id="malt"
-          type="button"
-          className="flex justify-center h-10 3xs:h-12 items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
-          tabIndex={0}
+          href="https://www.malt.fr/profile/vincentdesbrosses"
+          target="_blank"
+          rel="noopener noreferrer me"
+          className={linkClass}
           data-aos="fade-up"
-          onClick={() =>
-            window.open(
-              "https://www.malt.fr/profile/vincentdesbrosses",
-              "_blank",
-            )
-          }
         >
           <Briefcase className="mr-2" /> {tc("malt")}
-        </button>
+        </a>
       </div>
     </div>
   );

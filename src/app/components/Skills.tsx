@@ -1,32 +1,129 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { useTranslations } from "next-intl";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import {
-  Code2,
-  Figma,
-  PenTool,
-  Ruler,
-  Brush,
-  Type,
-  Triangle,
-  Pyramid,
-  Zap,
-  Database,
-  Server,
   ArrowRightLeft,
-  Lightbulb,
+  AppWindow,
+  Atom,
+  Bot,
+  Boxes,
+  Braces,
+  Brush,
+  Cloud,
+  Code2,
+  Container,
+  Database,
+  FileCode2,
+  Figma,
   Github,
   Laptop,
-  Layers,
+  Leaf,
+  Lightbulb,
+  MessagesSquare,
+  MousePointer2,
+  Network,
   Package,
+  Palette,
+  PenTool,
+  Pyramid,
+  Ruler,
+  Server,
+  Sparkles,
   Terminal,
+  Triangle,
+  Type,
   Wrench,
-  Grid3x3,
-  Container,
+  Workflow,
+  type LucideIcon,
 } from "lucide-react";
-import "aos/dist/aos.css";
-import AOS from "aos";
+import { useTranslations } from "next-intl";
+import { useEffect } from "react";
+
+type Skill = {
+  label: string;
+  icon: LucideIcon;
+};
+
+type SkillCategory = {
+  id:
+    | "designProduct"
+    | "frontend"
+    | "backend"
+    | "desktop"
+    | "devops"
+    | "aiAssistedDevelopment";
+  skills: Skill[];
+};
+
+const skillCategories: SkillCategory[] = [
+  {
+    id: "designProduct",
+    skills: [
+      { label: "Figma", icon: Figma },
+      { label: "Storybook", icon: Code2 },
+      { label: "Adobe XD", icon: PenTool },
+      { label: "Zeplin", icon: Ruler },
+      { label: "UX/UI", icon: Palette },
+      { label: "Product Thinking", icon: Lightbulb },
+    ],
+  },
+  {
+    id: "frontend",
+    skills: [
+      { label: "Next.js", icon: FileCode2 },
+      { label: "React", icon: Atom },
+      { label: "TypeScript", icon: Type },
+      { label: "JavaScript", icon: Braces },
+      { label: "Tailwind CSS", icon: Brush },
+      { label: "CSS / SCSS", icon: Type },
+    ],
+  },
+  {
+    id: "backend",
+    skills: [
+      { label: "Node.js", icon: Package },
+      { label: "Python", icon: Terminal },
+      { label: "Express.js", icon: Server },
+      { label: "PostgreSQL", icon: Database },
+      { label: "MongoDB", icon: Leaf },
+      { label: "MySQL", icon: Database },
+      { label: "Prisma", icon: Pyramid },
+      { label: "REST APIs", icon: ArrowRightLeft },
+    ],
+  },
+  {
+    id: "desktop",
+    skills: [
+      { label: "Swift", icon: Code2 },
+      { label: "SwiftUI", icon: AppWindow },
+      { label: "Xcode", icon: Laptop },
+      { label: "Swift Package Manager", icon: Boxes },
+    ],
+  },
+  {
+    id: "devops",
+    skills: [
+      { label: "Git / GitHub", icon: Github },
+      { label: "GitHub Actions", icon: Workflow },
+      { label: "Docker", icon: Container },
+      { label: "Vercel", icon: Triangle },
+      { label: "AWS", icon: Cloud },
+      { label: "Jenkins", icon: Wrench },
+    ],
+  },
+  {
+    id: "aiAssistedDevelopment",
+    skills: [
+      { label: "Claude Code", icon: Bot },
+      { label: "Codex", icon: Braces },
+      { label: "Gemini", icon: Sparkles },
+      { label: "ChatGPT", icon: MessagesSquare },
+      { label: "Cursor", icon: MousePointer2 },
+      { label: "RAG", icon: Network },
+    ],
+  },
+];
 
 function Skills() {
   const t = useTranslations("skills");
@@ -36,14 +133,15 @@ function Skills() {
       duration: 300,
     });
   }, []);
+
   return (
     <div
       id="skillsGlobalContainer"
-      className="flex flex-col w-[815px] xs:w-full justify-center items-center px-4 lg:px-0"
+      className="flex w-[815px] flex-col items-center justify-center px-4 xs:w-full lg:px-0"
     >
       <div
         id="skillsTitleTopContainer"
-        className="w-full text-neutral-700 dark:text-neutral-300 font-bold text-2xl flex flex-row items-center mb-2"
+        className="mb-2 flex w-full flex-row items-center text-2xl font-bold text-neutral-700 dark:text-neutral-300"
         data-aos="fade-up"
       >
         <div id="skillsIcon" className="w-12">
@@ -53,519 +151,55 @@ function Skills() {
           {t("title")}
         </h2>
       </div>
-      <div id="skillsTitleBotContainer" className="w-full flex flex-row">
-        <div id="skillsIconBlank" className="w-12" />
+      <div id="skillsTitleBotContainer" className="flex w-full flex-row">
+        <div id="skillsIconBlank" className="w-12 shrink-0" />
         <div
           id="skillsIntroContainer"
-          className="flex flex-row text-base 3xs:text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
+          className="mb-16 flex flex-row text-base leading-tight text-neutral-400 dark:text-neutral-500 3xs:text-xl"
           data-aos="fade-up"
         >
           {t("intro")}
         </div>
       </div>
+
       <div
-        id="skillsContainer"
-        className="w-full flex flex-col md:flex-row justify-center"
+        id="skillsCardsContainer"
+        className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
       >
-        <div
-          id="skillsSubContainer1"
-          className="flex flex-col 2xs:flex-row items-center 2xs:items-start 2xs:justify-around w-full md:w-1/2"
-        >
-          <div id="designContainer" className="flex flex-col w-40 mb-8 md:mb-0">
-            <h3
-              id="designTitle"
-              className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
-              data-aos="fade-up"
-            >
-              {t("design")}
+        {skillCategories.map((category, categoryIndex) => (
+          <article
+            key={category.id}
+            id={`${category.id}SkillsCard`}
+            className="flex h-full min-w-0 flex-col rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-800 dark:hover:border-neutral-700"
+            data-aos="fade-up"
+            data-aos-delay={categoryIndex * 40}
+          >
+            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.16em] text-neutral-700 dark:text-neutral-300">
+              {t(category.id)}
             </h3>
-            <div
-              id="desigSkillsContainer"
-              className="flex flex-col  text-base text-neutral-600 dark:text-neutral-400"
-            >
-              <div
-                id="figma"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="figmaIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Figma size={20} />
-                </div>
-                <div
-                  id="figmaLabel"
-                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
-                >
-                  Figma
-                </div>
-              </div>
-              <div
-                id="storybook"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="storybookIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Code2 size={20} />
-                </div>
-                <div
-                  id="storybookLabel"
-                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
-                >
-                  Storybook
-                </div>
-              </div>
-              <div
-                id="AdobeXd"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="AdobeXdIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <PenTool size={18} />
-                </div>
-                <div id="AdobeXdLabel" className="flex flex-row">
-                  Adobe xD
-                </div>
-              </div>
-              <div
-                id="zeplin"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="zeplinIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Ruler size={18} />
-                </div>
-                <div id="zeplinLabel" className="flex flex-row">
-                  Zeplin
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div id="frontContainer" className="flex flex-col w-40 mb-8 md:mb-0">
-            <h3
-              id="frontTitle"
-              className="text-xl font-bold  mb-5 text-neutral-700 dark:text-neutral-300"
-              data-aos="fade-up"
-            >
-              {t("frontend")}
-            </h3>
-            <div
-              id="frontSkillsContainer"
-              className="flex flex-col text-base text-neutral-600 dark:text-neutral-400"
-            >
-              <div
-                id="next"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="nextIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
-                >
-                  <Zap size={18} />
-                </div>
-                <div
-                  id="nextLabel"
-                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
-                >
-                  NextJS
-                </div>
-              </div>
-              <div
-                id="react"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="reactIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Code2 size={18} />
-                </div>
-                <div
-                  id="reactLabel"
-                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
-                >
-                  ReactJS
-                </div>
-              </div>
-              <div
-                id="tailwind"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="tailwindIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Brush size={18} />
-                </div>
-                <div
-                  id="tailwindLabel"
-                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
-                >
-                  Tailwind
-                </div>
-              </div>
+            <ul className="flex flex-wrap content-start gap-2">
+              {category.skills.map((skill) => {
+                const Icon = skill.icon;
 
-              <div
-                id="javascript"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="javascriptIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Code2 size={18} />
-                </div>
-                <div id="javascriptLabel" className="flex flex-row">
-                  Javascript
-                </div>
-              </div>
-              <div
-                id="css"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="cssIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Type size={18} />
-                </div>
-                <div id="cssLabel" className="flex flex-row">
-                  CSS / SCSS
-                </div>
-              </div>
-              <div
-                id="next"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="nextIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Type size={18} />
-                </div>
-                <div id="nextLabel" className="flex flex-row">
-                  Typescript
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          id="skillsSubContainer2"
-          className="flex flex-col 2xs:flex-row items-center 2xs:items-start 2xs:justify-around w-full md:w-1/2"
-        >
-          <div id="backContainer" className="flex flex-col w-40 mb-8 md:mb-0">
-            <h3
-              id="backTitle"
-              className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
-              data-aos="fade-up"
-            >
-              {t("backend")}
-            </h3>
-            <div
-              id="backSkillsContainer"
-              className="flex flex-col text-base text-neutral-600 dark:text-neutral-400"
-            >
-              <div
-                id="node"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="nodeIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Package size={18} />
-                </div>
-                <div
-                  id="reactLabel"
-                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
-                >
-                  NodeJS
-                </div>
-              </div>
-              <div
-                id="python"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="pythonIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Terminal size={18} />
-                </div>
-                <div
-                  id="pythonLabel"
-                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
-                >
-                  Python
-                </div>
-              </div>
-              <div
-                id="postgresql"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="postgresqlIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
-                >
-                  <Server size={18} />
-                </div>
-                <div
-                  id="postgresqlLabel"
-                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
-                >
-                  PostgreSQL
-                </div>
-              </div>
-              <div
-                id="sql"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="sqlIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
-                >
-                  <Database size={18} />
-                </div>
-                <div
-                  id="sqlLabel"
-                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
-                >
-                  MySQL
-                </div>
-              </div>
-              <div
-                id="api"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="apiIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-md justify-center"
-                >
-                  <ArrowRightLeft size={18} />
-                </div>
-                <div id="apiLabel" className="flex flex-row">
-                  RESTful API
-                </div>
-              </div>
-              <div
-                id="express"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="expressIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-md justify-center"
-                >
-                  <Lightbulb size={18} />
-                </div>
-                <div id="expressLabel" className="flex flex-row">
-                  ExpressJS
-                </div>
-              </div>
-              <div
-                id="prisma"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="prismaIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-md justify-center"
-                >
-                  <Pyramid size={18} />
-                </div>
-                <div
-                  id="prismaLabel"
-                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
-                >
-                  Prisma
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div id="otherContainer" className="flex flex-col w-40 mb-8 md:mb-0">
-            <h3
-              id="otherTitle"
-              className="text-xl font-bold mb-5 text-neutral-700 dark:text-neutral-300"
-              data-aos="fade-up"
-            >
-              {t("other")}
-            </h3>
-            <div
-              id="otherSkillsContainer"
-              className="flex flex-col text-base text-neutral-600 dark:text-neutral-400"
-            >
-              <div
-                id="git"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="gitIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Github size={18} />
-                </div>
-                <div
-                  id="gitLabel"
-                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
-                >
-                  Git/GitHub
-                </div>
-              </div>
-              <div
-                id="tailwind"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="vercelIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Triangle />
-                </div>
-                <div
-                  id="vercelLabel"
-                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
-                >
-                  Vercel
-                </div>
-              </div>
-              <div
-                id="agile"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="agileIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
-                >
-                  <Code2 size={18} />
-                </div>
-                <div
-                  id="agileLabel"
-                  className="flex flex-row font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-500 dark:from-neutral-100 dark:to-neutral-400"
-                >
-                  Agile / Scrum
-                </div>
-              </div>
-              <div
-                id="docker"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="dockerIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
-                >
-                  <Container size={18} />
-                </div>
-                <div id="dockerLabel" className="flex flex-row">
-                  Docker
-                </div>
-              </div>
-              <div
-                id="jira"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="jiraIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
-                >
-                  <Grid3x3 size={18} />
-                </div>
-                <div id="jiraleLabel" className="flex flex-row">
-                  Jira
-                </div>
-              </div>
-              <div
-                id="product"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="productIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-lg justify-center"
-                >
-                  <Lightbulb size={18} />
-                </div>
-                <div id="productLabel" className="flex flex-row">
-                  Product thinking
-                </div>
-              </div>
-              <div
-                id="jenkins"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="jenkinsIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-md justify-center"
-                >
-                  <Wrench size={18} />
-                </div>
-                <div id="jenkinsLabel" className="flex flex-row">
-                  Jenkins
-                </div>
-              </div>
-              <div
-                id="swift"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="swiftIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Code2 size={18} />
-                </div>
-                <div id="swiftLabel" className="flex flex-row">
-                  Swift
-                </div>
-              </div>
-              <div
-                id="xcode"
-                className="flex flex-row justify-start mb-1"
-                data-aos="fade-up"
-              >
-                <div
-                  id="xcodeIcon"
-                  className="flex flex-row items-center mr-2 w-6 text-xl justify-center"
-                >
-                  <Laptop size={18} />
-                </div>
-                <div id="xcodeLabel" className="flex flex-row">
-                  Xcode
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                return (
+                  <li
+                    key={skill.label}
+                    className="inline-flex max-w-full items-center gap-2 rounded-full border border-neutral-200 bg-neutral-100 px-3 py-2 text-sm font-medium leading-none text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/60 dark:text-neutral-200"
+                  >
+                    <Icon
+                      size={16}
+                      strokeWidth={1.8}
+                      className="shrink-0 text-neutral-500 dark:text-neutral-400"
+                      aria-hidden="true"
+                    />
+                    <span>{skill.label}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </article>
+        ))}
       </div>
     </div>
   );

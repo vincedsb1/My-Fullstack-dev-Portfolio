@@ -124,22 +124,19 @@ function Footer() {
                 </button>
               </div>
               <div id="footerLinkedInButton" className="flex flex-row">
-                <button
+                <a
                   id="linkedIn"
-                  type="button"
-                  className="flex justify-center h-10 3xs:h-12 items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
-                  tabIndex={0}
-                  onClick={() =>
-                    window.open(
-                      locale === "en"
-                        ? "https://www.linkedin.com/in/vincent-desbrosses/?locale=en_US"
-                        : "https://www.linkedin.com/in/vincent-desbrosses/",
-                      "_blank",
-                    )
+                  href={
+                    locale === "en"
+                      ? "https://www.linkedin.com/in/vincent-desbrosses/?locale=en_US"
+                      : "https://www.linkedin.com/in/vincent-desbrosses/"
                   }
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  className="flex justify-center h-10 3xs:h-12 items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all"
                 >
                   <Linkedin className="mr-2 pb-1" /> {tc("linkedin")}
-                </button>
+                </a>
               </div>
               <div id="footerPhoneButton" className="flex flex-row">
                 <button

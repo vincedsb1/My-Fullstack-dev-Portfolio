@@ -1,0 +1,335 @@
+{
+  "summary": {
+    "health_score": 40,
+    "business_type": "Personal brand / freelance developer portfolio",
+    "domain": "vincent.desbrosses.net",
+    "audited": "2026-09-09",
+    "top_findings": [
+      "All canonicals, hreflang and og:url point to vincent-desbrosses.com, which does not resolve (NXDOMAIN)",
+      "generateMetadata lives in the layout, so every sub-page canonicalises to the locale homepage",
+      "No valid JSON-LD: Person schema emitted as <meta name=\"application/ld+json\"> instead of a <script> tag",
+      "HTTP 500 on unmatched dotted paths (/llms.txt, /ads.txt) from an unvalidated [locale] dynamic import",
+      "Only 3 crawlable hrefs site-wide; all social links and the CV are buttons using window.open()"
+    ],
+    "quick_wins": [
+      "Set NEXT_PUBLIC_SITE_URL in Vercel (5 min, fixes the dead-domain issue site-wide)",
+      "Read the French metadata that already exists in src/i18n/fr.json but is never used",
+      "Add a locale allowlist + notFound() guard (3 lines) to eliminate all 500s",
+      "Convert navigation buttons to real <a href> anchors (fixes SEO entity signals and WCAG together)",
+      "Wrap the FAQ block in its own H2 so it stops nesting under 'Journey'"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 25,
+      "what_works": [
+        "All redirects single-hop",
+        "Immutable caching on hashed static assets",
+        "Brotli compression",
+        "HTTPS + HSTS enforced",
+        "Correct viewport meta"
+      ],
+      "findings": [
+        {
+          "title": "Site-wide references to a non-resolving domain",
+          "severity": "Critical",
+          "description": "NEXT_PUBLIC_SITE_URL is unset in production; robots.ts:5, sitemap.ts:5 and [locale]/layout.tsx:30 fall back to https://vincent-desbrosses.com, which returns NXDOMAIN. This poisons canonical, hreflang, og:url, og:image and all 4 sitemap URLs.",
+          "recommendation": "Set NEXT_PUBLIC_SITE_URL=https://vincent.desbrosses.net in Vercel for all environments and update the three hardcoded fallbacks."
+        },
+        {
+          "title": "Every sub-page canonicalises to the locale homepage",
+          "severity": "Critical",
+          "description": "generateMetadata is defined only in [locale]/layout.tsx with canonical: ${baseUrl}/${locale}. Layout metadata is inherited, so /en/integration declares /en as its canonical.",
+          "recommendation": "Remove canonical from the layout; set it per route in each page.tsx."
+        },
+        {
+          "title": "HTTP 500 on unmatched single-segment dotted paths",
+          "severity": "Critical",
+          "description": "/llms.txt, /foo.txt, /ads.txt, /favicon.png, /sitemap.xml.gz all return 500 with x-matched-path: /[locale]. The middleware matcher excludes dotted paths, so they match [locale]; layout.tsx:113 then does await import(`../../i18n/${locale}.json`) with an unvalidated param and throws MODULE_NOT_FOUND.",
+          "recommendation": "Add a locales allowlist check calling notFound() before the import, and create src/app/not-found.tsx (none exists)."
+        },
+        {
+          "title": "robots.txt Disallow rule matches nothing",
+          "severity": "High",
+          "description": "Disallow: /integration cannot match /en/integration or /fr/integration because robots.txt matches by prefix. Both pages return 200 with no noindex meta, and are simultaneously listed in sitemap.xml.",
+          "recommendation": "Decide the intent: either add robots:{index:false} to the route and drop it from the sitemap, or remove the Disallow and give the page unique metadata."
+        },
+        {
+          "title": "Security headers largely absent",
+          "severity": "High",
+          "description": "Only HSTS is present (max-age=63072000, without includeSubDomains or preload). X-Content-Type-Options, X-Frame-Options, CSP, Referrer-Policy and Permissions-Policy are all missing.",
+          "recommendation": "Add a headers() block to next.config.mjs (this project uses .mjs, not .js)."
+        },
+        {
+          "title": "Locale routes are not statically pre-rendered",
+          "severity": "Info",
+          "description": "No generateStaticParams in [locale]/layout.tsx.",
+          "recommendation": "Add generateStaticParams returning the locales to improve TTFB."
+        },
+        {
+          "title": "Deprecated viewport declaration",
+          "severity": "Info",
+          "description": "viewport is set inside the metadata object at layout.tsx:38. Next.js 14+ expects a separate `export const viewport`.",
+          "recommendation": "Move it to its own export."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 58,
+      "what_works": [
+        "732 words (/en) and 844 (/fr) of genuine content",
+        "Complete, idiomatic FR localisation: 64/64 keys, zero missing, zero untranslated",
+        "Real 2007-2026 career timeline",
+        "Ten named projects with stack tags",
+        "Five first-person FAQ answers - strong Experience signal"
+      ],
+      "findings": [
+        {
+          "title": "Authoritativeness is the weakest E-E-A-T axis",
+          "severity": "High",
+          "description": "Composite E-E-A-T 54/100, with Authoritativeness at 8/25: no testimonials, no client references, no Malt rating surfaced, no external citations.",
+          "recommendation": "Add client testimonials with names and companies, surface the Malt profile rating, and add a short factual bio naming years of experience and location."
+        },
+        {
+          "title": "FR page serves English metadata",
+          "severity": "Medium",
+          "description": "Body content is fully translated, but title, description and og:title serve English on /fr. The French strings already exist in src/i18n/fr.json under metadata.* and are never read.",
+          "recommendation": "Read the metadata namespace via getTranslations in generateMetadata."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 30,
+      "what_works": [
+        "Exactly one H1 per page",
+        "Clean H1-H2-H3-H4 hierarchy with no skipped levels",
+        "Correct locale-aware <html lang>"
+      ],
+      "findings": [
+        {
+          "title": "Generic title and description duplicated across all pages",
+          "severity": "Critical",
+          "description": "All three URLs return title 'Vincent's portfolio' and the same English description. The title carries no name-keyword, role or stack.",
+          "recommendation": "Use per-locale metadata and rewrite: 'Vincent Desbrosses - Freelance Fullstack Developer (React, Next.js, Node.js)' (76 chars)."
+        },
+        {
+          "title": "Only three crawlable links exist site-wide",
+          "severity": "Critical",
+          "description": "Raw server HTML for /en contains 3 hrefs: two hreflang alternates and one link to allaw.fr. LinkedIn, GitHub, X, Malt and the CV are all <button onClick={window.open(...)}> (Header.tsx:128-175). Neither CV PDF is linked, and there is no mailto:.",
+          "recommendation": "Replace with <a href target=\"_blank\" rel=\"noopener noreferrer me\"> keeping the same classes; link the CV directly. Fixes entity corroboration and WCAG 4.1.2 together."
+        },
+        {
+          "title": "/en/integration has no H1",
+          "severity": "High",
+          "description": "grep -c '<h1' returns 0. The page also inherits the homepage title, description and canonical.",
+          "recommendation": "Give it a unique H1, title and description, or noindex it."
+        },
+        {
+          "title": "FAQ block mis-nested in the heading outline",
+          "severity": "Medium",
+          "description": "The five FAQ questions render as H3 with no wrapping H2, so they are absorbed into the preceding 'H2: Journey' section - hiding the site's strongest first-person content.",
+          "recommendation": "Wrap the block in its own H2 using the existing faq.title key. Do not add FAQPage schema."
+        },
+        {
+          "title": "Duplicate H3 text",
+          "severity": "Medium",
+          "description": "'Allaw' appears as an H3 three times - twice consecutively under Projects, once under Journey.",
+          "recommendation": "Qualify each heading with its context."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 5,
+      "what_works": [
+        "A well-formed Person object with jobTitle, knowsAbout and sameAs already exists in source"
+      ],
+      "findings": [
+        {
+          "title": "No valid structured data reaches the page",
+          "severity": "Critical",
+          "description": "The Person schema is passed through Next Metadata's `other` field, which renders <meta name=\"application/ld+json\" content=\"...\">. The live page contains 0 occurrences of <script type=\"application/ld+json\">. Its url and image fields also point at the dead domain.",
+          "recommendation": "Render a real <script type=\"application/ld+json\"> in the component tree. Add Person, WebSite and ProfilePage; include Malt in sameAs."
+        },
+        {
+          "title": "FAQPage schema not recommended",
+          "severity": "Info",
+          "description": "FAQ content is live-rendered, but Google retired FAQ rich results for all sites on 2026-05-07, so there is no SERP benefit. The content is not genuine user Q&A, so QAPage does not apply either.",
+          "recommendation": "No action. Fix the heading nesting instead."
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 78,
+      "what_works": [
+        "CLS 0",
+        "TBT 70ms",
+        "340KB / 20 requests total",
+        "Zero third-party requests",
+        "Hero image correctly preloaded with priority"
+      ],
+      "findings": [
+        {
+          "title": "LCP marginally over threshold",
+          "severity": "Medium",
+          "description": "LCP 2.53s against a 2.5s good threshold. LAB DATA ONLY (Lighthouse 13.4.1, mobile, simulated throttling, single run) - no CrUX field data because no Google API key is configured. Server response time was fast at 33ms.",
+          "recommendation": "Add a Google API key to get field data before optimising; the lab number is within run-to-run noise of the threshold."
+        },
+        {
+          "title": "LCP element could not be attributed",
+          "severity": "Info",
+          "description": "Lighthouse returned null for lcp-breakdown-insight, lcp-discovery-insight and largest-contentful-paint-element in this run.",
+          "recommendation": "Re-measure with field data."
+        },
+        {
+          "title": "JS is 64% of page weight",
+          "severity": "Low",
+          "description": "216KB across 11 requests. Verify FontAwesome is tree-shaken.",
+          "recommendation": "Audit the FontAwesome import style."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 35,
+      "what_works": [
+        "All major AI crawlers permitted (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot, Bingbot)",
+        "732 words of real content present in raw server HTML without JS execution"
+      ],
+      "findings": [
+        {
+          "title": "No machine-readable identity",
+          "severity": "High",
+          "description": "No valid JSON-LD and no crawlable sameAs anchors, so nothing corroborates that this site, the LinkedIn profile and the GitHub account are the same entity.",
+          "recommendation": "Fix the JSON-LD script tag and convert social buttons to anchors."
+        },
+        {
+          "title": "Sitemap points at a dead host",
+          "severity": "High",
+          "description": "The robots.txt Sitemap: directive and all 4 sitemap URLs name vincent-desbrosses.com, impairing crawler URL discovery.",
+          "recommendation": "Resolved by setting NEXT_PUBLIC_SITE_URL."
+        },
+        {
+          "title": "Weak passage-level citability",
+          "severity": "Medium",
+          "description": "Content is largely UI labels and skill chips rather than self-contained factual passages. Boilerplate-stripping extractors keep only ~970 of ~5000 visible characters.",
+          "recommendation": "Add a short factual bio paragraph and surface the FAQ answers as prose."
+        },
+        {
+          "title": "/llms.txt returns 500",
+          "severity": "Low",
+          "description": "Server error rather than a clean 404. Note llms.txt is not consumed by Google Search and adoption is unproven.",
+          "recommendation": "Fix the 500 first; publishing a static llms.txt is optional and low priority."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 62,
+      "what_works": [
+        "All 11 Image components have alt text",
+        "sizes set on all responsive images",
+        "priority on the hero image",
+        "AVIF/WebP enabled in next.config.mjs",
+        "Measured CLS of 0"
+      ],
+      "findings": [
+        {
+          "title": "OG image has the wrong aspect ratio",
+          "severity": "Medium",
+          "description": "pp.jpg is 819x823 (near-square) but is served for a summary_large_image card, which expects 1200x630. It will be centre-cropped on LinkedIn and X. It also currently fails to load because it is referenced on the dead domain.",
+          "recommendation": "Export a dedicated 1200x630 card; consider opengraph-image.tsx for per-locale cards."
+        },
+        {
+          "title": "Large unoptimised source images",
+          "severity": "Low",
+          "description": "public/ holds 25MB, largest 3.8MB (wildersgame.jpg), 3.2MB (codemaster.png). next/image optimises what it serves (43KB on the wire), so this is a repo-weight and build-time concern rather than a delivery one.",
+          "recommendation": "Pre-compress sources before committing."
+        }
+      ]
+    },
+    {
+      "name": "Visual / Rendering",
+      "score": 70,
+      "what_works": [
+        "Strong mobile above-the-fold: photo, name, role, value prop and 6 CTAs visible without scrolling",
+        "Dark mode contrast good, no invisible text",
+        "No horizontal overflow at any viewport",
+        "No above-the-fold layout shift between early and settled paint"
+      ],
+      "findings": [
+        {
+          "title": "Page renders visually blank without JavaScript",
+          "severity": "Medium",
+          "description": "AOS ships [data-aos^=fade][data-aos^=fade]{opacity:0} and only reveals content when JS adds .aos-animate. NOTE: the text itself IS in the raw HTML (732 words verified), so crawlers still read the content - this is a UX and resilience risk, not an indexing emergency.",
+          "recommendation": "Add a <noscript> override setting [data-aos]{opacity:1} so a JS failure cannot blank the page."
+        },
+        {
+          "title": "Hero CTA touch targets under 48px",
+          "severity": "Low",
+          "description": "Buttons are 40px tall; width is fine.",
+          "recommendation": "Increase to 48px minimum."
+        },
+        {
+          "title": "Theme/language menu behaviour unverified",
+          "severity": "Info",
+          "description": "Scripted clicks produced no visible change across two attempts; this may be a harness hit-testing artefact rather than a real defect.",
+          "recommendation": "Manually verify the menu opens."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Immediately (~1h10)",
+        "items": [
+          "Set NEXT_PUBLIC_SITE_URL=https://vincent.desbrosses.net in Vercel and update the three hardcoded fallbacks",
+          "Move canonical out of the layout into per-route generateMetadata",
+          "Add a locale allowlist + notFound() guard and create src/app/not-found.tsx",
+          "Emit the Person schema as a real <script type=\"application/ld+json\">"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Week 1 (~1h45)",
+        "items": [
+          "Use per-locale titles and descriptions from the existing i18n metadata namespace",
+          "Convert social and CV buttons to real <a href> anchors with rel=\"me\"",
+          "Resolve the /integration contradiction between sitemap, robots.txt and meta",
+          "Replace the OG image with a 1200x630 card"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Wrap the FAQ in its own H2 (no FAQPage schema)",
+          "Add testimonials, surface the Malt rating, add a factual bio paragraph",
+          "De-duplicate the three 'Allaw' H3 headings",
+          "Publish a static llms.txt once the 500 is fixed"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Confirm the Search Console property is verified for the .net domain",
+          "Submit https://vincent.desbrosses.net/sitemap.xml",
+          "Capture a drift baseline and compare after each deploy",
+          "Add a Google API key to unlock CrUX and GSC field data",
+          "Track brand-query impressions, indexed page count and 5xx crawl responses monthly"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

@@ -23,10 +23,12 @@
   "skills": {
     "title": "Skills",
     "intro": "A diverse set of strong skills for your projects.",
-    "design": "Design",
+    "designProduct": "Design & Product",
     "frontend": "Front-end",
     "backend": "Back-end",
-    "other": "Other"
+    "desktop": "Desktop",
+    "devops": "DevOps",
+    "aiAssistedDevelopment": "AI-assisted Development"
   },
   "projects": {
     "title": "Projects",

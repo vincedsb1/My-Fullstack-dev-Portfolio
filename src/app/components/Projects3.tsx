@@ -23,6 +23,7 @@ import {
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import SmartFlowIllustration from "./projectsIllustrations/SmartFlowIllustration";
 
 const technologyMeta: Record<
   TechnologyId,
@@ -174,7 +175,7 @@ const projects: Project[] = [
   },
   {
     id: "truthify",
-    order: 2,
+    order: 4,
     isFeatured: true,
     i18nNameKey: "truthify.name",
     i18nDescriptionKey: "truthify.description",
@@ -198,7 +199,7 @@ const projects: Project[] = [
   },
   {
     id: "smartflow",
-    order: 4,
+    order: 2,
     isFeatured: true,
     i18nNameKey: "smartflow.name",
     i18nDescriptionKey: "smartflow.description",
@@ -413,14 +414,24 @@ function FeaturedPanel({ project, t }: FeaturedPanelProps) {
 
         {/* Colonne droite : image + badges */}
         <div className="order-1 md:order-2 flex flex-col">
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 mb-4">
-            <Image
-              src={project.imageSrc}
-              alt={project.imageAlt}
-              layout="fill"
-              objectFit="cover"
-              sizes="(max-width: 768px) 100vw, 45vw"
-            />
+          <div
+            className={`relative min-w-0 rounded-2xl ${
+              project.id === "smartflow"
+                ? "mb-6 flex items-center pr-4 pt-4"
+                : "mb-4 aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-800"
+            }`}
+          >
+            {project.id === "smartflow" ? (
+              <SmartFlowIllustration />
+            ) : (
+              <Image
+                src={project.imageSrc}
+                alt={project.imageAlt}
+                layout="fill"
+                objectFit="cover"
+                sizes="(max-width: 768px) 100vw, 45vw"
+              />
+            )}
             {project.url && (
               <a
                 href={project.url}
