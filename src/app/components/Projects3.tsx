@@ -492,7 +492,10 @@ function Projects3() {
 
   const handleDragEnd = (
     e: any,
-    { offset, velocity }: { offset: { x: number; y: number }; velocity: { x: number; y: number } },
+    {
+      offset,
+      velocity,
+    }: { offset: { x: number; y: number }; velocity: { x: number; y: number } },
   ) => {
     const swipeThreshold = 50;
     if (offset.x < -swipeThreshold) {

@@ -1,5 +1,5 @@
 import React from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Inter } from "next/font/google";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -14,6 +14,16 @@ import "../globals.css";
 config.autoAddCss = false;
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
+// E. Pre-render both locale routes at build time instead of on demand.
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 const getBaseUrl = () =>
   process.env.NEXT_PUBLIC_SITE_URL || "https://vincent.desbrosses.net";
@@ -46,7 +56,6 @@ export async function generateMetadata({
   return {
     title,
     description,
-    viewport: "width=device-width, initial-scale=1",
     openGraph: {
       title,
       description,
@@ -126,9 +135,16 @@ export default async function RootLayout({
           name="google-site-verification"
           content="PW82MjVgB5OXOfa6RcjIX06LfN3lZ1arROcD41Ao1z4"
         />
+        <noscript>
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                "[data-aos]{opacity:1!important;transform:none!important}",
+            }}
+          />
+        </noscript>
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
       </head>

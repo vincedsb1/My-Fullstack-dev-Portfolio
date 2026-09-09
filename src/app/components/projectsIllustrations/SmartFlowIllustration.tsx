@@ -39,7 +39,10 @@ export default function SmartFlowIllustration({
         <div className="min-w-0 overflow-hidden rounded-[16px] border border-[#e5e7eb] bg-[#fcfbfa] dark:border-[#353535] dark:bg-[#1a1a1a]">
           <div className="flex min-w-0 items-center gap-3 border-b border-[#e5e7eb] bg-white px-3 py-2.5 dark:border-[#353535] dark:bg-[#202020] sm:px-4">
             <div className="flex min-w-0 items-center gap-2.5">
-              <span className="flex shrink-0 items-center gap-1" aria-hidden="true">
+              <span
+                className="flex shrink-0 items-center gap-1"
+                aria-hidden="true"
+              >
                 <span className="h-1.5 w-1.5 rounded-full bg-[#df6035]" />
                 <span className="h-1.5 w-1.5 rounded-full bg-[#2f4b79]/45 dark:bg-[#a9c7f5]/45" />
                 <span className="h-1.5 w-1.5 rounded-full bg-[#646c7a]/35 dark:bg-[#a3a3a3]/35" />
@@ -73,7 +76,9 @@ export default function SmartFlowIllustration({
                   >
                     <div className="space-y-2">
                       <span
-                        className={`block h-1.5 max-w-full rounded-full ${row.primaryWidth} ${
+                        className={`block h-1.5 max-w-full rounded-full ${
+                          row.primaryWidth
+                        } ${
                           row.active
                             ? "bg-[#9a3412]/30 dark:bg-[#fdba74]/35"
                             : "bg-[#111827]/15 dark:bg-white/15"
@@ -81,7 +86,9 @@ export default function SmartFlowIllustration({
                       />
                       <div className="flex items-center justify-between gap-2">
                         <span
-                          className={`block h-1.5 max-w-full rounded-full ${row.secondaryWidth} ${
+                          className={`block h-1.5 max-w-full rounded-full ${
+                            row.secondaryWidth
+                          } ${
                             row.active
                               ? "bg-[#9a3412]/20 dark:bg-[#fdba74]/25"
                               : "bg-[#646c7a]/25 dark:bg-[#a3a3a3]/25"

@@ -27,27 +27,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
-    {
-      url: `${baseUrl}/en/integration`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-      alternates: {
-        languages: {
-          fr: `${baseUrl}/fr/integration`,
-        },
-      },
-    },
-    {
-      url: `${baseUrl}/fr/integration`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/en/integration`,
-        },
-      },
-    },
   ];
 }

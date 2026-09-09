@@ -68,9 +68,9 @@ function FAQ() {
         <div id="faqIcon" className="w-12">
           <HelpCircle size={32} className="mr-6" />
         </div>
-        <div id="faqTitle" className="text-2xl 3xs:text-3xl">
+        <h2 id="faqTitle" className="text-2xl 3xs:text-3xl">
           {t("title").replace(/ \?/g, "\u00A0?")}
-        </div>
+        </h2>
       </div>
       <div id="faqTitleBotContainer" className="w-full flex flex-row">
         <div id="faqIconBlank" className="w-12" />
