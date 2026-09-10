@@ -24,6 +24,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import SmartFlowIllustration from "./projectsIllustrations/SmartFlowIllustration";
+import TruthifyIllustration from "./projectsIllustrations/TruthifyIllustration";
 
 const technologyMeta: Record<
   TechnologyId,
@@ -140,8 +141,9 @@ type Project = {
   i18nNameKey: string;
   i18nDescriptionKey: string;
   url?: string;
-  imageSrc: string;
-  imageAlt: string;
+  /** Capture d'écran, ou `undefined` si le projet a une illustration React. */
+  imageSrc?: string;
+  imageAlt?: string;
   technologies: TechnologyId[];
   isFeatured: boolean;
   kind: "platform" | "tool" | "extension" | "showcase" | "Web app";
@@ -180,8 +182,6 @@ const projects: Project[] = [
     i18nNameKey: "truthify.name",
     i18nDescriptionKey: "truthify.description",
     url: "https://www.truthify.eu/",
-    imageSrc: "/truthify.png",
-    imageAlt: "Screenshot of the Truthify project",
     technologies: ["nextjs", "typescript", "tailwind", "postgresql"],
     kind: "Web app",
   },
@@ -204,8 +204,6 @@ const projects: Project[] = [
     i18nNameKey: "smartflow.name",
     i18nDescriptionKey: "smartflow.description",
     url: "https://www.smartflow-app.com/",
-    imageSrc: "/smartflow.png",
-    imageAlt: "Screenshot of the Smartflow project",
     technologies: ["nextjs", "tailwind", "postgresql", "typescript"],
     kind: "Web app",
   },
@@ -307,7 +305,20 @@ const projects: Project[] = [
   },
 ];
 
+/**
+ * Projets dont l'aperçu est une illustration React (composant dans
+ * `projectsIllustrations/`) plutôt qu'une capture d'écran.
+ */
+const projectIllustrations: Partial<
+  Record<ProjectId, React.ComponentType<{ className?: string }>>
+> = {
+  smartflow: SmartFlowIllustration,
+  truthify: TruthifyIllustration,
+};
+
 function OtherProjectCard({ project, t }: { project: Project; t: any }) {
+  const Illustration = projectIllustrations[project.id];
+
   const handleCardClick = () => {
     if (project.url) {
       window.open(project.url, "_blank", "noopener,noreferrer");
@@ -344,15 +355,25 @@ function OtherProjectCard({ project, t }: { project: Project; t: any }) {
           ))}
         </div>
       </div>
-      <div className="relative mt-auto aspect-[4/3] rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-800">
-        <Image
-          src={project.imageSrc}
-          alt={project.imageAlt}
-          layout="fill"
-          objectFit="cover"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="transition-transform duration-500 group-hover:scale-[1.02]"
-        />
+      <div
+        className={`relative mt-auto rounded-xl ${
+          Illustration
+            ? "flex items-center"
+            : "aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-800"
+        }`}
+      >
+        {Illustration ? (
+          <Illustration />
+        ) : (
+          <Image
+            src={project.imageSrc as string}
+            alt={project.imageAlt ?? ""}
+            layout="fill"
+            objectFit="cover"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="transition-transform duration-500 group-hover:scale-[1.02]"
+          />
+        )}
       </div>
     </article>
   );
@@ -364,6 +385,8 @@ type FeaturedPanelProps = {
 };
 
 function FeaturedPanel({ project, t }: FeaturedPanelProps) {
+  const Illustration = projectIllustrations[project.id];
+
   return (
     <div className="h-full flex flex-col">
       <div className="flex flex-col gap-8 md:grid md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:gap-10 flex-1">
@@ -416,17 +439,17 @@ function FeaturedPanel({ project, t }: FeaturedPanelProps) {
         <div className="order-1 md:order-2 flex flex-col">
           <div
             className={`relative min-w-0 rounded-2xl ${
-              project.id === "smartflow"
-                ? "mb-6 flex items-center pr-4 pt-4"
+              Illustration
+                ? "mb-10 flex items-center pr-4 pt-4"
                 : "mb-4 aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-800"
             }`}
           >
-            {project.id === "smartflow" ? (
-              <SmartFlowIllustration />
+            {Illustration ? (
+              <Illustration />
             ) : (
               <Image
-                src={project.imageSrc}
-                alt={project.imageAlt}
+                src={project.imageSrc as string}
+                alt={project.imageAlt ?? ""}
                 layout="fill"
                 objectFit="cover"
                 sizes="(max-width: 768px) 100vw, 45vw"
@@ -572,9 +595,12 @@ function Projects3() {
         {/* Featured Projects Carousel */}
         {activeProject && (
           <div className="max-w-5xl mx-auto" data-aos="fade-up">
-            <div className="rounded-3xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-6 md:p-10 lg:p-12 shadow-sm md:shadow">
+            {/* `overflow-hidden` est porté par la carte (et non par la grille de
+                slides) pour que les ombres des illustrations débordant de leur
+                colonne ne soient pas rognées, tout en clippant le slide. */}
+            <div className="overflow-hidden rounded-3xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-6 md:p-10 lg:p-12 shadow-sm md:shadow">
               <div className="flex flex-col gap-6 md:gap-8">
-                <div className="relative grid overflow-hidden">
+                <div className="relative grid">
                   <AnimatePresence
                     custom={direction}
                     initial={false}
