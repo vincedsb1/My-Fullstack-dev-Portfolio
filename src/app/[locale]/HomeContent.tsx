@@ -7,6 +7,7 @@ import LanguageSwitcher from "../LanguageSwitcher.tsx";
 import ThemeSwitcher from "../ThemeSwitcher.tsx";
 import FAQ from "../components/FAQ.tsx";
 import Footer from "../components/Footer.tsx";
+import GuideResource from "./GuideResource.tsx";
 import Header from "../components/Header.tsx";
 import MenuButton from "../components/MenuButton.tsx";
 import Projects3 from "../components/Projects3.tsx";
@@ -50,23 +51,18 @@ export default function Home() {
   return (
     <main className="w-full bg-neutral-100 dark:bg-neutral-900 flex flex-col items-center">
       <div id="menuContainer" className="relative w-full flex justify-end">
-        <div ref={buttonRef}>
+        <div ref={buttonRef} className="relative">
           <MenuButton onMenuClick={toggleMenu} />
+          {showMenu && (
+            <div
+              ref={menuRef}
+              className="absolute top-0 right-full z-20 mt-5 mr-5 flex flex-col gap-4"
+            >
+              <ThemeSwitcher />
+              <LanguageSwitcher />
+            </div>
+          )}
         </div>
-        {showMenu && (
-          <div
-            ref={menuRef}
-            className="absolute top-0 right-full z-20 mt-5 mr-5 flex flex-col gap-4"
-            style={{
-              right: buttonRef.current
-                ? `${buttonRef.current.offsetWidth}px`
-                : "0px",
-            }}
-          >
-            <ThemeSwitcher />
-            <LanguageSwitcher />
-          </div>
-        )}
       </div>
       <div id="mainContainer" className="w-full flex flex-col max-w-5xl">
         <div
@@ -86,6 +82,9 @@ export default function Home() {
           className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
         >
           <Projects3 />
+        </div>
+        <div className="mb-16 flex w-full max-w-5xl flex-col items-center px-4 sm:mb-32 lg:px-0">
+          <GuideResource />
         </div>
         <div
           id="timelineContainer"
