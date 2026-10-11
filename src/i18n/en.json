@@ -20,6 +20,12 @@
     "title": "Interested in working together?",
     "description": "I'm deeply passionate about tech and have honed various skills to lead development projects end-to-end. Excited to discuss your upcoming project; reach out to me!"
   },
+  "guideResource": {
+    "eyebrow": "Free resource",
+    "title": "Looking for your first developer job?",
+    "description": "I’ve put together practical advice on your resume, portfolio, networking, and interviews in a concise guide.",
+    "link": "Read the guide (in French)"
+  },
   "skills": {
     "title": "Skills",
     "intro": "A diverse set of strong skills for your projects.",

@@ -273,7 +273,8 @@ const projects: Project[] = [
     isFeatured: false,
     i18nNameKey: "legalDirectory.name",
     i18nDescriptionKey: "legalDirectory.description",
-    url: "http://5.250.176.153:5000/",
+    // The legacy HTTP demo endpoint timed out during the link check.
+    url: undefined,
     imageSrc: "/quickflow.png",
     imageAlt: "Screenshot of the Quickflow project",
     technologies: ["react", "nodejs", "mysql", "tailwind"],
@@ -515,10 +516,7 @@ function Projects3() {
 
   const handleDragEnd = (
     e: any,
-    {
-      offset,
-      velocity,
-    }: { offset: { x: number; y: number }; velocity: { x: number; y: number } },
+    { offset }: { offset: { x: number; y: number } },
   ) => {
     const swipeThreshold = 50;
     if (offset.x < -swipeThreshold) {

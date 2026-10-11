@@ -38,7 +38,7 @@ export const guideContent = String.raw`
         <!-- Sommaire Latéral (Desktop) -->
         <aside class="toc-sidebar hidden md:block w-64 shrink-0 sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto no-scrollbar">
             <nav aria-label="Sommaire">
-                <h4 class="text-sm font-semibold text-neutral-900 dark:text-white mb-4 uppercase tracking-wider">Sommaire</h4>
+                <p class="text-sm font-semibold text-neutral-900 dark:text-white mb-4 uppercase tracking-wider">Sommaire</p>
                 <ul class="space-y-3 text-sm text-neutral-600 dark:text-neutral-400" id="toc-list">
                     <li><a href="#les-trois-piliers" class="toc-link block pl-3 hover:text-neutral-900 dark:hover:text-white">01. Les trois piliers</a></li>
                     <li><a href="#developper-reseau" class="toc-link block pl-3 hover:text-neutral-900 dark:hover:text-white">02. Développer son réseau</a></li>
@@ -87,7 +87,7 @@ export const guideContent = String.raw`
                             <div class="text-sm text-neutral-500 dark:text-neutral-400">Développeur Fullstack</div>
                         </div>
                         <div class="ml-auto text-xs text-neutral-400 dark:text-neutral-500 text-right">
-                            Mis à jour en <br> Octobre 2026
+                            Mis à jour le <br> 11 octobre 2026
                         </div>
                     </div>
 
@@ -123,7 +123,7 @@ export const guideContent = String.raw`
                             </div>
                             
                             <ul class="space-y-2 mt-4">
-                                <li><strong>Mise en page :</strong> Utilise un modèle moderne, sobre et aéré (Canva est une bonne option). Évite les designs trop complexes ou uniquement graphiques.</li>
+                                <li><strong>Mise en page :</strong> Choisis un modèle sobre et aéré, avec une structure de texte lisible. Évite les designs trop complexes ou uniquement graphiques.</li>
                                 <li><strong>Clarté :</strong> Mets immédiatement en avant le poste recherché et les principales technologies maîtrisées. Élimine les informations inutiles et les descriptions interminables.</li>
                                 <li><strong>Preuves :</strong> Donne des exemples concrets de réalisations.</li>
                                 <li><strong>Qualité :</strong> Élimine toute faute d'orthographe. Fais relire ton CV et utilise l'IA pour challenger la clarté de tes formulations.</li>
@@ -174,7 +174,7 @@ export const guideContent = String.raw`
                                 <li><strong>Accès :</strong> Donne un accès facile aux démonstrations en ligne et aux dépôts GitHub.</li>
                                 <li><strong>Qualité technique :</strong> Soigne le responsive, l'accessibilité, les performances. Vérifie tous les liens et supprime les bugs.</li>
                             </ul>
-                            <p class="mt-4 font-medium text-neutral-900 dark:text-neutral-100 border-l-4 border-red-500 pl-4">En cinq secondes, ton portfolio doit donner une impression de sérieux, de qualité et de fiabilité.</p>
+                            <p class="mt-4 font-medium text-neutral-900 dark:text-neutral-100 border-l-4 border-red-500 pl-4">Ton portfolio doit rapidement donner une impression de sérieux, de qualité et de fiabilité.</p>
                         </div>
 
                         <p class="mt-8 italic text-neutral-500 dark:text-neutral-400">Ces trois supports ne garantissent pas un emploi, mais ils constituent une base crédible indispensable à partir de laquelle développer ta recherche.</p>
@@ -198,7 +198,7 @@ export const guideContent = String.raw`
                             <span class="px-3 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-full text-sm">Fondateurs</span>
                             <span class="px-3 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-full text-sm">Product Managers</span>
                         </div>
-                        <p>Envoie régulièrement des invitations ciblées (un objectif de 15/jour est une bonne moyenne) sans rechercher uniquement le volume. Construis de vraies relations.</p>
+                        <p>Envoie régulièrement quelques invitations ciblées, sans rechercher uniquement le volume. Construis de vraies relations dans la durée.</p>
 
                         <h3>Contacter directement les décisionnaires</h3>
                         <p>Prends l'habitude d'écrire. Sois court, précis, explique ton profil et montre un intérêt réel pour l'entreprise. Ne demande pas systématiquement un poste dès le premier message ; demande parfois un conseil ou propose ton aide.</p>
@@ -272,9 +272,9 @@ Merci pour votre temps.</div>
 
                         <h3>Conseils de publication</h3>
                         <ul>
-                            <li><strong>Régularité :</strong> Définis une cadence soutenable (ex: 2-3 fois par semaine). Ne sacrifie pas ton apprentissage technique pour créer du contenu.</li>
+                            <li><strong>Régularité :</strong> Définis une cadence soutenable. Ne sacrifie pas ton apprentissage technique pour créer du contenu.</li>
                             <li><strong>Authenticité :</strong> Écris avec tes mots. L'IA peut corriger, mais l'expérience doit être la tienne.</li>
-                            <li><strong>Interactions :</strong> Laisse des commentaires pertinents sous les posts de seniors. Participe aux discussions techniques (vise 5 à 10 commentaires utiles par jour pour développer ton réseau).</li>
+                            <li><strong>Interactions :</strong> Laisse des commentaires pertinents sous les publications de professionnels et participe régulièrement aux discussions techniques.</li>
                         </ul>
                     </section>
 
@@ -287,8 +287,8 @@ Merci pour votre temps.</div>
 
                         <div class="space-y-6">
                             <div>
-                                <h4 class="font-semibold text-lg text-neutral-900 dark:text-white border-b border-neutral-200 dark:border-neutral-800 pb-2 mb-3">A. Entretien RH & Motivation</h4>
-                                <p class="text-sm">Sache te présenter en 2 minutes. Explique ton parcours, ta reconversion, tes motivations. Prépare des questions à poser sur l'entreprise.</p>
+                                <h3 class="!mt-0 !mb-3 !text-lg !font-semibold text-neutral-900 dark:text-white border-b border-neutral-200 dark:border-neutral-800 pb-2">A. Entretien RH & Motivation</h3>
+                                <p class="text-sm">Sache présenter ton parcours et tes motivations en quelques phrases. Si tu es en reconversion, explique ce qui t'a conduit vers le développement. Prépare des questions à poser sur l'entreprise.</p>
                                 
                                 <div class="mt-3 border border-neutral-200 dark:border-neutral-700 rounded-lg overflow-hidden">
                                     <div class="flex items-center justify-between px-3 py-1.5 bg-neutral-50 dark:bg-neutral-800/50 border-b border-neutral-200 dark:border-neutral-700">
@@ -300,17 +300,17 @@ Merci pour votre temps.</div>
                             </div>
 
                             <div>
-                                <h4 class="font-semibold text-lg text-neutral-900 dark:text-white border-b border-neutral-200 dark:border-neutral-800 pb-2 mb-3">B. Algorithmique & Live Coding</h4>
-                                <p class="text-sm">Entraîne-toi sur CodinGame ou LeetCode. Décompose le problème avant de coder, explique ton raisonnement à voix haute. L'important est souvent la méthode, pas juste le résultat parfait.</p>
+                                <h3 class="!mt-0 !mb-3 !text-lg !font-semibold text-neutral-900 dark:text-white border-b border-neutral-200 dark:border-neutral-800 pb-2">B. Algorithmique & Live Coding</h3>
+                                <p class="text-sm">Entraîne-toi sur <a href="https://www.codingame.com/start/" class="text-red-600 underline underline-offset-2 hover:text-red-500 dark:text-red-400">CodinGame</a> ou LeetCode. Décompose le problème avant de coder et explique ton raisonnement à voix haute. La méthode compte autant que le résultat.</p>
                             </div>
 
                             <div>
-                                <h4 class="font-semibold text-lg text-neutral-900 dark:text-white border-b border-neutral-200 dark:border-neutral-800 pb-2 mb-3">C. Questions Techniques</h4>
+                                <h3 class="!mt-0 !mb-3 !text-lg !font-semibold text-neutral-900 dark:text-white border-b border-neutral-200 dark:border-neutral-800 pb-2">C. Questions Techniques</h3>
                                 <p class="text-sm">Maîtrise les fondamentaux de ta stack. Comprends les concepts plutôt que de réciter des définitions. Sois capable de dire "je ne sais pas, mais voici comment je chercherais".</p>
                             </div>
 
                             <div>
-                                <h4 class="font-semibold text-lg text-neutral-900 dark:text-white border-b border-neutral-200 dark:border-neutral-800 pb-2 mb-3">D. Études de cas & Architecture</h4>
+                                <h3 class="!mt-0 !mb-3 !text-lg !font-semibold text-neutral-900 dark:text-white border-b border-neutral-200 dark:border-neutral-800 pb-2">D. Études de cas & Architecture</h3>
                                 <p class="text-sm">On peut te demander d'imaginer l'architecture d'une app simple. Identifie le besoin métier, choisis la BDD, le front, l'API et justifie tes compromis techniques.</p>
                             </div>
                         </div>
@@ -325,26 +325,27 @@ Merci pour votre temps.</div>
                         
                         <div class="overflow-x-auto my-6 border border-neutral-200 dark:border-neutral-800 rounded-xl">
                             <table class="w-full text-sm text-left">
+                                <caption class="sr-only">Exemple de tableau de suivi des candidatures</caption>
                                 <thead class="text-xs text-neutral-500 uppercase bg-neutral-50 dark:bg-neutral-800/50">
                                     <tr>
-                                        <th class="px-4 py-3">Entreprise</th>
-                                        <th class="px-4 py-3">Poste</th>
-                                        <th class="px-4 py-3">Statut</th>
-                                        <th class="px-4 py-3">Prochaine action</th>
+                                        <th scope="col" class="px-4 py-3">Entreprise</th>
+                                        <th scope="col" class="px-4 py-3">Poste</th>
+                                        <th scope="col" class="px-4 py-3">Statut</th>
+                                        <th scope="col" class="px-4 py-3">Prochaine action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-neutral-200 dark:divide-neutral-800">
                                     <tr class="bg-white dark:bg-neutral-900">
-                                        <td class="px-4 py-3 font-medium">TechStart SA</td>
+                                        <th scope="row" class="px-4 py-3 text-left font-medium">Entreprise A</th>
                                         <td class="px-4 py-3">Dev React</td>
-                                        <td class="px-4 py-3"><span class="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded text-xs">Envoyé</span></td>
-                                        <td class="px-4 py-3 text-neutral-500">Relancer le 15/10</td>
+                                        <td class="px-4 py-3"><span class="px-2 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded text-xs">Candidature envoyée</span></td>
+                                        <td class="px-4 py-3 text-neutral-500">Noter une date de relance</td>
                                     </tr>
                                     <tr class="bg-white dark:bg-neutral-900">
-                                        <td class="px-4 py-3 font-medium">Agence Web XYZ</td>
-                                        <td class="px-4 py-3">Fullstack JS</td>
-                                        <td class="px-4 py-3"><span class="px-2 py-1 bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 rounded text-xs">Entretien prog.</span></td>
-                                        <td class="px-4 py-3 text-neutral-500">Préparer questions tech</td>
+                                        <th scope="row" class="px-4 py-3 text-left font-medium">Entreprise B</th>
+                                        <td class="px-4 py-3">Développeur full stack</td>
+                                        <td class="px-4 py-3"><span class="px-2 py-1 bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 rounded text-xs">Entretien programmé</span></td>
+                                        <td class="px-4 py-3 text-neutral-500">Préparer les questions techniques</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -368,7 +369,7 @@ Merci pour votre temps.</div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <!-- Conseil 1 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="text-red-500 font-bold mb-2">#1 Définir un positionnement clair</div>
+                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#1 Définir un positionnement clair</h3>
                                 <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Mieux vaut être identifiable sur une stack précise que se dire expert en tout.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
                                     <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Définis en une phrase ton poste et ta stack.
@@ -376,7 +377,7 @@ Merci pour votre temps.</div>
                             </div>
                             <!-- Conseil 2 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="text-red-500 font-bold mb-2">#2 Maîtriser les fondamentaux</div>
+                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#2 Maîtriser les fondamentaux</h3>
                                 <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Les frameworks passent, le JS, HTML/CSS, HTTP et SQL restent.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
                                     <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Révise l'asynchrone, la manipulation du DOM et les API.
@@ -384,23 +385,23 @@ Merci pour votre temps.</div>
                             </div>
                             <!-- Conseil 3 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="text-red-500 font-bold mb-2">#3 Soigner son GitHub</div>
+                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#3 Soigner son GitHub</h3>
                                 <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">C'est la preuve concrète de ta manière de coder et de documenter.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
-                                    <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Épingle 3 beaux projets avec des README explicatifs.
+                                    <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Épingle quelques projets représentatifs avec des README explicatifs.
                                 </div>
                             </div>
                             <!-- Conseil 4 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="text-red-500 font-bold mb-2">#4 Construire un vrai produit</div>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Une app complète déployée vaut mieux que 10 tutos inachevés.</p>
+                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#4 Construire un vrai produit</h3>
+                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Un projet abouti et déployé est plus parlant qu'une liste de tutoriels inachevés.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
-                                    <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Crée une app avec front, API, BDD, auth et gestion d'erreurs.
+                                    <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Choisis un périmètre adapté et documente tes choix techniques ainsi que la gestion des erreurs.
                                 </div>
                             </div>
                             <!-- Conseil 5 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="text-red-500 font-bold mb-2">#5 Avoir une exp. collaborative</div>
+                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#5 Avoir une exp. collaborative</h3>
                                 <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Savoir coder seul c'est bien, savoir travailler en équipe c'est mieux.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
                                     <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Contribue à l'open source, fais un hackathon.
@@ -408,7 +409,7 @@ Merci pour votre temps.</div>
                             </div>
                             <!-- Conseil 6 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="text-red-500 font-bold mb-2">#6 Personnaliser ses candidatures</div>
+                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#6 Personnaliser ses candidatures</h3>
                                 <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">La qualité de l'approche prime sur la quantité d'envois.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
                                     <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Explique pourquoi tes compétences répondent à LEUR besoin.
@@ -416,7 +417,7 @@ Merci pour votre temps.</div>
                             </div>
                             <!-- Conseil 7 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="text-red-500 font-bold mb-2">#7 Activer la cooptation</div>
+                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#7 Activer la cooptation</h3>
                                 <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Ton école, tes formateurs, tes anciens camarades ont un réseau.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
                                     <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Demande des mises en relation ciblées.
@@ -424,7 +425,7 @@ Merci pour votre temps.</div>
                             </div>
                             <!-- Conseil 8 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="text-red-500 font-bold mb-2">#8 Développer ses soft skills</div>
+                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#8 Développer ses soft skills</h3>
                                 <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Autonomie, communication et capacité à demander de l'aide.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
                                     <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Entraîne-toi à expliquer tes blocages clairement.
@@ -432,7 +433,7 @@ Merci pour votre temps.</div>
                             </div>
                             <!-- Conseil 9 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="text-red-500 font-bold mb-2">#9 Utiliser l'IA intelligemment</div>
+                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#9 Utiliser l'IA intelligemment</h3>
                                 <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Un assistant pour accélérer, pas une béquille qui code à ta place.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
                                     <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Comprends et teste chaque ligne suggérée par l'IA.
@@ -440,8 +441,8 @@ Merci pour votre temps.</div>
                             </div>
                             <!-- Conseil 10 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="text-red-500 font-bold mb-2">#10 Analyser et itérer</div>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Si tu as 0 réponse après 50 CV, c'est que l'approche doit changer.</p>
+                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#10 Analyser et itérer</h3>
+                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Si plusieurs candidatures restent sans réponse, revois ton CV, ton ciblage ou la façon de présenter tes projets.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
                                     <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Ajuste ton CV ou ta cible en fonction des retours (ou non-retours).
                                 </div>
@@ -488,7 +489,7 @@ Merci pour votre temps.</div>
                         <!-- Composant Checklist -->
                         <div class="no-print">
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-sm font-semibold text-neutral-500 uppercase tracking-wider" id="checklist-progress-text">0/14 étapes terminées</span>
+                                <span class="text-sm font-semibold text-neutral-500 uppercase tracking-wider" id="checklist-progress-text" aria-live="polite" aria-atomic="true">0/14 étapes terminées</span>
                                 <button id="reset-checklist" class="text-xs text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 underline decoration-red-200 dark:decoration-red-900/50 underline-offset-4">Réinitialiser</button>
                             </div>
                             <div class="w-full bg-neutral-200 dark:bg-neutral-700 h-2 rounded-full mb-6 overflow-hidden">
@@ -596,7 +597,7 @@ Merci pour votre temps.</div>
     </footer>
 
     <!-- Feedback visuel (Toast) -->
-    <div id="toast" class="fixed bottom-4 right-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-4 py-3 rounded-lg shadow-lg text-sm font-medium transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-2">
+    <div id="toast" role="status" aria-live="polite" aria-atomic="true" class="fixed bottom-4 right-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-4 py-3 rounded-lg shadow-lg text-sm font-medium transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-2">
         <i class="ph-fill ph-check-circle text-red-400 dark:text-red-600 text-lg"></i>
         <span id="toast-message">Action réussie</span>
     </div>

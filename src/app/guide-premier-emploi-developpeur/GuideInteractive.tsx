@@ -35,11 +35,14 @@ export default function GuideInteractive({ html }: { html: string }) {
     };
 
     const updateChecklist = () => {
-      const checkedCount = checkboxes.filter((checkbox) => checkbox.checked)
-        .length;
+      const checkedCount = checkboxes.filter(
+        (checkbox) => checkbox.checked,
+      ).length;
 
       checkboxes.forEach((checkbox) => {
-        checkbox.closest("label")?.classList.toggle("checked", checkbox.checked);
+        checkbox
+          .closest("label")
+          ?.classList.toggle("checked", checkbox.checked);
       });
 
       if (progressText) {
@@ -95,7 +98,8 @@ export default function GuideInteractive({ html }: { html: string }) {
     const updateScrollState = () => {
       const scrollableHeight =
         document.documentElement.scrollHeight - window.innerHeight;
-      const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+      const progress =
+        scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
 
       if (progressBar) {
         progressBar.style.transform = `scaleX(${Math.min(progress, 1)})`;
@@ -181,7 +185,9 @@ export default function GuideInteractive({ html }: { html: string }) {
       }
 
       if (target.closest("#reset-checklist")) {
-        if (!window.confirm("Veux-tu vraiment réinitialiser ta progression ?")) {
+        if (
+          !window.confirm("Veux-tu vraiment réinitialiser ta progression ?")
+        ) {
           return;
         }
         window.localStorage.removeItem(checklistStorageKey);

@@ -23,7 +23,10 @@ export default function middleware(request: NextRequest) {
   }
 
   const pathname = request.nextUrl.pathname.replace(/\/+$/, "") || "/";
-  if (pathname === "/guide-premier-emploi-developpeur") {
+  if (
+    pathname === "/guide-premier-emploi-developpeur" ||
+    pathname.startsWith("/guide-premier-emploi-developpeur/")
+  ) {
     return NextResponse.next();
   }
 

@@ -20,6 +20,12 @@
     "title": "Envie de travailler ensemble ?",
     "description": "Mon objectif : livrer des expériences web rapides, claires et robustes, qui servent vraiment vos enjeux business. Discutons de votre prochain projet."
   },
+  "guideResource": {
+    "eyebrow": "Ressource gratuite",
+    "title": "À la recherche de votre premier emploi de développeur ?",
+    "description": "J’ai rassemblé des conseils concrets sur le CV, le portfolio, le réseau et les entretiens dans un guide pratique.",
+    "link": "Lire le guide (en français)"
+  },
   "skills": {
     "title": "Compétences",
     "intro": "Une palette de compétences variées et solides pour vos projets.",
