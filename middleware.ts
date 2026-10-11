@@ -22,6 +22,11 @@ export default function middleware(request: NextRequest) {
     );
   }
 
+  const pathname = request.nextUrl.pathname.replace(/\/+$/, "") || "/";
+  if (pathname === "/guide-premier-emploi-developpeur") {
+    return NextResponse.next();
+  }
+
   return intlMiddleware(request);
 }
 
