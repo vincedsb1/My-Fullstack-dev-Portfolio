@@ -67,7 +67,9 @@
 
 .guide-page .toc-link {
   border-left: 2px solid transparent;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .guide-page .toc-link.active {
@@ -93,7 +95,9 @@
   border-radius: 0.375rem;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .dark .guide-page .checkbox-custom {
@@ -141,6 +145,119 @@
 .guide-page input:focus-visible {
   outline: 2px solid #dc2626;
   outline-offset: 3px;
+}
+
+/* Phosphor Icons Web 2.1.2: local subsets containing only the guide glyphs. */
+@font-face {
+  font-family: "Phosphor";
+  src: url("/guide-icons/phosphor-regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Phosphor-Bold";
+  src: url("/guide-icons/phosphor-bold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Phosphor-Fill";
+  src: url("/guide-icons/phosphor-fill.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.guide-page .ph,
+.guide-page .ph-bold,
+.guide-page .ph-fill {
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  letter-spacing: 0;
+  font-feature-settings: "liga";
+  font-variant-ligatures: discretionary-ligatures;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.guide-page .ph {
+  font-family: "Phosphor" !important;
+}
+
+.guide-page .ph-bold {
+  font-family: "Phosphor-Bold" !important;
+}
+
+.guide-page .ph-fill {
+  font-family: "Phosphor-Fill" !important;
+}
+
+.guide-page .ph.ph-copy::before {
+  content: "\e1ca";
+}
+
+.guide-page .ph.ph-download-simple::before {
+  content: "\e20c";
+}
+
+.guide-page .ph.ph-moon::before {
+  content: "\e330";
+}
+
+.guide-page .ph.ph-printer::before {
+  content: "\e3dc";
+}
+
+.guide-page .ph.ph-share-network::before {
+  content: "\e408";
+}
+
+.guide-page .ph.ph-sun::before {
+  content: "\e472";
+}
+
+.guide-page .ph-bold.ph-arrow-right::before {
+  content: "\e06c";
+}
+
+.guide-page .ph-bold.ph-arrow-up::before {
+  content: "\e08e";
+}
+
+.guide-page .ph-bold.ph-check::before {
+  content: "\e182";
+}
+
+.guide-page .ph-fill.ph-book-open::before {
+  content: "\e0e6";
+}
+
+.guide-page .ph-fill.ph-browser::before {
+  content: "\e0f4";
+}
+
+.guide-page .ph-fill.ph-check-circle::before {
+  content: "\e184";
+}
+
+.guide-page .ph-fill.ph-file-text::before {
+  content: "\e23a";
+}
+
+.guide-page .ph-fill.ph-linkedin-logo::before {
+  content: "\e2ee";
+}
+
+.guide-page .ph-fill.ph-x-circle::before {
+  content: "\e4f8";
 }
 
 @media (min-width: 768px) {
