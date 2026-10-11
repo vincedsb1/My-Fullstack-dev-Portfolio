@@ -394,7 +394,7 @@ Merci pour votre temps.</div>
                             <!-- Conseil 4 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
                                 <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#4 Construire un vrai produit</h3>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Un projet abouti et déployé est plus parlant qu'une liste de tutoriels inachevés.</p>
+                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Un projet abouti comme <a href="/fr#projectsContainer" class="text-red-600 underline underline-offset-2 hover:text-red-500 dark:text-red-400">Smartflow, présenté dans mon portfolio</a>, avec conception, architecture, choix de stack, maquettes et tests, est plus parlant qu'une liste de tutoriels inachevés.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
                                     <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Choisis un périmètre adapté et documente tes choix techniques ainsi que la gestion des erreurs.
                                 </div>

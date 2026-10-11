@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 
 import GuideInteractive from "./GuideInteractive";
 import { guideContent } from "./guideContent";
@@ -64,15 +63,6 @@ export default function GuidePage() {
         }}
       />
       <GuideInteractive html={guideContent} />
-      <Script id="phosphor-icon-styles" strategy="afterInteractive">
-        {`["regular", "bold", "fill"].forEach((weight) => {
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.type = "text/css";
-  link.href = "https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/" + weight + "/style.css";
-  document.head.appendChild(link);
-});`}
-      </Script>
     </div>
   );
 }
