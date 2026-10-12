@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Inter } from "next/font/google";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { NextIntlClientProvider } from "next-intl";
+import Script from "next/script";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
@@ -142,8 +143,16 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <head>
+        <Script
+          id="theme-initializer"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html:
+              '(()=>{let storedTheme;try{storedTheme=localStorage.getItem("theme");}catch{}const theme=storedTheme==="light"||storedTheme==="dark"?storedTheme:window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";const root=document.documentElement;root.classList.remove("light","dark");root.classList.add(theme);root.style.colorScheme=theme;})();',
+          }}
+        />
         <meta
           name="google-site-verification"
           content="PW82MjVgB5OXOfa6RcjIX06LfN3lZ1arROcD41Ao1z4"

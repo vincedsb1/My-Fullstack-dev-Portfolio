@@ -30,7 +30,6 @@ export function createGuideSocialImage() {
             flexDirection: "column",
             justifyContent: "space-between",
             width: 770,
-            zIndex: 1,
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>

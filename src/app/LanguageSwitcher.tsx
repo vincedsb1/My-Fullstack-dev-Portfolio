@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useLocale } from "next-intl";
 import { Globe } from "lucide-react";
 import { locales } from "../../i18n.config.ts";
+import { useClientMounted } from "./useClientMounted";
 
 type Locale = (typeof locales)[number];
 
@@ -12,11 +13,7 @@ function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale() as Locale;
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useClientMounted();
 
   const handleLanguageChange = (newLocale: Locale) => {
     if (typeof window !== "undefined") {

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import Image from "next/image";
+import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import {
   Mail,
@@ -18,7 +19,7 @@ import pp from "../../../public/pp.jpg";
 const linkClass =
   "flex justify-center h-10 3xs:h-12 items-center bg-neutral-600 dark:bg-neutral-300 rounded-xl px-5 py-3 mb-4 text-neutral-100 dark:text-neutral-900 cursor-pointer mr-5 hover:bg-neutral-500 dark:hover:bg-neutral-400 transition-all";
 
-function Header() {
+function Header({ blogLocale = "fr" }: { blogLocale?: string }) {
   const t = useTranslations("header");
   const tc = useTranslations("common");
   const locale = useLocale();
@@ -184,6 +185,14 @@ function Header() {
         >
           <Briefcase className="mr-2" /> {tc("malt")}
         </a>
+        <Link
+          id="blog"
+          href={`/${blogLocale}/blog`}
+          className={linkClass}
+          data-aos="fade-up"
+        >
+          {locale === "en" && blogLocale === "fr" ? "Blog (in French)" : "Blog"}
+        </Link>
       </div>
     </div>
   );

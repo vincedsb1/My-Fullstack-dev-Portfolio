@@ -4,23 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **Next.js 16 personal portfolio website** built with **TypeScript** and **Tailwind CSS**. It's a modern, responsive single-page application showcasing professional work, skills, and experience with dark mode support and scroll-triggered animations.
+This is a **Next.js 16 personal portfolio website** built with **TypeScript** and **Tailwind CSS**. It includes a responsive portfolio, French and English localized routes, dark mode, scroll-triggered animations, and a statically generated MDX blog.
 
 ## Technology Stack
 
-- **Framework:** Next.js 16.0.1 (App Router)
+- **Framework:** Next.js 16 (App Router)
+- **Content:** Local MDX compiled as static articles with `@next/mdx`
 - **Language:** TypeScript 5
 - **Styling:** Tailwind CSS 3.3.0 + PostCSS
-- **UI Libraries:** React 18, Lucide React, FontAwesome
+- **UI Libraries:** React 18, next-intl 4, Lucide React, FontAwesome
 - **Animations:** AOS (Animate on Scroll)
 - **Theme Management:** next-themes
-- **Linting:** ESLint (Airbnb preset) + Prettier
+- **Linting:** ESLint 9 flat config, Next.js rules, and Prettier
 - **Deployment:** Vercel (configured via .vercel/)
 
 ## Common Development Commands
 
 ```bash
-# Start development server (localhost:3000)
+# Start development server (localhost:3006; validates blog content first)
 npm run dev
 
 # Build for production
@@ -52,6 +53,10 @@ src/app/
 **Key Pattern:** File-based routing using Next.js App Router. Nested pages are defined by directory structure (e.g., `integration/page.tsx` → `/integration` route).
 
 ## Architecture Overview
+
+## Blog articles
+
+Before creating or editing an article, read `docs/blog/ARCHITECTURE.md`, `docs/blog/CREER_UN_ARTICLE.md`, and `docs/blog/PROMPT_NOUVEL_ARTICLE.md`. Add content under `src/content/blog/<locale>/<slug>.mdx`, run `npm run blog:validate`, and verify static output with `npm run build`. Articles publish by default; do not invent dates, translations, sources, or experience.
 
 ### 1. **App Router & Page Structure**
 
@@ -187,7 +192,7 @@ The portfolio has been enhanced with multi-language support using **next-intl** 
 ### File Structure
 
 ```
-├── middleware.ts                # Locale detection and routing
+├── proxy.ts                     # Locale detection and routing (Next.js 16)
 ├── i18n.config.ts             # Locale configuration
 ├── i18n.ts                      # next-intl configuration
 ├── src/i18n/
@@ -271,7 +276,7 @@ function MyComponent() {
 
 ### Configuration Files
 
-**middleware.ts:**
+**proxy.ts:**
 
 - Intercepts all requests
 - Detects user locale preference
@@ -302,7 +307,7 @@ function MyComponent() {
 **"Couldn't find next-intl config file" error:**
 
 - Ensure `i18n.ts` exists in project root
-- Check that middleware.ts is properly configured
+- Check that proxy.ts is properly configured
 - Verify route structure uses `[locale]` parameter
 
 **Language switch not working:**

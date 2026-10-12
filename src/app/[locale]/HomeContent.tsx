@@ -7,14 +7,19 @@ import LanguageSwitcher from "../LanguageSwitcher.tsx";
 import ThemeSwitcher from "../ThemeSwitcher.tsx";
 import FAQ from "../components/FAQ.tsx";
 import Footer from "../components/Footer.tsx";
-import GuideResource from "./GuideResource.tsx";
+import BlogResource, { type BlogHomeArticle } from "./BlogResource.tsx";
 import Header from "../components/Header.tsx";
 import MenuButton from "../components/MenuButton.tsx";
 import Projects3 from "../components/Projects3.tsx";
 import Skills from "../components/Skills.tsx";
 import Timeline from "../components/Timeline.tsx";
 
-export default function Home() {
+export default function Home({
+  blogArticle,
+}: {
+  blogArticle: BlogHomeArticle | null;
+}) {
+  const blogLocale = blogArticle?.locale ?? "fr";
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -50,7 +55,10 @@ export default function Home() {
 
   return (
     <main className="w-full bg-neutral-100 dark:bg-neutral-900 flex flex-col items-center">
-      <div id="menuContainer" className="relative w-full flex justify-end">
+      <div
+        id="menuContainer"
+        className="relative flex w-full items-center justify-end px-4"
+      >
         <div ref={buttonRef} className="relative">
           <MenuButton onMenuClick={toggleMenu} />
           {showMenu && (
@@ -69,7 +77,7 @@ export default function Home() {
           id="headerContainer"
           className="w-full max-w-5xl flex flex-col items-center mb-16 sm:mb-32"
         >
-          <Header />
+          <Header blogLocale={blogLocale} />
         </div>
         <div
           id="skillsContainer"
@@ -84,7 +92,7 @@ export default function Home() {
           <Projects3 />
         </div>
         <div className="mb-16 flex w-full max-w-5xl flex-col items-center px-4 sm:mb-32 lg:px-0">
-          <GuideResource />
+          <BlogResource article={blogArticle} />
         </div>
         <div
           id="timelineContainer"

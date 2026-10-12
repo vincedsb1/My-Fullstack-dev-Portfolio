@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 
 import HomeContent from "./HomeContent.tsx";
+import {
+  getArticleReadingTime,
+  getArticleSocialImagePath,
+  getPublishedArticles,
+} from "@/lib/blog/articles";
 
 export async function generateMetadata({
   params,
@@ -26,6 +31,28 @@ export async function generateMetadata({
   };
 }
 
-export default function Page() {
-  return <HomeContent />;
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale: rawLocale } = await params;
+  const locale = rawLocale === "en" ? "en" : "fr";
+  const article =
+    getPublishedArticles(locale)[0] ?? getPublishedArticles("fr")[0];
+  const blogArticle = article
+    ? {
+        locale: article.metadata.locale,
+        slug: article.metadata.slug,
+        title: article.metadata.title,
+        excerpt: article.metadata.excerpt,
+        category: article.metadata.category,
+        publishedAt: article.metadata.publishedAt,
+        image:
+          article.metadata.cover ?? getArticleSocialImagePath(article.metadata),
+        readingMinutes: getArticleReadingTime(article),
+      }
+    : null;
+
+  return <HomeContent blogArticle={blogArticle} />;
 }

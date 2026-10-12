@@ -3,6 +3,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.guide-page .text-neutral-400,
+.guide-page .text-neutral-500 {
+  color: #525252;
+}
+
+.dark .guide-page .text-neutral-400,
+.dark .guide-page .text-neutral-500,
+.dark .guide-page .text-neutral-600 {
+  color: #d4d4d4;
+}
+
+.dark .guide-page .toc-link:not(.active) {
+  color: #d4d4d4;
+}
+
 .guide-page #reading-progress {
   transform-origin: left;
   transform: scaleX(0);
@@ -79,8 +94,16 @@
 }
 
 .dark .guide-page .toc-link.active {
-  color: #f87171;
-  border-left-color: #f87171;
+  color: #fca5a5;
+  border-left-color: #fca5a5;
+}
+
+.guide-page .guide-category {
+  color: #b91c1c;
+}
+
+.dark .guide-page .guide-category {
+  color: #fca5a5;
 }
 
 .guide-page .checkbox-custom {
@@ -91,7 +114,7 @@
   appearance: none;
   align-items: center;
   justify-content: center;
-  border: 2px solid #d4d4d4;
+  border: 2px solid #737373;
   border-radius: 0.375rem;
   background-color: transparent;
   cursor: pointer;
@@ -101,7 +124,7 @@
 }
 
 .dark .guide-page .checkbox-custom {
-  border-color: #525252;
+  border-color: #a3a3a3;
 }
 
 .guide-page .checkbox-custom:checked {
@@ -119,12 +142,12 @@
 }
 
 .guide-page .checklist-item.checked span {
-  color: #a3a3a3;
+  color: #525252;
   text-decoration: line-through;
 }
 
 .dark .guide-page .checklist-item.checked span {
-  color: #525252;
+  color: #d4d4d4;
 }
 
 .guide-page .no-scrollbar {
@@ -145,6 +168,10 @@
 .guide-page input:focus-visible {
   outline: 2px solid #dc2626;
   outline-offset: 3px;
+}
+
+.guide-page .guide-toc summary::marker {
+  color: #dc2626;
 }
 
 /* Phosphor Icons Web 2.1.2: local subsets containing only the guide glyphs. */
@@ -296,7 +323,8 @@
   .guide-page footer,
   .guide-page .checklist-controls,
   .guide-page button,
-  .guide-page .toc-sidebar {
+  .guide-page .toc-sidebar,
+  .guide-page .guide-toc {
     display: none !important;
   }
 
