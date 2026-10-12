@@ -11,6 +11,7 @@ import {
   Linkedin,
   Github,
   Twitter,
+  BookOpen,
   Briefcase,
   DownloadCloud,
 } from "lucide-react";
@@ -191,6 +192,7 @@ function Header({ blogLocale = "fr" }: { blogLocale?: string }) {
           className={linkClass}
           data-aos="fade-up"
         >
+          <BookOpen className="mr-2" aria-hidden="true" />
           {locale === "en" && blogLocale === "fr" ? "Blog (in French)" : "Blog"}
         </Link>
       </div>
