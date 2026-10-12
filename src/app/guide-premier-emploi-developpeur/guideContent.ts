@@ -8,11 +8,11 @@ export const guideContent = String.raw`
     <header class="sticky top-0 z-40 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 no-print">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <a href="/fr" class="font-semibold text-lg tracking-tight hover:text-red-600 dark:hover:text-red-400 transition-colors" aria-label="Retour à l'accueil du portfolio">
+                <a href="/fr/blog" class="font-semibold text-lg tracking-tight hover:text-red-600 dark:hover:text-red-400 transition-colors" aria-label="Retour au blog">
                     Vincent DESBROSSES
                 </a>
                 <span class="hidden sm:inline-block px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 text-xs font-medium rounded-full">
-                    Guide
+                    Blog
                 </span>
             </div>
             
@@ -33,12 +33,24 @@ export const guideContent = String.raw`
         </div>
     </header>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex flex-col md:flex-row gap-12 items-start relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 relative">
         
-        <!-- Sommaire Latéral (Desktop) -->
-        <aside class="toc-sidebar hidden md:block w-64 shrink-0 sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto no-scrollbar">
-            <nav aria-label="Sommaire">
-                <p class="text-sm font-semibold text-neutral-900 dark:text-white mb-4 uppercase tracking-wider">Sommaire</p>
+        <main class="w-full min-w-0">
+            <article class="max-w-[700px] mx-auto">
+                <nav aria-label="{{ARTICLE_BREADCRUMB_ARIA}}" class="mb-6 text-sm text-neutral-500 dark:text-neutral-400">
+                    <ol class="flex flex-wrap items-center gap-2">
+                        <li><a class="underline-offset-4 hover:text-red-600 hover:underline dark:hover:text-red-400" href="{{ARTICLE_HOME_URL}}">Portfolio</a></li>
+                        <li aria-hidden="true">/</li>
+                        <li><a class="underline-offset-4 hover:text-red-600 hover:underline dark:hover:text-red-400" href="{{ARTICLE_BLOG_URL}}">Blog</a></li>
+                        <li aria-hidden="true">/</li>
+                        <li aria-current="page" class="min-w-0 truncate text-neutral-700 dark:text-neutral-200"><span>{{ARTICLE_TITLE}}</span></li>
+                    </ol>
+                </nav>
+                <details class="guide-toc mb-10 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+                    <summary class="cursor-pointer px-5 py-4 font-semibold text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-red-600 dark:text-white">
+                        Sommaire du guide
+                    </summary>
+                    <nav aria-label="Sommaire" class="border-t border-neutral-200 px-5 py-4 dark:border-neutral-800">
                 <ul class="space-y-3 text-sm text-neutral-600 dark:text-neutral-400" id="toc-list">
                     <li><a href="#les-trois-piliers" class="toc-link block pl-3 hover:text-neutral-900 dark:hover:text-white">01. Les trois piliers</a></li>
                     <li><a href="#developper-reseau" class="toc-link block pl-3 hover:text-neutral-900 dark:hover:text-white">02. Développer son réseau</a></li>
@@ -51,25 +63,22 @@ export const guideContent = String.raw`
                     <li><a href="#erreurs-a-eviter" class="toc-link block pl-3 hover:text-neutral-900 dark:hover:text-white">09. Les erreurs à éviter</a></li>
                     <li><a href="#checklist-finale" class="toc-link block pl-3 hover:text-neutral-900 dark:hover:text-white">10. Checklist finale</a></li>
                 </ul>
-            </nav>
-        </aside>
-
-        <main class="flex-1 w-full min-w-0">
-            <article class="max-w-[700px] mx-auto xl:mx-0">
+                    </nav>
+                </details>
                 
                 <!-- Hero Éditorial -->
                 <header class="mb-16">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs font-semibold uppercase tracking-wider mb-6">
+                    <div class="guide-category inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-xs font-semibold uppercase tracking-wider mb-6">
                         <i class="ph-fill ph-book-open"></i>
-                        Guide gratuit • Développement Web
+                        {{ARTICLE_CATEGORY}} • Développement Web
                     </div>
                     
                     <h1 class="text-4xl md:text-5xl font-extrabold text-neutral-900 dark:text-white tracking-tight leading-tight mb-6">
-                        Comment décrocher son premier emploi de développeur en 2026 ?
+                        {{ARTICLE_TITLE}}
                     </h1>
                     
                     <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-300 leading-relaxed mb-8">
-                        CV, LinkedIn, portfolio, candidatures, réseau, projets et entretiens : toutes les étapes pour se démarquer et augmenter ses chances de décrocher un premier poste dans le développement.
+                        {{ARTICLE_EXCERPT}}
                     </p>
 
                     <div class="prose prose-zinc dark:prose-invert max-w-none text-neutral-700 dark:text-neutral-400 mb-8">
@@ -80,19 +89,21 @@ export const guideContent = String.raw`
                     <div class="flex items-center gap-4 mb-10 pt-6 border-t border-neutral-200 dark:border-neutral-800">
                         <div class="w-12 h-12 rounded-full bg-neutral-200 dark:bg-neutral-700 overflow-hidden flex-shrink-0">
                             <!-- Placeholder pour la photo de l'auteur. Pas de fausse photo générée. -->
-                            <div class="w-full h-full flex items-center justify-center text-neutral-500 font-bold">VD</div>
+                            <div class="w-full h-full flex items-center justify-center text-neutral-700 dark:text-neutral-200 font-bold">VD</div>
                         </div>
                         <div>
                             <div class="font-medium text-neutral-900 dark:text-white">Vincent DESBROSSES</div>
                             <div class="text-sm text-neutral-500 dark:text-neutral-400">Développeur Fullstack</div>
                         </div>
-                        <div class="ml-auto text-xs text-neutral-400 dark:text-neutral-500 text-right">
-                            Mis à jour le <br> 11 octobre 2026
+                        <div class="ml-auto text-xs text-neutral-500 dark:text-neutral-400 text-right">
+                            Publié le <time dateTime="{{ARTICLE_PUBLISHED_ISO}}">{{ARTICLE_PUBLISHED_AT}}</time><br>
+                            <span class="{{ARTICLE_UPDATED_CLASS}}">Mis à jour le <time dateTime="{{ARTICLE_UPDATED_ISO}}">{{ARTICLE_UPDATED_AT}}</time><br></span>
+                            {{ARTICLE_READING_TIME}} min de lecture
                         </div>
                     </div>
 
                     <div class="flex flex-wrap gap-4 no-print">
-                        <a href="#les-trois-piliers" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 transition-colors shadow-sm">
+                        <a href="#les-trois-piliers" data-guide-start-reading class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 transition-colors shadow-sm">
                             Commencer la lecture
                         </a>
                         <button data-guide-print class="inline-flex items-center justify-center px-6 py-3 border border-neutral-300 dark:border-neutral-700 text-base font-medium rounded-lg text-neutral-700 dark:text-neutral-300 bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 transition-colors shadow-sm">
@@ -106,12 +117,12 @@ export const guideContent = String.raw`
                     
                     <section id="les-trois-piliers" class="scroll-mt-24 mb-16">
                         <div class="flex items-baseline gap-4 mb-8">
-                            <span class="text-3xl font-light text-neutral-300 dark:text-neutral-700">01</span>
+                            <span class="text-3xl font-light text-neutral-600 dark:text-neutral-300">01</span>
                             <h2 class="!mt-0 !mb-0 text-3xl font-bold">Construire les trois piliers de sa crédibilité</h2>
                         </div>
                         
-                        <p class="text-lg">Avant de multiplier les candidatures, il faut disposer de trois supports professionnels cohérents, clairs et convaincants : un CV, un profil LinkedIn et un portfolio.</p>
-                        <p>L'objectif n'est pas la perfection absolue. Il est de donner rapidement confiance et de permettre à un recruteur de comprendre ce que tu sais faire.</p>
+                        <p class="text-lg">Avant de multiplier les candidatures, prépare trois supports à jour : un CV, un profil LinkedIn et un portfolio.</p>
+                        <p>Un recruteur doit pouvoir repérer le poste que tu vises et trouver des exemples concrets de ce que tu sais faire.</p>
 
                         <!-- Carte Pilier 1 -->
                         <div class="mt-8 p-6 md:p-8 bg-neutral-50 dark:bg-neutral-800 rounded-2xl border border-neutral-100 dark:border-neutral-800">
@@ -119,21 +130,21 @@ export const guideContent = String.raw`
                                 <div class="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                                     <i class="ph-fill ph-file-text text-xl"></i>
                                 </div>
-                                <h3 class="!mt-0 !mb-0 text-xl font-bold">Un CV clair, professionnel et irréprochable</h3>
+                                <h3 class="!mt-0 !mb-0 text-xl font-bold">Un CV lisible, adapté au poste visé</h3>
                             </div>
                             
                             <ul class="space-y-2 mt-4">
                                 <li><strong>Mise en page :</strong> Choisis un modèle sobre et aéré, avec une structure de texte lisible. Évite les designs trop complexes ou uniquement graphiques.</li>
-                                <li><strong>Clarté :</strong> Mets immédiatement en avant le poste recherché et les principales technologies maîtrisées. Élimine les informations inutiles et les descriptions interminables.</li>
+                                <li><strong>Clarté :</strong> Rédige des descriptions courtes, centrées sur tes missions et réalisations. Écarte les détails sans rapport avec le poste.</li>
                                 <li><strong>Preuves :</strong> Donne des exemples concrets de réalisations.</li>
-                                <li><strong>Qualité :</strong> Élimine toute faute d'orthographe. Fais relire ton CV et utilise l'IA pour challenger la clarté de tes formulations.</li>
+                                <li><strong>Relecture :</strong> Fais relire ton CV et demande à une IA de relever les formulations ambiguës. Vérifie chaque suggestion avant de la garder.</li>
                                 <li><strong>Format :</strong> Prévois une version PDF propre et légère, avec une structure lisible par les logiciels de recrutement (ATS).</li>
                             </ul>
                             
                             <div class="mt-4 p-4 bg-blue-50/50 dark:bg-blue-900/10 rounded-xl border border-blue-100 dark:border-blue-800/30">
                                 <p class="text-sm !mb-0 text-blue-900 dark:text-blue-200"><strong>Note sur la photo :</strong> Elle n'est pas obligatoire. Si tu en utilises une, choisis un portrait professionnel bien éclairé et cadré.</p>
                             </div>
-                            <p class="mt-4 font-medium text-neutral-900 dark:text-neutral-100 border-l-4 border-red-500 pl-4">Un bon CV doit permettre de comprendre ton profil en quelques secondes.</p>
+                            <p class="mt-4 font-medium text-neutral-900 dark:text-neutral-100 border-l-4 border-red-500 pl-4">Place le poste visé et les technologies principales près du haut de la page.</p>
                         </div>
 
                         <!-- Carte Pilier 2 -->
@@ -146,7 +157,7 @@ export const guideContent = String.raw`
                             </div>
                             
                             <ul class="space-y-2 mt-4">
-                                <li><strong>Titre explicite :</strong> Ne sois pas générique. Précise le poste recherché et tes technos.</li>
+                                <li><strong>Titre explicite :</strong> Indique le poste recherché et les technologies que tu utilises.</li>
                                 <li><strong>Complétude :</strong> Détaille tes expériences pertinentes, tes projets et ajoute tes compétences techniques. Affiche tes liens GitHub et Portfolio.</li>
                                 <li><strong>Clarté :</strong> Explique la valeur que tu apportes, évite les formulations vagues et les listes de buzzwords.</li>
                                 <li><strong>Preuve sociale :</strong> Demande des recommandations à d'anciens collègues ou formateurs.</li>
@@ -156,7 +167,7 @@ export const guideContent = String.raw`
                                 <div class="text-xs text-neutral-500 mb-1 uppercase tracking-wider font-semibold">Exemple de titre efficace</div>
                                 <code class="text-sm font-medium text-neutral-800 dark:text-neutral-200 font-sans">Développeur Fullstack Junior | React • TypeScript • Node.js | Recherche CDI</code>
                             </div>
-                            <p class="mt-4 font-medium text-neutral-900 dark:text-neutral-100 border-l-4 border-red-500 pl-4">Un recruteur doit immédiatement comprendre qui tu es, ce que tu maîtrises et ce que tu recherches.</p>
+                            <p class="mt-4 font-medium text-neutral-900 dark:text-neutral-100 border-l-4 border-red-500 pl-4">Garde le même intitulé de poste et les mêmes compétences clés sur ton CV et LinkedIn.</p>
                         </div>
 
                         <!-- Carte Pilier 3 -->
@@ -172,21 +183,21 @@ export const guideContent = String.raw`
                                 <li><strong>Sélection :</strong> Présente ta spécialisation et sélectionne tes projets les plus pertinents. Montre des applications réelles et fonctionnelles.</li>
                                 <li><strong>Contexte :</strong> Pour chaque projet, explique le problème résolu, les technologies utilisées et justifie tes choix techniques.</li>
                                 <li><strong>Accès :</strong> Donne un accès facile aux démonstrations en ligne et aux dépôts GitHub.</li>
-                                <li><strong>Qualité technique :</strong> Soigne le responsive, l'accessibilité, les performances. Vérifie tous les liens et supprime les bugs.</li>
+                                <li><strong>Qualité technique :</strong> Teste l'affichage sur mobile, l'accessibilité au clavier et les performances. Vérifie les liens et corrige les erreurs repérées.</li>
                             </ul>
-                            <p class="mt-4 font-medium text-neutral-900 dark:text-neutral-100 border-l-4 border-red-500 pl-4">Ton portfolio doit rapidement donner une impression de sérieux, de qualité et de fiabilité.</p>
+                            <p class="mt-4 font-medium text-neutral-900 dark:text-neutral-100 border-l-4 border-red-500 pl-4">Pour un projet collectif, distingue clairement ta contribution de celle de l'équipe.</p>
                         </div>
 
-                        <p class="mt-8 italic text-neutral-500 dark:text-neutral-400">Ces trois supports ne garantissent pas un emploi, mais ils constituent une base crédible indispensable à partir de laquelle développer ta recherche.</p>
+                        <p class="mt-8 italic text-neutral-500 dark:text-neutral-400">Ces supports ne garantissent pas un emploi. Ils donnent au recruteur des exemples concrets pour examiner ton profil et les projets que tu peux présenter.</p>
                     </section>
 
                     <section id="developper-reseau" class="scroll-mt-24 mb-16">
                         <div class="flex items-baseline gap-4 mb-8">
-                            <span class="text-3xl font-light text-neutral-300 dark:text-neutral-700">02</span>
+                            <span class="text-3xl font-light text-neutral-600 dark:text-neutral-300">02</span>
                             <h2 class="!mt-0 !mb-0 text-3xl font-bold">Développer activement son réseau</h2>
                         </div>
 
-                        <p>Se contenter de répondre aux annonces revient à dépendre exclusivement des opportunités déjà visibles. Construire son réseau permet de découvrir des besoins cachés, d'obtenir des conseils et de créer de nouvelles occasions.</p>
+                        <p>Les annonces ne sont pas le seul point d'entrée. En échangeant avec des personnes du métier, tu peux demander conseil et parfois apprendre qu'une équipe prépare un recrutement.</p>
 
                         <h3>Identifier les bonnes personnes</h3>
                         <p>Ne te limite pas aux recruteurs. Cherche à entrer en contact avec ceux qui comprennent ton métier et ont des besoins :</p>
@@ -198,10 +209,10 @@ export const guideContent = String.raw`
                             <span class="px-3 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-full text-sm">Fondateurs</span>
                             <span class="px-3 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-full text-sm">Product Managers</span>
                         </div>
-                        <p>Envoie régulièrement quelques invitations ciblées, sans rechercher uniquement le volume. Construis de vraies relations dans la durée.</p>
+                        <p>Envoie quelques invitations ciblées et personnalise chaque message.</p>
 
                         <h3>Contacter directement les décisionnaires</h3>
-                        <p>Prends l'habitude d'écrire. Sois court, précis, explique ton profil et montre un intérêt réel pour l'entreprise. Ne demande pas systématiquement un poste dès le premier message ; demande parfois un conseil ou propose ton aide.</p>
+                        <p>Écris un message bref qui explique ton profil et ce qui t'intéresse dans l'entreprise. Pour un premier échange, tu peux aussi demander un conseil ou proposer ton aide, plutôt que d'ouvrir directement par une demande de poste.</p>
 
                         <!-- Bloc de code copiable -->
                         <div class="mt-6 border border-neutral-200 dark:border-neutral-700 rounded-xl overflow-hidden bg-white dark:bg-neutral-800">
@@ -226,7 +237,7 @@ Merci pour votre temps.</div>
 
                     <section id="trouver-opportunites" class="scroll-mt-24 mb-16">
                         <div class="flex items-baseline gap-4 mb-8">
-                            <span class="text-3xl font-light text-neutral-300 dark:text-neutral-700">03</span>
+                            <span class="text-3xl font-light text-neutral-600 dark:text-neutral-300">03</span>
                             <h2 class="!mt-0 !mb-0 text-3xl font-bold">Multiplier les opportunités</h2>
                         </div>
                         <p>La recherche demande de la régularité. Combine réponses aux offres, candidatures spontanées et prises de contact directes.</p>
@@ -245,7 +256,7 @@ Merci pour votre temps.</div>
 
                     <section id="creer-contenu" class="scroll-mt-24 mb-16">
                         <div class="flex items-baseline gap-4 mb-8">
-                            <span class="text-3xl font-light text-neutral-300 dark:text-neutral-700">04</span>
+                            <span class="text-3xl font-light text-neutral-600 dark:text-neutral-300">04</span>
                             <h2 class="!mt-0 !mb-0 text-3xl font-bold">Créer du contenu pour être visible</h2>
                         </div>
                         <p>Produire du contenu permet de montrer ta progression, de partager tes connaissances et de ne plus être un profil anonyme. L'objectif n'est pas de devenir influenceur, mais de documenter ton travail.</p>
@@ -280,10 +291,10 @@ Merci pour votre temps.</div>
 
                     <section id="preparer-entretiens" class="scroll-mt-24 mb-16">
                         <div class="flex items-baseline gap-4 mb-8">
-                            <span class="text-3xl font-light text-neutral-300 dark:text-neutral-700">05</span>
+                            <span class="text-3xl font-light text-neutral-600 dark:text-neutral-300">05</span>
                             <h2 class="!mt-0 !mb-0 text-3xl font-bold">Se préparer aux entretiens</h2>
                         </div>
-                        <p>L'entretien ne s'improvise pas le jour J. Il se prépare en amont selon 4 axes :</p>
+                        <p>Prépare tes entretiens autour de quatre situations fréquentes :</p>
 
                         <div class="space-y-6">
                             <div>
@@ -318,10 +329,10 @@ Merci pour votre temps.</div>
 
                     <section id="organiser-recherche" class="scroll-mt-24 mb-16">
                         <div class="flex items-baseline gap-4 mb-8">
-                            <span class="text-3xl font-light text-neutral-300 dark:text-neutral-700">06</span>
+                            <span class="text-3xl font-light text-neutral-600 dark:text-neutral-300">06</span>
                             <h2 class="!mt-0 !mb-0 text-3xl font-bold">Organiser sa recherche</h2>
                         </div>
-                        <p>Gère ta recherche comme un véritable projet. Utilise un tableur (Notion, Excel) pour suivre tes actions, planifier tes relances et mesurer tes résultats.</p>
+                        <p>Tiens un tableau (Notion, Excel) pour noter les candidatures envoyées, les relances prévues et les réponses reçues.</p>
                         
                         <div class="overflow-x-auto my-6 border border-neutral-200 dark:border-neutral-800 rounded-xl">
                             <table class="w-full text-sm text-left">
@@ -354,15 +365,15 @@ Merci pour votre temps.</div>
 
                     <section id="rencontrer-professionnels" class="scroll-mt-24 mb-16">
                         <div class="flex items-baseline gap-4 mb-8">
-                            <span class="text-3xl font-light text-neutral-300 dark:text-neutral-700">07</span>
+                            <span class="text-3xl font-light text-neutral-600 dark:text-neutral-300">07</span>
                             <h2 class="!mt-0 !mb-0 text-3xl font-bold">Sortir des candidatures en ligne</h2>
                         </div>
-                        <p>Le numérique ne remplace pas le contact humain. Participe aux événements locaux : Meetups techniques, job datings, conférences. Un échange en direct permet de montrer des soft skills (curiosité, écoute) difficiles à transmettre sur un CV. Ajoute sur LinkedIn les personnes rencontrées pour maintenir le lien.</p>
+                        <p>Les meetups techniques, job datings et conférences locales donnent l'occasion d'échanger directement avec des professionnels. Après la rencontre, ajoute-les sur LinkedIn et rappelle le sujet dont vous avez parlé.</p>
                     </section>
 
                     <section id="dix-conseils" class="scroll-mt-24 mb-16">
                         <div class="flex items-baseline gap-4 mb-8">
-                            <span class="text-3xl font-light text-neutral-300 dark:text-neutral-700">08</span>
+                            <span class="text-3xl font-light text-neutral-600 dark:text-neutral-300">08</span>
                             <h2 class="!mt-0 !mb-0 text-3xl font-bold">Dix conseils supplémentaires pour se démarquer</h2>
                         </div>
                         
@@ -378,7 +389,7 @@ Merci pour votre temps.</div>
                             <!-- Conseil 2 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
                                 <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#2 Maîtriser les fondamentaux</h3>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Les frameworks passent, le JS, HTML/CSS, HTTP et SQL restent.</p>
+                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Les bases de JavaScript, HTML/CSS, HTTP et SQL te serviront sur différents projets, même si les frameworks changent.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
                                     <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Révise l'asynchrone, la manipulation du DOM et les API.
                                 </div>
@@ -401,24 +412,24 @@ Merci pour votre temps.</div>
                             </div>
                             <!-- Conseil 5 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
-                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#5 Avoir une exp. collaborative</h3>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Savoir coder seul c'est bien, savoir travailler en équipe c'est mieux.</p>
+                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#5 Montrer comment tu travailles en équipe</h3>
+                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Une contribution open source ou un hackathon peut te donner une situation concrète à raconter en entretien.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
-                                    <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Contribue à l'open source, fais un hackathon.
+                                    <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Décris ton rôle, les décisions prises en équipe et la répartition du travail.
                                 </div>
                             </div>
                             <!-- Conseil 6 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
                                 <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#6 Personnaliser ses candidatures</h3>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">La qualité de l'approche prime sur la quantité d'envois.</p>
+                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Une candidature ciblée te permet de relier ton profil aux besoins de l'offre.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
-                                    <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Explique pourquoi tes compétences répondent à LEUR besoin.
+                                    <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Relie une compétence demandée à un exemple tiré de tes projets.
                                 </div>
                             </div>
                             <!-- Conseil 7 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
                                 <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#7 Activer la cooptation</h3>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Ton école, tes formateurs, tes anciens camarades ont un réseau.</p>
+                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Tes anciens camarades ou formateurs peuvent te renseigner sur les entreprises qui recrutent.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
                                     <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Demande des mises en relation ciblées.
                                 </div>
@@ -426,9 +437,9 @@ Merci pour votre temps.</div>
                             <!-- Conseil 8 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
                                 <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#8 Développer ses soft skills</h3>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Autonomie, communication et capacité à demander de l'aide.</p>
+                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Savoir expliquer un blocage et demander de l'aide fait aussi partie du travail en équipe.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
-                                    <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Entraîne-toi à expliquer tes blocages clairement.
+                                    <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Présente ce que tu as essayé, le résultat et l'aide qu'il te faut.
                                 </div>
                             </div>
                             <!-- Conseil 9 -->
@@ -441,10 +452,10 @@ Merci pour votre temps.</div>
                             </div>
                             <!-- Conseil 10 -->
                             <div class="card p-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md transition-shadow">
-                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#10 Analyser et itérer</h3>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Si plusieurs candidatures restent sans réponse, revois ton CV, ton ciblage ou la façon de présenter tes projets.</p>
+                                <h3 class="!mt-0 !mb-2 !text-base !font-bold text-red-500">#10 Ajuster sa recherche</h3>
+                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Après plusieurs candidatures sans réponse, vérifie si les offres visées correspondent à ton profil.</p>
                                 <div class="text-sm font-medium border-t border-neutral-100 dark:border-neutral-800 pt-3">
-                                    <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Ajuste ton CV ou ta cible en fonction des retours (ou non-retours).
+                                    <span class="text-neutral-900 dark:text-neutral-100">Action :</span> Compare les offres à ton CV et à tes projets, puis ajuste ta cible ou leur présentation.
                                 </div>
                             </div>
                         </div>
@@ -452,7 +463,7 @@ Merci pour votre temps.</div>
 
                     <section id="erreurs-a-eviter" class="scroll-mt-24 mb-16">
                         <div class="flex items-baseline gap-4 mb-8">
-                            <span class="text-3xl font-light text-neutral-300 dark:text-neutral-700">09</span>
+                            <span class="text-3xl font-light text-neutral-600 dark:text-neutral-300">09</span>
                             <h2 class="!mt-0 !mb-0 text-3xl font-bold">Ce qu'il faut éviter</h2>
                         </div>
                         <ul class="space-y-3">
@@ -484,7 +495,7 @@ Merci pour votre temps.</div>
                             <span class="text-3xl font-light text-red-300 dark:text-red-900/50">10</span>
                             <h2 class="!mt-0 !mb-0 text-3xl font-bold">Ta checklist pour passer à l'action</h2>
                         </div>
-                        <p class="mb-6">Coche les étapes au fur et à mesure pour structurer ton avancement. Ta progression est sauvegardée localement sur ton navigateur.</p>
+                        <p class="mb-6">Coche les étapes réalisées. Ta progression est sauvegardée dans ce navigateur.</p>
 
                         <!-- Composant Checklist -->
                         <div class="no-print">
@@ -562,9 +573,8 @@ Merci pour votre temps.</div>
                     </section>
 
                     <section class="border-t border-neutral-200 dark:border-neutral-800 pt-16 mb-16">
-                        <h2 class="text-2xl font-bold mb-4">Ce qu'il faut retenir</h2>
-                        <p>Pour décrocher son premier emploi, il ne suffit pas de savoir développer. Il faut aussi apprendre à démontrer ses compétences, inspirer confiance, rencontrer les bonnes personnes et construire une démarche régulière.</p>
-                        <p>Le CV, LinkedIn et le portfolio sont les fondations. Les projets, le réseau, les candidatures ciblées et les entretiens permettent ensuite de transformer ces fondations en opportunités concrètes. Il n'existe pas de recette magique, mais une démarche structurée te mettra dans les meilleures conditions.</p>
+                        <h2 class="text-2xl font-bold mb-4">Pour faire avancer ta recherche</h2>
+                        <p>Commence par mettre à jour ton CV et choisir quelques projets que tu peux présenter. Cible ensuite des entreprises qui recrutent sur ta stack, suis tes démarches et ajuste tes candidatures selon les échanges obtenus.</p>
 
                         <div class="mt-12 p-6 md:p-8 flex flex-col sm:flex-row gap-6 sm:gap-8 items-center bg-neutral-200 dark:bg-neutral-800 rounded-3xl">
                             <img src="/pp.jpg" alt="Vincent DESBROSSES" width="128" height="128" loading="lazy" decoding="async" class="w-32 h-32 flex-shrink-0 object-cover rounded-full ring-4 ring-red-500 p-2 transition-all duration-300 hover:ring-red-400 dark:hover:ring-red-600">
@@ -590,7 +600,8 @@ Merci pour votre temps.</div>
                 &copy; 2026 Vincent DESBROSSES. Guide gratuit.
             </div>
             <div class="flex gap-6 text-sm font-medium">
-                <a href="/fr" class="text-neutral-600 dark:text-neutral-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Retour au portfolio</a>
+                <a href="/fr/blog" class="text-neutral-600 dark:text-neutral-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Retour au blog</a>
+                <a href="/fr" class="text-neutral-600 dark:text-neutral-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Portfolio</a>
                 <button data-guide-print class="text-neutral-600 dark:text-neutral-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Télécharger PDF</button>
             </div>
         </div>

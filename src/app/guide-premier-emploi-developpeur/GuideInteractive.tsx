@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useTheme } from "next-themes";
+import { useTheme } from "../ThemeContext";
 
 const checklistStorageKey = "vd_guide_checklist_v1";
 
@@ -162,6 +162,29 @@ export default function GuideInteractive({ html }: { html: string }) {
     const handleClick = async (event: MouseEvent) => {
       if (!(event.target instanceof Element)) return;
       const target = event.target;
+
+      const startReadingLink = target.closest<HTMLAnchorElement>(
+        "[data-guide-start-reading]",
+      );
+      if (startReadingLink) {
+        event.preventDefault();
+
+        const firstSection = document.getElementById("les-trois-piliers");
+        if (!firstSection) return;
+
+        if (window.location.hash !== startReadingLink.hash) {
+          window.history.pushState(null, "", startReadingLink.hash);
+        }
+
+        firstSection.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+            .matches
+            ? "auto"
+            : "smooth",
+          block: "start",
+        });
+        return;
+      }
 
       if (target.closest("[data-guide-print]")) {
         window.print();

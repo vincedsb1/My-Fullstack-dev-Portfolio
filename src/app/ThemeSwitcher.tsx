@@ -1,16 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
+import React from "react";
+import { useTheme } from "./ThemeContext";
 import { Sun, Moon, SunMoon } from "lucide-react";
+import { useClientMounted } from "./useClientMounted";
 
 function ThemeSwitcher() {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useClientMounted();
   const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleKeyDown = (
     e: React.KeyboardEvent,

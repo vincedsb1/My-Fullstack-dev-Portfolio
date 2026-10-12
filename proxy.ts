@@ -11,7 +11,7 @@ const intlMiddleware = createMiddleware(routing);
 const LEGACY_HOST = "portfolio-ten-chi-89.vercel.app";
 const CANONICAL_ORIGIN = "https://vincent.desbrosses.net";
 
-export default function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const host = request.headers.get("host");
 
   if (host === LEGACY_HOST) {
@@ -20,14 +20,6 @@ export default function middleware(request: NextRequest) {
       `${CANONICAL_ORIGIN}${pathname}${search}`,
       308,
     );
-  }
-
-  const pathname = request.nextUrl.pathname.replace(/\/+$/, "") || "/";
-  if (
-    pathname === "/guide-premier-emploi-developpeur" ||
-    pathname.startsWith("/guide-premier-emploi-developpeur/")
-  ) {
-    return NextResponse.next();
   }
 
   return intlMiddleware(request);
