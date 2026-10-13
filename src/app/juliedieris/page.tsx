@@ -67,15 +67,13 @@ export default function JulieDierisPage() {
               <DownloadModal />
 
               <div className={styles.utilityLinks}>
-                <a
-                  className={styles.utilityLink}
-                  href="https://www.amazon.fr/s?k=Le+Silence+de+la+Nuit+Julie+Dieris"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <span
+                  className={`${styles.utilityLink} ${styles.utilityLinkDisabled}`}
+                  aria-disabled="true"
                 >
                   <ShoppingBag aria-hidden="true" size={16} />
                   Bientôt disponible sur Amazon
-                </a>
+                </span>
                 <a
                   className={styles.utilityLink}
                   href="https://www.instagram.com/dragibus44/"
