@@ -22,6 +22,17 @@ export default function proxy(request: NextRequest) {
     );
   }
 
+  // This landing page and its download endpoint are intentionally unlocalized.
+  // Let them reach the root App Router instead of next-intl prefixing them.
+  const pathname = request.nextUrl.pathname;
+  if (
+    pathname === "/juliedieris" ||
+    pathname === "/juliedieris/" ||
+    pathname === "/api/juliedieris/download"
+  ) {
+    return NextResponse.next();
+  }
+
   return intlMiddleware(request);
 }
 

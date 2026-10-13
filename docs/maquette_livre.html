@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Silence de la Nuit - Julie Dieris</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'brand-dark': '#0f0f11', // Noir très profond inspiré de la rue
+                        'brand-glow': '#fce3b8', // Couleur lumière chaude de la boutique
+                        'brand-accent': '#d4af37', // Doré pour les textes importants
+                        'brand-muted': '#a0a0a0',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f0f11;
+            color: #f3f4f6;
+            /* Subtil dégradé radial pour simuler la lumière de la boutique sur le fond sombre */
+            background-image: radial-gradient(circle at 70% 30%, rgba(252, 227, 184, 0.05) 0%, transparent 60%);
+        }
+        
+        .book-shadow {
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.8), 0 0 20px rgba(252, 227, 184, 0.15);
+        }
+
+        .gold-text {
+            background: linear-gradient(to right, #fce3b8, #d4af37, #fce3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Modal styling */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans selection:bg-brand-glow selection:text-brand-dark">
+
+    <main class="flex-grow flex items-center justify-center p-6 md:p-12 lg:p-24">
+        <div class="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            
+            <!-- Colonne Image (Couverture) -->
+            <div class="lg:col-span-5 flex justify-center lg:justify-end relative group">
+                <!-- Effet de lueur derrière le livre -->
+                <div class="absolute inset-0 bg-brand-glow opacity-20 blur-3xl rounded-full scale-75 group-hover:scale-90 transition-transform duration-700"></div>
+                <img src="Coverv0.4.png" alt="Couverture du livre Le Silence de la Nuit" class="relative z-10 w-2/3 md:w-1/2 lg:w-full max-w-md rounded-md book-shadow transition-transform duration-500 hover:-translate-y-2">
+            </div>
+
+            <!-- Colonne Contenu -->
+            <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+                
+                <h2 class="text-brand-accent tracking-widest uppercase text-sm mb-2 font-semibold">Parution Exclusif</h2>
+                
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl mb-2 text-white leading-tight">
+                    Le <br class="hidden lg:block"/>
+                    <span class="gold-text">Silence</span><br/>
+                    de la <br class="hidden lg:block"/>
+                    <span class="font-serif italic gold-text" style="font-size: 1.2em;">Nuit</span>
+                </h1>
+                
+                <p class="text-2xl md:text-3xl text-gray-300 font-serif mb-10">de Julie Dieris</p>
+
+                <div class="w-full max-w-md space-y-6">
+                    
+                    <!-- Bouton Téléchargement avec Code -->
+                    <button onclick="openModal()" class="w-full relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-br from-brand-accent to-yellow-700 group-hover:from-brand-accent group-hover:to-yellow-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-800 transition-all shadow-[0_0_15px_rgba(212,175,55,0.3)] hover:shadow-[0_0_25px_rgba(212,175,55,0.5)]">
+                        <span class="w-full relative px-5 py-4 transition-all ease-in duration-75 bg-brand-dark rounded-md group-hover:bg-opacity-0 flex items-center justify-center gap-3 text-lg">
+                            <svg class="w-6 h-6 text-brand-glow group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            <span class="text-brand-glow group-hover:text-white font-semibold">Télécharger le ePub (J'ai un code)</span>
+                        </span>
+                    </button>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm flex items-center gap-2 transition-colors border border-gray-800 rounded-md px-4 py-2 hover:bg-gray-800/50">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.8 17.6c-1.5 1-4.2 1.9-6.3 1.9-4.8 0-8.6-2.6-8.6-6.6 0-3.3 2.5-6.5 8.1-6.5 2.1 0 4.1.3 5.4 1l-.5 2c-1.4-.7-3.3-1.1-5-1.1-4 0-5.6 2.3-5.6 4.6 0 2.6 2.8 4.6 6.3 4.6 1.8 0 3.7-.5 5-1.3l.6 1.8-.1.2c-.3.2-.8.5-1.3.8zm1.9-5.1c0 2.3 2.1 3.5 4.5 3.5 1.5 0 2.9-.4 4.1-1l-.5-1.7c-1 .5-2.2.8-3.4.8-1.5 0-2.4-.7-2.4-1.9 0-1 .8-1.7 2.4-1.9l2.7-.4c1.8-.2 3.1-1.3 3.1-3 0-2.1-1.8-3.5-4.4-3.5-1.6 0-3.2.4-4.5 1.1l.6 1.8c1.2-.6 2.5-1 3.7-1 1.3 0 2.1.6 2.1 1.6 0 .9-.8 1.4-2.2 1.6l-2.6.4c-2.1.3-3.2 1.5-3.2 3.3z"/></svg>
+                            Disponible sur Amazon
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm flex items-center gap-2 transition-colors border border-gray-800 rounded-md px-4 py-2 hover:bg-gray-800/50">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            Contacter l'autrice
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-16 pt-8 border-t border-gray-800/50 w-full text-center lg:text-left">
+                    <p class="text-sm text-gray-500 mb-3">Besoin d'une application pour lire l'ePub sur Windows ?</p>
+                    <a href="https://calibre-ebook.com/download_windows" target="_blank" class="inline-flex items-center gap-2 text-brand-muted hover:text-brand-glow transition-colors text-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Télécharger un lecteur (Calibre)
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Code de téléchargement -->
+    <div id="codeModal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 modal-backdrop" onclick="closeModal()"></div>
+        
+        <!-- Modal Content -->
+        <div class="relative bg-[#1a1a1c] border border-gray-800 rounded-xl shadow-2xl p-8 max-w-md w-full mx-4 transform scale-95 transition-transform duration-300" id="modalContent">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-serif text-white mb-2">Code d'accès</h3>
+                <p class="text-gray-400 text-sm">Veuillez entrer le code qui vous a été fourni pour télécharger votre exemplaire de <em>Le Silence de la Nuit</em>.</p>
+            </div>
+
+            <form id="downloadForm" onsubmit="handleDownload(event)" class="space-y-4">
+                <div>
+                    <label for="accessCode" class="sr-only">Code d'accès</label>
+                    <input type="text" id="accessCode" name="accessCode" required placeholder="Ex: JD-FLOR-2026" 
+                           class="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors uppercase text-center tracking-widest">
+                </div>
+                
+                <div id="errorMessage" class="hidden text-red-400 text-sm text-center">Code invalide. Veuillez réessayer.</div>
+
+                <button type="submit" class="w-full bg-brand-accent hover:bg-yellow-600 text-[#0f0f11] font-bold py-3 px-4 rounded-lg transition-colors flex justify-center items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"></path></svg>
+                    Déverrouiller et Télécharger
+                </button>
+            </form>
+
+            <div class="mt-6 text-center text-xs text-gray-500">
+                Vous n'avez pas de code ? <a href="#" class="text-brand-glow hover:underline" onclick="closeModal()">Voir les autres options</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('codeModal');
+        const modalContent = document.getElementById('modalContent');
+        const input = document.getElementById('accessCode');
+        const errorMsg = document.getElementById('errorMessage');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            // Petit délai pour permettre l'animation CSS
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                input.focus();
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            
+            // Attendre la fin de l'animation avant de masquer complètement
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                input.value = '';
+                errorMsg.classList.add('hidden');
+            }, 300);
+        }
+
+        function handleDownload(event) {
+            event.preventDefault();
+            const code = input.value.trim().toUpperCase();
+            
+            // Simulation de validation (à remplacer par votre vraie logique backend/JS)
+            // Pour la maquette, on accepte le code "TEST"
+            if(code === 'TEST' || code.length > 3) { 
+                errorMsg.classList.add('hidden');
+                
+                // Simulation de téléchargement visuel
+                const btn = event.target.querySelector('button');
+                const originalText = btn.innerHTML;
+                
+                btn.innerHTML = `<svg class="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Préparation...`;
+                btn.classList.add('opacity-75', 'cursor-not-allowed');
+                
+                // Simule le délai de génération du fichier
+                setTimeout(() => {
+                    // C'est ici que le vrai téléchargement devrait se déclencher
+                    // window.location.href = '/chemin/vers/le/fichier.epub';
+                    
+                    // Réinitialisation de la modale et affichage message succès (optionnel)
+                    closeModal();
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    
+                    // Vous pourriez afficher un toast de succès ici au lieu d'un alert
+                    // alert("Téléchargement démarré !"); 
+                }, 1500);
+
+            } else {
+                // Code invalide
+                errorMsg.classList.remove('hidden');
+                input.classList.add('border-red-500');
+                
+                // Retirer la bordure rouge quand l'utilisateur recommence à taper
+                input.addEventListener('input', function removeError() {
+                    input.classList.remove('border-red-500');
+                    errorMsg.classList.add('hidden');
+                    input.removeEventListener('input', removeError);
+                });
+            }
+        }
+        
+        // Fermer la modale avec la touche Echap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

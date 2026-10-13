@@ -53,6 +53,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
+      url: `${baseUrl}/juliedieris`,
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/en`,
       lastModified: homeLastModified,
       changeFrequency: "monthly",
