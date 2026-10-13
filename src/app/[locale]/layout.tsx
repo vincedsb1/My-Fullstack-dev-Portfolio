@@ -11,6 +11,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { locales, type Locale } from "../../../i18n.config.ts";
 import Providers from "../Providers.tsx";
 import "../globals.css";
+import { getUmamiConfig } from "@/lib/umami";
 
 config.autoAddCss = false;
 
@@ -105,6 +106,7 @@ export default async function RootLayout({
 
   const baseUrl = getBaseUrl();
   const th = await getTranslations({ locale, namespace: "header" });
+  const umami = getUmamiConfig();
 
   // Every value below is rendered on the page: name and jobTitle in the hero,
   // description as the hero paragraph, image as the profile picture.
@@ -178,6 +180,15 @@ export default async function RootLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Providers>{children}</Providers>
         </NextIntlClientProvider>
+        {umami && (
+          <Script
+            id="umami-analytics"
+            src={umami.scriptUrl}
+            data-website-id={umami.websiteId}
+            data-domains={umami.domain}
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );

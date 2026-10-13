@@ -2,14 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BlogIndex from "../../components/blog/BlogIndex";
 import { getPublishedArticles, type BlogLocale } from "@/lib/blog/articles";
+import { getBlogIndexSeo } from "@/lib/blog/index-metadata";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://vincent.desbrosses.net";
-const descriptions = {
-  en: "Practical notes on web development, software architecture, artificial intelligence, and building digital products.",
-  fr: "Retours d’expérience et réflexions autour du développement web, de l’architecture logicielle, de l’intelligence artificielle et de la création de produits numériques.",
-};
-
 function getBlogLocale(value: string): BlogLocale {
   if (value === "fr" || value === "en") return value;
   notFound();
@@ -29,8 +25,6 @@ function hasPublishedTranslationPair() {
   );
 }
 
-const siteName = "Vincent DESBROSSES";
-
 export async function generateMetadata({
   params,
 }: {
@@ -40,31 +34,43 @@ export async function generateMetadata({
   const articles = getPublishedArticles(locale);
   if (locale === "en" && articles.length === 0) notFound();
 
-  const url = `${baseUrl}/${locale}/blog`;
-  const description = descriptions[locale];
+  const seo = getBlogIndexSeo(articles, locale);
+  const url = baseUrl + "/" + locale + "/blog";
+  const imageUrl = baseUrl + "/" + locale + "/blog/blog-index-image.png";
   const languages = hasPublishedTranslationPair()
     ? { fr: `${baseUrl}/fr/blog`, en: `${baseUrl}/en/blog` }
     : { [locale]: url };
   return {
-    title: `Blog | ${siteName}`,
-    description,
+    title: seo.title,
+    description: seo.description,
     alternates: {
       canonical: url,
       languages,
     },
     openGraph: {
-      title: "Blog | Vincent DESBROSSES",
-      description,
+      title: seo.title,
+      description: seo.description,
       url,
       siteName: "Vincent DESBROSSES",
       type: "website",
       locale: locale === "fr" ? "fr_FR" : "en_US",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: seo.imageAlt,
+          type: "image/png",
+        },
+      ],
     },
     twitter: {
-      card: "summary",
-      title: "Blog | Vincent DESBROSSES",
-      description,
+      card: "summary_large_image",
+      title: seo.title,
+      description: seo.description,
       creator: "@vincedsb",
+      site: "@vincedsb",
+      images: [{ url: imageUrl, alt: seo.imageAlt }],
     },
   };
 }
@@ -78,5 +84,6 @@ export default async function BlogPage({
   const articles = getPublishedArticles(locale);
   if (locale === "en" && articles.length === 0) notFound();
 
-  return <BlogIndex articles={articles} locale={locale} />;
+  const seo = getBlogIndexSeo(articles, locale);
+  return <BlogIndex articles={articles} locale={locale} seo={seo} />;
 }

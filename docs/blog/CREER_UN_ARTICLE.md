@@ -9,8 +9,9 @@
 5. Rédige le contenu dans le ton des notes fournies. Ne fabrique pas d’expérience, de chiffres, de sources ou de date.
 6. Vérifie les liens, textes alternatifs, ancres, tableaux et blocs de code.
 7. Lance `npm run blog:validate`, puis `npm run build`.
-8. Vérifie l’article à `/fr/blog/<slug>` ou `/en/blog/<slug>` selon sa langue, le rendu mobile, le mode sombre, les métadonnées et le sitemap.
-9. Résume les fichiers modifiés et donne l’URL finale. Un article est publié par défaut quand son statut vaut `published`.
+8. Après le build, lance `npm run blog:test:seo` pour vérifier localement le HTML pré-rendu, les métadonnées, le JSON-LD, les images sociales, le sitemap et l’exclusion des brouillons.
+9. Vérifie l’article à `/fr/blog/<slug>` ou `/en/blog/<slug>` selon sa langue, le rendu mobile, le mode sombre, les liens et les images.
+10. Résume les fichiers modifiés et donne l’URL finale. Un article est publié par défaut quand son statut vaut `published`.
 
 ## Fichier et slug
 
@@ -38,6 +39,17 @@ Le `title` du frontmatter fournit l’unique H1 de la page. Commence le corps MD
 `status` vaut `published` pour publier lors du prochain déploiement ou `draft` pour exclure l’article des routes, de l’index et du sitemap. Tout article anglais publié doit porter un `translationKey` partagé avec sa version française publiée. Le champ `author` n’est pas recopié : l’auteur par défaut est Vincent DESBROSSES.
 
 Les articles publiés doivent avoir des titres et descriptions distincts. Les traductions utilisent le même `translationKey`, même si leurs slugs diffèrent. Ajoute uniquement la traduction réellement rédigée. L’absence de traduction n’affiche pas une copie sous l’autre langue.
+
+## Checklist SEO avant publication
+
+- Vérifie que le `title` décrit précisément l’article et que la `description` est unique, fidèle et utile dans les résultats de recherche.
+- Garde le titre du frontmatter comme H1 unique. Structure le contenu avec des H2 puis des H3, sans saut de niveau artificiel.
+- Donne un texte alternatif aux images informatives ; vérifie que leurs fichiers et les autres ressources locales existent.
+- Vérifie chaque lien interne : il doit pointer vers une page existante ou un article publié. Ne crée pas de lien vers un brouillon.
+- Pour une traduction, publie uniquement les deux versions rédigées avec le même `translationKey`. Les canonical et hreflang sont générés depuis ces versions publiées.
+- Confirme le pré-rendu, le canonical, les données structurées, les images sociales et la présence dans le sitemap avec `npm run blog:test:seo`.
+
+Lors d’une véritable révision éditoriale, réévalue les références temporelles du titre et du contenu, par exemple « en 2026 ». Ne modifie `updatedAt` qu’après une mise à jour éditoriale réelle.
 
 ## Médias et MDX
 

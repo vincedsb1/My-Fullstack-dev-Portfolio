@@ -1,6 +1,8 @@
 import { readAllBlogArticles } from "../src/lib/blog/article-source.mjs";
+import { validateBlogLinks } from "./validate-blog-links.mjs";
 
 const articles = readAllBlogArticles();
+validateBlogLinks(articles);
 const published = articles.filter(
   (article) => article.metadata.status === "published",
 );
