@@ -4,7 +4,7 @@
 
 Les articles vivent dans `src/content/blog/<locale>/<slug>.mdx`. Le frontmatter MDX est la source unique des titres, descriptions, extraits, catégories, dates, slugs, langues et statuts.
 
-`src/lib/blog/article-source.mjs` lit les fichiers locaux avec `yaml`, valide leurs métadonnées, repère les collisions de routes et vérifie les relations de traduction. Il s’assure aussi que le titre du frontmatter reste l’unique H1 et que les images locales référencées existent sous `public/blog/`. `src/lib/blog/articles.ts` expose les articles publiés, leur ordre, leurs versions traduites, leur temps de lecture et leur URL d’image sociale.
+`src/lib/blog/article-source.mjs` lit les fichiers locaux avec `yaml`, valide leurs métadonnées, repère les collisions de routes et vérifie les relations de traduction. Il s’assure aussi que le titre du frontmatter reste l’unique H1 et que les images locales référencées existent sous `public/blog/`. `scripts/validate-blog-links.mjs`, appelé par `npm run blog:validate`, vérifie que les liens internes ciblent une route existante et publiée et que les ressources locales existent. `src/lib/blog/articles.ts` expose les articles publiés, leur ordre, leurs versions traduites, leur temps de lecture et leur URL d’image sociale.
 
 Les pages utilisent les Server Components de l’App Router. `generateStaticParams()` énumère les paires locale/slug publiées et `dynamicParams = false` ferme les routes inconnues. Le chargeur officiel `@next/mdx` compile les imports locaux pendant le build ; Vercel sert ensuite le HTML généré sans lire ni compiler le fichier à chaque visite. Le contenu MDX est du code du dépôt, de confiance. Ne jamais y injecter de contenu utilisateur ou distant.
 
@@ -23,9 +23,9 @@ Ce renderer est réservé à cet article. Les articles ordinaires restent des fi
 - `/en/blog` et les routes anglaises sans article répondent 404. Une route anglaise publiée doit partager un `translationKey` avec un article français publié.
 - Les traductions peuvent avoir des slugs différents et sont associées par `translationKey` ; seuls les articles traduits entre les langues produisent des liens hreflang.
 
-`generateMetadata()` lit la même source que les pages. Les liens canonical et hreflang ne mentionnent que les versions réellement publiées. Les pages d’article publient un JSON-LD `BlogPosting` avec les dates et l’auteur réels.
+`generateMetadata()` lit la même source que les pages. Les liens canonical et hreflang ne mentionnent que les versions réellement publiées. Les pages d’article publient un JSON-LD `BlogPosting` avec les dates et l’auteur réels, ainsi qu’un `BreadcrumbList` aligné sur le fil d’Ariane visible.
 
-`next.config.mjs` redirige l’ancienne URL du guide vers la nouvelle avec HTTP 308. Les anciennes routes d’images sociales sont redirigées vers l’image actuelle. Les barres obliques finales sont redirigées vers l’URL sans barre en un seul saut. Le sitemap Next.js ajoute l’index et chaque article publié ; il exclut les brouillons et l’ancienne URL.
+`next.config.mjs` redirige l’ancienne URL du guide vers la nouvelle avec HTTP 308. Les anciennes routes d’images sociales sont redirigées vers l’image actuelle. Les barres obliques finales sont redirigées vers l’URL sans barre en un seul saut. Le sitemap Next.js ajoute l’index et chaque article publié ; il exclut les brouillons, l’ancienne URL et l’index anglais tant qu’aucun article anglais n’est publié.
 
 ## Médias
 
@@ -37,19 +37,22 @@ Les images MDX peuvent être écrites avec la syntaxe Markdown standard ; des di
 
 ## Partage social
 
-`src/app/[locale]/blog/[slug]/social-image/route.tsx` génère un PNG de 1200 × 630 au build depuis le titre, la catégorie et l’identité du portfolio. Le guide réutilise l’image sociale existante. La même URL est déclarée pour Open Graph et Twitter, avec des textes alternatifs issus de l’article.
+`src/app/[locale]/blog/blog-index-image.png/route.tsx` génère l’image de partage de l’index depuis ses catégories publiées. `src/app/[locale]/blog/[slug]/social-image/route.tsx` génère celle de chaque article ; le guide réutilise son image sociale existante. Les deux utilisent le même générateur PNG de 1200 × 630. Open Graph et Twitter déclarent dimensions, texte alternatif et image cohérente avec la page.
 
 ## Validation et publication
 
-`npm run blog:validate` contrôle les métadonnées, slugs, dates, médias et traductions. `npm run dev` et `npm run build` exécutent cette validation avant de démarrer Next.js ou de compiler le site. Le build génère les routes, le sitemap et les images sociales. Le push Git déclenche le déploiement Vercel habituel.
+`npm run blog:validate` contrôle les métadonnées, slugs, dates, médias, liens locaux et traductions. `npm run dev` et `npm run build` exécutent cette validation avant de démarrer Next.js ou de compiler le site. Le build génère les routes, le sitemap et les images sociales. Après le build, `npm run blog:test:seo` démarre le build localement et vérifie le HTML pré-rendu, les métadonnées, le JSON-LD, les images sociales, le sitemap, les brouillons et les redirections, sans dépendre du site distant.
 
 ## Fichiers principaux
 
 - `src/app/[locale]/blog/page.tsx` : index et métadonnées du blog.
 - `src/app/[locale]/blog/[slug]/page.tsx` : articles, SEO et pré-rendu statique.
 - `src/app/[locale]/blog/[slug]/social-image/route.tsx` : images sociales statiques.
+- `src/app/[locale]/blog/blog-index-image.png/route.tsx` : image sociale de l’index.
 - `src/app/components/blog/` : cartes, navigation, layout partagé et composants MDX.
 - `src/content/blog/` : frontmatter et contenu éditorial.
 - `public/blog/` : images et schémas locaux.
 - `src/app/sitemap.ts` : index et articles publiés.
 - `scripts/validate-blog.mjs` : validation préalable au build.
+- `scripts/validate-blog-links.mjs` : contrôle des liens internes et ressources locales.
+- `scripts/test-blog-seo.mjs` : vérification SEO du build local.

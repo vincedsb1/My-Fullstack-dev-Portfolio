@@ -86,6 +86,7 @@ export async function generateMetadata({
       title: metadata.title,
       description: metadata.description,
       creator: "@vincedsb",
+      site: "@vincedsb",
       images: [{ url: socialImage, alt: metadata.title }],
     },
   };
@@ -125,6 +126,32 @@ export default async function BlogArticlePage({
     },
     inLanguage: locale === "fr" ? "fr-FR" : "en",
   };
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Portfolio",
+        item: `${baseUrl}/${locale}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${baseUrl}/${locale}/blog`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.metadata.title,
+        item: `${baseUrl}/${locale}/blog/${slug}`,
+      },
+    ],
+  };
+  const serializeStructuredData = (data: object) =>
+    JSON.stringify(data).replace(/</g, "\\u003c");
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
@@ -132,7 +159,13 @@ export default async function BlogArticlePage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          __html: serializeStructuredData(structuredData),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeStructuredData(breadcrumbStructuredData),
         }}
       />
       {isInteractiveGuide ? (

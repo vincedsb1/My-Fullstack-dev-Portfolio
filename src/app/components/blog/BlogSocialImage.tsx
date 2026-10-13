@@ -1,9 +1,12 @@
 import { ImageResponse } from "next/og";
-import type { BlogArticleMetadata } from "@/lib/blog/articles";
 
 export const blogSocialImageSize = { width: 1200, height: 630 };
 
-export function createBlogSocialImage(article: BlogArticleMetadata) {
+export function createBlogSocialImage(article: {
+  category: string;
+  title: string;
+  excerpt: string;
+}) {
   return new ImageResponse(
     (
       <div

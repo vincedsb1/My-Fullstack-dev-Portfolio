@@ -35,7 +35,7 @@ CONTRAINTES :
 6. Ajoute uniquement les médias qui améliorent réellement l’article. Vérifie leurs droits, textes alternatifs, chemins locaux et dimensions. Pré-rends les diagrammes Mermaid en SVG/PNG.
 7. Utilise `<YouTubeEmbed>`, `<Figure>`, `<Diagram>`, `<Callout>` et les blocs de code documentés si nécessaire.
 8. Garde le H1 généré depuis `title` et commence le corps au niveau H2. Vérifie les liens, les chemins locaux d’images, le rendu MDX, l’accessibilité clavier, les contrastes, le mode sombre et la largeur mobile.
-9. Lance `npm run blog:validate` et `npm run build`. Vérifie que la route, l’image sociale et le sitemap contiennent l’article publié. Retire tout fixture temporaire.
+9. Lance `npm run blog:validate`, puis `npm run build` et `npm run blog:test:seo`. Vérifie que la route, l’image sociale et le sitemap contiennent l’article publié. Retire tout fixture temporaire.
 10. Donne l’URL finale `/<langue>/blog/<slug>`, les modifications, les contrôles exécutés et toute vérification non réalisée.
 
 Les articles français sont accessibles sous `/fr/blog`. Une route anglaise n’est publiée que si un fichier anglais réel existe. Le build et le sitemap s’actualisent à partir du frontmatter ; aucun registre d’articles ne doit être modifié à la main.
