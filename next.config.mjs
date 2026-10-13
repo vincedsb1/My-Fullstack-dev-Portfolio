@@ -51,6 +51,11 @@ const nextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  outputFileTracingIncludes: {
+    "/api/juliedieris/download": [
+      "./docs/Julie_Dieris-Le_Silence_de_la_Nuit.epub",
+    ],
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
