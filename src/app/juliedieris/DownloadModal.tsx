@@ -97,7 +97,7 @@ export default function DownloadModal() {
         } | null;
         setError(
           payload?.message ||
-            "Code invalide. Vérifiez votre saisie puis réessayez.",
+            "Le code saisi est incorrect. Vérifiez votre saisie puis réessayez.",
         );
         setState("error");
         return;
@@ -116,7 +116,9 @@ export default function DownloadModal() {
       closeModal();
       setHasDownloaded(true);
     } catch {
-      setError("Le téléchargement est momentanément indisponible.");
+      setError(
+        "Le code saisi est incorrect. Vérifiez votre saisie puis réessayez.",
+      );
       setState("error");
     }
   };

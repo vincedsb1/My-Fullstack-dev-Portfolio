@@ -125,7 +125,10 @@ export async function POST(request: NextRequest) {
 
   if (!hasValidCode(normalizedCandidate, configuredCode)) {
     return Response.json(
-      { message: "Code invalide. Vérifiez votre saisie puis réessayez." },
+      {
+        message:
+          "Le code saisi est incorrect. Vérifiez votre saisie puis réessayez.",
+      },
       { status: 401, headers: { "Cache-Control": "no-store" } },
     );
   }
