@@ -1,11 +1,22 @@
 "use client";
 
-import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
-import { Download, KeyRound, Loader2, X } from "lucide-react";
+import {
+  FormEvent,
+  KeyboardEvent as ReactKeyboardEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { ArrowUpRight, Download, KeyRound, Loader2, X } from "lucide-react";
 
+import { AndroidIcon, WindowsIcon } from "./PlatformIcons";
 import styles from "./page.module.css";
 
 const EPUB_FILENAME = "Julie_Dieris-Le_Silence_de_la_Nuit.epub";
+const PLAY_BOOKS_URL =
+  "https://play.google.com/store/apps/details?hl=fr&id=com.google.android.apps.books";
+const CALIBRE_WINDOWS_URL = "https://calibre-ebook.com/dist/win64";
 const ACCESS_CODE_LENGTH = 6;
 
 function formatAccessCode(value: string) {
@@ -19,53 +30,101 @@ function formatAccessCode(value: string) {
     : alphanumeric;
 }
 
+function isAndroidDevice() {
+  return /Android/i.test(navigator.userAgent);
+}
+
+function isWindowsDevice() {
+  return /Windows/i.test(navigator.userAgent);
+}
+
 type DownloadState = "idle" | "loading" | "error";
+type DialogView = "android" | "windows" | "code" | null;
 
 export default function DownloadModal() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [dialogView, setDialogView] = useState<DialogView>(null);
   const [code, setCode] = useState("");
   const [state, setState] = useState<DownloadState>("idle");
   const [error, setError] = useState("");
   const [hasDownloaded, setHasDownloaded] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLElement>(null);
+  const installRef = useRef<HTMLAnchorElement>(null);
+  const openerRef = useRef<HTMLButtonElement>(null);
+  const isSubmittingRef = useRef(false);
 
-  const closeModal = useCallback(() => {
-    if (state === "loading") return;
-    setIsOpen(false);
+  const closeModal = useCallback((force = false) => {
+    if (isSubmittingRef.current && !force) return;
+    if (force) isSubmittingRef.current = false;
+
+    setDialogView(null);
     setCode("");
     setError("");
     setState("idle");
-  }, [state]);
+    requestAnimationFrame(() => openerRef.current?.focus());
+  }, []);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!dialogView) return;
 
     const previousOverflow = document.body.style.overflow;
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeModal();
-      }
+      if (event.key === "Escape") closeModal();
     };
 
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKeyDown);
-    inputRef.current?.focus();
+
+    if (dialogView === "code") {
+      inputRef.current?.focus();
+    } else {
+      installRef.current?.focus();
+    }
 
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [closeModal, isOpen]);
+  }, [closeModal, dialogView]);
 
-  const openModal = () => {
+  const openDownloadFlow = () => {
+    setCode("");
     setError("");
     setState("idle");
-    setIsOpen(true);
+    const nextView = isAndroidDevice()
+      ? "android"
+      : isWindowsDevice()
+      ? "windows"
+      : "code";
+    setDialogView(nextView);
+  };
+
+  const handleDialogKeyDown = (event: ReactKeyboardEvent<HTMLElement>) => {
+    if (event.key !== "Tab") return;
+
+    const focusableElements = dialogRef.current?.querySelectorAll<HTMLElement>(
+      'a[href], button:not(:disabled), input:not(:disabled), [tabindex]:not([tabindex="-1"])',
+    );
+    if (!focusableElements?.length) {
+      event.preventDefault();
+      return;
+    }
+
+    const first = focusableElements[0];
+    const last = focusableElements[focusableElements.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   };
 
   const submitCode = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (state === "loading") return;
+    if (isSubmittingRef.current) return;
 
     const normalizedCode = formatAccessCode(code);
     if (!normalizedCode) {
@@ -80,6 +139,7 @@ export default function DownloadModal() {
       return;
     }
 
+    isSubmittingRef.current = true;
     setState("loading");
     setError("");
 
@@ -111,24 +171,29 @@ export default function DownloadModal() {
       document.body.appendChild(link);
       link.click();
       link.remove();
-      URL.revokeObjectURL(objectUrl);
+      window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1_000);
 
-      closeModal();
+      closeModal(true);
       setHasDownloaded(true);
     } catch {
       setError(
-        "Le code saisi est incorrect. Vérifiez votre saisie puis réessayez.",
+        "Le téléchargement a échoué. Vérifiez votre connexion puis réessayez.",
       );
       setState("error");
+    } finally {
+      isSubmittingRef.current = false;
     }
   };
+
+  const isOpen = dialogView !== null;
 
   return (
     <>
       <button
+        ref={openerRef}
         type="button"
         className={styles.downloadButton}
-        onClick={openModal}
+        onClick={openDownloadFlow}
         aria-haspopup="dialog"
         aria-expanded={isOpen}
       >
@@ -153,91 +218,197 @@ export default function DownloadModal() {
           }}
         >
           <section
-            className={styles.modal}
+            ref={dialogRef}
+            className={`${styles.modal} ${
+              dialogView === "android" || dialogView === "windows"
+                ? styles.platformModal
+                : ""
+            }`}
             role="dialog"
             aria-modal="true"
-            aria-labelledby="juliedieris-download-title"
+            aria-labelledby={
+              dialogView === "android"
+                ? "juliedieris-android-title"
+                : dialogView === "windows"
+                ? "juliedieris-windows-title"
+                : "juliedieris-download-title"
+            }
+            onKeyDown={handleDialogKeyDown}
           >
             <button
               type="button"
               className={styles.modalClose}
-              onClick={closeModal}
+              onClick={() => closeModal()}
               aria-label="Fermer"
             >
               <X aria-hidden="true" size={24} />
             </button>
 
-            <div className={styles.modalHeader}>
-              <h2
-                id="juliedieris-download-title"
-                className={styles.modalHeading}
-              >
-                Code d&apos;accès
-              </h2>
-              <p className={styles.modalIntro}>
-                Entrez le code fourni pour télécharger votre exemplaire de
-                <em> Le Silence de la Nuit</em>.
-              </p>
-            </div>
+            {dialogView === "android" ? (
+              <>
+                <div className={styles.androidPromptIcon} aria-hidden="true">
+                  <AndroidIcon className={styles.androidMark} />
+                </div>
+                <div className={styles.modalHeader}>
+                  <p className={styles.modalKicker}>Conseil pour Android</p>
+                  <h2
+                    id="juliedieris-android-title"
+                    className={styles.modalHeading}
+                  >
+                    Une application pour lire votre ePub
+                  </h2>
+                  <p className={styles.modalIntro}>
+                    Nous vous conseillons Google Play Livres pour ouvrir et lire
+                    votre livre après le téléchargement.
+                  </p>
+                </div>
 
-            <form className={styles.modalForm} onSubmit={submitCode}>
-              <label
-                className={styles.srOnly}
-                htmlFor="juliedieris-access-code"
-              >
-                Code d&apos;accès
-              </label>
-              <input
-                ref={inputRef}
-                id="juliedieris-access-code"
-                name="accessCode"
-                className={`${styles.codeInput} ${
-                  state === "error" ? styles.codeInputError : ""
-                }`}
-                type="text"
-                value={code}
-                onChange={(event) => {
-                  setCode(formatAccessCode(event.target.value));
-                  if (state === "error") {
-                    setState("idle");
-                    setError("");
-                  }
-                }}
-                placeholder="XXX-XXX"
-                maxLength={7}
-                pattern="[A-Za-z0-9]{3}-[A-Za-z0-9]{3}"
-                title="Format attendu : XXX-XXX"
-                autoComplete="off"
-                autoCapitalize="characters"
-                spellCheck={false}
-                required
-              />
-
-              {error && (
-                <p className={styles.errorMessage} role="alert">
-                  {error}
+                <div className={styles.modalActions}>
+                  <a
+                    ref={installRef}
+                    className={styles.modalButton}
+                    href={PLAY_BOOKS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <AndroidIcon className={styles.androidMark} />
+                    Installer Google Play Livres
+                    <ArrowUpRight aria-hidden="true" size={18} />
+                  </a>
+                  <button
+                    type="button"
+                    className={styles.modalButtonSecondary}
+                    onClick={() => setDialogView("code")}
+                  >
+                    J&apos;ai déjà un lecteur
+                  </button>
+                </div>
+                <p className={styles.modalFootnote}>
+                  Vous pourrez aussi choisir un autre lecteur ePub compatible.
                 </p>
-              )}
+              </>
+            ) : dialogView === "windows" ? (
+              <>
+                <div className={styles.windowsPromptIcon} aria-hidden="true">
+                  <WindowsIcon className={styles.windowsMark} />
+                </div>
+                <div className={styles.modalHeader}>
+                  <p
+                    className={`${styles.modalKicker} ${styles.windowsKicker}`}
+                  >
+                    Conseil pour Windows
+                  </p>
+                  <h2
+                    id="juliedieris-windows-title"
+                    className={styles.modalHeading}
+                  >
+                    Une application pour lire votre ePub
+                  </h2>
+                  <p className={styles.modalIntro}>
+                    Nous vous conseillons Calibre pour ouvrir et lire votre
+                    livre après le téléchargement.
+                  </p>
+                </div>
 
-              <button
-                type="submit"
-                className={styles.modalButton}
-                disabled={state === "loading"}
-              >
-                {state === "loading" ? (
-                  <Loader2
-                    aria-hidden="true"
-                    className="animate-spin"
-                    size={20}
+                <div className={styles.modalActions}>
+                  <a
+                    ref={installRef}
+                    className={styles.modalButton}
+                    href={CALIBRE_WINDOWS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <WindowsIcon className={styles.windowsMark} />
+                    Télécharger Calibre
+                    <ArrowUpRight aria-hidden="true" size={18} />
+                  </a>
+                  <button
+                    type="button"
+                    className={styles.modalButtonSecondary}
+                    onClick={() => setDialogView("code")}
+                  >
+                    J&apos;ai déjà un lecteur
+                  </button>
+                </div>
+                <p className={styles.modalFootnote}>
+                  Vous pourrez aussi choisir un autre lecteur ePub compatible.
+                </p>
+              </>
+            ) : (
+              <>
+                <div className={styles.modalHeader}>
+                  <h2
+                    id="juliedieris-download-title"
+                    className={styles.modalHeading}
+                  >
+                    Code d&apos;accès
+                  </h2>
+                  <p className={styles.modalIntro}>
+                    Entrez le code fourni pour télécharger votre exemplaire de
+                    <em> Le Silence de la Nuit</em>.
+                  </p>
+                </div>
+
+                <form className={styles.modalForm} onSubmit={submitCode}>
+                  <label
+                    className={styles.srOnly}
+                    htmlFor="juliedieris-access-code"
+                  >
+                    Code d&apos;accès
+                  </label>
+                  <input
+                    ref={inputRef}
+                    id="juliedieris-access-code"
+                    name="accessCode"
+                    className={`${styles.codeInput} ${
+                      state === "error" ? styles.codeInputError : ""
+                    }`}
+                    type="text"
+                    value={code}
+                    onChange={(event) => {
+                      setCode(formatAccessCode(event.target.value));
+                      if (state === "error") {
+                        setState("idle");
+                        setError("");
+                      }
+                    }}
+                    placeholder="XXX-XXX"
+                    maxLength={7}
+                    pattern="[A-Za-z0-9]{3}-[A-Za-z0-9]{3}"
+                    title="Format attendu : XXX-XXX"
+                    autoComplete="off"
+                    autoCapitalize="characters"
+                    spellCheck={false}
+                    required
                   />
-                ) : (
-                  <KeyRound aria-hidden="true" size={20} />
-                )}
-                {state === "loading"
-                  ? "Préparation…"
-                  : "Déverrouiller et télécharger"}
-              </button>
-            </form>
+
+                  {error && (
+                    <p className={styles.errorMessage} role="alert">
+                      {error}
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    className={styles.modalButton}
+                    disabled={state === "loading"}
+                  >
+                    {state === "loading" ? (
+                      <Loader2
+                        aria-hidden="true"
+                        className="animate-spin"
+                        size={20}
+                      />
+                    ) : (
+                      <KeyRound aria-hidden="true" size={20} />
+                    )}
+                    {state === "loading"
+                      ? "Préparation…"
+                      : "Déverrouiller et télécharger"}
+                  </button>
+                </form>
+              </>
+            )}
           </section>
         </div>
       )}
