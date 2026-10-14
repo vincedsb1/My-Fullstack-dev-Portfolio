@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Download, Mail, ShoppingBag } from "lucide-react";
+import { ArrowUpRight, Mail, ShoppingBag } from "lucide-react";
 
 import cover from "../../../docs/Julie_Dieris-Le_Silence_de_la_Nuit-Cover.png";
 import DownloadModal from "./DownloadModal";
+import { AndroidIcon, WindowsIcon } from "./PlatformIcons";
 import styles from "./page.module.css";
 
 const baseUrl =
@@ -88,21 +89,76 @@ export default function JulieDierisPage() {
               </div>
             </div>
 
-            <div className={styles.calibre}>
-              <p className={styles.calibreText}>
-                Besoin d&apos;une application pour lire l&apos;ePub sur Windows
-                ?
-              </p>
-              <a
-                className={styles.calibreLink}
-                href="https://calibre-ebook.com/dist/win64"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Download aria-hidden="true" size={20} />
-                Télécharger un lecteur (Calibre)
-              </a>
-            </div>
+            <section
+              className={styles.readerGuidance}
+              aria-labelledby="juliedieris-reader-title"
+            >
+              <div className={styles.readerHeader}>
+                <h2
+                  id="juliedieris-reader-title"
+                  className={styles.readerHeading}
+                >
+                  Besoin d&apos;une application pour lire l&apos;ePub&nbsp;?
+                </h2>
+                <p className={styles.readerIntro}>
+                  Choisissez le lecteur adapté à votre appareil.
+                </p>
+              </div>
+
+              <div className={styles.readerGrid}>
+                <article className={styles.readerCard}>
+                  <div className={styles.readerCardHeading}>
+                    <span
+                      className={`${styles.readerIcon} ${styles.readerIconAndroid}`}
+                    >
+                      <AndroidIcon className={styles.androidMark} />
+                    </span>
+                    <div>
+                      <p className={styles.readerPlatform}>ANDROID</p>
+                      <h3 className={styles.readerName}>Google Play Livres</h3>
+                    </div>
+                  </div>
+                  <p className={styles.readerDescription}>
+                    Un lecteur conseillé pour ouvrir votre ePub sur Android.
+                  </p>
+                  <a
+                    className={styles.readerLink}
+                    href="https://play.google.com/store/apps/details?hl=fr&id=com.google.android.apps.books"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Installer l&apos;application
+                    <ArrowUpRight aria-hidden="true" size={16} />
+                  </a>
+                </article>
+
+                <article className={styles.readerCard}>
+                  <div className={styles.readerCardHeading}>
+                    <span
+                      className={`${styles.readerIcon} ${styles.readerIconWindows}`}
+                    >
+                      <WindowsIcon />
+                    </span>
+                    <div>
+                      <p className={styles.readerPlatform}>WINDOWS</p>
+                      <h3 className={styles.readerName}>Calibre</h3>
+                    </div>
+                  </div>
+                  <p className={styles.readerDescription}>
+                    Un lecteur ePub pour votre ordinateur Windows.
+                  </p>
+                  <a
+                    className={styles.readerLink}
+                    href="https://calibre-ebook.com/dist/win64"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Télécharger Calibre
+                    <ArrowUpRight aria-hidden="true" size={16} />
+                  </a>
+                </article>
+              </div>
+            </section>
           </div>
         </div>
       </div>
