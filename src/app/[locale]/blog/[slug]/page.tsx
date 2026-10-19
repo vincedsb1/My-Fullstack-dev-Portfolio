@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ArticleDocument from "../../../components/blog/ArticleDocument";
+import InternationalisationArticle from "../../../components/blog/InternationalisationArticle";
 import {
   ArticleBreadcrumbs,
   ArticleFooter,
@@ -105,6 +106,8 @@ export default async function BlogArticlePage({
 
   const readingMinutes = getArticleReadingTime(article);
   const isInteractiveGuide = article.metadata.renderer === "guide";
+  const isInternationalisationArticle =
+    locale === "fr" && slug === "internationaliser-saas-lancement";
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -155,7 +158,9 @@ export default async function BlogArticlePage({
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
-      {!isInteractiveGuide ? <BlogSiteNavigation locale={locale} /> : null}
+      {!isInteractiveGuide && !isInternationalisationArticle ? (
+        <BlogSiteNavigation locale={locale} />
+      ) : null}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -168,7 +173,14 @@ export default async function BlogArticlePage({
           __html: serializeStructuredData(breadcrumbStructuredData),
         }}
       />
-      {isInteractiveGuide ? (
+      {isInternationalisationArticle ? (
+        <InternationalisationArticle
+          article={article}
+          readingMinutes={readingMinutes}
+        >
+          <ArticleDocument article={article} readingMinutes={readingMinutes} />
+        </InternationalisationArticle>
+      ) : isInteractiveGuide ? (
         <div className="guide-page min-h-screen bg-neutral-100 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100">
           <ArticleDocument article={article} readingMinutes={readingMinutes} />
         </div>

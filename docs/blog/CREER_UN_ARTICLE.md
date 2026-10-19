@@ -32,7 +32,7 @@ status: published
 ---
 ```
 
-`updatedAt` est facultatif et ne change qu’après une révision éditoriale réelle. `publishedAt` est la date réelle prévue pour la première publication, au format `AAAA-MM-JJ`. Ne reprends pas automatiquement la date de modification Git comme date de publication. Si la date réelle n’est pas connue et ne peut pas être établie, demande-la avant d’inscrire une valeur. Le système ne programme pas les publications.
+`updatedAt` est facultatif et ne change qu’après une révision éditoriale réelle. `publishedAt` est la date prévue pour la première publication, au format `AAAA-MM-JJ`. Ne reprends pas automatiquement la date de modification Git comme date de publication. Le système ne programme pas les publications.
 
 Le `title` du frontmatter fournit l’unique H1 de la page. Commence le corps MDX au niveau H2. Pour les images de l’article, utilise des chemins locaux existants sous `/blog/<slug>/` ; `npm run blog:validate` vérifie leurs fichiers.
 
