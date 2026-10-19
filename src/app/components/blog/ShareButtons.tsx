@@ -36,6 +36,15 @@ export default function ShareButtons({ title }: { title: string }) {
     <button
       type="button"
       onClick={share}
+      aria-label={
+        copied
+          ? locale === "fr"
+            ? "Lien copié"
+            : "Link copied"
+          : locale === "fr"
+          ? "Partager l’article"
+          : "Share article"
+      }
       className="inline-flex min-h-10 items-center gap-2 rounded-full border border-neutral-300 px-4 text-sm font-medium text-neutral-700 transition-colors hover:border-red-500 hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 dark:border-neutral-700 dark:text-neutral-200 dark:hover:text-red-400"
       aria-live="polite"
     >

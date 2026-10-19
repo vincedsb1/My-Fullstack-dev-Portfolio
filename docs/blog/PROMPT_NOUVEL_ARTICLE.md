@@ -31,7 +31,7 @@ CONTRAINTES :
 2. Vérifie les articles existants et les conventions avant de choisir un titre, un slug et une catégorie.
 3. Rédige un article naturel, utile et précis. Préserve le sens des notes et n’invente pas d’expérience, de chiffre, de source, de citation ni de résultat.
 4. Crée un seul fichier `src/content/blog/<locale>/<slug>.mdx` avec tous les champs requis. Choisis `status: published` sauf demande explicite de brouillon. N’impose aucune relecture bloquante.
-5. Utilise la date réelle de première publication. Vérifie le contenu et l’historique du dépôt ; si elle reste inconnue, demande la date avant de la renseigner.
+5. Utilise la date prévue pour la première publication au format ISO `AAAA-MM-JJ`.
 6. Ajoute uniquement les médias qui améliorent réellement l’article. Vérifie leurs droits, textes alternatifs, chemins locaux et dimensions. Pré-rends les diagrammes Mermaid en SVG/PNG.
 7. Utilise `<YouTubeEmbed>`, `<Figure>`, `<Diagram>`, `<Callout>` et les blocs de code documentés si nécessaire.
 8. Garde le H1 généré depuis `title` et commence le corps au niveau H2. Vérifie les liens, les chemins locaux d’images, le rendu MDX, l’accessibilité clavier, les contrastes, le mode sombre et la largeur mobile.
