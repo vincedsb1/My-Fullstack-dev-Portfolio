@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr" class="antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Défis Techniques - Maquette 2026</title>
+    
+    <!-- Intégration de la police Inter pour un rendu moderne et épuré -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#FF4757', // Un rouge-corail moderne pour l'accent
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 24px -4px rgba(0, 0, 0, 0.02)',
+                        'hover': '0 24px 48px -12px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Animation d'entrée douce pour l'élégance */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-[#F8F9FA] to-[#E9ECEF]/30 text-slate-900 min-h-screen flex items-center justify-center p-4 sm:p-8 md:p-12 lg:p-24 selection:bg-brand-red/10 selection:text-brand-red">
+
+    <div class="max-w-[1240px] w-full mx-auto">
+        <!-- En-tête de section -->
+        <header class="mb-14 md:mb-20 animate-fade-up">
+            <h2 class="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight text-slate-900">
+                Défis techniques
+            </h2>
+        </header>
+
+        <!-- Grille responsive : 1 colonne sur mobile, 2 colonnes sur desktop -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+
+            <!-- Carte 01 -->
+            <article class="group bg-white rounded-3xl p-8 md:p-12 shadow-soft border border-slate-900/[0.03] hover:shadow-hover hover:border-slate-900/[0.08] hover:-translate-y-1.5 transition-all duration-500 ease-out opacity-0 animate-fade-up delay-100">
+                
+                <!-- En-tête de la carte -->
+                <div class="flex flex-col sm:flex-row sm:items-center gap-5 mb-10 md:mb-12">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-[14px] bg-slate-50 border border-slate-100 flex items-center justify-center text-sm font-bold text-slate-400 group-hover:bg-brand-red/5 group-hover:text-brand-red group-hover:border-brand-red/10 transition-all duration-500">
+                        01
+                    </div>
+                    <h3 class="text-xl md:text-[1.4rem] font-bold leading-tight text-slate-900 group-hover:text-brand-red transition-colors duration-500">
+                        Conserver la cohérence d'un workflow révisable
+                    </h3>
+                </div>
+
+                <!-- Contenu divisé en deux colonnes -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start">
+                    
+                    <!-- Colonne Contrainte -->
+                    <div class="relative">
+                        <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
+                            Contrainte
+                        </h4>
+                        <p class="text-slate-500 leading-relaxed text-[15px]">
+                            Une décision modifiée peut rendre les raffinements successifs caducs.
+                        </p>
+                    </div>
+                    
+                    <!-- Colonne Solution -->
+                    <div class="relative">
+                        <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-red mb-4 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-red/80 animate-pulse"></span>
+                            La solution
+                        </h4>
+                        <p class="text-slate-900 font-medium leading-relaxed text-[15px]">
+                            Le service de workflow invalide explicitement les décisions dépendantes sans supprimer l'historique.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Carte 02 -->
+            <article class="group bg-white rounded-3xl p-8 md:p-12 shadow-soft border border-slate-900/[0.03] hover:shadow-hover hover:border-slate-900/[0.08] hover:-translate-y-1.5 transition-all duration-500 ease-out opacity-0 animate-fade-up delay-200">
+                <div class="flex flex-col sm:flex-row sm:items-center gap-5 mb-10 md:mb-12">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-[14px] bg-slate-50 border border-slate-100 flex items-center justify-center text-sm font-bold text-slate-400 group-hover:bg-brand-red/5 group-hover:text-brand-red group-hover:border-brand-red/10 transition-all duration-500">
+                        02
+                    </div>
+                    <h3 class="text-xl md:text-[1.4rem] font-bold leading-tight text-slate-900 group-hover:text-brand-red transition-colors duration-500">
+                        Fiabiliser la génération payante asynchrone
+                    </h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start">
+                    <div class="relative">
+                        <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
+                            Contrainte
+                        </h4>
+                        <p class="text-slate-500 leading-relaxed text-[15px]">
+                            Les appels fournisseurs peuvent durer et une réponse réseau perdue peut provoquer des doublons ou des crédits erronés.
+                        </p>
+                    </div>
+                    <div class="relative">
+                        <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-red mb-4 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-red/80 animate-pulse"></span>
+                            La solution
+                        </h4>
+                        <p class="text-slate-900 font-medium leading-relaxed text-[15px]">
+                            La génération est réservée côté serveur puis suivie par statut, tandis que la facturation est confirmée par des événements signés.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Carte 03 -->
+            <article class="group bg-white rounded-3xl p-8 md:p-12 shadow-soft border border-slate-900/[0.03] hover:shadow-hover hover:border-slate-900/[0.08] hover:-translate-y-1.5 transition-all duration-500 ease-out opacity-0 animate-fade-up delay-300">
+                <div class="flex flex-col sm:flex-row sm:items-center gap-5 mb-10 md:mb-12">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-[14px] bg-slate-50 border border-slate-100 flex items-center justify-center text-sm font-bold text-slate-400 group-hover:bg-brand-red/5 group-hover:text-brand-red group-hover:border-brand-red/10 transition-all duration-500">
+                        03
+                    </div>
+                    <h3 class="text-xl md:text-[1.4rem] font-bold leading-tight text-slate-900 group-hover:text-brand-red transition-colors duration-500">
+                        Normaliser une sortie IA imparfaite
+                    </h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start">
+                    <div class="relative">
+                        <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
+                            Contrainte
+                        </h4>
+                        <p class="text-slate-500 leading-relaxed text-[15px]">
+                            Une grille incorrecte, une image vide ou un master mal cadré rend les découpes inutilisables.
+                        </p>
+                    </div>
+                    <div class="relative">
+                        <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-red mb-4 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-red/80 animate-pulse"></span>
+                            La solution
+                        </h4>
+                        <p class="text-slate-900 font-medium leading-relaxed text-[15px]">
+                            Les images sont validées avant d'entrer dans les étapes suivantes du workflow.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Carte 04 -->
+            <article class="group bg-white rounded-3xl p-8 md:p-12 shadow-soft border border-slate-900/[0.03] hover:shadow-hover hover:border-slate-900/[0.08] hover:-translate-y-1.5 transition-all duration-500 ease-out opacity-0 animate-fade-up delay-400">
+                <div class="flex flex-col sm:flex-row sm:items-center gap-5 mb-10 md:mb-12">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-[14px] bg-slate-50 border border-slate-100 flex items-center justify-center text-sm font-bold text-slate-400 group-hover:bg-brand-red/5 group-hover:text-brand-red group-hover:border-brand-red/10 transition-all duration-500">
+                        04
+                    </div>
+                    <h3 class="text-xl md:text-[1.4rem] font-bold leading-tight text-slate-900 group-hover:text-brand-red transition-colors duration-500">
+                        Isoler les données multi-comptes
+                    </h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start">
+                    <div class="relative">
+                        <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
+                            Contrainte
+                        </h4>
+                        <p class="text-slate-500 leading-relaxed text-[15px]">
+                            Un identifiant de projet envoyé par le navigateur ne constitue pas une preuve de possession.
+                        </p>
+                    </div>
+                    <div class="relative">
+                        <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-brand-red mb-4 flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-red/80 animate-pulse"></span>
+                            La solution
+                        </h4>
+                        <p class="text-slate-900 font-medium leading-relaxed text-[15px]">
+                            Les lectures et mutations passent par un périmètre d'autorisation centralisé avant l'accès aux repositories.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+</body>
+</html>

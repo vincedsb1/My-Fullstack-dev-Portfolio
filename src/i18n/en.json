@@ -42,13 +42,38 @@
     "subtitle": "I've successfully delivered a variety of projects. Here's a snapshot of my recent work.",
     "othersTitle": "Other Projects",
     "viewProject": "View Project",
+    "viewDetails": "View details",
+    "accessProject": "Access project",
+    "viewOnGithub": "View on GitHub",
+    "archives": "Archive",
+    "archiveCount": "8 projects",
+    "archivesTitle": "Project archive",
+    "archivesIntro": "Explore eight additional projects, presented through the same lens of evidence, context and technical decisions.",
+    "backToPortfolio": "Back to portfolio",
+    "projectPreview": "project preview",
+    "technologies": "Main technologies",
+    "projectActions": "Project actions",
+    "openActions": "Open project actions",
+    "closeDialog": "Close project actions dialog",
+    "kind": {
+      "platform": "Platform",
+      "saas": "SaaS",
+      "web-app": "Web app",
+      "native-app": "Native app",
+      "extension": "Extension",
+      "tool": "Tool",
+      "showcase": "Showcase"
+    },
     "previousProjectAriaLabel": "Previous Project",
     "nextProjectAriaLabel": "Next Project",
     "goToProjectAriaLabel": "Go to project",
+    "featuredNavigation": "Featured project navigation",
+    "autoplayProgress": "Progress before the next project",
+    "currentProject": "Current project: {name}",
     "viewProjectAriaLabel": "View project",
     "openProject": "Open project",
     "aiSystem": {
-      "name": "AiSystem",
+      "name": "AI System",
       "description": "Local macOS control plane for AI skills and project automation."
     },
     "codeMaster": {
@@ -59,16 +84,24 @@
       "name": "Allaw",
       "description": "Allaw is a web platform for legal professionals, unifying <strong>visibility</strong>, <strong>scheduling</strong>, <strong>appointments</strong> and essential office data within a clean and modern interface.<break></break><break></break>I implemented a strong <strong>design system</strong> early on, added key features, improved SEO and enhanced overall consistency to boost product efficiency and support company growth."
     },
+    "iconise": {
+      "name": "Iconise",
+      "description": "A SaaS application that structures visual decisions, preserves iterations, and connects image generation, billing, and asset export."
+    },
+    "suggst": {
+      "name": "Suggst",
+      "description": "A case study to be documented from verified project evidence."
+    },
     "truthify": {
       "name": "Truthify",
       "description": "Truthify is a platform that highlights <strong>arguments</strong>, <strong>fallacies</strong>, <strong>facts</strong> and overall <strong>logic</strong> to deliver a clear view of any discourse.<break></break><break></break>I designed the architecture, built the analysis modules, developed the structured report engine, and integrated the front-end to ensure a smooth and readable experience."
     },
     "legalConstat": {
-      "name": "Légal Constat",
+      "name": "Legal Constat",
       "description": "Platform connecting individuals with bailiffs + CRM."
     },
     "smartflow": {
-      "name": "Smartflow",
+      "name": "SmartFlow",
       "description": "SmartFlow is a web app designed to enhance learning through the <strong>Leitner</strong> method, helping users improve <strong>retention</strong> with intelligently spaced reviews.<break></break><break></break>As the developer, I handled the <strong>architecture</strong>, overall design, tech <strong>stack</strong> selection, UI wireframes, testing setup, and complete delivery of the project."
     },
     "decorNature": {
@@ -96,9 +129,65 @@
       "description": "A web-based quiz game about movie release dates."
     },
     "legalDirectory": {
-      "name": "Quickflow",
+      "name": "QuickFlow",
       "description": "Ideation platform streamlining democratic decision-making."
     }
+  },
+  "caseStudy": {
+    "mainNavigation": "Case study navigation",
+    "backToProjects": "Projects",
+    "overview": "Overview",
+    "challenges": "Challenges",
+    "contact": "Contact",
+    "toggleTheme": "Toggle theme",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "fixtureNotice": "Validation fixture — not published",
+    "draftNotice": "Editorial draft — information to be completed",
+    "year": "Delivery",
+    "role": "Contribution",
+    "type": "Type",
+    "overviewEyebrow": "Overview",
+    "problem": "The problem",
+    "solution": "The solution",
+    "audience": "Target audience",
+    "context": "Context",
+    "scope": "Scope",
+    "contribution": "Contribution",
+    "contributionAndScope": "Role & scope",
+    "videoTitle": "Demonstration",
+    "videoFacadeBadge": "Demonstration",
+    "videoFacadeTitle": "Iconise in action",
+    "videoPlay": "Play the Iconise video",
+    "videoClose": "Close video",
+    "videoRegion": "Iconise case study video player",
+    "videoUnsupported": "Your browser cannot play this video.",
+    "videoUnavailable": "Video demonstration unavailable.",
+    "workflowTitle": "User workflow",
+    "previousStep": "Previous step",
+    "nextStep": "Next step",
+    "architectureTitle": "Technical architecture",
+    "architectureRelation": "Relation",
+    "asyncFlow": "Asynchronous flow",
+    "galleryTitle": "Project gallery",
+    "openImage": "Enlarge media",
+    "closeLightbox": "Close viewer",
+    "challengesEyebrow": "Difficulties encountered",
+    "challengesTitle": "Technical challenges",
+    "constraint": "Constraint",
+    "decision": "Decision",
+    "tradeoff": "Trade-off",
+    "observableResult": "Observable result",
+    "limitationsTitle": "Limitations and open points",
+    "decisionsTitle": "Technical decisions",
+    "outcomesTitle": "Outcomes and learnings",
+    "stackTitle": "Main technical stack",
+    "previousProject": "Previous project",
+    "nextProject": "Next project",
+    "contactTitle": "A project to build together?",
+    "contactDescription": "Let’s discuss architecture, product or your next application.",
+    "contactEmail": "Contact me by email",
+    "contactMalt": "View my Malt profile"
   },
   "timeline": {
     "title": "Journey",

@@ -42,13 +42,38 @@
     "subtitle": "J'ai mené à bien une variété de projets. Voici un aperçu de mes réalisations récentes.",
     "othersTitle": "Autres Projets",
     "viewProject": "Voir le projet",
+    "viewDetails": "Voir le détail",
+    "accessProject": "Accéder au projet",
+    "viewOnGithub": "Voir sur GitHub",
+    "archives": "Archives",
+    "archiveCount": "8 projets",
+    "archivesTitle": "Archives projets",
+    "archivesIntro": "Retrouvez huit projets supplémentaires, présentés dans la même logique de preuves, de contexte et de décisions.",
+    "backToPortfolio": "Retour au portfolio",
+    "projectPreview": "aperçu du projet",
+    "technologies": "Technologies principales",
+    "projectActions": "Actions du projet",
+    "openActions": "Ouvrir les actions du projet",
+    "closeDialog": "Fermer la fenêtre d’actions",
+    "kind": {
+      "platform": "Plateforme",
+      "saas": "SaaS",
+      "web-app": "Application web",
+      "native-app": "Application native",
+      "extension": "Extension",
+      "tool": "Outil",
+      "showcase": "Site vitrine"
+    },
     "previousProjectAriaLabel": "Projet précédent",
     "nextProjectAriaLabel": "Projet suivant",
     "goToProjectAriaLabel": "Aller au projet",
+    "featuredNavigation": "Navigation des projets à la une",
+    "autoplayProgress": "Progression avant le prochain projet",
+    "currentProject": "Projet actuel : {name}",
     "viewProjectAriaLabel": "Voir le projet",
     "openProject": "Ouvrir le projet",
     "aiSystem": {
-      "name": "AiSystem",
+      "name": "AI System",
       "description": "Centre macOS local pour centraliser les skills IA et l'automatisation."
     },
     "codeMaster": {
@@ -59,16 +84,24 @@
       "name": "Allaw",
       "description": "Allaw est une plateforme web pour les professionnels du droit, centralisant la <strong>visibilité</strong>, les <strong>horaires</strong>, les <strong>rendez-vous</strong> et les informations d'étude, tout en offrant une interface moderne et efficace.<break></break><break></break>J'y ai appliqué un <strong>design system</strong> structurant dès les débuts, ajouté des fonctionnalités clés, optimisé le SEO et renforcé la cohérence de l'expérience pour soutenir la croissance produit."
     },
+    "iconise": {
+      "name": "Iconise",
+      "description": "Application SaaS qui structure les décisions visuelles, conserve les itérations et relie génération d’images, facturation et export de livrables."
+    },
+    "suggst": {
+      "name": "Suggst",
+      "description": "Étude de cas à documenter à partir des éléments vérifiés du projet."
+    },
     "truthify": {
       "name": "Truthify",
       "description": "Truthify est une plateforme d'analyse qui met en lumière les <strong>arguments</strong>, les <strong>sophismes</strong>, les <strong>faits</strong> et la <strong>logique</strong> d'un discours pour offrir une compréhension fiable.<break></break><break></break>J'ai conçu l'architecture, développé les modules d'analyse, construit le moteur de rapports structurés et intégré le front afin d'assurer une expérience claire."
     },
     "legalConstat": {
-      "name": "Légal Constat",
+      "name": "Legal Constat",
       "description": "Plateforme de mise en relation particuliers / commissaires de justice + CRM."
     },
     "smartflow": {
-      "name": "Smartflow",
+      "name": "SmartFlow",
       "description": "SmartFlow est une application web d'apprentissage optimisée par la méthode de <strong>Leitner</strong>, permettant d'améliorer la <strong>mémorisation</strong> grâce à des révisions intelligemment espacées.<break></break><break></break>En tant que développeur, j'ai réalisé la <strong>conception</strong>, l'architecture du projet, le choix de la <strong>stack</strong>, la création des maquettes, la mise en place des tests et le delivery complet."
     },
     "decorNature": {
@@ -96,9 +129,65 @@
       "description": "Un jeu de quiz en ligne sur les dates de sortie de films."
     },
     "legalDirectory": {
-      "name": "Quickflow",
+      "name": "QuickFlow",
       "description": "Plateforme d'idéation rationalisant la prise de décision démocratique."
     }
+  },
+  "caseStudy": {
+    "mainNavigation": "Navigation de l’étude de cas",
+    "backToProjects": "Projets",
+    "overview": "Vue d’ensemble",
+    "challenges": "Défis",
+    "contact": "Contact",
+    "toggleTheme": "Changer de thème",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "fixtureNotice": "Fixture de validation — non publiée",
+    "draftNotice": "Brouillon éditorial — informations à compléter",
+    "year": "Livraison",
+    "role": "Contribution",
+    "type": "Type",
+    "overviewEyebrow": "Vue d’ensemble",
+    "problem": "Le problème",
+    "solution": "La solution",
+    "audience": "Public cible",
+    "context": "Contexte",
+    "scope": "Périmètre",
+    "contribution": "Contribution",
+    "contributionAndScope": "Rôle & périmètre",
+    "videoTitle": "Démonstration",
+    "videoFacadeBadge": "Démonstration",
+    "videoFacadeTitle": "Iconise en action",
+    "videoPlay": "Lire la vidéo Iconise",
+    "videoClose": "Fermer la vidéo",
+    "videoRegion": "Lecteur vidéo de l’étude de cas Iconise",
+    "videoUnsupported": "Votre navigateur ne peut pas lire cette vidéo.",
+    "videoUnavailable": "Démonstration vidéo non disponible.",
+    "workflowTitle": "Workflow utilisateur",
+    "previousStep": "Étape précédente",
+    "nextStep": "Étape suivante",
+    "architectureTitle": "Architecture technique",
+    "architectureRelation": "Relation",
+    "asyncFlow": "Flux asynchrone",
+    "galleryTitle": "Galerie du projet",
+    "openImage": "Agrandir le média",
+    "closeLightbox": "Fermer la visionneuse",
+    "challengesEyebrow": "Difficultés rencontrées",
+    "challengesTitle": "Défis techniques",
+    "constraint": "Contrainte",
+    "decision": "Décision",
+    "tradeoff": "Compromis",
+    "observableResult": "Résultat observable",
+    "limitationsTitle": "Limites et points à confirmer",
+    "decisionsTitle": "Décisions techniques",
+    "outcomesTitle": "Résultats et enseignements",
+    "stackTitle": "Stack technique principale",
+    "previousProject": "Projet précédent",
+    "nextProject": "Projet suivant",
+    "contactTitle": "Un projet à construire ensemble ?",
+    "contactDescription": "Discutons d’architecture, de produit ou de votre prochaine application.",
+    "contactEmail": "Me contacter par email",
+    "contactMalt": "Voir mon profil Malt"
   },
   "timeline": {
     "title": "Parcours",
