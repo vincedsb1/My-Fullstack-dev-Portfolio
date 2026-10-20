@@ -3,16 +3,16 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useRef, useState } from "react";
-import LanguageSwitcher from "../LanguageSwitcher.tsx";
-import ThemeSwitcher from "../ThemeSwitcher.tsx";
-import FAQ from "../components/FAQ.tsx";
-import Footer from "../components/Footer.tsx";
+import LanguageSwitcher from "../../LanguageSwitcher.tsx";
+import ThemeSwitcher from "../../ThemeSwitcher.tsx";
+import FAQ from "../../components/FAQ.tsx";
+import Footer from "../../components/Footer.tsx";
 import BlogResource, { type BlogHomeArticle } from "./BlogResource.tsx";
-import Header from "../components/Header.tsx";
-import MenuButton from "../components/MenuButton.tsx";
-import Projects3 from "../components/Projects3.tsx";
-import Skills from "../components/Skills.tsx";
-import Timeline from "../components/Timeline.tsx";
+import Header from "../../components/Header.tsx";
+import MenuButton from "../../components/MenuButton.tsx";
+import Projects3 from "../../components/Projects3.tsx";
+import Skills from "../../components/Skills.tsx";
+import Timeline from "../../components/Timeline.tsx";
 
 export default function Home({
   blogArticle,

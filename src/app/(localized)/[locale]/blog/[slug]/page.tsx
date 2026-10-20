@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import ArticleDocument from "../../../components/blog/ArticleDocument";
-import InternationalisationArticle from "../../../components/blog/InternationalisationArticle";
+import ArticleDocument from "../../../../components/blog/ArticleDocument";
+import InternationalisationArticle from "../../../../components/blog/InternationalisationArticle";
 import {
   ArticleBreadcrumbs,
   ArticleFooter,
   ArticleHeader,
   BlogSiteNavigation,
-} from "../../../components/blog/BlogComponents";
+} from "../../../../components/blog/BlogComponents";
 import {
   getArticleReadingTime,
   getPublishedArticle,

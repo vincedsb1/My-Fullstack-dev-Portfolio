@@ -1,17 +1,21 @@
 import React from "react";
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { NextIntlClientProvider } from "next-intl";
 import Script from "next/script";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import "../../globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
-import { locales, type Locale } from "../../../i18n.config.ts";
-import Providers from "../Providers.tsx";
+import { locales, type Locale } from "../../../../i18n.config.ts";
+import Providers from "../../Providers.tsx";
 import { getUmamiConfig } from "@/lib/umami";
 
 config.autoAddCss = false;
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -98,7 +102,7 @@ export default async function RootLayout({
 
   setRequestLocale(locale);
   // Import messages directly to ensure correct locale is used
-  const messages = (await import(`../../i18n/${locale}.json`)).default;
+  const messages = (await import(`../../../i18n/${locale}.json`)).default;
 
   const baseUrl = getBaseUrl();
   const th = await getTranslations({ locale, namespace: "header" });
@@ -141,29 +145,51 @@ export default async function RootLayout({
   };
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
-      <div lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <Script
+          id="theme-initializer"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html:
+              '(()=>{let storedTheme;try{storedTheme=localStorage.getItem("theme");}catch{}const theme=storedTheme==="light"||storedTheme==="dark"?storedTheme:window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";const root=document.documentElement;root.classList.remove("light","dark");root.classList.add(theme);root.style.colorScheme=theme;})();',
+          }}
+        />
+        <meta
+          name="google-site-verification"
+          content="PW82MjVgB5OXOfa6RcjIX06LfN3lZ1arROcD41Ao1z4"
+        />
+        <noscript>
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                "[data-aos]{opacity:1!important;transform:none!important}",
+            }}
+          />
+        </noscript>
+      </head>
+      <body className={inter.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Providers>{children}</Providers>
         </NextIntlClientProvider>
-      </div>
-      {umami && (
-        <Script
-          id="umami-analytics"
-          src={umami.scriptUrl}
-          data-website-id={umami.websiteId}
-          data-domains={umami.domain}
-          strategy="afterInteractive"
-        />
-      )}
-    </>
+        {umami && (
+          <Script
+            id="umami-analytics"
+            src={umami.scriptUrl}
+            data-website-id={umami.websiteId}
+            data-domains={umami.domain}
+            strategy="afterInteractive"
+          />
+        )}
+      </body>
+    </html>
   );
 }

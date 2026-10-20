@@ -10,6 +10,7 @@
     "start": "next start",
     "blog:validate": "node scripts/validate-blog.mjs",
     "blog:test:seo": "node scripts/test-blog-seo.mjs",
+    "locale:test": "node scripts/test-blog-seo.mjs",
     "lint": "eslint .",
     "fix": "eslint . --fix"
   },
