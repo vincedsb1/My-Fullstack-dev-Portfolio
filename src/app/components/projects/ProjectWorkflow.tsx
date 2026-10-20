@@ -165,12 +165,16 @@ export default function ProjectWorkflow({
       className="border-b border-neutral-200 bg-white py-24 dark:border-neutral-900 dark:bg-[#0A0A0A] md:py-32"
     >
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-12 md:mb-16">
+        {/* Titre puis sélecteur d’étapes et panneau illustré. */}
+        <div data-reveal className="mb-12 md:mb-16">
           <h2 className="text-3xl font-bold tracking-[-0.04em] text-neutral-950 dark:text-neutral-50 md:text-5xl">
             {title}
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
+        <div
+          data-reveal
+          className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16"
+        >
           <div
             className="flex snap-x gap-3 overflow-x-auto pb-3 lg:col-span-5 lg:flex-col lg:overflow-visible lg:pb-0"
             role="tablist"

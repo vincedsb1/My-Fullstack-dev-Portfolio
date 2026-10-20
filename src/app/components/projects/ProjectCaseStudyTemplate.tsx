@@ -23,6 +23,7 @@ import { getPortfolioPath, getProjectDetailPath } from "@/lib/projects/routes";
 import ProjectArchitectureDiagram from "./ProjectArchitectureDiagram";
 import ProjectCaseStudyNav from "./ProjectCaseStudyNav";
 import ProjectGallery from "./ProjectGallery";
+import ProjectScrollReveal from "./ProjectScrollReveal";
 import ProjectVideoSection from "./ProjectVideoSection";
 import ProjectVisualFrame from "./ProjectVisualFrame";
 import ProjectWorkflow from "./ProjectWorkflow";
@@ -56,7 +57,7 @@ function SectionHeading({
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="text-3xl font-bold leading-[1.05] tracking-[-0.04em] text-slate-900 dark:text-slate-50 md:text-5xl">
+      <h2 className="text-3xl font-bold leading-[1.05] tracking-[-0.04em] text-neutral-950 dark:text-neutral-50 md:text-5xl">
         {title}
       </h2>
     </div>
@@ -78,14 +79,22 @@ function OutcomeStrip({
   return (
     <section className="border-b border-neutral-200 bg-neutral-50 py-20 dark:border-neutral-900 dark:bg-[#111111] md:py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="mb-12 text-3xl font-bold tracking-[-0.04em] text-neutral-950 dark:text-neutral-50 md:mb-16 md:text-5xl">
+        <h2
+          data-reveal
+          className="mb-12 text-3xl font-bold tracking-[-0.04em] text-neutral-950 dark:text-neutral-50 md:mb-16 md:text-5xl"
+        >
           {title}
         </h2>
         <div className="grid gap-8 md:grid-cols-3 md:gap-10">
           {visibleOutcomes.map((outcome, index) => {
             const Icon = outcomeIcons[index] ?? AlertTriangle;
             return (
-              <div key={outcome.id} className="flex gap-4">
+              <div
+                key={outcome.id}
+                data-reveal
+                data-reveal-delay={index * 80}
+                className="flex gap-4"
+              >
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-red-500">
                   <Icon size={18} aria-hidden="true" />
                 </span>
@@ -136,7 +145,7 @@ function NextProjectCard({
             {description}
           </p>
         </div>
-        <div className="absolute bottom-10 right-10 flex size-16 scale-90 items-center justify-center rounded-full bg-white text-neutral-900 opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100 motion-reduce:scale-100 motion-reduce:transition-none md:bottom-16 md:right-16">
+        <div className="absolute bottom-10 right-10 flex size-16 scale-90 items-center justify-center rounded-full bg-white text-neutral-900 opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100 motion-reduce:scale-100 motion-reduce:transition-none md:bottom-16 md:right-16">
           <ArrowRight size={24} aria-hidden="true" />
         </div>
       </div>
@@ -202,7 +211,7 @@ export default async function ProjectCaseStudyTemplate({
   const nextNavigationIsAvailable = Boolean(next && next.id !== project.id);
 
   return (
-    <div
+    <ProjectScrollReveal
       data-case-study-template={manifest.variant}
       className="min-h-screen overflow-x-hidden bg-neutral-50 text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-50"
     >
@@ -211,12 +220,14 @@ export default async function ProjectCaseStudyTemplate({
           {t("fixtureNotice")}
         </div>
       ) : null}
+      {/* Navigation fixe : retour au portfolio, ancres et thème. */}
       <ProjectCaseStudyNav
         locale={locale}
         showChallenges={Boolean(manifest.challenges?.length)}
       />
 
       <main id="top">
+        {/* Hero : identité du projet et illustration produit existante. */}
         <section className="relative overflow-hidden border-b border-neutral-200 px-6 pb-20 pt-40 dark:border-neutral-900 md:pb-32 md:pt-48">
           <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_0%,rgba(239,68,68,0.14),transparent_32%),linear-gradient(to_bottom,rgba(255,255,255,0.34),transparent_42%)] dark:bg-[radial-gradient(circle_at_50%_0%,rgba(239,68,68,0.16),transparent_32%),linear-gradient(to_bottom,rgba(255,255,255,0.03),transparent_42%)]" />
           <div className="mx-auto max-w-7xl text-center">
@@ -242,7 +253,7 @@ export default async function ProjectCaseStudyTemplate({
                     href={liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-12 items-center gap-2 rounded-full bg-neutral-900 px-6 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-200"
+                    className="inline-flex min-h-12 items-center gap-2 rounded-full bg-neutral-900 px-6 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-neutral-700 motion-reduce:transform-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-200"
                   >
                     {projectT("accessProject")}
                     <ExternalLink size={16} aria-hidden="true" />
@@ -273,12 +284,16 @@ export default async function ProjectCaseStudyTemplate({
           </div>
         </section>
 
+        {/* Vue d’ensemble : problème, solution et périmètre de contribution. */}
         <section
           id="overview"
-          className="overview-section scroll-mt-20 border-b border-slate-200 py-24 dark:border-neutral-900 md:py-32"
+          className="overview-section scroll-mt-20 border-b border-neutral-200 py-24 dark:border-neutral-900 md:py-32"
         >
           <div className="mx-auto grid max-w-6xl items-start gap-12 px-4 sm:px-8 md:px-16 lg:grid-cols-12 lg:gap-24">
-            <div className="flex min-w-0 flex-col justify-center pt-2 lg:col-span-7">
+            <div
+              data-reveal
+              className="flex min-w-0 flex-col justify-center pt-2 lg:col-span-7"
+            >
               <div className="mb-10 max-w-4xl md:mb-10">
                 <div className="mb-6 flex items-center gap-3">
                   <span className="h-px w-6 bg-red-500" aria-hidden="true" />
@@ -296,7 +311,7 @@ export default async function ProjectCaseStudyTemplate({
                     {t("problem")}
                   </strong>
                   <span
-                    className="mx-1 text-slate-300 dark:text-neutral-600"
+                    className="mx-1 text-neutral-300 dark:text-neutral-600"
                     aria-hidden="true"
                   >
                     —
@@ -308,7 +323,7 @@ export default async function ProjectCaseStudyTemplate({
                     {t("solution")}
                   </strong>
                   <span
-                    className="mx-1 text-slate-300 dark:text-neutral-600"
+                    className="mx-1 text-neutral-300 dark:text-neutral-600"
                     aria-hidden="true"
                   >
                     —
@@ -317,14 +332,18 @@ export default async function ProjectCaseStudyTemplate({
                 </p>
               </div>
             </div>
-            <aside className="overview-glass-card relative w-full self-start overflow-hidden rounded-[2rem] border border-slate-200/60 p-8 shadow-[0_8px_40px_rgb(0,0,0,0.03)] transition-shadow duration-500 hover:shadow-[0_12px_50px_rgb(0,0,0,0.05)] dark:border-neutral-800/70 dark:shadow-[0_8px_40px_rgb(0,0,0,0.2)] dark:hover:shadow-[0_12px_50px_rgb(0,0,0,0.3)] sm:p-10 lg:col-span-5">
+            <aside
+              data-reveal
+              data-reveal-delay="80"
+              className="overview-glass-card relative w-full self-start overflow-hidden rounded-[2rem] border border-neutral-200/60 p-8 shadow-[0_8px_40px_rgb(0,0,0,0.03)] transition-shadow duration-500 hover:shadow-[0_12px_50px_rgb(0,0,0,0.05)] dark:border-neutral-800/70 dark:shadow-[0_8px_40px_rgb(0,0,0,0.2)] dark:hover:shadow-[0_12px_50px_rgb(0,0,0,0.3)] sm:p-10 lg:col-span-5"
+            >
               <div
-                className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-transparent via-slate-200 to-transparent opacity-50 dark:via-neutral-600"
+                className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-transparent via-neutral-200 to-transparent opacity-50 dark:via-neutral-600"
                 aria-hidden="true"
               />
-              <h3 className="mb-10 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-slate-400 dark:text-neutral-500">
+              <h3 className="mb-10 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-neutral-400 dark:text-neutral-500">
                 <Info
-                  className="size-4 text-slate-300 dark:text-neutral-600"
+                  className="size-4 text-neutral-300 dark:text-neutral-600"
                   aria-hidden="true"
                 />
                 {t("contributionAndScope")}
@@ -339,7 +358,7 @@ export default async function ProjectCaseStudyTemplate({
                 {manifest.overview.audience &&
                 (manifest.overview.role || manifest.overview.scope) ? (
                   <div
-                    className="h-px w-full bg-gradient-to-r from-slate-200/20 via-slate-200 to-slate-200/20 dark:from-transparent dark:via-neutral-700 dark:to-transparent"
+                    className="h-px w-full bg-gradient-to-r from-neutral-200/20 via-neutral-200 to-neutral-200/20 dark:from-transparent dark:via-neutral-700 dark:to-transparent"
                     aria-hidden="true"
                   />
                 ) : null}
@@ -351,7 +370,7 @@ export default async function ProjectCaseStudyTemplate({
                 ) : null}
                 {manifest.overview.role && manifest.overview.scope ? (
                   <div
-                    className="h-px w-full bg-gradient-to-r from-slate-200/20 via-slate-200 to-slate-200/20 dark:from-transparent dark:via-neutral-700 dark:to-transparent"
+                    className="h-px w-full bg-gradient-to-r from-neutral-200/20 via-neutral-200 to-neutral-200/20 dark:from-transparent dark:via-neutral-700 dark:to-transparent"
                     aria-hidden="true"
                   />
                 ) : null}
@@ -361,14 +380,19 @@ export default async function ProjectCaseStudyTemplate({
           </div>
         </section>
 
+        {/* Contenu éditorial optionnel, rendu par le manifeste du projet. */}
         {editorialBody ? (
           <section className="border-b border-neutral-200 bg-white py-24 dark:border-neutral-900 dark:bg-[#0A0A0A] md:py-32">
-            <article className="case-study-prose mx-auto max-w-3xl px-6">
+            <article
+              data-reveal
+              className="case-study-prose mx-auto max-w-3xl px-6"
+            >
               {editorialBody}
             </article>
           </section>
         ) : null}
 
+        {/* Démonstration : façade vidéo puis lecteur à la demande. */}
         {manifest.video ? (
           <ProjectVideoSection
             video={manifest.video}
@@ -382,6 +406,7 @@ export default async function ProjectCaseStudyTemplate({
           />
         ) : null}
 
+        {/* Workflow interactif : étapes et illustration associée. */}
         {manifest.workflow?.length ? (
           <ProjectWorkflow
             steps={manifest.workflow}
@@ -391,6 +416,7 @@ export default async function ProjectCaseStudyTemplate({
           />
         ) : null}
 
+        {/* Architecture : composants techniques et relations principales. */}
         {manifest.architecture ? (
           <ProjectArchitectureDiagram
             architecture={manifest.architecture}
@@ -400,6 +426,7 @@ export default async function ProjectCaseStudyTemplate({
           />
         ) : null}
 
+        {/* Galerie optionnelle : visuels et agrandissement accessible. */}
         {manifest.gallery?.length ? (
           <ProjectGallery
             items={manifest.gallery}
@@ -409,51 +436,53 @@ export default async function ProjectCaseStudyTemplate({
           />
         ) : null}
 
+        {/* Défis techniques : quatre cartes contrainte / solution. */}
         {manifest.challenges?.length ? (
           <section
             id="challenges"
-            className="challenges-section scroll-mt-20 border-b border-slate-200 py-24 dark:border-neutral-900 md:py-32"
+            className="challenges-section scroll-mt-20 border-b border-neutral-200 py-24 dark:border-neutral-900 md:py-32"
           >
             <div className="mx-auto max-w-[1240px] px-4 sm:px-8 md:px-12 lg:px-24">
-              <div className="challenges-header motion-reduce:animate-none motion-reduce:opacity-100">
+              <div data-reveal>
                 <SectionHeading title={t("challengesTitle")} />
               </div>
               <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
                 {visibleChallenges.map((challenge, index) => (
                   <article
                     key={challenge.id}
-                    style={{ animationDelay: `${(index + 1) * 100}ms` }}
-                    className="challenges-card group flex h-full flex-col rounded-3xl border border-slate-900/[0.03] bg-white p-8 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.02)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-slate-900/[0.08] hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.08)] motion-reduce:animate-none motion-reduce:opacity-100 motion-reduce:transform-none motion-reduce:transition-none dark:border-neutral-800/70 dark:bg-neutral-900/80 dark:shadow-[0_4px_24px_-4px_rgba(0,0,0,0.2)] dark:hover:border-neutral-700 dark:hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.35)] md:p-12"
+                    data-reveal
+                    data-reveal-delay={(index % 2) * 80}
+                    className="group flex h-full flex-col rounded-3xl border border-neutral-900/[0.03] bg-white p-8 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.02)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-neutral-900/[0.08] hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.08)] motion-reduce:transform-none motion-reduce:transition-none dark:border-neutral-800/70 dark:bg-neutral-900/80 dark:shadow-[0_4px_24px_-4px_rgba(0,0,0,0.2)] dark:hover:border-neutral-700 dark:hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.35)] md:p-12"
                   >
                     <div className="mb-10 flex flex-col gap-5 sm:flex-row sm:items-center md:mb-12">
-                      <span className="flex size-12 shrink-0 items-center justify-center rounded-[14px] border border-slate-100 bg-slate-50 text-sm font-bold text-slate-400 transition-all duration-500 group-hover:border-[#FF4757]/10 group-hover:bg-[#FF4757]/5 group-hover:text-[#FF4757] motion-reduce:transition-none dark:border-neutral-800 dark:bg-neutral-800/60 dark:text-neutral-500 dark:group-hover:border-[#FF4757]/20 dark:group-hover:bg-[#FF4757]/10 dark:group-hover:text-[#FF6B78]">
+                      <span className="flex size-12 shrink-0 items-center justify-center rounded-[14px] border border-neutral-100 bg-neutral-50 text-sm font-bold text-neutral-400 transition-all duration-500 group-hover:border-red-500/10 group-hover:bg-red-500/5 group-hover:text-red-500 motion-reduce:transition-none dark:border-neutral-800 dark:bg-neutral-800/60 dark:text-neutral-500 dark:group-hover:border-red-500/20 dark:group-hover:bg-red-500/10 dark:group-hover:text-red-400">
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <h3 className="text-xl font-bold leading-tight text-slate-900 transition-colors duration-500 group-hover:text-[#FF4757] motion-reduce:transition-none dark:text-neutral-50 dark:group-hover:text-[#FF6B78]">
+                      <h3 className="text-xl font-bold leading-tight text-neutral-950 transition-colors duration-500 group-hover:text-red-500 motion-reduce:transition-none dark:text-neutral-50 dark:group-hover:text-red-400">
                         {challenge.title}
                       </h3>
                     </div>
                     <div className="grid items-start gap-8 md:grid-cols-2 md:gap-10">
                       {challenge.problem || challenge.constraint ? (
                         <div className="relative">
-                          <h4 className="mb-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-neutral-500">
+                          <h4 className="mb-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
                             {t("constraint")}
                           </h4>
-                          <p className="text-sm leading-relaxed text-slate-500 dark:text-neutral-400">
+                          <p className="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                             {challenge.problem ?? challenge.constraint}
                           </p>
                         </div>
                       ) : null}
                       {challenge.solution ? (
                         <div className="relative">
-                          <h4 className="mb-4 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#FF4757] dark:text-[#FF6B78]">
+                          <h4 className="mb-4 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-red-500 dark:text-red-400">
                             <span
-                              className="size-1.5 animate-pulse rounded-full bg-[#FF4757]/80 motion-reduce:animate-none dark:bg-[#FF6B78]/80"
+                              className="size-1.5 animate-pulse rounded-full bg-red-500/80 motion-reduce:animate-none dark:bg-red-400/80"
                               aria-hidden="true"
                             />
                             {t("solution")}
                           </h4>
-                          <p className="text-sm font-medium leading-relaxed text-slate-900 dark:text-neutral-200">
+                          <p className="text-sm font-medium leading-relaxed text-neutral-900 dark:text-neutral-200">
                             {challenge.solution}
                           </p>
                         </div>
@@ -466,9 +495,10 @@ export default async function ProjectCaseStudyTemplate({
           </section>
         ) : null}
 
+        {/* Stack : badges partagés avec les autres vues du portfolio. */}
         {manifest.stack?.length ? (
           <section className="border-b border-neutral-200 bg-white py-16 text-center dark:border-neutral-900 dark:bg-[#0A0A0A] md:py-20">
-            <div className="mx-auto max-w-4xl px-6">
+            <div data-reveal className="mx-auto max-w-4xl px-6">
               <p className="mb-8 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
                 {t("stackTitle")}
               </p>
@@ -482,6 +512,7 @@ export default async function ProjectCaseStudyTemplate({
           </section>
         ) : null}
 
+        {/* Résultats : synthèse des trois points issus du manifeste. */}
         {manifest.outcomes?.length ? (
           <OutcomeStrip
             outcomes={manifest.outcomes}
@@ -489,14 +520,15 @@ export default async function ProjectCaseStudyTemplate({
           />
         ) : null}
 
+        {/* Navigation entre les études de cas disponibles. */}
         {previous || nextNavigationProject ? (
           <section className="bg-neutral-50 py-16 dark:bg-[#111111]">
             <div className="mx-auto max-w-7xl px-6">
-              <div className="grid gap-6 md:grid-cols-2">
+              <div data-reveal className="grid gap-6 md:grid-cols-2">
                 {previous && previous.id !== project.id ? (
                   <Link
                     href={getProjectDetailPath(locale, previous.slug)}
-                    className="group rounded-[2rem] border border-neutral-200 bg-neutral-900 p-8 text-white transition-transform hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:border-neutral-800 md:p-12"
+                    className="group rounded-[2rem] border border-neutral-200 bg-neutral-900 p-8 text-white transition-transform hover:-translate-y-1 motion-reduce:transform-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:border-neutral-800 md:p-12"
                   >
                     <span className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
                       {t("previousProject")}
@@ -506,7 +538,7 @@ export default async function ProjectCaseStudyTemplate({
                         {previous.canonicalName}
                       </span>
                       <ArrowLeft
-                        className="shrink-0 transition-transform group-hover:-translate-x-2"
+                        className="shrink-0 transition-transform group-hover:-translate-x-2 motion-reduce:transform-none"
                         aria-hidden="true"
                       />
                     </span>
@@ -537,15 +569,16 @@ export default async function ProjectCaseStudyTemplate({
         ) : null}
       </main>
 
+      {/* Contact : appel à l’action puis séparation sur toute la largeur. */}
       <footer
         id="contact"
         className="scroll-mt-20 border-t border-neutral-200 bg-neutral-50 py-24 text-center dark:border-neutral-900 dark:bg-[#0A0A0A]"
       >
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 md:text-5xl">
+        <div data-reveal className="mx-auto max-w-4xl px-6">
+          <h2 className="text-3xl font-bold tracking-[-0.04em] text-neutral-950 dark:text-neutral-50 md:text-5xl">
             {t("contactTitle")}
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-500">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
             {t("contactDescription")}
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
@@ -566,7 +599,9 @@ export default async function ProjectCaseStudyTemplate({
               <ExternalLink size={16} aria-hidden="true" />
             </a>
           </div>
-          <div className="mt-20 flex flex-col items-center justify-between gap-4 border-t border-neutral-200 pt-8 text-sm text-neutral-500 dark:border-neutral-900 md:flex-row">
+        </div>
+        <div className="mt-20 border-t border-neutral-200 dark:border-neutral-900">
+          <div className="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 px-6 pt-8 text-sm text-neutral-500 dark:text-neutral-400 md:flex-row">
             <p>© 2026 Vincent Desbrosses.</p>
             <Link
               href={getPortfolioPath(locale)}
@@ -578,6 +613,6 @@ export default async function ProjectCaseStudyTemplate({
           </div>
         </div>
       </footer>
-    </div>
+    </ProjectScrollReveal>
   );
 }

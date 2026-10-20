@@ -274,7 +274,7 @@ export default function ProjectVideoSection({
   if (!canPlay) {
     return (
       <section className="border-b border-neutral-200 bg-neutral-50 py-24 dark:border-neutral-900 dark:bg-[#111111] md:py-32">
-        <div className="mx-auto max-w-6xl px-6">
+        <div data-reveal className="mx-auto max-w-6xl px-6">
           <div
             className="flex aspect-video flex-col items-center justify-center gap-4 rounded-[2rem] bg-neutral-950 text-center text-white/70"
             role="img"
@@ -320,7 +320,7 @@ export default function ProjectVideoSection({
           </button>
         </div>
       ) : (
-        <div className="mx-auto max-w-6xl px-6">
+        <div data-reveal className="mx-auto max-w-6xl px-6">
           <div className="relative aspect-video overflow-hidden rounded-[2rem] border border-neutral-200 bg-neutral-950 shadow-[0_30px_90px_rgba(23,23,23,0.18)] dark:border-neutral-800 dark:shadow-[0_30px_90px_rgba(0,0,0,0.4)]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(239,68,68,0.28),transparent_24%),linear-gradient(135deg,#171717,#050505)] dark:bg-[radial-gradient(circle_at_50%_38%,rgba(239,68,68,0.2),transparent_24%),linear-gradient(135deg,#262626,#050505)]" />
             <span className="absolute left-5 top-5 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/70 backdrop-blur sm:left-8 sm:top-8">

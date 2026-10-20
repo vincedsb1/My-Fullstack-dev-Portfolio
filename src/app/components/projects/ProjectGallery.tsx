@@ -100,6 +100,8 @@ export default function ProjectGallery({
             {items.map((item, index) => (
               <figure
                 key={item.id}
+                data-reveal
+                data-reveal-delay={(index % 3) * 60}
                 className={
                   items.length === 3 && index === 0
                     ? "md:col-span-2 lg:col-span-2"

@@ -78,7 +78,11 @@ export default function ProjectArchitectureDiagram({
       className="border-b border-neutral-200 bg-neutral-50 py-24 dark:border-neutral-900 dark:bg-[#111111] md:py-32"
     >
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto mb-14 max-w-3xl text-center md:mb-16">
+        {/* En-tête centré et chaîne des nœuds techniques. */}
+        <div
+          data-reveal
+          className="mx-auto mb-14 max-w-3xl text-center md:mb-16"
+        >
           <h2 className="text-3xl font-bold tracking-[-0.04em] text-neutral-950 dark:text-neutral-50 md:text-5xl">
             {title}
           </h2>
@@ -94,6 +98,8 @@ export default function ProjectArchitectureDiagram({
             return (
               <div
                 key={node.id}
+                data-reveal
+                data-reveal-delay={index * 60}
                 className="flex min-w-0 flex-1 items-center gap-3 md:flex-col md:gap-2 lg:flex-row"
               >
                 <article
