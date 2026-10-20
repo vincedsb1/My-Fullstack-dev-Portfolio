@@ -289,6 +289,101 @@ function assertPublishedHead(html, response, locale, canonical) {
   );
 }
 
+function redirectPath(response, baseUrl) {
+  const location = response.headers.get("location");
+  return location ? new URL(location, baseUrl).pathname : undefined;
+}
+
+function hasHeaderToken(value, token) {
+  return value
+    ?.split(",")
+    .some((part) => part.trim().toLowerCase() === token.toLowerCase());
+}
+
+async function verifyLocaleRouting(baseUrl) {
+  const rootCases = [
+    {
+      label: "visiteur français",
+      headers: { "accept-language": "fr-FR,fr;q=0.9" },
+      expected: "/fr",
+    },
+    {
+      label: "visiteur anglais",
+      headers: { "accept-language": "en-US,en;q=0.9" },
+      expected: "/en",
+    },
+    {
+      label: "langue inconnue avec fallback par défaut",
+      headers: { "accept-language": "de-DE,de;q=0.9" },
+      expected: "/en",
+    },
+    {
+      label: "cookie français prioritaire sur Accept-Language anglais",
+      headers: {
+        "accept-language": "en-US,en;q=0.9",
+        cookie: "NEXT_LOCALE=fr",
+      },
+      expected: "/fr",
+    },
+  ];
+
+  for (const testCase of rootCases) {
+    const response = await request(baseUrl, "/", {
+      headers: testCase.headers,
+    });
+    check(response.status === 307, "racine redirigée pour " + testCase.label);
+    check(
+      redirectPath(response, baseUrl) === testCase.expected,
+      "destination locale correcte pour " + testCase.label,
+      redirectPath(response, baseUrl),
+    );
+  }
+
+  const rootResponse = await request(baseUrl, "/", {
+    headers: { "accept-language": "fr-FR,fr;q=0.9" },
+  });
+  check(
+    /\bprivate\b/i.test(rootResponse.headers.get("cache-control") ?? "") &&
+      /\bno-store\b/i.test(rootResponse.headers.get("cache-control") ?? ""),
+    "redirection racine non mise en cache publiquement",
+    rootResponse.headers.get("cache-control"),
+  );
+  check(
+    hasHeaderToken(rootResponse.headers.get("vary"), "accept-language") &&
+      hasHeaderToken(rootResponse.headers.get("vary"), "cookie"),
+    "redirection racine varie selon la langue et le cookie",
+    rootResponse.headers.get("vary"),
+  );
+
+  for (const locale of ["fr", "en"]) {
+    const oppositeLocale = locale === "fr" ? "en" : "fr";
+    const response = await request(baseUrl, "/" + locale, {
+      headers: { cookie: "NEXT_LOCALE=" + oppositeLocale },
+    });
+    const html = await response.text();
+    check(response.status === 200, "page d’accueil " + locale + " accessible");
+    assertPublishedHead(html, response, locale, urlFor("/" + locale));
+
+    const alternateLinks = links(html).filter(
+      (link) => link.rel === "alternate" && link.hreflang,
+    );
+    check(
+      alternateLinks.length === 3 &&
+        alternateLinks.some(
+          (link) => link.hreflang === "fr" && link.href === urlFor("/fr"),
+        ) &&
+        alternateLinks.some(
+          (link) => link.hreflang === "en" && link.href === urlFor("/en"),
+        ) &&
+        alternateLinks.some(
+          (link) =>
+            link.hreflang === "x-default" && link.href === urlFor("/en"),
+        ),
+      "canonical et hreflang conservés pour /" + locale,
+    );
+  }
+}
+
 async function verifySocialImage(baseUrl, imageUrl, label) {
   let response;
   try {
@@ -317,6 +412,8 @@ try {
   verifyLinkValidation();
   runningServer = await startServer();
   const { baseUrl, child } = runningServer;
+
+  await verifyLocaleRouting(baseUrl);
 
   const indexResponse = await request(baseUrl, "/fr/blog");
   const indexHtml = await indexResponse.text();

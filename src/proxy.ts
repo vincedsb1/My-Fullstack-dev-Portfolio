@@ -1,6 +1,6 @@
 import createMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
-import { routing } from "./i18n.config";
+import { routing } from "../i18n.config";
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -10,6 +10,22 @@ const intlMiddleware = createMiddleware(routing);
 // `…-git-<branch>-…vercel.app` hostnames) untouched.
 const LEGACY_HOST = "portfolio-ten-chi-89.vercel.app";
 const CANONICAL_ORIGIN = "https://vincent.desbrosses.net";
+
+function protectRootLocaleRedirect(response: NextResponse) {
+  response.headers.set("Cache-Control", "private, no-store");
+
+  const vary = new Set(
+    (response.headers.get("Vary") ?? "")
+      .split(",")
+      .map((value) => value.trim())
+      .filter(Boolean),
+  );
+  vary.add("Accept-Language");
+  vary.add("Cookie");
+  response.headers.set("Vary", Array.from(vary).join(", "));
+
+  return response;
+}
 
 export default function proxy(request: NextRequest) {
   const host = request.headers.get("host");
@@ -33,7 +49,13 @@ export default function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  return intlMiddleware(request);
+  const response = intlMiddleware(request);
+
+  if (pathname === "/" && response.status >= 300 && response.status < 400) {
+    return protectRootLocaleRedirect(response);
+  }
+
+  return response;
 }
 
 export const config = {

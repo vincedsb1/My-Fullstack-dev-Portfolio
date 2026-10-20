@@ -16,10 +16,6 @@ function LanguageSwitcher() {
   const mounted = useClientMounted();
 
   const handleLanguageChange = (newLocale: Locale) => {
-    if (typeof window !== "undefined") {
-      document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
-    }
-
     const segments = pathname.split("/");
     segments[1] = newLocale;
     const newPathname = segments.join("/");

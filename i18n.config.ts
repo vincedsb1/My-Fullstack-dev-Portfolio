@@ -7,4 +7,11 @@ export const routing = {
   locales: locales,
   defaultLocale: defaultLocale,
   localePrefix: "always",
+  localeDetection: true,
+  localeCookie: {
+    name: "NEXT_LOCALE",
+    maxAge: 60 * 60 * 24 * 365,
+    path: "/",
+    sameSite: "lax",
+  },
 } as const;

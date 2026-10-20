@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import BlogIndex from "../../components/blog/BlogIndex";
+import BlogIndex from "../../../components/blog/BlogIndex";
 import { getPublishedArticles, type BlogLocale } from "@/lib/blog/articles";
 import { getBlogIndexSeo } from "@/lib/blog/index-metadata";
 

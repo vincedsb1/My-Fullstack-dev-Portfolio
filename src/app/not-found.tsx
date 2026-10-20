@@ -8,8 +8,8 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-// The root layout renders `children` without an <html> wrapper, so this
-// boundary provides its own document shell.
+// This global boundary provides its own document shell because the app uses
+// route-group root layouts for the localized and standalone sections.
 export default function NotFound() {
   return (
     <html lang="en">
