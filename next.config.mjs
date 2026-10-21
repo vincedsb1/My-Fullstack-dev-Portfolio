@@ -47,6 +47,7 @@ const nextConfig = {
   skipTrailingSlashRedirect: true,
   images: {
     formats: ["image/avif", "image/webp"],
+    qualities: [75, 80, 100],
     minimumCacheTTL: 31536000, // 1 year cache for optimized images
   },
   compress: true,

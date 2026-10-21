@@ -215,9 +215,15 @@ export default function ProjectWorkflow({
                     event.preventDefault();
                     selectStep(nextIndex);
                     window.requestAnimationFrame(() => {
-                      document
-                        .getElementById(`workflow-tab-${steps[nextIndex].id}`)
-                        ?.focus();
+                      const tab = document.getElementById(
+                        `workflow-tab-${steps[nextIndex].id}`,
+                      );
+                      tab?.focus({ preventScroll: true });
+                      tab?.scrollIntoView({
+                        block: "nearest",
+                        inline: "nearest",
+                        behavior: reducedMotion ? "auto" : "smooth",
+                      });
                     });
                   }}
                   className={`flex min-w-[15rem] shrink-0 items-start gap-4 rounded-2xl border p-5 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 lg:min-w-0 ${

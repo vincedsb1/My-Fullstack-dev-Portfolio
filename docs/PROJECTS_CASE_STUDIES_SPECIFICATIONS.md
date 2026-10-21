@@ -8,6 +8,13 @@
 **Date de référence :** 20 octobre 2026<br>
 **Langues cibles :** français (`fr`) et anglais (`en`)
 
+> **Implémentation au 21 octobre 2026 :** pour créer ou modifier une fiche, suivre
+> [le guide JSON et template commun](./projects/CREER_UNE_ETUDE_DE_CAS.md).
+> Les contenus actuels sont dans `manifests/fr/*.json` et `manifests/en/*.json` ;
+> `ProjectCaseStudyTemplate.tsx` porte le rendu de référence validé sur Iconise.
+> Les arborescences TypeScript/MDX proposées ci-dessous et la restriction de phase
+> initiale restent une trace de conception, remplacée par ce guide pour les fiches.
+
 > Ce document décrit la cible fonctionnelle, l'architecture recommandée et le séquencement d'implémentation. Il ne constitue pas une implémentation. Pendant la phase actuelle, aucun composant React, aucune route, aucune dépendance et aucun contenu définitif d'étude de cas ne doit être créé.
 
 ---

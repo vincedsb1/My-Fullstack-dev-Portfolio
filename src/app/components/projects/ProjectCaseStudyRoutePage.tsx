@@ -7,6 +7,7 @@ import {
   getPublishedNeighbors,
 } from "@/content/projects/loaders";
 import { loadProjectCaseStudyBody } from "@/content/projects/mdx";
+import { getArchivePath, getProjectDetailPath } from "@/lib/projects/routes";
 import ProjectCaseStudyTemplate from "./ProjectCaseStudyTemplate";
 
 export async function ProjectCaseStudyRoutePage({
@@ -26,9 +27,7 @@ export async function ProjectCaseStudyRoutePage({
   const EditorialBody = mdxModule?.default;
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL || "https://vincent.desbrosses.net";
-  const url = `${baseUrl}/${locale === "fr" ? "projets" : "projects"}/${
-    project.slug
-  }`;
+  const url = `${baseUrl}${getProjectDetailPath(locale, project.slug)}`;
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
@@ -60,7 +59,7 @@ export async function ProjectCaseStudyRoutePage({
         "@type": "ListItem",
         position: 2,
         name: locale === "fr" ? "Projets" : "Projects",
-        item: `${baseUrl}/${locale === "fr" ? "projets" : "projects"}`,
+        item: `${baseUrl}${getArchivePath(locale)}`,
       },
       {
         "@type": "ListItem",

@@ -14,6 +14,7 @@ import {
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
+import { isCaseStudyAvailable } from "@/content/projects/loaders";
 import type {
   ProjectCaseStudyManifest,
   ProjectCatalogEntry,
@@ -139,7 +140,14 @@ function NextProjectCard({
         </span>
         <div className="mt-auto">
           <h3 className="mb-4 text-5xl font-bold tracking-tighter transition-transform duration-500 group-hover:translate-x-4 motion-reduce:transform-none motion-reduce:transition-none md:text-7xl">
-            {project.canonicalName}
+            {project.canonicalName
+              .split(/(?<=[a-z])(?=[A-Z])/)
+              .map((part, index) => (
+                <span key={index}>
+                  {index > 0 ? <wbr /> : null}
+                  {part}
+                </span>
+              ))}
           </h3>
           <p className="max-w-xl text-xl font-light text-neutral-400 transition-transform delay-75 duration-500 group-hover:translate-x-2 motion-reduce:transform-none motion-reduce:transition-none md:text-2xl">
             {description}
@@ -175,6 +183,7 @@ function NextProjectCard({
   );
 }
 
+/** Template commun : données JSON localisées, structure et styles partagés. */
 export default async function ProjectCaseStudyTemplate({
   project,
   manifest,
@@ -208,7 +217,11 @@ export default async function ProjectCaseStudyTemplate({
   };
   const visibleChallenges = (manifest.challenges ?? []).slice(0, 4);
   const nextNavigationProject = next ?? nextPortfolioProject;
-  const nextNavigationIsAvailable = Boolean(next && next.id !== project.id);
+  const nextNavigationIsAvailable = Boolean(
+    nextNavigationProject &&
+      nextNavigationProject.id !== project.id &&
+      isCaseStudyAvailable(nextNavigationProject, locale),
+  );
 
   return (
     <ProjectScrollReveal
@@ -240,8 +253,15 @@ export default async function ProjectCaseStudyTemplate({
                 {manifest.hero.pill}
               </p>
             ) : null}
-            <h1 className="mx-auto max-w-6xl text-6xl font-extrabold leading-[0.88] tracking-[-0.075em] text-gradient sm:text-8xl md:text-[9rem]">
-              {project.canonicalName}
+            <h1 className="mx-auto max-w-6xl text-6xl font-extrabold leading-[0.88] tracking-[-0.075em] text-gradient sm:text-8xl md:text-[9rem] pb-4">
+              {project.canonicalName
+                .split(/(?<=[a-z])(?=[A-Z])/)
+                .map((part, index) => (
+                  <span key={index}>
+                    {index > 0 ? <wbr /> : null}
+                    {part}
+                  </span>
+                ))}
             </h1>
             <p className="mx-auto mt-10 max-w-4xl text-xl font-light leading-relaxed text-neutral-500 dark:text-neutral-400 md:text-2xl">
               {manifest.hero.description}
@@ -397,11 +417,15 @@ export default async function ProjectCaseStudyTemplate({
           <ProjectVideoSection
             video={manifest.video}
             title={t("videoTitle")}
-            facadeBadge={t("videoFacadeBadge")}
-            facadeTitle={t("videoFacadeTitle")}
-            playLabel={t("videoPlay")}
+            playLabel={
+              manifest.video.playLabel ??
+              t("videoPlay", { project: project.canonicalName })
+            }
             closeLabel={t("videoClose")}
-            regionLabel={t("videoRegion")}
+            regionLabel={
+              manifest.video.regionLabel ??
+              t("videoRegion", { project: project.canonicalName })
+            }
             unavailable={t("videoUnavailable")}
           />
         ) : null}
@@ -550,7 +574,9 @@ export default async function ProjectCaseStudyTemplate({
                       project={nextNavigationProject}
                       label={t("nextProject")}
                       description={projectT(
-                        nextNavigationProject.descriptionKey,
+                        nextNavigationIsAvailable
+                          ? nextNavigationProject.descriptionKey
+                          : `kind.${nextNavigationProject.kind}`,
                       )}
                       href={
                         nextNavigationIsAvailable

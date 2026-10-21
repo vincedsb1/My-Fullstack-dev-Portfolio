@@ -1,0 +1,464 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "iconise",
+  "slug": "iconise",
+  "locale": "fr",
+  "variant": "standard",
+  "meta": {
+    "title": "Iconise — Atelier de création d’icônes",
+    "category": "SaaS de conception d’icônes"
+  },
+  "seo": {
+    "title": "Iconise — création guidée d’icônes | Étude de cas",
+    "description": "Conception fullstack d’Iconise : brief, exploration, itérations et exports PNG, SVG dérivé et favicons, avec une génération IA configurable.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "Une idée d’application, une icône qui prend forme",
+    "description": "Un atelier guidé pour explorer des pistes graphiques, conserver les décisions et affiner une icône d’application jusqu’à son export.",
+    "pill": "SaaS de création d’icônes",
+    "category": "SaaS de conception d’icônes",
+    "visual": {
+      "type": "illustration",
+      "imageId": "iconise-product-figure",
+      "label": "Iconise — workflow visuel"
+    }
+  },
+  "overview": {
+    "problem": "Créer une icône cohérente exige de cadrer une identité, comparer des pistes et suivre les choix. Sans parcours structuré, les itérations et leurs décisions se dispersent.",
+    "audience": "Créateurs d’applications et équipes produit",
+    "context": "Application web dont les parcours de génération manuelle et intégrée partagent le même workflow.",
+    "scope": "Parcours produit, données, génération, facturation et exports",
+    "solution": "Iconise relie brief, directions visuelles, exploration et affinage dans huit étapes guidées, suivies de la finalisation. Décisions et itérations restent associées au projet."
+  },
+  "stack": [
+    "nextjs",
+    "typescript",
+    "postgresql",
+    "drizzle",
+    "better-auth",
+    "gemini",
+    "stripe",
+    "sharp"
+  ],
+  "video": {
+    "provider": "youtube",
+    "url": "https://www.youtube-nocookie.com/embed/9y7g2G8TBMI?si=GkUUZ76QACd-tixR&rel=0&modestbranding=1",
+    "verified": true,
+    "playLabel": "Lire la vidéo Iconise",
+    "regionLabel": "Lecteur vidéo de l’étude de cas Iconise"
+  },
+  "workflow": [
+    {
+      "id": "frame",
+      "title": "Cadrer le projet",
+      "description": "Brief et préférences.",
+      "visual": {
+        "type": "icon",
+        "icon": "monitor",
+        "title": "Un brief exploitable",
+        "description": "Le brief décrit l’application, son identité et ses préférences graphiques ; il alimente les étapes suivantes."
+      }
+    },
+    {
+      "id": "explore",
+      "title": "Explorer des pistes",
+      "description": "Comparer neuf pistes.",
+      "visual": {
+        "type": "flow",
+        "title": "Une planche, neuf pistes",
+        "description": "Générer ou importer une planche de neuf propositions, puis sélectionner une case A–I pour poursuivre.",
+        "steps": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I"
+        ]
+      }
+    },
+    {
+      "id": "refine",
+      "title": "Affiner l’icône",
+      "description": "Géométrie, optique et fond.",
+      "visual": {
+        "type": "flow",
+        "title": "Réviser sans effacer",
+        "description": "Ajuster la géométrie, la perception optique et le fond ; certaines étapes peuvent être sautées. Modifier une décision marque les étapes dépendantes à reprendre, sans supprimer les essais.",
+        "steps": [
+          "Choix",
+          "Géométrie",
+          "Optique",
+          "Fond"
+        ]
+      }
+    },
+    {
+      "id": "deliver",
+      "title": "Exporter l’icône",
+      "description": "PNG, SVG et favicons.",
+      "visual": {
+        "type": "result",
+        "title": "Des formats pour l’application",
+        "description": "Télécharger le master PNG, un SVG dérivé ou un pack favicon. Le SVG peut intégrer l’image matricielle lorsque le tracé ne restitue pas suffisamment le rendu."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "Le serveur Next.js vérifie la session et le workspace, puis appelle les services métier. Les projets sont persistés via Drizzle et PostgreSQL ; Gemini et Stripe utilisent des adaptateurs séparés.",
+    "featuredNodeIds": [
+      "browser",
+      "next",
+      "domain",
+      "postgres"
+    ],
+    "featuredEdgeLabels": [
+      "Requêtes",
+      "Services métier",
+      "Accès aux données"
+    ],
+    "nodes": [
+      {
+        "id": "browser",
+        "label": "Interface React",
+        "type": "frontend",
+        "technology": "React / Next.js",
+        "role": "Écrans et interactions du parcours",
+        "icon": "browser",
+        "highlight": false,
+        "position": {
+          "x": 12,
+          "y": 28
+        }
+      },
+      {
+        "id": "next",
+        "label": "API Next.js",
+        "type": "server",
+        "technology": "Next.js",
+        "role": "Sessions, autorisation et routes",
+        "icon": "service",
+        "position": {
+          "x": 37,
+          "y": 28
+        },
+        "highlight": false
+      },
+      {
+        "id": "auth",
+        "label": "Sessions et workspaces",
+        "type": "service",
+        "technology": "Better Auth",
+        "role": "Identité et périmètre de données",
+        "icon": "service",
+        "position": {
+          "x": 63,
+          "y": 28
+        },
+        "highlight": false
+      },
+      {
+        "id": "domain",
+        "label": "Services métier",
+        "type": "service",
+        "technology": "TypeScript",
+        "role": "Workflow, génération et crédits",
+        "icon": "service",
+        "highlight": false,
+        "position": {
+          "x": 88,
+          "y": 28
+        }
+      },
+      {
+        "id": "postgres",
+        "label": "Persistance",
+        "type": "database",
+        "technology": "PostgreSQL",
+        "role": "Projets, états et historique par workspace via Drizzle",
+        "icon": "database",
+        "position": {
+          "x": 37,
+          "y": 74
+        },
+        "highlight": false
+      },
+      {
+        "id": "ai",
+        "label": "Génération externe",
+        "type": "integration",
+        "technology": "Gemini + OpenAI",
+        "role": "Image Gemini et texte créatif OpenAI, selon les flags",
+        "icon": "cloud",
+        "position": {
+          "x": 63,
+          "y": 74
+        },
+        "highlight": false
+      },
+      {
+        "id": "stripe",
+        "label": "Facturation",
+        "type": "integration",
+        "technology": "Stripe",
+        "role": "Checkout, portail et événements signés",
+        "icon": "cloud",
+        "position": {
+          "x": 88,
+          "y": 74
+        },
+        "highlight": false
+      },
+      {
+        "id": "ses",
+        "label": "E-mails",
+        "type": "integration",
+        "technology": "Amazon SES",
+        "role": "Courriels d’authentification et waitlist",
+        "icon": "cloud",
+        "position": {
+          "x": 12,
+          "y": 74
+        },
+        "highlight": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-01",
+        "from": "browser",
+        "to": "next",
+        "label": "HTTP / RSC / Server Actions"
+      },
+      {
+        "id": "edge-02",
+        "from": "next",
+        "to": "auth",
+        "label": "validation session / workspace"
+      },
+      {
+        "id": "edge-03",
+        "from": "next",
+        "to": "domain",
+        "label": "services métier"
+      },
+      {
+        "id": "edge-04",
+        "from": "domain",
+        "to": "postgres",
+        "label": "repositories Drizzle"
+      },
+      {
+        "id": "edge-05",
+        "from": "auth",
+        "to": "postgres",
+        "label": "compte / workspace"
+      },
+      {
+        "id": "edge-06",
+        "from": "domain",
+        "to": "ai",
+        "label": "port fournisseur text/image"
+      },
+      {
+        "id": "edge-07",
+        "from": "next",
+        "to": "stripe",
+        "label": "webhook signé / gateway"
+      },
+      {
+        "id": "edge-08",
+        "from": "domain",
+        "to": "ses",
+        "label": "courriers via adaptateur"
+      }
+    ],
+    "asyncFlows": [
+      {
+        "id": "async-generation",
+        "description": "POST de création 202 → after(execute) → suivi de statut par le client"
+      },
+      {
+        "id": "async-webhook",
+        "description": "Stripe → signature webhook → relecture Stripe → synchronisation état et crédits"
+      },
+      {
+        "id": "async-email",
+        "description": "Action waitlist → jobs persistés → worker mail SES → confirmation"
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "id": "td-01",
+      "title": "Monolithe Next.js à domaine isolé",
+      "choice": "Séparer UI, services métier, dépôts et accès SQL.",
+      "rationale": "Cette frontière évite de placer le SQL dans les composants ou le navigateur et concentre les contrôles serveur.",
+      "alternative": "ADR-001 documenté dans le dépôt Iconise.",
+      "constraint": "Décision documentée dans l’audit."
+    },
+    {
+      "id": "td-02",
+      "title": "Mode manuel et mode intégré dans un parcours unique",
+      "choice": "Faire de l’itération l’unité commune aux deux voies de génération.",
+      "rationale": "Le fournisseur ne devient pas une nouvelle architecture de workflow.",
+      "alternative": "ADR-002 documenté dans le dépôt Iconise.",
+      "constraint": "L’activation réelle des fournisseurs dépend de flags externes."
+    },
+    {
+      "id": "td-03",
+      "title": "Webhooks Stripe et crédits append-only",
+      "choice": "Attribuer les crédits après preuve de paiement relue.",
+      "rationale": "Cette décision évite de faire confiance à une simple redirection Checkout.",
+      "alternative": "ADR-002 documenté dans le dépôt Iconise.",
+      "constraint": "L’activité commerciale réelle n’a pas été vérifiée."
+    },
+    {
+      "id": "td-04",
+      "title": "Ports fournisseurs IA et simulateurs",
+      "choice": "Rendre les fournisseurs substituables sans reconstruire le domaine.",
+      "rationale": "Le domaine peut être testé sans appels payants à un service externe.",
+      "alternative": "Simulateurs et ports observés dans l’implémentation.",
+      "constraint": "Les tests n’ont pas été exécutés pendant l’audit."
+    },
+    {
+      "id": "td-05",
+      "title": "Internationalisation découplée du contenu",
+      "choice": "Séparer la langue de l’interface de celle du projet.",
+      "rationale": "Ce choix conserve la compatibilité avec des projets dont la langue de contenu est différente.",
+      "alternative": "ADR-003 documenté dans le dépôt Iconise.",
+      "constraint": "L’audit décrit six locales ; leur usage public reste à confirmer."
+    },
+    {
+      "id": "td-06",
+      "title": "Conservation des itérations sur retour arrière",
+      "choice": "Invalider l’aval sans suppression irréversible.",
+      "rationale": "Choix déduit de l’implémentation auditée : les itérations restent disponibles avec un statut différent.",
+      "constraint": "Rationale personnelle non explicitement documentée."
+    },
+    {
+      "id": "td-07",
+      "title": "Exports iconographiques multi-formats",
+      "choice": "Produire un SVG dérivé et plusieurs résolutions de livraison.",
+      "rationale": "Choix déduit de l’implémentation auditée pour servir les usages favicon et web.",
+      "constraint": "La fidélité systématique n’est pas mesurée."
+    },
+    {
+      "id": "td-08",
+      "title": "Waitlist et ouverture contrôlées par flags",
+      "choice": "Ne pas déduire une ouverture publique d’un simple déploiement.",
+      "rationale": "Choix déduit de la configuration d’accès observée.",
+      "constraint": "Le mode de lancement effectif reste inconnu."
+    }
+  ],
+  "challenges": [
+    {
+      "id": "ch-01",
+      "title": "Revenir en arrière sans incohérence",
+      "problem": "Modifier une décision ancienne peut invalider les choix faits dans les étapes suivantes.",
+      "decision": "Réouvrir l’étape via des transitions de statut, marquer l’aval stale et conserver les itérations.",
+      "solution": "Un graphe de transitions marque les étapes dépendantes comme obsolètes tout en conservant les itérations précédentes.",
+      "tradeoff": "La complexité accrue nécessite des tests et une recette sur des environnements isolés.",
+      "result": "Évite de réutiliser des sélections devenues incohérentes ; aucun impact chiffré n’est documenté."
+    },
+    {
+      "id": "ch-02",
+      "title": "Fiabiliser les crédits de génération",
+      "problem": "Une génération distante peut échouer, être relancée ou recevoir des réponses concurrentes.",
+      "decision": "Combiner une clé d’idempotence, une réponse HTTP 202, after() et un ledger revalidé par les webhooks.",
+      "solution": "Réservations transactionnelles, clés d’idempotence et transitions conditionnelles encadrent les débits et restitutions.",
+      "tradeoff": "La fiabilité en production n’a pas été mesurée dans l’audit.",
+      "result": "Une tolérance architecturale aux appels longs et aux réponses perdues est présente dans le code vérifié."
+    },
+    {
+      "id": "ch-06",
+      "title": "Préserver le rendu dans un SVG",
+      "problem": "Vectoriser un master matriciel peut dégrader les contours, les dégradés ou la taille du fichier.",
+      "decision": "Produire un tracé SVG dérivé et réduire progressivement les images pour les formats favicon.",
+      "solution": "Plusieurs tracés sont comparés au rendu source, avec un repli matriciel dans le SVG si nécessaire.",
+      "tradeoff": "La fidélité systématique des exports n’est pas mesurée.",
+      "result": "Un SVG dérivé et un pack favicon sont prévus par l’implémentation vérifiée."
+    },
+    {
+      "id": "ch-04",
+      "title": "Isoler les données multi-comptes",
+      "problem": "Un identifiant de projet envoyé par le navigateur ne constitue pas une preuve de possession.",
+      "decision": "Résoudre la session et le workspace côté serveur, puis appliquer les contraintes relationnelles adaptées.",
+      "solution": "Les lectures et mutations passent par un périmètre d’autorisation centralisé avant l’accès aux repositories.",
+      "tradeoff": "La présence de ces contrôles ne constitue pas un audit de pénétration complet.",
+      "result": "Une frontière d’autorisation workspace est observable dans le code audité."
+    },
+    {
+      "id": "ch-03",
+      "title": "Normaliser une sortie IA imparfaite",
+      "problem": "Une grille incorrecte, une image vide ou un master mal cadré rend les découpes inutilisables.",
+      "decision": "Contrôler le ratio, les dimensions, les bordures et la géométrie de chaque case derrière un port fournisseur.",
+      "solution": "Les images sont validées avant d’entrer dans les étapes suivantes du workflow.",
+      "tradeoff": "Le taux de réussite des fournisseurs n’est pas documenté.",
+      "result": "Plusieurs classes d’images inutilisables peuvent être détectées avant intégration."
+    },
+    {
+      "id": "ch-05",
+      "title": "Maintenir deux langues distinctes",
+      "problem": "La langue de l’interface ne doit pas imposer la langue du contenu généré pour un projet.",
+      "decision": "Séparer user.locale et projects.content_locale avec un fallback anglais et des routes localisées.",
+      "solution": "L’interface, le contenu de projet et les URL SEO peuvent évoluer indépendamment.",
+      "tradeoff": "L’expérience réelle et son adoption n’ont pas été mesurées.",
+      "result": "Six catalogues et leur stratégie de locale sont définis dans le projet audité."
+    },
+    {
+      "id": "ch-07",
+      "title": "Lancer une waitlist avec garde-fous",
+      "problem": "Une inscription publique et des emails différés exposent à des doublons, du spam et des retraits incohérents.",
+      "decision": "Utiliser des tokens d’action, une persistance transactionnelle, des leases, des limites et des retries.",
+      "solution": "Le flux de waitlist est traité comme une opération durable plutôt qu’une simple soumission de formulaire.",
+      "tradeoff": "L’exploitation effective et le go externe restent inconnus.",
+      "result": "Les mécanismes sont présents dans les sources auditées, sans preuve d’activité publique."
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "result-01",
+      "title": "Parcours guidé et versionné",
+      "description": "Huit étapes de création, suivies de la finalisation, avec décisions et itérations conservées par projet.",
+      "evidence": "Vérifié dans l’audit : EV-003, EV-005."
+    },
+    {
+      "id": "result-02",
+      "title": "Une génération configurable",
+      "description": "Une voie de génération avec Gemini, validation des images et gestion des crédits, activable selon la configuration.",
+      "evidence": "Vérifié dans l’audit : EV-010 à EV-012."
+    },
+    {
+      "id": "result-04",
+      "title": "Des exports pour l’application",
+      "description": "Téléchargement du master PNG, d’un SVG dérivé pouvant intégrer le raster, et d’un pack de favicons multi-formats.",
+      "evidence": "Vérifié dans l’audit : EV-037 à EV-039."
+    },
+    {
+      "id": "result-03",
+      "title": "Facturation et crédits",
+      "description": "Les flux de génération peuvent être conditionnés par un système de crédits et de facturation.",
+      "evidence": "Vérifié dans l’audit : EV-014 à EV-016."
+    },
+    {
+      "id": "result-05",
+      "title": "Infrastructure multilingue",
+      "description": "Six locales sont définies avec une stratégie d’URL et de fallback.",
+      "evidence": "Vérifié dans l’audit : EV-023, EV-024."
+    }
+  ],
+  "limitations": [
+    "Dépôt privé : aucun CTA GitHub public ne doit être affiché.",
+    "Le mode de production, les intégrations activées et les résultats commerciaux ne sont pas établis.",
+    "Aucune capture actuelle d’écran authentifié n’est disponible ; l’illustration de cette page est une composition de portfolio, pas une capture produit.",
+    "Des ADR historiques parlent de grilles 4×2 alors que le code courant utilise une grille 3×3 et une cible 4:3.",
+    "Les tests n’ont pas été exécutés pendant l’audit ; aucun badge de CI verte ou chiffre de couverture n’est publié.",
+    "Les prix codés ne doivent pas être présentés comme une offre commerciale actuelle sans validation."
+  ]
+}

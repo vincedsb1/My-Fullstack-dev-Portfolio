@@ -8,20 +8,12 @@ import {
   featuredProjectIds,
   otherProjectIds,
 } from "./taxonomy.ts";
-import { iconiseDraftEn, iconiseDraftFr } from "./manifests/iconise.ts";
+import { caseStudyManifests } from "./manifests/index.ts";
 import type {
   ProjectCaseStudyManifest,
   ProjectCatalogEntry,
-  ProjectId,
   ProjectLocale,
 } from "./types.ts";
-
-const caseStudyManifests: Partial<
-  Record<`${ProjectLocale}:${ProjectId}`, ProjectCaseStudyManifest>
-> = {
-  "fr:iconise": iconiseDraftFr,
-  "en:iconise": iconiseDraftEn,
-};
 
 export function getVisibleProjectsByPlacement(
   placement: "featured" | "other" | "archive",

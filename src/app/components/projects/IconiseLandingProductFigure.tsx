@@ -4,8 +4,9 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import styles from "./IconiseLandingProductFigure.module.css";
 
-const previewSteps = ["1", "2", "3", "4", "5", "6", "7", "+"];
-const previewOptions = ["A", "B", "C", "D", "E", "F"];
+// Aperçu compact commun au hero et au carrousel : cinq étapes et une seule rangée.
+const previewSteps = ["1", "2", "3", "4", "5"];
+const previewOptions = ["A", "B", "C"];
 
 export default function IconiseLandingProductFigure({
   className = "",
@@ -69,7 +70,7 @@ export default function IconiseLandingProductFigure({
                 key={step}
                 className={`${styles.railStep} ${
                   step === "5" ? styles.railStepActive : ""
-                } ${step === "+" ? styles.railStepMore : ""}`}
+                }`}
               >
                 {step}
               </span>
@@ -112,7 +113,7 @@ export default function IconiseLandingProductFigure({
               <span>Retained decision</span>
               <span className={styles.decisionOption} aria-live="polite">
                 <span className={styles.decisionLabel}>Option</span>
-                <strong className={styles.decisionValue} key={selectedOption}>
+                <strong className={styles.decisionValue}>
                   {selectedOption}
                 </strong>
               </span>

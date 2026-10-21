@@ -20,6 +20,7 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     canonicalName: "Allaw",
     nameKey: "allaw.name",
     descriptionKey: "allaw.description",
+    carouselDescriptionKey: "allaw.carouselDescription",
     portfolioVisibility: "visible",
     placement: "featured",
     order: 1,
@@ -43,7 +44,16 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
       verified: true,
       priority: true,
     },
-    caseStudyByLocale: notStarted(),
+    caseStudyByLocale: {
+      fr: {
+        status: "published",
+        manifestFile: "src/content/projects/manifests/fr/allaw.json",
+      },
+      en: {
+        status: "published",
+        manifestFile: "src/content/projects/manifests/en/allaw.json",
+      },
+    },
     evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
   },
   {
@@ -52,22 +62,23 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     canonicalName: "Iconise",
     nameKey: "iconise.name",
     descriptionKey: "iconise.description",
+    carouselDescriptionKey: "iconise.carouselDescription",
     portfolioVisibility: "visible",
     placement: "featured",
     order: 2,
     kind: "saas",
     maturity: "implementation-verified",
-    technologies: ["nextjs", "typescript", "tailwind"],
+    technologies: ["nextjs", "typescript", "postgresql", "gemini"],
     links: {},
     illustration: "iconise",
     caseStudyByLocale: {
       fr: {
-        status: "draft",
-        manifestFile: "src/content/projects/manifests/iconise.ts",
+        status: "published",
+        manifestFile: "src/content/projects/manifests/fr/iconise.json",
       },
       en: {
-        status: "draft",
-        manifestFile: "src/content/projects/manifests/iconise.ts",
+        status: "published",
+        manifestFile: "src/content/projects/manifests/en/iconise.json",
       },
     },
     evidence: {
@@ -79,7 +90,7 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
       ],
       notes: [
         "Audit read-only : dépôt privé, statut public et métriques commerciales non vérifiés.",
-        "Étude de cas maintenue en brouillon et non indexable jusqu’à validation éditoriale.",
+        "Publication et indexation de l’étude de cas autorisées par le propriétaire du portfolio.",
       ],
     },
   },
@@ -89,16 +100,31 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     canonicalName: "Suggst",
     nameKey: "suggst.name",
     descriptionKey: "suggst.description",
+    carouselDescriptionKey: "suggst.carouselDescription",
     portfolioVisibility: "visible",
     placement: "featured",
     order: 3,
     kind: "native-app",
     maturity: "not-audited",
-    technologies: ["swift", "xcode"],
+    technologies: ["swift", "xcode", "openai"],
     links: {},
     illustration: "suggst",
-    caseStudyByLocale: notStarted(),
-    evidence: { sourceFiles: [] },
+    caseStudyByLocale: {
+      fr: {
+        status: "published",
+        manifestFile: "src/content/projects/manifests/fr/suggst.json",
+      },
+      en: {
+        status: "published",
+        manifestFile: "src/content/projects/manifests/en/suggst.json",
+      },
+    },
+    evidence: {
+      sourceFiles: [
+        "src/content/projects/manifests/fr/suggst.json",
+        "src/content/projects/manifests/en/suggst.json",
+      ],
+    },
   },
   {
     id: "smartflow",
@@ -106,35 +132,54 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     canonicalName: "SmartFlow",
     nameKey: "smartflow.name",
     descriptionKey: "smartflow.description",
+    carouselDescriptionKey: "smartflow.carouselDescription",
     portfolioVisibility: "visible",
     placement: "featured",
     order: 4,
     kind: "web-app",
     maturity: "not-audited",
-    technologies: ["nextjs", "tailwind", "postgresql", "typescript"],
+    technologies: ["nextjs", "typescript", "postgresql", "playwright"],
     links: {
       live: {
         url: "https://www.smartflow-app.com/",
         verified: true,
-        lastCheckedAt: "2026-10-20",
+        lastCheckedAt: "2026-10-21",
       },
     },
     illustration: "smartflow",
-    caseStudyByLocale: notStarted(),
-    evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
+    caseStudyByLocale: {
+      fr: {
+        status: "published",
+        manifestFile: "src/content/projects/manifests/fr/smartflow.json",
+      },
+      en: {
+        status: "published",
+        manifestFile: "src/content/projects/manifests/en/smartflow.json",
+      },
+    },
+    evidence: {
+      sourceFiles: [
+        source,
+        "src/i18n/fr.json",
+        "src/i18n/en.json",
+        "src/content/projects/manifests/fr/smartflow.json",
+        "src/content/projects/manifests/en/smartflow.json",
+      ],
+    },
   },
   {
     id: "aiSystem",
     slug: "ai-system",
-    canonicalName: "AI System",
+    canonicalName: "AiSystem",
     nameKey: "aiSystem.name",
     descriptionKey: "aiSystem.description",
+    carouselDescriptionKey: "aiSystem.carouselDescription",
     portfolioVisibility: "visible",
     placement: "other",
     order: 1,
     kind: "tool",
     maturity: "not-audited",
-    technologies: ["swift", "xcode", "python", "bash"],
+    technologies: ["swift", "python", "bash", "xcode"],
     links: {
       github: {
         url: "https://github.com/vincedsb1/AiSystem",
@@ -147,12 +192,33 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
       type: "image",
       src: "/aiSystem.png",
       alt: "",
-      width: 1200,
-      height: 900,
+      width: 1920,
+      height: 1440,
       verified: true,
     },
-    caseStudyByLocale: notStarted(),
-    evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
+    caseStudyByLocale: {
+      fr: {
+        status: "published",
+        manifestFile: "src/content/projects/manifests/fr/ai-system.json",
+      },
+      en: {
+        status: "published",
+        manifestFile: "src/content/projects/manifests/en/ai-system.json",
+      },
+    },
+    evidence: {
+      sourceFiles: [
+        source,
+        "src/i18n/fr.json",
+        "src/i18n/en.json",
+        "src/content/projects/manifests/fr/ai-system.json",
+        "src/content/projects/manifests/en/ai-system.json",
+      ],
+      notes: [
+        "Contenus issus du JSON éditorial fourni ; publication autorisée par le propriétaire du portfolio.",
+        "Aperçu existant /aiSystem.png réutilisé ; les captures supplémentaires restent à fournir et à expurger.",
+      ],
+    },
   },
   {
     id: "aimoto",
@@ -160,24 +226,42 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     canonicalName: "Aimoto",
     nameKey: "aimoto.name",
     descriptionKey: "aimoto.description",
+    carouselDescriptionKey: "aimoto.carouselDescription",
     portfolioVisibility: "visible",
     placement: "other",
     order: 2,
     kind: "tool",
     maturity: "not-audited",
-    technologies: ["nextjs", "typescript", "tailwind", "python"],
+    technologies: ["nextjs", "typescript", "python", "recharts"],
     links: {},
     cardVisual: {
       id: "aimoto-card",
       type: "image",
       src: "/aimoto.png",
       alt: "",
-      width: 1200,
-      height: 900,
+      width: 1920,
+      height: 1080,
       verified: true,
     },
-    caseStudyByLocale: notStarted(),
-    evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
+    caseStudyByLocale: {
+      fr: {
+        status: "published",
+        manifestFile: "src/content/projects/manifests/fr/aimoto.json",
+      },
+      en: {
+        status: "published",
+        manifestFile: "src/content/projects/manifests/en/aimoto.json",
+      },
+    },
+    evidence: {
+      sourceFiles: [
+        source,
+        "src/i18n/fr.json",
+        "src/i18n/en.json",
+        "src/content/projects/manifests/fr/aimoto.json",
+        "src/content/projects/manifests/en/aimoto.json",
+      ],
+    },
   },
   {
     id: "truthify",
@@ -185,12 +269,13 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     canonicalName: "Truthify",
     nameKey: "truthify.name",
     descriptionKey: "truthify.description",
+    carouselDescriptionKey: "truthify.carouselDescription",
     portfolioVisibility: "visible",
     placement: "other",
     order: 3,
     kind: "web-app",
     maturity: "not-audited",
-    technologies: ["nextjs", "typescript", "tailwind", "postgresql"],
+    technologies: ["nextjs", "typescript", "postgresql", "openai"],
     links: {
       live: {
         url: "https://www.truthify.eu/",
@@ -199,8 +284,25 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
       },
     },
     illustration: "truthify",
-    caseStudyByLocale: notStarted(),
-    evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
+    caseStudyByLocale: {
+      fr: {
+        status: "published",
+        manifestFile: "src/content/projects/manifests/fr/truthify.json",
+      },
+      en: {
+        status: "published",
+        manifestFile: "src/content/projects/manifests/en/truthify.json",
+      },
+    },
+    evidence: {
+      sourceFiles: [
+        source,
+        "src/i18n/fr.json",
+        "src/i18n/en.json",
+        "src/content/projects/manifests/fr/truthify.json",
+        "src/content/projects/manifests/en/truthify.json",
+      ],
+    },
   },
   {
     id: "codeMaster",

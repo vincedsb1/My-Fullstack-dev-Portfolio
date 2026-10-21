@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "aiSystem",
+  "slug": "ai-system",
+  "locale": "fr",
+  "variant": "standard",
+  "meta": {
+    "title": "AiSystem — Bibliothèque et synchronisation des ressources IA",
+    "category": "Application macOS"
+  },
+  "seo": {
+    "title": "AiSystem — Gestion des ressources IA sur macOS",
+    "description": "Application macOS pour centraliser, contrôler et diffuser les skills et documents de référence entre projets et assistants de développement.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "Une source de référence pour les ressources de développement IA",
+    "description": "Une application macOS qui réunit skills et documents, visualise les écarts entre projets et encadre leur diffusion vers Claude et Codex.",
+    "pill": "Application native macOS",
+    "visual": {
+      "type": "image",
+      "src": "/aiSystem.png",
+      "alt": "Aperçu illustré d’AiSystem : vue d’ensemble et synchronisation des ressources Claude et Codex.",
+      "width": 1920,
+      "height": 1440
+    }
+  },
+  "overview": {
+    "problem": "Quand chaque projet conserve ses propres règles et skills, les copies divergent et les mises à jour deviennent difficiles à suivre entre Claude et Codex.",
+    "solution": "AiSystem réunit les sources de référence, détecte les écarts et permet de choisir, prévisualiser et diffuser les versions souhaitées sans écraser silencieusement les changements locaux.",
+    "audience": "Développeurs utilisant plusieurs projets et assistants IA",
+    "role": "Conception et développement de l’outil",
+    "scope": "Application SwiftUI et automatisations locales Python/Bash"
+  },
+  "workflow": [
+    {
+      "id": "step-1",
+      "title": "Centraliser les ressources",
+      "description": "Rassembler les documents et skills de référence dans une bibliothèque commune.",
+      "visual": {
+        "type": "icon",
+        "icon": "layers",
+        "title": "Bibliothèque de référence",
+        "description": "Les sources sont classées et rattachées aux projets concernés."
+      }
+    },
+    {
+      "id": "step-2",
+      "title": "Choisir les destinataires",
+      "description": "Définir, par projet, les éléments reçus sans modifier immédiatement ses fichiers.",
+      "visual": {
+        "type": "icon",
+        "icon": "workflow",
+        "title": "Distribution par projet",
+        "description": "Chaque carte indique Oui, Non ou En partie."
+      }
+    },
+    {
+      "id": "step-3",
+      "title": "Comparer les versions",
+      "description": "Repérer une copie plus récente dans un projet et choisir celle à importer.",
+      "visual": {
+        "type": "icon",
+        "icon": "code",
+        "title": "Sélection de la source",
+        "description": "La bibliothèque et les copies de projets sont comparables par date et contenu."
+      }
+    },
+    {
+      "id": "step-4",
+      "title": "Prévisualiser puis diffuser",
+      "description": "Examiner les créations, remplacements et blocages, puis lancer la diffusion contrôlée.",
+      "visual": {
+        "type": "icon",
+        "icon": "monitor",
+        "title": "Aperçu avant écriture",
+        "description": "Les opérations indiquent leurs effets et proposent une annulation sous conditions."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "L’interface SwiftUI déclenche des routes Bash via Process ; les modules Python lisent les sources YAML et gèrent diagnostics, versions et copies.",
+    "featuredNodeIds": [
+      "macos-ui",
+      "command-runner",
+      "action-router",
+      "python-backend"
+    ],
+    "nodes": [
+      {
+        "id": "macos-ui",
+        "label": "Application macOS",
+        "type": "client",
+        "role": "Navigation, bibliothèque et opérations",
+        "technology": "SwiftUI",
+        "icon": "client",
+        "highlight": true
+      },
+      {
+        "id": "command-runner",
+        "label": "CommandRunner",
+        "type": "service",
+        "role": "Exécute des actions locales avec arguments séparés",
+        "technology": "Swift / Process",
+        "icon": "service",
+        "highlight": true
+      },
+      {
+        "id": "action-router",
+        "label": "Routeur d’actions",
+        "type": "service",
+        "role": "Expose les routes du backend et leurs codes",
+        "technology": "Bash",
+        "icon": "code",
+        "highlight": true
+      },
+      {
+        "id": "python-backend",
+        "label": "Services métier",
+        "type": "worker",
+        "role": "Inventaire, versions, distribution et vérifications",
+        "technology": "Python",
+        "icon": "worker",
+        "highlight": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-1",
+        "from": "macos-ui",
+        "to": "command-runner",
+        "label": "Commandes typées"
+      },
+      {
+        "id": "edge-2",
+        "from": "command-runner",
+        "to": "action-router",
+        "label": "Process + argv"
+      },
+      {
+        "id": "edge-3",
+        "from": "action-router",
+        "to": "python-backend",
+        "label": "Routes locales"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Repérer les écarts sans multiplier les sources",
+      "constraint": "Les mêmes ressources sont copiées dans différents projets et formats Claude/Codex.",
+      "solution": "Registre et manifest décrivent les sources canoniques ; Inventory et Doctor classent les copies manquantes, divergentes ou en conflit."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Éviter les écrasements pendant la diffusion",
+      "constraint": "Une synchronisation peut rencontrer des modifications locales ou un plan devenu périmé.",
+      "solution": "Aperçu, identifiant de plan, blocages explicites, écritures atomiques par projet et annulation conditionnelle."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Séparer états métier et retours techniques",
+      "constraint": "L’application doit présenter une opération compréhensible malgré des traitements exécutés en ligne de commande.",
+      "solution": "Contrats JSON décodés côté Swift, résultats structurés, cache de lecture et historique des opérations de la session."
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "outcome-1",
+      "title": "Interface de pilotage macOS",
+      "description": "Vues Ensemble, Projets, Bibliothèque et Activité, palette de commandes et retours d’opération contextuels."
+    },
+    {
+      "id": "outcome-2",
+      "title": "Bibliothèque mutualisée",
+      "description": "Gestion des ressources communes, versions, choix par projet, import et redistribution."
+    },
+    {
+      "id": "outcome-3",
+      "title": "Contrôles et récupération",
+      "description": "Inventaire, diagnostics, aperçus de changement, garde-fous et annulation d’opérations sous conditions."
+    }
+  ],
+  "stack": [
+    "swift",
+    "swiftui",
+    "python",
+    "bash",
+    "xcode",
+    "json"
+  ]
+}

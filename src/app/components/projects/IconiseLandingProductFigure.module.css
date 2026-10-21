@@ -18,6 +18,8 @@
   width: 100%;
   height: 100%;
   min-width: 0;
+  /* Adapter l’aperçu à la place réelle du hero ou de la carte du carrousel. */
+  container-type: size;
   align-items: center;
   justify-content: center;
   margin: 0;
@@ -63,6 +65,8 @@
 }
 
 .preview {
+  display: flex;
+  flex-direction: column;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -77,6 +81,7 @@
 
 .topbar {
   display: flex;
+  flex: none;
   min-height: clamp(2.75rem, 5vw, 4rem);
   align-items: center;
   gap: clamp(0.5rem, 1.2vw, 0.8125rem);
@@ -111,6 +116,7 @@
 
 .body {
   display: grid;
+  flex: 1;
   min-height: 0;
   grid-template-columns: clamp(2.75rem, 6vw, 5rem) minmax(0, 1fr);
 }
@@ -172,18 +178,18 @@
   content: "";
 }
 
-.railStepMore {
-  border-style: dashed;
-}
-
 .canvas {
+  display: flex;
+  min-height: 0;
   min-width: 0;
+  flex-direction: column;
   background: var(--figure-content);
   padding: clamp(0.75rem, 2.5vw, 1.625rem) clamp(0.75rem, 3vw, 2rem);
 }
 
 .heading {
   display: grid;
+  flex: none;
   gap: clamp(0.15rem, 0.5vw, 0.3125rem);
   margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
 }
@@ -213,15 +219,19 @@
 
 .board {
   display: grid;
+  min-height: 0;
+  aspect-ratio: 3.2;
+  flex: 0 1 auto;
   gap: clamp(0.35rem, 1.15vw, 0.875rem);
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr);
 }
 
 .option {
   position: relative;
   display: grid;
   min-width: 0;
-  aspect-ratio: 1;
+  min-height: 0;
   place-items: center;
   overflow: hidden;
   border: 1px solid var(--figure-border);
@@ -286,33 +296,6 @@
   transform: rotate(-12deg);
 }
 
-.option:nth-child(4) .shape {
-  border-radius: 0;
-  clip-path: polygon(50% 4%, 97% 91%, 3% 91%);
-}
-
-.option:nth-child(5) .shape {
-  width: 34%;
-  border-radius: 14px;
-  transform: rotate(45deg);
-}
-
-.option:nth-child(6) .shape {
-  border-radius: 0;
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 94%,
-    50% 72%,
-    21% 94%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
-}
-
 .option:nth-child(1):hover .shape {
   transform: rotate(12deg) scale(1.1);
 }
@@ -323,18 +306,6 @@
 
 .option:nth-child(3):hover .shape {
   transform: rotate(0) scale(1.1);
-}
-
-.option:nth-child(4):hover .shape {
-  transform: translateY(-6px) scale(1.1);
-}
-
-.option:nth-child(5):hover .shape {
-  transform: rotate(90deg) scale(1.1);
-}
-
-.option:nth-child(6):hover .shape {
-  transform: rotate(45deg) scale(1.1);
 }
 
 .optionLabel {
@@ -352,6 +323,7 @@
 
 .decision {
   display: flex;
+  flex: none;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
@@ -368,6 +340,7 @@
 
 .decisionOption {
   display: flex;
+  flex: none;
   align-items: center;
   gap: clamp(0.35rem, 0.8vw, 0.625rem);
 }
@@ -380,6 +353,7 @@
 
 .decisionValue {
   display: grid;
+  flex: none;
   width: clamp(1.5rem, 2.8vw, 2.125rem);
   height: clamp(1.5rem, 2.8vw, 2.125rem);
   place-items: center;
@@ -389,7 +363,6 @@
   color: var(--figure-foreground);
   font-size: clamp(0.7rem, 1.3vw, 0.9375rem);
   font-weight: 800;
-  animation: preview-selection-pop 220ms cubic-bezier(0.2, 0, 0, 1);
 }
 
 @keyframes product-figure-float {
@@ -400,18 +373,6 @@
 
   50% {
     transform: rotate(1.2deg) translateY(-8px);
-  }
-}
-
-@keyframes preview-selection-pop {
-  from {
-    opacity: 0;
-    transform: translateY(-8px) scale(0.9);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
   }
 }
 
@@ -429,9 +390,126 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .figure[data-motion-active="true"] .preview,
+/* Même sur desktop, une carte étroite doit utiliser les proportions compactes. */
+@container (max-width: 400px) {
+  .topbar {
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .brand {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .body {
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+  }
+
+  .rail {
+    gap: 0.35rem;
+    padding: 0.75rem 0.35rem;
+  }
+
+  .railStep {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .railStepActive {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .canvas {
+    padding: 0.75rem;
+  }
+
+  .heading {
+    gap: 0.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .heading h2 {
+    font-size: clamp(0.8rem, 5cqw, 1.125rem);
+  }
+
+  .heading p {
+    font-size: clamp(0.55rem, 3cqw, 0.6875rem);
+  }
+
+  .board {
+    gap: 0.5rem;
+  }
+
+  .option {
+    padding: 0.5rem;
+  }
+
+  .decision {
+    margin-top: 0.75rem;
+    padding: 0.5rem 0.625rem;
+    font-size: 0.625rem;
+  }
+
   .decisionValue {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Dans un cadre bas, garder les cinq étapes et A–B–C intégralement visibles. */
+@container (max-height: 260px) {
+  .rail {
+    gap: 0.2rem;
+    padding-block: 0.5rem;
+  }
+
+  .railStep,
+  .railStepActive {
+    width: clamp(0.875rem, 9cqh, 1.6rem);
+    height: clamp(0.875rem, 9cqh, 1.6rem);
+  }
+
+  .decision {
+    display: none;
+  }
+}
+
+/* Hero sur petit mobile : compacter le chrome avant de réduire les propositions. */
+@container (max-height: 180px) {
+  .topbar {
+    min-height: 2rem;
+    padding-block: 0.25rem;
+  }
+
+  .brand {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .canvas {
+    padding: 0.5rem 0.625rem;
+  }
+
+  .heading {
+    gap: 0.125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .heading p {
+    font-size: 0.5rem;
+    line-height: 1.35;
+  }
+
+  .option {
+    padding: 0.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .figure[data-motion-active="true"] .preview {
     animation: none;
   }
 

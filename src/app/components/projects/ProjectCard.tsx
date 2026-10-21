@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import type { KeyboardEvent as ReactKeyboardEvent } from "react";
 import type { ProjectCatalogEntry } from "@/content/projects/types";
 import { getVerifiedCardVisual } from "@/content/projects/media";
@@ -21,6 +21,7 @@ export default function ProjectCard({
   const [dialogOpen, setDialogOpen] = useState(false);
   const cardVisual = getVerifiedCardVisual(project);
   const openDialog = () => setDialogOpen(true);
+  const closeDialog = useCallback(() => setDialogOpen(false), []);
   const handleCardKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     if (event.key !== "Enter" && event.key !== " ") return;
     event.preventDefault();
@@ -107,16 +108,13 @@ export default function ProjectCard({
                 sizes={featured ? "(max-width: 768px) 100vw, 800px" : "33vw"}
               />
             )}
-            <span className="pointer-events-none absolute bottom-4 right-4 inline-flex size-10 items-center justify-center rounded-full bg-neutral-950/80 text-white opacity-0 shadow-lg backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
-              <span aria-hidden="true">↗</span>
-            </span>
           </div>
         </div>
       </article>
       <ProjectQuickActionsDialog
         project={project}
         open={dialogOpen}
-        onClose={() => setDialogOpen(false)}
+        onClose={closeDialog}
       />
     </>
   );

@@ -15,11 +15,11 @@ import Skills from "../../components/Skills.tsx";
 import Timeline from "../../components/Timeline.tsx";
 
 export default function Home({
-  blogArticle,
+  blogArticles,
 }: {
-  blogArticle: BlogHomeArticle | null;
+  blogArticles: BlogHomeArticle[];
 }) {
-  const blogLocale = blogArticle?.locale ?? "fr";
+  const blogLocale = blogArticles[0]?.locale ?? "fr";
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -91,8 +91,11 @@ export default function Home({
         >
           <Projects3 />
         </div>
-        <div className="mb-16 flex w-full max-w-5xl flex-col items-center px-4 sm:mb-32 lg:px-0">
-          <BlogResource article={blogArticle} />
+        <div
+          id="blogContainer"
+          className="mb-16 flex w-full max-w-5xl flex-col items-center px-4 sm:mb-32 md:px-6"
+        >
+          <BlogResource articles={blogArticles} />
         </div>
         <div
           id="timelineContainer"

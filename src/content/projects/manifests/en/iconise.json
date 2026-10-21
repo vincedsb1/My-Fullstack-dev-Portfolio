@@ -1,0 +1,464 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "iconise",
+  "slug": "iconise",
+  "locale": "en",
+  "variant": "standard",
+  "meta": {
+    "title": "Iconise — Guided app icon studio",
+    "category": "Icon design SaaS"
+  },
+  "seo": {
+    "title": "Iconise — guided app icon creation | Case study",
+    "description": "Iconise case study: guided app icon design, iteration history, configurable AI generation, and PNG, derived SVG and favicon exports.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "From an app idea to a finished icon",
+    "description": "A guided studio to explore visual directions, retain design decisions, and refine an app icon through to export.",
+    "pill": "App icon design SaaS",
+    "category": "Icon design SaaS",
+    "visual": {
+      "type": "illustration",
+      "imageId": "iconise-product-figure",
+      "label": "Iconise — visual workflow"
+    }
+  },
+  "overview": {
+    "problem": "Creating a consistent icon means defining an identity, comparing options, and tracking decisions. Without a structured process, iterations and design choices become scattered.",
+    "audience": "App makers and product teams",
+    "context": "A web application where manual and integrated generation paths share the same workflow.",
+    "scope": "Product workflow, data, generation, billing and exports",
+    "solution": "Iconise connects briefs, visual directions, exploration and refinement across eight guided steps, followed by finalization. Decisions and iterations remain tied to each project."
+  },
+  "stack": [
+    "nextjs",
+    "typescript",
+    "postgresql",
+    "drizzle",
+    "better-auth",
+    "gemini",
+    "stripe",
+    "sharp"
+  ],
+  "video": {
+    "provider": "youtube",
+    "url": "https://www.youtube-nocookie.com/embed/9y7g2G8TBMI?si=GkUUZ76QACd-tixR&rel=0&modestbranding=1",
+    "verified": true,
+    "playLabel": "Play the Iconise video",
+    "regionLabel": "Iconise case study video player"
+  },
+  "workflow": [
+    {
+      "id": "frame",
+      "title": "Define the project",
+      "description": "Brief and preferences.",
+      "visual": {
+        "type": "icon",
+        "icon": "monitor",
+        "title": "A usable brief",
+        "description": "The brief records the app, its identity and visual preferences, and guides the following steps."
+      }
+    },
+    {
+      "id": "explore",
+      "title": "Explore nine paths",
+      "description": "Compare nine options.",
+      "visual": {
+        "type": "flow",
+        "title": "One board, nine options",
+        "description": "Generate or import a board of nine proposals, then select an A–I cell to continue.",
+        "steps": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I"
+        ]
+      }
+    },
+    {
+      "id": "refine",
+      "title": "Refine the icon",
+      "description": "Geometry and optics.",
+      "visual": {
+        "type": "flow",
+        "title": "Revise without deleting",
+        "description": "Adjust geometry, optical perception and background; some steps can be skipped. Changing a decision marks dependent steps for review without deleting past attempts.",
+        "steps": [
+          "Choice",
+          "Geometry",
+          "Optics",
+          "Background"
+        ]
+      }
+    },
+    {
+      "id": "deliver",
+      "title": "Finalize and export",
+      "description": "PNG, SVG and favicons.",
+      "visual": {
+        "type": "result",
+        "title": "Formats for the application",
+        "description": "Download the PNG master, a derived SVG or a favicon pack. The SVG may embed the raster image when vector tracing does not sufficiently preserve the original appearance."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "The Next.js server verifies the session and workspace, then calls application services. Projects are persisted through Drizzle and PostgreSQL; Gemini and Stripe use separate adapters.",
+    "featuredNodeIds": [
+      "browser",
+      "next",
+      "domain",
+      "postgres"
+    ],
+    "featuredEdgeLabels": [
+      "Requests",
+      "Application services",
+      "Data access"
+    ],
+    "nodes": [
+      {
+        "id": "browser",
+        "label": "React interface",
+        "type": "frontend",
+        "technology": "React / Next.js",
+        "role": "Workflow screens and interactions",
+        "icon": "browser",
+        "highlight": false,
+        "position": {
+          "x": 12,
+          "y": 28
+        }
+      },
+      {
+        "id": "next",
+        "label": "Next.js API",
+        "type": "server",
+        "technology": "Next.js",
+        "role": "Sessions, authorization and routes",
+        "icon": "service",
+        "position": {
+          "x": 37,
+          "y": 28
+        },
+        "highlight": false
+      },
+      {
+        "id": "auth",
+        "label": "Sessions and workspaces",
+        "type": "service",
+        "technology": "Better Auth",
+        "role": "Identity and data boundary",
+        "icon": "service",
+        "position": {
+          "x": 63,
+          "y": 28
+        },
+        "highlight": false
+      },
+      {
+        "id": "domain",
+        "label": "Application services",
+        "type": "service",
+        "technology": "TypeScript",
+        "role": "Workflow, generation and credits",
+        "icon": "service",
+        "highlight": false,
+        "position": {
+          "x": 88,
+          "y": 28
+        }
+      },
+      {
+        "id": "postgres",
+        "label": "Persistence",
+        "type": "database",
+        "technology": "PostgreSQL",
+        "role": "Workspace-scoped projects, states and history via Drizzle",
+        "icon": "database",
+        "position": {
+          "x": 37,
+          "y": 74
+        },
+        "highlight": false
+      },
+      {
+        "id": "ai",
+        "label": "External generation",
+        "type": "integration",
+        "technology": "Gemini + OpenAI",
+        "role": "Gemini images and OpenAI creative text, flag-dependent",
+        "icon": "cloud",
+        "position": {
+          "x": 63,
+          "y": 74
+        },
+        "highlight": false
+      },
+      {
+        "id": "stripe",
+        "label": "Billing",
+        "type": "integration",
+        "technology": "Stripe",
+        "role": "Checkout, portal and signed events",
+        "icon": "cloud",
+        "position": {
+          "x": 88,
+          "y": 74
+        },
+        "highlight": false
+      },
+      {
+        "id": "ses",
+        "label": "Email",
+        "type": "integration",
+        "technology": "Amazon SES",
+        "role": "Authentication and waitlist emails",
+        "icon": "cloud",
+        "position": {
+          "x": 12,
+          "y": 74
+        },
+        "highlight": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-01",
+        "from": "browser",
+        "to": "next",
+        "label": "HTTP / RSC / Server Actions"
+      },
+      {
+        "id": "edge-02",
+        "from": "next",
+        "to": "auth",
+        "label": "session / workspace validation"
+      },
+      {
+        "id": "edge-03",
+        "from": "next",
+        "to": "domain",
+        "label": "domain service calls"
+      },
+      {
+        "id": "edge-04",
+        "from": "domain",
+        "to": "postgres",
+        "label": "Drizzle repositories"
+      },
+      {
+        "id": "edge-05",
+        "from": "auth",
+        "to": "postgres",
+        "label": "account / workspace data"
+      },
+      {
+        "id": "edge-06",
+        "from": "domain",
+        "to": "ai",
+        "label": "text/image provider port"
+      },
+      {
+        "id": "edge-07",
+        "from": "next",
+        "to": "stripe",
+        "label": "signed webhook / gateway"
+      },
+      {
+        "id": "edge-08",
+        "from": "domain",
+        "to": "ses",
+        "label": "adapter-based email"
+      }
+    ],
+    "asyncFlows": [
+      {
+        "id": "async-generation",
+        "description": "Creation POST 202 → after(execute) → client status polling"
+      },
+      {
+        "id": "async-webhook",
+        "description": "Stripe → signed webhook → Stripe object replay → state and credit sync"
+      },
+      {
+        "id": "async-email",
+        "description": "Waitlist action → persisted jobs → SES mail worker → confirmation"
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "id": "td-01",
+      "title": "Next.js monolith with an isolated domain",
+      "choice": "Separate UI, domain services, repositories and SQL access.",
+      "rationale": "This boundary keeps SQL out of components and the browser while concentrating server controls.",
+      "alternative": "ADR-001 documented in the Iconise repository.",
+      "constraint": "Documented decision in the audit."
+    },
+    {
+      "id": "td-02",
+      "title": "Manual and integrated modes in one workflow",
+      "choice": "Make the iteration the shared unit for both generation paths.",
+      "rationale": "The provider does not become a second workflow architecture.",
+      "alternative": "ADR-002 documented in the Iconise repository.",
+      "constraint": "Actual provider availability depends on external flags."
+    },
+    {
+      "id": "td-03",
+      "title": "Stripe webhooks and append-only credits",
+      "choice": "Assign credits only after replayed payment proof.",
+      "rationale": "This avoids trusting a simple Checkout redirect.",
+      "alternative": "ADR-002 documented in the Iconise repository.",
+      "constraint": "Actual commercial activity was not verified."
+    },
+    {
+      "id": "td-04",
+      "title": "AI provider ports and simulators",
+      "choice": "Make providers replaceable without rebuilding the domain.",
+      "rationale": "The domain can be tested without paid external calls.",
+      "alternative": "Ports and simulators are visible in the implementation.",
+      "constraint": "Tests were not executed during the audit."
+    },
+    {
+      "id": "td-05",
+      "title": "Internationalization independent from content",
+      "choice": "Separate interface language from project content language.",
+      "rationale": "This preserves compatibility with projects whose content language differs.",
+      "alternative": "ADR-003 documented in the Iconise repository.",
+      "constraint": "The audit describes six locales; public usage remains to be confirmed."
+    },
+    {
+      "id": "td-06",
+      "title": "Preserving iterations when going back",
+      "choice": "Invalidate downstream state without irreversible deletion.",
+      "rationale": "Inferred from the audited implementation: iterations remain available with a different status.",
+      "constraint": "Personal rationale is not explicitly documented."
+    },
+    {
+      "id": "td-07",
+      "title": "Multi-format icon exports",
+      "choice": "Produce a derived SVG and multiple delivery resolutions.",
+      "rationale": "Inferred from the audited implementation to serve favicon and web use cases.",
+      "constraint": "Systematic fidelity is not measured."
+    },
+    {
+      "id": "td-08",
+      "title": "Flags-controlled waitlist and opening",
+      "choice": "Do not infer public availability from a deployment alone.",
+      "rationale": "Inferred from the observed access configuration.",
+      "constraint": "The actual launch mode remains unknown."
+    }
+  ],
+  "challenges": [
+    {
+      "id": "ch-01",
+      "title": "Revisiting decisions safely",
+      "problem": "Changing an earlier decision may invalidate work completed in later steps.",
+      "decision": "Reopen steps through status transitions, mark downstream decisions stale and preserve iterations.",
+      "solution": "A transition model marks dependent steps as stale while preserving earlier iterations.",
+      "tradeoff": "The added complexity requires isolated tests and review.",
+      "result": "It prevents stale selections from being reused; no quantified impact is documented."
+    },
+    {
+      "id": "ch-02",
+      "title": "Keeping generation credits consistent",
+      "problem": "A remote generation may fail, be retried, or produce competing updates.",
+      "decision": "Combine an idempotency key, an HTTP 202 response, after() and a ledger revalidated by webhooks.",
+      "solution": "Transactional reservations, idempotency keys, and conditional status transitions govern charges and refunds.",
+      "tradeoff": "Production reliability was not measured in the audit.",
+      "result": "The verified code contains architectural tolerance for long calls and lost responses."
+    },
+    {
+      "id": "ch-06",
+      "title": "Preserving the appearance in SVG",
+      "problem": "Vectorizing a raster master may distort edges, gradients, or file size.",
+      "decision": "Produce a derived SVG trace and downscale progressively for favicon formats.",
+      "solution": "Vector candidates are compared against the original, with an embedded-raster fallback if needed.",
+      "tradeoff": "Systematic export fidelity is not measured.",
+      "result": "A derived SVG and favicon pack are provided for by the verified implementation."
+    },
+    {
+      "id": "ch-04",
+      "title": "Isolating multi-account data",
+      "problem": "A project identifier sent by the browser is not proof of ownership.",
+      "decision": "Resolve the session and workspace on the server, then apply relational constraints.",
+      "solution": "Reads and mutations cross a central authorization boundary before repository access.",
+      "tradeoff": "These controls are not a complete penetration test.",
+      "result": "A workspace authorization boundary is observable in the audited code."
+    },
+    {
+      "id": "ch-03",
+      "title": "Normalizing imperfect AI output",
+      "problem": "An invalid grid, empty image or badly cropped master makes downstream extraction unusable.",
+      "decision": "Validate ratios, dimensions, borders and cell geometry behind a provider port.",
+      "solution": "Images are validated before they enter the next workflow steps.",
+      "tradeoff": "Provider success rates are not documented.",
+      "result": "Several classes of unusable images can be detected before integration."
+    },
+    {
+      "id": "ch-05",
+      "title": "Keeping two languages independent",
+      "problem": "The interface language should not force the generated content language for a project.",
+      "decision": "Separate user.locale and projects.content_locale with an English fallback and localized routes.",
+      "solution": "Interface, project content and SEO URLs can evolve independently.",
+      "tradeoff": "Real-world experience and adoption were not measured.",
+      "result": "Six locale catalogs and their URL strategy are defined in the audited project."
+    },
+    {
+      "id": "ch-07",
+      "title": "Launching a guarded waitlist",
+      "problem": "Public signup and deferred emails create duplicate, spam and unsubscribe risks.",
+      "decision": "Use action tokens, transactional persistence, leases, limits and retries.",
+      "solution": "The waitlist is treated as a durable operation rather than a simple form submission.",
+      "tradeoff": "Actual operation and external go-live status remain unknown.",
+      "result": "The mechanisms are present in the audited sources, without evidence of public activity."
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "result-01",
+      "title": "Guided, versioned workflow",
+      "description": "Eight creative steps followed by finalization, with decisions and iterations preserved for each project.",
+      "evidence": "Verified in the audit: EV-003, EV-005."
+    },
+    {
+      "id": "result-02",
+      "title": "Configurable generation",
+      "description": "A Gemini generation path with image validation and credit handling, enabled when configured.",
+      "evidence": "Verified in the audit: EV-010 to EV-012."
+    },
+    {
+      "id": "result-04",
+      "title": "Export formats for apps",
+      "description": "Download the PNG master, a derived SVG that may embed the raster, and a multi-format favicon pack.",
+      "evidence": "Verified in the audit: EV-037 to EV-039."
+    },
+    {
+      "id": "result-03",
+      "title": "Billing and credits",
+      "description": "Generation flows can be gated by a credit and billing system.",
+      "evidence": "Verified in the audit: EV-014 to EV-016."
+    },
+    {
+      "id": "result-05",
+      "title": "Multilingual infrastructure",
+      "description": "Six locales are defined with a URL and fallback strategy.",
+      "evidence": "Verified in the audit: EV-023, EV-024."
+    }
+  ],
+  "limitations": [
+    "The repository is private: no public GitHub CTA should be displayed.",
+    "Production mode, enabled integrations and commercial outcomes are not established.",
+    "No current authenticated product screenshot is available; this page illustration is a portfolio composition, not a product capture.",
+    "Historical ADRs mention 4×2 boards while current code uses a 3×3 board and a 4:3 target.",
+    "Tests were not executed during the audit; no green CI badge or coverage figure is published.",
+    "Coded prices must not be presented as a current commercial offer without validation."
+  ]
+}

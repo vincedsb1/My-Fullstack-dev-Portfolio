@@ -1,4 +1,5 @@
 import { projectCatalog } from "./catalog.ts";
+import { validateCaseStudyShape } from "./manifest-shape.ts";
 import {
   archiveProjectIds,
   featuredProjectIds,
@@ -23,9 +24,12 @@ function containsInvalidFragment(value: unknown): boolean {
 }
 
 export function validateCaseStudyManifest(
-  manifest: ProjectCaseStudyManifest,
+  value: unknown,
 ): ProjectValidationIssue[] {
-  const issues: ProjectValidationIssue[] = [];
+  const issues = validateCaseStudyShape(value);
+  if (issues.length) return issues;
+  // La structure et les discriminants sont contrôlés avant l’accès aux champs.
+  const manifest = value as ProjectCaseStudyManifest;
   const workflowIds = manifest.workflow?.map((step) => step.id) ?? [];
   const nodeIds = manifest.architecture?.nodes.map((node) => node.id) ?? [];
   const galleryIds = manifest.gallery?.map((item) => item.id) ?? [];
@@ -56,6 +60,15 @@ export function validateCaseStudyManifest(
       issues.push({
         code: "INVALID_ARCHITECTURE_EDGE",
         message: `Architecture edge ${edge.id} references an unknown node.`,
+      });
+    }
+  }
+
+  for (const id of manifest.architecture?.featuredNodeIds ?? []) {
+    if (!nodeSet.has(id)) {
+      issues.push({
+        code: "INVALID_FEATURED_NODE",
+        message: `Featured architecture node ${id} does not exist.`,
       });
     }
   }
@@ -103,6 +116,21 @@ export function validateCaseStudyManifest(
   }
 
   return issues;
+}
+
+/** Point d’entrée des fichiers JSON : aucun cast non vérifié dans le registre. */
+export function parseCaseStudyManifest(
+  value: unknown,
+): ProjectCaseStudyManifest {
+  const issues = validateCaseStudyManifest(value);
+  if (issues.length) {
+    throw new Error(
+      `Invalid project case study:\n${issues
+        .map((issue) => `[${issue.code}] ${issue.message}`)
+        .join("\n")}`,
+    );
+  }
+  return value as ProjectCaseStudyManifest;
 }
 
 export function validateProjectCatalog(): ProjectValidationIssue[] {

@@ -110,8 +110,6 @@ function getYouTubeVideoId(url: string) {
 export default function ProjectVideoSection({
   video,
   title,
-  facadeBadge,
-  facadeTitle,
   playLabel,
   closeLabel,
   regionLabel,
@@ -119,8 +117,6 @@ export default function ProjectVideoSection({
 }: {
   video: NonNullable<ProjectCaseStudyManifest["video"]>;
   title: string;
-  facadeBadge: string;
-  facadeTitle: string;
   playLabel: string;
   closeLabel: string;
   regionLabel: string;
@@ -323,9 +319,6 @@ export default function ProjectVideoSection({
         <div data-reveal className="mx-auto max-w-6xl px-6">
           <div className="relative aspect-video overflow-hidden rounded-[2rem] border border-neutral-200 bg-neutral-950 shadow-[0_30px_90px_rgba(23,23,23,0.18)] dark:border-neutral-800 dark:shadow-[0_30px_90px_rgba(0,0,0,0.4)]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(239,68,68,0.28),transparent_24%),linear-gradient(135deg,#171717,#050505)] dark:bg-[radial-gradient(circle_at_50%_38%,rgba(239,68,68,0.2),transparent_24%),linear-gradient(135deg,#262626,#050505)]" />
-            <span className="absolute left-5 top-5 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/70 backdrop-blur sm:left-8 sm:top-8">
-              {facadeBadge}
-            </span>
             <button
               ref={playButtonRef}
               type="button"
@@ -344,11 +337,6 @@ export default function ProjectVideoSection({
                 />
               </span>
             </button>
-            <h2 className="absolute bottom-6 left-1/2 max-w-[calc(100%-2rem)] -translate-x-1/2 text-center text-2xl font-semibold tracking-[-0.04em] text-white sm:bottom-10 sm:text-4xl">
-              <span className="inline-block whitespace-nowrap px-3 italic">
-                {facadeTitle}
-              </span>
-            </h2>
           </div>
         </div>
       )}

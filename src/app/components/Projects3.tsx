@@ -82,6 +82,8 @@ function FeaturedPanel({
     ? project.links.live.url
     : undefined;
 
+  const Description = project.carouselDescriptionKey ? "div" : "p";
+
   return (
     <div className="flex h-full flex-col">
       <div className="grid flex-1 gap-8 md:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] md:gap-12">
@@ -94,12 +96,17 @@ function FeaturedPanel({
           <h3 className="text-4xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 md:text-5xl">
             {t(project.nameKey)}
           </h3>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-600 dark:text-neutral-300 md:text-lg">
-            {t.rich(project.descriptionKey, {
+          <Description
+            className={`mt-5 max-w-xl text-base leading-relaxed text-neutral-600 dark:text-neutral-300 md:text-lg ${
+              project.carouselDescriptionKey ? "space-y-5" : ""
+            }`}
+          >
+            {t.rich(project.carouselDescriptionKey ?? project.descriptionKey, {
+              paragraph: (chunks) => <p>{chunks}</p>,
               strong: (chunks) => <strong>{chunks}</strong>,
               break: () => <br />,
             })}
-          </p>
+          </Description>
 
           <div className="mt-auto flex flex-wrap gap-3 pt-8">
             {detailAvailable ? (
@@ -136,7 +143,9 @@ function FeaturedPanel({
         <div className="order-1 flex min-w-0 flex-col md:order-2">
           <div
             className={`relative min-h-64 flex-1 overflow-hidden rounded-[1.5rem] ${
-              project.id === "iconise" || project.id === "smartflow"
+              project.id === "iconise" ||
+              project.id === "suggst" ||
+              project.id === "smartflow"
                 ? "bg-transparent dark:bg-transparent"
                 : "bg-neutral-100 dark:bg-neutral-900"
             }`}
@@ -410,18 +419,18 @@ function Projects3() {
             </div>
 
             <div className="mt-8">
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-3">
                 <button
                   type="button"
                   onClick={handlePrevious}
                   aria-label={t("previousProjectAriaLabel")}
                   disabled={isAnimating}
-                  className="inline-flex size-10 items-center justify-center rounded-full text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-wait disabled:opacity-40 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white"
+                  className="inline-flex rounded-full p-2 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-wait disabled:opacity-40 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white"
                 >
                   <ChevronLeft size={20} aria-hidden="true" />
                 </button>
                 <div
-                  className="flex gap-2"
+                  className="flex gap-0"
                   role="tablist"
                   aria-label={t("featuredNavigation")}
                 >
@@ -443,7 +452,7 @@ function Projects3() {
                         handleNavigationKeyDown(event, index)
                       }
                       aria-disabled={isAnimating}
-                      className="flex size-8 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 aria-disabled:cursor-wait aria-disabled:opacity-60"
+                      className="group flex size-6 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 aria-disabled:cursor-wait aria-disabled:opacity-60"
                     >
                       {activeIndex === index ? (
                         <span className="relative block size-5">
@@ -465,12 +474,12 @@ function Projects3() {
                             }}
                           />
                           <span
-                            className="pointer-events-none absolute inset-[6px] rounded-full bg-neutral-300 dark:bg-neutral-600"
+                            className="pointer-events-none absolute inset-[6px] rounded-full bg-neutral-950 dark:bg-neutral-50"
                             aria-hidden="true"
                           />
                         </span>
                       ) : (
-                        <span className="block size-2 rounded-full bg-neutral-300 transition-[transform] duration-200 hover:scale-125 dark:bg-neutral-600" />
+                        <span className="block size-2 rounded-full bg-neutral-300 transition-transform duration-200 group-hover:scale-125 group-focus-visible:scale-125 dark:bg-neutral-600" />
                       )}
                     </button>
                   ))}
@@ -480,7 +489,7 @@ function Projects3() {
                   onClick={handleNext}
                   aria-label={t("nextProjectAriaLabel")}
                   disabled={isAnimating}
-                  className="inline-flex size-10 items-center justify-center rounded-full text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-wait disabled:opacity-40 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white"
+                  className="inline-flex rounded-full p-2 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-wait disabled:opacity-40 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white"
                 >
                   <ChevronRight size={20} aria-hidden="true" />
                 </button>

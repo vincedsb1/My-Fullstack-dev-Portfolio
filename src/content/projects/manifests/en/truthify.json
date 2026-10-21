@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "truthify",
+  "slug": "truthify",
+  "locale": "en",
+  "variant": "standard",
+  "meta": {
+    "title": "Truthify — Argument Reliability Analysis",
+    "category": "Web application / AI"
+  },
+  "seo": {
+    "title": "Truthify | AI-Assisted Argument Analysis",
+    "description": "Truthify case study: text and YouTube transcript analysis, progressive argument feedback, and a Next.js, OpenAI, and PostgreSQL architecture.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "Explore text reliability, one claim at a time",
+    "description": "Truthify extracts claims from text, assigns an estimated reliability level, and helps readers locate each passage in the original content.",
+    "visual": {
+      "type": "illustration",
+      "imageId": "truthify",
+      "label": "Truthify"
+    }
+  },
+  "overview": {
+    "problem": "A series of claims can be hard to examine without losing track of its context, especially in long texts or video transcripts.",
+    "solution": "Truthify splits content into chunks, submits them to an OpenAI model, and displays claim cards, scores out of ten, and highlights in the original text.",
+    "audience": "People looking to review claims and reasoning",
+    "role": "Full-stack design and development of the project",
+    "scope": "UI, analysis API, YouTube extraction, persistence, accounts and payments"
+  },
+  "workflow": [
+    {
+      "id": "step-1",
+      "title": "Enter content",
+      "description": "Text or YouTube.",
+      "visual": {
+        "type": "icon",
+        "icon": "monitor",
+        "title": "Text or transcript",
+        "description": "Paste text or enter a YouTube URL; manual text entry remains available if transcript retrieval fails. Two input modes in a single analysis interface."
+      }
+    },
+    {
+      "id": "step-2",
+      "title": "Run the analysis",
+      "description": "Chunks and SSE.",
+      "visual": {
+        "type": "flow",
+        "title": "Incremental processing",
+        "description": "The service splits text into overlapping chunks and streams progress to the browser as each analysis completes. Progress sent through SSE events.",
+        "steps": ["Split into chunks", "OpenAI analysis", "SSE events"]
+      }
+    },
+    {
+      "id": "step-3",
+      "title": "Review results",
+      "description": "Claim-level scores.",
+      "visual": {
+        "type": "result",
+        "title": "Claim-level results",
+        "description": "View an overall score and extracted claims, each with a reliability category and available explanation. A score out of ten, a category, and an explanation for each claim."
+      }
+    },
+    {
+      "id": "step-4",
+      "title": "Return to context",
+      "description": "Highlighted text.",
+      "visual": {
+        "type": "icon",
+        "icon": "layers",
+        "title": "Contextual navigation",
+        "description": "Browse highlighted passages and open their associated cards while keeping the original text in view. Links between original excerpts and assessment cards."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "The React client calls a Next.js SSE route, which orchestrates OpenAI analysis and stores results and cache in PostgreSQL through Prisma.",
+    "featuredNodeIds": ["client", "api", "analysis", "openai"],
+    "nodes": [
+      {
+        "id": "client",
+        "label": "React interface",
+        "type": "client",
+        "role": "Input, progress and results display",
+        "technology": "React",
+        "icon": "browser",
+        "highlight": true
+      },
+      {
+        "id": "api",
+        "label": "Next.js SSE API",
+        "type": "api",
+        "role": "Streaming, cache and persistence",
+        "technology": "Next.js",
+        "icon": "api",
+        "highlight": true
+      },
+      {
+        "id": "analysis",
+        "label": "Analysis service",
+        "type": "service",
+        "role": "Chunking, prompts and score normalization",
+        "technology": "TypeScript",
+        "icon": "service",
+        "highlight": true
+      },
+      {
+        "id": "openai",
+        "label": "OpenAI API",
+        "type": "service",
+        "role": "Claim extraction and assessment",
+        "technology": "OpenAI",
+        "icon": "cloud",
+        "highlight": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-1",
+        "from": "client",
+        "to": "api",
+        "label": "Request and SSE stream"
+      },
+      {
+        "id": "edge-2",
+        "from": "api",
+        "to": "analysis",
+        "label": "Chunks for analysis"
+      },
+      {
+        "id": "edge-3",
+        "from": "analysis",
+        "to": "openai",
+        "label": "Prompts and responses"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Handle longer texts",
+      "constraint": "A single request would be sensitive to input length and processing time.",
+      "solution": "Overlapping chunks with explicit limits on text length and the number of chunks."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Make processing visible",
+      "constraint": "Analyzing multiple chunks yields results at different times.",
+      "solution": "A Server-Sent Events route and React hook expose progress and newly extracted claims."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Connect scores to source text",
+      "constraint": "An isolated assessment lacks context if the user cannot find the original passage.",
+      "solution": "Excerpt position matching and interactive highlighting connected to result cards."
+    },
+    {
+      "id": "challenge-4",
+      "title": "Retrieve YouTube transcripts",
+      "constraint": "Transcript retrieval depends on external sources and can fail depending on the video.",
+      "solution": "A cascade of retrieval strategies, transcript caching, and manual text entry when retrieval fails."
+    }
+  ],
+  "stack": [
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwind",
+    "openai",
+    "postgresql",
+    "stripe",
+    "better-auth"
+  ],
+  "outcomes": [
+    {
+      "id": "outcome-1",
+      "title": "Progressive analysis interface",
+      "description": "Input workflow, chunk-level progress, overall score and assessment cards linked to the text."
+    },
+    {
+      "id": "outcome-2",
+      "title": "Persistence and reuse",
+      "description": "Analyses stored with Prisma in PostgreSQL, with caching based on a hash of normalized text."
+    },
+    {
+      "id": "outcome-3",
+      "title": "Service management foundation",
+      "description": "Magic-link authentication, account area, Stripe checkout sessions and signed webhook handling."
+    }
+  ]
+}

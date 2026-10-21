@@ -73,8 +73,9 @@
     "viewProjectAriaLabel": "View project",
     "openProject": "Open project",
     "aiSystem": {
-      "name": "AI System",
-      "description": "Local macOS control plane for AI skills and project automation."
+      "name": "AiSystem",
+      "description": "A macOS app to centralize and sync shared resources for Claude and Codex.",
+      "carouselDescription": "<paragraph>AiSystem is a native macOS app that centralizes project rules, documents, and AI skills to prevent inconsistencies between development assistants such as Claude and Codex.</paragraph><paragraph>I built the SwiftUI interface and local Python/Bash workflows to organize a shared source library, check versions, and control synchronization across projects.</paragraph>"
     },
     "codeMaster": {
       "name": "CodeMaster",
@@ -82,19 +83,29 @@
     },
     "allaw": {
       "name": "Allaw",
-      "description": "Allaw is a web platform for legal professionals, unifying <strong>visibility</strong>, <strong>scheduling</strong>, <strong>appointments</strong> and essential office data within a clean and modern interface.<break></break><break></break>I implemented a strong <strong>design system</strong> early on, added key features, improved SEO and enhanced overall consistency to boost product efficiency and support company growth."
+      "description": "LegalTech platform combining professional search, appointments and client case management.",
+      "carouselDescription": "<paragraph>Allaw is a LegalTech platform connecting individuals with legal professionals. It brings together search, appointment booking and practice tools for managing client cases.</paragraph><paragraph>I built the case-management module from scratch, from data structures to interfaces, and worked on multi-office pages. I also created a shared UI component library for the team.</paragraph>"
     },
     "iconise": {
       "name": "Iconise",
-      "description": "A SaaS application that structures visual decisions, preserves iterations, and connects image generation, billing, and asset export."
+      "description": "A guided workflow to design, refine, and export application icons.",
+      "carouselDescription": "<paragraph>Iconise helps app makers design their icons through a guided workflow, turning an initial brief into visual directions, refined options, and files ready to use in their product.</paragraph><paragraph>The full-stack implementation connects project and iteration management with image generation, transactional credits, billing integrations, and final icon exports.</paragraph>"
     },
     "suggst": {
       "name": "Suggst",
-      "description": "A case study to be documented from verified project evidence."
+      "description": "Context-aware answers to meeting questions, directly from a native macOS app.",
+      "carouselDescription": "<paragraph>Suggst is a native macOS app for professional meetings and video calls. It helps users answer questions by combining captured speech with reusable reference notes and meeting-specific context.</paragraph><paragraph>I shaped Suggst's product positioning, defined its core interface terminology and guided product iterations, checking user flows and fixes directly in the application.</paragraph>",
+      "illustration": {
+        "label": "Suggst macOS app window, ready to start listening",
+        "listening": "Live",
+        "ready": "Suggst is ready.",
+        "start": "Start"
+      }
     },
     "truthify": {
       "name": "Truthify",
-      "description": "Truthify is a platform that highlights <strong>arguments</strong>, <strong>fallacies</strong>, <strong>facts</strong> and overall <strong>logic</strong> to deliver a clear view of any discourse.<break></break><break></break>I designed the architecture, built the analysis modules, developed the structured report engine, and integrated the front-end to ensure a smooth and readable experience."
+      "description": "Text and YouTube transcript analysis with claim-by-claim reliability scores.",
+      "carouselDescription": "<paragraph>Truthify is a web app for exploring the reliability of claims in text or YouTube transcripts, breaking content into individual arguments with assessments and reliability scores.</paragraph><paragraph>I built the analysis workflow, from content chunking to progressive results, connecting a React interface and Next.js APIs to OpenAI-powered processing and PostgreSQL storage.</paragraph>"
     },
     "legalConstat": {
       "name": "Legal Constat",
@@ -102,7 +113,8 @@
     },
     "smartflow": {
       "name": "SmartFlow",
-      "description": "SmartFlow is a web app designed to enhance learning through the <strong>Leitner</strong> method, helping users improve <strong>retention</strong> with intelligently spaced reviews.<break></break><break></break>As the developer, I handled the <strong>architecture</strong>, overall design, tech <strong>stack</strong> selection, UI wireframes, testing setup, and complete delivery of the project."
+      "description": "Flashcards and an automatic review schedule to help knowledge stick.",
+      "carouselDescription": "<paragraph>SmartFlow is a web app that helps students and other learners turn knowledge into flashcards and review it at the right time through a spaced-repetition schedule designed around each card.</paragraph><paragraph>I developed the card creation and review flows, a scheduling engine for due dates, and a progress dashboard, backed by an API, PostgreSQL persistence, and automated tests.</paragraph>"
     },
     "decorNature": {
       "name": "Décor Nature",
@@ -110,7 +122,8 @@
     },
     "aimoto": {
       "name": "Aimoto",
-      "description": "AImoto is a <strong>personal tool</strong> for BTC forecasting built with <strong>FastAPI</strong> and <strong>Next.js</strong>, delivering <strong>probabilistic forecasts</strong> over 180 days. OOS backtesting and unified band/median rendering.<break></break><break></break><strong>What I built</strong> - Implemented the end-to-end pipeline, training/backtest jobs, walk-forward forecasting, refined Recharts chart, time-leak guards, logging/metrics, lightweight CI, targeted tests, and a modular codebase."
+      "description": "A local lab to experiment with, backtest and compare daily Bitcoin forecasts.",
+      "carouselDescription": "<paragraph>Aimoto is a local lab for daily Bitcoin analysis. It brings together data preparation, predictive model evaluation and historical comparisons to support structured research experiments.</paragraph><paragraph>I worked on the Next.js interface and Python services, covering experiment setup, execution tracking, results exploration and reliability checks across the application's research workflow.</paragraph>"
     },
     "liic": {
       "name": "LIIC",
@@ -156,11 +169,9 @@
     "contribution": "Contribution",
     "contributionAndScope": "Role & scope",
     "videoTitle": "Demonstration",
-    "videoFacadeBadge": "Demonstration",
-    "videoFacadeTitle": "Iconise in action",
-    "videoPlay": "Play the Iconise video",
+    "videoPlay": "Play the {project} video",
     "videoClose": "Close video",
-    "videoRegion": "Iconise case study video player",
+    "videoRegion": "{project} case study video player",
     "videoUnsupported": "Your browser cannot play this video.",
     "videoUnavailable": "Video demonstration unavailable.",
     "workflowTitle": "User workflow",

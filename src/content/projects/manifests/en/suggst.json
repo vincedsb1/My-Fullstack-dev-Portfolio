@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "suggst",
+  "slug": "suggst",
+  "locale": "en",
+  "variant": "standard",
+  "meta": {
+    "title": "Suggst — contextual assistance for professional conversations",
+    "category": "macOS application"
+  },
+  "seo": {
+    "title": "Suggst | Native macOS App Built with SwiftUI",
+    "description": "Suggst case study: native macOS audio capture, local transcription, contextual prompts and OpenAI-powered answer generation.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "Keep the meeting moving with the right context at hand.",
+    "description": "Suggst combines reference context, meeting-specific context and transcribed speech to prepare an answer after an explicit user action.",
+    "pill": "macOS · SwiftUI",
+    "visual": {
+      "type": "illustration",
+      "imageId": "suggst",
+      "label": "Suggst"
+    }
+  },
+  "overview": {
+    "problem": "A question in a meeting may require combining reference information with discussion-specific details while the conversation continues.",
+    "solution": "Suggst pairs two saved contexts with authorized audio capture. On a manual trigger, it transcribes speech, extracts the request and prepares a contextual answer.",
+    "audience": "Meetings, video calls and professional conversations",
+    "scope": "Native macOS app: interface, audio, speech processing and generation"
+  },
+  "workflow": [
+    {
+      "id": "step-1",
+      "title": "Prepare the contexts",
+      "description": "Prepare both contexts.",
+      "visual": {
+        "type": "icon",
+        "icon": "layers",
+        "title": "Two complementary contexts",
+        "description": "Save reusable reference context and information specific to the current conversation. Long-lived reference information and discussion-specific details are stored separately."
+      }
+    },
+    {
+      "id": "step-2",
+      "title": "Start listening",
+      "description": "Choose audio and start listening.",
+      "visual": {
+        "type": "icon",
+        "icon": "monitor",
+        "title": "Native audio capture",
+        "description": "Select a microphone and start authorized capture, including system audio when available. The app coordinates audio sources and displays their prerequisites."
+      }
+    },
+    {
+      "id": "step-3",
+      "title": "Finish the question",
+      "description": "End the question to transcribe it.",
+      "visual": {
+        "type": "icon",
+        "icon": "workflow",
+        "title": "Explicit user trigger",
+        "description": "Explicitly end a question to freeze its audio clip and initiate transcription. Each action creates an identifiable process, separate from earlier questions."
+      }
+    },
+    {
+      "id": "step-4",
+      "title": "Read the answer",
+      "description": "Read the request and answer.",
+      "visual": {
+        "type": "icon",
+        "icon": "sparkles",
+        "title": "Context-aware results",
+        "description": "Read the extracted request and generated answer, with a clear state while processing. The answer card distinguishes waiting, available answers and failures."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "A SwiftUI-driven pipeline processes audio locally, extracts the request and calls OpenAI with selected context.",
+    "featuredNodeIds": ["native-ui", "capture", "processing", "generation"],
+    "nodes": [
+      {
+        "id": "native-ui",
+        "label": "macOS application",
+        "type": "client",
+        "role": "Interface and explicit user action",
+        "technology": "SwiftUI",
+        "icon": "client",
+        "highlight": true
+      },
+      {
+        "id": "capture",
+        "label": "Audio capture",
+        "type": "service",
+        "role": "Microphone, system audio and identified clips",
+        "technology": "AVFoundation, ScreenCaptureKit",
+        "icon": "service"
+      },
+      {
+        "id": "processing",
+        "label": "Local processing",
+        "type": "service",
+        "role": "Final transcription and request extraction",
+        "technology": "Swift, WhisperKit",
+        "icon": "worker"
+      },
+      {
+        "id": "generation",
+        "label": "Generation",
+        "type": "api",
+        "role": "Answer grounded in the request and contexts",
+        "technology": "OpenAI Responses API",
+        "icon": "cloud"
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-1",
+        "from": "native-ui",
+        "to": "capture",
+        "label": "Starts and ends"
+      },
+      {
+        "id": "edge-2",
+        "from": "capture",
+        "to": "processing",
+        "label": "Sends a clip"
+      },
+      {
+        "id": "edge-3",
+        "from": "processing",
+        "to": "generation",
+        "label": "Contextual request"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Keep each question isolated",
+      "constraint": "Asynchronous operations may finish out of order or deliver duplicate events.",
+      "solution": "Per-question identities, sealed results and idempotent ingestion that rejects inconsistent events."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Coordinate macOS audio sources",
+      "constraint": "Microphone and system audio rely on separate providers and permissions.",
+      "solution": "Two coordinated native providers, with an explicit state when system capture is unavailable."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Handle sensitive context data",
+      "constraint": "Saved contexts and conversation content may contain sensitive information.",
+      "solution": "Local document storage, an API secret in Keychain and targeted context sent to OpenAI."
+    }
+  ],
+  "stack": [
+    "swift",
+    "xcode",
+    "openai",
+    "json",
+    "bash",
+    "swiftui",
+    "whisperkit",
+    "screencapturekit"
+  ],
+  "outcomes": [
+    {
+      "id": "outcome-1",
+      "title": "Integrated native application",
+      "description": "Context editing, listening, preparation and answer views brought together in a SwiftUI interface."
+    },
+    {
+      "id": "outcome-2",
+      "title": "Contextual answer pipeline",
+      "description": "Audio capture, WhisperKit transcription, local extraction and OpenAI generation tied to a manual trigger."
+    },
+    {
+      "id": "outcome-3",
+      "title": "Diagnostics and validation tooling",
+      "description": "Developer cockpit, structured traces, test corpora and build scripts included in the repository."
+    }
+  ]
+}

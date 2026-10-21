@@ -17,38 +17,45 @@ export type ProjectId =
   | "legalConstat"
   | "emmausConnect";
 
-export type TechnologyId =
-  | "nextjs"
-  | "react"
-  | "vue"
-  | "typescript"
-  | "javascript"
-  | "tailwind"
-  | "nodejs"
-  | "drizzle"
-  | "better-auth"
-  | "mongodb"
-  | "postgresql"
-  | "mysql"
-  | "json"
-  | "python"
-  | "swift"
-  | "xcode"
-  | "bash"
-  | "symfony"
-  | "css"
-  | "recharts"
-  | "gemini"
-  | "openai"
-  | "stripe"
-  | "ses"
-  | "next-intl"
-  | "sharp"
-  | "vectorizer"
-  | "umami"
-  | "playwright"
-  | "node-test"
-  | "vercel";
+export const technologyIds = [
+  "nextjs",
+  "react",
+  "vue",
+  "typescript",
+  "javascript",
+  "tailwind",
+  "nodejs",
+  "drizzle",
+  "prisma",
+  "better-auth",
+  "mongodb",
+  "postgresql",
+  "mysql",
+  "json",
+  "python",
+  "swift",
+  "swiftui",
+  "whisperkit",
+  "screencapturekit",
+  "xcode",
+  "bash",
+  "symfony",
+  "css",
+  "recharts",
+  "gemini",
+  "openai",
+  "stripe",
+  "ses",
+  "next-intl",
+  "sharp",
+  "vectorizer",
+  "umami",
+  "playwright",
+  "node-test",
+  "vercel",
+] as const;
+
+export type TechnologyId = (typeof technologyIds)[number];
 
 export type ProjectPlacement = "featured" | "other" | "archive";
 
@@ -119,6 +126,7 @@ export interface ProjectCatalogEntry {
   canonicalName: string;
   nameKey: string;
   descriptionKey: string;
+  carouselDescriptionKey?: string;
   portfolioVisibility: PortfolioVisibility;
   placement: ProjectPlacement;
   order: number;
@@ -251,6 +259,8 @@ export interface ProjectGalleryItem {
 }
 
 export interface ProjectVideoContent {
+  playLabel?: string;
+  regionLabel?: string;
   url?: string;
   provider?: "file" | "youtube";
   poster?: ProjectVisual;

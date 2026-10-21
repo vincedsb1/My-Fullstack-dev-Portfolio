@@ -38,21 +38,24 @@ export default async function Page({
 }) {
   const { locale: rawLocale } = await params;
   const locale = rawLocale === "en" ? "en" : "fr";
-  const article =
-    getPublishedArticles(locale)[0] ?? getPublishedArticles("fr")[0];
-  const blogArticle = article
-    ? {
-        locale: article.metadata.locale,
-        slug: article.metadata.slug,
-        title: article.metadata.title,
-        excerpt: article.metadata.excerpt,
-        category: article.metadata.category,
-        publishedAt: article.metadata.publishedAt,
-        image:
-          article.metadata.cover ?? getArticleSocialImagePath(article.metadata),
-        readingMinutes: getArticleReadingTime(article),
-      }
-    : null;
+  const localizedArticles = getPublishedArticles(locale);
+  const blogArticles = (
+    localizedArticles.length > 0
+      ? localizedArticles
+      : getPublishedArticles("fr")
+  )
+    .slice(0, 4)
+    .map((article) => ({
+      locale: article.metadata.locale,
+      slug: article.metadata.slug,
+      title: article.metadata.title,
+      excerpt: article.metadata.excerpt,
+      category: article.metadata.category,
+      publishedAt: article.metadata.publishedAt,
+      image:
+        article.metadata.cover ?? getArticleSocialImagePath(article.metadata),
+      readingMinutes: getArticleReadingTime(article),
+    }));
 
-  return <HomeContent blogArticle={blogArticle} />;
+  return <HomeContent blogArticles={blogArticles} />;
 }

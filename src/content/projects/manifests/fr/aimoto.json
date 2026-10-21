@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "aimoto",
+  "slug": "aimoto",
+  "locale": "fr",
+  "variant": "standard",
+  "meta": {
+    "title": "Aimoto — Laboratoire de prévision et de backtest Bitcoin",
+    "category": "Application de recherche locale"
+  },
+  "seo": {
+    "title": "Aimoto | Prévision et backtest Bitcoin",
+    "description": "Laboratoire local d'expérimentation Bitcoin : données de marché, modèles prédictifs, tests historiques et suivi des exécutions.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "Expérimenter sur le Bitcoin et tester les modèles sur des données historiques.",
+    "description": "Aimoto réunit préparation des données, prévisions quotidiennes, backtests et comparaison des résultats dans une interface locale dédiée à la recherche.",
+    "visual": {
+      "type": "image",
+      "src": "/aimoto.png",
+      "alt": "Montage de présentation d’Aimoto : aperçu historique des prévisions Bitcoin dans un ordinateur portable.",
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "overview": {
+    "problem": "Évaluer des approches de prévision sur le Bitcoin implique de préparer des séries temporelles, répéter des expériences et comparer des résultats sans mélanger entraînement et évaluation.",
+    "solution": "Une application locale relie des données de marché, des modèles configurables, un moteur de backtest et des vues de comparaison pour suivre le cycle complet d'une expérience.",
+    "audience": "Utilisateur technique explorant des prévisions et stratégies sur le Bitcoin",
+    "role": "Développement et évolution des interfaces et services applicatifs",
+    "scope": "Interface Next.js, API Python, exécutions asynchrones et évaluation historique"
+  },
+  "workflow": [
+    {
+      "id": "step-1",
+      "title": "Préparer les séries",
+      "description": "Séries et variables.",
+      "visual": {
+        "type": "icon",
+        "icon": "database",
+        "title": "Jeux de données et variables",
+        "description": "Importer ou actualiser les séries quotidiennes et sélectionner les variables utilisées dans les expériences. Catalogue de variables, fournisseurs de données et informations de fraîcheur."
+      }
+    },
+    {
+      "id": "step-2",
+      "title": "Configurer un run",
+      "description": "Dates, modèle et paramètres.",
+      "visual": {
+        "type": "flow",
+        "title": "Configuration guidée",
+        "description": "Choisir le mode, les dates, les variables, le modèle et ses paramètres avant de lancer un run. Parcours de lancement structuré en étapes.",
+        "steps": [
+          "Mode et dates",
+          "Variables",
+          "Modèle",
+          "Lancement"
+        ]
+      }
+    },
+    {
+      "id": "step-3",
+      "title": "Suivre les calculs",
+      "description": "File, progression et états.",
+      "visual": {
+        "type": "icon",
+        "icon": "workflow",
+        "title": "File de traitements",
+        "description": "Consulter la file de traitements, les étapes d'exécution, la progression et les états d'erreur. Suivi des jobs par événements serveur, avec repli sur des requêtes périodiques."
+      }
+    },
+    {
+      "id": "step-4",
+      "title": "Comparer les runs",
+      "description": "Prévisions et scores.",
+      "visual": {
+        "type": "icon",
+        "icon": "layers",
+        "title": "Résultats et comparaisons",
+        "description": "Explorer les prévisions, scores et exécutions précédentes, puis ajuster les hypothèses de départ. Visualisation des prévisions, du classement et des détails des runs."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "L'interface dialogue avec une API locale qui pilote les calculs et persiste métadonnées et artefacts d'expérimentation.",
+    "featuredNodeIds": [
+      "client",
+      "api",
+      "worker",
+      "storage"
+    ],
+    "nodes": [
+      {
+        "id": "client",
+        "label": "Interface web",
+        "type": "client",
+        "role": "Configurer, suivre et comparer les expériences",
+        "technology": "Next.js / TypeScript",
+        "icon": "browser",
+        "highlight": true
+      },
+      {
+        "id": "api",
+        "label": "API locale",
+        "type": "api",
+        "role": "Valider les demandes et exposer les résultats",
+        "technology": "FastAPI / Python",
+        "icon": "api"
+      },
+      {
+        "id": "worker",
+        "label": "Moteur de calcul",
+        "type": "worker",
+        "role": "Exécuter les runs et les backtests",
+        "technology": "Python",
+        "icon": "worker",
+        "highlight": true
+      },
+      {
+        "id": "storage",
+        "label": "Stockage local",
+        "type": "storage",
+        "role": "Conserver les états, métriques et artefacts",
+        "technology": "SQLite / Parquet",
+        "icon": "storage"
+      }
+    ],
+    "edges": [
+      {
+        "id": "client-api",
+        "from": "client",
+        "to": "api",
+        "label": "HTTP / SSE"
+      },
+      {
+        "id": "api-worker",
+        "from": "api",
+        "to": "worker",
+        "label": "File de jobs"
+      },
+      {
+        "id": "worker-storage",
+        "from": "worker",
+        "to": "storage",
+        "label": "Résultats et états"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Évaluer sans fuite temporelle",
+      "constraint": "Un backtest de séries temporelles peut être biaisé si des observations futures contaminent l'entraînement.",
+      "solution": "Découpage walk-forward par dates et gestion explicite des décalages de disponibilité des variables."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Suivre des traitements longs",
+      "constraint": "L'entraînement et les calculs peuvent durer au-delà d'une requête HTTP et connaître des interruptions.",
+      "solution": "File de jobs, worker séparé, états et progression, avec suivi côté interface par SSE et repli par polling."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Préserver des artefacts cohérents",
+      "constraint": "Une interruption pendant l'écriture peut laisser des fichiers de résultats incomplets.",
+      "solution": "Écritures JSON temporaires validées puis remplacées atomiquement, avec fsync et reprises sur erreurs I/O ciblées."
+    }
+  ],
+  "stack": [
+    "nextjs",
+    "react",
+    "typescript",
+    "python",
+    "tailwind",
+    "recharts"
+  ],
+  "outcomes": [
+    {
+      "id": "outcome-1",
+      "title": "Expérimentations guidées",
+      "description": "Parcours de configuration de runs et matrice de combinaisons de variables et de modèles."
+    },
+    {
+      "id": "outcome-2",
+      "title": "Backtests et comparaisons",
+      "description": "Moteurs de prévision et de backtest, historique des runs, classement et visualisation des résultats."
+    },
+    {
+      "id": "outcome-3",
+      "title": "Suivi des exécutions",
+      "description": "File d'attente, étapes de calcul et remontée des états jusqu'à l'interface."
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "smartflow",
+  "slug": "smartflow",
+  "locale": "fr",
+  "variant": "standard",
+  "meta": {
+    "title": "SmartFlow",
+    "category": "Application web éducative"
+  },
+  "seo": {
+    "title": "SmartFlow — fiches et répétition espacée",
+    "description": "Étude de cas de SmartFlow : création de fiches, répétition espacée, révisions programmées et tableau de bord, avec Next.js, TypeScript et PostgreSQL.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "Apprendre aujourd’hui, retenir demain",
+    "description": "SmartFlow transforme les connaissances en fiches question-réponse et prépare les révisions selon les réponses précédentes, sans planning à gérer manuellement.",
+    "visual": {
+      "type": "illustration",
+      "imageId": "smartflow",
+      "label": "Illustration de SmartFlow — fiches et révisions"
+    }
+  },
+  "overview": {
+    "problem": "Créer des fiches ne suffit pas : il faut retrouver ce qui mérite d’être revu, au moment opportun, et visualiser sa progression sans multiplier les outils.",
+    "solution": "Une application centralise la création, le classement et la récitation. Un moteur calcule les prochaines échéances ; un tableau de bord rassemble les fiches dues et les indicateurs de suivi.",
+    "audience": "Étudiants et personnes qui apprennent des connaissances à mémoriser",
+    "role": "Développement fullstack et interfaces produit",
+    "scope": "Fiches, catégories, révisions, suivi, API et persistance"
+  },
+  "workflow": [
+    {
+      "id": "step-1",
+      "title": "Créer une fiche",
+      "description": "Question puis réponse.",
+      "visual": {
+        "type": "icon",
+        "icon": "code",
+        "title": "Question, catégorie, réponse",
+        "description": "Saisir une question, choisir éventuellement une catégorie, puis ajouter la réponse dans un parcours guidé. La fiche est enregistrée et peut être ouverte aussitôt pour une première révision."
+      }
+    },
+    {
+      "id": "step-2",
+      "title": "Organiser les fiches",
+      "description": "Recherche et catégories.",
+      "visual": {
+        "type": "icon",
+        "icon": "layers",
+        "title": "Fiches et catégories",
+        "description": "Rechercher les fiches par titre ou réponse et filtrer les contenus par catégorie. Les catégories colorées structurent les contenus sans imposer de catégorie à chaque fiche."
+      }
+    },
+    {
+      "id": "step-3",
+      "title": "Lancer la séance",
+      "description": "Les fiches dues du jour.",
+      "visual": {
+        "type": "flow",
+        "title": "Une file calculée pour la journée",
+        "description": "Ouvrir une file de fiches arrivées à échéance, préparée d’après les dates et les niveaux de mémorisation. Le moteur vérifie les échéances et prépare les fiches à réciter.",
+        "steps": [
+          "Échéances",
+          "File du jour",
+          "Récitation"
+        ]
+      }
+    },
+    {
+      "id": "step-4",
+      "title": "Vérifier et évaluer",
+      "description": "Révéler et noter.",
+      "visual": {
+        "type": "icon",
+        "icon": "workflow",
+        "title": "Une réponse modifie la suite",
+        "description": "Afficher la réponse, indiquer si elle est connue ou non, puis passer à la fiche suivante. Une réussite augmente le palier ; un échec ramène la fiche au premier palier."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "L’interface React interroge des routes API Next.js qui appliquent la logique de révision et lisent ou modifient les données via Prisma et PostgreSQL.",
+    "featuredNodeIds": [
+      "ui",
+      "api",
+      "orm",
+      "db"
+    ],
+    "nodes": [
+      {
+        "id": "ui",
+        "label": "Interface web",
+        "type": "client",
+        "role": "Création, récitation et suivi",
+        "technology": "Next.js / React",
+        "icon": "browser",
+        "highlight": false
+      },
+      {
+        "id": "api",
+        "label": "Routes API",
+        "type": "api",
+        "role": "Auth, calcul des échéances et commandes métier",
+        "technology": "Next.js / TypeScript",
+        "icon": "api",
+        "highlight": false
+      },
+      {
+        "id": "orm",
+        "label": "Accès aux données",
+        "type": "service",
+        "role": "Requêtes, relations et transactions",
+        "technology": "Prisma ORM",
+        "icon": "service",
+        "highlight": false
+      },
+      {
+        "id": "db",
+        "label": "Base de données",
+        "type": "database",
+        "role": "Fiches, catégories, comptes et historique",
+        "technology": "PostgreSQL",
+        "icon": "database",
+        "highlight": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-ui-api",
+        "from": "ui",
+        "to": "api",
+        "label": "Requêtes HTTP"
+      },
+      {
+        "id": "edge-api-orm",
+        "from": "api",
+        "to": "orm",
+        "label": "Lectures et écritures"
+      },
+      {
+        "id": "edge-orm-db",
+        "from": "orm",
+        "to": "db",
+        "label": "Transactions SQL"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": "challenge-dates",
+      "title": "Centraliser les échéances de révision",
+      "constraint": "Des règles de paliers réparties entre plusieurs écrans peuvent produire des dates incohérentes, notamment aux frontières de journée.",
+      "solution": "Un module métier unique calcule les échéances, le retard et la progression en prenant Europe/Paris comme fuseau de référence."
+    },
+    {
+      "id": "challenge-history",
+      "title": "Conserver un historique fiable",
+      "constraint": "La dernière date inscrite sur une fiche ne suffit pas à reconstruire l’activité passée ni la régularité des séances.",
+      "solution": "Chaque évaluation écrit la progression de la fiche et une entrée de journal dans une même transaction Prisma."
+    },
+    {
+      "id": "challenge-dashboard",
+      "title": "Adapter le suivi à la progression",
+      "constraint": "Un compte sans fiche, un nouvel utilisateur et une personne déjà active ne disposent pas des mêmes données utiles.",
+      "solution": "Un calculateur de données indépendant des accès SQL alimente des tuiles et des états adaptés à la situation du compte."
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "outcome-flows",
+      "title": "Un parcours de révision complet",
+      "description": "Création et classement de fiches, file quotidienne, affichage des réponses et progression par paliers sont reliés dans une même application."
+    },
+    {
+      "id": "outcome-followup",
+      "title": "Un tableau de bord contextualisé",
+      "description": "L’écran de suivi présente les fiches dues, la progression, la répartition par catégorie et des indicateurs alimentés par le journal."
+    },
+    {
+      "id": "outcome-tests",
+      "title": "Des vérifications versionnées",
+      "description": "Le dépôt contient des tests unitaires Vitest et des scénarios Playwright pour les parcours, les états réseau et l’interface responsive."
+    }
+  ],
+  "stack": [
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwind",
+    "nodejs",
+    "prisma",
+    "postgresql",
+    "playwright"
+  ]
+}

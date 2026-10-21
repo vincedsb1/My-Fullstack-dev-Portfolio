@@ -32,6 +32,7 @@ const technologyMeta: Record<
   tailwind: { label: "Tailwind CSS", shortLabel: "Tailwind", icon: Palette },
   nodejs: { label: "Node.js", icon: Server },
   drizzle: { label: "Drizzle ORM", shortLabel: "Drizzle", icon: Database },
+  prisma: { label: "Prisma ORM", shortLabel: "Prisma", icon: Database },
   "better-auth": {
     label: "Better Auth",
     shortLabel: "Auth",
@@ -43,6 +44,9 @@ const technologyMeta: Record<
   json: { label: "JSON", icon: Braces },
   python: { label: "Python", icon: Code2 },
   swift: { label: "Swift", icon: Code2 },
+  swiftui: { label: "SwiftUI", icon: Code2 },
+  whisperkit: { label: "WhisperKit", icon: Sparkles },
+  screencapturekit: { label: "ScreenCaptureKit", icon: Laptop },
   xcode: { label: "Xcode", icon: Laptop },
   bash: { label: "Bash", icon: Terminal },
   symfony: { label: "Symfony" },
