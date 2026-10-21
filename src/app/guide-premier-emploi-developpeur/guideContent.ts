@@ -142,7 +142,7 @@ export const guideContent = String.raw`
                             </ul>
                             
                             <div class="mt-4 p-4 bg-blue-50/50 dark:bg-blue-900/10 rounded-xl border border-blue-100 dark:border-blue-800/30">
-                                <p class="text-sm !mb-0 text-blue-900 dark:text-blue-200"><strong>Note sur la photo :</strong> Elle n'est pas obligatoire. Si tu en utilises une, choisis un portrait professionnel bien éclairé et cadré.</p>
+                                <p class="text-sm !mb-0 text-blue-900 dark:text-blue-200"><strong>Une photo impeccable :</strong> Pour tes candidatures en France, considère une photo soignée comme indispensable. Choisis un portrait professionnel avec un visage bien éclairé, un léger sourire, un cadrage net et un fond sobre. Elle participe à la première impression du recruteur et l'aide à t'identifier parmi les candidatures : prends le temps de te mettre en valeur.</p>
                             </div>
                             <p class="mt-4 font-medium text-neutral-900 dark:text-neutral-100 border-l-4 border-red-500 pl-4">Place le poste visé et les technologies principales près du haut de la page.</p>
                         </div>
@@ -469,7 +469,7 @@ Merci pour votre temps.</div>
                         <ul class="space-y-3">
                             <li class="flex items-start gap-3">
                                 <i class="ph-fill ph-x-circle text-red-500 mt-1"></i>
-                                <span>Attendre d'avoir un CV "parfait" pour commencer à postuler.</span>
+                                <span>Postuler avec un CV bâclé ou inachevé. Avant la première candidature, finalise un CV irréprochable : clair, sans fautes, bien présenté et adapté au poste. Ce travail de préparation est la base pour être compétitif et éviter de griller tes premières opportunités.</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="ph-fill ph-x-circle text-red-500 mt-1"></i>

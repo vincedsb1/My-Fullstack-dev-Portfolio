@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "allaw",
+  "slug": "allaw",
+  "locale": "en",
+  "variant": "standard",
+  "meta": {
+    "title": "Allaw — LegalTech platform and tools for legal practices",
+    "category": "LegalTech · B2B SaaS"
+  },
+  "seo": {
+    "title": "Allaw — Full-stack developer case study",
+    "description": "Building case management, multi-office profile pages and shared UI components for a LegalTech platform powered by Next.js.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "From appointments to cases, a connected legal experience",
+    "description": "Full-stack work on Allaw: building case management, contributing to multi-office pages and improving public-facing journeys, with a focus on UX and reusable components.",
+    "pill": "LegalTech platform",
+    "visual": {
+      "type": "image",
+      "src": "/allaw.jpg",
+      "alt": "Montage of Allaw interfaces: professional search, appointments and client cases",
+      "width": 5760,
+      "height": 4096
+    }
+  },
+  "overview": {
+    "problem": "Legal professionals need to manage cases, appointments and sometimes multiple locations, while clients need a clear public-facing journey.",
+    "solution": "Built a case-management module linked to the calendar, helped design pages for multi-office structures and created a shared UI component library for the interfaces.",
+    "audience": "Notaries, lawyers, judicial officers and individuals",
+    "role": "Full-stack developer, UX/UI design and application architecture",
+    "scope": "Cases, office pages, booking, search and UI components"
+  },
+  "workflow": [
+    {
+      "id": "step-1",
+      "title": "Find a legal professional",
+      "description": "Individuals search for legal professionals using the public-facing Allaw interfaces.",
+      "visual": {
+        "type": "icon",
+        "icon": "monitor",
+        "title": "Search and discovery",
+        "description": "A starting point for exploring legal professionals, their services and public information."
+      }
+    },
+    {
+      "id": "step-2",
+      "title": "Explore an office page",
+      "description": "The page presents the firm, its locations and team members, including professionals working across offices.",
+      "visual": {
+        "type": "icon",
+        "icon": "layers",
+        "title": "Multi-office organisation",
+        "description": "Main office details, location mapping and professional profiles."
+      }
+    },
+    {
+      "id": "step-3",
+      "title": "Book an appointment",
+      "description": "The booking flow guides users through selecting a service and an available time slot.",
+      "visual": {
+        "type": "flow",
+        "title": "Appointment booking",
+        "description": "A public flow organised around services and availability.",
+        "steps": ["Choose service", "Choose time slot", "Book appointment"]
+      }
+    },
+    {
+      "id": "step-4",
+      "title": "Manage a client case",
+      "description": "On the professional side, the case holds key information and can be linked to appointments in the calendar.",
+      "visual": {
+        "type": "icon",
+        "icon": "workflow",
+        "title": "Cases and calendar",
+        "description": "Cases connect with practice workflows and their related appointments."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "Documented application structure: Next.js interfaces, Node.js APIs and MongoDB data serving public and professional workflows.",
+    "featuredNodeIds": ["ui", "api", "db"],
+    "nodes": [
+      {
+        "id": "ui",
+        "label": "Web interfaces",
+        "type": "client",
+        "role": "Public experiences and practice administration",
+        "technology": "Next.js / React",
+        "icon": "browser",
+        "highlight": true
+      },
+      {
+        "id": "api",
+        "label": "Business API",
+        "type": "api",
+        "role": "Case, organisation and appointment operations",
+        "technology": "Node.js",
+        "icon": "api",
+        "highlight": true
+      },
+      {
+        "id": "db",
+        "label": "Data store",
+        "type": "database",
+        "role": "Persistence of business information",
+        "technology": "MongoDB",
+        "icon": "database",
+        "highlight": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "ui-api",
+        "from": "ui",
+        "to": "api",
+        "label": "Business requests"
+      },
+      {
+        "id": "api-db",
+        "from": "api",
+        "to": "db",
+        "label": "Read and write"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Building case management from scratch",
+      "constraint": "No existing module: data needs, administration screens and the client experience all had to be defined.",
+      "solution": "Designed the module end to end, adding responsive interfaces and components consistent with the design system."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Connecting business workflows",
+      "constraint": "Client cases could not remain disconnected from appointments already managed in the calendar.",
+      "solution": "Linked cases and appointments, connecting case follow-up with scheduling."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Modelling multi-office organisations",
+      "constraint": "A firm may run several offices, and a professional may work across multiple locations.",
+      "solution": "Designed a shared representation of offices and professionals for the office pages and their map."
+    },
+    {
+      "id": "challenge-4",
+      "title": "Controlling office page editing",
+      "constraint": "The person creating a page is not necessarily authorised to manage everything in the organisation.",
+      "solution": "Factored invitations and role-based permissions into the design of access to office administration."
+    }
+  ],
+  "stack": ["nextjs", "react", "typescript", "nodejs", "mongodb", "playwright"],
+  "outcomes": [
+    {
+      "id": "outcome-1",
+      "title": "Case management connected to the calendar",
+      "description": "A module built from scratch, with practice interfaces and the ability to link cases to appointments."
+    },
+    {
+      "id": "outcome-2",
+      "title": "Pages for complex office structures",
+      "description": "Public pages designed to display offices, maps and teams, with office-editing access requirements."
+    },
+    {
+      "id": "outcome-3",
+      "title": "Reusable UI component library",
+      "description": "An NPM component package expanded over time and available to other frontend developers."
+    }
+  ]
+}

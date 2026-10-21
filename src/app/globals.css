@@ -1,3 +1,171 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  ::selection {
+    background: rgb(239 68 68 / 0.2);
+  }
+
+  :focus-visible {
+    outline: 2px solid #ef4444;
+    outline-offset: 4px;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background-image: linear-gradient(180deg, #171717 30%, #737373 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .dark .text-gradient {
+    background-image: linear-gradient(180deg, #fafafa 30%, #a3a3a3 100%);
+  }
+}
+
+@layer components {
+  .overview-section {
+    background-color: #ffffff;
+    background-image: radial-gradient(#f5f5f5 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .overview-glass-card {
+    background: linear-gradient(
+      145deg,
+      rgb(250 250 250 / 0.9) 0%,
+      rgb(255 255 255 / 0.6) 100%
+    );
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  .challenges-section {
+    background: linear-gradient(
+      135deg,
+      #fafafa 0%,
+      rgb(229 229 229 / 0.3) 100%
+    );
+  }
+
+  .dark .challenges-section {
+    background: linear-gradient(135deg, #111111 0%, rgb(38 38 38 / 0.42) 100%);
+  }
+
+  .dark .overview-section {
+    background-color: #0a0a0a;
+    background-image: radial-gradient(#262626 1px, transparent 1px);
+  }
+
+  .dark .overview-glass-card {
+    background: linear-gradient(
+      145deg,
+      rgb(38 38 38 / 0.6) 0%,
+      rgb(23 23 23 / 0.65) 100%
+    );
+  }
+
+  .case-study-prose {
+    color: rgb(82 82 82);
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+
+  .case-study-prose > * + * {
+    margin-top: 1.5rem;
+  }
+
+  .case-study-prose h2,
+  .case-study-prose h3,
+  .case-study-prose h4 {
+    color: rgb(23 23 23);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+
+  .case-study-prose h2 {
+    font-size: clamp(1.875rem, 4vw, 3rem);
+    margin-top: 4rem;
+  }
+
+  .case-study-prose h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-top: 3rem;
+  }
+
+  .case-study-prose h4 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .case-study-prose a {
+    color: rgb(220 38 38);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .case-study-prose strong {
+    color: rgb(23 23 23);
+    font-weight: 650;
+  }
+
+  .case-study-prose ul,
+  .case-study-prose ol {
+    padding-left: 1.5rem;
+  }
+
+  .case-study-prose ul {
+    list-style: disc;
+  }
+
+  .case-study-prose ol {
+    list-style: decimal;
+  }
+
+  .case-study-prose blockquote {
+    border-left: 2px solid rgb(239 68 68);
+    color: rgb(115 115 115);
+    padding-left: 1.25rem;
+  }
+
+  .case-study-prose code {
+    border-radius: 0.35rem;
+    background: rgb(245 245 245);
+    padding: 0.15em 0.35em;
+    font-size: 0.9em;
+  }
+
+  .dark .case-study-prose {
+    color: rgb(163 163 163);
+  }
+
+  .dark .case-study-prose h2,
+  .dark .case-study-prose h3,
+  .dark .case-study-prose h4,
+  .dark .case-study-prose strong {
+    color: rgb(250 250 250);
+  }
+
+  .dark .case-study-prose a {
+    color: rgb(248 113 113);
+  }
+
+  .dark .case-study-prose code {
+    background: rgb(38 38 38);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

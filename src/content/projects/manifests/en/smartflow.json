@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "smartflow",
+  "slug": "smartflow",
+  "locale": "en",
+  "variant": "standard",
+  "meta": {
+    "title": "SmartFlow",
+    "category": "Educational web app"
+  },
+  "seo": {
+    "title": "SmartFlow — flashcards and spaced repetition",
+    "description": "SmartFlow case study: flashcard creation, spaced repetition, scheduled reviews and a progress dashboard built with Next.js, TypeScript and PostgreSQL.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "Learn today, remember tomorrow",
+    "description": "SmartFlow turns knowledge into question-and-answer cards and schedules reviews based on previous answers, without requiring a manually maintained study plan.",
+    "visual": {
+      "type": "illustration",
+      "imageId": "smartflow",
+      "label": "SmartFlow illustration — flashcards and reviews"
+    }
+  },
+  "overview": {
+    "problem": "Creating flashcards is only the beginning. Learners also need to know what to review, when to revisit it, and how they are progressing without juggling multiple tools.",
+    "solution": "One app combines card creation, organization and recall sessions. A scheduling engine computes due dates, while a dashboard brings together pending cards and progress indicators.",
+    "audience": "Students and other people learning information they need to remember",
+    "role": "Fullstack development and product interfaces",
+    "scope": "Cards, categories, reviews, reporting, APIs and persistence"
+  },
+  "workflow": [
+    {
+      "id": "step-1",
+      "title": "Create a flashcard",
+      "description": "Enter question and answer.",
+      "visual": {
+        "type": "icon",
+        "icon": "code",
+        "title": "Question, category, answer",
+        "description": "Enter a question, optionally select a category, then add its answer in a guided flow. The card is saved and can immediately be opened for its first review."
+      }
+    },
+    {
+      "id": "step-2",
+      "title": "Organize cards",
+      "description": "Search and filter cards.",
+      "visual": {
+        "type": "icon",
+        "icon": "layers",
+        "title": "Cards and categories",
+        "description": "Search cards by question or answer and filter the collection by category. Color-coded categories keep content organized without requiring every card to belong to one."
+      }
+    },
+    {
+      "id": "step-3",
+      "title": "Start today’s review",
+      "description": "Review today’s due cards.",
+      "visual": {
+        "type": "flow",
+        "title": "A queue prepared for today",
+        "description": "Open a queue of due cards generated from their previous review dates and mastery levels. The scheduling engine checks due dates and prepares the cards to review.",
+        "steps": [
+          "Due dates",
+          "Today’s queue",
+          "Recall session"
+        ]
+      }
+    },
+    {
+      "id": "step-4",
+      "title": "Reveal and assess",
+      "description": "Reveal and assess.",
+      "visual": {
+        "type": "icon",
+        "icon": "workflow",
+        "title": "Each answer changes the plan",
+        "description": "Reveal the answer, mark it as remembered or missed, and move to the next card. Success advances the card to a higher level; failure returns it to the first level."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "The React interface calls Next.js API routes, where review logic runs and data is read or updated through Prisma and PostgreSQL.",
+    "featuredNodeIds": [
+      "ui",
+      "api",
+      "orm",
+      "db"
+    ],
+    "nodes": [
+      {
+        "id": "ui",
+        "label": "Web interface",
+        "type": "client",
+        "role": "Card creation, review sessions and progress",
+        "technology": "Next.js / React",
+        "icon": "browser",
+        "highlight": false
+      },
+      {
+        "id": "api",
+        "label": "API routes",
+        "type": "api",
+        "role": "Auth, due-date logic and domain actions",
+        "technology": "Next.js / TypeScript",
+        "icon": "api",
+        "highlight": false
+      },
+      {
+        "id": "orm",
+        "label": "Data access",
+        "type": "service",
+        "role": "Queries, relations and transactions",
+        "technology": "Prisma ORM",
+        "icon": "service",
+        "highlight": false
+      },
+      {
+        "id": "db",
+        "label": "Database",
+        "type": "database",
+        "role": "Cards, categories, accounts and review history",
+        "technology": "PostgreSQL",
+        "icon": "database",
+        "highlight": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-ui-api",
+        "from": "ui",
+        "to": "api",
+        "label": "HTTP requests"
+      },
+      {
+        "id": "edge-api-orm",
+        "from": "api",
+        "to": "orm",
+        "label": "Reads and writes"
+      },
+      {
+        "id": "edge-orm-db",
+        "from": "orm",
+        "to": "db",
+        "label": "SQL transactions"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": "challenge-dates",
+      "title": "Keep review due dates consistent",
+      "constraint": "Level rules spread across UI screens can produce inconsistent dates, especially around day boundaries.",
+      "solution": "A single domain module calculates due dates, overdue days and progression using Europe/Paris as the reference time zone."
+    },
+    {
+      "id": "challenge-history",
+      "title": "Preserve reliable review history",
+      "constraint": "A card’s latest review date cannot reconstruct historical activity or consistency across sessions.",
+      "solution": "Each assessment updates the card and writes a review-log entry within the same Prisma transaction."
+    },
+    {
+      "id": "challenge-dashboard",
+      "title": "Tailor reporting to user progress",
+      "constraint": "An empty account, a new learner and an active learner each need different progress information.",
+      "solution": "A data calculator isolated from database access produces dashboard tiles and states tailored to each account’s situation."
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "outcome-flows",
+      "title": "An end-to-end review experience",
+      "description": "Card creation, organization, daily queues, answer reveals and level-based progression work together in one application."
+    },
+    {
+      "id": "outcome-followup",
+      "title": "A contextual progress dashboard",
+      "description": "The dashboard shows cards due, mastery levels, categories and indicators built from the review log."
+    },
+    {
+      "id": "outcome-tests",
+      "title": "Version-controlled checks",
+      "description": "The repository includes Vitest unit tests and Playwright scenarios covering workflows, network states and responsive interfaces."
+    }
+  ],
+  "stack": [
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwind",
+    "nodejs",
+    "prisma",
+    "postgresql",
+    "playwright"
+  ]
+}

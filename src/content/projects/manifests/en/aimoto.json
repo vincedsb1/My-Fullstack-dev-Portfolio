@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "aimoto",
+  "slug": "aimoto",
+  "locale": "en",
+  "variant": "standard",
+  "meta": {
+    "title": "Aimoto — Bitcoin Forecasting and Backtesting Lab",
+    "category": "Local research application"
+  },
+  "seo": {
+    "title": "Aimoto | Bitcoin Forecasting and Backtesting",
+    "description": "A local Bitcoin research lab for market data, predictive models, historical backtesting and execution tracking.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "Experiment with Bitcoin models, then test them against historical data.",
+    "description": "Aimoto brings together data preparation, daily forecasting, backtesting and result comparison in a local research interface.",
+    "visual": {
+      "type": "image",
+      "src": "/aimoto.png",
+      "alt": "Aimoto presentation montage: a historical Bitcoin forecast preview displayed on a laptop.",
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "overview": {
+    "problem": "Evaluating Bitcoin forecasting approaches requires preparing time series, repeating experiments and comparing results without mixing training and evaluation data.",
+    "solution": "A local application connects market data, configurable models, a backtesting engine and comparison views to support the complete experimental workflow.",
+    "audience": "Technical users exploring Bitcoin forecasts and strategies",
+    "role": "Development and evolution of application interfaces and services",
+    "scope": "Next.js interface, Python API, asynchronous jobs and historical evaluation"
+  },
+  "workflow": [
+    {
+      "id": "step-1",
+      "title": "Prepare the data",
+      "description": "Daily series and features.",
+      "visual": {
+        "type": "icon",
+        "icon": "database",
+        "title": "Datasets and features",
+        "description": "Import or refresh daily series and select the features used in experiments. Feature catalogue, data providers and freshness indicators."
+      }
+    },
+    {
+      "id": "step-2",
+      "title": "Configure a run",
+      "description": "Dates, model and settings.",
+      "visual": {
+        "type": "flow",
+        "title": "Guided configuration",
+        "description": "Choose the mode, dates, features, model and parameters before starting a run. A step-by-step run creation flow.",
+        "steps": [
+          "Mode and dates",
+          "Features",
+          "Model",
+          "Launch"
+        ]
+      }
+    },
+    {
+      "id": "step-3",
+      "title": "Track computations",
+      "description": "Queue, progress and states.",
+      "visual": {
+        "type": "icon",
+        "icon": "workflow",
+        "title": "Job queue",
+        "description": "Inspect the job queue, execution stages, progress and error states. Server-sent job updates with polling as a fallback."
+      }
+    },
+    {
+      "id": "step-4",
+      "title": "Compare the results",
+      "description": "Forecasts and scores.",
+      "visual": {
+        "type": "icon",
+        "icon": "layers",
+        "title": "Results and comparisons",
+        "description": "Explore forecasts, scores and previous runs, then refine the starting assumptions. Forecast visualizations, leaderboard and run details."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "The interface calls a local API that orchestrates computations and persists experiment metadata and artifacts.",
+    "featuredNodeIds": [
+      "client",
+      "api",
+      "worker",
+      "storage"
+    ],
+    "nodes": [
+      {
+        "id": "client",
+        "label": "Web interface",
+        "type": "client",
+        "role": "Configure, track and compare experiments",
+        "technology": "Next.js / TypeScript",
+        "icon": "browser",
+        "highlight": true
+      },
+      {
+        "id": "api",
+        "label": "Local API",
+        "type": "api",
+        "role": "Validate requests and expose results",
+        "technology": "FastAPI / Python",
+        "icon": "api"
+      },
+      {
+        "id": "worker",
+        "label": "Compute engine",
+        "type": "worker",
+        "role": "Run experiments and backtests",
+        "technology": "Python",
+        "icon": "worker",
+        "highlight": true
+      },
+      {
+        "id": "storage",
+        "label": "Local storage",
+        "type": "storage",
+        "role": "Store execution states, metrics and artifacts",
+        "technology": "SQLite / Parquet",
+        "icon": "storage"
+      }
+    ],
+    "edges": [
+      {
+        "id": "client-api",
+        "from": "client",
+        "to": "api",
+        "label": "HTTP / SSE"
+      },
+      {
+        "id": "api-worker",
+        "from": "api",
+        "to": "worker",
+        "label": "Job queue"
+      },
+      {
+        "id": "worker-storage",
+        "from": "worker",
+        "to": "storage",
+        "label": "Results and states"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Avoid temporal data leakage",
+      "constraint": "Time-series backtests can be biased if future observations leak into training.",
+      "solution": "Date-based walk-forward splits and explicit availability lags for features."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Track long-running jobs",
+      "constraint": "Model training and calculations can outlive HTTP requests and may be interrupted.",
+      "solution": "A job queue, separate worker, states and progress tracking, with SSE updates and polling fallback in the interface."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Keep artifacts consistent",
+      "constraint": "An interrupted write can leave incomplete result files.",
+      "solution": "Validated temporary JSON writes followed by atomic replacement, fsync and targeted retries for I/O errors."
+    }
+  ],
+  "stack": [
+    "nextjs",
+    "react",
+    "typescript",
+    "python",
+    "tailwind",
+    "recharts"
+  ],
+  "outcomes": [
+    {
+      "id": "outcome-1",
+      "title": "Guided experiments",
+      "description": "Run configuration flows and a batch matrix of feature and model combinations."
+    },
+    {
+      "id": "outcome-2",
+      "title": "Backtesting and comparison",
+      "description": "Forecasting and backtesting engines, run history, leaderboard and result visualizations."
+    },
+    {
+      "id": "outcome-3",
+      "title": "Execution monitoring",
+      "description": "A job queue, computation stages and status updates surfaced in the interface."
+    }
+  ]
+}

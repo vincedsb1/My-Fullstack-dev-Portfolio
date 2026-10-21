@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
 import { getPublishedArticles, type BlogLocale } from "@/lib/blog/articles";
+import { getPublishedProjectSlugs } from "@/content/projects/loaders";
+import { getArchivePath, getProjectDetailPath } from "@/lib/projects/routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
@@ -51,6 +53,44 @@ export default function sitemap(): MetadataRoute.Sitemap {
       };
     });
 
+  const projectArchives = (["fr", "en"] as const).map((locale) => {
+    const url = `${baseUrl}${getArchivePath(locale)}`;
+    return {
+      url,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+      alternates: {
+        languages: {
+          fr: `${baseUrl}${getArchivePath("fr")}`,
+          en: `${baseUrl}${getArchivePath("en")}`,
+        },
+      },
+    };
+  });
+
+  const projectPages = (["fr", "en"] as const).flatMap((locale) =>
+    getPublishedProjectSlugs(locale).map((slug) => {
+      const url = `${baseUrl}${getProjectDetailPath(locale, slug)}`;
+      const alternateLocale = locale === "fr" ? "en" : "fr";
+      const alternateUrl = getPublishedProjectSlugs(alternateLocale).includes(
+        slug,
+      )
+        ? `${baseUrl}${getProjectDetailPath(alternateLocale, slug)}`
+        : undefined;
+      return {
+        url,
+        changeFrequency: "yearly" as const,
+        priority: 0.8,
+        alternates: {
+          languages: {
+            [locale]: url,
+            ...(alternateUrl ? { [alternateLocale]: alternateUrl } : {}),
+          },
+        },
+      };
+    }),
+  );
+
   return [
     {
       url: `${baseUrl}/juliedieris`,
@@ -84,6 +124,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     ...blogIndexes,
+    ...projectArchives,
+    ...projectPages,
     ...articles.map((article) => ({
       url: `${baseUrl}/${article.metadata.locale}/blog/${article.metadata.slug}`,
       lastModified: new Date(

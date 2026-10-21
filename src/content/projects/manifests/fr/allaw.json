@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "allaw",
+  "slug": "allaw",
+  "locale": "fr",
+  "variant": "standard",
+  "meta": {
+    "title": "Allaw — Plateforme LegalTech et outils pour professionnels du droit",
+    "category": "LegalTech · SaaS B2B"
+  },
+  "seo": {
+    "title": "Allaw — Étude de cas développeur full-stack",
+    "description": "Conception de dossiers clients, de pages Office multi-agences et de composants partagés pour une plateforme LegalTech en Next.js.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "Du rendez-vous au dossier, une expérience juridique connectée",
+    "description": "Contribution full-stack à Allaw : création du module Dossiers, travail sur les pages Office multi-agences et refonte de parcours publics, avec une attention à l'UX et aux composants réutilisables.",
+    "pill": "Plateforme LegalTech",
+    "visual": {
+      "type": "image",
+      "src": "/allaw.jpg",
+      "alt": "Montage des interfaces Allaw : recherche de professionnels, rendez-vous et dossiers",
+      "width": 5760,
+      "height": 4096
+    }
+  },
+  "overview": {
+    "problem": "Les professionnels du droit doivent gérer dossiers, rendez-vous et structures parfois multi-agences, tandis que leurs clients ont besoin d'un parcours public clair.",
+    "solution": "Création du module Dossiers lié à l'agenda, conception de pages Office adaptées aux agences et aux collaborateurs, et développement d'une bibliothèque de composants UI pour les interfaces.",
+    "audience": "Notaires, avocats, commissaires de justice et particuliers",
+    "role": "Développeur full-stack, conception UX/UI et architecture applicative",
+    "scope": "Dossiers, pages Office, réservation, recherche et composants UI"
+  },
+  "workflow": [
+    {
+      "id": "step-1",
+      "title": "Trouver un professionnel",
+      "description": "Le particulier recherche un professionnel du droit depuis les interfaces publiques d'Allaw.",
+      "visual": {
+        "type": "icon",
+        "icon": "monitor",
+        "title": "Recherche et découverte",
+        "description": "Une entrée vers les professionnels, leurs services et leurs informations publiques."
+      }
+    },
+    {
+      "id": "step-2",
+      "title": "Consulter la page Office",
+      "description": "La page présente le cabinet, ses implantations et les collaborateurs associés, même sur plusieurs agences.",
+      "visual": {
+        "type": "icon",
+        "icon": "layers",
+        "title": "Structure multi-agences",
+        "description": "Informations centrales, localisation des agences et présentation des professionnels."
+      }
+    },
+    {
+      "id": "step-3",
+      "title": "Réserver un rendez-vous",
+      "description": "Le parcours de réservation guide le choix d'un service et d'un créneau disponible.",
+      "visual": {
+        "type": "flow",
+        "title": "Prise de rendez-vous",
+        "description": "Un parcours public articulé autour des services et disponibilités.",
+        "steps": ["Choix du service", "Choix du créneau", "Réservation"]
+      }
+    },
+    {
+      "id": "step-4",
+      "title": "Suivre un dossier",
+      "description": "Côté professionnel, le dossier regroupe les informations utiles et peut être lié à des rendez-vous dans l'agenda.",
+      "visual": {
+        "type": "icon",
+        "icon": "workflow",
+        "title": "Dossier et agenda",
+        "description": "Les dossiers sont intégrés aux outils métier et reliés aux rendez-vous concernés."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "Architecture applicative documentée : interfaces Next.js, API Node.js et données MongoDB, au service des parcours publics et métier.",
+    "featuredNodeIds": ["ui", "api", "db"],
+    "nodes": [
+      {
+        "id": "ui",
+        "label": "Interfaces web",
+        "type": "client",
+        "role": "Parcours publics et administration métier",
+        "technology": "Next.js / React",
+        "icon": "browser",
+        "highlight": true
+      },
+      {
+        "id": "api",
+        "label": "API métier",
+        "type": "api",
+        "role": "Opérations sur dossiers, organisations et rendez-vous",
+        "technology": "Node.js",
+        "icon": "api",
+        "highlight": true
+      },
+      {
+        "id": "db",
+        "label": "Données",
+        "type": "database",
+        "role": "Persistance des informations métier",
+        "technology": "MongoDB",
+        "icon": "database",
+        "highlight": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "ui-api",
+        "from": "ui",
+        "to": "api",
+        "label": "Requêtes métier"
+      },
+      {
+        "id": "api-db",
+        "from": "api",
+        "to": "db",
+        "label": "Lecture et écriture"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Créer la gestion des dossiers à partir de zéro",
+      "constraint": "Aucun module existant : définir les données, les écrans d'administration et l'expérience côté utilisateur.",
+      "solution": "Conception du module de bout en bout, avec nouveaux composants et interfaces responsives cohérentes avec le design system."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Relier plusieurs domaines métier",
+      "constraint": "Les dossiers ne pouvaient pas rester isolés des rendez-vous déjà gérés par l'agenda.",
+      "solution": "Intégration de liens entre dossiers et rendez-vous pour connecter le suivi des demandes à la planification."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Modéliser les offices multi-agences",
+      "constraint": "Un cabinet peut regrouper plusieurs agences et un professionnel peut exercer dans plusieurs implantations.",
+      "solution": "Conception d'une représentation commune des agences et collaborateurs pour les pages Office et leur carte."
+    },
+    {
+      "id": "challenge-4",
+      "title": "Encadrer l'édition des pages Office",
+      "constraint": "La personne qui crée une page n'est pas nécessairement habilitée à tout modifier dans l'organisation.",
+      "solution": "Prise en compte des invitations et des droits selon le statut des collaborateurs dans la conception des accès."
+    }
+  ],
+  "stack": ["nextjs", "react", "typescript", "nodejs", "mongodb", "playwright"],
+  "outcomes": [
+    {
+      "id": "outcome-1",
+      "title": "Module Dossiers connecté à l’agenda",
+      "description": "Module conçu depuis zéro, avec des interfaces métier et une association possible entre dossiers et rendez-vous."
+    },
+    {
+      "id": "outcome-2",
+      "title": "Pages Office adaptées aux structures complexes",
+      "description": "Pages publiques conçues pour présenter agences, carte et collaborateurs, avec des enjeux de droits d'édition."
+    },
+    {
+      "id": "outcome-3",
+      "title": "Bibliothèque UI réutilisable",
+      "description": "Package NPM de composants enrichi au fil des développements et utilisable par les autres développeurs frontend."
+    }
+  ]
+}

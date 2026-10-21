@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Blog - Portfolio Ultra Moderne</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f6f6f6; /* Fond gris perle similaire aux autres sections */
+        }
+        
+        /* Ombres personnalisées pour un effet "Soft UI" très premium */
+        .shadow-soft {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03), 0 2px 8px rgba(0, 0, 0, 0.01);
+        }
+        .shadow-soft-hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Courbes d'animation fluides (easing) */
+        .ease-spring {
+            transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
+        /* Masquer la scrollbar pour un aspect plus épuré si nécessaire */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4d4d8; 
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1aa; 
+        }
+    </style>
+</head>
+<body class="text-zinc-900 antialiased min-h-screen py-20 px-4 sm:px-8 md:px-16 lg:px-24 flex justify-center">
+
+    <section class="w-full max-w-6xl">
+        
+        <!-- En-tête de section (hors des cartes, pour correspondre aux maquettes) -->
+        <header class="mb-14">
+            <div class="flex items-center gap-3.5 mb-4">
+                <!-- Icone stylisée (similaire aux sections Projets et Compétences) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-900">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                </svg>
+                <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-zinc-900">
+                    Blog
+                </h2>
+            </div>
+            <p class="text-lg md:text-xl text-zinc-500 font-medium max-w-2xl leading-relaxed">
+                Je partage mes réflexions sur le développement web, l'architecture logicielle, l'intelligence artificielle et la création de produits numériques.
+            </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Featured Article (prend toute la largeur sur desktop) -->
+            <article class="col-span-1 md:col-span-2 lg:col-span-3 group bg-white rounded-[2rem] p-6 sm:p-8 shadow-soft border border-zinc-200/40 hover:shadow-soft-hover hover:border-zinc-300 transition-all duration-500 transform hover:-translate-y-1 flex flex-col md:flex-row gap-8 cursor-pointer">
+                
+                <!-- Image Container -->
+                <div class="w-full md:w-2/5 lg:w-1/2 aspect-video md:aspect-auto md:min-h-[300px] rounded-[1.5rem] overflow-hidden relative isolate">
+                    <!-- Image Mockup -->
+                    <div class="absolute inset-0 bg-[#1c1c1c] flex flex-col justify-center items-start p-8 transform group-hover:scale-105 transition-transform duration-700 ease-out z-0">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-2 h-2 bg-red-500 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.6)]"></div>
+                            <span class="text-white/80 text-xs font-bold tracking-widest uppercase">Vincent Desbrosses</span>
+                        </div>
+                        <h4 class="text-white text-xl sm:text-2xl font-bold mb-3 leading-tight w-4/5">Faut-il internationaliser son SaaS dès le lancement ?</h4>
+                        <p class="text-zinc-400 text-sm leading-relaxed max-w-[85%] line-clamp-2">Préparer l'internationalisation peut être judicieux, mais traduire six langues dès le départ ne garantit ni visibilité ni clients.</p>
+                    </div>
+                </div>
+
+                <!-- Content Container -->
+                <div class="w-full md:w-3/5 lg:w-1/2 flex flex-col justify-center py-2 md:py-6 md:pr-6">
+                    
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="bg-zinc-100 text-zinc-700 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-zinc-200/50">
+                            Produit
+                        </span>
+                        <span class="text-sm font-semibold text-zinc-400">
+                            19 oct. 2026 · 4 min de lecture
+                        </span>
+                    </div>
+
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-zinc-900 mb-4 leading-tight tracking-tight group-hover:text-black transition-colors duration-300">
+                        Faut-il internationaliser son SaaS dès le lancement ?
+                    </h3>
+
+                    <p class="text-zinc-500 text-base sm:text-lg leading-relaxed mb-8">
+                        Préparer l’internationalisation techniquement peut être judicieux, mais traduire l'interface en six langues dès le premier jour ne garantit ni une meilleure visibilité ni une acquisition client magique. Retour d'expérience sur les priorités lors d'un lancement.
+                    </p>
+
+                    <div class="flex items-center text-base font-bold text-zinc-900 mt-auto w-fit">
+                        Lire l'article
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transform group-hover:translate-x-1.5 transition-transform duration-300 ease-out">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Standard Article 1 -->
+            <article class="group bg-white rounded-[2rem] p-5 shadow-soft border border-zinc-200/40 hover:shadow-soft-hover hover:border-zinc-300 transition-all duration-500 transform hover:-translate-y-1 flex flex-col cursor-pointer">
+                
+                <div class="w-full aspect-[16/10] bg-zinc-100 rounded-[1.25rem] overflow-hidden mb-6 relative">
+                    <img src="https://placehold.co/800x500/e4e4e7/52525b?text=Architecture+Hexagonale" alt="Code Snippet" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                </div>
+
+                <div class="flex flex-col flex-1 px-3 pb-3">
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="bg-zinc-100 text-zinc-700 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border border-zinc-200/50">
+                            Tech
+                        </span>
+                        <span class="text-sm font-semibold text-zinc-400">
+                            02 sept. 2026 · 6 min
+                        </span>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-zinc-900 mb-3 leading-snug tracking-tight">
+                        L'architecture hexagonale appliquée à React et Next.js
+                    </h3>
+
+                    <p class="text-zinc-500 text-sm leading-relaxed mb-8 flex-1 line-clamp-3">
+                        Découvrez comment structurer vos applications Front-end pour séparer efficacement la logique métier complexe de l'interface utilisateur et des appels API externes.
+                    </p>
+
+                    <div class="flex items-center text-sm font-bold text-zinc-900 mt-auto">
+                        Lire l'article
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transform group-hover:translate-x-1.5 transition-transform duration-300 ease-out">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Standard Article 2 -->
+            <article class="group bg-white rounded-[2rem] p-5 shadow-soft border border-zinc-200/40 hover:shadow-soft-hover hover:border-zinc-300 transition-all duration-500 transform hover:-translate-y-1 flex flex-col cursor-pointer">
+                
+                <div class="w-full aspect-[16/10] bg-zinc-100 rounded-[1.25rem] overflow-hidden mb-6 relative">
+                    <img src="https://placehold.co/800x500/e4e4e7/52525b?text=AI+Workflows" alt="AI Integration" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                </div>
+
+                <div class="flex flex-col flex-1 px-3 pb-3">
+                    <div class="flex items-center justify-between mb-5">
+                        <span class="bg-zinc-100 text-zinc-700 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border border-zinc-200/50">
+                            IA & Design
+                        </span>
+                        <span class="text-sm font-semibold text-zinc-400">
+                            14 août 2026 · 5 min
+                        </span>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-zinc-900 mb-3 leading-snug tracking-tight">
+                        Intégrer l'IA générative dans vos workflows de conception
+                    </h3>
+
+                    <p class="text-zinc-500 text-sm leading-relaxed mb-8 flex-1 line-clamp-3">
+                        Comment les nouveaux outils basés sur l'intelligence artificielle bouleversent la création de maquettes, le prototypage rapide et accélèrent les itérations produits.
+                    </p>
+
+                    <div class="flex items-center text-sm font-bold text-zinc-900 mt-auto">
+                        Lire l'article
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transform group-hover:translate-x-1.5 transition-transform duration-300 ease-out">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="mt-14 flex justify-start items-center">
+            <a href="#" class="group inline-flex items-center justify-center gap-3 text-lg font-bold text-zinc-900 hover:text-black transition-colors duration-300">
+                <span>Voir tous les articles</span>
+                <div class="bg-white border border-zinc-200 shadow-sm rounded-full p-2 flex items-center justify-center group-hover:border-zinc-400 group-hover:shadow-md transition-all duration-300 transform group-hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:translate-x-0.5 transition-transform duration-300">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </div>
+            </a>
+        </div>
+
+    </section>
+
+</body>
+</html>

@@ -1,3 +1,6 @@
 # Ignore artifacts:
 build
 coverage
+
+# Attributs d'import JSON natifs, non reconnus par Prettier 3.0.
+src/content/projects/manifests/index.ts

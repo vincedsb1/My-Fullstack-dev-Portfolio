@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "truthify",
+  "slug": "truthify",
+  "locale": "fr",
+  "variant": "standard",
+  "meta": {
+    "title": "Truthify — Analyse de fiabilité des arguments",
+    "category": "Application web / IA"
+  },
+  "seo": {
+    "title": "Truthify | Analyse argumentaire assistée par IA",
+    "description": "Étude de cas de Truthify : analyse de textes et de transcriptions YouTube, restitution progressive des arguments et architecture Next.js, OpenAI et PostgreSQL.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "Explorer la fiabilité d’un texte, argument par argument",
+    "description": "Truthify extrait des affirmations d’un texte, leur attribue un niveau de fiabilité estimé et permet de retrouver les passages concernés dans le contenu original.",
+    "visual": {
+      "type": "illustration",
+      "imageId": "truthify",
+      "label": "Truthify"
+    }
+  },
+  "overview": {
+    "problem": "Une suite d’affirmations est difficile à examiner sans perdre le fil du texte, surtout lorsqu’elle est longue ou issue d’une vidéo.",
+    "solution": "Truthify segmente le contenu, soumet ses extraits à un modèle OpenAI, puis affiche des cartes argumentées, des notes sur dix et un repérage dans le texte.",
+    "audience": "Personnes souhaitant examiner des affirmations et des raisonnements",
+    "role": "Conception et développement fullstack du projet",
+    "scope": "Interface, API d’analyse, extraction YouTube, persistance, comptes et paiements"
+  },
+  "workflow": [
+    {
+      "id": "step-1",
+      "title": "Saisir le contenu",
+      "description": "Texte ou YouTube.",
+      "visual": {
+        "type": "icon",
+        "icon": "monitor",
+        "title": "Texte ou transcription",
+        "description": "Coller un texte ou saisir une URL YouTube ; si la transcription échoue, une saisie manuelle reste possible. Deux modes de saisie réunis dans l’interface d’analyse."
+      }
+    },
+    {
+      "id": "step-2",
+      "title": "Lancer l’analyse",
+      "description": "Segments et SSE.",
+      "visual": {
+        "type": "flow",
+        "title": "Traitement progressif",
+        "description": "Le service découpe le texte en segments chevauchés et envoie l’avancement au navigateur au fil des analyses. Progression transmise par événements SSE.",
+        "steps": ["Découpage du texte", "Analyse OpenAI", "Événements SSE"]
+      }
+    },
+    {
+      "id": "step-3",
+      "title": "Lire les résultats",
+      "description": "Notes par argument.",
+      "visual": {
+        "type": "result",
+        "title": "Résultats par argument",
+        "description": "Voir un score global, puis chaque affirmation extraite avec son niveau de fiabilité et ses explications disponibles. Score sur dix, catégorie et explication associée à chaque affirmation."
+      }
+    },
+    {
+      "id": "step-4",
+      "title": "Relire le contexte",
+      "description": "Passages surlignés.",
+      "visual": {
+        "type": "icon",
+        "icon": "layers",
+        "title": "Navigation contextuelle",
+        "description": "Parcourir les passages surlignés et accéder aux cartes associées sans perdre le texte initial. Correspondance entre les extraits et les cartes d’analyse."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "Le client React appelle une route SSE Next.js, qui orchestre un service d’analyse OpenAI et conserve résultats et cache dans PostgreSQL via Prisma.",
+    "featuredNodeIds": ["client", "api", "analysis", "openai"],
+    "nodes": [
+      {
+        "id": "client",
+        "label": "Interface React",
+        "type": "client",
+        "role": "Saisie, progression et lecture des résultats",
+        "technology": "React",
+        "icon": "browser",
+        "highlight": true
+      },
+      {
+        "id": "api",
+        "label": "API SSE Next.js",
+        "type": "api",
+        "role": "Gestion du flux, cache et persistance",
+        "technology": "Next.js",
+        "icon": "api",
+        "highlight": true
+      },
+      {
+        "id": "analysis",
+        "label": "Service d’analyse",
+        "type": "service",
+        "role": "Découpage, prompts et normalisation des notes",
+        "technology": "TypeScript",
+        "icon": "service",
+        "highlight": true
+      },
+      {
+        "id": "openai",
+        "label": "API OpenAI",
+        "type": "service",
+        "role": "Extraction et évaluation des affirmations",
+        "technology": "OpenAI",
+        "icon": "cloud",
+        "highlight": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-1",
+        "from": "client",
+        "to": "api",
+        "label": "Requête et flux SSE"
+      },
+      {
+        "id": "edge-2",
+        "from": "api",
+        "to": "analysis",
+        "label": "Segments à analyser"
+      },
+      {
+        "id": "edge-3",
+        "from": "analysis",
+        "to": "openai",
+        "label": "Prompts et réponses"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Analyser des textes volumineux",
+      "constraint": "Un appel unique serait sensible à la longueur du texte et à la durée du traitement.",
+      "solution": "Découpage en segments chevauchés, avec limites explicites de taille et de nombre de segments."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Rendre le traitement lisible",
+      "constraint": "L’analyse de plusieurs segments produit ses résultats à des moments différents.",
+      "solution": "Route Server-Sent Events et hook React pour exposer l’avancement et les nouvelles affirmations."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Relier les scores au texte",
+      "constraint": "Une évaluation isolée perd son contexte si l’utilisateur ne retrouve pas le passage d’origine.",
+      "solution": "Recherche des positions de chaque extrait et surlignage interactif relié aux cartes de résultats."
+    },
+    {
+      "id": "challenge-4",
+      "title": "Récupérer les transcriptions YouTube",
+      "constraint": "L’accès aux transcriptions dépend de sources externes et peut échouer selon la vidéo.",
+      "solution": "Récupération en cascade via plusieurs stratégies, cache des transcriptions et saisie manuelle du texte en cas d’échec."
+    }
+  ],
+  "stack": [
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwind",
+    "openai",
+    "postgresql",
+    "stripe",
+    "better-auth"
+  ],
+  "outcomes": [
+    {
+      "id": "outcome-1",
+      "title": "Interface d’analyse progressive",
+      "description": "Parcours de saisie, progression des segments, score global et cartes d’évaluation reliées au texte."
+    },
+    {
+      "id": "outcome-2",
+      "title": "Persistance et réutilisation",
+      "description": "Analyses enregistrées avec Prisma dans PostgreSQL et cache fondé sur une empreinte du texte normalisé."
+    },
+    {
+      "id": "outcome-3",
+      "title": "Socle de gestion du service",
+      "description": "Authentification par lien magique, espace de compte, sessions Stripe et traitement de webhooks signés."
+    }
+  ]
+}

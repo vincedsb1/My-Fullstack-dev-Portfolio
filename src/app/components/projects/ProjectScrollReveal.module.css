@@ -1,0 +1,6 @@
+/* Les blocs ne sont masqués qu’après activation de l’observateur côté client. */
+@media (prefers-reduced-motion: no-preference) {
+  .root [data-reveal="pending"] {
+    opacity: 0;
+  }
+}

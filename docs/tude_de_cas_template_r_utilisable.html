@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="fr" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincent Desbrosses — Étude de cas</title>
+    <meta name="description" content="Découvrez cette étude de cas détaillée illustrant mon approche de l'ingénierie logicielle et du product design.">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Pre-load Theme Logic to prevent flash -->
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        neutral: {
+                            50: '#FAFAFA', 100: '#F5F5F5', 200: '#E5E5E5', 300: '#D4D4D4',
+                            400: '#A3A3A3', 500: '#737373', 600: '#525252', 700: '#404040',
+                            800: '#262626', 900: '#171717', 950: '#0A0A0A',
+                        },
+                        brand: { red: '#EF4444', darkred: '#B91C1C' }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(15px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base & Scrollbar */
+        ::selection { background: rgba(239, 68, 68, 0.2); color: inherit; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #525252; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #404040; }
+
+        /* Focus States (A11y) */
+        *:focus-visible {
+            outline: 2px solid #EF4444;
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        /* Subtle Noise Texture */
+        .bg-noise {
+            position: relative;
+        }
+        .bg-noise::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+        .dark .bg-noise::before { opacity: 0.05; }
+
+        /* Gradient Text (Correction Light Mode) */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(180deg, #171717 30%, #737373 100%); /* Default Light */
+        }
+        .dark .text-gradient { 
+            background-image: linear-gradient(180deg, #FAFAFA 30%, #A3A3A3 100%); /* Dark override */
+        }
+
+        /* Dialog Native Styling */
+        dialog::backdrop {
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50 transition-colors duration-300 antialiased overflow-x-hidden flex flex-col min-h-screen">
+
+    <!-- Annonceur pour lecteurs d'écran (A11y) -->
+    <div aria-live="polite" class="sr-only" id="a11y-announcer"></div>
+
+    <div class="fixed bottom-6 right-6 z-[100] bg-white/90 dark:bg-neutral-900/90 p-4 rounded-2xl shadow-2xl border border-neutral-200 dark:border-neutral-800 backdrop-blur-md hidden sm:block" aria-label="Outil de démonstration">
+        <p class="text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-3 flex items-center gap-2">
+            <i data-lucide="settings-2" class="w-3 h-3"></i> Variantes Template
+        </p>
+        <div class="flex gap-2">
+            <button onclick="app.loadProject('rich')" class="demo-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-brand-red hover:text-white transition-colors ring-2 ring-brand-red" data-id="rich">RICH</button>
+            <button onclick="app.loadProject('standard')" class="demo-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-brand-red hover:text-white transition-colors" data-id="standard">STD</button>
+            <button onclick="app.loadProject('light')" class="demo-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-brand-red hover:text-white transition-colors" data-id="light">LIGHT</button>
+        </div>
+    </div>
+
+    <header class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent" id="navbar">
+        <div class="absolute inset-0 bg-neutral-50/80 dark:bg-neutral-950/80 backdrop-blur-md -z-10"></div>
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#top" aria-label="Retour en haut" class="group flex items-center gap-3 rounded-lg p-1 focus-visible:ring-2 outline-none">
+                <div class="w-8 h-8 rounded-full bg-neutral-900 dark:bg-neutral-50 flex items-center justify-center text-neutral-50 dark:text-neutral-900 font-semibold text-sm transition-transform group-hover:scale-105">V</div>
+                <span class="font-medium tracking-tight hidden sm:block">Vincent Desbrosses</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-500 dark:text-neutral-400" aria-label="Navigation principale">
+                <a href="#portfolio" class="hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors flex items-center gap-1"><i data-lucide="arrow-left" class="w-4 h-4"></i> Projets</a>
+                <a href="#overview" class="hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors nav-link">Vue d'ensemble</a>
+                <a href="#challenges" class="hover:text-neutral-900 dark:hover:text-neutral-50 transition-colors nav-link">Défis</a>
+            </nav>
+
+            <div class="flex items-center gap-2 sm:gap-4">
+                <button id="theme-toggle" aria-label="Basculer le thème" class="p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors text-neutral-500 dark:text-neutral-400">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-full bg-neutral-900 text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors">
+                    Contact
+                </a>
+                <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu mobile" class="md:hidden p-2 text-neutral-500 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-neutral-50 dark:bg-neutral-950 border-b border-neutral-200 dark:border-neutral-800 p-6 flex-col gap-4 shadow-xl">
+            <a href="#portfolio" class="text-lg font-medium hover:text-brand-red mobile-link">Retour aux projets</a>
+            <a href="#overview" class="text-lg font-medium hover:text-brand-red mobile-link">Vue d'ensemble</a>
+            <a href="#challenges" class="text-lg font-medium hover:text-brand-red mobile-link">Défis techniques</a>
+            <a href="#contact" class="text-lg font-medium hover:text-brand-red mobile-link">Contact</a>
+        </div>
+    </header>
+
+    <main id="main-content" class="flex-grow scroll-mt-20" id="top">
+        <!-- Rendu dynamique ici -->
+    </main>
+
+    <footer id="contact" class="py-24 border-t border-neutral-200 dark:border-neutral-900 bg-neutral-50 dark:bg-[#0A0A0A] text-center mt-auto scroll-mt-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tighter">Un projet à construire ensemble ?</h2>
+            <p class="text-neutral-500 mb-10 text-lg">Discutons d'architecture, de produit ou de votre prochaine application.</p>
+            <div class="flex flex-wrap justify-center gap-4 mb-20">
+                <a href="mailto:demo@example.com" class="px-6 py-3 rounded-full bg-brand-red text-white font-medium hover:bg-brand-darkred transition-colors">
+                    Me contacter par email
+                </a>
+                <a href="#linkedin" class="px-6 py-3 rounded-full bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 font-medium hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors flex items-center gap-2">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+                </a>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-neutral-200 dark:border-neutral-900 text-sm text-neutral-500">
+                <p>&copy; 2026 Vincent Desbrosses.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#portfolio" class="hover:text-neutral-900 dark:hover:text-white transition-colors">Accueil Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <dialog id="lightbox" class="m-auto p-0 border-none bg-transparent max-w-none w-full h-full" aria-label="Visionneuse d'image">
+        <div class="relative w-full h-full flex items-center justify-center p-4 sm:p-8" id="lightbox-backdrop">
+            <button id="lightbox-close" aria-label="Fermer la visionneuse" class="absolute top-6 right-6 p-3 rounded-full bg-neutral-900/50 hover:bg-brand-red text-white transition-colors z-10 backdrop-blur-md">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl opacity-0 transition-opacity duration-300">
+        </div>
+    </dialog>
+
+    <script>
+        // --- 1. DATA STRUCTURE ---
+        const projectsData = {
+            rich: {
+                meta: { title: "Iconise", category: "SaaS IA", year: "2026", role: "Lead Fullstack & Design" },
+                hero: {
+                    hook: "L'IA générative au service de la création d'icônes.",
+                    desc: "Un SaaS exploratoire simplifiant la création d'icônes d'applications via l'intelligence artificielle.",
+                    links: { live: "#demo-live", github: "#demo-github" },
+                    visualType: "abstract-3d" 
+                },
+                overview: {
+                    problem: "La création d'icônes professionnelles nécessite un temps et des compétences graphiques que les développeurs indépendants n'ont pas toujours.",
+                    solution: "Une interface dédiée liant un moteur de génération IA à un workflow étape par étape, permettant d'itérer rapidement sur des concepts visuels."
+                },
+                video: {
+                    url: "https://www.w3schools.com/html/mov_bbb.mp4",
+                    poster: "https://placehold.co/1280x720/1A1A1A/333333?text=Video+Player+Poster"
+                },
+                workflow: [
+                    { 
+                        id: 'w1', title: "Définition", desc: "Saisie des concepts et sélection de la direction artistique.", 
+                        visual: { type: "type-a", icon: "sparkles", title: "Configuration sémantique", text: "Paramétrage du prompt de base et des contraintes visuelles." } 
+                    },
+                    { 
+                        id: 'w2', title: "Exploration", desc: "Génération d'une grille de concepts préliminaires.", 
+                        visual: { type: "type-b", img: "https://placehold.co/800x600/171717/525252?text=Grille+de+concepts" } 
+                    },
+                    { 
+                        id: 'w3', title: "Affinement", desc: "Création de variations subtiles à partir d'une piste.", 
+                        visual: { type: "type-c", steps: ["Concept Validé", "Génération Variations", "Sélection Finale"] } 
+                    },
+                    { 
+                        id: 'w4', title: "Exportation", desc: "Génération automatique des formats web et mobiles.", 
+                        visual: { type: "type-d", content: "Assets Prêts" } 
+                    }
+                ],
+                architecture: {
+                    description: "Infrastructure technique orientée composants illustrée.",
+                    nodes: [
+                        { id: "client", label: "Client Next.js", sub: "React / Tailwind", icon: "laptop" },
+                        { id: "api", label: "API Route", sub: "Traitement", icon: "server" },
+                        { id: "db", label: "PostgreSQL", sub: "Données utilisateurs", icon: "database" },
+                        { id: "ai", label: "Service GenAI", sub: "Génération", icon: "cpu", highlight: true }
+                    ],
+                    edges: [
+                        { source: "client", target: "api" },
+                        { source: "api", target: "db" },
+                        { source: "api", target: "ai" }
+                    ]
+                },
+                challenges: [
+                    { title: "Génération asynchrone", problem: "Les requêtes IA dépassent souvent les limites de timeout standards des serveurs Serverless.", solution: "Mise en place d'une architecture asynchrone avec polling léger côté client pour récupérer l'état de la génération." },
+                    { title: "Gestion des crédits", problem: "Sécuriser les appels coûteux aux API tierces.", solution: "Vérification stricte des crédits disponibles dans une transaction base de données avant chaque lancement." },
+                    { title: "Internationalisation", problem: "Le prompt IA doit être construit dans la langue native du modèle tout en gardant une UI multilingue.", solution: "Couche de traduction automatique des mots-clés utilisateurs avant injection dans le pipeline de génération." }
+                ],
+                stack: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "API IA tierce"],
+                nextProject: { title: "Allaw", desc: "Plateforme web juridique.", id: "standard" }
+            },
+            
+            standard: {
+                meta: { title: "Allaw", category: "Application Web", year: "2025", role: "Frontend Developer" },
+                hero: {
+                    hook: "Faciliter l'accès aux professionnels du droit.",
+                    desc: "Plateforme de mise en relation et de consultation juridique en ligne.",
+                    links: { live: "#demo-live" },
+                    visualType: "image", image: "https://placehold.co/1200x800/171717/525252?text=Dashboard+Allaw"
+                },
+                overview: {
+                    problem: "Le processus de prise de rendez-vous et d'échange de documents juridiques manque de fluidité et de sécurité.",
+                    solution: "Une interface sur-mesure intégrant calendrier partagé et espaces de consultation dédiés."
+                },
+                gallery: [
+                    "https://placehold.co/800x600/171717/525252?text=Calendrier+Avocat",
+                    "https://placehold.co/800x600/171717/525252?text=Espace+Documentaire"
+                ],
+                challenges: [
+                    { title: "Composant Calendrier", problem: "Complexité de gestion des fuseaux horaires et des disponibilités récurrentes.", solution: "Création d'un composant React spécifique utilisant date-fns pour une manipulation robuste." },
+                    { title: "Sécurité documentaire", problem: "Garantir la confidentialité des pièces échangées.", solution: "Chiffrement et URLs signées temporaires pour le téléchargement." }
+                ],
+                stack: ["React", "TypeScript", "Styled Components", "Node.js"],
+                nextProject: { title: "Suggst", desc: "Application macOS native.", id: "light" }
+            },
+
+            light: {
+                meta: { title: "Suggst", category: "App Native macOS", year: "2024", role: "Solo Developer" },
+                hero: {
+                    hook: "L'assistance contextuelle au bout des doigts.",
+                    desc: "Application native macOS d'assistance contextuelle en temps réel, avec capture/transcription audio et utilisation de contextes documentaires.",
+                    links: { github: "#demo-github" },
+                    visualType: "image", image: "https://placehold.co/1200x600/171717/525252?text=Suggst+macOS+Window"
+                },
+                overview: {
+                    problem: "Perte de temps liée aux allers-retours entre les applications métiers et les bases de connaissances ou outils de transcription.",
+                    solution: "Développement d'une application macOS discrète résidant dans la barre de menu, activable via raccourci global."
+                },
+                stack: ["Swift", "SwiftUI", "AppKit", "Speech Framework"],
+                nextProject: { title: "Iconise", desc: "SaaS IA.", id: "rich" }
+            }
+        };
+
+        // --- 2. RENDER ENGINE ---
+        const app = {
+            currentData: null,
+            lastFocus: null,
+            
+            init() {
+                this.setupTheme();
+                this.setupMobileMenu();
+                this.setupLightbox();
+                this.setupSmoothScroll();
+                this.loadProject('rich'); // Load default
+            },
+
+            loadProject(projectId) {
+                this.currentData = projectsData[projectId];
+                if (!this.currentData) return;
+                
+                // Update active demo button styles
+                document.querySelectorAll('.demo-btn').forEach(btn => {
+                    if (btn.dataset.id === projectId) {
+                        btn.classList.add('ring-2', 'ring-brand-red');
+                    } else {
+                        btn.classList.remove('ring-2', 'ring-brand-red');
+                    }
+                });
+
+                this.render();
+                window.scrollTo({ top: 0, behavior: 'instant' });
+                
+                // A11y Announcement
+                const announcer = document.getElementById('a11y-announcer');
+                if (announcer) {
+                    announcer.textContent = `Projet chargé : ${this.currentData.meta.title}`;
+                }
+            },
+
+            render() {
+                const d = this.currentData;
+                let html = '';
+
+                html += this.renderHero(d);
+                if (d.overview) html += this.renderOverview(d);
+                if (d.video) html += this.renderVideo(d);
+                if (d.workflow && d.workflow.length > 0) html += this.renderWorkflow(d);
+                if (d.architecture && d.architecture.nodes) html += this.renderArchitecture(d);
+                if (d.gallery && d.gallery.length > 0) html += this.renderGallery(d);
+                if (d.challenges && d.challenges.length > 0) html += this.renderChallenges(d);
+                if (d.stack) html += this.renderStack(d);
+                if (d.nextProject) html += this.renderNextProject(d);
+
+                document.getElementById('main-content').innerHTML = html;
+                
+                // Re-initialize dynamic components safely
+                if (window.lucide) lucide.createIcons();
+                this.bindWorkflowEvents();
+                this.bindGalleryEvents();
+                this.updateNavVisibility(d);
+            },
+
+            updateNavVisibility(d) {
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    const target = link.getAttribute('href').substring(1);
+                    if ((target === 'overview' && !d.overview) || (target === 'challenges' && (!d.challenges || d.challenges.length === 0))) {
+                        link.style.display = 'none';
+                    } else {
+                        link.style.display = 'flex';
+                    }
+                });
+            },
+
+            // --- Component Renderers ---
+            
+            renderHero(d) {
+                let visualHtml = '';
+                if (d.hero.visualType === 'abstract-3d') {
+                    visualHtml = `
+                        <div class="mt-20 w-full max-w-5xl mx-auto perspective-container" style="perspective: 1500px;" aria-hidden="true">
+                            <div class="relative w-full aspect-[16/10] rounded-2xl md:rounded-[2rem] bg-white dark:bg-[#111111] border border-neutral-200 dark:border-neutral-800 shadow-2xl overflow-hidden" style="transform: rotateX(4deg) rotateY(-2deg); transition: transform 0.5s;">
+                                <div class="h-12 border-b border-neutral-200 dark:border-neutral-800 flex items-center px-6 gap-2 bg-neutral-50/80 dark:bg-neutral-900/80">
+                                    <div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-amber-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div>
+                                </div>
+                                <div class="flex h-[calc(100%-3rem)] bg-noise">
+                                    <div class="w-16 md:w-64 border-r border-neutral-200 dark:border-neutral-800 p-6 hidden sm:flex flex-col gap-6 bg-neutral-50/50 dark:bg-neutral-900/50">
+                                        <div class="h-8 w-full bg-neutral-200 dark:bg-neutral-800 rounded-md"></div>
+                                        <div class="space-y-3"><div class="h-4 w-5/6 bg-neutral-200 dark:bg-neutral-800 rounded"></div><div class="h-4 w-4/6 bg-neutral-200 dark:bg-neutral-800 rounded"></div></div>
+                                    </div>
+                                    <div class="flex-1 relative flex items-center justify-center p-8 overflow-hidden">
+                                        <div class="absolute w-[300px] h-[300px] bg-brand-red/20 blur-[100px] rounded-full"></div>
+                                        <div class="relative z-10 w-32 h-32 md:w-48 md:h-48 rounded-[2rem] bg-gradient-to-br from-brand-red to-orange-500 shadow-2xl flex items-center justify-center animate-float ring-1 ring-white/20">
+                                            <i data-lucide="sparkles" class="w-16 h-16 text-white drop-shadow-md"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+                } else {
+                    visualHtml = `<div class="mt-20 w-full max-w-5xl mx-auto"><img src="${d.hero.image}" alt="Capture d'écran principale de ${d.meta.title}" class="w-full rounded-2xl md:rounded-[2rem] border border-neutral-200 dark:border-neutral-800 shadow-2xl animate-fade-in"></div>`;
+                }
+
+                let linksHtml = '';
+                if (d.hero.links) {
+                    if (d.hero.links.live) linksHtml += `<a href="${d.hero.links.live}" class="px-6 py-3 rounded-full bg-neutral-900 text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 font-medium hover:scale-105 transition-transform flex items-center gap-2">Accéder au projet <i data-lucide="external-link" class="w-4 h-4"></i></a>`;
+                    if (d.hero.links.github) linksHtml += `<a href="${d.hero.links.github}" class="px-6 py-3 rounded-full border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900 font-medium transition-colors flex items-center gap-2"><i data-lucide="github" class="w-4 h-4"></i> Code source</a>`;
+                }
+
+                return `
+                <section class="relative pt-40 pb-20 md:pt-48 md:pb-32 overflow-hidden border-b border-neutral-200 dark:border-neutral-900">
+                    <div class="absolute inset-0 bg-noise opacity-50 z-0"></div>
+                    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center animate-fade-in">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm text-xs font-semibold text-neutral-600 dark:text-neutral-400 mb-8 uppercase tracking-widest shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span> ${d.meta.category} <span class="opacity-50">/</span> ${d.meta.year}
+                        </div>
+                        <h1 class="text-5xl md:text-8xl lg:text-[10rem] font-extrabold tracking-tighter text-gradient mb-8 leading-none">${d.meta.title}</h1>
+                        <p class="text-xl md:text-2xl text-neutral-500 dark:text-neutral-400 max-w-3xl mx-auto font-light mb-12 leading-relaxed">${d.hero.desc}</p>
+                        <div class="flex flex-wrap items-center justify-center gap-4">${linksHtml}</div>
+                        ${visualHtml}
+                    </div>
+                </section>`;
+            },
+
+            renderOverview(d) {
+                return `
+                <section id="overview" class="py-32 scroll-mt-20 bg-white dark:bg-[#0A0A0A] border-b border-neutral-200 dark:border-neutral-900">
+                    <div class="max-w-7xl mx-auto px-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                            <div class="lg:col-span-8">
+                                <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-10 leading-tight text-neutral-900 dark:text-neutral-50">${d.hero.hook}</h2>
+                                <div class="space-y-8 text-lg md:text-xl text-neutral-600 dark:text-neutral-400 font-light leading-relaxed">
+                                    <p><strong class="font-semibold text-neutral-900 dark:text-neutral-200">Le problème —</strong> ${d.overview.problem}</p>
+                                    <p><strong class="font-semibold text-neutral-900 dark:text-neutral-200">La solution —</strong> ${d.overview.solution}</p>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-4 p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/30 border border-neutral-200 dark:border-neutral-800">
+                                <h3 class="text-sm font-semibold mb-6 uppercase tracking-widest text-neutral-500">Rôle & Périmètre</h3>
+                                <div class="space-y-6">
+                                    <div><span class="block text-xs text-neutral-400 uppercase tracking-wider mb-1">Contribution</span><span class="font-medium text-neutral-900 dark:text-neutral-100">${d.meta.role}</span></div>
+                                    <div class="h-px w-full bg-neutral-200 dark:bg-neutral-800"></div>
+                                    <div><span class="block text-xs text-neutral-400 uppercase tracking-wider mb-1">Livraison</span><span class="font-medium text-neutral-900 dark:text-neutral-100">${d.meta.year}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>`;
+            },
+
+            renderVideo(d) {
+                return `
+                <section class="py-32 bg-neutral-50 dark:bg-[#111111] border-b border-neutral-200 dark:border-neutral-900">
+                    <div class="max-w-6xl mx-auto px-6">
+                        <div class="relative w-full aspect-video rounded-3xl overflow-hidden bg-black border border-neutral-200 dark:border-neutral-800 shadow-2xl">
+                            <video controls poster="${d.video.poster}" class="w-full h-full object-cover" preload="none">
+                                <source src="${d.video.url}" type="video/mp4">
+                                Votre navigateur ne supporte pas la lecture de vidéos.
+                            </video>
+                        </div>
+                    </div>
+                </section>`;
+            },
+
+            renderWorkflow(d) {
+                let tabsHtml = '';
+                let panelsHtml = '';
+
+                d.workflow.forEach((step, index) => {
+                    const isActive = index === 0;
+                    
+                    tabsHtml += `
+                        <button class="workflow-tab flex-shrink-0 text-left p-6 rounded-2xl transition-all border outline-none focus-visible:ring-2 focus-visible:ring-brand-red w-full sm:w-auto lg:w-full
+                            ${isActive ? 'bg-white dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 shadow-md ring-1 ring-black/5 dark:ring-white/5' : 'border-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800/50 opacity-60 hover:opacity-100'}" 
+                                role="tab" aria-selected="${isActive}" aria-controls="panel-${step.id}" id="tab-${step.id}" tabindex="${isActive ? '0' : '-1'}">
+                            <div class="flex gap-4 items-start">
+                                <div class="step-indicator w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shrink-0 transition-colors ${isActive ? 'bg-brand-red text-white' : 'bg-neutral-200 dark:bg-neutral-700 text-neutral-500'}">${index + 1}</div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-neutral-900 dark:text-neutral-50">${step.title}</h4>
+                                    <p class="text-neutral-500 text-sm mt-1 line-clamp-2">${step.desc}</p>
+                                </div>
+                            </div>
+                        </button>`;
+
+                    let visualContent = '';
+                    if (step.visual.type === 'type-a') {
+                        visualContent = `
+                            <div class="text-center max-w-md">
+                                <div class="relative w-24 h-24 mx-auto mb-8 flex items-center justify-center">
+                                    <div class="absolute inset-0 bg-brand-red/20 blur-xl rounded-full"></div>
+                                    <div class="relative w-16 h-16 rounded-2xl bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 shadow-sm flex items-center justify-center">
+                                        <i data-lucide="${step.visual.icon}" class="w-8 h-8 text-neutral-900 dark:text-neutral-50"></i>
+                                    </div>
+                                </div>
+                                <h5 class="text-2xl font-bold mb-3">${step.visual.title}</h5>
+                                <p class="text-neutral-500 leading-relaxed">${step.visual.text}</p>
+                            </div>`;
+                    } else if (step.visual.type === 'type-b') {
+                        visualContent = `
+                            <div class="w-full max-w-2xl bg-white dark:bg-[#111111] rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-2xl overflow-hidden flex flex-col">
+                                <div class="h-10 bg-neutral-100 dark:bg-neutral-900/50 border-b border-neutral-200 dark:border-neutral-800 flex items-center px-4 gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-neutral-300 dark:bg-neutral-700"></div><div class="w-3 h-3 rounded-full bg-neutral-300 dark:bg-neutral-700"></div><div class="w-3 h-3 rounded-full bg-neutral-300 dark:bg-neutral-700"></div>
+                                </div>
+                                <div class="relative w-full pb-[60%]">
+                                    <img src="${step.visual.img}" alt="Capture de l'étape" class="absolute inset-0 w-full h-full object-cover">
+                                </div>
+                            </div>`;
+                    } else if (step.visual.type === 'type-c') {
+                        visualContent = `
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-center w-full">
+                                ${step.visual.steps.map((s,i) => `
+                                    <div class="px-6 py-4 bg-white dark:bg-neutral-800 rounded-xl text-sm font-medium border border-neutral-200 dark:border-neutral-700 shadow-sm z-10">${s}</div>
+                                    ${i < step.visual.steps.length-1 ? '<i data-lucide="arrow-right" class="text-brand-red hidden sm:block"></i><i data-lucide="arrow-down" class="text-brand-red sm:hidden"></i>' : ''}
+                                `).join('')}
+                            </div>`;
+                    } else {
+                        visualContent = `
+                            <div class="text-center">
+                                <div class="w-48 h-48 mx-auto rounded-[2rem] bg-gradient-to-br from-brand-red to-orange-500 flex items-center justify-center shadow-[0_10px_40px_rgba(239,68,68,0.3)] mb-8">
+                                    <i data-lucide="check-circle-2" class="w-16 h-16 text-white"></i>
+                                </div>
+                                <h5 class="text-2xl font-bold">${step.visual.content}</h5>
+                            </div>`;
+                    }
+
+                    // CSS Grid technique: place all panels in the same grid cell.
+                    // Only the active one gets pointer-events and opacity 1.
+                    panelsHtml += `
+                        <div id="panel-${step.id}" role="tabpanel" aria-labelledby="tab-${step.id}" 
+                             class="tab-panel [grid-area:1/1] w-full flex items-center justify-center p-6 sm:p-12 transition-all duration-300 ${isActive ? 'opacity-100 pointer-events-auto translate-y-0 z-10' : 'opacity-0 pointer-events-none translate-y-4 z-0'}">
+                            ${visualContent}
+                        </div>`;
+                });
+
+                return `
+                <section class="py-32 bg-white dark:bg-[#0A0A0A] border-b border-neutral-200 dark:border-neutral-900">
+                    <div class="max-w-7xl mx-auto px-6">
+                        <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-16">Workflow Utilisateur</h2>
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+                            <div class="lg:col-span-5 flex flex-row lg:flex-col gap-3 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 snap-x" role="tablist" aria-orientation="vertical">
+                                ${tabsHtml}
+                            </div>
+                            <div class="lg:col-span-7 rounded-3xl bg-neutral-50 dark:bg-neutral-900/30 border border-neutral-200 dark:border-neutral-800 relative overflow-hidden ring-1 ring-inset ring-neutral-900/5 min-h-[400px]">
+                                <div class="grid w-full h-full min-h-[400px]">
+                                    ${panelsHtml}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>`;
+            },
+
+            renderArchitecture(d) {
+                const nodeCount = d.architecture.nodes.length;
+                // Responsive Grid: 1 col mobile, 2 tablet, 4 desktop
+                let gridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'; 
+                if (nodeCount <= 3) gridClass = `grid-cols-1 sm:grid-cols-${nodeCount} max-w-${nodeCount === 2 ? '3xl' : '5xl'} mx-auto`;
+
+                // Rendering nodes
+                const nodesHtml = d.architecture.nodes.map((node, i) => {
+                    return `
+                        <div class="relative w-full bg-white dark:bg-neutral-800 rounded-2xl p-6 border shadow-sm text-center flex flex-col items-center justify-center gap-3 transition-transform hover:-translate-y-1 ${node.highlight ? 'border-brand-red ring-1 ring-brand-red' : 'border-neutral-200 dark:border-neutral-700'} z-10">
+                            <div class="w-12 h-12 rounded-xl flex items-center justify-center ${node.highlight ? 'bg-brand-red/10 text-brand-red' : 'bg-neutral-100 dark:bg-neutral-900 text-neutral-500'}">
+                                <i data-lucide="${node.icon}" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-neutral-900 dark:text-neutral-50">${node.label}</h4>
+                                <p class="text-xs text-neutral-500 uppercase tracking-widest mt-1">${node.sub}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // Injecting CSS arrows between columns (Only applicable if nodes > 1 and sequential layout)
+                // We interleave nodes with connector elements.
+                let interleavedHtml = '';
+                for(let i=0; i<d.architecture.nodes.length; i++) {
+                    interleavedHtml += `<div class="flex-1 min-w-[200px] max-w-xs mx-auto w-full">${nodesHtml[i]}</div>`;
+                    if (i < d.architecture.nodes.length - 1) {
+                        interleavedHtml += `
+                            <div class="flex-shrink-0 flex items-center justify-center text-neutral-300 dark:text-neutral-600 p-2">
+                                <i data-lucide="arrow-right" class="w-6 h-6 hidden lg:block"></i>
+                                <i data-lucide="arrow-down" class="w-6 h-6 lg:hidden"></i>
+                            </div>
+                        `;
+                    }
+                }
+
+                return `
+                <section class="py-32 bg-neutral-50 dark:bg-[#111111] border-b border-neutral-200 dark:border-neutral-900 overflow-hidden">
+                    <div class="max-w-[90rem] mx-auto px-6">
+                        <div class="text-center mb-20 max-w-3xl mx-auto">
+                            <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6">Architecture Technique</h2>
+                            <p class="text-lg text-neutral-500">${d.architecture.description}</p>
+                        </div>
+                        
+                        <!-- Flex container that wraps naturally. Connectors handle direction. -->
+                        <div class="flex flex-col lg:flex-row flex-wrap justify-center items-center gap-4 w-full">
+                            ${interleavedHtml}
+                        </div>
+                    </div>
+                </section>`;
+            },
+
+            renderGallery(d) {
+                let gridClass = d.gallery.length === 1 ? 'grid-cols-1' : (d.gallery.length === 2 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3');
+                
+                const imgsHtml = d.gallery.map(img => `
+                    <button class="gallery-item w-full aspect-video rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 group focus-visible:ring-2 focus-visible:ring-brand-red bg-neutral-100 dark:bg-neutral-900 outline-none" aria-label="Agrandir la capture d'écran">
+                        <img src="${img}" alt="Capture d'interface" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                    </button>
+                `).join('');
+
+                return `
+                <section class="py-32 bg-white dark:bg-[#0A0A0A] border-b border-neutral-200 dark:border-neutral-900">
+                    <div class="max-w-7xl mx-auto px-6">
+                        <h2 class="sr-only">Galerie d'images du projet</h2>
+                        <div class="grid ${gridClass} gap-6">
+                            ${imgsHtml}
+                        </div>
+                    </div>
+                </section>`;
+            },
+
+            renderChallenges(d) {
+                // Dynamically balance grid based on item count.
+                // If 1 item: centered max-w-3xl
+                // If 2 items: 2 columns, equal width
+                // If 3 items: 1st is full width, next 2 are half OR 3 equal columns (choosing 2 cols default with clever wrapping)
+                
+                const gridClass = d.challenges.length === 1 ? 'grid-cols-1 max-w-3xl mx-auto' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-2';
+
+                const listHtml = d.challenges.map((c, i) => {
+                    // For 3 items, make the first one span 2 columns on large screens
+                    const spanClass = (d.challenges.length === 3 && i === 0) ? 'md:col-span-2' : '';
+
+                    return `
+                    <article class="bg-white dark:bg-neutral-900 rounded-[2rem] p-8 md:p-10 border border-neutral-200 dark:border-neutral-800 transition-colors shadow-sm h-full flex flex-col ${spanClass}">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-12 h-12 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center shrink-0">
+                                <span class="font-bold text-neutral-400">0${i+1}</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-neutral-900 dark:text-neutral-50 leading-tight">${c.title}</h3>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 flex-1">
+                            <div>
+                                <h4 class="text-xs uppercase tracking-widest font-semibold text-neutral-400 mb-2">Contrainte</h4>
+                                <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">${c.problem}</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs uppercase tracking-widest font-semibold text-brand-red mb-2">Solution</h4>
+                                <p class="text-neutral-900 dark:text-neutral-200 leading-relaxed font-medium">${c.solution}</p>
+                            </div>
+                        </div>
+                    </article>
+                `}).join('');
+
+                return `
+                <section id="challenges" class="py-32 scroll-mt-20 bg-neutral-50 dark:bg-[#111111] border-b border-neutral-200 dark:border-neutral-900">
+                    <div class="max-w-7xl mx-auto px-6">
+                        <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-16">Défis Techniques</h2>
+                        <div class="grid ${gridClass} gap-6">
+                            ${listHtml}
+                        </div>
+                    </div>
+                </section>`;
+            },
+
+            renderStack(d) {
+                const tags = d.stack.map(s => `<span class="px-5 py-2.5 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-sm font-medium shadow-sm cursor-default hover:border-neutral-300 dark:hover:border-neutral-600 transition-colors">${s}</span>`).join('');
+                return `
+                <section class="py-24 bg-white dark:bg-[#0A0A0A] border-b border-neutral-200 dark:border-neutral-900 text-center">
+                    <div class="max-w-4xl mx-auto px-6">
+                        <h2 class="text-sm uppercase tracking-widest font-semibold text-neutral-400 mb-8">Stack Technique Principale</h2>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            ${tags}
+                        </div>
+                    </div>
+                </section>`;
+            },
+
+            renderNextProject(d) {
+                return `
+                <section class="py-16 bg-neutral-50 dark:bg-[#111111]">
+                    <div class="max-w-7xl mx-auto px-6">
+                        <button onclick="app.loadProject('${d.nextProject.id}')" aria-label="Voir le projet suivant : ${d.nextProject.title}" class="block w-full text-left relative h-[400px] rounded-[2rem] md:rounded-[3rem] overflow-hidden group focus-visible:ring-4 focus-visible:ring-brand-red outline-none border border-neutral-200 dark:border-neutral-800 bg-neutral-900">
+                            <div class="absolute inset-0 bg-neutral-900 group-hover:bg-neutral-800 transition-colors duration-500"></div>
+                            <div class="absolute inset-0 bg-noise opacity-20"></div>
+                            
+                            <div class="absolute inset-0 p-10 md:p-16 flex flex-col justify-between text-white z-10">
+                                <span class="text-xs font-bold tracking-widest uppercase text-neutral-400">Projet Suivant</span>
+                                <div class="mt-auto">
+                                    <h3 class="text-5xl md:text-7xl font-bold tracking-tighter mb-4 group-hover:translate-x-4 transition-transform duration-500">${d.nextProject.title}</h3>
+                                    <p class="text-xl md:text-2xl text-neutral-400 font-light max-w-xl group-hover:translate-x-2 transition-transform duration-500 delay-75">${d.nextProject.desc}</p>
+                                </div>
+                                <div class="absolute bottom-10 right-10 md:bottom-16 md:right-16 w-16 h-16 rounded-full bg-white text-neutral-900 flex items-center justify-center scale-90 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500">
+                                    <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </section>`;
+            },
+
+            // --- 3. EVENT BINDINGS & LOGIC ---
+
+            setupTheme() {
+                const btn = document.getElementById('theme-toggle');
+                const html = document.documentElement;
+                
+                btn.addEventListener('click', () => {
+                    const isDark = html.classList.contains('dark');
+                    if (isDark) {
+                        html.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        html.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                });
+            },
+
+            setupMobileMenu() {
+                const btn = document.getElementById('mobile-menu-btn');
+                const menu = document.getElementById('mobile-menu');
+                const links = document.querySelectorAll('.mobile-link');
+                
+                const toggleMenu = () => {
+                    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+                    btn.setAttribute('aria-expanded', !isExpanded);
+                    if(!isExpanded) {
+                        menu.classList.remove('hidden');
+                        menu.classList.add('flex');
+                    } else {
+                        menu.classList.add('hidden');
+                        menu.classList.remove('flex');
+                    }
+                };
+
+                btn.addEventListener('click', toggleMenu);
+                links.forEach(l => l.addEventListener('click', () => {
+                    toggleMenu();
+                }));
+            },
+
+            setupSmoothScroll() {
+                document.addEventListener('click', function (e) {
+                    const anchor = e.target.closest('a[href^="#"]');
+                    if(anchor) {
+                        const targetId = anchor.getAttribute('href');
+                        if (targetId === '#' || targetId.startsWith('#demo')) return;
+                        
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            e.preventDefault();
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                            targetElement.setAttribute('tabindex', '-1');
+                            targetElement.focus({ preventScroll: true });
+                        }
+                    }
+                });
+            },
+
+            bindWorkflowEvents() {
+                const tabs = document.querySelectorAll('.workflow-tab');
+                const panels = document.querySelectorAll('.tab-panel');
+
+                tabs.forEach((tab, index) => {
+                    tab.addEventListener('click', () => {
+                        const targetId = tab.getAttribute('aria-controls');
+                        
+                        // Reset all tabs
+                        tabs.forEach(t => {
+                            t.setAttribute('aria-selected', 'false');
+                            t.setAttribute('tabindex', '-1');
+                            t.classList.remove('bg-white', 'dark:bg-neutral-800', 'shadow-md', 'ring-1');
+                            t.classList.add('border-transparent', 'opacity-60');
+                            
+                            const indicator = t.querySelector('.step-indicator');
+                            if(indicator) {
+                                indicator.classList.remove('bg-brand-red', 'text-white');
+                                indicator.classList.add('bg-neutral-200', 'dark:bg-neutral-700', 'text-neutral-500');
+                            }
+                        });
+
+                        // Hide all panels (opacity & pointer-events)
+                        panels.forEach(p => {
+                            p.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0', 'z-10');
+                            p.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4', 'z-0');
+                        });
+
+                        // Activate current tab
+                        tab.setAttribute('aria-selected', 'true');
+                        tab.setAttribute('tabindex', '0');
+                        tab.classList.remove('border-transparent', 'opacity-60');
+                        tab.classList.add('bg-white', 'dark:bg-neutral-800', 'shadow-md', 'ring-1');
+                        
+                        const currentIndicator = tab.querySelector('.step-indicator');
+                        if(currentIndicator) {
+                            currentIndicator.classList.remove('bg-neutral-200', 'dark:bg-neutral-700', 'text-neutral-500');
+                            currentIndicator.classList.add('bg-brand-red', 'text-white');
+                        }
+
+                        // Show target panel
+                        const targetPanel = document.getElementById(targetId);
+                        if (targetPanel) {
+                            targetPanel.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4', 'z-0');
+                            targetPanel.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0', 'z-10');
+                        }
+                    });
+
+                    // Keyboard navigation
+                    tab.addEventListener('keydown', (e) => {
+                        let newIndex = index;
+                        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                            newIndex = (index + 1) % tabs.length;
+                            e.preventDefault();
+                        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                            newIndex = (index - 1 + tabs.length) % tabs.length;
+                            e.preventDefault();
+                        } else if (e.key === 'Home') {
+                            newIndex = 0;
+                            e.preventDefault();
+                        } else if (e.key === 'End') {
+                            newIndex = tabs.length - 1;
+                            e.preventDefault();
+                        }
+                        
+                        if (newIndex !== index) {
+                            tabs[newIndex].focus();
+                            tabs[newIndex].click();
+                        }
+                    });
+                });
+            },
+
+            setupLightbox() {
+                const dialog = document.getElementById('lightbox');
+                const closeBtn = document.getElementById('lightbox-close');
+                const imgEl = document.getElementById('lightbox-img');
+                const backdrop = document.getElementById('lightbox-backdrop');
+                
+                const closeLightbox = () => {
+                    imgEl.classList.remove('opacity-100');
+                    setTimeout(() => dialog.close(), 300);
+                    if(app.lastFocus) app.lastFocus.focus();
+                };
+
+                closeBtn.addEventListener('click', closeLightbox);
+                
+                dialog.addEventListener('click', (e) => {
+                    if (e.target === dialog || e.target === backdrop) closeLightbox();
+                });
+            },
+
+            bindGalleryEvents() {
+                const items = document.querySelectorAll('.gallery-item');
+                const dialog = document.getElementById('lightbox');
+                const imgEl = document.getElementById('lightbox-img');
+
+                items.forEach(item => {
+                    item.addEventListener('click', () => {
+                        app.lastFocus = item;
+                        const src = item.querySelector('img').src;
+                        imgEl.src = src;
+                        dialog.showModal();
+                        requestAnimationFrame(() => {
+                            imgEl.classList.add('opacity-100');
+                        });
+                    });
+                });
+            }
+        };
+
+        // Init App
+        document.addEventListener('DOMContentLoaded', () => {
+            app.init();
+        });
+
+    </script>
+</body>
+</html>

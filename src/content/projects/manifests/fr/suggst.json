@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "suggst",
+  "slug": "suggst",
+  "locale": "fr",
+  "variant": "standard",
+  "meta": {
+    "title": "Suggst — assistance contextualisée aux échanges professionnels",
+    "category": "Application macOS"
+  },
+  "seo": {
+    "title": "Suggst | Application macOS native en SwiftUI",
+    "description": "Étude de cas de Suggst : capture audio macOS, transcription locale, contexte métier et génération de réponses via OpenAI.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "La réunion continue, avec le bon contexte à portée de main.",
+    "description": "Suggst combine le contexte de référence, celui de l’échange et la parole transcrite pour préparer une réponse après une action explicite.",
+    "pill": "macOS · SwiftUI",
+    "visual": {
+      "type": "illustration",
+      "imageId": "suggst",
+      "label": "Suggst"
+    }
+  },
+  "overview": {
+    "problem": "Une question en réunion peut demander de croiser des informations de référence avec les éléments propres à l’échange, tout en suivant la conversation.",
+    "solution": "Suggst associe deux contextes enregistrés à une capture audio autorisée. Sur déclenchement manuel, il transcrit, extrait la demande et prépare une réponse contextualisée.",
+    "audience": "Réunions, visioconférences et échanges professionnels",
+    "scope": "Application macOS native : interface, audio, traitement de la parole et génération"
+  },
+  "workflow": [
+    {
+      "id": "step-1",
+      "title": "Préparer les contextes",
+      "description": "Préparer les deux contextes.",
+      "visual": {
+        "type": "icon",
+        "icon": "layers",
+        "title": "Deux contextes complémentaires",
+        "description": "Renseigner un contexte de référence réutilisable et les informations propres à l’échange. Le contexte durable et celui de la discussion sont enregistrés séparément."
+      }
+    },
+    {
+      "id": "step-2",
+      "title": "Démarrer l’écoute",
+      "description": "Choisir l’audio et démarrer l’écoute.",
+      "visual": {
+        "type": "icon",
+        "icon": "monitor",
+        "title": "Capture audio native",
+        "description": "Sélectionner un microphone et démarrer une capture autorisée, avec audio système lorsque disponible. L’application coordonne les sources audio et affiche leurs prérequis."
+      }
+    },
+    {
+      "id": "step-3",
+      "title": "Terminer la question",
+      "description": "Clore la question pour la transcrire.",
+      "visual": {
+        "type": "icon",
+        "icon": "workflow",
+        "title": "Déclenchement explicite",
+        "description": "Déclencher la clôture d’une question pour figer son extrait audio et lancer sa transcription. Chaque action crée un traitement identifiable, distinct des questions précédentes."
+      }
+    },
+    {
+      "id": "step-4",
+      "title": "Consulter la réponse",
+      "description": "Lire la demande et la réponse.",
+      "visual": {
+        "type": "icon",
+        "icon": "sparkles",
+        "title": "Restitution contextualisée",
+        "description": "Lire la demande extraite et la réponse générée, avec un état clair pendant le traitement. La carte différencie attente, réponse disponible et échec."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "Une chaîne pilotée par SwiftUI traite l’audio en local, extrait la demande, puis appelle OpenAI avec le contexte sélectionné.",
+    "featuredNodeIds": ["native-ui", "capture", "processing", "generation"],
+    "nodes": [
+      {
+        "id": "native-ui",
+        "label": "Application macOS",
+        "type": "client",
+        "role": "Interface et action explicite de l’utilisateur",
+        "technology": "SwiftUI",
+        "icon": "client",
+        "highlight": true
+      },
+      {
+        "id": "capture",
+        "label": "Capture audio",
+        "type": "service",
+        "role": "Microphone, audio système et extraits identifiés",
+        "technology": "AVFoundation, ScreenCaptureKit",
+        "icon": "service"
+      },
+      {
+        "id": "processing",
+        "label": "Traitement local",
+        "type": "service",
+        "role": "Transcription finale et extraction de la demande",
+        "technology": "Swift, WhisperKit",
+        "icon": "worker"
+      },
+      {
+        "id": "generation",
+        "label": "Génération",
+        "type": "api",
+        "role": "Réponse fondée sur la demande et les contextes",
+        "technology": "OpenAI Responses API",
+        "icon": "cloud"
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-1",
+        "from": "native-ui",
+        "to": "capture",
+        "label": "Démarre et clôture"
+      },
+      {
+        "id": "edge-2",
+        "from": "capture",
+        "to": "processing",
+        "label": "Transmet un extrait"
+      },
+      {
+        "id": "edge-3",
+        "from": "processing",
+        "to": "generation",
+        "label": "Demande contextualisée"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Préserver l’identité de chaque question",
+      "constraint": "Les traitements asynchrones peuvent aboutir dans le désordre ou livrer un événement en double.",
+      "solution": "Identifiants par question, résultats scellés et ingestion idempotente avec rejet des événements incohérents."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Composer avec les sources audio macOS",
+      "constraint": "Le microphone et l’audio système dépendent de fournisseurs et d’autorisations distincts.",
+      "solution": "Deux fournisseurs natifs coordonnés, avec un état explicite quand la capture système est indisponible."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Maîtriser les données de contexte",
+      "constraint": "Les contextes et contenus d’échanges peuvent comporter des informations sensibles.",
+      "solution": "Stockage local des documents, secret API dans le Trousseau et envoi ciblé des éléments utiles à OpenAI."
+    },
+    {
+      "id": "challenge-4",
+      "title": "Limiter la latence en conversation",
+      "constraint": "La réponse doit arriver assez vite pour rester utile dans l’échange, malgré le cumul des traitements audio, de transcription et de génération.",
+      "solution": "Transcription locale, génération en streaming avec aperçu progressif et télémétrie par étape pour identifier les temps d’attente."
+    }
+  ],
+  "stack": [
+    "swift",
+    "xcode",
+    "openai",
+    "json",
+    "bash",
+    "swiftui",
+    "whisperkit",
+    "screencapturekit"
+  ],
+  "outcomes": [
+    {
+      "id": "outcome-1",
+      "title": "Application native intégrée",
+      "description": "Écrans de contextes, écoute, préparation et restitution réunis dans une interface SwiftUI."
+    },
+    {
+      "id": "outcome-2",
+      "title": "Chaîne de réponse contextualisée",
+      "description": "Capture, transcription WhisperKit, extraction locale et génération OpenAI reliées au déclenchement manuel."
+    },
+    {
+      "id": "outcome-3",
+      "title": "Outils de diagnostic et de validation",
+      "description": "Cockpit de développement, traces structurées, corpus de tests et scripts de build intégrés au dépôt."
+    }
+  ]
+}

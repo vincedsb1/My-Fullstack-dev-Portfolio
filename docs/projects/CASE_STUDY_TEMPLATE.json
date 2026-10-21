@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "status": "fixture",
+  "projectId": "fixture",
+  "slug": "nom-du-projet",
+  "locale": "fr",
+  "variant": "standard",
+  "meta": {
+    "title": "Nom du projet — étude de cas",
+    "category": "Catégorie du projet"
+  },
+  "seo": {
+    "title": "Titre SEO à compléter",
+    "description": "Description SEO à compléter.",
+    "noindex": true
+  },
+  "hero": {
+    "hook": "Accroche du projet à compléter",
+    "description": "Introduction du projet à compléter.",
+    "pill": "CATÉGORIE / ANNÉE",
+    "visual": {
+      "type": "illustration",
+      "label": "Nom du projet"
+    }
+  },
+  "overview": {
+    "problem": "Problème rencontré à compléter.",
+    "solution": "Solution mise en œuvre à compléter.",
+    "audience": "Public cible à compléter.",
+    "role": "Contribution personnelle à compléter.",
+    "scope": "Périmètre à compléter."
+  },
+  "video": {
+    "provider": "youtube",
+    "verified": false,
+    "playLabel": "Lire la vidéo du projet",
+    "regionLabel": "Lecteur vidéo du projet"
+  },
+  "workflow": [
+    {
+      "id": "step-1",
+      "title": "Étape 1 à compléter",
+      "description": "Description de cette étape à compléter.",
+      "visual": {
+        "type": "icon",
+        "icon": "monitor",
+        "title": "Titre du visuel à compléter",
+        "description": "Ce que représente ce visuel à compléter."
+      }
+    },
+    {
+      "id": "step-2",
+      "title": "Étape 2 à compléter",
+      "description": "Description de cette étape à compléter.",
+      "visual": {
+        "type": "icon",
+        "icon": "sparkles",
+        "title": "Titre du visuel à compléter",
+        "description": "Ce que représente ce visuel à compléter."
+      }
+    },
+    {
+      "id": "step-3",
+      "title": "Étape 3 à compléter",
+      "description": "Description de cette étape à compléter.",
+      "visual": {
+        "type": "icon",
+        "icon": "workflow",
+        "title": "Titre du visuel à compléter",
+        "description": "Ce que représente ce visuel à compléter."
+      }
+    },
+    {
+      "id": "step-4",
+      "title": "Étape 4 à compléter",
+      "description": "Description de cette étape à compléter.",
+      "visual": {
+        "type": "icon",
+        "icon": "layers",
+        "title": "Titre du visuel à compléter",
+        "description": "Ce que représente ce visuel à compléter."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "Fonctionnement technique à compléter.",
+    "featuredNodeIds": ["interface", "server", "storage", "integration"],
+    "nodes": [
+      {
+        "id": "interface",
+        "label": "Interface",
+        "type": "frontend",
+        "technology": "Technologie à compléter",
+        "role": "Rôle à compléter.",
+        "icon": "browser",
+        "highlight": true
+      },
+      {
+        "id": "server",
+        "label": "Serveur",
+        "type": "server",
+        "technology": "Technologie à compléter",
+        "role": "Rôle à compléter.",
+        "icon": "service"
+      },
+      {
+        "id": "storage",
+        "label": "Persistance",
+        "type": "database",
+        "technology": "Technologie à compléter",
+        "role": "Rôle à compléter.",
+        "icon": "database"
+      },
+      {
+        "id": "integration",
+        "label": "Intégration",
+        "type": "integration",
+        "technology": "Technologie à compléter",
+        "role": "Rôle à compléter.",
+        "icon": "cloud"
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-1",
+        "from": "interface",
+        "to": "server",
+        "label": "Relation à compléter"
+      },
+      {
+        "id": "edge-2",
+        "from": "server",
+        "to": "storage",
+        "label": "Relation à compléter"
+      },
+      {
+        "id": "edge-3",
+        "from": "storage",
+        "to": "integration",
+        "label": "Relation à compléter"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Défi 1 à compléter",
+      "constraint": "Contrainte à compléter.",
+      "solution": "Solution à compléter."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Défi 2 à compléter",
+      "constraint": "Contrainte à compléter.",
+      "solution": "Solution à compléter."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Défi 3 à compléter",
+      "constraint": "Contrainte à compléter.",
+      "solution": "Solution à compléter."
+    },
+    {
+      "id": "challenge-4",
+      "title": "Défi 4 à compléter",
+      "constraint": "Contrainte à compléter.",
+      "solution": "Solution à compléter."
+    }
+  ],
+  "stack": [],
+  "outcomes": [
+    {
+      "id": "outcome-1",
+      "title": "Résultat 1 à compléter",
+      "description": "Résultat observable à compléter."
+    },
+    {
+      "id": "outcome-2",
+      "title": "Résultat 2 à compléter",
+      "description": "Résultat observable à compléter."
+    },
+    {
+      "id": "outcome-3",
+      "title": "Résultat 3 à compléter",
+      "description": "Résultat observable à compléter."
+    }
+  ]
+}

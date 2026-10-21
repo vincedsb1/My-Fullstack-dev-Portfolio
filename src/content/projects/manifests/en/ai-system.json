@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "status": "published",
+  "projectId": "aiSystem",
+  "slug": "ai-system",
+  "locale": "en",
+  "variant": "standard",
+  "meta": {
+    "title": "AiSystem — Shared AI resource library and synchronization",
+    "category": "macOS application"
+  },
+  "seo": {
+    "title": "AiSystem — Managing AI resources on macOS",
+    "description": "A macOS app to centralize, inspect and distribute shared AI skills and reference documents across projects and development assistants.",
+    "noindex": false
+  },
+  "hero": {
+    "hook": "One source of truth for AI development resources",
+    "description": "A native macOS app that brings skills and documents together, highlights differences across projects, and controls distribution to Claude and Codex.",
+    "pill": "Native macOS app",
+    "visual": {
+      "type": "image",
+      "src": "/aiSystem.png",
+      "alt": "Illustrated preview of AiSystem: overview and resource synchronization for Claude and Codex.",
+      "width": 1920,
+      "height": 1440
+    }
+  },
+  "overview": {
+    "problem": "When projects maintain separate rules and AI skills, copies drift and changes become difficult to track across Claude and Codex.",
+    "solution": "AiSystem centralizes reference sources, detects differences, and lets users choose, preview, and distribute versions without silently overwriting local edits.",
+    "audience": "Developers working across projects and AI assistants",
+    "role": "Product design and implementation",
+    "scope": "SwiftUI desktop app and local Python/Bash automation"
+  },
+  "workflow": [
+    {
+      "id": "step-1",
+      "title": "Collect shared resources",
+      "description": "Bring reference documents and skills into one shared library.",
+      "visual": {
+        "type": "icon",
+        "icon": "layers",
+        "title": "Shared reference library",
+        "description": "Canonical files are organized and linked to their target projects."
+      }
+    },
+    {
+      "id": "step-2",
+      "title": "Choose target projects",
+      "description": "Select which items each project receives without immediately changing its files.",
+      "visual": {
+        "type": "icon",
+        "icon": "workflow",
+        "title": "Per-project distribution",
+        "description": "Each project card shows Yes, No, or Partial."
+      }
+    },
+    {
+      "id": "step-3",
+      "title": "Compare versions",
+      "description": "Spot newer project copies and choose which version to import.",
+      "visual": {
+        "type": "icon",
+        "icon": "code",
+        "title": "Source selection",
+        "description": "Library and project copies can be compared by date and content."
+      }
+    },
+    {
+      "id": "step-4",
+      "title": "Preview and distribute",
+      "description": "Review creates, replacements and blockers before applying controlled changes.",
+      "visual": {
+        "type": "icon",
+        "icon": "monitor",
+        "title": "Preview before writing",
+        "description": "Operations expose their effects and offer conditional undo."
+      }
+    }
+  ],
+  "architecture": {
+    "description": "SwiftUI invokes Bash routes through Process; Python modules use YAML sources to handle checks, versions, and project copies.",
+    "featuredNodeIds": [
+      "macos-ui",
+      "command-runner",
+      "action-router",
+      "python-backend"
+    ],
+    "nodes": [
+      {
+        "id": "macos-ui",
+        "label": "macOS app",
+        "type": "client",
+        "role": "Navigation, library and operation feedback",
+        "technology": "SwiftUI",
+        "icon": "client",
+        "highlight": true
+      },
+      {
+        "id": "command-runner",
+        "label": "CommandRunner",
+        "type": "service",
+        "role": "Runs local actions using separate arguments",
+        "technology": "Swift / Process",
+        "icon": "service",
+        "highlight": true
+      },
+      {
+        "id": "action-router",
+        "label": "Action router",
+        "type": "service",
+        "role": "Dispatches backend actions",
+        "technology": "Bash",
+        "icon": "code",
+        "highlight": true
+      },
+      {
+        "id": "python-backend",
+        "label": "Domain services",
+        "type": "worker",
+        "role": "Inventory, versions, distribution and checks",
+        "technology": "Python",
+        "icon": "worker",
+        "highlight": true
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-1",
+        "from": "macos-ui",
+        "to": "command-runner",
+        "label": "Typed commands"
+      },
+      {
+        "id": "edge-2",
+        "from": "command-runner",
+        "to": "action-router",
+        "label": "Process + argv"
+      },
+      {
+        "id": "edge-3",
+        "from": "action-router",
+        "to": "python-backend",
+        "label": "Local routes"
+      }
+    ]
+  },
+  "challenges": [
+    {
+      "id": "challenge-1",
+      "title": "Spot drift without competing sources",
+      "constraint": "The same resources are copied across projects and Claude/Codex formats.",
+      "solution": "A registry and manifest define canonical sources; Inventory and Doctor classify missing, drifting, or conflicting copies."
+    },
+    {
+      "id": "challenge-2",
+      "title": "Prevent accidental overwrites during distribution",
+      "constraint": "Synchronization can meet local edits or an outdated operation plan.",
+      "solution": "Preview, plan IDs, explicit blockers, per-project atomic writes, and conditional undo."
+    },
+    {
+      "id": "challenge-3",
+      "title": "Keep business state separate from process logs",
+      "constraint": "The app needs clear operation feedback while business actions run as local command-line processes.",
+      "solution": "Versioned JSON contracts, Swift decoding, cached reads, and a session-scoped operation history."
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "outcome-1",
+      "title": "Native macOS control interface",
+      "description": "Overview, Projects, Library and Activity destinations, a command palette, and contextual operation feedback."
+    },
+    {
+      "id": "outcome-2",
+      "title": "Reusable resource library",
+      "description": "Shared resource management, version selection, project targeting, imports and redistribution."
+    },
+    {
+      "id": "outcome-3",
+      "title": "Checks and recovery workflows",
+      "description": "Inventory, diagnostics, change previews, guarded writes, and conditional undo support."
+    }
+  ],
+  "stack": [
+    "swift",
+    "swiftui",
+    "python",
+    "bash",
+    "xcode",
+    "json"
+  ]
+}
