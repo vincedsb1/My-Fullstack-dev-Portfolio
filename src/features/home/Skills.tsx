@@ -130,13 +130,16 @@ async function Skills() {
     >
       <div
         id="skillsTitleTopContainer"
-        className="mb-2 flex w-full flex-row items-center text-2xl font-bold text-neutral-700 dark:text-neutral-300"
+        className="mb-2 flex w-full flex-row items-center text-neutral-700 dark:text-neutral-300"
         data-reveal
       >
         <div id="skillsIcon" className="w-12">
           <Code2 size={32} className="mr-6 text-5xl" />
         </div>
-        <h2 id="skillsTitle" className="text-2xl 3xs:text-3xl">
+        <h2
+          id="skillsTitle"
+          className="text-2xl font-bold tracking-tight 3xs:text-3xl"
+        >
           {t("title")}
         </h2>
       </div>
@@ -144,7 +147,7 @@ async function Skills() {
         <div id="skillsIconBlank" className="w-12 shrink-0" />
         <div
           id="skillsIntroContainer"
-          className="mb-16 flex flex-row text-base leading-tight text-neutral-400 dark:text-neutral-500 3xs:text-xl"
+          className="mb-16 flex flex-row text-base font-light leading-relaxed text-[#707070] dark:text-neutral-400 md:text-lg"
           data-reveal
         >
           {t("intro")}
@@ -163,7 +166,7 @@ async function Skills() {
             data-reveal
             data-reveal-delay={categoryIndex * 40}
           >
-            <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.16em] text-neutral-700 dark:text-neutral-300">
+            <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-700 dark:text-neutral-300">
               {t(category.id)}
             </h3>
 

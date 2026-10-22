@@ -1,6 +1,8 @@
 # Plan d'uniformisation typographique de l'accueil
 
-Inventaire vérifié le 22 octobre 2026 sur la page d'accueil française et anglaise. Ce document décrit la prochaine étape ; **aucun style typographique n'est modifié par ce plan**.
+Inventaire initial vérifié le 22 octobre 2026 sur la page d'accueil française et anglaise. Les styles indiqués dans la colonne « Style actuel » décrivent l'état relevé avant la mise en œuvre.
+
+**Avancement :** Compétences est la seule section harmonisée à ce stade. Son titre adopte l'interlettrage resserré des autres titres, son sous-titre utilise Inter 16–18 px/300 avec `#707070` en clair et `neutral-400` en sombre, et ses catégories passent en graisse 600. Les bulles restent en 14 px/500, conformément au plan. Projets, Blog, Parcours et FAQ restent à traiter.
 
 ## Périmètre et références fixes
 
