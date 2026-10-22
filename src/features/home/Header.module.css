@@ -780,6 +780,17 @@
   }
 }
 
+@media (min-width: 730px) {
+  .actions {
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+  }
+
+  .actionDivider {
+    display: block;
+  }
+}
+
 @media (min-width: 768px) {
   .name {
     font-size: 5rem;
@@ -791,7 +802,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .hero {
     padding-block: 6rem;
   }
@@ -840,11 +851,7 @@
 
 @media (min-width: 1280px) {
   .actions {
-    column-gap: 2rem;
-  }
-
-  .actionDivider {
-    display: block;
+    column-gap: 1rem;
   }
 }
 
