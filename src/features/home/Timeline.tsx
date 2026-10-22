@@ -44,11 +44,7 @@ async function Timeline() {
         </div>
       </div>
 
-      <div
-        id="timelineCardsContainer"
-        className="relative w-full"
-        data-reveal
-      >
+      <div id="timelineCardsContainer" className="relative w-full" data-reveal>
         <div
           aria-hidden="true"
           className="pointer-events-none absolute bottom-8 left-4 top-8 z-0 w-[2px] -translate-x-1/2 bg-neutral-200/80 dark:bg-neutral-800 md:left-6"
@@ -79,8 +75,8 @@ async function Timeline() {
                       isCurrent
                         ? "h-3.5 w-3.5 bg-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.8)]"
                         : index === 1
-                          ? "h-3 w-3 bg-neutral-300 group-hover:bg-red-500 group-hover:ring-red-500/20 dark:bg-neutral-600"
-                          : "h-3 w-3 bg-neutral-300 group-hover:bg-neutral-500 dark:bg-neutral-600 dark:group-hover:bg-neutral-300"
+                        ? "h-3 w-3 bg-neutral-300 group-hover:bg-red-500 group-hover:ring-red-500/20 dark:bg-neutral-600"
+                        : "h-3 w-3 bg-neutral-300 group-hover:bg-neutral-500 dark:bg-neutral-600 dark:group-hover:bg-neutral-300"
                     }`}
                   />
                 </div>
