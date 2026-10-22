@@ -16,27 +16,68 @@ export function BlogChecklistDemo() {
   return (
     <div className="blog-ds__checklist">
       <div className="blog-ds__checklist-heading">
-        <div><p>Ta progression</p><strong aria-live="polite">{count}/{checklist.length} étapes terminées</strong></div>
-        <button type="button" onClick={() => setCompleted({})} disabled={count === 0}><RotateCcw size={14} aria-hidden="true" /> Réinitialiser</button>
+        <div>
+          <p>Ta progression</p>
+          <strong aria-live="polite">
+            {count}/{checklist.length} étapes terminées
+          </strong>
+        </div>
+        <button
+          type="button"
+          onClick={() => setCompleted({})}
+          disabled={count === 0}
+        >
+          <RotateCcw size={14} aria-hidden="true" /> Réinitialiser
+        </button>
       </div>
-      <div className="blog-ds__checklist-track" role="progressbar" aria-label="Progression de la checklist" aria-valuemin={0} aria-valuemax={checklist.length} aria-valuenow={count}>
+      <div
+        className="blog-ds__checklist-track"
+        role="progressbar"
+        aria-label="Progression de la checklist"
+        aria-valuemin={0}
+        aria-valuemax={checklist.length}
+        aria-valuenow={count}
+      >
         <div style={{ width: `${(count / checklist.length) * 100}%` }} />
       </div>
       <div className="blog-ds__checklist-items">
-        {checklist.map((item) => <label key={item.id} className="blog-ds__checklist-item" data-checked={completed[item.id] ? "true" : "false"}>
-          <input type="checkbox" checked={Boolean(completed[item.id])} onChange={(event) => setCompleted((current) => ({ ...current, [item.id]: event.target.checked }))} />
-          <span>{item.text}</span>
-          {completed[item.id] ? <CheckCircle2 size={17} aria-hidden="true" /> : null}
-        </label>)}
+        {checklist.map((item) => (
+          <label
+            key={item.id}
+            className="blog-ds__checklist-item"
+            data-checked={completed[item.id] ? "true" : "false"}
+          >
+            <input
+              type="checkbox"
+              checked={Boolean(completed[item.id])}
+              onChange={(event) =>
+                setCompleted((current) => ({
+                  ...current,
+                  [item.id]: event.target.checked,
+                }))
+              }
+            />
+            <span>{item.text}</span>
+            {completed[item.id] ? (
+              <CheckCircle2 size={17} aria-hidden="true" />
+            ) : null}
+          </label>
+        ))}
       </div>
-      <p className="blog-ds__hint">Démonstration isolée : aucun état n’est enregistré. La migration du guide conservera sa clé de stockage historique.</p>
+      <p className="blog-ds__hint">
+        Démonstration isolée : aucun état n’est enregistré. La migration du
+        guide conservera sa clé de stockage historique.
+      </p>
     </div>
   );
 }
 
 type Key = "need" | "market" | "capacity";
 const questions: Array<{ id: Key; text: string }> = [
-  { id: "need", text: "Cette fonctionnalité répond-elle à un besoin identifié ?" },
+  {
+    id: "need",
+    text: "Cette fonctionnalité répond-elle à un besoin identifié ?",
+  },
   { id: "market", text: "Dispose-t-on d’un signal d’intérêt mesurable ?" },
   { id: "capacity", text: "Peut-on assurer sa maintenance ?" },
 ];
@@ -52,15 +93,50 @@ export function BlogDecisionDemo() {
       : "Priorité à la validation du besoin avant de multiplier les fonctionnalités.";
   }, [answers, complete]);
 
-  return <div className="blog-ds__decision">
-    {questions.map((question, index) => <fieldset key={question.id} className="blog-ds__decision-question">
-      <legend><span>{String(index + 1).padStart(2, "0")}</span>{question.text}</legend>
-      <div>{[true, false].map((option) => <button key={String(option)} type="button" aria-pressed={answers[question.id] === option}
-        onClick={() => setAnswers((old) => ({ ...old, [question.id]: option }))}>{option ? "Oui" : "Non"}</button>)}</div>
-    </fieldset>)}
-    <div className="blog-ds__decision-result" role="status" aria-live="polite">
-      <span>Résultat</span><p>{decision ?? "Réponds aux trois questions pour afficher une orientation."}</p>
+  return (
+    <div className="blog-ds__decision">
+      {questions.map((question, index) => (
+        <fieldset key={question.id} className="blog-ds__decision-question">
+          <legend>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            {question.text}
+          </legend>
+          <div>
+            {[true, false].map((option) => (
+              <button
+                key={String(option)}
+                type="button"
+                aria-pressed={answers[question.id] === option}
+                onClick={() =>
+                  setAnswers((old) => ({ ...old, [question.id]: option }))
+                }
+              >
+                {option ? "Oui" : "Non"}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+      ))}
+      <div
+        className="blog-ds__decision-result"
+        role="status"
+        aria-live="polite"
+      >
+        <span>Résultat</span>
+        <p>
+          {decision ??
+            "Réponds aux trois questions pour afficher une orientation."}
+        </p>
+      </div>
+      {Object.keys(answers).length > 0 && (
+        <button
+          type="button"
+          className="blog-ds__decision-reset"
+          onClick={() => setAnswers({})}
+        >
+          Recommencer
+        </button>
+      )}
     </div>
-    {Object.keys(answers).length > 0 && <button type="button" className="blog-ds__decision-reset" onClick={() => setAnswers({})}>Recommencer</button>}
-  </div>;
+  );
 }

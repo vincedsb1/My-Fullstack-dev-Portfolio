@@ -81,7 +81,8 @@ export default async function BlogArticlePage({
 
   const readingMinutes = getArticleReadingTime(article);
   const Layout = articleLayouts[article.metadata.renderer ?? "default"];
-  const jsonArticle = "format" in article && article.format === "json" ? article.data : null;
+  const jsonArticle =
+    "format" in article && article.format === "json" ? article.data : null;
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -132,19 +133,24 @@ export default async function BlogArticlePage({
       <JsonLd data={structuredData} />
       <JsonLd data={breadcrumbStructuredData} />
       {jsonArticle ? (
-        <JsonArticlePage article={jsonArticle} readingMinutes={readingMinutes}
-          related={(jsonArticle.related?.slugs ?? []).map(s =>
-            getPublishedArticles(locale).find(a => a.metadata.slug === s))
+        <JsonArticlePage
+          article={jsonArticle}
+          readingMinutes={readingMinutes}
+          related={(jsonArticle.related?.slugs ?? [])
+            .map((s) =>
+              getPublishedArticles(locale).find((a) => a.metadata.slug === s),
+            )
             .filter((a): a is NonNullable<typeof a> => Boolean(a))
-            .map(a => ({slug: a.metadata.slug, title: a.metadata.title}))} />
-      ) : (
-      <Layout article={article} readingMinutes={readingMinutes}>
-        <ArticleDocument article={article} readingMinutes={readingMinutes} />
-        <RelatedProjects
-          locale={locale}
-          slugs={article.metadata.relatedProjects ?? []}
+            .map((a) => ({ slug: a.metadata.slug, title: a.metadata.title }))}
         />
-      </Layout>
+      ) : (
+        <Layout article={article} readingMinutes={readingMinutes}>
+          <ArticleDocument article={article} readingMinutes={readingMinutes} />
+          <RelatedProjects
+            locale={locale}
+            slugs={article.metadata.relatedProjects ?? []}
+          />
+        </Layout>
       )}
     </div>
   );

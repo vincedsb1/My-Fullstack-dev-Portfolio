@@ -13,15 +13,21 @@ const guideContent = readFileSync(
   "utf8",
 );
 import { estimateReadingTime } from "./reading-time";
-import { readAllJsonBlogArticles, validateMergedBlogArticles, getJsonReadingText } from "./json-source.mjs";
+import {
+  readAllJsonBlogArticles,
+  validateMergedBlogArticles,
+  getJsonReadingText,
+} from "./json-source.mjs";
 import type { JsonBlogRecord } from "./json-source.mjs";
-
 
 export type { BlogArticleMetadata, BlogLocale };
 export type BlogArticleRecord = LegacyBlogArticleRecord | JsonBlogRecord;
 
 function readAllSources(): BlogArticleRecord[] {
-  return validateMergedBlogArticles([...readAllBlogArticles(), ...readAllJsonBlogArticles()]);
+  return validateMergedBlogArticles([
+    ...readAllBlogArticles(),
+    ...readAllJsonBlogArticles(),
+  ]);
 }
 
 let cachedArticles: BlogArticleRecord[] | undefined;
@@ -63,7 +69,9 @@ export function getArticleReadingTime(article: BlogArticleRecord) {
   const source =
     "format" in article && article.format === "json"
       ? getJsonReadingText(article.data)
-      : article.metadata.renderer === "guide" ? guideContent : article.body;
+      : article.metadata.renderer === "guide"
+      ? guideContent
+      : article.body;
   return estimateReadingTime(source);
 }
 

@@ -37,7 +37,9 @@ export default function JsonChecklist({
       const data: unknown = JSON.parse(saved);
       if (!data || typeof data !== "object" || Array.isArray(data)) return {};
       const state = data as Record<string, unknown>;
-      return Object.fromEntries(items.map((item) => [item.id, state[item.id] === true]));
+      return Object.fromEntries(
+        items.map((item) => [item.id, state[item.id] === true]),
+      );
     } catch {
       return {};
     }
@@ -45,7 +47,11 @@ export default function JsonChecklist({
 
   const count = items.filter((item) => checked[item.id]).length;
   function update(next: Record<string, boolean>) {
-    const stored = Object.fromEntries(items.filter((item) => next[item.id] === true).map((item) => [item.id, true]));
+    const stored = Object.fromEntries(
+      items
+        .filter((item) => next[item.id] === true)
+        .map((item) => [item.id, true]),
+    );
     try {
       window.localStorage.setItem(storageKey, JSON.stringify(stored));
     } catch {
@@ -55,19 +61,39 @@ export default function JsonChecklist({
   }
   const fr = locale === "fr";
   return (
-    <section className="blog-ds__json-checklist" aria-label={fr ? "Liste d’actions" : "Action checklist"}>
+    <section
+      className="blog-ds__json-checklist"
+      aria-label={fr ? "Liste d’actions" : "Action checklist"}
+    >
       <div className="blog-ds__json-checklist-head">
         <span aria-live="polite">
-          {count}/{items.length} {fr ? (items.length === 1 ? "étape terminée" : "étapes terminées") : (items.length === 1 ? "completed step" : "completed steps")}
+          {count}/{items.length}{" "}
+          {fr
+            ? items.length === 1
+              ? "étape terminée"
+              : "étapes terminées"
+            : items.length === 1
+            ? "completed step"
+            : "completed steps"}
         </span>
         <button type="button" onClick={() => update({})} disabled={count === 0}>
           {fr ? "Réinitialiser" : "Reset"}
         </button>
       </div>
-      <progress max={items.length} value={count} aria-label={fr ? "Progression de la checklist" : "Checklist progress"} />
+      <progress
+        max={items.length}
+        value={count}
+        aria-label={fr ? "Progression de la checklist" : "Checklist progress"}
+      />
       {items.map((item) => (
         <label key={item.id} className="blog-ds__json-checklist-row">
-          <input type="checkbox" checked={Boolean(checked[item.id])} onChange={(event) => update({ ...checked, [item.id]: event.target.checked })} />
+          <input
+            type="checkbox"
+            checked={Boolean(checked[item.id])}
+            onChange={(event) =>
+              update({ ...checked, [item.id]: event.target.checked })
+            }
+          />
           <span>{item.label}</span>
         </label>
       ))}
