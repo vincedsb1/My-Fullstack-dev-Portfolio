@@ -8,7 +8,7 @@ référence visuelle. Ne pas dupliquer sa mise en page ; valider les contenus av
 
 Pour toute création ou modification d’article, lis d’abord [`docs/blog/ARCHITECTURE.md`](docs/blog/ARCHITECTURE.md), [`docs/blog/CREER_UN_ARTICLE.md`](docs/blog/CREER_UN_ARTICLE.md) et [`docs/blog/PROMPT_NOUVEL_ARTICLE.md`](docs/blog/PROMPT_NOUVEL_ARTICLE.md).
 
-Les articles existants restent en MDX sous `src/content/blog/<locale>/<slug>.mdx`. Le moteur JSON v1 est disponible sous `src/content/blog-json/<locale>/<slug>.json` et documenté dans `docs/blog/JSON_ENGINE.md` : pour tout nouvel article JSON, valider avec `npm run blog:validate`, `npm run blog:test:json`, puis `npm run build` et `npm run blog:test:seo`. Ne pas convertir automatiquement les deux articles publiés avant validation du Showcase ; ne pas inventer de traductions, sources ou expériences.
+Les articles existants restent en MDX sous `src/content/blog/<locale>/<slug>.mdx`. Le moteur JSON v1 est disponible sous `src/content/blog-json/<locale>/<slug>.json` et documenté dans `docs/blog/JSON_ENGINE.md` : les nouveaux articles standards utilisent ce format par défaut ; pour tout nouvel article JSON, valider avec `npm run blog:validate`, `npm run blog:test:json`, puis `npm run build` et `npm run blog:test:seo`. Ne pas convertir automatiquement les deux articles publiés avant validation du Showcase ; ne pas inventer de traductions, sources ou expériences.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

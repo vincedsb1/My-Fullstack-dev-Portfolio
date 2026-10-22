@@ -4,7 +4,7 @@
 **Branche auditée :** `main`  
 **Révision figée :** [`1b217e7790ef3429ceadf37c176143122107a005`](https://github.com/vincedsb1/My-Fullstack-dev-Portfolio/tree/1b217e7790ef3429ceadf37c176143122107a005) — 21 octobre 2026 à 22:28 UTC  
 **Date d'analyse :** 22 octobre 2026  
-**Statut :** **Inventaire du code et des règles visuelles terminé** ; **captures de référence et validation graphique finale encore à faire**.  
+**Statut historique :** inventaire du prototype au commit ci-dessus. **L’état courant, les chemins refactorés et les captures réellement vérifiées sont actualisés en section 12 (`dev04`).**
 **Portée :** articles existants et composants transverses susceptibles d'influencer leur rendu. **Aucune modification du dépôt.**
 
 > **Important — degré de vérification.** Les constats ci-dessous proviennent des sources TSX, MDX, CSS, de la documentation et du code d'interaction du commit identifié. L'accès direct aux URL de production n'a pas permis d'obtenir de captures ni de faire une inspection de pixels réels. Les dimensions, couleurs et comportements notés sont des **valeurs du code**, pas des mesures obtenues sur un navigateur. Il serait inexact d'affirmer qu'une référence *visuelle photographique* est gelée : seul le **code de référence immuable** est figé à ce stade. Une procédure de capture reproductible est décrite en section 10.
@@ -626,3 +626,43 @@ L'inventaire technique est suffisamment précis pour **préparer le design syste
 **La référence graphique finale ne doit cependant pas être déclarée « validée » avant constitution des captures et vérification des états.** La prochaine action concrète pour achever intégralement cette étape est donc de produire les snapshots du commit figé selon la section 10, puis d'entériner le choix de direction graphique : **esthétique éditoriale du SaaS pour le shell, richesse fonctionnelle du guide dans les blocs.**
 
 Aucun fichier du dépôt n'a été modifié dans le cadre de cet audit. Le présent document est le compte rendu de l'inventaire et le protocole de gel.
+
+
+## 12. Actualisation vérifiée sur dev04 — 22 octobre 2026
+
+Cette section prévaut sur les chemins et constats d’architecture des sections historiques. Base auditée : `dev03` à `8ec765f38b3bc0e69b41a7230f2404e8c5a5e902` ; corrections et résultats : [AUDIT_FINAL_ETAPES_1_2_3.md](AUDIT_FINAL_ETAPES_1_2_3.md).
+
+### Sources courantes et éléments déjà résolus
+
+| Référence historique | Source actuelle / état constaté |
+|---|---|
+| `src/app/components/blog/*` | `src/features/blog/*` |
+| `guideContent.ts` / HTML injecté | export MDX `GuideArticle`, `src/features/guide/GuideBody.tsx`, sections React typées et `GuideInteractive.tsx` ; pas d’injection de chaîne HTML |
+| Header/footer propres aux articles | navigation et pied globaux dans le layout `[locale]` ; commandes de lecture propres aux articles |
+| `guide.css` dans le layout de tout le blog | chargement par le guide ; feuille dans `src/features/guide/guide.css` |
+| Références seulement théoriques | artefact CI téléchargé et rendu local contrôlé ; détails ci-dessous |
+| Bibliothèque / schéma à construire | composants dans `design-system/`, renderer dans `json/`, données dans `blog-json/`, catalogue commun dans `lib/blog/` |
+
+Les divergences D-01 à D-08 décrivent le besoin initial, pas l’architecture du moteur consolidé. Les deux rendus historiques restent volontairement en place jusqu’aux étapes 4 et 5. D-14 (HTML injecté) et D-16 (import global de la feuille du guide) avaient déjà été résolus avant cet audit. D-10, D-11 et D-15 subsistent dans le rendu historique SaaS ; le nouveau moteur propose des sections/ancres automatiques, des liens associés issus du catalogue et un titre sans découpage métier codé en dur.
+
+### Confrontation avec les articles réellement rendus
+
+- **Guide, dans le `main` :** 1 H1, 11 H2 (10 chapitres et conclusion), 22 H3, 11 sections, 1 tableau, 1 citation, 1 sommaire repliable, 14 cases et 1 portrait. Les trois cartes piliers, les dix conseils, les deux modèles copiables, les encadrés et les liens sont conservés. Les 14 libellés sont confrontés au contrat dans le navigateur.
+- **SaaS :** cinq chapitres aux ancres `accessible`, `complexite`, `marches`, `demande`, `decision` ; sommaires bureau/mobile ; lettrine, emphases, illustration CSS 6 × 6, auteur, article suivant, projet lié Iconise. Le bloc « Projets liés » ajoute un H2 hors des cinq chapitres. Le contenu principal comprend deux portraits et un tableau de matrice ; pas de photographie éditoriale ajoutée.
+- **Widgets :** six tuiles avec attributs `lang`, deux langues indépendantes, 36 cellules et un seul focus mobile, quatre étapes de funnel explicitement conceptuel, trois questions et huit combinaisons réellement testées. Les 12 cases accentuées restent une illustration ; aucun résultat de test métier n’est inventé.
+- **Persistance :** `theme` appartient au portfolio ; la checklist du guide utilise exactement `vd_guide_checklist_v1` et un objet ne stockant que les IDs cochés à `true`. Restauration complète, progression, décochage, reset et compatibilité avec le nouveau composant sont testés. Les IDs de checklist sont des identifiants de données ; ne pas les confondre avec les IDs d’ancres HTML.
+- **SEO :** sources MDX/frontmatter, routes, canonical, BlogPosting, BreadcrumbList, images sociales et sitemap vérifiés sur le build. Aucune traduction anglaise publiée. La redirection historique du guide reste permanente.
+- **Accessibilité :** un H1 et un `main`, aucun ID HTML dupliqué ou lien `#` orphelin aux quatre largeurs ; clavier des sélecteurs/matrice/questionnaire, labels, focus et états pressés contrôlés. Axe AA passe sur les pages stabilisées dans les deux thèmes. Les animations de révélation ne doivent pas être analysées pendant leur transition de couleur/opacité.
+- **Impression :** la revue des PDF a identifié du chrome global encore visible et des couleurs sombres mal transposées dans les articles historiques. Les corrections se limitent à l’impression ; aucun texte ni rendu écran historique n’est migré.
+
+### Références visuelles disponibles
+
+L’[artefact du run 39819779089](https://github.com/vincedsb1/My-Fullstack-dev-Portfolio/actions/runs/39819779089), au SHA `7e29ee4234dd74450e1714dd94bf3e4cf77cd2dd`, contient bien les douze PNG annoncés : Showcase aux quatre largeurs et SaaS à 390/1440, chacun dans les deux thèmes. Le code de `src/` et `public/` n’a pas changé entre ce SHA et la base `8ec765f`.
+
+L’archive a été téléchargée et comparée aux rendus locaux. Le SaaS conserve sa composition, ses composants et son contenu à l’écran. Les dimensions totales diffèrent légèrement entre Linux/CI et macOS local : SaaS 1440 px, 9 214 contre 9 211 px de hauteur ; 390 px, 10 932 contre 10 996 px. Des retours à la ligne du hero diffèrent aussi ; ces écarts étaient déjà visibles sur le checkout local `dev03` avant correction. Il ne s’agit pas d’une validation binaire des pixels entre systèmes.
+
+La CI consolidée produit les références des **trois pages** aux quatre largeurs/deux thèmes, les états focus/hover/variantes/résultat, les huit captures du shell JSON de développement et les PDF. Les images sont des artefacts de contrôle, ignorés par Git ; la preview HTML historique n’est pas la référence. Les captures du guide, absentes de l’ancienne CI, sont maintenant incluses.
+
+### Contrats à emporter dans les migrations
+
+Conserver le contenu, les métadonnées, toutes les destinations, les cinq modules et leurs règles, les ancres historiques, les 14 IDs/libellés et leur clé de stockage. Le futur shell commun peut harmoniser la présentation ; il ne doit pas réinterpréter les données ou recopier la logique métier. L’export paragraphe par paragraphe du SaaS appartient à l’étape 4 et n’a pas été commencé ici.

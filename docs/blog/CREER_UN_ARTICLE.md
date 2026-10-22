@@ -1,9 +1,30 @@
 # Créer un article
 
-> **Période de transition (`dev03`) :** ce document décrit la création MDX historique. Le schéma de création JSON v1 et ses limites se trouvent dans [`JSON_ENGINE.md`](JSON_ENGINE.md) et [`ARTICLE_TEMPLATE.json`](ARTICLE_TEMPLATE.json). Ne pas mélanger les deux formats pour un même `locale/slug`.
+## Procédure standard : JSON local
 
+1. Lire `AGENTS.md`, [ARCHITECTURE.md](ARCHITECTURE.md) et [JSON_ENGINE.md](JSON_ENGINE.md).
+2. Vérifier les articles MDX et JSON existants pour éviter une collision de slug ou un doublon éditorial.
+3. Copier [ARTICLE_TEMPLATE.json](ARTICLE_TEMPLATE.json) dans `src/content/blog-json/fr/<slug>.json`. Rédiger les métadonnées et les sections ; le titre fournit l’unique H1, chaque section son H2 et son entrée de sommaire.
+4. Utiliser les blocs standards et les modules déjà enregistrés. Un article ordinaire ne nécessite aucune page Next.js, aucun import d’article et aucun CSS dédié. Un module React réellement nouveau nécessite une extension explicite du registre, pas du HTML/JS dans le JSON.
+5. Ajouter les médias utiles dans `public/blog/<slug>/`, avec alt, légende et dimensions adaptées. Ne pas inventer d’expérience, chiffre, source ou traduction. La publication reste française pour le moment.
+6. Choisir `published` pour une publication demandée, `draft` pour une préparation explicite. Prévisualiser le JSON avec `npm run dev`, puis `/fr/blog/json-preview?slug=<slug>` ; ce preview n’existe pas en production.
+7. Vérifier les thèmes clair/sombre, le mobile, les ancres et le clavier. Conserver les IDs et les clés de checklist après publication. Un `storageKey` doit commencer par `vd_` et être propre à sa checklist.
+8. Exécuter les commandes suivantes, puis vérifier la route et l’entrée de sitemap. Les articles suivants viennent de `related.slugs`, les projets de `meta.relatedProjects`.
 
-## Procédure
+```bash
+npm run blog:validate
+npm run blog:test:json
+npm run lint
+npx tsc --noEmit
+npm run build
+npm run blog:test:seo
+```
+
+La fixture `json-demo-blog.json` est une démonstration technique ; ne pas la transformer en article publié. Les deux articles historiques restent en MDX jusqu’à leur migration demandée séparément. Ne jamais créer les deux formats pour la même paire locale/slug.
+
+Pour tester le moteur lui-même : `npm run test:e2e`, `npm run blog:test:publication` et `npm run blog:test:preview`, successivement. Le pilote de publication emploie des données synthétiques temporaires et remet le build normal en place.
+
+## Référence historique MDX
 
 1. Lis `AGENTS.md` ou `CLAUDE.md`, puis `docs/blog/ARCHITECTURE.md`.
 2. Parcours `src/content/blog/` pour éviter un doublon et vérifier la convention de slug.

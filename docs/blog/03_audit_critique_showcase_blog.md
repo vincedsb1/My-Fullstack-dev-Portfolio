@@ -5,6 +5,25 @@
 **Livrable audité :** `blog_design_system_showcase_etape2.zip` (9 fichiers, sources TSX/CSS, documentation et aperçu HTML)  
 **Statut :** **PROTOTYPE ACCEPTABLE POUR REVUE VISUELLE — NON VALIDÉ COMME DESIGN SYSTEM DE PRODUCTION.**
 
+## Actualisation dev04
+
+Le présent document est l’audit historique du ZIP. Le statut ci-dessus décrit ce prototype, pas la consolidation courante. Le bilan vérifié est dans [AUDIT_FINAL_ETAPES_1_2_3.md](AUDIT_FINAL_ETAPES_1_2_3.md).
+
+| Réserve historique | État consolidé |
+|---|---|
+| P0-01 / P1-09 / P1-10 — démos concurrentes | une checklist réutilisée partout, vrai questionnaire et cinq widgets historiques dans le registre ; démos concurrentes supprimées |
+| P0-02 / P0-04 — absence de rendu et de recette | build local, navigateur, référence CI téléchargée, captures des quatre largeurs/deux thèmes, états et PDF ; résultats consignés dans l’audit final |
+| P0-03 — contrat JSON absent | schéma v1, validation runtime, types et tests ; contenu riche, cartes imbriquées et registre contrôlé |
+| P1-01 — variantes manquantes | tons implémentés, variantes info/action effectives et visibles ; contrôle axe des variantes ouvertes |
+| P1-02 / P1-03 — code et médias | coloriseur MDX réutilisé au serveur, copie exacte, images réelles et YouTube au clic dans la fixture |
+| P1-04 — interface EN | labels du shell consolidés et vérifiés par pilote synthétique EN ; aucune traduction d’article ajoutée ; widgets SaaS toujours FR |
+| P1-05 / P1-06 / P1-08 — navigation et chrome | TOC depuis les sections JSON, articles liés publiés, header/footer et boutons du portfolio réutilisés |
+| P1-07 — clavier, ancres, impression | IDs complets validés, focus des sections, stockage refusé, PDF clair depuis les deux thèmes et restauration des accordéons testés |
+| P2-01 — fichier UI central | petit catalogue serveur conservé ; code coloré séparé pour sa dépendance serveur ; pas de fragmentation systématique |
+| P2-02 / P2-03 — tokens et aperçu autonome | CSS comme source des valeurs ; documentation réalignée ; HTML ancien explicitement non contractuel |
+
+La mesure de performance de l’accueil reste rouge et est analysée séparément. Ne pas présenter la CI globale comme verte. Les articles MDX n’ont pas été convertis.
+
 ## 1. Périmètre et méthode
 
 Analyse de l'intégralité des fichiers de l'archive : route `showcase`, composants `BlogUI.tsx`, contrôles de lecture, démonstrations interactives, page Showcase, CSS, documentation et aperçu autonome. Confrontation aux sources des deux articles et à la documentation de l'étape 1.

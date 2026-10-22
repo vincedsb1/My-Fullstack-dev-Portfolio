@@ -2,7 +2,7 @@
 
 ## Sources et rendu
 
-Les articles historiques vivent dans `src/content/blog/<locale>/<slug>.mdx` ; leur frontmatter reste la source des métadonnées. Le moteur JSON v1, préparé en parallèle sur `dev03`, charge `src/content/blog-json/<locale>/<slug>.json` (format versionné et validé). Les deux sources alimentent le même catalogue, sans convertir les deux articles existants à cette étape.
+Les articles historiques vivent dans `src/content/blog/<locale>/<slug>.mdx` ; leur frontmatter reste la source des métadonnées. Le moteur JSON v1, consolidé sur `dev04`, charge `src/content/blog-json/<locale>/<slug>.json` (format versionné et validé). Les deux sources alimentent le même catalogue, sans convertir les deux articles existants à cette étape.
 
 `src/lib/blog/article-source.mjs` lit les fichiers locaux avec `yaml`, valide leurs métadonnées, repère les collisions de routes et vérifie les relations de traduction. Il s’assure aussi que le titre du frontmatter reste l’unique H1 et que les images locales référencées existent sous `public/blog/`. `scripts/validate-blog-links.mjs`, appelé par `npm run blog:validate`, vérifie que les liens internes ciblent une route existante et publiée et que les ressources locales existent. `src/lib/blog/articles.ts` expose les articles publiés, leur ordre, leurs versions traduites, leur temps de lecture et leur URL d’image sociale.
 
@@ -14,7 +14,7 @@ Les pages utilisent les Server Components de l’App Router. `generateStaticPara
 
 Un article peut déclarer `renderer: guide` dans son frontmatter pour réutiliser un rendu React interactif enregistré. Le guide du premier emploi est rendu par des composants serveur typés dans `src/features/guide/` afin de conserver sa checklist, ses ancres, sa progression, sa persistance locale, la copie, le partage, l’impression, le thème et ses icônes. Son contenu et ses interactions partagent les routes, métadonnées, images sociales et le sitemap du blog.
 
-Ce renderer est réservé à cet article. Les articles ordinaires restent des fichiers MDX sans registre manuel à mettre à jour.
+Ce renderer est réservé à cet article. Les nouveaux articles standards utilisent le moteur JSON sans registre manuel d’articles à mettre à jour. Le MDX reste supporté pendant la transition.
 
 ## Routes et langues
 
@@ -68,12 +68,12 @@ court sans changer le H1. `relatedProjects` référence uniquement des fiches
 publiées dans la langue de l’article et produit des liens de détail visibles.
 
 
-## Organisation consolidée sur dev03
+## Organisation consolidée sur dev04
 
 - `src/features/blog/design-system/` : composants et styles du Showcase (isolés par `.blog-ds`).
 - `src/features/blog/json/` : présentation des blocs JSON, checklist et registre custom explicite.
 - `src/lib/blog/json-source.mjs`, `.d.mts`, `json-types.ts` : validation structurelle + types du schéma v1.
-- `src/content/blog-json/fr/json-demo-blog.json` : fixture `draft`, visible uniquement via `/fr/blog/json-preview` en mode développement.
+- `src/content/blog-json/fr/json-demo-blog.json` : fixture `draft`, prévisualisable via `/fr/blog/json-preview?slug=json-demo-blog` en développement et visible dans le Showcase.
 - `src/app/(localized)/[locale]/blog/showcase/` : catalogue visuel de référence `noindex`.
 - `scripts/blog-json-tests/` : tests Node dédiés ; `npm run blog:test:json`.
 - `docs/blog/README.md` : index et limites avant migration.
@@ -85,3 +85,16 @@ Ne pas utiliser l'ancien patcher SEO de l'archive : les contrôles du moteur JSO
 ## Modules React contrôlés avant migration
 
 Le registre JSON exposé par `JsonCustomRegistry.tsx` admet désormais les cinq widgets SaaS existants **sans les réimplémenter** ; ils se rendent sous l’enveloppe CSS de leur article d'origine. Les widgets sont FR-only pour le moment. Les champs JSON `seoTitle` et `relatedProjects` sont facultatifs ; les vidéos YouTube passent par le composant de consentement déjà présent dans le blog. Les décisions, la politique de migration et les critères de qualité sont consignés dans [PREPARATION_ETAPE_4.md](PREPARATION_ETAPE_4.md).
+
+
+## Contrats consolidés et recette
+
+Le manifeste `json-custom-modules.json` est partagé par le validateur et les noms TypeScript du registre React. Les IDs produits par les sections, le shell et les widgets sont validés ensemble. Les contrôles de projets publiés sont mutualisés entre les sources MDX et JSON dans `project-references.mjs`.
+
+Le renderer utilise la même bibliothèque que le Showcase : accordéons, figures, cartes riches, actions communes et `JsonChecklist`. Il n’existe plus de deuxième logique de checklist/questionnaire dans une démo JSX. Le coloriseur de code déjà installé pour le MDX travaille au serveur ; le JSON ne transporte ni HTML, ni styles, ni code exécutable.
+
+Les liens JSON sont transmis au validateur comme destinations structurées, sans conversion intermédiaire en Markdown. Le validateur contrôle aussi les ancres des articles JSON cibles et les clés de stockage publiées. Le scan de fichiers JSON bénéficie d’une inclusion de traçage explicitement bornée dans `next.config.mjs`.
+
+`blog:test:publication` vérifie une publication synthétique FR/EN, son SEO et l’interopérabilité réelle avec la checklist du guide, puis retire ses sources et restaure le build normal. `blog:test:preview` vérifie le shell en développement, tandis que les E2E normaux contrôlent les pages publiques et le Showcase en production locale. Les commandes utilisant `.next` doivent être exécutées successivement.
+
+Voir [JSON_ENGINE.md](JSON_ENGINE.md) pour le schéma et [AUDIT_FINAL_ETAPES_1_2_3.md](AUDIT_FINAL_ETAPES_1_2_3.md) pour les preuves. Aucun des deux articles historiques n’est migré à cette étape.
