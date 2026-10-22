@@ -1,3 +1,4 @@
+import { mkdirSync } from "node:fs";
 import { test, expect } from "@playwright/test";
 
 /** Test navigateur sans publication du brouillon JSON et sans changer les anciens articles. */
@@ -56,4 +57,39 @@ test("articles MDX restent publiés ; preview JSON reste invisible en production
   }
   const response = await page.goto("/fr/blog/json-preview");
   expect(response?.status()).toBe(404);
+});
+
+/** Références visuelles du rendu Next.js réel, pas de la maquette HTML. */
+test("figer la référence visuelle du Showcase et de l’article SaaS", async ({
+  page,
+}) => {
+  test.setTimeout(180000);
+  mkdirSync("tests/visual-artifacts", { recursive: true });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+
+  for (const theme of ["light", "dark"] as const) {
+    await page.addInitScript(
+      (value) => localStorage.setItem("theme", value),
+      theme,
+    );
+    for (const [route, label, widths] of [
+      ["/fr/blog/showcase", "showcase", [320, 390, 820, 1440]],
+      ["/fr/blog/internationaliser-saas-lancement", "saas-legacy", [390, 1440]],
+    ] as const) {
+      const response = await page.goto(route);
+      expect(response?.status()).toBe(200);
+      await page.evaluate(async () => {
+        await document.fonts.ready;
+      });
+      for (const width of widths) {
+        await page.setViewportSize({ width, height: 900 });
+        await expect(page.locator("html")).toHaveClass(new RegExp(theme));
+        await page.screenshot({
+          path: `tests/visual-artifacts/blog-${label}-${theme}-${width}.png`,
+          fullPage: true,
+          animations: "disabled",
+        });
+      }
+    }
+  }
 });

@@ -20,3 +20,11 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
       - run: npm run audit:verify
+      - name: Archiver les références visuelles du blog
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: blog-visual-reference-${{ github.sha }}
+          path: tests/visual-artifacts/*.png
+          if-no-files-found: warn
+          retention-days: 30

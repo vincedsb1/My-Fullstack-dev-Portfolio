@@ -56,3 +56,7 @@ La préparation ne modifie aucun des deux articles publiés. La future migration
 - `npm ci`, `npm audit --audit-level=moderate`, `npm run blog:test:json` (14 tests), `npm run lint`, `npm test` et `npm run build` : **réussis**.
 - `npm run audit:verify` : **échec indépendant du moteur JSON** : budget JavaScript de la page d'accueil mesuré à 221,42 Kio gzip pour un plafond de 150 Kio. La source de cette hausse n'a pas été isolée ; **ne pas relever ce plafond sans analyse**.
 - Afin de ne pas cacher d'autres erreurs derrière cet audit global, le workflow exécute TypeScript, SEO et E2E avant l'audit de performance final. La préparation visuelle continue de nécessiter les captures de référence.
+
+## Références visuelles automatisées
+
+Le test Playwright `tests/browser/blog-json.spec.ts` génère à chaque CI douze captures réelles, sans animations : Showcase aux largeurs 320/390/820/1440 et article SaaS historique à 390/1440, chacun en clair/sombre. Les fichiers sont archivés pendant 30 jours dans l'artefact GitHub Actions `blog-visual-reference-<SHA>`. Ce sont des **références de comparaison** à examiner, pas un verdict de conformité pixel-perfect. Le guide sera capturé à son tour avant sa propre migration.
