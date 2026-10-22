@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "title": "Démo du moteur JSON : un article avec des blocs réutilisables",
+    "description": "Article de démonstration non publié pour vérifier le moteur éditorial JSON du portfolio.",
+    "excerpt": "Un exemple complet de rendu à partir d'un seul document structuré, sans MDX ni HTML libre.",
+    "slug": "json-demo-blog",
+    "locale": "fr",
+    "category": "Architecture",
+    "publishedAt": "2026-10-22",
+    "status": "draft"
+  },
+  "hero": {"primaryCta": {"label": "Explorer les composants", "target": "content"}},
+  "introBlocks": [
+    {"type":"lead","content":[{"text":"Ce contenu est écrit en JSON et rendu dans les Server Components de Next.js. "},{"text":"La présentation appartient au design system.","bold":true}]},
+    {"type":"paragraph","content":[{"text":"La version du moteur est fixée à "},{"text":"1","code":true},{"text":". Le blog historique reste accessible pendant la migration."}]}
+  ],
+  "sections": [
+    {"id":"structure","title":"Un texte lisible et structuré","number":true,"eyebrow":"01 / Fondations","blocks":[
+      {"type":"paragraph","content":[{"text":"Un paragraphe peut contenir du "},{"text":"gras","bold":true},{"text":", de l’"},{"text":"italique","italic":true},{"text":" et un "},{"text":"lien vers le portfolio","link":{"href":"/fr"}},{"text":"."}]},
+      {"type":"heading","level":3,"text":"Sous-section H3","id":"sous-section"},
+      {"type":"list","items":[[{"text":"Un item simple"}],[{"text":"Un deuxième item avec "},{"text":"emphase","bold":true}]]},
+      {"type":"highlight","content":[{"text":"Les articles restent différents dans leur contenu, mais cohérents dans leur structure.","bold":true}]},
+      {"type":"callout","tone":"info","title":"À retenir","blocks":[{"type":"paragraph","content":[{"text":"Un encadré peut contenir plusieurs blocs de contenu, et pas seulement une chaîne de texte."}]}]},
+      {"type":"quote","content":[{"text":"Un système éditorial doit permettre la variation sans multiplier les styles."}],"attribution":"Exemple fictif"}
+    ]},
+    {"id":"blocs-complexes","title":"Cartes, tableau et code","number":true,"blocks":[
+      {"type":"cards","variant":"action","items":[
+        {"number":"01","title":"Comprendre","description":[{"text":"Un premier parcours dans l’article."}],"href":"/fr/blog","actionLabel":"Voir les articles"},
+        {"number":"02","title":"Construire","description":[{"text":"Un bloc commun pour des cas variés."}]}
+      ]},
+      {"type":"table","caption":"Comparaison illustrative","columns":["Support","Contenu","Personnalisation"],"rows":[["MDX","Texte et composants","Libre"],["JSON","Blocs structurés","Via registre"]]},
+      {"type":"code","language":"typescript","title":"data.ts","code":"type Article = { slug: string; sections: unknown[] };","copyable":true},
+      {"type":"accordion","items":[{"title":"D'où vient le contenu ?","blocks":[{"type":"paragraph","content":[{"text":"Du fichier JSON local validé pendant le build."}]}]}]}
+    ]},
+    {"id":"interactions","title":"Interactions cadrées","number":true,"blocks":[
+      {"type":"checklist","storageKey":"vd_blog_json_showcase_v1","items":[{"id":"step-1","label":"Comprendre les types de blocs."},{"id":"step-2","label":"Tester la navigation et le thème."},{"id":"step-3","label":"Vérifier les contenus sur mobile."}]},
+      {"type":"custom","component":"metric-panel","props":{"value":"01","label":"Registre des modules","caption":"Le registre est volontairement minimal à cette étape."}},
+      {"type":"paragraph","content":[{"text":"Revenir à la "},{"text":"première section","link":{"href":"#structure"}},{"text":" pour tester les ancres."}]}
+    ]}
+  ],
+  "afterBlocks":[{"type":"paragraph","content":[{"text":"Cette démonstration est un brouillon technique, pas un nouvel article publié."}]}],
+  "related":{"slugs":[]}
+}

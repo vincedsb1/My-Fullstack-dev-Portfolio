@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "title": "Titre à remplacer",
+    "description": "Description précise de l'article à remplacer avant publication.",
+    "excerpt": "Résumé qui apparaîtra dans la carte et en haut de l'article.",
+    "slug": "nouvel-article",
+    "locale": "fr",
+    "category": "Développement",
+    "publishedAt": "2026-10-22",
+    "status": "draft"
+  },
+  "introBlocks": [
+    {"type":"lead","content":[{"text":"Introduction de l'article à rédiger."}]}
+  ],
+  "sections": [
+    {
+      "id": "premiere-partie",
+      "title": "Première partie",
+      "blocks": [
+        {"type":"paragraph","content":[{"text":"Premier paragraphe de démonstration à remplacer."}]}
+      ]
+    }
+  ]
+}
