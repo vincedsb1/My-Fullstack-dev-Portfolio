@@ -17,7 +17,10 @@ export default function JsonChecklist({storageKey,items,locale="fr"}:{storageKey
   const count=items.filter(item=>checked[item.id]).length;
   function update(next:Record<string,boolean>) {
     setChecked(next);
-    try {window.localStorage.setItem(storageKey,JSON.stringify(next));}catch{ /* reste utilisable sans stockage */ }
+    // Le guide historique enregistrait uniquement les IDs cochés (true).
+    // Ne jamais changer ce format pour vd_guide_checklist_v1.
+    const stored=Object.fromEntries(items.filter(item=>next[item.id]===true).map(item=>[item.id,true]));
+    try {window.localStorage.setItem(storageKey,JSON.stringify(stored));}catch{ /* reste utilisable sans stockage */ }
   }
   return <section className="blog-ds__json-checklist" aria-label={locale==="fr"?"Liste d’actions":"Action checklist"}>
     <div className="blog-ds__json-checklist-head">

@@ -81,3 +81,7 @@ publiées dans la langue de l’article et produit des liens de détail visibles
 Ne pas utiliser l'ancien patcher SEO de l'archive : les contrôles du moteur JSON et du test SEO sont intégrés directement à leurs scripts respectifs.
 
 **Shell d’article JSON :** ne pas réintroduire un deuxième `header` ou `footer` global ; les pages héritent déjà de `SiteHeader` / `SiteFooter` depuis le layout `[locale]`. Le hero et les commandes de lecture restent propres à `JsonArticlePage`.
+
+## Modules React contrôlés avant migration
+
+Le registre JSON exposé par `JsonCustomRegistry.tsx` admet désormais les cinq widgets SaaS existants **sans les réimplémenter** ; ils se rendent sous l’enveloppe CSS de leur article d'origine. Les widgets sont FR-only pour le moment. Les champs JSON `seoTitle` et `relatedProjects` sont facultatifs ; les vidéos YouTube passent par le composant de consentement déjà présent dans le blog. Les décisions, la politique de migration et les critères de qualité sont consignés dans [PREPARATION_ETAPE_4.md](PREPARATION_ETAPE_4.md).

@@ -43,7 +43,7 @@ Le chargeur historique `src/lib/blog/article-source.mjs` **refuse les extensions
 }
 ```
 
-Champs metadata optionnels : `updatedAt`, `cover`, `coverAlt`, `translationKey`. Si `cover` est renseigné, `coverAlt` est obligatoire. Les dates doivent exister dans le calendrier. Le H1 **ne se déclare pas** dans les blocs.
+Champs metadata optionnels : `updatedAt`, `cover`, `coverAlt`, `translationKey`, `seoTitle`, `relatedProjects`. Si `cover` est renseigné, `coverAlt` est obligatoire. Les dates doivent exister dans le calendrier. Le H1 **ne se déclare pas** dans les blocs.
 
 | Type de bloc | Contrat | Rendu |
 |---|---|---|
@@ -56,6 +56,7 @@ Champs metadata optionnels : `updatedAt`, `cover`, `coverAlt`, `translationKey`.
 | `table` | `caption`, `columns[]`, `rows[][]` | tableau responsive |
 | `figure` | `src`, `alt`, `width?` et `height?`, `caption?` | Next Image avec dimensions |
 | `code` | `language`, `code`, `title?`, `copyable?` | code copiable (coloration avancée à consolider) |
+| `video` | `provider: "youtube"`, `id` (11 caractères), `title` | vidéo opt-in via le composant existant (chargement de l'iframe au clic) |
 | `checklist` | `storageKey`, `items[{id,label}]` | état persisté localement, progression, reset |
 | `accordion` | `items[{title,blocks}]` | éléments `<details>` avec contenu structuré |
 | `custom` | `component`, `props` exactement typées | module React issu d'un registre statique |
@@ -64,15 +65,19 @@ Champs metadata optionnels : `updatedAt`, `cover`, `coverAlt`, `translationKey`.
 
 ### Registre custom
 
-La première entrée est `metric-panel` avec `props: { value, label, caption? }`. Les IDs et propriétés autorisés sont vérifiés dans `json-source.mjs` et rendus dans `JsonCustomRegistry.tsx`. **Chaque futur module spécialisé** (langues, matrice, funnel, questionnaire Iconise) doit être ajouté dans les deux sources avec des props strictement bornées. À cette étape, aucune fonctionnalité spécialisée existante n'a été recodée ni migrée.
+Le registre contient `metric-panel` et cinq IDs SaaS (`saas-mosaic`, `saas-language-demo`, `saas-language-matrix`, `saas-acquisition-funnel`, `saas-decision-tree`). Les modules SaaS réutilisent les composants React historiques ; **aucune nouvelle logique métier n’est dupliquée**. Ces cinq modules acceptent **zéro props JSON** et sont réservés à `meta.locale: "fr"`. Ils ne peuvent être déclarés qu'une fois chacun par article, car le composant historique porte ses propres IDs DOM. Les éléments interactifs ne peuvent pas être mis dans `hero.visual` : réserver ce champ à `metric-panel` tant que l'API de héros n'a pas été étendue.
+
+Exemple : `{ "type":"custom", "component":"saas-language-matrix" }`.
+
+Pour le guide, reprendre exactement la clé `vd_guide_checklist_v1`, les 14 IDs et la structure `{ "chk-1": true }`, dont la référence est archivée dans `contracts/guide-checklist-v1.json`.
 
 ### Limites délibérées de v1
 
-- Pas de bloc questionnaire générique arbitraire : le questionnaire internationalisation sera ajouté par module enregistré lors de sa migration.
+- Le questionnaire SaaS existe comme **module déclaré**, non comme moteur universel de questionnaires arbitraires.
 - Pas d'exécution de code, HTML libre, styles par article ou composants choisis par chemin.
 - Le bloc code v1 conserve la copie et la langue affichée, mais **pas encore la coloration Shiki/rehype** du MDX ; point à traiter avant la migration d'un article qui en dépend.
 - Le champ `hero.visual` accepte uniquement un module enregistré ; son affichage visuel et sa hiérarchie de titres doivent être confirmés au cas par cas.
-- Le thème EN conserve certains libellés hérités de l'étape 2 ; une revue i18n complète sera requise avant la première publication EN JSON.
+- Les widgets SaaS existants sont exclusivement rédigés en français ; ils sont refusés dans un JSON EN jusqu'à la traduction de toutes leurs chaînes et de leurs labels accessibles.
 - L'article draft de démonstration n'est **pas** un article éditorial : ne pas le publier par simple changement de statut.
 
 ## Pipeline de données et SEO
@@ -94,7 +99,7 @@ La première entrée est `metric-panel` avec `props: { value, label, caption? }`
 
 ## Contrôles réalisés
 
-- **10 tests Node natifs réussis** (validateur, médias, collisions, intégrité structurelle, dates, URLs, profondeur, patch SEO).
+- Des tests Node vérifient le validateur, les médias, les collisions, les widgets et les contrats de compatibilité ; réexécuter `npm run blog:test:json` pour confirmer sur le commit actuel.
 - **Parsing TS/TSX : 14 fichiers, 0 erreur de syntaxe**, mais aucun `tsc --noEmit` complet.
 - **Parsing CSS : validé**.
 - **Non exécuté dans ce livrable isolé :** `next build`, lint du dépôt complet, Playwright, navigation navigateur Next réelle et `blog:test:seo` après intégration.
@@ -110,3 +115,8 @@ La première entrée est `metric-panel` avec `props: { value, label, caption? }`
 
 
 > **dev03 :** le patcher SEO historique n'est plus requis. Le test SEO est adapté directement pour les articles JSON. Les articles MDX existants gardent leur rendu `ArticleLayouts` et leur métadonnée `seoTitle`.
+
+
+## Décisions validées
+
+Design SaaS, conservation de toutes les interactions, JSON + registre React, infrastructure FR/EN avec publication FR uniquement et migration SaaS puis guide. Pour les critères d'entrée détaillés, voir [PREPARATION_ETAPE_4.md](PREPARATION_ETAPE_4.md).

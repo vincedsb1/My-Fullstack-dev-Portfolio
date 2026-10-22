@@ -373,3 +373,17 @@
 .blog-ds__module[data-tone="accent"] {background:var(--blog-accent-soft);border-color:var(--blog-accent)}
 .blog-ds__module[data-tone="warning"] {background:var(--blog-warning-soft);border-color:var(--blog-warning)}
 .blog-ds__module[data-tone="neutral"] {background:var(--blog-surface)}
+
+/* Un widget historique conserve ses styles encapsulés sans créer une deuxième page. */
+.blog-ds .blog-ds__saas-module-host {
+  min-height: 0;
+  margin-block: 28px;
+  background: transparent;
+  color: inherit;
+}
+.blog-ds__saas-module-host .blog-editorial-module {
+  max-width: 100%;
+}
+@media (max-width: 600px) {
+  .blog-ds .blog-ds__saas-module-host { margin-block: 18px; }
+}

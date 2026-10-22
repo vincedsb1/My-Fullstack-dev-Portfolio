@@ -158,3 +158,7 @@ La compilation du projet complet n'a pas été effectuée ici (pas de copie loca
 > **dev03 :** les composants résident dans `src/features/blog/design-system/`. Le Showcase est une référence en cours de validation visuelle ; les modules métier spécialisés ne sont pas encore tous portés.
 
 **Composition dans le portfolio actuel :** le header/footer de navigation sont fournis par `src/app/(localized)/[locale]/layout.tsx` (composants `SiteHeader` et `SiteFooter`). Le design system fournit le hero, la barre de progression et la barre d’outils, sans reproduire le chrome global.
+
+## Direction validée
+
+Le rendu SaaS est la **référence esthétique**, en conservant les widgets React métiers et leur CSS scoped. La structure de page (hero, colonne de lecture, sommaire, footer éditorial) appartient au design system ; les modules ne peuvent pas recréer leur propre header/footer global. Le Showcase montre les cinq vrais modules SaaS à partir de la fixture JSON ; valider sa présentation dans le navigateur avant la migration.

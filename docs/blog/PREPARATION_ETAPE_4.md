@@ -1,40 +1,52 @@
-# Préparation de l’étape 4 — revue dev02 → dev03
+# Préparation de l’étape 4 — décisions et contrôle d’entrée
 
-Date : 22 octobre 2026. Base source `dev02` : `76e2e81d5ed1cc0fc2f283c2e77d47e7b30bd638`.
+**Décision produit (22 octobre 2026) :** les cinq choix ont été validés par le propriétaire du portfolio. Référence technique : `dev03` (partant de `9aede17`).
 
-## Verdict
+## Décisions actées
 
-Les étapes 1, 2 et 3 ne pouvaient **pas** être installées telles quelles : le dépôt a été refactorisé depuis leur création. Les chemins `src/app/components/blog`, les anciens providers et le routage SEO des archives ne correspondent plus à `dev02` (`src/features/blog`, composants partagés et `buildPageMetadata`). Une copie sans adaptation aurait régressé le SEO et le guide.
+| Domaine | Contrat |
+|---|---|
+| Direction graphique | **Article SaaS** comme référence, sans copier ses en-têtes/footer redondants ; design system commun et responsive |
+| Interactions | **Conserver toutes** : mosaïque, deux sélecteurs de langue, matrice 6 × 6, funnel, arbre de décision, checklist 14 points, progression, copie, impression, partage et ancres |
+| Personnalisation | Articles en **JSON local**, blocs standards + registre statique de composants React ; aucune injection HTML, import arbitraire ni script déclaré depuis les données |
+| Langues | Schéma et shell **FR + EN** ; publication **FR uniquement** pour l’instant ; les cinq widgets SaaS sont explicitement **FR-only** tant que leurs textes anglais ne sont pas écrits |
+| Migration | **Article SaaS d’abord**, puis **guide premier emploi** ; aucune bascule automatique des URL existantes |
 
-## Réorganisation effectuée
+## Réalisations de la préparation
 
-- Sources de l’étape 3 déplacées hors de `docs/blog/` vers `src/features/blog/{design-system,json}`, `src/lib/blog`, `src/content/blog-json`, et routes de démonstration.
-- Les scripts `validate-blog` et `test-blog-seo` ont été modifiés directement ; suppression du patcher de chaîne historique.
-- Le routeur d’article conserve `ArticleLayouts`, `JsonLd`, `RelatedProjects` pour les MDX et utilise `JsonArticlePage` uniquement pour un article JSON.
-- Les docs ont été aplaties et indexées ; la preview HTML est conservée explicitement comme maquette statique historique.
-- Le thème et le partage des pages JSON réutilisent les composants globaux de `dev02`.
+1. **Registry JSON :** cinq IDs publics, uniques par article : `saas-mosaic`, `saas-language-demo`, `saas-language-matrix`, `saas-acquisition-funnel`, `saas-decision-tree`. Correspondance stricte avec `InternationalisationArticleModules.tsx` ; aucun widget recodé.
+2. **Styles :** les widgets réutilisent la feuille `InternationalisationArticle.module.css` sous le scope `.blog-ds__saas-module-host`, sans refaire une page entière. Il reste à vérifier visuellement la coexistence avec les tokens.
+3. **Fixture :** `src/content/blog-json/fr/json-demo-blog.json` est **draft** ; elle rend les cinq modules dans le Showcase (via `JsonBlockRenderer`) et dans la prévisualisation locale de développement.
+4. **Interopérabilité :** `JsonChecklist` reprend la convention historique `{ "chk-1": true }` : seuls les items cochés sont sauvegardés. Un snapshot de la clé, des 14 IDs et libellés est dans [contracts/guide-checklist-v1.json](contracts/guide-checklist-v1.json).
+5. **Schéma :** bloc `video` YouTube avec ID contrôlé et activation explicite par l’utilisateur ; champs meta `seoTitle` / `relatedProjects`, chargés par le catalogue existant.
+6. **Qualité :** nouveaux tests Node de schéma + snapshots, tests Playwright du Showcase et ancien routage ; étape `blog:test:json` ajoutée au workflow qualité.
 
-## Invariants techniques
+## Critères de validation — obligatoires avant étape 4
 
-1. Les deux articles MDX existants restent rendus par leurs composants et styles spécialisés ; mêmes slugs/URL.
-2. Les routes JSON publiées sont ajoutées au catalogue commun ; le brouillon d’exemple ne figure ni dans le sitemap ni dans les listes publiques.
-3. Les collisions MDX/JSON et les liens vers des brouillons sont bloqués au prébuild.
-4. `showcase` et `json-preview` sont des slugs réservés ; le Showcase est `noindex`, et le preview JSON retourne une 404 en production.
-5. Les modules custom ne sont ni des imports dynamiques ni du HTML arbitraire : seul `metric-panel` est enregistré pour l’instant.
+- [ ] **CI / Build :** `npm ci`, `npm run blog:validate`, `npm run blog:test:json`, `npm run lint`, `npm test`, `npx tsc --noEmit`, `npm run build`, `npm run blog:test:seo`, `npm run test:e2e` sont tous au vert dans le dépôt complet.
+- [ ] **Visuel :** captures de la page React réellement servie aux largeurs 320, 390, 820, 1440 px, clair/sombre, boutons focus, widgets ouverts/fermé et impression. Une simple preview HTML n'est pas suffisante.
+- [ ] **Intégrité :** vérifier statiquement et via navigateur qu’il n’y a qu’un `main`, un H1 et aucun ID HTML dupliqué. Confirmer les 14 IDs, la clé `vd_guide_checklist_v1`, et une progression déjà sauvegardée avant migration.
+- [ ] **Accessibilité :** navigation clavier des deux sélecteurs, matrice, radios de décision, contrôles de partage, accordéons et bouton impression ; contrastes AA et `prefers-reduced-motion`.
+- [ ] **SEO :** deux URL publiées inchangées, même canonical, même titre, metadata / JSON-LD / sitemap, aucune fixture draft exposée en production.
+- [ ] **Contenu :** inventaire de conservation paragraphe par paragraphe, titres, liens, extraits, 5 interactions et visuels avant bascule du SaaS.
 
-## Zones d’ombre explicitement conservées avant migration
+**État :** préparation technique livrée. Ne pas annoncer la phase 4 comme prête à la publication tant que la CI et les captures du rendu réel n’ont pas été vérifiées.
 
-- **P0** : vérifier `npm ci`, `npm run blog:validate`, `npm run blog:test:json`, `npm run lint`, `npx tsc --noEmit`, `npm run build`, `npm run blog:test:seo`, `npm run test:e2e` sur un checkout complet de `dev03`. Les tests du moteur Node ont réussi dans le livrable isolé, mais cette revue n’est pas une compilation intégrée.
-- **P0 design** : créer des captures de référence du Showcase React à 320/390/820/1440 px, clair/sombre et état focus (la maquette HTML ne suffit pas).
-- **P0 contenu étape 4** : cartographier les modules interactifs existants (mosaïque, matrice, démo 6 langues, funnel, arbre décisionnel, guide 14 étapes) et leurs props ; aujourd’hui le seul custom JSON est `metric-panel`. Préserver la clé `vd_guide_checklist_v1` et ses IDs de cases lors de la migration.
-- **P1** : la coloration de code JSON est moindre que la coloration MDX ; ajouter un bloc vidéo et le format du questionnaire avant toute migration qui en a besoin.
-- **P1** : compléter les traductions FR/EN des contrôles éditoriaux, des métadonnées optionnelles (`seoTitle`, `relatedProjects`) et des relations vers les fiches projets.
-- **P1** : tests de rendu HTML/a11y pour tous les blocs et navigateur, notamment état localStorage, ancres et print.
+## Ordre opérationnel de l’étape 4
 
-## Règle de démarrage étape 4
+1. Exporter le MDX SaaS et sa structure : métadonnées, 5 sections H2, paragraphes, citations/encadrés, liens et 5 widgets.
+2. Construire une première version JSON **draft** sous un slug provisoire différent : ne pas provoquer de collision MDX/JSON.
+3. Comparer visuellement l’ancien rendu et le JSON côte à côte (desktop/mobile + thèmes). Corriger les styles du shell / modules.
+4. Confirmer la parité du contenu, le questionnaire et les 36 cases de matrice, les tests de route, les données structurées.
+5. Basculer **atomiquement** l’ancien MDX vers le JSON à slug identique dans un seul commit ; tester et n’exposer qu’après validation.
+6. Répéter pour le guide lors de l’étape suivante, en préservant strictement `vd_guide_checklist_v1` et les 14 IDs.
 
-Ne pas migrer l’article SaaS ni le guide avant passage des vérifications P0. Une migration doit être réversible et ne pas changer les canonicals, le H1, les dates, le contenu ni les interactions sans décision explicite.
+## Dette technique non bloquante pour l’article SaaS
 
-### Point de compatibilité layout corrigé
+- Coloration de code JSON supérieure à la présentation HTML actuelle.
+- Internationalisation intégrale des textes métiers interactifs EN (interdits sur une page EN tant qu’elle n’existe pas).
+- Un registre supplémentaire pour les futurs widgets réellement nouveaux, au cas par cas.
 
-Le layout racine `src/app/(localized)/[locale]/layout.tsx` fournit un `SiteHeader` et un `SiteFooter` identiques sur le portfolio et le blog. Les doublons spécifiques introduits dans le prototype ont été supprimés ; seuls la progression de lecture et les contrôles d’impression/partage sont ajoutés au contenu JSON/Showcase.
+## Retour arrière
+
+La préparation ne modifie aucun des deux articles publiés. La future migration sera réversible par retour à la version MDX/React de référence ; ne jamais renommer la clé de stockage de la checklist.

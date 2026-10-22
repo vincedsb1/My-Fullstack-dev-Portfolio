@@ -25,3 +25,7 @@
 Aucun article publié n’a été converti. L’archive ZIP et les dossiers `docs/blog/blog_design_system_showcase_etape2/` et `docs/blog/blog_etape3_moteur_json/` ont été retirés de l’arbre courant pour éviter de compiler et maintenir des doublons de `src/` à l’intérieur de `docs/`. Leur historique reste accessible par Git. Le patcher SEO généré pour la version `main` n’est **pas** exécuté : il aurait écrasé une architecture SEO plus récente.
 
 **Important :** le layout parent `src/app/(localized)/[locale]/layout.tsx` fournit déjà le header et le footer globaux. Le Showcase et le renderer JSON n’en dessinent pas de deuxième exemplaire.
+
+## Décisions et validation avant migration
+
+Les cinq décisions retenues et les critères d'entrée de l'étape 4 se trouvent dans [PREPARATION_ETAPE_4.md](PREPARATION_ETAPE_4.md). Le contrat de progression du guide est figé dans [contracts/guide-checklist-v1.json](contracts/guide-checklist-v1.json). Ne pas confondre Showcase (prototype de référence) et validation du rendu visuel réel.

@@ -128,10 +128,11 @@ export default function BlogShowcase() {
             </BlogSection>
 
             <BlogSection id="modules" number="07" title="Liberté pour les composants custom" eyebrow="Cadre commun, contenu libre">
-              <p>Les modules très spécialisés — matrice de langues, démo produit, entonnoir de conversion — ne deviennent pas de simples cartes génériques. Ils gardent leur logique, mais héritent du langage visuel.</p>
+              <p>Les cinq modules SaaS d’origine (mosaïque, démonstration des langues, matrice 6 × 6, funnel et questionnaire) sont montés directement depuis le JSON de démonstration dans la section « Données JSON v1 » ci-dessous. Leur comportement reste celui des composants React existants.</p>
               <BlogModuleFrame eyebrow="Exemple d’illustration métier" title="Un composant métier dans un cadre stable" description="Une illustration propre à un article sans recréer un layout pour toute la page." note="La démonstration est illustrative ; elle ne mesure pas de conversion réelle." tone="success">
                 <div className="blog-ds__flow-diagram"><span><Layers size={20} aria-hidden="true" /><br />Découverte</span><i aria-hidden="true">→</i><span><Sparkles size={20} aria-hidden="true" /><br />Usage</span><i aria-hidden="true">→</i><span><CheckCircle2 size={20} aria-hidden="true" /><br />Valeur</span></div>
               </BlogModuleFrame>
+              <BlogButton href="#json-fixture" variant="secondary">Tester les cinq widgets JSON</BlogButton>
               <BlogCallout title="Ne pas sur-généraliser" tone="accent">Le design system standardise le cadre, l’espacement, les états et le responsive ; il ne dicte pas les détails internes des visualisations complexes.</BlogCallout>
             </BlogSection>
 

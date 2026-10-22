@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import type { ArticleBlock, RichText } from '@/lib/blog/json-types';
 import {BlogCallout,BlogCodeSample,BlogInfoCard,BlogQuote} from '../design-system/BlogUI';
 import JsonChecklist from './JsonChecklist';
+import YouTubeEmbed from '../YouTubeEmbed';
 import {JsonCustomModule} from './JsonCustomRegistry';
 
 function Rich({nodes}:{nodes:RichText}) {
@@ -42,6 +43,7 @@ export default function JsonBlockRenderer({blocks,locale="fr"}:{blocks:readonly 
         {block.caption?<figcaption>{block.caption}</figcaption>:null}
       </figure>;
       case 'code':return block.copyable===false?<pre key={key} className="blog-ds__json-code-plain"><code>{block.code}</code></pre>:<BlogCodeSample key={key} label={block.title??block.language} code={block.code}/>;
+      case 'video':return <YouTubeEmbed key={key} id={block.id} title={block.title}/>;
       case 'checklist':return <JsonChecklist key={key} storageKey={block.storageKey} items={block.items} locale={locale}/>;
       case 'accordion':return <div className="blog-ds__accordion" key={key}>{block.items.map((item,i)=><details key={i}><summary>{item.title}</summary><div className="blog-ds__json-accordion-content"><JsonBlockRenderer blocks={item.blocks} locale={locale}/></div></details>)}</div>;
       case 'custom':return <JsonCustomModule key={key} module={block}/>;

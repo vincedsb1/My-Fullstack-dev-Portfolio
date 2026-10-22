@@ -14,6 +14,11 @@ const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const TONES = ['neutral', 'accent', 'info', 'success', 'warning'];
 const customDefs = {
   'metric-panel': { required: ['value', 'label'], optional: ['caption'] },
+  'saas-mosaic': { required: [], optional: [], locale: 'fr', unique: true },
+  'saas-language-demo': { required: [], optional: [], locale: 'fr', unique: true },
+  'saas-language-matrix': { required: [], optional: [], locale: 'fr', unique: true },
+  'saas-acquisition-funnel': { required: [], optional: [], locale: 'fr', unique: true },
+  'saas-decision-tree': { required: [], optional: [], locale: 'fr', unique: true },
 };
 
 export const registeredJsonCustomModules = Object.freeze(Object.keys(customDefs));
@@ -76,11 +81,13 @@ function rich(value, file, at, links, anchors) {
     }
   });
 }
-function custom(data, file, at) {
+function custom(data, file, at, locale, placement = 'block') {
   keys(data, ['component'], ['props'], file,at);
   string(data.component,file,`${at}.component`);
   const d=customDefs[data.component];
   if(!d) error(file, `${at}.component`, `module inconnu « ${data.component} »`);
+  if(d.locale && d.locale!==locale) error(file,at,'module SaaS réservé au contenu français : traduction EN non disponible');
+  if(placement==='hero' && data.component!=='metric-panel') error(file,at,'le module interactif ne peut pas être utilisé dans le hero');
   const props=data.props??{};
   keys(props,d.required,d.optional,file,`${at}.props`);
   for(const k of [...d.required,...d.optional]) optString(props[k],file,`${at}.props.${k}`);
@@ -131,12 +138,26 @@ function blocks(value, file, at, ctx, depth=0) {
         if((b.width===undefined)!==(b.height===undefined))error(file,p,'width et height doivent être fournis ensemble');break;
       case 'code':
         keys(b,['type','code','language'],['title','copyable'],file,p);string(b.code,file,`${p}.code`);string(b.language,file,`${p}.language`);optString(b.title,file,`${p}.title`);bool(b.copyable,file,`${p}.copyable`);break;
+      case 'video':
+        keys(b,['type','provider','id','title'],[],file,p);
+        pick(b.provider,['youtube'],file,`${p}.provider`);
+        string(b.id,file,`${p}.id`);
+        if(!/^[a-zA-Z0-9_-]{11}$/.test(b.id))error(file,`${p}.id`,'identifiant YouTube invalide');
+        string(b.title,file,`${p}.title`);
+        break;
       case 'checklist':
         keys(b,['type','storageKey','items'],[],file,p);string(b.storageKey,file,`${p}.storageKey`);arr(b.items,file,`${p}.items`);
         const names = new Set();b.items.forEach((it,j)=>{const q=`${p}.items[${j}]`;keys(it,['id','label'],[],file,q);string(it.id,file,`${q}.id`);if(!ID.test(it.id))error(file,`${q}.id`,'ID invalide');if(names.has(it.id))error(file,q,'ID checklist dupliqué');names.add(it.id);string(it.label,file,`${q}.label`);});break;
       case 'accordion':
         keys(b,['type','items'],[],file,p);arr(b.items,file,`${p}.items`);b.items.forEach((it,j)=>{const q=`${p}.items[${j}]`;keys(it,['title','blocks'],[],file,q);string(it.title,file,`${q}.title`);blocks(it.blocks,file,`${q}.blocks`,ctx,depth+1);});break;
-      case 'custom':keys(b,['type','component'],['props'],file,p);custom({component:b.component,props:b.props},file,p);break;
+      case 'custom':
+        keys(b,['type','component'],['props'],file,p);
+        custom({component:b.component,props:b.props},file,p,ctx.locale);
+        if(customDefs[b.component]?.unique){
+          if(ctx.customIds.has(b.component))error(file,p,'module interactif dupliqué : IDs et contrôles non uniques');
+          ctx.customIds.add(b.component);
+        }
+        break;
       default:error(file,`${p}.type`,`type de bloc inconnu « ${String(b.type)} »`);
     }
   });
@@ -151,7 +172,7 @@ export function validateJsonArticle(article,{file='(JSON)',locale,filenameSlug,p
   keys(article,['schemaVersion','meta','sections'],['hero','introBlocks','afterBlocks','related'],file,'article');
   if(article.schemaVersion!==1)error(file,'schemaVersion','version 1 requise');
   const m=article.meta;
-  keys(m,['title','description','excerpt','slug','locale','category','publishedAt','status'],['updatedAt','cover','coverAlt','translationKey'],file,'meta');
+  keys(m,['title','description','excerpt','slug','locale','category','publishedAt','status'],['updatedAt','cover','coverAlt','translationKey','seoTitle','relatedProjects'],file,'meta');
   for(const k of ['title','description','excerpt','slug','locale','category'])string(m[k],file,`meta.${k}`);
   pick(m.locale,['fr','en'],file,'meta.locale');pick(m.status,['published','draft'],file,'meta.status');
   if(locale && locale!==m.locale)error(file,'meta.locale','locale différente du dossier');
@@ -163,10 +184,16 @@ export function validateJsonArticle(article,{file='(JSON)',locale,filenameSlug,p
   if(m.cover!==undefined){asset(m.cover,m.slug,file,'meta.cover',publicRoot);string(m.coverAlt,file,'meta.coverAlt');}
   else if(m.coverAlt!==undefined)error(file,'meta.coverAlt','cover manquant');
   if(m.translationKey!==undefined){string(m.translationKey,file,'meta.translationKey');if(!SLUG.test(m.translationKey))error(file,'meta.translationKey','clé invalide');}
-  const ctx={slug:m.slug,publicRoot,ids:new Set(['blog-article-body','blog-article-top']),anchors:[],links:[],lastHeading:2};
+  optString(m.seoTitle,file,'meta.seoTitle');
+  if(m.relatedProjects!==undefined){
+    arr(m.relatedProjects,file,'meta.relatedProjects',{min:0});
+    if(new Set(m.relatedProjects).size!==m.relatedProjects.length)error(file,'meta.relatedProjects','projets liés dupliqués');
+    m.relatedProjects.forEach((slug,i)=>{string(slug,file,`meta.relatedProjects[${i}]`);if(!SLUG.test(slug))error(file,`meta.relatedProjects[${i}]`,'slug de projet invalide');});
+  }
+  const ctx={slug:m.slug,locale:m.locale,publicRoot,ids:new Set(['blog-article-body','blog-article-top']),anchors:[],links:[],customIds:new Set(),lastHeading:2};
   if(article.hero!==undefined){keys(article.hero,[],['primaryCta','visual'],file,'hero');
     if(article.hero.primaryCta!==undefined){keys(article.hero.primaryCta,['label','target'],[],file,'hero.primaryCta');string(article.hero.primaryCta.label,file,'hero.primaryCta.label');pick(article.hero.primaryCta.target,['content'],file,'hero.primaryCta.target');}
-    if(article.hero.visual!==undefined)custom(article.hero.visual,file,'hero.visual');
+    if(article.hero.visual!==undefined)custom(article.hero.visual,file,'hero.visual',m.locale,'hero');
   }
   if(article.introBlocks!==undefined)blocks(article.introBlocks,file,'introBlocks',ctx);
   arr(article.sections,file,'sections');
@@ -227,7 +254,7 @@ export function getJsonReadingText(article) {
     case 'cards':b.items.forEach(x=>{parts.push(x.title);collectRich(x.description);});break;
     case 'table':parts.push(b.caption,...b.columns,...b.rows.flat());break;
     case 'figure':if(b.caption)parts.push(b.caption);break;
-    case 'code':break; // Ne pas compter les snippets techniques dans le temps de lecture.
+    case 'code':case 'video':break; // Ne pas compter les snippets et médias dans le temps de lecture.
     case 'checklist':b.items.forEach(x=>parts.push(x.label));break;
     case 'accordion':b.items.forEach(x=>{parts.push(x.title);walk(x.blocks);});break;
     case 'custom':if(b.props?.label)parts.push(b.props.label);break;

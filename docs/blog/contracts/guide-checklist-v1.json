@@ -1,0 +1,63 @@
+{
+  "storageKey": "vd_guide_checklist_v1",
+  "schema": "record-of-checked-ids",
+  "version": 1,
+  "items": [
+    {
+      "id": "chk-1",
+      "label": "Mon CV est clair, aéré et a été relu."
+    },
+    {
+      "id": "chk-2",
+      "label": "Mon profil LinkedIn est complet et précis."
+    },
+    {
+      "id": "chk-3",
+      "label": "Mon portfolio présente mes meilleurs projets en ligne."
+    },
+    {
+      "id": "chk-4",
+      "label": "Mon GitHub démontre mes compétences (README soignés)."
+    },
+    {
+      "id": "chk-5",
+      "label": "J'ai défini mon poste cible et ma stack principale."
+    },
+    {
+      "id": "chk-6",
+      "label": "J'ai identifié une liste d'entreprises pertinentes."
+    },
+    {
+      "id": "chk-7",
+      "label": "J'ai commencé à contacter des professionnels sur LinkedIn."
+    },
+    {
+      "id": "chk-8",
+      "label": "Je dispose d'un outil de suivi (Notion, Excel) pour mes candidatures."
+    },
+    {
+      "id": "chk-9",
+      "label": "Je m'entraîne régulièrement aux tests techniques (algo/live coding)."
+    },
+    {
+      "id": "chk-10",
+      "label": "J'ai préparé mon pitch de présentation personnelle (2 min)."
+    },
+    {
+      "id": "chk-11",
+      "label": "Je sais justifier l'architecture de mes projets personnels."
+    },
+    {
+      "id": "chk-12",
+      "label": "J'ai identifié des meetups ou événements tech près de chez moi."
+    },
+    {
+      "id": "chk-13",
+      "label": "J'ai défini une routine de recherche soutenable dans la durée."
+    },
+    {
+      "id": "chk-14",
+      "label": "J'analyse mes résultats (retours positifs/négatifs) pour m'améliorer."
+    }
+  ]
+}

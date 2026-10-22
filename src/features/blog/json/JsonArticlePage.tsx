@@ -3,6 +3,7 @@ import {BlogArticleHero,BlogAuthorCard,BlogBreadcrumbs,BlogNextArticle,BlogReadi
 import {BlogBackToTop,BlogPrintButton,BlogReadingNavigation,BlogReadingProgress} from '../design-system/BlogReadingControls';
 import {JsonCustomModule} from './JsonCustomRegistry';
 import JsonBlockRenderer from './JsonBlockRenderer';
+import {RelatedProjects} from '../RelatedProjects';
 import ShareButtons from '../ShareButtons';
 
 export default function JsonArticlePage({article,readingMinutes,related=[]}:{
@@ -38,7 +39,7 @@ export default function JsonArticlePage({article,readingMinutes,related=[]}:{
           </div>
         </BlogReadingLayout>
       </article>
-
+      {article.meta.relatedProjects?.length ? <RelatedProjects locale={locale} slugs={article.meta.relatedProjects}/> : null}
     </main>
     <BlogBackToTop targetId="blog-article-top"/>
   </div>;
