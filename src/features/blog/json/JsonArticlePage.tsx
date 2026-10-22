@@ -1,8 +1,9 @@
 import type {JsonBlogArticle} from '@/lib/blog/json-types';
-import {BlogArticleHero,BlogAuthorCard,BlogBreadcrumbs,BlogNextArticle,BlogPageFooter,BlogReadingLayout,BlogSection,BlogSiteHeader} from '../design-system/BlogUI';
-import {BlogBackToTop,BlogPrintButton,BlogReadingNavigation} from '../design-system/BlogReadingControls';
+import {BlogArticleHero,BlogAuthorCard,BlogBreadcrumbs,BlogNextArticle,BlogReadingLayout,BlogSection} from '../design-system/BlogUI';
+import {BlogBackToTop,BlogPrintButton,BlogReadingNavigation,BlogReadingProgress} from '../design-system/BlogReadingControls';
 import {JsonCustomModule} from './JsonCustomRegistry';
 import JsonBlockRenderer from './JsonBlockRenderer';
+import ShareButtons from '../ShareButtons';
 
 export default function JsonArticlePage({article,readingMinutes,related=[]}:{
   article:JsonBlogArticle;
@@ -14,8 +15,9 @@ export default function JsonArticlePage({article,readingMinutes,related=[]}:{
   const publishedLabel=new Intl.DateTimeFormat(fr?'fr-FR':'en-US',{dateStyle:'long',timeZone:'UTC'}).format(new Date(`${article.meta.publishedAt}T00:00:00.000Z`));
   const toc=article.sections.map(section=>({id:section.id,label:section.title}));
   return <div className="blog-ds" id="blog-article-top">
-    <BlogSiteHeader locale={locale} shareTitle={article.meta.title} progressTargetId="blog-article-body"><BlogPrintButton/></BlogSiteHeader>
-    <main className="blog-ds__main">
+    <BlogReadingProgress targetId="blog-article-body"/>
+    <div className="blog-ds__toolbar"><BlogPrintButton/><ShareButtons title={article.meta.title}/></div>
+    <main id="main" className="blog-ds__main">
       <BlogBreadcrumbs items={[{label:'Portfolio',href:`/${locale}`},{label:'Blog',href:`/${locale}/blog`},{label:article.meta.title}]} locale={locale}/>
       <article>
         <BlogArticleHero category={article.meta.category} title={article.meta.title} excerpt={article.meta.excerpt}
@@ -36,7 +38,7 @@ export default function JsonArticlePage({article,readingMinutes,related=[]}:{
           </div>
         </BlogReadingLayout>
       </article>
-      <BlogPageFooter locale={locale}/>
+
     </main>
     <BlogBackToTop targetId="blog-article-top"/>
   </div>;

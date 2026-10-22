@@ -2,51 +2,19 @@ import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen } from "lucide-react";
-import ThemeToggle from "../ThemeToggle";
-import ShareButtons from "../ShareButtons";
 import CopyButton from "../CopyButton";
-import { BlogReadingProgress } from "./BlogReadingControls";
 
 export type BlogTone = "neutral" | "accent" | "success" | "warning" | "info";
 
-export function BlogSiteHeader({
-  locale = "fr",
-  shareTitle,
-  progressTargetId,
-  children,
-}: {
-  locale?: "fr" | "en";
-  shareTitle?: string;
-  progressTargetId?: string;
-  children?: ReactNode;
-}) {
-  return (
-    <header className="blog-ds__site-header">
-      <nav className="blog-ds__header-inner" aria-label={locale === "fr" ? "Navigation principale" : "Main navigation"}>
-        <Link href={`/${locale}`} className="blog-ds__wordmark">
-          Vincent DESBROSSES<span aria-hidden="true">.</span>
-        </Link>
-        <Link href={`/${locale}/blog`} className="blog-ds__nav-blog">
-          {locale === "fr" ? "Le blog" : "The blog"}
-        </Link>
-        <div className="blog-ds__header-actions">
-          {children}
-          {shareTitle ? <ShareButtons title={shareTitle} /> : null}
-          <ThemeToggle />
-        </div>
-      </nav>
-      {progressTargetId ? <BlogReadingProgress targetId={progressTargetId} /> : null}
-    </header>
-  );
-}
-
 export function BlogBreadcrumbs({
   items,
+  locale = "fr",
 }: {
   items: ReadonlyArray<{ label: string; href?: string }>;
+  locale?: "fr" | "en";
 }) {
   return (
-    <nav className="blog-ds__breadcrumb" aria-label="Fil d’Ariane">
+    <nav className="blog-ds__breadcrumb" aria-label={locale === "fr" ? "Fil d’Ariane" : "Breadcrumb"}>
       <ol>
         {items.map((item, index) => (
           <li key={`${index}-${item.label}`}>
@@ -194,13 +162,13 @@ export function BlogInfoCard({
 }: {
   number?: string;
   title: string;
-  description: string;
+  description?: ReactNode;
   children?: ReactNode;
 }) {
   return (
     <div className="blog-ds__info-card">
       {number ? <span className="blog-ds__card-index">{number}</span> : null}
-      <h3>{title}</h3><p>{description}</p>
+      <h3>{title}</h3>{description ? <p>{description}</p> : null}
       {children ? <div className="blog-ds__card-action">{children}</div> : null}
     </div>
   );
@@ -249,20 +217,16 @@ export function BlogAuthorCard({
   description?: string;
   locale?: "fr" | "en";
 }) {
-  return <aside className="blog-ds__author-card" aria-label="À propos de l’auteur">
+  return <aside className="blog-ds__author-card" aria-label={locale === "fr" ? "À propos de l’auteur" : "About the author"}>
     <div className="blog-ds__author-avatar"><Image src="/pp.jpg" alt="" width={75} height={75} /></div>
-    <div><p className="blog-ds__module-eyebrow">Derrière ces articles</p><h3>Vincent DESBROSSES</h3><p>{description}</p>
-      <Link href={`/${locale}`}>Découvrir mes projets <ArrowUpRight size={15} aria-hidden="true" /></Link>
+    <div><p className="blog-ds__module-eyebrow">{locale === "fr" ? "Derrière ces articles" : "About the author"}</p><h3>Vincent DESBROSSES</h3><p>{description}</p>
+      <Link href={`/${locale}`}>{locale === "fr" ? "Découvrir mes projets" : "View my projects"} <ArrowUpRight size={15} aria-hidden="true" /></Link>
     </div>
   </aside>;
 }
 
 export function BlogNextArticle({ eyebrow = "Pour continuer la lecture", title, href }: { eyebrow?: string; title: string; href: string }) {
   return <Link href={href} className="blog-ds__next-article"><div><span className="blog-ds__next-label"><BookOpen size={15} aria-hidden="true" />{eyebrow}</span><strong>{title}</strong></div><ArrowRight size={24} aria-hidden="true" /></Link>;
-}
-
-export function BlogPageFooter({ locale = "fr" }: { locale?: "fr" | "en" }) {
-  return <footer className="blog-ds__footer"><Link href={`/${locale}`} className="blog-ds__wordmark">Vincent DESBROSSES<span aria-hidden="true">.</span></Link><Link href={`/${locale}/blog`}>Tous les articles <ArrowUpRight aria-hidden="true" size={15} /></Link></footer>;
 }
 
 export function BlogReadingLayout({ navigation, children }: { navigation: ReactNode; children: ReactNode }) {

@@ -5,6 +5,7 @@ import path from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import nextEnv from "@next/env";
 import { readAllBlogArticles } from "../src/lib/blog/article-source.mjs";
+import { readAllJsonBlogArticles, validateMergedBlogArticles } from "../src/lib/blog/json-source.mjs";
 import { validateBlogLinks } from "./validate-blog-links.mjs";
 
 nextEnv.loadEnvConfig(process.cwd());
@@ -14,7 +15,7 @@ if (!existsSync(path.join(process.cwd(), ".next", "BUILD_ID"))) {
   process.exit(1);
 }
 
-const articles = readAllBlogArticles();
+const articles = validateMergedBlogArticles([...readAllBlogArticles(), ...readAllJsonBlogArticles()]);
 const published = articles.filter(
   (article) => article.metadata.status === "published",
 );
@@ -726,7 +727,9 @@ try {
         "checklist, partage, impression et thème présents dans le HTML du guide",
       );
     } else {
-      const firstHeading = article.body.match(/^##\s+(.+)$/m)?.[1]?.trim();
+      const firstHeading = article.format === "json"
+        ? article.data.sections[0]?.title
+        : article.body.match(/^##\s+(.+)$/m)?.[1]?.trim();
       check(
         Boolean(firstHeading) && html.includes(firstHeading),
         "premier titre et contenu MDX présents dans le HTML initial " + route,

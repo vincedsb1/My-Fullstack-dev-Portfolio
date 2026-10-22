@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import BlogShowcase from "../../../../components/blog/design-system/BlogShowcase";
-import "../../../../components/blog/design-system/blog-design-system.css";
+import BlogShowcase from "@/features/blog/design-system/BlogShowcase";
+
 
 // Route de revue graphique volontairement hors catalogue, sitemap et index.
 // La page est consultable par URL directe, mais n'est pas destinée au SEO.

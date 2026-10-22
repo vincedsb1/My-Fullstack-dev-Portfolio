@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import {readFileSync,mkdtempSync,mkdirSync,writeFileSync,rmSync} from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
-import {validateJsonArticle,readAllJsonBlogArticles,validateMergedBlogArticles,getJsonReadingText} from '../src/lib/blog/json-source.mjs';
+import {validateJsonArticle,readAllJsonBlogArticles,validateMergedBlogArticles,getJsonReadingText} from '../../src/lib/blog/json-source.mjs';
 
-const root=path.resolve(import.meta.dirname,'..');
+const root=path.resolve(import.meta.dirname,'../..');
 const fixture=JSON.parse(readFileSync(path.join(root,'src/content/blog-json/fr/json-demo-blog.json'),'utf8'));
 const fresh=()=>structuredClone(fixture);
 const run=x=>validateJsonArticle(x,{file:'test.json',locale:'fr',filenameSlug:'json-demo-blog'});

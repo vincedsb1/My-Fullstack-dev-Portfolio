@@ -17,7 +17,8 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "audit:verify": "node scripts/verify-portfolio-build.mjs",
-    "analyze": "ANALYZE=true next build --webpack"
+    "analyze": "ANALYZE=true next build --webpack",
+    "blog:test:json": "node --test scripts/blog-json-tests/*.node.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

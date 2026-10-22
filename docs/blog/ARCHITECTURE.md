@@ -2,7 +2,7 @@
 
 ## Sources et rendu
 
-Les articles vivent dans `src/content/blog/<locale>/<slug>.mdx`. Le frontmatter MDX est la source unique des titres, descriptions, extraits, catégories, dates, slugs, langues et statuts.
+Les articles historiques vivent dans `src/content/blog/<locale>/<slug>.mdx` ; leur frontmatter reste la source des métadonnées. Le moteur JSON v1, préparé en parallèle sur `dev03`, charge `src/content/blog-json/<locale>/<slug>.json` (format versionné et validé). Les deux sources alimentent le même catalogue, sans convertir les deux articles existants à cette étape.
 
 `src/lib/blog/article-source.mjs` lit les fichiers locaux avec `yaml`, valide leurs métadonnées, repère les collisions de routes et vérifie les relations de traduction. Il s’assure aussi que le titre du frontmatter reste l’unique H1 et que les images locales référencées existent sous `public/blog/`. `scripts/validate-blog-links.mjs`, appelé par `npm run blog:validate`, vérifie que les liens internes ciblent une route existante et publiée et que les ressources locales existent. `src/lib/blog/articles.ts` expose les articles publiés, leur ordre, leurs versions traduites, leur temps de lecture et leur URL d’image sociale.
 
@@ -66,3 +66,18 @@ chargés que par son composant. Tous les gabarits utilisent l’en-tête, le pie
 page et les contrôles de thème/langue communs. `seoTitle` permet un titre SEO
 court sans changer le H1. `relatedProjects` référence uniquement des fiches
 publiées dans la langue de l’article et produit des liens de détail visibles.
+
+
+## Organisation consolidée sur dev03
+
+- `src/features/blog/design-system/` : composants et styles du Showcase (isolés par `.blog-ds`).
+- `src/features/blog/json/` : présentation des blocs JSON, checklist et registre custom explicite.
+- `src/lib/blog/json-source.mjs`, `.d.mts`, `json-types.ts` : validation structurelle + types du schéma v1.
+- `src/content/blog-json/fr/json-demo-blog.json` : fixture `draft`, visible uniquement via `/fr/blog/json-preview` en mode développement.
+- `src/app/(localized)/[locale]/blog/showcase/` : catalogue visuel de référence `noindex`.
+- `scripts/blog-json-tests/` : tests Node dédiés ; `npm run blog:test:json`.
+- `docs/blog/README.md` : index et limites avant migration.
+
+Ne pas utiliser l'ancien patcher SEO de l'archive : les contrôles du moteur JSON et du test SEO sont intégrés directement à leurs scripts respectifs.
+
+**Shell d’article JSON :** ne pas réintroduire un deuxième `header` ou `footer` global ; les pages héritent déjà de `SiteHeader` / `SiteFooter` depuis le layout `[locale]`. Le hero et les commandes de lecture restent propres à `JsonArticlePage`.

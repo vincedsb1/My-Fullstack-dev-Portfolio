@@ -1,6 +1,6 @@
 # Design system éditorial du blog — v1
 
-> **Phase 2 : direction visuelle + bibliothèque Showcase.** Ce document décrit les composants implémentés dans `src/app/components/blog/design-system/` et la page `/fr/blog/showcase`. Il ne remplace pas encore les deux rendus historiques. Référence initiale : `main` à `1b217e7790ef3429ceadf37c176143122107a005` (22 octobre 2026).
+> **Phase 2 : direction visuelle + bibliothèque Showcase.** Ce document décrit les composants implémentés dans `src/features/blog/design-system/` et la page `/fr/blog/showcase`. Il ne remplace pas encore les deux rendus historiques. Référence initiale : `main` à `1b217e7790ef3429ceadf37c176143122107a005` (22 octobre 2026).
 
 ## 1. Intentions et décisions
 
@@ -153,3 +153,8 @@ La compilation du projet complet n'a pas été effectuée ici (pas de copie loca
 - ⚠️ **Intégration / build du dépôt complet non réalisés** dans le livrable isolé.
 
 **Prochaine étape après validation du Showcase :** schéma JSON versionné + registre de blocs + moteur de rendu puis migration progressive de l'article internationalisation et du guide.
+
+
+> **dev03 :** les composants résident dans `src/features/blog/design-system/`. Le Showcase est une référence en cours de validation visuelle ; les modules métier spécialisés ne sont pas encore tous portés.
+
+**Composition dans le portfolio actuel :** le header/footer de navigation sont fournis par `src/app/(localized)/[locale]/layout.tsx` (composants `SiteHeader` et `SiteFooter`). Le design system fournit le hero, la barre de progression et la barre d’outils, sans reproduire le chrome global.

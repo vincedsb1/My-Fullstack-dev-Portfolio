@@ -1,13 +1,19 @@
+import type { JsonBlogArticle } from "@/lib/blog/json-types";
+import JsonBlockRenderer from "../json/JsonBlockRenderer";
+import jsonFixture from "@/content/blog-json/fr/json-demo-blog.json";
 import type { ReactNode } from "react";
 import { CheckCircle2, Globe2, Layers, Sparkles } from "lucide-react";
 import {
   BlogAccordion, BlogArticleHero, BlogAuthorCard, BlogBadge, BlogBreadcrumbs, BlogButton,
   BlogCallout, BlogCodeSample, BlogFigure, BlogIconList, BlogInfoCard,
-  BlogModuleFrame, BlogNextArticle, BlogPageFooter, BlogQuote,
-  BlogReadingLayout, BlogSection, BlogSiteHeader,
+  BlogModuleFrame, BlogNextArticle, BlogQuote,
+  BlogReadingLayout, BlogSection,
 } from "./BlogUI";
-import { BlogBackToTop, BlogPrintButton, BlogReadingNavigation, type BlogTocItem } from "./BlogReadingControls";
+import { BlogBackToTop, BlogPrintButton, BlogReadingNavigation, BlogReadingProgress, type BlogTocItem } from "./BlogReadingControls";
 import { BlogChecklistDemo, BlogDecisionDemo } from "./BlogShowcaseInteractive";
+import ShareButtons from "../ShareButtons";
+
+const fixture = jsonFixture as unknown as JsonBlogArticle;
 
 const toc: ReadonlyArray<BlogTocItem> = [
   { id: "fondations", label: "Fondations & couleurs" },
@@ -18,6 +24,7 @@ const toc: ReadonlyArray<BlogTocItem> = [
   { id: "interactions", label: "Modules interactifs" },
   { id: "modules", label: "Composants personnalisés" },
   { id: "navigation", label: "Fin d’article" },
+  { id: "json-fixture", label: "Données JSON v1" },
 ];
 
 function PreviewPanel({ theme, children }: { theme: "light" | "dark"; children: ReactNode }) {
@@ -41,8 +48,9 @@ function HeroArt() {
 export default function BlogShowcase() {
   return (
     <div className="blog-ds" id="blog-showcase-top">
-      <BlogSiteHeader locale="fr" progressTargetId="blog-showcase-body" shareTitle="Blog Showcase — Vincent DESBROSSES"><BlogPrintButton /></BlogSiteHeader>
-      <main className="blog-ds__main">
+      <BlogReadingProgress targetId="blog-showcase-body" />
+      <div className="blog-ds__toolbar"><BlogPrintButton /><ShareButtons title="Blog Showcase — Vincent DESBROSSES" /></div>
+      <main id="main" className="blog-ds__main">
         <BlogBreadcrumbs items={[{ label: "Portfolio", href: "/fr" }, { label: "Blog", href: "/fr/blog" }, { label: "Showcase éditorial" }]} />
         <div style={{ marginBottom: 18 }}><span className="blog-ds__showcase-label">Page de référence · v1 · non indexée</span></div>
         <BlogArticleHero
@@ -133,9 +141,15 @@ export default function BlogShowcase() {
               <BlogAuthorCard />
               <BlogNextArticle title="Faut-il internationaliser son SaaS dès le lancement ?" href="/fr/blog/internationaliser-saas-lancement" />
             </BlogSection>
+            <BlogSection id="json-fixture" number="09" title="Contrat JSON et rendu réel" eyebrow="Fixtures validées">
+              <p>Les blocs ci-dessous proviennent du même fichier JSON que la prévisualisation et utilisent exactement le même renderer que les futurs articles.</p>
+              {fixture.sections.map(section=><div key={section.id} className="blog-ds__json-showcase-section">
+                <h3>{section.title}</h3><JsonBlockRenderer blocks={section.blocks}/>
+              </div>)}
+            </BlogSection>
           </div>
         </BlogReadingLayout>
-        <BlogPageFooter />
+
       </main>
       <BlogBackToTop targetId="blog-showcase-top" />
     </div>

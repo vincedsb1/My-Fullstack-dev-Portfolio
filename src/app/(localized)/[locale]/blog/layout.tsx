@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import "./blog.css";
+import "@/features/blog/design-system/blog-design-system.css";
 export default async function BlogLayout({
   children,
   params,

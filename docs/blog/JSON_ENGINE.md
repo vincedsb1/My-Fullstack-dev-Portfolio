@@ -1,7 +1,7 @@
 # Blog — Moteur JSON v1 (étape 3)
 
-**Référence de développement :** `vincedsb1/My-Fullstack-dev-Portfolio`, `main` au commit `1b217e7790ef3429ceadf37c176143122107a005` (21 octobre 2026).  
-**Statut :** implémentation livrée et testée unitairement, **intégration Next.js du dépôt complet à valider**.
+**Référence actuelle :** intégration sur `dev03`, à partir de `dev02` (`76e2e81d`).  
+**Statut :** sources repositionnées dans l’architecture courante ; build Next.js/contrôles navigateur à valider dans le dépôt avec dépendances installées.
 
 ## Objectif et périmètre
 
@@ -82,7 +82,7 @@ La première entrée est `metric-panel` avec `props: { value, label, caption? }`
 3. `src/app/(localized)/[locale]/blog/[slug]/page.tsx` conserve les fonctions SEO existantes et délègue **uniquement** le corps au renderer JSON pour `format === 'json'`.
 4. `src/app/sitemap.ts`, les cartes d'index, `generateStaticParams()` et l'image sociale réutilisent déjà `getPublishedArticles()` / `getPublishedArticle()` : l'ajout d'articles JSON publiés est automatiquement propagé.
 5. `scripts/validate-blog.mjs` contrôle tous les fichiers et réutilise le validateur existant des liens pour les destinations du JSON.
-6. Le test SEO historique doit être adapté via `node scripts/patch-blog-json-seo-tests.mjs` (lire `INSTALLATION.md`). Il doit tester les pages JSON publiées exactement comme les pages MDX.
+6. Le test SEO historique doit être adapté via `npm run blog:test:seo` (lire `INSTALLATION.md`). Il doit tester les pages JSON publiées exactement comme les pages MDX.
 
 ## Stabilité et accessibilité
 
@@ -107,3 +107,6 @@ La première entrée est `metric-panel` avec `props: { value, label, caption? }`
 - [ ] `/fr/blog/json-preview` affiche la fixture en développement ; route non publiée et absente du sitemap ; Showcase affiche la section JSON.
 - [ ] Captures 1440, 820, 390 et 320 px, clair/sombre ; vérifier la colonne de lecture, tables, code, checklist et sommaire.
 - [ ] Publication pilote d'un **vrai** article JSON validée (canonical, OG, JSON-LD, sitemap et carte d'index), seulement après validation éditoriale.
+
+
+> **dev03 :** le patcher SEO historique n'est plus requis. Le test SEO est adapté directement pour les articles JSON. Les articles MDX existants gardent leur rendu `ArticleLayouts` et leur métadonnée `seoTitle`.

@@ -3,8 +3,8 @@ import {notFound} from 'next/navigation';
 import type {Metadata} from 'next';
 import {readJsonBlogArticleFile,getJsonReadingText} from '@/lib/blog/json-source.mjs';
 import {estimateReadingTime} from '@/lib/blog/reading-time';
-import JsonArticlePage from '../../../../components/blog/json/JsonArticlePage';
-import '../../../../components/blog/design-system/blog-design-system.css';
+import JsonArticlePage from '@/features/blog/json/JsonArticlePage';
+
 
 export const dynamic='force-static';
 export const dynamicParams=false;

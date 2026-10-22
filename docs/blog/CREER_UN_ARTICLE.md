@@ -1,5 +1,8 @@
 # Créer un article
 
+> **Période de transition (`dev03`) :** ce document décrit la création MDX historique. Le schéma de création JSON v1 et ses limites se trouvent dans [`JSON_ENGINE.md`](JSON_ENGINE.md) et [`ARTICLE_TEMPLATE.json`](ARTICLE_TEMPLATE.json). Ne pas mélanger les deux formats pour un même `locale/slug`.
+
+
 ## Procédure
 
 1. Lis `AGENTS.md` ou `CLAUDE.md`, puis `docs/blog/ARCHITECTURE.md`.
