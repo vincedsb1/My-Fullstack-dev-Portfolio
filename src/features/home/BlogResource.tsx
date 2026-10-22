@@ -65,7 +65,7 @@ function ArticleCard({
           }`}
         >
           <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-2">
-            <span className="rounded-full border border-neutral-200/60 bg-neutral-100 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-neutral-700 dark:border-neutral-600 dark:bg-neutral-700 dark:text-neutral-200">
+            <span className="rounded-full border border-neutral-200/60 bg-neutral-100 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-700 dark:border-neutral-600 dark:bg-neutral-700 dark:text-neutral-300">
               {article.category}
             </span>
             <p className="text-xs font-medium leading-relaxed text-neutral-500 dark:text-neutral-400 sm:text-sm">
@@ -84,21 +84,21 @@ function ArticleCard({
           </div>
           <h3
             lang={article.locale}
-            className={`mb-4 font-bold leading-tight tracking-tight text-neutral-900 transition-colors group-hover:text-red-600 dark:text-neutral-50 dark:group-hover:text-red-400 ${
-              featured ? "text-2xl lg:text-3xl" : "text-xl"
-            }`}
+            className="mb-4 text-2xl font-semibold leading-tight tracking-tight text-gray-900 transition-colors group-hover:text-red-600 dark:text-neutral-50 dark:group-hover:text-red-400"
           >
             {article.title}
           </h3>
           <p
             lang={article.locale}
-            className={`mb-8 leading-relaxed text-neutral-500 dark:text-neutral-400 ${
-              featured ? "text-base" : "flex-1 text-sm"
+            className={`mb-8 leading-relaxed ${
+              featured
+                ? "text-base font-light text-gray-600 dark:text-gray-400 md:text-lg"
+                : "flex-1 text-sm text-neutral-600 dark:text-neutral-300"
             }`}
           >
             {article.excerpt}
           </p>
-          <span className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-neutral-900 dark:text-neutral-100">
+          <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-neutral-100">
             {readLabel}
             <ArrowRight
               aria-hidden="true"
@@ -143,11 +143,11 @@ export default async function BlogResource({
           </h2>
         </div>
         <div className="pl-12" data-reveal>
-          <p className="max-w-2xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400 md:text-base">
+          <p className="max-w-2xl text-base font-light leading-relaxed text-[#707070] dark:text-neutral-400 md:text-lg">
             {t("description")}
           </p>
           {locale === "en" && blogLocale !== "en" ? (
-            <p className="mt-3 text-sm font-medium text-neutral-500 dark:text-neutral-400">
+            <p className="mt-3 text-sm font-medium text-[#707070] dark:text-neutral-400">
               {t("frenchNotice")}
             </p>
           ) : null}
@@ -174,7 +174,7 @@ export default async function BlogResource({
       <div className="mt-10 flex sm:mt-14" data-reveal>
         <Link
           href={`/${blogLocale}/blog`}
-          className="group inline-flex items-center gap-3 rounded-lg font-bold text-neutral-900 transition-colors hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-4 dark:text-neutral-100 dark:hover:text-red-400 dark:focus-visible:ring-offset-neutral-900"
+          className="group inline-flex items-center gap-3 rounded-lg text-base font-semibold text-gray-900 transition-colors hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-4 dark:text-neutral-100 dark:hover:text-red-400 dark:focus-visible:ring-offset-neutral-900"
         >
           {blogLocale === "en" && locale === "en"
             ? "Read all articles"
