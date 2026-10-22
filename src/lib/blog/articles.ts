@@ -6,13 +6,24 @@ import {
   type BlogArticleRecord,
   type BlogLocale,
 } from "./article-source.mjs";
-import { guideContent } from "../../app/guide-premier-emploi-developpeur/guideContent";
+import { readFileSync } from "node:fs";
+import path from "node:path";
+const guideContent = readFileSync(
+  path.join(process.cwd(), "src/content/guide-reading.txt"),
+  "utf8",
+);
 import { estimateReadingTime } from "./reading-time";
 
 export type { BlogArticleMetadata, BlogArticleRecord, BlogLocale };
 
+let cachedArticles: BlogArticleRecord[] | undefined;
+const readCached = () =>
+  process.env.NODE_ENV === "development"
+    ? readAllBlogArticles()
+    : (cachedArticles ??= readAllBlogArticles());
+
 export function getPublishedArticles(locale?: BlogLocale) {
-  return readAllBlogArticles()
+  return readCached()
     .filter(
       (article) =>
         article.metadata.status === "published" &&

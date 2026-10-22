@@ -62,6 +62,7 @@ function makeFixture(
   const copy = fixtureCopy[locale][variant];
   const common = {
     schemaVersion: 1 as const,
+    updatedAt: "2026-10-20",
     status: "fixture" as const,
     projectId: "fixture" as const,
     slug: `__fixture-${variant}`,

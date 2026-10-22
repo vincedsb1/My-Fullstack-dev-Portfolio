@@ -1,0 +1,620 @@
+export const guideContent = String.raw`
+ 
+     
+          
+     
+
+     
+     
+         
+             
+                 
+                    Vincent DESBROSSES
+                 
+                 
+                    Blog
+                 
+             
+            
+             
+                 
+                      
+                     PDF 
+                 
+                 
+                      
+                 
+                  
+                 
+                      
+                      
+                 
+             
+         
+     
+
+     
+        
+         
+             
+                 
+                     
+                          Portfolio  
+                         / 
+                          Blog  
+                         / 
+                          {{ARTICLE_TITLE}}  
+                     
+                 
+                 
+                     
+                        Sommaire du guide
+                     
+                     
+                 
+                      01. Les trois piliers  
+                      02. Développer son réseau  
+                      03. Trouver des opportunités  
+                      04. Créer du contenu  
+                      05. Préparer ses entretiens  
+                      06. Organiser sa recherche  
+                      07. Rencontrer des professionnels  
+                      08. Dix conseils supplémentaires  
+                      09. Les erreurs à éviter  
+                      10. Checklist finale  
+                 
+                     
+                 
+                
+                 
+                 
+                     
+                          
+                        {{ARTICLE_CATEGORY}} • Développement Web
+                     
+                    
+                     
+                        {{ARTICLE_TITLE}}
+                     
+                    
+                     
+                        {{ARTICLE_EXCERPT}}
+                     
+
+                     
+                         Trouver son premier emploi dans le développement ne repose pas uniquement sur ses compétences techniques. Il faut aussi savoir les démontrer, inspirer confiance et multiplier les occasions de rencontrer les bonnes personnes. 
+                         J'ai rassemblé ici les conseils que je partage régulièrement avec des développeurs juniors, avec une méthode concrète pour passer à l'action. 
+                     
+
+                     
+                         
+                             
+                             VD 
+                         
+                         
+                             Vincent DESBROSSES 
+                             Développeur Fullstack 
+                         
+                         
+                            Publié le  {{ARTICLE_PUBLISHED_AT}}  
+                             Mis à jour le  {{ARTICLE_UPDATED_AT}}   
+                            {{ARTICLE_READING_TIME}} min de lecture
+                         
+                     
+
+                     
+                         
+                            Commencer la lecture
+                         
+                         
+                              
+                            Enregistrer en PDF
+                         
+                     
+                 
+
+                 
+                    
+                     
+                         
+                             01 
+                             Construire les trois piliers de sa crédibilité 
+                         
+                        
+                         Avant de multiplier les candidatures, prépare trois supports à jour : un CV, un profil LinkedIn et un portfolio. 
+                         Un recruteur doit pouvoir repérer le poste que tu vises et trouver des exemples concrets de ce que tu sais faire. 
+
+                         
+                         
+                             
+                                 
+                                      
+                                 
+                                 Un CV lisible, adapté au poste visé 
+                             
+                            
+                             
+                                  Mise en page :  Choisis un modèle sobre et aéré, avec une structure de texte lisible. Évite les designs trop complexes ou uniquement graphiques. 
+                                  Clarté :  Rédige des descriptions courtes, centrées sur tes missions et réalisations. Écarte les détails sans rapport avec le poste. 
+                                  Preuves :  Donne des exemples concrets de réalisations. 
+                                  Relecture :  Fais relire ton CV et demande à une IA de relever les formulations ambiguës. Vérifie chaque suggestion avant de la garder. 
+                                  Format :  Prévois une version PDF propre et légère, avec une structure lisible par les logiciels de recrutement (ATS). 
+                             
+                            
+                             
+                                  Une photo impeccable :  Pour tes candidatures en France, considère une photo soignée comme indispensable. Choisis un portrait professionnel avec un visage bien éclairé, un léger sourire, un cadrage net et un fond sobre. Elle participe à la première impression du recruteur et l'aide à t'identifier parmi les candidatures : prends le temps de te mettre en valeur. 
+                             
+                             Place le poste visé et les technologies principales près du haut de la page. 
+                         
+
+                         
+                         
+                             
+                                 
+                                      
+                                 
+                                 Un LinkedIn qui explique ton positionnement 
+                             
+                            
+                             
+                                  Titre explicite :  Indique le poste recherché et les technologies que tu utilises. 
+                                  Complétude :  Détaille tes expériences pertinentes, tes projets et ajoute tes compétences techniques. Affiche tes liens GitHub et Portfolio. 
+                                  Clarté :  Explique la valeur que tu apportes, évite les formulations vagues et les listes de buzzwords. 
+                                  Preuve sociale :  Demande des recommandations à d'anciens collègues ou formateurs. 
+                             
+
+                             
+                                 Exemple de titre efficace 
+                                 Développeur Fullstack Junior | React • TypeScript • Node.js | Recherche CDI 
+                             
+                             Garde le même intitulé de poste et les mêmes compétences clés sur ton CV et LinkedIn. 
+                         
+
+                         
+                         
+                             
+                                 
+                                      
+                                 
+                                 Un portfolio qui démontre tes compétences 
+                             
+                            
+                             
+                                  Sélection :  Présente ta spécialisation et sélectionne tes projets les plus pertinents. Montre des applications réelles et fonctionnelles. 
+                                  Contexte :  Pour chaque projet, explique le problème résolu, les technologies utilisées et justifie tes choix techniques. 
+                                  Accès :  Donne un accès facile aux démonstrations en ligne et aux dépôts GitHub. 
+                                  Qualité technique :  Teste l'affichage sur mobile, l'accessibilité au clavier et les performances. Vérifie les liens et corrige les erreurs repérées. 
+                             
+                             Pour un projet collectif, distingue clairement ta contribution de celle de l'équipe. 
+                         
+
+                         Ces supports ne garantissent pas un emploi. Ils donnent au recruteur des exemples concrets pour examiner ton profil et les projets que tu peux présenter. 
+                     
+
+                     
+                         
+                             02 
+                             Développer activement son réseau 
+                         
+
+                         Les annonces ne sont pas le seul point d'entrée. En échangeant avec des personnes du métier, tu peux demander conseil et parfois apprendre qu'une équipe prépare un recrutement. 
+
+                         Identifier les bonnes personnes 
+                         Ne te limite pas aux recruteurs. Cherche à entrer en contact avec ceux qui comprennent ton métier et ont des besoins : 
+                         
+                             CTO 
+                             Tech Leads 
+                             Engineering Managers 
+                             Lead Developers 
+                             Fondateurs 
+                             Product Managers 
+                         
+                         Envoie quelques invitations ciblées et personnalise chaque message. 
+
+                         Contacter directement les décisionnaires 
+                         Écris un message bref qui explique ton profil et ce qui t'intéresse dans l'entreprise. Pour un premier échange, tu peux aussi demander un conseil ou proposer ton aide, plutôt que d'ouvrir directement par une demande de poste. 
+
+                         
+                         
+                             
+                                 Modèle de message d'approche 
+                                 
+                                       Copier
+                                 
+                             
+                             Bonjour [Prénom],
+
+Je découvre votre travail chez [Entreprise] et je m'intéresse particulièrement à [élément précis du produit ou de l'équipe technique].
+
+Je suis développeur junior spécialisé en [technologies] et je recherche actuellement [type d'opportunité].
+
+Auriez-vous un conseil à me donner pour me rapprocher d'une équipe comme la vôtre ?
+
+Merci pour votre temps. 
+                         
+                         ⚠️ Il s'agit d'un modèle à personnaliser absolument selon le contexte, pas d'un message à envoyer en masse. 
+                     
+
+                     
+                         
+                             03 
+                             Multiplier les opportunités 
+                         
+                         La recherche demande de la régularité. Combine réponses aux offres, candidatures spontanées et prises de contact directes. 
+                         
+                             Consulte plusieurs plateformes, pas seulement LinkedIn. Va sur les sites carrières des entreprises. 
+                             Repère les entreprises qui utilisent ta stack technique. 
+                             N'attends pas de correspondre à 100% aux critères d'une annonce pour postuler. 
+                             Adapte tes candidatures pour les entreprises qui t'intéressent vraiment. 
+                         
+                        
+                         
+                             Ne cherche pas uniquement les géants de la tech. 
+                            Les PME, agences web, éditeurs logiciels spécialisés, entreprises régionales et startups moins visibles représentent d'excellentes opportunités pour débuter.
+                         
+                     
+
+                     
+                         
+                             04 
+                             Créer du contenu pour être visible 
+                         
+                         Produire du contenu permet de montrer ta progression, de partager tes connaissances et de ne plus être un profil anonyme. L'objectif n'est pas de devenir influenceur, mais de documenter ton travail. 
+                        
+                         Idées de contenus actionnables 
+                         
+                             
+                                 Retour d'expérience 
+                                 "J'ai rencontré ce problème de performance. Voici comment je l'ai résolu." 
+                             
+                             
+                                 Apprentissage 
+                                 "Voici trois choses que j'ai comprises en apprenant TypeScript cette semaine." 
+                             
+                             
+                                 Démonstration 
+                                 "Courte vidéo montrant le fonctionnement de ma nouvelle application." 
+                             
+                             
+                                 Comparaison 
+                                 "REST ou GraphQL : voici les différences pratiques que j'ai observées." 
+                             
+                         
+
+                         Conseils de publication 
+                         
+                              Régularité :  Définis une cadence soutenable. Ne sacrifie pas ton apprentissage technique pour créer du contenu. 
+                              Authenticité :  Écris avec tes mots. L'IA peut corriger, mais l'expérience doit être la tienne. 
+                              Interactions :  Laisse des commentaires pertinents sous les publications de professionnels et participe régulièrement aux discussions techniques. 
+                         
+                     
+
+                     
+                         
+                             05 
+                             Se préparer aux entretiens 
+                         
+                         Prépare tes entretiens autour de quatre situations fréquentes : 
+
+                         
+                             
+                                 A. Entretien RH & Motivation 
+                                 Sache présenter ton parcours et tes motivations en quelques phrases. Si tu es en reconversion, explique ce qui t'a conduit vers le développement. Prépare des questions à poser sur l'entreprise. 
+                                
+                                 
+                                     
+                                         Prompt IA d'entraînement 
+                                         Copier 
+                                     
+                                     Joue le rôle d'un recruteur technique exigeant qui fait passer un entretien à un développeur junior. Pose-moi les questions une par une. Attends ma réponse avant de continuer. Après chaque réponse, évalue sa clarté, sa pertinence et identifie les éléments manquants. 
+                                 
+                             
+
+                             
+                                 B. Algorithmique & Live Coding 
+                                 Entraîne-toi sur  CodinGame  ou LeetCode. Décompose le problème avant de coder et explique ton raisonnement à voix haute. La méthode compte autant que le résultat. 
+                             
+
+                             
+                                 C. Questions Techniques 
+                                 Maîtrise les fondamentaux de ta stack. Comprends les concepts plutôt que de réciter des définitions. Sois capable de dire "je ne sais pas, mais voici comment je chercherais". 
+                             
+
+                             
+                                 D. Études de cas & Architecture 
+                                 On peut te demander d'imaginer l'architecture d'une app simple. Identifie le besoin métier, choisis la BDD, le front, l'API et justifie tes compromis techniques. 
+                             
+                         
+                     
+
+                     
+                         
+                             06 
+                             Organiser sa recherche 
+                         
+                         Tiens un tableau (Notion, Excel) pour noter les candidatures envoyées, les relances prévues et les réponses reçues. 
+                        
+                         
+                             
+                                 Exemple de tableau de suivi des candidatures 
+                                 
+                                     
+                                         Entreprise 
+                                         Poste 
+                                         Statut 
+                                         Prochaine action 
+                                     
+                                 
+                                 
+                                     
+                                         Entreprise A 
+                                         Dev React 
+                                          Candidature envoyée  
+                                         Noter une date de relance 
+                                     
+                                     
+                                         Entreprise B 
+                                         Développeur full stack 
+                                          Entretien programmé  
+                                         Préparer les questions techniques 
+                                     
+                                 
+                             
+                         
+                     
+
+                     
+                         
+                             07 
+                             Sortir des candidatures en ligne 
+                         
+                         Les meetups techniques, job datings et conférences locales donnent l'occasion d'échanger directement avec des professionnels. Après la rencontre, ajoute-les sur LinkedIn et rappelle le sujet dont vous avez parlé. 
+                     
+
+                     
+                         
+                             08 
+                             Dix conseils supplémentaires pour se démarquer 
+                         
+                        
+                         
+                             
+                             
+                                 #1 Définir un positionnement clair 
+                                 Mieux vaut être identifiable sur une stack précise que se dire expert en tout. 
+                                 
+                                     Action :  Définis en une phrase ton poste et ta stack.
+                                 
+                             
+                             
+                             
+                                 #2 Maîtriser les fondamentaux 
+                                 Les bases de JavaScript, HTML/CSS, HTTP et SQL te serviront sur différents projets, même si les frameworks changent. 
+                                 
+                                     Action :  Révise l'asynchrone, la manipulation du DOM et les API.
+                                 
+                             
+                             
+                             
+                                 #3 Soigner son GitHub 
+                                 C'est la preuve concrète de ta manière de coder et de documenter. 
+                                 
+                                     Action :  Épingle quelques projets représentatifs avec des README explicatifs.
+                                 
+                             
+                             
+                             
+                                 #4 Construire un vrai produit 
+                                 Un projet abouti comme  Smartflow, présenté dans mon portfolio , avec conception, architecture, choix de stack, maquettes et tests, est plus parlant qu'une liste de tutoriels inachevés. 
+                                 
+                                     Action :  Choisis un périmètre adapté et documente tes choix techniques ainsi que la gestion des erreurs.
+                                 
+                             
+                             
+                             
+                                 #5 Montrer comment tu travailles en équipe 
+                                 Une contribution open source ou un hackathon peut te donner une situation concrète à raconter en entretien. 
+                                 
+                                     Action :  Décris ton rôle, les décisions prises en équipe et la répartition du travail.
+                                 
+                             
+                             
+                             
+                                 #6 Personnaliser ses candidatures 
+                                 Une candidature ciblée te permet de relier ton profil aux besoins de l'offre. 
+                                 
+                                     Action :  Relie une compétence demandée à un exemple tiré de tes projets.
+                                 
+                             
+                             
+                             
+                                 #7 Activer la cooptation 
+                                 Tes anciens camarades ou formateurs peuvent te renseigner sur les entreprises qui recrutent. 
+                                 
+                                     Action :  Demande des mises en relation ciblées.
+                                 
+                             
+                             
+                             
+                                 #8 Développer ses soft skills 
+                                 Savoir expliquer un blocage et demander de l'aide fait aussi partie du travail en équipe. 
+                                 
+                                     Action :  Présente ce que tu as essayé, le résultat et l'aide qu'il te faut.
+                                 
+                             
+                             
+                             
+                                 #9 Utiliser l'IA intelligemment 
+                                 Un assistant pour accélérer, pas une béquille qui code à ta place. 
+                                 
+                                     Action :  Comprends et teste chaque ligne suggérée par l'IA.
+                                 
+                             
+                             
+                             
+                                 #10 Ajuster sa recherche 
+                                 Après plusieurs candidatures sans réponse, vérifie si les offres visées correspondent à ton profil. 
+                                 
+                                     Action :  Compare les offres à ton CV et à tes projets, puis ajuste ta cible ou leur présentation.
+                                 
+                             
+                         
+                     
+
+                     
+                         
+                             09 
+                             Ce qu'il faut éviter 
+                         
+                         
+                             
+                                  
+                                 Postuler avec un CV bâclé ou inachevé. Avant la première candidature, finalise un CV irréprochable : clair, sans fautes, bien présenté et adapté au poste. Ce travail de préparation est la base pour être compétitif et éviter de griller tes premières opportunités. 
+                             
+                             
+                                  
+                                 Confondre la multiplication aveugle des candidatures avec l'efficacité. 
+                             
+                             
+                                  
+                                 Confondre popularité sur LinkedIn et réelles compétences de développeur. 
+                             
+                             
+                                  
+                                 Prétendre maîtriser des technologies qu'on ne comprend pas vraiment en profondeur. 
+                             
+                             
+                                  
+                                 Présenter un projet généré à 100% par IA sans pouvoir en expliquer l'architecture. 
+                             
+                         
+                     
+
+                     
+                         
+                             10 
+                             Ta checklist pour passer à l'action 
+                         
+                         Coche les étapes réalisées. Ta progression est sauvegardée dans ce navigateur. 
+
+                         
+                         
+                             
+                                 0/14 étapes terminées 
+                                 Réinitialiser 
+                             
+                             
+                                  
+                             
+
+                             
+                                 
+                                 
+                                     
+                                     Mon CV est clair, aéré et a été relu. 
+                                 
+                                 
+                                     
+                                     Mon profil LinkedIn est complet et précis. 
+                                 
+                                 
+                                     
+                                     Mon portfolio présente mes meilleurs projets en ligne. 
+                                 
+                                 
+                                     
+                                     Mon GitHub démontre mes compétences (README soignés). 
+                                 
+                                 
+                                     
+                                     J'ai défini mon poste cible et ma stack principale. 
+                                 
+                                 
+                                     
+                                     J'ai identifié une liste d'entreprises pertinentes. 
+                                 
+                                 
+                                     
+                                     J'ai commencé à contacter des professionnels sur LinkedIn. 
+                                 
+                                 
+                                     
+                                     Je dispose d'un outil de suivi (Notion, Excel) pour mes candidatures. 
+                                 
+                                 
+                                     
+                                     Je m'entraîne régulièrement aux tests techniques (algo/live coding). 
+                                 
+                                 
+                                     
+                                     J'ai préparé mon pitch de présentation personnelle (2 min). 
+                                 
+                                 
+                                     
+                                     Je sais justifier l'architecture de mes projets personnels. 
+                                 
+                                 
+                                     
+                                     J'ai identifié des meetups ou événements tech près de chez moi. 
+                                 
+                                 
+                                     
+                                     J'ai défini une routine de recherche soutenable dans la durée. 
+                                 
+                                 
+                                     
+                                     J'analyse mes résultats (retours positifs/négatifs) pour m'améliorer. 
+                                 
+                             
+                         
+                         
+                              (La version interactive de la checklist est disponible sur la version web du guide).  
+                         
+                     
+
+                     
+                         Pour faire avancer ta recherche 
+                         Commence par mettre à jour ton CV et choisir quelques projets que tu peux présenter. Cible ensuite des entreprises qui recrutent sur ta stack, suis tes démarches et ajuste tes candidatures selon les échanges obtenus. 
+
+                         
+                             
+                             
+                                 Vincent DESBROSSES 
+                                 Développeur Fullstack 
+                                 Je conçois et développe des applications web modernes en portant une attention particulière à l'expérience utilisateur, à la qualité logicielle et à la compréhension des besoins produit. 
+                                 
+                                    Découvrir mon portfolio   
+                                 
+                             
+                         
+                     
+
+                 
+             
+         
+     
+
+     
+         
+             
+                &copy; 2026 Vincent DESBROSSES. Guide gratuit.
+             
+             
+                 Retour au blog 
+                 Portfolio 
+                 Télécharger PDF 
+             
+         
+     
+
+     
+     
+          
+         Action réussie 
+     
+
+     
+     
+          
+     
+`;

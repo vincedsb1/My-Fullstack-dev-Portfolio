@@ -138,6 +138,8 @@ export interface ProjectCatalogEntry {
     github?: ProjectExternalLink;
   };
   cardVisual?: ProjectMediaReference;
+  featuredVisual?: ProjectVisual;
+  featuredTransparent?: boolean;
   illustration?: "iconise" | "suggst" | "smartflow" | "truthify" | "abstract";
   legacyIds?: string[];
   caseStudyByLocale: Partial<Record<ProjectLocale, ProjectLocalePublication>>;
@@ -286,6 +288,7 @@ export interface ProjectOutcomeContent {
 
 export interface ProjectCaseStudyManifest {
   schemaVersion: 1;
+  updatedAt: string;
   status: "fixture" | "draft" | "published";
   projectId: ProjectId | "fixture";
   slug: string;

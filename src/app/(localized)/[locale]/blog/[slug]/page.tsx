@@ -1,13 +1,12 @@
+import { RelatedProjects } from "@/features/blog/RelatedProjects";
+import { articleLayouts } from "@/features/blog/ArticleLayouts";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { PERSON_ID, WEBSITE_ID } from "@/lib/seo/schema";
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import ArticleDocument from "../../../../components/blog/ArticleDocument";
-import InternationalisationArticle from "../../../../components/blog/InternationalisationArticle";
-import {
-  ArticleBreadcrumbs,
-  ArticleFooter,
-  ArticleHeader,
-  BlogSiteNavigation,
-} from "../../../../components/blog/BlogComponents";
+import ArticleDocument from "../../../../../features/blog/ArticleDocument";
 import {
   getArticleReadingTime,
   getPublishedArticle,
@@ -16,8 +15,7 @@ import {
   type BlogLocale,
 } from "@/lib/blog/articles";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://vincent.desbrosses.net";
+const baseUrl = SITE_URL;
 
 function getLocale(value: string): BlogLocale | undefined {
   return value === "fr" || value === "en" ? value : undefined;
@@ -45,8 +43,6 @@ export async function generateMetadata({
   if (!article) notFound();
 
   const { metadata } = article;
-  const url = `${baseUrl}/${metadata.locale}/blog/${metadata.slug}`;
-  const socialImage = `${url}/social-image`;
   const translations = getPublishedTranslations(metadata.translationKey);
   const languages = Object.fromEntries(
     (translations.length > 0 ? translations : [article]).map((item) => [
@@ -55,42 +51,20 @@ export async function generateMetadata({
     ]),
   );
 
-  return {
-    title: `${metadata.title} | Vincent DESBROSSES`,
+  return buildPageMetadata({
+    locale,
+    path: `/${locale}/blog/${slug}`,
+    title: metadata.seoTitle ?? metadata.title,
     description: metadata.description,
-    alternates: {
-      canonical: url,
-      languages,
-    },
-    openGraph: {
-      title: metadata.title,
-      description: metadata.description,
-      url,
-      siteName: "Vincent DESBROSSES",
-      type: "article",
-      locale: metadata.locale === "fr" ? "fr_FR" : "en_US",
-      publishedTime: `${metadata.publishedAt}T00:00:00.000Z`,
-      ...(metadata.updatedAt
-        ? { modifiedTime: `${metadata.updatedAt}T00:00:00.000Z` }
-        : {}),
-      images: [
-        {
-          url: socialImage,
-          width: 1200,
-          height: 630,
-          alt: metadata.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: metadata.title,
-      description: metadata.description,
-      creator: "@vincedsb",
-      site: "@vincedsb",
-      images: [{ url: socialImage, alt: metadata.title }],
-    },
-  };
+    type: "article",
+    alternates: languages,
+    image: `/${locale}/blog/${slug}/social-image`,
+    imageAlt: metadata.title,
+    publishedTime: `${metadata.publishedAt}T00:00:00.000Z`,
+    modifiedTime: metadata.updatedAt
+      ? `${metadata.updatedAt}T00:00:00.000Z`
+      : undefined,
+  });
 }
 
 export default async function BlogArticlePage({
@@ -105,9 +79,8 @@ export default async function BlogArticlePage({
   if (!article) notFound();
 
   const readingMinutes = getArticleReadingTime(article);
-  const isInteractiveGuide = article.metadata.renderer === "guide";
-  const isInternationalisationArticle =
-    locale === "fr" && slug === "internationaliser-saas-lancement";
+  const Layout = articleLayouts[article.metadata.renderer ?? "default"];
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -118,11 +91,9 @@ export default async function BlogArticlePage({
     ...(article.metadata.updatedAt
       ? { dateModified: article.metadata.updatedAt }
       : {}),
-    author: {
-      "@type": "Person",
-      name: "Vincent DESBROSSES",
-      url: `${baseUrl}/fr`,
-    },
+    author: { "@id": PERSON_ID },
+    publisher: { "@id": PERSON_ID },
+    isPartOf: { "@id": WEBSITE_ID },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${baseUrl}/${locale}/blog/${slug}`,
@@ -153,52 +124,18 @@ export default async function BlogArticlePage({
       },
     ],
   };
-  const serializeStructuredData = (data: object) =>
-    JSON.stringify(data).replace(/</g, "\\u003c");
 
   return (
-    <div className="min-h-screen bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
-      {!isInteractiveGuide && !isInternationalisationArticle ? (
-        <BlogSiteNavigation locale={locale} />
-      ) : null}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: serializeStructuredData(structuredData),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: serializeStructuredData(breadcrumbStructuredData),
-        }}
-      />
-      {isInternationalisationArticle ? (
-        <InternationalisationArticle
-          article={article}
-          readingMinutes={readingMinutes}
-        >
-          <ArticleDocument article={article} readingMinutes={readingMinutes} />
-        </InternationalisationArticle>
-      ) : isInteractiveGuide ? (
-        <div className="guide-page min-h-screen bg-neutral-100 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100">
-          <ArticleDocument article={article} readingMinutes={readingMinutes} />
-        </div>
-      ) : (
-        <main className="mx-auto w-full max-w-3xl px-5 py-10 sm:px-8 sm:py-16">
-          <ArticleBreadcrumbs article={article} />
-          <article>
-            <ArticleHeader article={article} readingMinutes={readingMinutes} />
-            <div className="blog-prose">
-              <ArticleDocument
-                article={article}
-                readingMinutes={readingMinutes}
-              />
-            </div>
-            <ArticleFooter article={article} />
-          </article>
-        </main>
-      )}
+    <div className="min-h-screen bg-surface text-content">
+      <JsonLd data={structuredData} />
+      <JsonLd data={breadcrumbStructuredData} />
+      <Layout article={article} readingMinutes={readingMinutes}>
+        <ArticleDocument article={article} readingMinutes={readingMinutes} />
+        <RelatedProjects
+          locale={locale}
+          slugs={article.metadata.relatedProjects ?? []}
+        />
+      </Layout>
     </div>
   );
 }

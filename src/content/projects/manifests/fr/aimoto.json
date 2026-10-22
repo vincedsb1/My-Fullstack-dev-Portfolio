@@ -10,7 +10,7 @@
     "category": "Application de recherche locale"
   },
   "seo": {
-    "title": "Aimoto | Prévision et backtest Bitcoin",
+    "title": "Aimoto — prévisions et backtest Bitcoin",
     "description": "Laboratoire local d'expérimentation Bitcoin : données de marché, modèles prédictifs, tests historiques et suivi des exécutions.",
     "noindex": false
   },
@@ -19,7 +19,7 @@
     "description": "Aimoto réunit préparation des données, prévisions quotidiennes, backtests et comparaison des résultats dans une interface locale dédiée à la recherche.",
     "visual": {
       "type": "image",
-      "src": "/aimoto.png",
+      "src": "/aimoto.webp",
       "alt": "Montage de présentation d’Aimoto : aperçu historique des prévisions Bitcoin dans un ordinateur portable.",
       "width": 1920,
       "height": 1080
@@ -192,5 +192,6 @@
       "title": "Suivi des exécutions",
       "description": "File d'attente, étapes de calcul et remontée des états jusqu'à l'interface."
     }
-  ]
+  ],
+  "updatedAt": "2026-10-22"
 }

@@ -19,6 +19,8 @@ const allowedFields = new Set([
   "status",
   "translationKey",
   "renderer",
+  "seoTitle",
+  "relatedProjects",
 ]);
 
 function fail(filePath, message) {
@@ -288,10 +290,42 @@ function parseArticle(filePath, locale) {
     );
   }
 
+  const seoTitle = data.seoTitle
+    ? requiredText(data.seoTitle, "seoTitle", filePath)
+    : undefined;
+  if (seoTitle && seoTitle.length > 39)
+    fail(filePath, "seoTitle doit tenir en 39 caractères hors suffixe.");
+  const relatedProjects = data.relatedProjects;
+  if (
+    relatedProjects !== undefined &&
+    (!Array.isArray(relatedProjects) ||
+      relatedProjects.some(
+        (s) => typeof s !== "string" || !/^[-a-z0-9]+$/.test(s),
+      ))
+  )
+    fail(filePath, "relatedProjects doit contenir des slugs de projet.");
+  for (const slug of relatedProjects ?? []) {
+    const target = path.join(
+      process.cwd(),
+      "src/content/projects/manifests",
+      metadata.locale,
+      slug + ".json",
+    );
+    try {
+      const project = JSON.parse(readFileSync(target, "utf8"));
+      if (project.status !== "published")
+        fail(filePath, "le projet lié doit être publié.");
+    } catch {
+      fail(
+        filePath,
+        `le projet lié ${slug} n'est pas publié dans cette langue.`,
+      );
+    }
+  }
   const renderer = data.renderer
     ? requiredText(data.renderer, "renderer", filePath)
     : undefined;
-  if (renderer && renderer !== "guide") {
+  if (renderer && !["guide", "editorial"].includes(renderer)) {
     fail(filePath, `renderer « ${renderer} » n'est pas enregistré.`);
   }
   if (
@@ -303,10 +337,10 @@ function parseArticle(filePath, locale) {
       "le renderer guide est réservé à l'article du premier emploi de développeur.",
     );
   }
-  if (!renderer && parsed.content.trim().length === 0) {
+  if (renderer !== "guide" && parsed.content.trim().length === 0) {
     fail(filePath, "un article MDX ordinaire doit contenir du texte.");
   }
-  if (!renderer) {
+  if (renderer !== "guide") {
     validateBodyHeading(parsed.content, filePath);
     validateBodyImages(parsed.content, filePath);
   }
@@ -314,6 +348,8 @@ function parseArticle(filePath, locale) {
   return {
     metadata: {
       ...metadata,
+      ...(seoTitle ? { seoTitle } : {}),
+      ...(relatedProjects ? { relatedProjects } : {}),
       ...(updatedAt ? { updatedAt } : {}),
       ...(cover ? { cover, coverAlt } : {}),
       ...(translationKey ? { translationKey } : {}),

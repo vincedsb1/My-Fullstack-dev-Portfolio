@@ -118,6 +118,7 @@ const workflowVisual: Rule = (value, path, issues) => {
 const manifest = object(
   {
     schemaVersion: oneOf([1]),
+    updatedAt: text,
     status: oneOf(["fixture", "draft", "published"]),
     projectId: oneOf([
       ...projectCatalog.map((project) => project.id),

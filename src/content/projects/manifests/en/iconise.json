@@ -10,7 +10,7 @@
     "category": "Icon design SaaS"
   },
   "seo": {
-    "title": "Iconise — guided app icon creation | Case study",
+    "title": "Iconise — guided icon creation",
     "description": "Iconise case study: guided app icon design, iteration history, configurable AI generation, and PNG, derived SVG and favicon exports.",
     "noindex": false
   },
@@ -69,17 +69,7 @@
         "type": "flow",
         "title": "One board, nine options",
         "description": "Generate or import a board of nine proposals, then select an A–I cell to continue.",
-        "steps": [
-          "A",
-          "B",
-          "C",
-          "D",
-          "E",
-          "F",
-          "G",
-          "H",
-          "I"
-        ]
+        "steps": ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
       }
     },
     {
@@ -90,12 +80,7 @@
         "type": "flow",
         "title": "Revise without deleting",
         "description": "Adjust geometry, optical perception and background; some steps can be skipped. Changing a decision marks dependent steps for review without deleting past attempts.",
-        "steps": [
-          "Choice",
-          "Geometry",
-          "Optics",
-          "Background"
-        ]
+        "steps": ["Choice", "Geometry", "Optics", "Background"]
       }
     },
     {
@@ -111,17 +96,8 @@
   ],
   "architecture": {
     "description": "The Next.js server verifies the session and workspace, then calls application services. Projects are persisted through Drizzle and PostgreSQL; Gemini and Stripe use separate adapters.",
-    "featuredNodeIds": [
-      "browser",
-      "next",
-      "domain",
-      "postgres"
-    ],
-    "featuredEdgeLabels": [
-      "Requests",
-      "Application services",
-      "Data access"
-    ],
+    "featuredNodeIds": ["browser", "next", "domain", "postgres"],
+    "featuredEdgeLabels": ["Requests", "Application services", "Data access"],
     "nodes": [
       {
         "id": "browser",
@@ -460,5 +436,6 @@
     "Historical ADRs mention 4×2 boards while current code uses a 3×3 board and a 4:3 target.",
     "Tests were not executed during the audit; no green CI badge or coverage figure is published.",
     "Coded prices must not be presented as a current commercial offer without validation."
-  ]
+  ],
+  "updatedAt": "2026-10-22"
 }

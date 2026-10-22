@@ -10,7 +10,7 @@
     "category": "macOS application"
   },
   "seo": {
-    "title": "Suggst | Native macOS App Built with SwiftUI",
+    "title": "Suggst — macOS meeting assistant",
     "description": "Suggst case study: native macOS audio capture, local transcription, contextual prompts and OpenAI-powered answer generation.",
     "noindex": false
   },
@@ -181,5 +181,6 @@
       "title": "Diagnostics and validation tooling",
       "description": "Developer cockpit, structured traces, test corpora and build scripts included in the repository."
     }
-  ]
+  ],
+  "updatedAt": "2026-10-22"
 }

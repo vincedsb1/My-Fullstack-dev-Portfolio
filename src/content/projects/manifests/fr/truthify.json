@@ -10,7 +10,7 @@
     "category": "Application web / IA"
   },
   "seo": {
-    "title": "Truthify | Analyse argumentaire assistée par IA",
+    "title": "Truthify — analyse argumentaire IA",
     "description": "Étude de cas de Truthify : analyse de textes et de transcriptions YouTube, restitution progressive des arguments et architecture Next.js, OpenAI et PostgreSQL.",
     "noindex": false
   },
@@ -189,5 +189,6 @@
       "title": "Socle de gestion du service",
       "description": "Authentification par lien magique, espace de compte, sessions Stripe et traitement de webhooks signés."
     }
-  ]
+  ],
+  "updatedAt": "2026-10-22"
 }

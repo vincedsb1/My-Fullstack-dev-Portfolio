@@ -1,11 +1,12 @@
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import BlogIndex from "../../../components/blog/BlogIndex";
+import BlogIndex from "../../../../features/blog/BlogIndex";
 import { getPublishedArticles, type BlogLocale } from "@/lib/blog/articles";
 import { getBlogIndexSeo } from "@/lib/blog/index-metadata";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://vincent.desbrosses.net";
+const baseUrl = SITE_URL;
 function getBlogLocale(value: string): BlogLocale {
   if (value === "fr" || value === "en") return value;
   notFound();
@@ -36,43 +37,17 @@ export async function generateMetadata({
 
   const seo = getBlogIndexSeo(articles, locale);
   const url = baseUrl + "/" + locale + "/blog";
-  const imageUrl = baseUrl + "/" + locale + "/blog/blog-index-image.png";
   const languages = hasPublishedTranslationPair()
     ? { fr: `${baseUrl}/fr/blog`, en: `${baseUrl}/en/blog` }
     : { [locale]: url };
-  return {
+  return buildPageMetadata({
+    locale,
+    path: `/${locale}/blog`,
     title: seo.title,
     description: seo.description,
-    alternates: {
-      canonical: url,
-      languages,
-    },
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      url,
-      siteName: "Vincent DESBROSSES",
-      type: "website",
-      locale: locale === "fr" ? "fr_FR" : "en_US",
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: seo.imageAlt,
-          type: "image/png",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: seo.title,
-      description: seo.description,
-      creator: "@vincedsb",
-      site: "@vincedsb",
-      images: [{ url: imageUrl, alt: seo.imageAlt }],
-    },
-  };
+    alternates: languages,
+    image: `/${locale}/blog/blog-index-image.png`,
+  });
 }
 
 export default async function BlogPage({

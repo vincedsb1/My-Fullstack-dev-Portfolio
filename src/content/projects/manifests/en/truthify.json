@@ -10,7 +10,7 @@
     "category": "Web application / AI"
   },
   "seo": {
-    "title": "Truthify | AI-Assisted Argument Analysis",
+    "title": "Truthify — AI argument analysis",
     "description": "Truthify case study: text and YouTube transcript analysis, progressive argument feedback, and a Next.js, OpenAI, and PostgreSQL architecture.",
     "noindex": false
   },
@@ -189,5 +189,6 @@
       "title": "Service management foundation",
       "description": "Magic-link authentication, account area, Stripe checkout sessions and signed webhook handling."
     }
-  ]
+  ],
+  "updatedAt": "2026-10-22"
 }

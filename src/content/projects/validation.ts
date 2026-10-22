@@ -1,3 +1,4 @@
+import "server-only";
 import { projectCatalog } from "./catalog.ts";
 import { validateCaseStudyShape } from "./manifest-shape.ts";
 import {
@@ -27,6 +28,28 @@ export function validateCaseStudyManifest(
   value: unknown,
 ): ProjectValidationIssue[] {
   const issues = validateCaseStudyShape(value);
+  const candidate = (value ?? {}) as Partial<ProjectCaseStudyManifest>;
+  if (
+    !candidate.updatedAt ||
+    !/^\d{4}-\d{2}-\d{2}$/.test(candidate.updatedAt) ||
+    Number.isNaN(Date.parse(candidate.updatedAt)) ||
+    new Date(candidate.updatedAt).toISOString().slice(0, 10) !==
+      candidate.updatedAt
+  )
+    issues.push({
+      code: "INVALID_DATE",
+      message: "updatedAt must be a real ISO date.",
+    });
+  if (
+    candidate.status === "published" &&
+    typeof candidate.seo?.title === "string" &&
+    candidate.seo.title.length > 39
+  )
+    issues.push({
+      code: "SEO_TITLE_TOO_LONG",
+      message:
+        "SEO titles must fit 60 characters including the site suffix (39 characters).",
+    });
   if (issues.length) return issues;
   // La structure et les discriminants sont contrôlés avant l’accès aux champs.
   const manifest = value as ProjectCaseStudyManifest;

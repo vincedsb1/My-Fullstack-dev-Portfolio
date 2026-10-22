@@ -1,3 +1,4 @@
+import "server-only";
 import allawFr from "./fr/allaw.json" with { type: "json" };
 import allawEn from "./en/allaw.json" with { type: "json" };
 import iconiseFr from "./fr/iconise.json" with { type: "json" };

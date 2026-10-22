@@ -1,6 +1,7 @@
+import { SITE_URL } from "@/lib/site";
 import createMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
-import { routing } from "../i18n.config";
+import { routing } from "@/i18n/routing";
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -9,7 +10,7 @@ const intlMiddleware = createMiddleware(routing);
 // host leaves preview deployments (which are served from distinct
 // `…-git-<branch>-…vercel.app` hostnames) untouched.
 const LEGACY_HOST = "portfolio-ten-chi-89.vercel.app";
-const CANONICAL_ORIGIN = "https://vincent.desbrosses.net";
+const CANONICAL_ORIGIN = SITE_URL;
 
 function protectRootLocaleRedirect(response: NextResponse) {
   response.headers.set("Cache-Control", "private, no-store");
@@ -49,7 +50,22 @@ export default function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  const localeSegment = pathname.split("/")[1] ?? "";
+  if (
+    /^[a-z]{2}$/.test(localeSegment) &&
+    !routing.locales.some((locale) => locale === localeSegment)
+  )
+    return NextResponse.next();
+
   const response = intlMiddleware(request);
+  // NextURL normalizes loopback IPs to localhost. Preserve the incoming origin
+  // so a localized rewrite stays internal on an IP-bound preview server too.
+  const rewrite = response.headers.get("x-middleware-rewrite");
+  if (rewrite && host) {
+    const target = new URL(rewrite);
+    target.host = host;
+    response.headers.set("x-middleware-rewrite", target.href);
+  }
 
   if (pathname === "/" && response.status >= 300 && response.status < 400) {
     return protectRootLocaleRedirect(response);

@@ -1,6 +1,6 @@
 import { spawn } from "node:child_process";
 import { createServer } from "node:net";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync } from "node:fs";
 import path from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import nextEnv from "@next/env";
@@ -269,7 +269,7 @@ async function verifyLocalLinks(baseUrl, html, currentRoute, label) {
     check(
       response.status === 200,
       "lien interne accessible depuis " + label + ": " + target,
-      String(response.status),
+      String(response.status) + " " + (response.headers.get("location") ?? ""),
     );
   }
 }
@@ -446,10 +446,9 @@ try {
   );
   const indexH1 = tags(indexHtml, "h1")[0];
   check(
-    attributes(indexH1).class?.includes("text-4xl") &&
-      attributes(indexH1).class.includes("2xs:text-5xl") &&
-      attributes(indexH1).class.includes("sm:text-6xl"),
-    "titre adapté aux breakpoints 320, 390 et 640 px",
+    attributes(indexH1).class?.includes("text-h1") &&
+      attributes(indexH1).class.includes("break-words"),
+    "titre fluide et sans débordement aux petites largeurs",
   );
   const indexImages = verifyContentImages(indexHtml, "index");
   check(
@@ -475,8 +474,10 @@ try {
     "prévisualisation Twitter cohérente avec Open Graph",
   );
   check(
-    meta(indexHtml, "og:title", "property") === indexTitle &&
-      meta(indexHtml, "twitter:title") === indexTitle &&
+    meta(indexHtml, "og:title", "property") ===
+      indexTitle.replace(/ \| Vincent DESBROSSES$/, "") &&
+      meta(indexHtml, "twitter:title") ===
+        indexTitle.replace(/ \| Vincent DESBROSSES$/, "") &&
       meta(indexHtml, "og:description", "property") === indexDescription &&
       meta(indexHtml, "twitter:description") === indexDescription,
     "titres et descriptions sociaux cohérents",
@@ -509,7 +510,9 @@ try {
       ? indexAlternates.length === 2 &&
           indexAlternates.some((link) => link.hreflang === "fr") &&
           indexAlternates.some((link) => link.hreflang === "en")
-      : indexAlternates.length === 1 && indexAlternates[0].hreflang === "fr",
+      : indexAlternates.filter((link) => link.hreflang !== "x-default")
+          .length === 1 &&
+          indexAlternates.some((link) => link.hreflang === "fr"),
     "hreflang de l’index limité aux langues réellement publiées",
   );
 
@@ -540,8 +543,10 @@ try {
       "meta description de l’index anglais",
     );
     check(
-      meta(englishIndexHtml, "og:title", "property") === englishIndexTitle &&
-        meta(englishIndexHtml, "twitter:title") === englishIndexTitle &&
+      meta(englishIndexHtml, "og:title", "property") ===
+        englishIndexTitle.replace(/ \| Vincent DESBROSSES$/, "") &&
+        meta(englishIndexHtml, "twitter:title") ===
+          englishIndexTitle.replace(/ \| Vincent DESBROSSES$/, "") &&
         meta(englishIndexHtml, "og:description", "property") ===
           englishIndexDescription &&
         meta(englishIndexHtml, "twitter:description") ===
@@ -595,7 +600,9 @@ try {
     check(response.status === 200, "article pré-rendu (200) " + route);
     assertPublishedHead(html, response, locale, canonical);
     check(
-      titleOf(html).startsWith(article.metadata.title + " | "),
+      titleOf(html) ===
+        (article.metadata.seoTitle ?? article.metadata.title) +
+          " | Vincent DESBROSSES" && titleOf(html).length <= 60,
       "title article unique et précis " + route,
       titleOf(html),
     );
@@ -608,8 +615,10 @@ try {
       "description article depuis le frontmatter " + route,
     );
     check(
-      meta(html, "og:title", "property") === article.metadata.title &&
-        meta(html, "twitter:title") === article.metadata.title &&
+      meta(html, "og:title", "property") ===
+        (article.metadata.seoTitle ?? article.metadata.title) &&
+        meta(html, "twitter:title") ===
+          (article.metadata.seoTitle ?? article.metadata.title) &&
         meta(html, "og:description", "property") ===
           article.metadata.description &&
         meta(html, "twitter:description") === article.metadata.description,
@@ -652,7 +661,8 @@ try {
         blogPosting.description === article.metadata.description &&
         blogPosting.datePublished === article.metadata.publishedAt &&
         blogPosting.dateModified === article.metadata.updatedAt &&
-        blogPosting.author?.name === "Vincent DESBROSSES" &&
+        blogPosting.author?.["@id"] === urlFor("/#person") &&
+        blogPosting.isPartOf?.["@id"] === urlFor("/#website") &&
         blogPosting.mainEntityOfPage?.["@id"] === canonical &&
         blogPosting.inLanguage === (locale === "fr" ? "fr-FR" : "en"),
       "BlogPosting cohérent avec le frontmatter " + route,
@@ -684,7 +694,8 @@ try {
       (link) => link.rel === "alternate" && link.hreflang,
     );
     check(
-      alternateLinks.length === relatedTranslations.length &&
+      alternateLinks.filter((link) => link.hreflang !== "x-default").length ===
+        relatedTranslations.length &&
         relatedTranslations.every((translation) =>
           alternateLinks.some(
             (link) =>
@@ -702,27 +713,16 @@ try {
     );
 
     if (article.metadata.renderer === "guide") {
-      const guideSource = readFileSync(
-        path.join(
-          process.cwd(),
-          "src/app/guide-premier-emploi-developpeur/guideContent.ts",
-        ),
-        "utf8",
-      );
-      const firstSectionHeading = plainText(
-        guideSource.match(
-          /<section\s+id="[^"]+"[\s\S]*?<h2[^>]*>([\s\S]*?)<\/h2>/i,
-        )?.[1],
-      );
       check(
-        firstSectionHeading.length > 0 && html.includes(firstSectionHeading),
+        html.includes("checklist-progress-text") &&
+          html.includes("Un CV lisible, adapté au poste visé"),
         "contenu du guide présent dans le HTML initial " + route,
       );
       check(
         /class="[^"]*\bcheckbox-custom\b[^"]*"/.test(html) &&
           html.includes("data-guide-print") &&
           html.includes('id="share-btn"') &&
-          html.includes('id="theme-toggle"'),
+          html.includes('aria-label="Thème"'),
         "checklist, partage, impression et thème présents dans le HTML du guide",
       );
     } else {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import ProjectCaseStudyPreviewPage from "../../../../../components/projects/ProjectCaseStudyPreviewPage";
+import ProjectCaseStudyPreviewPage from "../../../../../../features/projects/ProjectCaseStudyPreviewPage";
 import type { ProjectLocale } from "@/content/projects/types";
 
 export const dynamic = "force-static";
@@ -15,8 +15,8 @@ export function generateStaticParams() {
 }
 
 function getEnglishLocale(value: string): ProjectLocale {
-  if (value !== "en") notFound();
-  return "en";
+  if (value !== "en" && value !== "fr") notFound();
+  return value;
 }
 
 export async function generateMetadata({

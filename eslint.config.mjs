@@ -1,3 +1,4 @@
+import { designTokensRule } from "./scripts/eslint/design-tokens.mjs";
 import js from "@eslint/js";
 import next from "eslint-config-next";
 import prettierRecommended from "eslint-plugin-prettier/recommended";
@@ -11,13 +12,26 @@ const config = [
       "node_modules/**",
       "out/**",
       "build/**",
+      "vendor/**",
       "next-env.d.ts",
       "vincent.desbrosses.net-audit/**",
+      // Archived blog deliveries retained as references, not app source.
+      "docs/blog/blog_design_system_showcase_etape2/**",
+      "docs/blog/blog_etape3_moteur_json/**",
     ],
   },
   js.configs.recommended,
   ...next,
   prettierRecommended,
+  {
+    files: ["src/**/*.tsx"],
+    ignores: [
+      "src/features/projects/illustrations/**",
+      "src/features/projects/IconiseLandingProductFigure.tsx",
+    ],
+    plugins: { design: { rules: { tokens: designTokensRule } } },
+    rules: { "design/tokens": "warn" },
+  },
   {
     // TypeScript already resolves identifiers and types; the base rule reports
     // false positives on JSX/React globals and type-only names.
