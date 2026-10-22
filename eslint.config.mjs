@@ -15,6 +15,9 @@ const config = [
       "vendor/**",
       "next-env.d.ts",
       "vincent.desbrosses.net-audit/**",
+      // Archived blog deliveries retained as references, not app source.
+      "docs/blog/blog_design_system_showcase_etape2/**",
+      "docs/blog/blog_etape3_moteur_json/**",
     ],
   },
   js.configs.recommended,
