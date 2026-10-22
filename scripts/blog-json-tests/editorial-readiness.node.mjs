@@ -113,6 +113,7 @@ test("le Showcase publie les modules via le vrai moteur JSON et garde une page S
   const ui = read("src/features/blog/json/JsonCustomRegistry.tsx");
   const page = read("src/app/(localized)/[locale]/blog/showcase/page.tsx");
   assert.match(showcase, /<JsonBlockRenderer blocks=\{section\.blocks\}/);
-  assert.match(ui, /InternationalisationArticleModule variant=/);
+  assert.ok(ui.includes("InternationalisationArticleModule"));
+  assert.ok(ui.includes("saasVariants[module.component]"));
   assert.match(page, /index: false/);
 });
