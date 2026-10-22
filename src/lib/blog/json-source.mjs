@@ -58,7 +58,7 @@ function safeHref(value, file, at, anchors) {
     return;
   }
   if (value.startsWith('/')) {
-    if (value.startsWith('//') || value.includes('\\') || value.includes('..') || /[\x00-\x1f]/.test(value)) error(file, at, 'lien local invalide');
+    if (value.startsWith('//') || value.includes('\\') || value.includes('..') || Array.from(value).some(character => character.charCodeAt(0) < 32)) error(file, at, 'lien local invalide');
     return;
   }
   try {
@@ -145,9 +145,10 @@ function blocks(value, file, at, ctx, depth=0) {
         if(!/^[a-zA-Z0-9_-]{11}$/.test(b.id))error(file,`${p}.id`,'identifiant YouTube invalide');
         string(b.title,file,`${p}.title`);
         break;
-      case 'checklist':
+      case 'checklist': {
         keys(b,['type','storageKey','items'],[],file,p);string(b.storageKey,file,`${p}.storageKey`);arr(b.items,file,`${p}.items`);
         const names = new Set();b.items.forEach((it,j)=>{const q=`${p}.items[${j}]`;keys(it,['id','label'],[],file,q);string(it.id,file,`${q}.id`);if(!ID.test(it.id))error(file,`${q}.id`,'ID invalide');if(names.has(it.id))error(file,q,'ID checklist dupliqué');names.add(it.id);string(it.label,file,`${q}.label`);});break;
+      }
       case 'accordion':
         keys(b,['type','items'],[],file,p);arr(b.items,file,`${p}.items`);b.items.forEach((it,j)=>{const q=`${p}.items[${j}]`;keys(it,['title','blocks'],[],file,q);string(it.title,file,`${q}.title`);blocks(it.blocks,file,`${q}.blocks`,ctx,depth+1);});break;
       case 'custom':

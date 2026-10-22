@@ -1,0 +1,43 @@
+name: Temporary dev03 blog formatter
+on:
+  push:
+    branches: [dev03]
+permissions:
+  contents: write
+jobs:
+  format:
+    if: github.ref == 'refs/heads/dev03'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Format blog integration sources
+        run: |
+          node <<'NODE'
+          const {execFileSync}=require("node:child_process");
+          const files=execFileSync("git",["ls-files","-z"],{encoding:"utf8"}).split("\0").filter(Boolean)
+            .filter(f=>
+              /^src\/features\/blog\/(?:design-system|json)\/.*\.(?:ts|tsx)$/.test(f) ||
+              /^src\/lib\/blog\/(?:articles\.ts|json-source\.(?:mjs|d\.mts)|json-types\.ts)$/.test(f) ||
+              /^src\/app\/\(localized\)\/\[locale\]\/blog\/(?:\[slug\]\/page|showcase\/page|json-preview\/page)\.tsx$/.test(f) ||
+              /^scripts\/(?:blog-json-tests\/.*\.mjs|validate-blog\.mjs|test-blog-seo\.mjs)$/.test(f) ||
+              f==="tests/browser/blog-json.spec.ts"
+            );
+          console.log("Formatting",files.length,"files");
+          execFileSync("node",["node_modules/prettier/bin/prettier.cjs","--write",...files],{stdio:"inherit"});
+          NODE
+      - name: Commit formatted blog files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u
+          if ! git diff --cached --quiet; then
+            git commit -m "style(blog): normaliser les composants JSON et Showcase"
+            git push origin HEAD:dev03
+          fi
