@@ -49,8 +49,11 @@ test("lecture des dossiers locaux et exclusion du fixture par statut", () => {
   const records = readAllJsonBlogArticles({
     root: path.join(root, "src/content/blog-json"),
   });
-  assert.equal(records.length, 1);
-  assert.equal(records[0].metadata.status, "draft");
+  assert.ok(records.length >= 1);
+  assert.equal(
+    records.find((r) => r.metadata.slug === "json-demo-blog").metadata.status,
+    "draft",
+  );
 });
 test("version, champs inconnus, statut et dates sont contrôlés", () => {
   const a = fresh();

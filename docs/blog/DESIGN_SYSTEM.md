@@ -1,6 +1,6 @@
 # Design system éditorial du blog
 
-Référence consolidée sur `dev04`, le 22 octobre 2026. Les deux articles historiques conservent leur rendu ; la bibliothèque est utilisée par le Showcase et le moteur JSON.
+Référence consolidée sur `dev04`, le 22 octobre 2026. La bibliothèque est utilisée par le Showcase et le SaaS migré en JSON ; le guide conserve son rendu historique.
 
 ## Direction et intégration
 
@@ -35,7 +35,7 @@ Enveloppe : 1 248 px ; lecture : 720 px ; sommaire : 210 puis 175 px ; gouttièr
 | Lecture | `BlogReadingNavigation`, `BlogReadingProgress`, `BlogBackToTop`, `BlogPrintButton` |
 | Actions | `BlogButton` et CTA du hero adaptent `ButtonLink` ; impression/reset réutilisent `Button` ; copie et partage réutilisent les composants existants |
 | Contenu | `BlogCallout`, `BlogQuote`, `BlogAccordion`, `BlogInfoCard`, `BlogIconList`, `BlogBadge` |
-| Médias | `BlogFigure` et Next Image ; `YouTubeEmbed` existant avec iframe au clic |
+| Médias | `BlogFigure` et Next Image ; portraits via `Avatar` partagé ; `YouTubeEmbed` existant avec iframe au clic |
 | Code | `BlogCodeSample`, coloré au serveur par `rehype-pretty-code`, déjà utilisé en MDX ; thèmes GitHub à contraste renforcé ; aucun coloriseur envoyé au navigateur |
 | Interaction | `JsonChecklist`, avec sauvegarde facultative pour les démos ; les cinq vrais widgets SaaS dans le registre contrôlé |
 | Fin d’article | `BlogAuthorCard`, `BlogNextArticle`, `RelatedProjects` existant |
@@ -57,3 +57,9 @@ Les tons `neutral`, `accent`, `info`, `success`, `warning` sont implémentés et
 La référence est `/fr/blog/showcase`, pas `previews/showcase-preview.html`, qui reste un aperçu historique non contractuel. La prévisualisation complète du shell est `/fr/blog/json-preview?slug=json-demo-blog`, en développement uniquement.
 
 Les tests couvrent 320 / 390 / 820 / 1440 px dans les deux thèmes, les contrôles DOM, axe, les interactions, les états ouverts/focus/hover et les PDF. Les captures et PDF sont ignorés par Git et archivés par GitHub Actions. Voir [AUDIT_FINAL_ETAPES_1_2_3.md](AUDIT_FINAL_ETAPES_1_2_3.md) pour les résultats, la comparaison avec les références CI et les limites.
+
+## Ajustements de la migration SaaS
+
+Le hero illustré conserve une répartition 1,65 / 1 à grande largeur, son mot accentué et l’illustration `InternationalisationHeroArt` partagée avec l’ancien gabarit. Le registre la réserve au hero ; elle n’ajoute pas de titre ni de JavaScript client. Le Showcase utilise aussi ce visuel, au lieu d’une deuxième grille JSX.
+
+Un premier bloc `lead` dans `introBlocks` reçoit une lettrine ; les paragraphes imbriqués de l’introduction et de la fin d’article conservent leurs espacements. La note facultative du sommaire est rendue au serveur et suit la colonne de lecture à grande largeur. Les captures de parité sont décrites dans [ETAPE_4_MIGRATION_SAAS.md](ETAPE_4_MIGRATION_SAAS.md).

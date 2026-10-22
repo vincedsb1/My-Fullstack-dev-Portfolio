@@ -85,7 +85,7 @@
 .blog-ds__breadcrumb [aria-current] { color: var(--blog-body); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: min(440px, 45vw); }
 .blog-ds__breadcrumb-separator { color: var(--blog-muted); }
 .blog-ds__hero { display: grid; grid-template-columns: 1fr; padding: 12px 0 70px; border-bottom: 1px solid var(--blog-line); }
-.blog-ds__hero--illustrated { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+.blog-ds__hero--illustrated { grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 64px; align-items: center; }
 .blog-ds__hero-copy { max-width: 780px; min-width: 0; }
 .blog-ds__eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; color: var(--blog-accent); }
 .blog-ds__eyebrow > span { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
@@ -380,3 +380,25 @@
     --red-soft: #fff; --green: #245537; --sage: #fff; --green-ink: #245537;
   }
 }
+
+/* Options éditoriales communes et compatibilité des ancres MDX. */
+.blog-ds__hero-title-highlight { color: var(--blog-accent); }
+.blog-ds__reading-navigation { position: sticky; top: 116px; }
+.blog-ds__reading-navigation .blog-ds__toc { position: static; }
+.blog-ds__reading-note { border-top: 1px solid var(--blog-line); margin-top: 27px; padding-top: 24px; font-size: 12px; color: var(--blog-body); line-height: 1.7; }
+.blog-ds__reading-note > p:first-child { color: var(--blog-muted); margin-bottom: 10px; }
+.blog-ds__reading-note > p:last-child { white-space: pre-line; }
+.blog-ds__reading-note a { color: var(--blog-accent); text-decoration: underline; text-underline-offset: 3px; }
+.blog-json-article, .blog-ds [id="article-body"] { scroll-margin-top: 112px; }
+@media (max-width: 900px) { .blog-ds__reading-navigation { position: static; } .blog-ds__reading-note { display: none; } }
+@media print { .blog-ds__reading-navigation { display: none; } }
+
+.blog-ds .blog-ds__json-intro > p, .blog-ds .blog-ds__json-after > p { margin: 0 0 22px; }
+.blog-ds__json-intro > .blog-ds__lead:first-child::first-letter { float: left; margin: 8px 10px 0 0; color: var(--blog-accent); font-family: Georgia, serif; font-size: 72px; line-height: .75; }
+@media print { .blog-ds__json-intro > .blog-ds__lead:first-child::first-letter { font-size: 32pt; } }
+@media print {
+  .blog-ds .blog-ds__saas-hero-art, .dark .blog-ds .blog-ds__saas-hero-art { transform: none; background: #edf3ec; color: #245537; border-color: #ccc; break-inside: avoid; }
+}
+.blog-ds .blog-related-projects { background: var(--blog-surface); color: var(--blog-ink); border-color: var(--blog-line); }
+.blog-ds .blog-related-projects a { color: var(--blog-accent); }
+@media print { .blog-ds .blog-related-projects { break-inside: avoid; } }

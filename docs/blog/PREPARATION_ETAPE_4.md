@@ -30,3 +30,7 @@ Les captures de [l’ancienne CI](https://github.com/vincedsb1/My-Fullstack-dev-
 Le budget JavaScript d’accueil de 150 Kio reste dépassé : environ 221 Kio avant et après l’intégration du blog, à dépendances identiques. Il relève du socle Next/React et des composants d’accueil, notamment du carrousel animé ; le seuil est conservé. Cette réserve interdit d’annoncer une validation globale entièrement verte et doit être traitée comme chantier distinct.
 
 Le verdict précis et les limites de preuve sont consignés dans l’audit final. La migration de l’article n’est pas démarrée par ce document.
+
+## Suite donnée après autorisation de l’étape 4
+
+La migration demandée séparément est maintenant réalisée sur `dev04`. Ce document conserve les critères d’entrée ci-dessus ; l’état livré, les comparaisons avant/après et les limites sont décrits dans [ETAPE_4_MIGRATION_SAAS.md](ETAPE_4_MIGRATION_SAAS.md). Le guide n’est pas migré.

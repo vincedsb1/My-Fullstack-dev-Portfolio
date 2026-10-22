@@ -2,7 +2,7 @@
 
 ## Sources et rendu
 
-Les articles historiques vivent dans `src/content/blog/<locale>/<slug>.mdx` ; leur frontmatter reste la source des métadonnées. Le moteur JSON v1, consolidé sur `dev04`, charge `src/content/blog-json/<locale>/<slug>.json` (format versionné et validé). Les deux sources alimentent le même catalogue, sans convertir les deux articles existants à cette étape.
+Le guide historique vit dans `src/content/blog/fr/guide-premier-emploi-developpeur.mdx` ; son frontmatter reste la source des métadonnées. Le moteur JSON v1, consolidé sur `dev04`, charge `src/content/blog-json/<locale>/<slug>.json` (format versionné et validé). L’article SaaS `internationaliser-saas-lancement.json` utilise désormais ce moteur ; les deux formats alimentent le même catalogue.
 
 `src/lib/blog/article-source.mjs` lit les fichiers locaux avec `yaml`, valide leurs métadonnées, repère les collisions de routes et vérifie les relations de traduction. Il s’assure aussi que le titre du frontmatter reste l’unique H1 et que les images locales référencées existent sous `public/blog/`. `scripts/validate-blog-links.mjs`, appelé par `npm run blog:validate`, vérifie que les liens internes ciblent une route existante et publiée et que les ressources locales existent. `src/lib/blog/articles.ts` expose les articles publiés, leur ordre, leurs versions traduites, leur temps de lecture et leur URL d’image sociale.
 
@@ -82,7 +82,7 @@ Ne pas utiliser l'ancien patcher SEO de l'archive : les contrôles du moteur JSO
 
 **Shell d’article JSON :** ne pas réintroduire un deuxième `header` ou `footer` global ; les pages héritent déjà de `SiteHeader` / `SiteFooter` depuis le layout `[locale]`. Le hero et les commandes de lecture restent propres à `JsonArticlePage`.
 
-## Modules React contrôlés avant migration
+## Modules React contrôlés
 
 Le registre JSON exposé par `JsonCustomRegistry.tsx` admet désormais les cinq widgets SaaS existants **sans les réimplémenter** ; ils se rendent sous l’enveloppe CSS de leur article d'origine. Les widgets sont FR-only pour le moment. Les champs JSON `seoTitle` et `relatedProjects` sont facultatifs ; les vidéos YouTube passent par le composant de consentement déjà présent dans le blog. Les décisions, la politique de migration et les critères de qualité sont consignés dans [PREPARATION_ETAPE_4.md](PREPARATION_ETAPE_4.md).
 
@@ -97,4 +97,12 @@ Les liens JSON sont transmis au validateur comme destinations structurées, sans
 
 `blog:test:publication` vérifie une publication synthétique FR/EN, son SEO et l’interopérabilité réelle avec la checklist du guide, puis retire ses sources et restaure le build normal. `blog:test:preview` vérifie le shell en développement, tandis que les E2E normaux contrôlent les pages publiques et le Showcase en production locale. Les commandes utilisant `.next` doivent être exécutées successivement.
 
-Voir [JSON_ENGINE.md](JSON_ENGINE.md) pour le schéma et [AUDIT_FINAL_ETAPES_1_2_3.md](AUDIT_FINAL_ETAPES_1_2_3.md) pour les preuves. Aucun des deux articles historiques n’est migré à cette étape.
+Voir [JSON_ENGINE.md](JSON_ENGINE.md) pour le schéma et [AUDIT_FINAL_ETAPES_1_2_3.md](AUDIT_FINAL_ETAPES_1_2_3.md) pour les preuves. L’article SaaS est migré en étape 4 : voir [ETAPE_4_MIGRATION_SAAS.md](ETAPE_4_MIGRATION_SAAS.md). Le guide reste en MDX jusqu’à l’étape 5.
+
+## Migration SaaS (étape 4)
+
+`src/content/blog-json/fr/internationaliser-saas-lancement.json` porte le texte, ses cinq sections/ancres historiques et les appels aux cinq widgets. L’ancien MDX est retiré du catalogue dans la même bascule ; son contenu reste récupérable à la révision `04c6e15`. Aucun import d’article ni route spécialisée n’a été ajouté. Les renderers MDX et le gabarit `editorial` sont conservés en attendant le nettoyage de l’étape 6.
+
+`InternationalisationHeroArt.tsx` extrait l’illustration serveur existante ; le gabarit historique et le registre `saas-hero` partagent cette seule implémentation. Le Showcase utilise ce même visuel. Les cinq modules de `InternationalisationArticleModules.tsx` sont inchangés.
+
+Les options JSON facultatives `hero.eyebrow`, `hero.titleHighlight`, `readingNote` et `legacyAnchors` préservent les détails éditoriaux et les anciens fragments sans branchement par slug dans le moteur. La biographie française et les portraits réutilisent la carte auteur commune et `Avatar` du portfolio. Ces options ne sont pas nécessaires pour écrire un article standard.

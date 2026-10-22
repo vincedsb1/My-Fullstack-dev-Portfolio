@@ -13,7 +13,7 @@ import JsonChecklist from "./JsonChecklist";
 import YouTubeEmbed from "../YouTubeEmbed";
 import { JsonCustomModule } from "./JsonCustomRegistry";
 
-function Rich({ nodes }: { nodes: RichText }) {
+export function Rich({ nodes }: { nodes: RichText }) {
   return (
     <>
       {nodes.map((node, i) => {

@@ -1,6 +1,6 @@
 # Blog — documents de référence
 
-Branche de consolidation : `dev04`, issue de `dev03` à `8ec765f38b3bc0e69b41a7230f2404e8c5a5e902`. Les étapes 1 à 3 sont auditées ; les deux articles publiés conservent leurs sources, URLs et rendus historiques. Aucune migration ni publication en production dans ce lot.
+Branche de consolidation : `dev04`, issue de `dev03` à `8ec765f38b3bc0e69b41a7230f2404e8c5a5e902`. Les étapes 1 à 3 sont auditées. L’étape 4 migre maintenant le SaaS vers le moteur JSON, à URL et contenu constants ; le guide conserve son MDX et ses interactions historiques. Aucun déploiement en production.
 
 ## Lire et écrire
 
@@ -8,8 +8,8 @@ Branche de consolidation : `dev04`, issue de `dev03` à `8ec765f38b3bc0e69b41a72
 2. [ARCHITECTURE.md](ARCHITECTURE.md) : catalogue unique MDX/JSON et responsabilités.
 3. [CREER_UN_ARTICLE.md](CREER_UN_ARTICLE.md), [JSON_ENGINE.md](JSON_ENGINE.md), [ARTICLE_TEMPLATE.json](ARTICLE_TEMPLATE.json) : création d’un article standard en JSON local.
 4. [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) : composants effectivement partagés, variantes et impression.
-5. [PREPARATION_ETAPE_4.md](PREPARATION_ETAPE_4.md) : contrats et critères pour une migration SaaS ultérieure.
-6. [contracts/guide-checklist-v1.json](contracts/guide-checklist-v1.json) : clé, format, 14 IDs et libellés à conserver.
+5. [ETAPE_4_MIGRATION_SAAS.md](ETAPE_4_MIGRATION_SAAS.md) : migration, parité et recette ; [PREPARATION_ETAPE_4.md](PREPARATION_ETAPE_4.md) garde les critères d’entrée.
+6. [contracts/internationaliser-saas-v1.json](contracts/internationaliser-saas-v1.json) : export du rendu MDX avant migration, contenu et SEO ; [contracts/guide-checklist-v1.json](contracts/guide-checklist-v1.json) : clé, format, 14 IDs et libellés à conserver.
 
 [01_inventaire_reference_visuelle_blog.md](01_inventaire_reference_visuelle_blog.md) et [03_audit_critique_showcase_blog.md](03_audit_critique_showcase_blog.md) conservent l’analyse historique du prototype. Leur actualisation `dev04` distingue ce qui a été résolu des observations de l’ancien commit. L’[aperçu HTML](previews/showcase-preview.html) est historique et non contractuel ; la référence est la route React.
 

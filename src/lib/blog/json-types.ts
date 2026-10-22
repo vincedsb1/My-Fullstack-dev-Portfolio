@@ -12,14 +12,15 @@ export type RichText = RichNode[];
 /** Modules éditoriaux choisis via un registre fermé. Les cinq widgets SaaS restent FR tant que leurs copies EN ne sont pas rédigées. */
 export type SaaSModuleName = Exclude<
   keyof typeof import("./json-custom-modules.json"),
-  "metric-panel"
+  "metric-panel" | "saas-hero"
 >;
 export type CustomModule =
   | {
       component: "metric-panel";
       props: { value: string; label: string; caption?: string };
     }
-  | { component: SaaSModuleName; props?: Record<string, never> };
+  | { component: SaaSModuleName; props?: Record<string, never> }
+  | { component: "saas-hero"; props?: Record<string, never> };
 export type ArticleBlock =
   | { type: "paragraph" | "lead" | "highlight"; content: RichText }
   | { type: "heading"; level: 3 | 4; text: string; id?: string }
@@ -64,7 +65,7 @@ export type ArticleBlock =
       type: "accordion";
       items: Array<{ title: string; blocks: ArticleBlock[] }>;
     }
-  | ({ type: "custom" } & CustomModule);
+  | ({ type: "custom" } & Exclude<CustomModule, { component: "saas-hero" }>);
 export type JsonBlogArticle = {
   schemaVersion: 1;
   meta: {
@@ -84,9 +85,14 @@ export type JsonBlogArticle = {
     relatedProjects?: string[];
   };
   hero?: {
+    eyebrow?: string;
+    titleHighlight?: string;
     primaryCta?: { label: string; target: "content" };
-    visual?: CustomModule;
+    visual?: Extract<CustomModule, { component: "metric-panel" | "saas-hero" }>;
   };
+  /** Ancres publiques du rendu précédent, conservées lors d’une migration. */
+  legacyAnchors?: { top?: string; content?: string };
+  readingNote?: { title: string; content: RichText };
   introBlocks?: ArticleBlock[];
   sections: Array<{
     id: string;

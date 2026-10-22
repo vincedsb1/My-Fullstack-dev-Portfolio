@@ -1,9 +1,10 @@
 import JsonBlockRenderer from "../json/JsonBlockRenderer";
+import { JsonCustomModule } from "../json/JsonCustomRegistry";
 import { readJsonBlogArticleFile } from "@/lib/blog/json-source.mjs";
 import path from "node:path";
 import JsonChecklist from "../json/JsonChecklist";
 import type { ReactNode } from "react";
-import { CheckCircle2, Globe2, Layers, Sparkles } from "lucide-react";
+import { CheckCircle2, Layers, Sparkles } from "lucide-react";
 import {
   BlogAccordion,
   BlogArticleHero,
@@ -79,36 +80,6 @@ function PreviewPanel({
   );
 }
 
-function HeroArt() {
-  return (
-    <div
-      className="blog-ds__hero-art"
-      role="img"
-      aria-label="Illustration éditoriale : 6 fois 6 combinaisons et une grille de 36 cellules"
-    >
-      <p>
-        <Globe2
-          size={14}
-          style={{ display: "inline", verticalAlign: "-2px", marginRight: 6 }}
-          aria-hidden="true"
-        />
-        L’art de structurer
-      </p>
-      <div className="blog-ds__hero-art-metric">
-        6 <span>×</span> 6
-      </div>
-      <div className="blog-ds__hero-art-grid">
-        {Array.from({ length: 36 }, (_, index) => (
-          <span key={index} />
-        ))}
-      </div>
-      <p className="blog-ds__hero-art-caption">
-        Une grille cohérente. Des contenus singuliers.
-      </p>
-    </div>
-  );
-}
-
 export default function BlogShowcase() {
   return (
     <div className="blog-ds" id="blog-showcase-top">
@@ -140,7 +111,12 @@ export default function BlogShowcase() {
           headingLevel={1}
           ctaTarget="blog-showcase-body"
           ctaLabel="Explorer les composants"
-          illustration={<HeroArt />}
+          illustration={
+            <JsonCustomModule
+              module={{ component: "saas-hero" }}
+              placement="hero"
+            />
+          }
         />
         <BlogReadingLayout navigation={<BlogReadingNavigation items={toc} />}>
           <div id="blog-showcase-body" className="blog-ds__prose" tabIndex={-1}>

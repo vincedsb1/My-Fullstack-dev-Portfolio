@@ -1,0 +1,581 @@
+{
+  "content": [
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Quand on développe un SaaS, proposer plusieurs langues semble être une excellente idée. Plus de langues, c’est potentiellement plus d’utilisateurs, non ?"
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "C’est ce que je me suis dit en développant "
+        },
+        {
+          "text": "Iconise",
+          "link": {
+            "href": "https://iconise.fyi/"
+          }
+        },
+        {
+          "text": ", mon application de création d’icônes assistée par IA."
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "J’ai donc préparé l’application pour six langues : français, anglais, allemand, espagnol, portugais brésilien et japonais."
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Mais avec le recul, je me pose une question : "
+        },
+        {
+          "text": "est-ce qu’une fonctionnalité techniquement accessible est forcément une bonne décision produit ?",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "kind": "module",
+      "name": "saas-mosaic",
+      "text": "Une même promesseSix langues, une seule idée produit.La traduction élargit la porte d’entrée. Elle ne remplace pas le travail de compréhension de chaque marché.FrançaisVotre icône est prêteEnglishYour icon is readyDeutschDein Icon ist bereitEspañolTu icono está listoPortuguês (BR)Seu ícone está pronto日本語アイコンの準備ができました"
+    },
+    {
+      "kind": "anchor",
+      "id": "accessible"
+    },
+    {
+      "kind": "heading",
+      "text": "Internationaliser n’a jamais été aussi accessible"
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Avec des frameworks comme Next.js, des bibliothèques comme next-intl et les outils de traduction assistée par IA, internationaliser une application est devenu relativement simple."
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Il reste évidemment du travail : traductions, messages d’erreur, emails, formats régionaux, tests… Mais les barrières techniques ont considérablement diminué."
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Le problème, c’est que cette facilité peut nous encourager à développer des fonctionnalités sans véritablement questionner leur intérêt."
+        }
+      ]
+    },
+    {
+      "kind": "highlight",
+      "spans": [
+        {
+          "text": "Ce n’est pas parce qu’on peut le faire rapidement qu’on doit nécessairement le faire.",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "kind": "anchor",
+      "id": "complexite"
+    },
+    {
+      "kind": "heading",
+      "text": "Sur Iconise, la complexité ne s’arrêtait pas aux traductions"
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Iconise génère du contenu à l’aide de l’intelligence artificielle. J’ai donc dû distinguer deux paramètres :"
+        }
+      ]
+    },
+    {
+      "kind": "list",
+      "items": [
+        [
+          {
+            "text": "La langue de l’interface, choisie par l’utilisateur."
+          }
+        ],
+        [
+          {
+            "text": "La langue du contenu généré, associée à chaque projet."
+          }
+        ]
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Un utilisateur français peut ainsi travailler sur une application destinée au marché japonais, sans avoir besoin de passer toute son interface en japonais."
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "C’est une distinction intéressante pour l’expérience utilisateur, mais elle ajoute de la complexité."
+        }
+      ]
+    },
+    {
+      "kind": "module",
+      "name": "saas-language-demo",
+      "text": "01 / À toi d’essayerDeux langues, deux usagesChange les deux paramètres indépendamment : l’interface guide la personne, tandis que le contenu vise son propre marché.Langue de l’interfaceFrançaisEnglishDeutschEspañolPortuguês (BR)日本語Langue du contenuFrançaisEnglishDeutschEspañolPortuguês (BR)日本語Prévisualisation●Votre icône est prêteDirection créative générée創造的な勢いExemple illustratif. La langue de travail et celle du projet restent indépendantes."
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Avec six langues pour chaque paramètre, cela représente "
+        },
+        {
+          "text": "36 combinaisons possibles",
+          "bold": true
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "J’en ai vérifié douze lors d’une première recette, qui restait à approfondir."
+        }
+      ]
+    },
+    {
+      "kind": "module",
+      "name": "saas-language-matrix",
+      "text": "3602 / La surface cachéeSix fois six.Une langue pour l’interface, une autre pour le contenu : six fois six paramètres à maintenir et à vérifier.Matrice des langues de l’interface et du contenu↘FRENDEESBRJAFRENDE······ES······BR······JA······12 cases mises en évidence24 autres possibilitésFrançais / 日本語 — case mise en évidence dans cette visualisation.Répartition illustrative des douze vérifications : les paires réellement testées ne sont pas détaillées dans cet article. Sélectionne une case pour explorer les possibilités."
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Et ce n’est qu’un exemple. Chaque nouvelle fonctionnalité implique également de maintenir les traductions et de vérifier leur cohérence."
+        }
+      ]
+    },
+    {
+      "kind": "anchor",
+      "id": "marches"
+    },
+    {
+      "kind": "heading",
+      "text": "Six langues ne signifient pas six marchés conquis"
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "C’est probablement le point le plus important."
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Traduire son application en allemand ne signifie pas que des utilisateurs allemands vont automatiquement la découvrir."
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Même en mettant en place des URL localisées, des balises "
+        },
+        {
+          "text": "hreflang",
+          "code": true
+        },
+        {
+          "text": " et un sitemap multilingue, il reste à travailler le référencement, l’acquisition et surtout la proposition de valeur."
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Il faut comprendre ce que recherchent les utilisateurs de chaque marché, comment les atteindre et ce qui pourrait les convaincre d’utiliser le produit."
+        }
+      ]
+    },
+    {
+      "kind": "highlight",
+      "spans": [
+        {
+          "text": "L’internationalisation permet d’accéder à de nouveaux marchés. Elle ne garantit pas qu’on va y trouver des clients.",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "kind": "anchor",
+      "id": "demande"
+    },
+    {
+      "kind": "heading",
+      "text": "Mesurer la demande plutôt que multiplier les langues"
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Pour savoir si cette décision est pertinente, je pense qu’il faut regarder au-delà du nombre de langues disponibles."
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Le parcours ressemble davantage à un entonnoir qu’à un simple interrupteur :"
+        }
+      ]
+    },
+    {
+      "kind": "module",
+      "name": "saas-acquisition-funnel",
+      "text": "Au-delà de la traductionDe la visibilité au clientUne version localisée ouvre le parcours. Elle ne suffit pas à faire progresser les utilisateurs jusqu’à l’achat.01Visiteursdécouvrent une version localisée02Inscriptionsfont le premier pas03Projets démarréstestent la valeur du produit04Clients payantsconfirment une valeur suffisanteSchéma conceptuel : les largeurs ne représentent pas des taux réels."
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Quelques indicateurs peuvent être intéressants :"
+        }
+      ]
+    },
+    {
+      "kind": "list",
+      "items": [
+        [
+          {
+            "text": "Le trafic provenant des différentes versions linguistiques."
+          }
+        ],
+        [
+          {
+            "text": "Le nombre d’inscriptions."
+          }
+        ],
+        [
+          {
+            "text": "Le pourcentage d’utilisateurs qui démarrent réellement un projet."
+          }
+        ],
+        [
+          {
+            "text": "Le taux de conversion en clients payants."
+          }
+        ]
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "En croisant ces données avec les pays et les langues utilisées, on peut commencer à identifier les marchés qui présentent un réel potentiel."
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Évidemment, ces chiffres ne disent pas tout. Ils permettent de repérer où les utilisateurs abandonnent, mais pas forcément pourquoi."
+        }
+      ]
+    },
+    {
+      "kind": "anchor",
+      "id": "decision"
+    },
+    {
+      "kind": "heading",
+      "text": "Alors, faut-il internationaliser dès le départ ?"
+    },
+    {
+      "kind": "highlight",
+      "spans": [
+        {
+          "text": "Ma position est assez simple : "
+        },
+        {
+          "text": "prévoir l’internationalisation techniquement dès le début, mais ne pas nécessairement traduire toute l’application immédiatement.",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Commencer avec une ou deux langues, puis élargir progressivement selon la demande, peut être une stratégie plus raisonnable."
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "À l’inverse, pour un produit naturellement international, proposer plusieurs langues dès son lancement peut parfaitement se justifier."
+        }
+      ]
+    },
+    {
+      "kind": "module",
+      "name": "saas-decision-tree",
+      "text": "03 / Ton point de départFaut-il internationaliser ?Trois questions pour transformer une intuition en décision contextualisée.01Ton produit est-il naturellement international dès le départ ?OuiNon02As-tu déjà un signal de demande sur un marché précis ?OuiNon03Peux-tu maintenir traductions, tests et acquisition pour chaque langue ?OuiNonRéponds aux trois questions pour afficher une piste de décision."
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Je ne considère donc pas mon choix sur Iconise comme une erreur. Mais il faudra mesurer son impact avant de pouvoir affirmer que c’était un bon investissement."
+        }
+      ]
+    },
+    {
+      "kind": "paragraph",
+      "spans": [
+        {
+          "text": "Finalement, la question n’est pas de savoir combien de langues notre application peut supporter, mais combien apportent réellement de la valeur aux utilisateurs et au produit."
+        }
+      ]
+    }
+  ],
+  "seo": {
+    "title": "Internationaliser un SaaS au lancement | Vincent DESBROSSES",
+    "meta": [
+      {
+        "name": "viewport",
+        "content": "width=device-width, initial-scale=1"
+      },
+      {
+        "name": "description",
+        "content": "Internationaliser un SaaS dès son lancement : entre traduction, complexité technique et acquisition, comment décider selon la demande réelle."
+      },
+      {
+        "rel": "canonical",
+        "href": "https://vincent.desbrosses.net/fr/blog/internationaliser-saas-lancement"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "fr",
+        "href": "https://vincent.desbrosses.net/fr/blog/internationaliser-saas-lancement"
+      },
+      {
+        "rel": "alternate",
+        "hreflang": "x-default",
+        "href": "https://vincent.desbrosses.net/fr/blog/internationaliser-saas-lancement"
+      },
+      {
+        "property": "og:title",
+        "content": "Internationaliser un SaaS au lancement"
+      },
+      {
+        "property": "og:description",
+        "content": "Internationaliser un SaaS dès son lancement : entre traduction, complexité technique et acquisition, comment décider selon la demande réelle."
+      },
+      {
+        "property": "og:url",
+        "content": "https://vincent.desbrosses.net/fr/blog/internationaliser-saas-lancement"
+      },
+      {
+        "property": "og:site_name",
+        "content": "Vincent DESBROSSES"
+      },
+      {
+        "property": "og:locale",
+        "content": "fr_FR"
+      },
+      {
+        "property": "og:image",
+        "content": "https://vincent.desbrosses.net/fr/blog/internationaliser-saas-lancement/social-image"
+      },
+      {
+        "property": "og:image:width",
+        "content": "1200"
+      },
+      {
+        "property": "og:image:height",
+        "content": "630"
+      },
+      {
+        "property": "og:image:alt",
+        "content": "Faut-il internationaliser son SaaS dès le lancement ?"
+      },
+      {
+        "property": "og:type",
+        "content": "article"
+      },
+      {
+        "property": "article:published_time",
+        "content": "2026-10-19T00:00:00.000Z"
+      },
+      {
+        "name": "twitter:card",
+        "content": "summary_large_image"
+      },
+      {
+        "name": "twitter:site",
+        "content": "@vincedsb"
+      },
+      {
+        "name": "twitter:creator",
+        "content": "@vincedsb"
+      },
+      {
+        "name": "twitter:title",
+        "content": "Internationaliser un SaaS au lancement"
+      },
+      {
+        "name": "twitter:description",
+        "content": "Internationaliser un SaaS dès son lancement : entre traduction, complexité technique et acquisition, comment décider selon la demande réelle."
+      },
+      {
+        "name": "twitter:image",
+        "content": "https://vincent.desbrosses.net/fr/blog/internationaliser-saas-lancement/social-image"
+      },
+      {
+        "name": "twitter:image:alt",
+        "content": "Faut-il internationaliser son SaaS dès le lancement ?"
+      },
+      {
+        "name": "twitter:image:width",
+        "content": "1200"
+      },
+      {
+        "name": "twitter:image:height",
+        "content": "630"
+      },
+      {
+        "name": "next-size-adjust",
+        "content": ""
+      },
+      {
+        "name": "google-site-verification",
+        "content": "PW82MjVgB5OXOfa6RcjIX06LfN3lZ1arROcD41Ao1z4"
+      }
+    ],
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Faut-il internationaliser son SaaS dès le lancement ?",
+        "description": "Internationaliser un SaaS dès son lancement : entre traduction, complexité technique et acquisition, comment décider selon la demande réelle.",
+        "image": [
+          "https://vincent.desbrosses.net/fr/blog/internationaliser-saas-lancement/social-image"
+        ],
+        "datePublished": "2026-10-19",
+        "author": {
+          "@id": "https://vincent.desbrosses.net/#person"
+        },
+        "publisher": {
+          "@id": "https://vincent.desbrosses.net/#person"
+        },
+        "isPartOf": {
+          "@id": "https://vincent.desbrosses.net/#website"
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://vincent.desbrosses.net/fr/blog/internationaliser-saas-lancement"
+        },
+        "inLanguage": "fr-FR"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Portfolio",
+            "item": "https://vincent.desbrosses.net/fr"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://vincent.desbrosses.net/fr/blog"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Faut-il internationaliser son SaaS dès le lancement ?",
+            "item": "https://vincent.desbrosses.net/fr/blog/internationaliser-saas-lancement"
+          }
+        ]
+      }
+    ]
+  },
+  "links": [
+    "/fr",
+    "/fr/blog",
+    "#article-body",
+    "#accessible",
+    "#complexite",
+    "#marches",
+    "#demande",
+    "#decision",
+    "https://iconise.fyi/",
+    "/fr/projets/iconise",
+    "#article-top",
+    "/fr/blog/guide-premier-emploi-developpeur"
+  ],
+  "widgets": [
+    "saas-mosaic",
+    "saas-language-demo",
+    "saas-language-matrix",
+    "saas-acquisition-funnel",
+    "saas-decision-tree"
+  ],
+  "source": {
+    "commit": "04c6e150ab2c48217921a27eb5db216773b47ba1",
+    "mdxSha256": "4893b4fd527e09b916ad448011168c10128dbc10d55e1b18bae6d740c46ecb6d",
+    "widgetsSha256": "9cb8b35fc422f66c2700195c812070e110be697e75a82176ff8c465191f71537"
+  },
+  "metadata": {
+    "seoTitle": "Internationaliser un SaaS au lancement",
+    "relatedProjects": [
+      "iconise"
+    ],
+    "renderer": "editorial",
+    "title": "Faut-il internationaliser son SaaS dès le lancement ?",
+    "description": "Internationaliser un SaaS dès son lancement : entre traduction, complexité technique et acquisition, comment décider selon la demande réelle.",
+    "excerpt": "Préparer l’internationalisation peut être judicieux, mais traduire six langues dès le départ ne garantit ni visibilité ni clients.",
+    "slug": "internationaliser-saas-lancement",
+    "locale": "fr",
+    "category": "Produit",
+    "publishedAt": "2026-10-19",
+    "status": "published"
+  },
+  "socialImageSha256": "83e17740d6706a083ed7cb2b97d82572c61bf8649ebfccef835fac8f3b63ce66"
+}

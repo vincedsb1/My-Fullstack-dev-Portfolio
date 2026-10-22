@@ -1,6 +1,6 @@
 # Moteur JSON v1
 
-Référence consolidée : `dev04`, 22 octobre 2026. Le JSON est le format par défaut des nouveaux articles standards. Les deux articles publiés restent en MDX jusqu’aux migrations demandées séparément.
+Référence consolidée : `dev04`, 22 octobre 2026. Le JSON est le format par défaut des nouveaux articles standards. L’article SaaS est publié en JSON depuis l’étape 4 ; seul le guide reste en MDX jusqu’à sa migration distincte.
 
 ## Écrire et prévisualiser
 
@@ -40,7 +40,7 @@ Le preview refuse les slugs absents, les fichiers MDX et les chemins arbitraires
 
 Champs facultatifs de `meta` : `updatedAt`, `cover`, `coverAlt`, `translationKey`, `seoTitle`, `relatedProjects`. Les dates sont des jours ISO existants ; `updatedAt` ne peut précéder `publishedAt`. `coverAlt` est obligatoire avec une couverture. `seoTitle` est limité à 39 caractères hors suffixe, comme en MDX. Les projets liés doivent être réellement publiés dans la langue de l’article.
 
-`hero.primaryCta` reçoit `{label, target: "content"}`. `hero.visual` accepte uniquement `metric-panel` à ce stade. `introBlocks` précède les sections ; `afterBlocks` les suit. `related.slugs` contient des articles publiés dans la même langue ; aucun lien suivant fictif n’est ajouté par défaut.
+`hero.primaryCta` reçoit `{label, target: "content"}`. `hero.visual` accepte `metric-panel` ou `saas-hero` (illustration serveur française, réservée au hero). `hero.eyebrow` remplace facultativement le libellé de catégorie affiché ; `hero.titleHighlight` accentue la première occurrence d’un extrait exact du titre sans modifier le H1 ni les métadonnées. `introBlocks` précède les sections ; `afterBlocks` les suit. `related.slugs` contient des articles publiés dans la même langue ; aucun lien suivant fictif n’est ajouté par défaut.
 
 ## Blocs standards
 
@@ -70,6 +70,7 @@ La liste des noms, props admises, langues et IDs DOM est centralisée dans `src/
 
 | ID | Props / implémentation |
 |---|---|
+| `saas-hero` | zéro props, illustration serveur historique ; placement hero uniquement, FR |
 | `metric-panel` | `{value, label, caption?}`, rendu serveur |
 | `saas-mosaic` | zéro props, mosaïque historique |
 | `saas-language-demo` | zéro props, deux sélecteurs indépendants |
@@ -86,6 +87,8 @@ Ajouter un module réellement nouveau exige du code React et une entrée de regi
 Une checklist sauvegarde uniquement les cases cochées, sous la forme `{"id":true}`. La lecture ignore les valeurs non booléennes, données corrompues et tableaux. La progression suit les vrais items ; reset, rechargement et synchronisation entre onglets sont testés. Lorsque le stockage est refusé, les cases restent utilisables dans la page et un message explique que la progression n’est pas enregistrée.
 
 Les clés respectent `^vd_[a-z0-9_]+$` (par exemple `vd_mon_article_v1`). Deux checklists d’un article, ou de deux articles publiés, ne peuvent partager la même clé. `vd_guide_checklist_v1` est réservée au guide FR à son slug historique, avec les 14 IDs ordonnés `chk-1` à `chk-14`. Le contrat complet est [contracts/guide-checklist-v1.json](contracts/guide-checklist-v1.json). Ne pas renommer cette clé ni réattribuer les IDs. Le reset de ce composant demande confirmation, comme le guide.
+
+`legacyAnchors: {top?, content?}` conserve les anciens fragments d’un article migré. Ces IDs sont validés dans le même espace que les autres ancres ; les liens existants vers `#article-top` et `#article-body` du SaaS restent valables. `readingNote: {title, content: RichNode[]}` permet une courte note éditoriale de sommaire, au serveur, avec les mêmes contrôles de texte et de liens.
 
 Les IDs de sections, `${id}-heading`, titres explicites, shell et widgets doivent être uniques. Les liens `#id` sont vérifiés, ainsi que les ancres vers un autre article JSON publié. Les liens locaux conservent leur destination exacte, y compris les parenthèses ; ils ne sont plus convertis en faux Markdown. Pages, articles, ressources et projets locaux doivent exister ; les protocoles acceptés sont HTTP(S), mailto et tel. Le validateur ne garantit pas la disponibilité future des sites externes.
 
@@ -106,4 +109,4 @@ Le scan JSON a une inclusion de traçage explicite et bornée dans `next.config.
 - `npm run blog:test:publication` : crée deux JSON synthétiques publiés FR/EN et une route de test de checklist **uniquement sur le disque local** ; build, SEO et navigateur ; retire ces fichiers puis reconstruit le build normal, même après un échec. Ne pas lancer en parallèle d’un autre build/serveur utilisant `.next`.
 - `npm run blog:test:preview` : lance un serveur de développement dédié, contrôle le shell complet et produit les captures des quatre largeurs/deux thèmes.
 
-Ces deux dernières commandes font partie de la CI. Aucun fichier de test publié, snapshot généré ou PDF n’est versionné. Voir [AUDIT_FINAL_ETAPES_1_2_3.md](AUDIT_FINAL_ETAPES_1_2_3.md) pour le verdict et le budget de performance global restant.
+Ces deux dernières commandes font partie de la CI. Aucun article synthétique de test, capture PNG ou PDF n’est versionné. L’export sémantique MDX `contracts/internationaliser-saas-v1.json` est conservé volontairement comme contrat de parité. Voir [AUDIT_FINAL_ETAPES_1_2_3.md](AUDIT_FINAL_ETAPES_1_2_3.md) pour le verdict et le budget de performance global restant.

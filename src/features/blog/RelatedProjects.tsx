@@ -13,7 +13,7 @@ export async function RelatedProjects({
   const projects = slugs.map((slug) => getPublishedCaseStudy(locale, slug));
   if (!projects.length) return null;
   return (
-    <aside className="mt-12 rounded-card border border-border bg-surface-raised p-6">
+    <aside className="blog-related-projects mt-12 rounded-card border border-border bg-surface-raised p-6">
       <h2 className="text-h3 font-semibold">{t("relatedProjects")}</h2>
       <ul className="mt-4 space-y-3">
         {projects.map((p) => {

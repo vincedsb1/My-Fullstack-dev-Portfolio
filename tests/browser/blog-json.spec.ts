@@ -1,7 +1,7 @@
 import { mkdirSync } from "node:fs";
 import { test, expect } from "@playwright/test";
 
-/** Test navigateur sans publication du brouillon JSON et sans changer les anciens articles. */
+/** Test navigateur sans publication du brouillon JSON et avec le SaaS publié en JSON et le guide conservé en MDX. */
 test("showcase : contrat JSON et cinq widgets SaaS", async ({ page }) => {
   const response = await page.goto("/fr/blog/showcase");
   expect(response?.status()).toBe(200);
@@ -45,7 +45,7 @@ test("showcase : contrat JSON et cinq widgets SaaS", async ({ page }) => {
   }
 });
 
-test("articles MDX restent publiés ; preview JSON reste invisible en production", async ({
+test("articles JSON et MDX restent publiés ; preview JSON reste invisible en production", async ({
   page,
 }) => {
   for (const url of [
@@ -76,7 +76,7 @@ test("figer la référence visuelle du Showcase et de l’article SaaS", async (
       ["/fr/blog/showcase", "showcase", [320, 390, 820, 1440]],
       [
         "/fr/blog/internationaliser-saas-lancement",
-        "saas-legacy",
+        "saas-json",
         [320, 390, 820, 1440],
       ],
       [

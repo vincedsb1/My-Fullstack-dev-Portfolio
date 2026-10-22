@@ -1,4 +1,11 @@
 {
+  "saas-hero": {
+    "required": [],
+    "optional": [],
+    "locale": "fr",
+    "placement": "hero",
+    "ids": []
+  },
   "metric-panel": {
     "required": ["value", "label"],
     "optional": ["caption"],

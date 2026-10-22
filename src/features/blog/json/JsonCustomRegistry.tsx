@@ -2,6 +2,7 @@ import type { CustomModule, SaaSModuleName } from "@/lib/blog/json-types";
 import { BlogModuleFrame } from "../design-system/BlogUI";
 import InternationalisationArticleModule from "../InternationalisationArticleModules";
 import styles from "../InternationalisationArticle.module.css";
+import InternationalisationHeroArt from "../InternationalisationHeroArt";
 
 /**
  * Registre statique des modules React. Le JSON ne contient ni HTML libre, ni chemin
@@ -27,6 +28,8 @@ export function JsonCustomModule({
   placement?: "hero" | "block";
 }) {
   switch (module.component) {
+    case "saas-hero":
+      return <InternationalisationHeroArt />;
     case "metric-panel":
       return (
         <BlogModuleFrame

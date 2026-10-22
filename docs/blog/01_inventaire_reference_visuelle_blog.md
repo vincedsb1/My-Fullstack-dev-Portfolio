@@ -1,5 +1,8 @@
 # Étape 1 — Inventaire et gel de la référence visuelle du blog
 
+> État historique avant migration. Le SaaS passe en JSON lors de l’étape 4 demandée ensuite ; voir [ETAPE_4_MIGRATION_SAAS.md](ETAPE_4_MIGRATION_SAAS.md) pour l’état livré. Le guide conserve son MDX.
+
+
 **Projet :** [My-Fullstack-dev-Portfolio](https://github.com/vincedsb1/My-Fullstack-dev-Portfolio)  
 **Branche auditée :** `main`  
 **Révision figée :** [`1b217e7790ef3429ceadf37c176143122107a005`](https://github.com/vincedsb1/My-Fullstack-dev-Portfolio/tree/1b217e7790ef3429ceadf37c176143122107a005) — 21 octobre 2026 à 22:28 UTC  

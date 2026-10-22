@@ -87,8 +87,13 @@ for (const route of ["showcase", "internationaliser-saas-lancement"]) {
   test(`cinq widgets réels : souris, clavier et huit décisions (${route})`, async ({
     page,
   }) => {
-    await page.goto(`/fr/blog/${route}`);
-    if (route === "showcase") {
+    await page.goto(
+      process.env.BLOG_SAAS_PREVIEW === "1" &&
+        route === "internationaliser-saas-lancement"
+        ? "/fr/blog/json-preview?slug=internationaliser-saas-lancement"
+        : `/fr/blog/${route}`,
+    );
+    if (route === "showcase" || route === "internationaliser-saas-lancement") {
       for (const host of await page.locator("[data-module]").all()) {
         const name = (await host.getAttribute(
           "data-module",
@@ -390,7 +395,7 @@ test("captures des états focus, hover, variantes ouvertes et résultat métier"
   }
 });
 
-test("impression des articles historiques lisible dans les deux thèmes", async ({
+test("impression du SaaS JSON et du guide MDX lisible dans les deux thèmes", async ({
   page,
 }) => {
   mkdirSync("tests/visual-artifacts", { recursive: true });
@@ -414,6 +419,11 @@ test("impression des articles historiques lisible dans les deux thèmes", async 
         "background-color",
         "rgb(255, 255, 255)",
       );
+      for (const card of await page.locator(".blog-related-projects").all()) {
+        await expect(card).toHaveCSS("background-color", "rgb(255, 255, 255)");
+        await expect(card.locator("h2")).toBeVisible();
+        await expect(card.locator("a").first()).toBeVisible();
+      }
       const titleContrast = await page.locator("h1").evaluate((node) => {
         const rgb = getComputedStyle(node)
           .color.match(/\d+/g)!

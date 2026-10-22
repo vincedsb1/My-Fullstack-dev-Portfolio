@@ -1,5 +1,8 @@
 # Audit contradictoire — Design system et Showcase du blog
 
+> État historique avant migration. Le SaaS passe en JSON lors de l’étape 4 demandée ensuite ; voir [ETAPE_4_MIGRATION_SAAS.md](ETAPE_4_MIGRATION_SAAS.md) pour l’état livré. Le guide conserve son MDX.
+
+
 **Date :** 22 octobre 2026  
 **Dépôt cible :** `vincedsb1/My-Fullstack-dev-Portfolio`, branche `main`, commit de référence `1b217e7790ef3429ceadf37c176143122107a005`  
 **Livrable audité :** `blog_design_system_showcase_etape2.zip` (9 fichiers, sources TSX/CSS, documentation et aperçu HTML)  

@@ -123,12 +123,18 @@ function custom(data, file, at, locale, placement = "block") {
       at,
       "module SaaS réservé au contenu français : traduction EN non disponible",
     );
-  if (placement === "hero" && data.component !== "metric-panel")
+  if (
+    placement === "hero" &&
+    data.component !== "metric-panel" &&
+    d.placement !== "hero"
+  )
     error(
       file,
       at,
       "le module interactif ne peut pas être utilisé dans le hero",
     );
+  if (placement !== "hero" && d.placement === "hero")
+    error(file, at, "illustration réservée au hero");
   const props = data.props === undefined ? {} : data.props;
   keys(props, d.required, d.optional, file, `${at}.props`);
   for (const k of [...d.required, ...d.optional])
@@ -365,7 +371,14 @@ export function validateJsonArticle(
   keys(
     article,
     ["schemaVersion", "meta", "sections"],
-    ["hero", "introBlocks", "afterBlocks", "related"],
+    [
+      "hero",
+      "introBlocks",
+      "afterBlocks",
+      "related",
+      "legacyAnchors",
+      "readingNote",
+    ],
     file,
     "article",
   );
@@ -464,8 +477,40 @@ export function validateJsonArticle(
     storageKeys: new Set(),
     lastHeading: 1,
   };
+  if (article.legacyAnchors !== undefined) {
+    keys(article.legacyAnchors, [], ["top", "content"], file, "legacyAnchors");
+    for (const [key, id] of Object.entries(article.legacyAnchors))
+      registerId(id, file, `legacyAnchors.${key}`, ctx);
+  }
+  if (article.readingNote !== undefined) {
+    keys(article.readingNote, ["title", "content"], [], file, "readingNote");
+    string(article.readingNote.title, file, "readingNote.title");
+    rich(
+      article.readingNote.content,
+      file,
+      "readingNote.content",
+      ctx.links,
+      ctx.anchors,
+    );
+  }
   if (article.hero !== undefined) {
-    keys(article.hero, [], ["primaryCta", "visual"], file, "hero");
+    keys(
+      article.hero,
+      [],
+      ["primaryCta", "visual", "eyebrow", "titleHighlight"],
+      file,
+      "hero",
+    );
+    optString(article.hero.eyebrow, file, "hero.eyebrow");
+    if (article.hero.titleHighlight !== undefined) {
+      string(article.hero.titleHighlight, file, "hero.titleHighlight");
+      if (!m.title.includes(article.hero.titleHighlight))
+        error(
+          file,
+          "hero.titleHighlight",
+          "doit être un extrait exact du titre",
+        );
+    }
     if (article.hero.primaryCta !== undefined) {
       keys(
         article.hero.primaryCta,

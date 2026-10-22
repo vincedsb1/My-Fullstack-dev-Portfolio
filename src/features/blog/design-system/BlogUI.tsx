@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { Avatar } from "@/components/ui/Avatar";
 import type { ReactNode } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
@@ -64,6 +64,7 @@ export function BlogArticleHero({
   headingLevel = 1,
   ctaLabel = "Commencer la lecture",
   ctaTarget = "blog-article-body",
+  titleHighlight,
 }: {
   category: string;
   title: string;
@@ -77,12 +78,24 @@ export function BlogArticleHero({
   headingLevel?: 1 | 2;
   ctaLabel?: string;
   ctaTarget?: string;
+  titleHighlight?: string;
 }) {
+  const index = titleHighlight ? title.indexOf(titleHighlight) : -1;
+  const titleContent =
+    titleHighlight && index >= 0 ? (
+      <>
+        {title.slice(0, index)}
+        <span className="blog-ds__hero-title-highlight">{titleHighlight}</span>
+        {title.slice(index + titleHighlight.length)}
+      </>
+    ) : (
+      title
+    );
   const heading =
     headingLevel === 1 ? (
-      <h1 className="blog-ds__hero-title">{title}</h1>
+      <h1 className="blog-ds__hero-title">{titleContent}</h1>
     ) : (
-      <h2 className="blog-ds__hero-title">{title}</h2>
+      <h2 className="blog-ds__hero-title">{titleContent}</h2>
     );
 
   return (
@@ -97,7 +110,7 @@ export function BlogArticleHero({
         <p className="blog-ds__hero-dek">{excerpt}</p>
         <div className="blog-ds__byline">
           <div className="blog-ds__avatar">
-            <Image src="/pp.jpg" alt="" width={44} height={44} />
+            <Avatar size={44} alt="" className="" />
           </div>
           <div className="blog-ds__byline-author">
             <strong>{author}</strong>
@@ -376,20 +389,25 @@ export function BlogAuthorCard({
   headingLevel?: 2 | 3;
 }) {
   const Title = headingLevel === 2 ? "h2" : "h3";
+  const bio =
+    description ??
+    (locale === "fr"
+      ? "Développeur Fullstack. Je conçois des applications web et partage les réflexions qui accompagnent leur création."
+      : undefined);
   return (
     <aside
       className="blog-ds__author-card"
       aria-label={locale === "fr" ? "À propos de l’auteur" : "About the author"}
     >
       <div className="blog-ds__author-avatar">
-        <Image src="/pp.jpg" alt="" width={75} height={75} />
+        <Avatar size={75} alt="" className="" />
       </div>
       <div>
         <p className="blog-ds__module-eyebrow">
           {locale === "fr" ? "Derrière ces articles" : "About the author"}
         </p>
         <Title className="blog-ds__author-name">Vincent DESBROSSES</Title>
-        {description ? <p>{description}</p> : null}
+        {bio ? <p>{bio}</p> : null}
         <Link href={`/${locale}`}>
           {locale === "fr" ? "Découvrir mes projets" : "View my projects"}{" "}
           <ArrowUpRight size={15} aria-hidden="true" />

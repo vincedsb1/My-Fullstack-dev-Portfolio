@@ -1,5 +1,8 @@
 # Audit final des étapes 1, 2 et 3 du blog
 
+> État historique avant migration. Le SaaS passe en JSON lors de l’étape 4 demandée ensuite ; voir [ETAPE_4_MIGRATION_SAAS.md](ETAPE_4_MIGRATION_SAAS.md) pour l’état livré. Le guide conserve son MDX.
+
+
 Date : 22 octobre 2026. Branche de livraison : `dev04`.
 
 ## 1. Périmètre et versions Git

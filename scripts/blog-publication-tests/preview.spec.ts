@@ -72,6 +72,27 @@ for (const theme of ["light", "dark"] as const) {
     const checklist = page.locator("#interactions .blog-ds__json-checklist");
     await checklist.locator("input").first().check();
     await expect(checklist.locator("progress")).toHaveAttribute("value", "1");
+    const saas = await page.goto(
+      "/fr/blog/json-preview?slug=internationaliser-saas-lancement",
+    );
+    expect(saas?.status()).toBe(200);
+    await expect(page.locator("h1")).toHaveText(
+      "Faut-il internationaliser son SaaS dès le lancement ?",
+    );
+    await expect(page.locator('[data-module^="saas-"]')).toHaveCount(5);
+    for (const width of [320, 390, 820, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+      ).toBe(true);
+      await page.screenshot({
+        path: `tests/visual-artifacts/blog-saas-json-preview-${theme}-${width}.png`,
+        fullPage: true,
+        animations: "disabled",
+      });
+    }
     expect(errors).toEqual([]);
     expect(
       (await page.goto("/fr/blog/json-preview?slug=article-absent"))?.status(),
@@ -79,7 +100,7 @@ for (const theme of ["light", "dark"] as const) {
     expect(
       (
         await page.goto(
-          "/fr/blog/json-preview?slug=internationaliser-saas-lancement",
+          "/fr/blog/json-preview?slug=guide-premier-emploi-developpeur",
         )
       )?.status(),
     ).toBe(404);
