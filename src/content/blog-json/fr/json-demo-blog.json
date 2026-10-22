@@ -141,6 +141,78 @@
             }
           ],
           "attribution": "Exemple fictif"
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "text": "Précision de niveau H4",
+          "id": "precision"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Texte en "
+            },
+            {
+              "text": "gras",
+              "bold": true
+            },
+            {
+              "text": " "
+            },
+            {
+              "text": "italique",
+              "italic": true
+            },
+            {
+              "text": " et un "
+            },
+            {
+              "text": "identifiant",
+              "code": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            [
+              {
+                "text": "Première étape."
+              }
+            ],
+            [
+              {
+                "text": "Deuxième étape."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "figure",
+          "src": "/blog/json-demo-blog/structure.svg",
+          "alt": "Un fichier JSON validé alimente les blocs puis la page d’article.",
+          "width": 960,
+          "height": 280,
+          "caption": "Schéma technique de démonstration du moteur local."
+        },
+        {
+          "type": "video",
+          "provider": "youtube",
+          "id": "jNQXAC9IVRw",
+          "title": "Vidéo YouTube de démonstration technique"
+        },
+        {
+          "type": "code",
+          "language": "json",
+          "title": "Code sans bouton de copie",
+          "copyable": false,
+          "code": "{\"schemaVersion\": 1}"
         }
       ]
     },
@@ -162,7 +234,19 @@
                 }
               ],
               "href": "/fr/blog",
-              "actionLabel": "Voir les articles"
+              "actionLabel": "Voir les articles",
+              "blocks": [
+                {
+                  "type": "list",
+                  "items": [
+                    [
+                      {
+                        "text": "Une action issue du même bloc réutilisable."
+                      }
+                    ]
+                  ]
+                }
+              ]
             },
             {
               "number": "02",
@@ -171,29 +255,19 @@
                 {
                   "text": "Un bloc commun pour des cas variés."
                 }
-              ]
+              ],
+              "href": "/fr/blog",
+              "actionLabel": "Voir les articles"
             }
           ]
         },
         {
           "type": "table",
           "caption": "Comparaison illustrative",
-          "columns": [
-            "Support",
-            "Contenu",
-            "Personnalisation"
-          ],
+          "columns": ["Support", "Contenu", "Personnalisation"],
           "rows": [
-            [
-              "MDX",
-              "Texte et composants",
-              "Libre"
-            ],
-            [
-              "JSON",
-              "Blocs structurés",
-              "Via registre"
-            ]
+            ["MDX", "Texte et composants", "Libre"],
+            ["JSON", "Blocs structurés", "Via registre"]
           ]
         },
         {
@@ -216,6 +290,20 @@
                       "text": "Du fichier JSON local validé pendant le build."
                     }
                   ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "cards",
+          "variant": "info",
+          "items": [
+            {
+              "title": "Carte informative",
+              "description": [
+                {
+                  "text": "Une variante sans action obligatoire."
                 }
               ]
             }

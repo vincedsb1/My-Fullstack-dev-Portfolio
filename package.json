@@ -18,7 +18,9 @@
     "test:e2e": "playwright test",
     "audit:verify": "node scripts/verify-portfolio-build.mjs",
     "analyze": "ANALYZE=true next build --webpack",
-    "blog:test:json": "node --test scripts/blog-json-tests/*.node.mjs"
+    "blog:test:json": "node --test scripts/blog-json-tests/*.node.mjs",
+    "blog:test:publication": "node scripts/test-blog-json-publication.mjs",
+    "blog:test:preview": "BLOG_PREVIEW=1 playwright test --config scripts/blog-publication-tests/playwright.config.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

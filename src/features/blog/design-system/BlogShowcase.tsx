@@ -1,6 +1,7 @@
-import type { JsonBlogArticle } from "@/lib/blog/json-types";
 import JsonBlockRenderer from "../json/JsonBlockRenderer";
-import jsonFixture from "@/content/blog-json/fr/json-demo-blog.json";
+import { readJsonBlogArticleFile } from "@/lib/blog/json-source.mjs";
+import path from "node:path";
+import JsonChecklist from "../json/JsonChecklist";
 import type { ReactNode } from "react";
 import { CheckCircle2, Globe2, Layers, Sparkles } from "lucide-react";
 import {
@@ -28,10 +29,11 @@ import {
   BlogReadingProgress,
   type BlogTocItem,
 } from "./BlogReadingControls";
-import { BlogChecklistDemo, BlogDecisionDemo } from "./BlogShowcaseInteractive";
 import ShareButtons from "../ShareButtons";
 
-const fixture = jsonFixture as unknown as JsonBlogArticle;
+const fixture = readJsonBlogArticleFile(
+  path.join(process.cwd(), "src/content/blog-json/fr/json-demo-blog.json"),
+).data;
 
 const toc: ReadonlyArray<BlogTocItem> = [
   { id: "fondations", label: "Fondations & couleurs" },
@@ -39,10 +41,14 @@ const toc: ReadonlyArray<BlogTocItem> = [
   { id: "composants", label: "Cartes & actions" },
   { id: "contenu", label: "Contenu structuré" },
   { id: "medias", label: "Figures & code" },
-  { id: "interactions", label: "Modules interactifs" },
+  { id: "interactions-demo", label: "Modules interactifs" },
   { id: "modules", label: "Composants personnalisés" },
   { id: "navigation", label: "Fin d’article" },
   { id: "json-fixture", label: "Données JSON v1" },
+  ...fixture.sections.map((section) => ({
+    id: section.id,
+    label: section.title,
+  })),
 ];
 
 function PreviewPanel({
@@ -61,6 +67,7 @@ function PreviewPanel({
       </p>
       <div
         className="blog-ds__theme-chip-row"
+        role="img"
         aria-label="Échantillons : fond, surface, texte, accent, succès, avertissement"
       >
         {Array.from({ length: 6 }, (_, i) => (
@@ -136,7 +143,7 @@ export default function BlogShowcase() {
           illustration={<HeroArt />}
         />
         <BlogReadingLayout navigation={<BlogReadingNavigation items={toc} />}>
-          <div id="blog-showcase-body" className="blog-ds__prose">
+          <div id="blog-showcase-body" className="blog-ds__prose" tabIndex={-1}>
             <p className="blog-ds__lead">
               Le blog ne doit pas être une collection de pages dessinées
               indépendamment. Cette page sert de référence pour les futures
@@ -182,6 +189,47 @@ export default function BlogShowcase() {
                 <BlogBadge tone="warning">Attention</BlogBadge>
                 <BlogBadge tone="info">Information</BlogBadge>
               </div>
+              <BlogAccordion
+                items={[
+                  {
+                    title: "Examiner les cinq variantes de ton",
+                    content: (
+                      <>
+                        {(
+                          [
+                            "neutral",
+                            "accent",
+                            "info",
+                            "success",
+                            "warning",
+                          ] as const
+                        ).map((tone) => (
+                          <div key={tone}>
+                            <BlogCallout
+                              tone={tone}
+                              title={`Encadré : ${tone}`}
+                            >
+                              Une information accompagnée d’un intitulé
+                              explicite.
+                            </BlogCallout>
+                            <BlogModuleFrame
+                              tone={tone}
+                              title={`Module : ${tone}`}
+                              note="Le même cadre accueille un contenu React spécifique."
+                            >
+                              Contenu de démonstration.
+                            </BlogModuleFrame>
+                            <BlogIconList
+                              tone={tone}
+                              items={[`Liste : ${tone}`]}
+                            />
+                          </div>
+                        ))}
+                      </>
+                    ),
+                  },
+                ]}
+              />
               <BlogCallout tone="info" title="Règle de conception">
                 L’identité générale vient du design system. Un article choisit
                 son contenu, pas sa propre palette ou ses propres marges.
@@ -266,7 +314,7 @@ export default function BlogShowcase() {
                 <BlogButton href="/fr" variant="secondary">
                   Voir le portfolio
                 </BlogButton>
-                <BlogButton href="#interactions" variant="text">
+                <BlogButton href="#interactions-demo" variant="text">
                   Voir les interactions
                 </BlogButton>
               </div>
@@ -328,7 +376,12 @@ export default function BlogShowcase() {
                   },
                 ]}
               />
-              <div className="blog-ds__table-scroll">
+              <div
+                className="blog-ds__table-scroll"
+                tabIndex={0}
+                role="region"
+                aria-label="Statut des familles de blocs"
+              >
                 <table className="blog-ds__table">
                   <caption className="sr-only">
                     Statut des familles de blocs dans le catalogue
@@ -390,15 +443,16 @@ export default function BlogShowcase() {
                 </div>
               </BlogFigure>
               <BlogCodeSample
-                label="TypeScript · exemple pédagogique"
+                label="TypeScript · contrat JSON"
+                language="typescript"
                 code={
-                  'type ArticleBlock =\n  | { type: "paragraph"; text: string }\n  | { type: "callout"; tone: "info" | "warning"; text: string }\n  | { type: "custom"; component: string; props: Record<string, unknown> };'
+                  'type RichText = Array<{ text: string; bold?: boolean }>;\ntype Paragraph = { type: "paragraph"; content: RichText };'
                 }
               />
             </BlogSection>
 
             <BlogSection
-              id="interactions"
+              id="interactions-demo"
               number="06"
               title="Des interactions prévisibles"
               eyebrow="Comportements UI"
@@ -413,15 +467,31 @@ export default function BlogShowcase() {
                 title="Avancer étape par étape"
                 description="Cases, compteur, barre de progression et action de remise à zéro."
               >
-                <BlogChecklistDemo />
+                <JsonChecklist
+                  items={[
+                    {
+                      id: "demo-a",
+                      label: "Un titre unique et une introduction claire",
+                    },
+                    {
+                      id: "demo-b",
+                      label: "Des composants alignés sur le design system",
+                    },
+                    {
+                      id: "demo-c",
+                      label: "Une vérification mobile et en mode sombre",
+                    },
+                  ]}
+                />
+                <p className="blog-ds__hint">
+                  Démonstration sans sauvegarde, rendue par la même checklist
+                  que les articles JSON. La version persistante est présentée
+                  plus bas.
+                </p>
               </BlogModuleFrame>
-              <BlogModuleFrame
-                eyebrow="Questionnaire"
-                title="Une décision en trois questions"
-                description="État, sélection explicite et résultat accessible."
-              >
-                <BlogDecisionDemo />
-              </BlogModuleFrame>
+              <BlogButton href="#modules-saas" variant="text">
+                Tester le questionnaire SaaS et ses règles métier
+              </BlogButton>
             </BlogSection>
 
             <BlogSection
@@ -493,7 +563,7 @@ export default function BlogShowcase() {
                   Tous les articles
                 </BlogButton>
               </div>
-              <BlogAuthorCard />
+              <BlogAuthorCard headingLevel={3} />
               <BlogNextArticle
                 title="Faut-il internationaliser son SaaS dès le lancement ?"
                 href="/fr/blog/internationaliser-saas-lancement"
@@ -510,16 +580,19 @@ export default function BlogShowcase() {
                 prévisualisation et utilisent exactement le même renderer que
                 les futurs articles.
               </p>
-              {fixture.sections.map((section) => (
-                <div
-                  key={section.id}
-                  className="blog-ds__json-showcase-section"
-                >
-                  <h3>{section.title}</h3>
-                  <JsonBlockRenderer blocks={section.blocks} />
-                </div>
-              ))}
+              <JsonBlockRenderer blocks={fixture.introBlocks ?? []} />
             </BlogSection>
+            {fixture.sections.map((section) => (
+              <BlogSection
+                key={section.id}
+                id={section.id}
+                title={section.title}
+                eyebrow="Rendu JSON v1"
+              >
+                <JsonBlockRenderer blocks={section.blocks} />
+              </BlogSection>
+            ))}
+            <JsonBlockRenderer blocks={fixture.afterBlocks ?? []} />
           </div>
         </BlogReadingLayout>
       </main>

@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import type { ArticleBlock, RichText } from "@/lib/blog/json-types";
 import {
   BlogCallout,
+  BlogAccordion,
+  BlogFigure,
   BlogCodeSample,
   BlogInfoCard,
   BlogQuote,
@@ -66,11 +68,11 @@ export default function JsonBlockRenderer({
             );
           case "heading":
             return block.level === 3 ? (
-              <h3 key={key} id={block.id}>
+              <h3 key={key} id={block.id} tabIndex={block.id ? -1 : undefined}>
                 {block.text}
               </h3>
             ) : (
-              <h4 key={key} id={block.id}>
+              <h4 key={key} id={block.id} tabIndex={block.id ? -1 : undefined}>
                 {block.text}
               </h4>
             );
@@ -81,9 +83,13 @@ export default function JsonBlockRenderer({
               </li>
             ));
             return block.ordered ? (
-              <ol key={key}>{items}</ol>
+              <ol key={key} className="blog-ds__text-list">
+                {items}
+              </ol>
             ) : (
-              <ul key={key}>{items}</ul>
+              <ul key={key} className="blog-ds__text-list">
+                {items}
+              </ul>
             );
           }
           case "quote":
@@ -119,16 +125,22 @@ export default function JsonBlockRenderer({
                     key={i}
                     number={card.number}
                     title={card.title}
+                    variant={block.variant}
                     description={<Rich nodes={card.description} />}
+                    action={
+                      card.href ? (
+                        <a href={card.href} className="blog-ds__json-card-link">
+                          {card.actionLabel ??
+                            (locale === "fr"
+                              ? "En savoir plus"
+                              : "Learn more")}{" "}
+                          →
+                        </a>
+                      ) : undefined
+                    }
                   >
-                    {card.href ? (
-                      <a href={card.href} className="blog-ds__json-card-link">
-                        {card.actionLabel ??
-                          (locale === "fr"
-                            ? "En savoir plus"
-                            : "Learn more")}{" "}
-                        →
-                      </a>
+                    {card.blocks ? (
+                      <JsonBlockRenderer blocks={card.blocks} locale={locale} />
                     ) : null}
                   </BlogInfoCard>
                 ))}
@@ -138,12 +150,12 @@ export default function JsonBlockRenderer({
             return (
               <div
                 key={key}
-                className="blog-ds__json-table-scroll"
+                className="blog-ds__table-scroll"
                 tabIndex={0}
                 role="region"
                 aria-label={block.caption}
               >
-                <table>
+                <table className="blog-ds__table">
                   <caption>{block.caption}</caption>
                   <thead>
                     <tr>
@@ -174,7 +186,7 @@ export default function JsonBlockRenderer({
             );
           case "figure":
             return (
-              <figure key={key} className="blog-ds__figure">
+              <BlogFigure key={key} caption={block.caption}>
                 <Image
                   src={block.src}
                   alt={block.alt}
@@ -184,25 +196,24 @@ export default function JsonBlockRenderer({
                   unoptimized={block.src.endsWith(".svg")}
                   className="blog-ds__json-image"
                 />
-                {block.caption ? (
-                  <figcaption>{block.caption}</figcaption>
-                ) : null}
-              </figure>
+              </BlogFigure>
             );
           case "code":
-            return block.copyable === false ? (
-              <pre key={key} className="blog-ds__json-code-plain">
-                <code>{block.code}</code>
-              </pre>
-            ) : (
+            return (
               <BlogCodeSample
                 key={key}
                 label={block.title ?? block.language}
                 code={block.code}
+                language={block.language}
+                copyable={block.copyable}
               />
             );
           case "video":
-            return <YouTubeEmbed key={key} id={block.id} title={block.title} />;
+            return (
+              <div key={key} className="blog-ds__video">
+                <YouTubeEmbed id={block.id} title={block.title} />
+              </div>
+            );
           case "checklist":
             return (
               <JsonChecklist
@@ -214,19 +225,22 @@ export default function JsonBlockRenderer({
             );
           case "accordion":
             return (
-              <div className="blog-ds__accordion" key={key}>
-                {block.items.map((item, i) => (
-                  <details key={i}>
-                    <summary>{item.title}</summary>
-                    <div className="blog-ds__json-accordion-content">
-                      <JsonBlockRenderer blocks={item.blocks} locale={locale} />
-                    </div>
-                  </details>
-                ))}
-              </div>
+              <BlogAccordion
+                key={key}
+                items={block.items.map((item) => ({
+                  title: item.title,
+                  content: (
+                    <JsonBlockRenderer blocks={item.blocks} locale={locale} />
+                  ),
+                }))}
+              />
             );
           case "custom":
             return <JsonCustomModule key={key} module={block} />;
+          default: {
+            const exhaustive: never = block;
+            throw new Error(`Bloc JSON sans rendu : ${String(exhaustive)}`);
+          }
         }
       })}
     </>

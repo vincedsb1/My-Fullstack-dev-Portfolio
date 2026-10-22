@@ -4,6 +4,8 @@
  */
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
+import customDefs from "./json-custom-modules.json" with { type: "json" };
+import { validateBlogProjectReferences } from "./project-references.mjs";
 
 const DEFAULT_ROOT = path.resolve(process.cwd(), "src/content/blog-json");
 const DEFAULT_PUBLIC = path.resolve(process.cwd(), "public");
@@ -12,35 +14,6 @@ const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const ID = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const TONES = ["neutral", "accent", "info", "success", "warning"];
-const customDefs = {
-  "metric-panel": { required: ["value", "label"], optional: ["caption"] },
-  "saas-mosaic": { required: [], optional: [], locale: "fr", unique: true },
-  "saas-language-demo": {
-    required: [],
-    optional: [],
-    locale: "fr",
-    unique: true,
-  },
-  "saas-language-matrix": {
-    required: [],
-    optional: [],
-    locale: "fr",
-    unique: true,
-  },
-  "saas-acquisition-funnel": {
-    required: [],
-    optional: [],
-    locale: "fr",
-    unique: true,
-  },
-  "saas-decision-tree": {
-    required: [],
-    optional: [],
-    locale: "fr",
-    unique: true,
-  },
-};
-
 export const registeredJsonCustomModules = Object.freeze(
   Object.keys(customDefs),
 );
@@ -126,7 +99,8 @@ function rich(value, file, at, links, anchors) {
   value.forEach((node, i) => {
     const p = `${at}[${i}]`;
     keys(node, ["text"], ["bold", "italic", "code", "link"], file, p);
-    string(node.text, file, `${p}.text`);
+    // Les espaces entre deux emphases/liens font partie du texte éditorial.
+    string(node.text, file, `${p}.text`, { empty: true });
     for (const k of ["bold", "italic", "code"])
       bool(node[k], file, `${p}.${k}`);
     if (node.link !== undefined) {
@@ -140,9 +114,9 @@ function rich(value, file, at, links, anchors) {
 function custom(data, file, at, locale, placement = "block") {
   keys(data, ["component"], ["props"], file, at);
   string(data.component, file, `${at}.component`);
-  const d = customDefs[data.component];
-  if (!d)
+  if (!Object.hasOwn(customDefs, data.component))
     error(file, `${at}.component`, `module inconnu « ${data.component} »`);
+  const d = customDefs[data.component];
   if (d.locale && d.locale !== locale)
     error(
       file,
@@ -155,7 +129,7 @@ function custom(data, file, at, locale, placement = "block") {
       at,
       "le module interactif ne peut pas être utilisé dans le hero",
     );
-  const props = data.props ?? {};
+  const props = data.props === undefined ? {} : data.props;
   keys(props, d.required, d.optional, file, `${at}.props`);
   for (const k of [...d.required, ...d.optional])
     optString(props[k], file, `${at}.props.${k}`);
@@ -193,9 +167,7 @@ function blocks(value, file, at, ctx, depth = 0) {
         keys(b, ["type", "level", "text"], ["id"], file, p);
         pick(b.level, [3, 4], file, `${p}.level`);
         string(b.text, file, `${p}.text`);
-        if (b.level === 4 && ctx.lastHeading !== 3 && ctx.lastHeading !== 4)
-          error(file, p, "H4 sans H3 préalable dans la section");
-        ctx.lastHeading = b.level;
+        heading(b.level, file, p, ctx);
         if (b.id !== undefined) registerId(b.id, file, `${p}.id`, ctx);
         break;
       case "list":
@@ -227,12 +199,15 @@ function blocks(value, file, at, ctx, depth = 0) {
           keys(
             x,
             ["title", "description"],
-            ["number", "href", "actionLabel"],
+            ["number", "href", "actionLabel", "blocks"],
             file,
             q,
           );
           string(x.title, file, `${q}.title`);
+          heading(3, file, q, ctx);
           rich(x.description, file, `${q}.description`, ctx.links, ctx.anchors);
+          if (x.blocks !== undefined)
+            blocks(x.blocks, file, `${q}.blocks`, ctx, depth + 1);
           optString(x.number, file, `${q}.number`);
           optString(x.actionLabel, file, `${q}.actionLabel`);
           if (x.href !== undefined) {
@@ -241,6 +216,8 @@ function blocks(value, file, at, ctx, depth = 0) {
           }
           if (x.actionLabel !== undefined && x.href === undefined)
             error(file, q, "actionLabel nécessite href");
+          if (b.variant === "action" && x.href === undefined)
+            error(file, q, "une carte action nécessite href");
         });
         break;
       case "table":
@@ -294,6 +271,15 @@ function blocks(value, file, at, ctx, depth = 0) {
       case "checklist": {
         keys(b, ["type", "storageKey", "items"], [], file, p);
         string(b.storageKey, file, `${p}.storageKey`);
+        if (!/^vd_[a-z0-9_]+$/.test(b.storageKey))
+          error(
+            file,
+            `${p}.storageKey`,
+            "clé de stockage attendue dans le namespace vd_",
+          );
+        if (ctx.storageKeys.has(b.storageKey))
+          error(file, p, "clé de stockage checklist dupliquée");
+        ctx.storageKeys.add(b.storageKey);
         arr(b.items, file, `${p}.items`);
         const names = new Set();
         b.items.forEach((it, j) => {
@@ -305,6 +291,18 @@ function blocks(value, file, at, ctx, depth = 0) {
           names.add(it.id);
           string(it.label, file, `${q}.label`);
         });
+        if (
+          b.storageKey === "vd_guide_checklist_v1" &&
+          (ctx.slug !== "guide-premier-emploi-developpeur" ||
+            ctx.locale !== "fr" ||
+            b.items.length !== 14 ||
+            b.items.some((item, index) => item.id !== `chk-${index + 1}`))
+        )
+          error(
+            file,
+            p,
+            "la clé historique du guide exige son slug FR et les 14 IDs chk-1 à chk-14",
+          );
         break;
       }
       case "accordion":
@@ -320,6 +318,7 @@ function blocks(value, file, at, ctx, depth = 0) {
       case "custom":
         keys(b, ["type", "component"], ["props"], file, p);
         custom({ component: b.component, props: b.props }, file, p, ctx.locale);
+        if (customDefs[b.component].heading) heading(3, file, p, ctx);
         if (customDefs[b.component]?.unique) {
           if (ctx.customIds.has(b.component))
             error(
@@ -329,11 +328,24 @@ function blocks(value, file, at, ctx, depth = 0) {
             );
           ctx.customIds.add(b.component);
         }
+        for (const id of customDefs[b.component].ids)
+          registerId(id, file, p, ctx);
         break;
       default:
         error(file, `${p}.type`, `type de bloc inconnu « ${String(b.type)} »`);
     }
   });
+}
+function heading(level, file, at, ctx) {
+  if (level > ctx.lastHeading + 1)
+    error(
+      file,
+      at,
+      level === 4
+        ? "H4 sans H3 préalable dans la section"
+        : "H3 sans section H2 préalable",
+    );
+  ctx.lastHeading = level;
 }
 function registerId(id, file, at, ctx) {
   string(id, file, at);
@@ -418,6 +430,8 @@ export function validateJsonArticle(
       error(file, "meta.translationKey", "clé invalide");
   }
   optString(m.seoTitle, file, "meta.seoTitle");
+  if (m.seoTitle?.length > 39)
+    error(file, "meta.seoTitle", "39 caractères maximum hors suffixe");
   if (m.relatedProjects !== undefined) {
     arr(m.relatedProjects, file, "meta.relatedProjects", { min: 0 });
     if (new Set(m.relatedProjects).size !== m.relatedProjects.length)
@@ -427,16 +441,28 @@ export function validateJsonArticle(
       if (!SLUG.test(slug))
         error(file, `meta.relatedProjects[${i}]`, "slug de projet invalide");
     });
+    validateBlogProjectReferences(m.relatedProjects, m.locale, (message) =>
+      error(file, "meta.relatedProjects", message),
+    );
   }
   const ctx = {
     slug: m.slug,
     locale: m.locale,
     publicRoot,
-    ids: new Set(["blog-article-body", "blog-article-top"]),
+    ids: new Set([
+      "blog-article-body",
+      "blog-article-top",
+      "main",
+      "site-navigation",
+      "contact",
+      "footer-title",
+      "theme-initializer",
+    ]),
     anchors: [],
     links: [],
     customIds: new Set(),
-    lastHeading: 2,
+    storageKeys: new Set(),
+    lastHeading: 1,
   };
   if (article.hero !== undefined) {
     keys(article.hero, [], ["primaryCta", "visual"], file, "hero");
@@ -466,6 +492,7 @@ export function validateJsonArticle(
     const p = `sections[${i}]`;
     keys(sec, ["id", "title", "blocks"], ["number", "eyebrow"], file, p);
     registerId(sec.id, file, `${p}.id`, ctx);
+    registerId(`${sec.id}-heading`, file, `${p}.id`, ctx);
     string(sec.title, file, `${p}.title`);
     optString(sec.eyebrow, file, `${p}.eyebrow`);
     bool(sec.number, file, `${p}.number`);
@@ -492,7 +519,12 @@ export function validateJsonArticle(
   for (const a of ctx.anchors)
     if (!ctx.ids.has(a.value))
       error(file, a.at, `ancre cible #${a.value} introuvable`);
-  return { article, links: ctx.links };
+  return {
+    article,
+    links: ctx.links,
+    ids: [...ctx.ids],
+    storageKeys: [...ctx.storageKeys],
+  };
 }
 export function readJsonBlogArticleFile(filePath, options = {}) {
   let data;
@@ -503,17 +535,18 @@ export function readJsonBlogArticleFile(filePath, options = {}) {
   }
   const file = path.relative(process.cwd(), filePath);
   const locale = options.locale ?? path.basename(path.dirname(filePath));
-  const { article, links } = validateJsonArticle(data, {
+  const { article, links, ids, storageKeys } = validateJsonArticle(data, {
     ...options,
     file,
     locale,
     filenameSlug: path.basename(filePath, ".json"),
   });
-  // Les liens sont injectés sous forme MDX uniquement pour réutiliser validateBlogLinks.
-  const body = links.map((href) => `[lien](${href})`).join("\n");
   return {
     metadata: article.meta,
-    body,
+    body: "",
+    links,
+    ids,
+    storageKeys,
     filePath,
     format: "json",
     data: article,
@@ -523,30 +556,46 @@ export function readAllJsonBlogArticles({
   root = DEFAULT_ROOT,
   publicRoot = DEFAULT_PUBLIC,
 } = {}) {
+  // root/publicRoot restent injectables dans les tests. Ce scan dynamique est
+  // tracé explicitement et uniquement sous src/content/blog-json via
+  // outputFileTracingIncludes, au lieu d’embarquer tout le dépôt.
   const result = [];
-  if (!statSync(root, { throwIfNoEntry: false })) return result;
-  for (const dir of readdirSync(root, { withFileTypes: true })) {
+  if (!statSync(/* turbopackIgnore: true */ root, { throwIfNoEntry: false }))
+    return result;
+  for (const dir of readdirSync(/* turbopackIgnore: true */ root, {
+    withFileTypes: true,
+  })) {
     if (!dir.isDirectory() || !LOCALES.has(dir.name))
       error(root, "root", `entrée inattendue « ${dir.name} »`);
   }
   for (const locale of LOCALES) {
-    const directory = path.join(root, locale);
-    if (!statSync(directory, { throwIfNoEntry: false })?.isDirectory())
+    const directory = path.join(/* turbopackIgnore: true */ root, locale);
+    if (
+      !statSync(/* turbopackIgnore: true */ directory, {
+        throwIfNoEntry: false,
+      })?.isDirectory()
+    )
       continue;
-    for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    for (const entry of readdirSync(/* turbopackIgnore: true */ directory, {
+      withFileTypes: true,
+    })) {
       if (!entry.isFile() || !entry.name.endsWith(".json"))
         error(directory, "file", `fichier inattendu « ${entry.name} »`);
       result.push(
-        readJsonBlogArticleFile(path.join(directory, entry.name), {
-          locale,
-          publicRoot,
-        }),
+        readJsonBlogArticleFile(
+          path.join(/* turbopackIgnore: true */ directory, entry.name),
+          {
+            locale,
+            publicRoot,
+          },
+        ),
       );
     }
   }
   return result;
 }
 export function validateMergedBlogArticles(records) {
+  const checklistOwners = new Map();
   const routes = new Set(),
     titles = new Set(),
     descs = new Set(),
@@ -554,10 +603,21 @@ export function validateMergedBlogArticles(records) {
   for (const r of records) {
     const m = r.metadata,
       key = `${m.locale}/${m.slug}`;
+    if (["showcase", "json-preview"].includes(m.slug))
+      error(r.filePath, "meta.slug", "slug réservé à une route interne");
     if (routes.has(key))
       error(r.filePath, "meta.slug", `collision de route ${key}`);
     routes.add(key);
     if (m.status === "published") {
+      for (const key of r.storageKeys ?? []) {
+        if (checklistOwners.has(key))
+          error(
+            r.filePath,
+            "storageKey",
+            `clé de stockage déjà publiée par ${checklistOwners.get(key)}`,
+          );
+        checklistOwners.set(key, `${m.locale}/${m.slug}`);
+      }
       for (const [set, value, name] of [
         [titles, m.title, "title"],
         [descs, m.description, "description"],
@@ -639,6 +699,7 @@ export function getJsonReadingText(article) {
           b.items.forEach((x) => {
             parts.push(x.title);
             collectRich(x.description);
+            if (x.blocks) walk(x.blocks);
           });
           break;
         case "table":

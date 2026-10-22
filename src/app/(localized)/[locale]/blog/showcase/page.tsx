@@ -11,7 +11,7 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: "Blog Showcase — Design system éditorial | Vincent DESBROSSES",
+  title: "Showcase éditorial du blog",
   description: "Page interne de référence pour les composants du blog.",
   robots: { index: false, follow: false },
 };

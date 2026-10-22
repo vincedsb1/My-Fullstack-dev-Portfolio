@@ -19,7 +19,13 @@ const saasVariants: Record<
   "saas-decision-tree": "decision",
 };
 
-export function JsonCustomModule({ module }: { module: CustomModule }) {
+export function JsonCustomModule({
+  module,
+  placement = "block",
+}: {
+  module: CustomModule;
+  placement?: "hero" | "block";
+}) {
   switch (module.component) {
     case "metric-panel":
       return (
@@ -27,6 +33,7 @@ export function JsonCustomModule({ module }: { module: CustomModule }) {
           title={module.props.label}
           tone="info"
           note={module.props.caption}
+          titleAs={placement === "hero" ? "p" : "h3"}
         >
           <div className="blog-ds__json-metric">{module.props.value}</div>
         </BlogModuleFrame>

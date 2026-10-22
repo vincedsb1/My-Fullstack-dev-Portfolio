@@ -2,9 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen } from "lucide-react";
-import CopyButton from "../CopyButton";
-
-export type BlogTone = "neutral" | "accent" | "success" | "warning" | "info";
+import { ButtonLink } from "@/components/ui/Button";
+import type { BlogTone } from "@/lib/blog/json-types";
+export { default as BlogCodeSample } from "./BlogCodeSample";
+export type { BlogTone } from "@/lib/blog/json-types";
 
 export function BlogBreadcrumbs({
   items,
@@ -111,13 +112,14 @@ export function BlogArticleHero({
             <span>{readingLabel}</span>
           </div>
         </div>
-        <a
+        <ButtonLink
           href={`#${ctaTarget}`}
           className="blog-ds__button blog-ds__button--primary"
+          variant="accent"
         >
           {ctaLabel}
           <ArrowDown aria-hidden="true" size={16} />
-        </a>
+        </ButtonLink>
       </div>
       {illustration ? (
         <div className="blog-ds__hero-visual">{illustration}</div>
@@ -144,6 +146,7 @@ export function BlogSection({
       className="blog-ds__section"
       id={id}
       aria-labelledby={`${id}-heading`}
+      tabIndex={-1}
     >
       <div className="blog-ds__section-header">
         {number ? (
@@ -152,7 +155,9 @@ export function BlogSection({
           </span>
         ) : null}
         {eyebrow ? <p className="blog-ds__section-eyebrow">{eyebrow}</p> : null}
-        <h2 id={`${id}-heading`}>{title}</h2>
+        <h2 id={`${id}-heading`} tabIndex={-1}>
+          {title}
+        </h2>
       </div>
       {children}
     </section>
@@ -186,15 +191,21 @@ export function BlogButton({
 }) {
   const cls = `blog-ds__button blog-ds__button--${variant}`;
   return external ? (
-    <a className={cls} href={href} rel="noopener noreferrer" target="_blank">
+    <ButtonLink
+      className={cls}
+      href={href}
+      variant="ghost"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
       {children}
       <ArrowUpRight size={16} aria-hidden="true" />
-    </a>
+    </ButtonLink>
   ) : (
-    <Link className={cls} href={href}>
+    <ButtonLink className={cls} href={href} variant="ghost">
       {children}
       <ArrowRight size={16} aria-hidden="true" />
-    </Link>
+    </ButtonLink>
   );
 }
 
@@ -218,14 +229,14 @@ export function BlogCallout({
 export function BlogAccordion({
   items,
 }: {
-  items: ReadonlyArray<{ title: string; content: string }>;
+  items: ReadonlyArray<{ title: string; content: ReactNode }>;
 }) {
   return (
     <div className="blog-ds__accordion">
       {items.map((item, index) => (
         <details key={`${index}-${item.title}`}>
           <summary>{item.title}</summary>
-          <p>{item.content}</p>
+          <div className="blog-ds__accordion-content">{item.content}</div>
         </details>
       ))}
     </div>
@@ -243,7 +254,15 @@ export function BlogIconList({
     <ul className="blog-ds__icon-list" data-tone={tone}>
       {items.map((item, i) => (
         <li key={`${i}-${item}`}>
-          <span aria-hidden="true">×</span>
+          <span aria-hidden="true">
+            {tone === "success"
+              ? "✓"
+              : tone === "info"
+              ? "i"
+              : tone === "warning"
+              ? "!"
+              : "×"}
+          </span>
           {item}
         </li>
       ))}
@@ -270,19 +289,26 @@ export function BlogInfoCard({
   number,
   title,
   description,
+  variant = "info",
+  action,
   children,
 }: {
   number?: string;
   title: string;
   description?: ReactNode;
+  variant?: "info" | "action";
+  action?: ReactNode;
   children?: ReactNode;
 }) {
   return (
-    <div className="blog-ds__info-card">
+    <div className="blog-ds__info-card" data-variant={variant}>
       {number ? <span className="blog-ds__card-index">{number}</span> : null}
       <h3>{title}</h3>
       {description ? <p>{description}</p> : null}
-      {children ? <div className="blog-ds__card-action">{children}</div> : null}
+      {children ? (
+        <div className="blog-ds__card-content">{children}</div>
+      ) : null}
+      {action ? <div className="blog-ds__card-action">{action}</div> : null}
     </div>
   );
 }
@@ -293,6 +319,7 @@ export function BlogModuleFrame({
   description,
   note,
   tone = "neutral",
+  titleAs: Title = "h3",
   children,
 }: {
   eyebrow?: string;
@@ -300,13 +327,14 @@ export function BlogModuleFrame({
   description?: string;
   note?: string;
   tone?: BlogTone;
+  titleAs?: "h3" | "p";
   children: ReactNode;
 }) {
   return (
     <section className="blog-ds__module" data-tone={tone} aria-label={title}>
       <div className="blog-ds__module-head">
         {eyebrow ? <p className="blog-ds__module-eyebrow">{eyebrow}</p> : null}
-        <h3>{title}</h3>
+        <Title className="blog-ds__module-title">{title}</Title>
         {description ? <p>{description}</p> : null}
       </div>
       <div className="blog-ds__module-content">{children}</div>
@@ -322,45 +350,32 @@ export function BlogFigure({
 }: {
   children: ReactNode;
   caption?: string;
-  label: string;
+  label?: string;
 }) {
   return (
     <figure className="blog-ds__figure">
-      <div className="blog-ds__figure-media" role="img" aria-label={label}>
-        {children}
-      </div>
+      {label ? (
+        <div className="blog-ds__figure-media" role="img" aria-label={label}>
+          {children}
+        </div>
+      ) : (
+        children
+      )}
       {caption ? <figcaption>{caption}</figcaption> : null}
     </figure>
   );
 }
 
-export function BlogCodeSample({
-  label,
-  code,
-}: {
-  label: string;
-  code: string;
-}) {
-  return (
-    <div className="blog-ds__code">
-      <div className="blog-ds__code-toolbar">
-        <span>{label}</span>
-        <CopyButton code={code} />
-      </div>
-      <pre>
-        <code>{code}</code>
-      </pre>
-    </div>
-  );
-}
-
 export function BlogAuthorCard({
-  description = "Développeur Fullstack. Je partage mes expériences et mes réflexions autour du web, du produit et de la création de logiciels.",
+  description,
   locale = "fr",
+  headingLevel = 2,
 }: {
   description?: string;
   locale?: "fr" | "en";
+  headingLevel?: 2 | 3;
 }) {
+  const Title = headingLevel === 2 ? "h2" : "h3";
   return (
     <aside
       className="blog-ds__author-card"
@@ -373,8 +388,8 @@ export function BlogAuthorCard({
         <p className="blog-ds__module-eyebrow">
           {locale === "fr" ? "Derrière ces articles" : "About the author"}
         </p>
-        <h3>Vincent DESBROSSES</h3>
-        <p>{description}</p>
+        <Title className="blog-ds__author-name">Vincent DESBROSSES</Title>
+        {description ? <p>{description}</p> : null}
         <Link href={`/${locale}`}>
           {locale === "fr" ? "Découvrir mes projets" : "View my projects"}{" "}
           <ArrowUpRight size={15} aria-hidden="true" />

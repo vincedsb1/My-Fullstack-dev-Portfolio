@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { parse as parseYaml } from "yaml";
+import { validateBlogProjectReferences } from "./project-references.mjs";
 
 const contentRoot = path.resolve(process.cwd(), "src/content/blog");
 const publicRoot = path.resolve(process.cwd(), "public");
@@ -304,24 +305,11 @@ function parseArticle(filePath, locale) {
       ))
   )
     fail(filePath, "relatedProjects doit contenir des slugs de projet.");
-  for (const slug of relatedProjects ?? []) {
-    const target = path.join(
-      process.cwd(),
-      "src/content/projects/manifests",
-      metadata.locale,
-      slug + ".json",
-    );
-    try {
-      const project = JSON.parse(readFileSync(target, "utf8"));
-      if (project.status !== "published")
-        fail(filePath, "le projet lié doit être publié.");
-    } catch {
-      fail(
-        filePath,
-        `le projet lié ${slug} n'est pas publié dans cette langue.`,
-      );
-    }
-  }
+  validateBlogProjectReferences(
+    relatedProjects ?? [],
+    metadata.locale,
+    (message) => fail(filePath, message),
+  );
   const renderer = data.renderer
     ? requiredText(data.renderer, "renderer", filePath)
     : undefined;

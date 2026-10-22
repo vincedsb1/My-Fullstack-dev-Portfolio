@@ -55,6 +55,7 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   outputFileTracingIncludes: {
+    "/*": ["./src/content/blog-json/**/*.json"],
     "/api/juliedieris/download": [
       "./docs/Julie_Dieris-Le_Silence_de_la_Nuit.epub",
     ],

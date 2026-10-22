@@ -17,7 +17,7 @@ export default async function BlogLayout({
       locale={locale}
       messages={{ blog: m.blog, common: m.common, site: m.site }}
     >
-      {children}
+      <div className="blog-layout">{children}</div>
     </NextIntlClientProvider>
   );
 }

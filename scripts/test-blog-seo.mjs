@@ -166,7 +166,8 @@ function verifyContentImages(html, label) {
       (image) =>
         Object.hasOwn(image, "alt") &&
         ((image.width && image.height) ||
-          (image["data-nimg"] === "fill" && image.sizes)),
+          (image["data-nimg"] === "fill" &&
+            (image.sizes || /\.svg(?:[?#]|$)/i.test(image.src ?? "")))),
     ),
     "images avec texte alternatif et dimensions réservées " + label,
   );
@@ -514,7 +515,8 @@ try {
   );
   check(
     hasTranslatedPair
-      ? indexAlternates.length === 2 &&
+      ? indexAlternates.filter((link) => link.hreflang !== "x-default")
+          .length === 2 &&
           indexAlternates.some((link) => link.hreflang === "fr") &&
           indexAlternates.some((link) => link.hreflang === "en")
       : indexAlternates.filter((link) => link.hreflang !== "x-default")
@@ -579,7 +581,8 @@ try {
     );
     check(
       hasTranslatedPair
-        ? englishIndexAlternates.length === 2 &&
+        ? englishIndexAlternates.filter((link) => link.hreflang !== "x-default")
+            .length === 2 &&
             englishIndexAlternates.some((link) => link.hreflang === "fr") &&
             englishIndexAlternates.some((link) => link.hreflang === "en")
         : englishIndexAlternates.length === 1 &&

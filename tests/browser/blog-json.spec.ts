@@ -74,7 +74,16 @@ test("figer la référence visuelle du Showcase et de l’article SaaS", async (
     );
     for (const [route, label, widths] of [
       ["/fr/blog/showcase", "showcase", [320, 390, 820, 1440]],
-      ["/fr/blog/internationaliser-saas-lancement", "saas-legacy", [390, 1440]],
+      [
+        "/fr/blog/internationaliser-saas-lancement",
+        "saas-legacy",
+        [320, 390, 820, 1440],
+      ],
+      [
+        "/fr/blog/guide-premier-emploi-developpeur",
+        "guide-legacy",
+        [320, 390, 820, 1440],
+      ],
     ] as const) {
       const response = await page.goto(route);
       expect(response?.status()).toBe(200);

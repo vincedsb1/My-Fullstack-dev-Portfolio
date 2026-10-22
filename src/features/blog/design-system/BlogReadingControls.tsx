@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ArrowUp, List, Printer } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 export type BlogTocItem = { id: string; label: string };
 
@@ -91,6 +92,7 @@ export function BlogReadingNavigation({
             aria-current={active === item.id ? "location" : undefined}
             onClick={() => {
               if (detailsRef.current) detailsRef.current.open = false;
+              document.getElementById(item.id)?.focus({ preventScroll: true });
             }}
           >
             <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
@@ -113,11 +115,6 @@ export function BlogReadingNavigation({
           {locale === "fr" ? "Dans cette page" : "On this page"}
         </p>
         {list("desktop")}
-        <p className="blog-ds__toc-note">
-          {locale === "fr"
-            ? "Un langage commun pour les articles, sans limiter les composants éditoriaux sur mesure."
-            : "A shared visual language for articles."}
-        </p>
       </nav>
       <details ref={detailsRef} className="blog-ds__toc-mobile">
         <summary>
@@ -139,23 +136,60 @@ export function BlogReadingNavigation({
   );
 }
 
-export function BlogPrintButton() {
+export function BlogPrintButton({ locale = "fr" }: { locale?: "fr" | "en" }) {
+  useEffect(() => {
+    let opened: HTMLDetailsElement[] = [];
+    let printing = false;
+    const before = () => {
+      if (printing) return;
+      printing = true;
+      opened = Array.from(
+        document.querySelectorAll<HTMLDetailsElement>(
+          ".blog-ds__accordion details:not([open])",
+        ),
+      );
+      opened.forEach((details) => {
+        details.open = true;
+      });
+    };
+    const after = () => {
+      opened.forEach((details) => {
+        details.open = false;
+      });
+      opened = [];
+      printing = false;
+    };
+    window.addEventListener("beforeprint", before);
+    window.addEventListener("afterprint", after);
+    return () => {
+      after();
+      window.removeEventListener("beforeprint", before);
+      window.removeEventListener("afterprint", after);
+    };
+  }, []);
   return (
-    <button
+    <Button
+      variant="secondary"
       type="button"
       className="blog-ds__utility-button"
       onClick={() => window.print()}
-      aria-label="Imprimer la page ou enregistrer au format PDF"
+      aria-label={
+        locale === "fr"
+          ? "Imprimer la page ou enregistrer au format PDF"
+          : "Print the page or save as PDF"
+      }
     >
       <Printer size={16} aria-hidden="true" /> <span>PDF</span>
-    </button>
+    </Button>
   );
 }
 
 export function BlogBackToTop({
   targetId = "blog-article-top",
+  locale = "fr",
 }: {
   targetId?: string;
+  locale?: "fr" | "en";
 }) {
   const [show, setShow] = useState(false);
   useEffect(() => {
@@ -169,7 +203,7 @@ export function BlogBackToTop({
     <a
       className="blog-ds__back-top"
       href={`#${targetId}`}
-      aria-label="Retour en haut"
+      aria-label={locale === "fr" ? "Retour en haut" : "Back to top"}
     >
       <ArrowUp size={19} aria-hidden="true" />
     </a>

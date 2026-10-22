@@ -133,6 +133,9 @@ test("fichiers média locaux : existence et chemin de l’article", () => {
       "<svg/>",
     );
     const a = fresh();
+    a.sections[0].blocks = a.sections[0].blocks.filter(
+      (block) => block.type !== "figure",
+    );
     a.sections[0].blocks.push({
       type: "figure",
       src: "/blog/json-demo-blog/demo.svg",

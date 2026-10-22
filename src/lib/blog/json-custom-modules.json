@@ -1,0 +1,51 @@
+{
+  "metric-panel": {
+    "required": ["value", "label"],
+    "optional": ["caption"],
+    "ids": [],
+    "heading": true
+  },
+  "saas-mosaic": {
+    "required": [],
+    "optional": [],
+    "locale": "fr",
+    "unique": true,
+    "ids": ["blog-language-mosaic-title"]
+  },
+  "saas-language-demo": {
+    "required": [],
+    "optional": [],
+    "locale": "fr",
+    "unique": true,
+    "heading": true,
+    "ids": [
+      "blog-language-demo-title",
+      "interface-language",
+      "content-language"
+    ]
+  },
+  "saas-language-matrix": {
+    "required": [],
+    "optional": [],
+    "locale": "fr",
+    "unique": true,
+    "heading": true,
+    "ids": ["blog-language-matrix-title"]
+  },
+  "saas-acquisition-funnel": {
+    "required": [],
+    "optional": [],
+    "locale": "fr",
+    "unique": true,
+    "heading": true,
+    "ids": ["blog-funnel-title"]
+  },
+  "saas-decision-tree": {
+    "required": [],
+    "optional": [],
+    "locale": "fr",
+    "unique": true,
+    "heading": true,
+    "ids": ["blog-decision-title"]
+  }
+}

@@ -41,7 +41,7 @@ export default function JsonArticlePage({
     <div className="blog-ds" id="blog-article-top">
       <BlogReadingProgress targetId="blog-article-body" />
       <div className="blog-ds__toolbar">
-        <BlogPrintButton />
+        <BlogPrintButton locale={locale} />
         <ShareButtons title={article.meta.title} />
       </div>
       <main id="main" className="blog-ds__main">
@@ -71,7 +71,10 @@ export default function JsonArticlePage({
             }
             illustration={
               article.hero?.visual ? (
-                <JsonCustomModule module={article.hero.visual} />
+                <JsonCustomModule
+                  module={article.hero.visual}
+                  placement="hero"
+                />
               ) : undefined
             }
           />
@@ -133,7 +136,7 @@ export default function JsonArticlePage({
           />
         ) : null}
       </main>
-      <BlogBackToTop targetId="blog-article-top" />
+      <BlogBackToTop targetId="blog-article-top" locale={locale} />
     </div>
   );
 }

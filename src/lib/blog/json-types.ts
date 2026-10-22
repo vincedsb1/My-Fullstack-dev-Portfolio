@@ -10,12 +10,10 @@ export type RichNode = {
 };
 export type RichText = RichNode[];
 /** Modules éditoriaux choisis via un registre fermé. Les cinq widgets SaaS restent FR tant que leurs copies EN ne sont pas rédigées. */
-export type SaaSModuleName =
-  | "saas-mosaic"
-  | "saas-language-demo"
-  | "saas-language-matrix"
-  | "saas-acquisition-funnel"
-  | "saas-decision-tree";
+export type SaaSModuleName = Exclude<
+  keyof typeof import("./json-custom-modules.json"),
+  "metric-panel"
+>;
 export type CustomModule =
   | {
       component: "metric-panel";
@@ -34,6 +32,7 @@ export type ArticleBlock =
       items: Array<{
         title: string;
         description: RichText;
+        blocks?: ArticleBlock[];
         number?: string;
         href?: string;
         actionLabel?: string;

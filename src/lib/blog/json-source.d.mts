@@ -3,6 +3,9 @@ import type { BlogArticleMetadata } from "./article-source.mjs";
 export type JsonBlogRecord = {
   metadata: BlogArticleMetadata;
   body: string;
+  links: string[];
+  ids: string[];
+  storageKeys: string[];
   filePath: string;
   format: "json";
   data: JsonBlogArticle;
@@ -15,7 +18,12 @@ export function validateJsonArticle(
     filenameSlug?: string;
     publicRoot?: string;
   },
-): { article: JsonBlogArticle; links: string[] };
+): {
+  article: JsonBlogArticle;
+  links: string[];
+  ids: string[];
+  storageKeys: string[];
+};
 export function readJsonBlogArticleFile(
   filePath: string,
   opts?: { locale?: string; publicRoot?: string },

@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useMemo, useSyncExternalStore } from "react";
+import { useCallback, useMemo, useState, useSyncExternalStore } from "react";
+import { Button } from "@/components/ui/Button";
 
 const EVENT = "blog-json-checklist-changed";
 const serverValue = () => "{}";
@@ -20,13 +21,16 @@ export default function JsonChecklist({
   items,
   locale = "fr",
 }: {
-  storageKey: string;
+  storageKey?: string;
   items: ReadonlyArray<{ id: string; label: string }>;
   locale?: "fr" | "en";
 }) {
+  const [volatile, setVolatile] = useState<string | null>(null);
   const snapshot = useCallback(() => {
     try {
-      return window.localStorage.getItem(storageKey) ?? "{}";
+      return storageKey
+        ? window.localStorage.getItem(storageKey) ?? "{}"
+        : "{}";
     } catch {
       return "{}";
     }
@@ -34,7 +38,7 @@ export default function JsonChecklist({
   const saved = useSyncExternalStore(subscribe, snapshot, serverValue);
   const checked = useMemo(() => {
     try {
-      const data: unknown = JSON.parse(saved);
+      const data: unknown = JSON.parse(volatile ?? saved);
       if (!data || typeof data !== "object" || Array.isArray(data)) return {};
       const state = data as Record<string, unknown>;
       return Object.fromEntries(
@@ -43,7 +47,7 @@ export default function JsonChecklist({
     } catch {
       return {};
     }
-  }, [saved, items]);
+  }, [saved, volatile, items]);
 
   const count = items.filter((item) => checked[item.id]).length;
   function update(next: Record<string, boolean>) {
@@ -52,10 +56,16 @@ export default function JsonChecklist({
         .filter((item) => next[item.id] === true)
         .map((item) => [item.id, true]),
     );
+    const serialized = JSON.stringify(stored);
+    if (!storageKey) {
+      setVolatile(serialized);
+      return;
+    }
     try {
-      window.localStorage.setItem(storageKey, JSON.stringify(stored));
+      window.localStorage.setItem(storageKey, serialized);
+      setVolatile(null);
     } catch {
-      // Les cases restent utilisables même si localStorage est bloqué.
+      setVolatile(serialized);
     }
     window.dispatchEvent(new Event(EVENT));
   }
@@ -76,9 +86,21 @@ export default function JsonChecklist({
             ? "completed step"
             : "completed steps"}
         </span>
-        <button type="button" onClick={() => update({})} disabled={count === 0}>
+        <Button
+          variant="ghost"
+          type="button"
+          onClick={() => {
+            if (
+              storageKey === "vd_guide_checklist_v1" &&
+              !window.confirm("Réinitialiser toute la checklist ?")
+            )
+              return;
+            update({});
+          }}
+          disabled={count === 0}
+        >
           {fr ? "Réinitialiser" : "Reset"}
-        </button>
+        </Button>
       </div>
       <progress
         max={items.length}
@@ -89,6 +111,7 @@ export default function JsonChecklist({
         <label key={item.id} className="blog-ds__json-checklist-row">
           <input
             type="checkbox"
+            data-id={item.id}
             checked={Boolean(checked[item.id])}
             onChange={(event) =>
               update({ ...checked, [item.id]: event.target.checked })
@@ -97,6 +120,13 @@ export default function JsonChecklist({
           <span>{item.label}</span>
         </label>
       ))}
+      {storageKey && volatile !== null ? (
+        <p role="status" className="blog-ds__hint">
+          {fr
+            ? "Le stockage est indisponible. La progression est conservée uniquement sur cette page."
+            : "Storage is unavailable. Progress is kept only on this page."}
+        </p>
+      ) : null}
     </section>
   );
 }

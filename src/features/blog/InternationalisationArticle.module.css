@@ -1579,17 +1579,23 @@
   }
 }
 @media print {
-  .page {
+  .page, :global(.dark) .page {
     --paper: white;
-    --ink: rgb(var(--text));
+    --ink: #171717;
     --body: #404040;
     --muted: #606060;
     --editorial-surface: white;
     --line: #ddd;
+    --red: #9b2420;
+    --red-soft: #fff;
+    --green: #245537;
+    --sage: #edf3ec;
+    --green-ink: #245537;
     background: white;
     color: #20201f;
   }
   .navigation,
+  .page > :global(.sticky),
   .readingSidebar,
   .startReading,
   .endActions,
@@ -1609,8 +1615,10 @@
   .hero h1 {
     font-size: 34px;
   }
-  .heroArt {
+  .page .heroArt {
     transform: none;
+    background: #edf3ec;
+    color: #245537;
   }
   .readingLayout {
     display: block;
@@ -1622,6 +1630,7 @@
   .prose > h2 {
     break-after: avoid;
   }
+  .page :global([data-reveal]) { opacity: 1 !important; visibility: visible !important; }
   .page :global(.blog-editorial-module),
   .authorCard {
     break-inside: avoid;
