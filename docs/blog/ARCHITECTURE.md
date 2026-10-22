@@ -2,7 +2,7 @@
 
 ## Sources et rendu
 
-Le guide historique vit dans `src/content/blog/fr/guide-premier-emploi-developpeur.mdx` ; son frontmatter reste la source des métadonnées. Le moteur JSON v1, consolidé sur `dev04`, charge `src/content/blog-json/<locale>/<slug>.json` (format versionné et validé). L’article SaaS `internationaliser-saas-lancement.json` utilise désormais ce moteur ; les deux formats alimentent le même catalogue.
+Les deux articles publiés, `guide-premier-emploi-developpeur` et `internationaliser-saas-lancement`, vivent sous `src/content/blog-json/fr/`. Le moteur JSON v1 charge `src/content/blog-json/<locale>/<slug>.json` (format versionné et validé) et `JsonArticlePage` leur fournit le même shell éditorial. Le catalogue accepte encore MDX pendant la transition ; seule la fixture technique `mdx-compatibility-fixture.mdx`, en brouillon, subsiste dans cette source.
 
 `src/lib/blog/article-source.mjs` lit les fichiers locaux avec `yaml`, valide leurs métadonnées, repère les collisions de routes et vérifie les relations de traduction. Il s’assure aussi que le titre du frontmatter reste l’unique H1 et que les images locales référencées existent sous `public/blog/`. `scripts/validate-blog-links.mjs`, appelé par `npm run blog:validate`, vérifie que les liens internes ciblent une route existante et publiée et que les ressources locales existent. `src/lib/blog/articles.ts` expose les articles publiés, leur ordre, leurs versions traduites, leur temps de lecture et leur URL d’image sociale.
 
@@ -12,9 +12,9 @@ Les pages utilisent les Server Components de l’App Router. `generateStaticPara
 
 ## Articles React spécialisés
 
-Un article peut déclarer `renderer: guide` dans son frontmatter pour réutiliser un rendu React interactif enregistré. Le guide du premier emploi est rendu par des composants serveur typés dans `src/features/guide/` afin de conserver sa checklist, ses ancres, sa progression, sa persistance locale, la copie, le partage, l’impression, le thème et ses icônes. Son contenu et ses interactions partagent les routes, métadonnées, images sociales et le sitemap du blog.
+Un article peut déclarer `renderer: guide` dans son frontmatter pour réutiliser un rendu React interactif enregistré. Avant l’étape 5, le guide du premier emploi était rendu par des composants serveur typés dans `src/features/guide/` afin de conserver sa checklist, ses ancres, sa progression, sa persistance locale, la copie, le partage, l’impression, le thème et ses icônes. Son contenu et ses interactions partagent les routes, métadonnées, images sociales et le sitemap du blog.
 
-Ce renderer est réservé à cet article. Les nouveaux articles standards utilisent le moteur JSON sans registre manuel d’articles à mettre à jour. Le MDX reste supporté pendant la transition.
+Ce renderer historique n’est plus utilisé par une route publiée ; il est conservé pour les tests d’interopérabilité jusqu’à l’étape 6. Les nouveaux articles standards utilisent le moteur JSON sans registre manuel d’articles à mettre à jour. Le MDX reste supporté pendant la transition.
 
 ## Routes et langues
 
@@ -60,7 +60,7 @@ Les images MDX peuvent être écrites avec la syntaxe Markdown standard ; des di
 ## Gabarits et navigation communs
 
 Le registre `src/features/blog/ArticleLayouts.tsx` associe `default`, `guide` et
-`editorial` aux gabarits. L’article MDX exporte `GuideArticle` ; `GuideBody.tsx` assemble ses sections typées sous `src/features/guide/sections/`, sans injection de HTML brut ;
+`editorial` aux gabarits. L’ancien article MDX exportait `GuideArticle` ; `GuideBody.tsx` assemble ses sections typées sous `src/features/guide/sections/`, sans injection de HTML brut ;
 son contrôleur conserve la clé `vd_guide_checklist_v1`. Les styles du guide ne sont
 chargés que par son composant. Tous les gabarits utilisent l’en-tête, le pied de
 page et les contrôles de thème/langue communs. `seoTitle` permet un titre SEO
@@ -97,7 +97,7 @@ Les liens JSON sont transmis au validateur comme destinations structurées, sans
 
 `blog:test:publication` vérifie une publication synthétique FR/EN, son SEO et l’interopérabilité réelle avec la checklist du guide, puis retire ses sources et restaure le build normal. `blog:test:preview` vérifie le shell en développement, tandis que les E2E normaux contrôlent les pages publiques et le Showcase en production locale. Les commandes utilisant `.next` doivent être exécutées successivement.
 
-Voir [JSON_ENGINE.md](JSON_ENGINE.md) pour le schéma et [AUDIT_FINAL_ETAPES_1_2_3.md](AUDIT_FINAL_ETAPES_1_2_3.md) pour les preuves. L’article SaaS est migré en étape 4 : voir [ETAPE_4_MIGRATION_SAAS.md](ETAPE_4_MIGRATION_SAAS.md). Le guide reste en MDX jusqu’à l’étape 5.
+Voir [JSON_ENGINE.md](JSON_ENGINE.md) pour le schéma et [AUDIT_FINAL_ETAPES_1_2_3.md](AUDIT_FINAL_ETAPES_1_2_3.md) pour les preuves. L’article SaaS est migré en étape 4 : voir [ETAPE_4_MIGRATION_SAAS.md](ETAPE_4_MIGRATION_SAAS.md). Le guide est migré en étape 5 : voir [ETAPE_5_MIGRATION_GUIDE.md](ETAPE_5_MIGRATION_GUIDE.md).
 
 ## Migration SaaS (étape 4)
 
@@ -107,6 +107,10 @@ Voir [JSON_ENGINE.md](JSON_ENGINE.md) pour le schéma et [AUDIT_FINAL_ETAPES_1_2
 
 Les options JSON facultatives `hero.eyebrow`, `hero.titleHighlight`, `readingNote` et `legacyAnchors` préservent les détails éditoriaux et les anciens fragments sans branchement par slug dans le moteur. La biographie française et les portraits réutilisent la carte auteur commune et `Avatar` du portfolio. Ces options ne sont pas nécessaires pour écrire un article standard.
 
-## Préparation de l’étape 5
+## Migration du guide (étape 5)
 
-Le brouillon JSON `guide-premier-emploi-migration` permet de comparer le contenu du guide dans le même shell que le SaaS. Il ne remplace pas sa route publique, reste hors index/sitemap et utilise une clé de checklist distincte. Les espaces JSX invalides du tableau historique sont corrigés dès ce lot et contrôlés en développement (console et navigation). Les compléments facultatifs du moteur et les critères de bascule sont détaillés dans [PREPARATION_ETAPE_5.md](PREPARATION_ETAPE_5.md).
+`guide-premier-emploi-developpeur.json` porte le contenu et les métadonnées du guide. Le MDX publié et le brouillon de préparation sont retirés dans la même bascule. La checklist utilise `JsonChecklist` et la clé historique `vd_guide_checklist_v1`, sans changement d’IDs ni de format. Les ancres des chapitres et des modèles restent stables ; les dates de publication et de révision éditoriale ne changent pas.
+
+Aucun composant, style ou branchement de rendu générique n’a été nécessaire pour cette bascule. Les fichiers `src/features/guide/` restent conservés, de même que les renderers MDX et les anciens styles SaaS ; leur retrait relève de l’étape 6. La fixture MDX technique évite un glob dynamique vide avec Turbopack et n’a ni route publiée, ni image sociale, ni présence au sitemap.
+
+Le pilote de publication crée temporairement une route utilisant les vrais `GuideBody` et `GuideInteractive` pour tester l’aller-retour des sauvegardes avec le guide JSON public. Les routes techniques sont retirées et le build normal est restauré à la fin du pilote. La recette partagée du guide tourne sur le build de production local et en développement, sans duplication de logique de test. Voir [ETAPE_5_MIGRATION_GUIDE.md](ETAPE_5_MIGRATION_GUIDE.md).

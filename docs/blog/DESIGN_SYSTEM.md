@@ -1,6 +1,6 @@
 # Design system éditorial du blog
 
-Référence consolidée sur `dev04`, le 22 octobre 2026. La bibliothèque est utilisée par le Showcase et le SaaS migré en JSON ; le guide conserve son rendu historique.
+Référence consolidée sur `dev04`, le 22 octobre 2026. La bibliothèque est utilisée par le Showcase et les deux articles publiés en JSON. Le guide et le SaaS partagent le hero, la typographie, le sommaire, les sections, les commandes de lecture et la carte auteur. Leurs blocs et illustrations dépendent du contenu. Voir [ETAPE_5_MIGRATION_GUIDE.md](ETAPE_5_MIGRATION_GUIDE.md) pour la recette des deux routes publiques.
 
 ## Direction et intégration
 

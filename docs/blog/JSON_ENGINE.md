@@ -1,6 +1,6 @@
 # Moteur JSON v1
 
-Référence consolidée : `dev04`, 22 octobre 2026. Le JSON est le format par défaut des nouveaux articles standards. L’article SaaS est publié en JSON depuis l’étape 4 ; seul le guide reste en MDX jusqu’à sa migration distincte.
+Référence consolidée : `dev04`, 22 octobre 2026. Le JSON est le format par défaut des nouveaux articles standards. Le SaaS (étape 4) et le guide (étape 5) sont publiés en JSON avec les mêmes composants.
 
 ## Écrire et prévisualiser
 
@@ -106,11 +106,13 @@ Le scan JSON a une inclusion de traçage explicite et bornée dans `next.config.
 
 - `npm run blog:test:json` : schéma, médias, sécurité des props/liens, IDs, hiérarchie, stockage, contrats historiques.
 - `npm run test:e2e` après le build : pages publiées et Showcase, thèmes, largeurs, axe, widgets, copie, vidéo au clic, impression et stockage.
-- `npm run blog:test:publication` : crée deux JSON synthétiques publiés FR/EN et une route de test de checklist **uniquement sur le disque local** ; build, SEO et navigateur ; retire ces fichiers puis reconstruit le build normal, même après un échec. Ne pas lancer en parallèle d’un autre build/serveur utilisant `.next`.
+- `npm run blog:test:publication` : crée deux JSON synthétiques publiés FR/EN et une route de test du vrai contrôleur historique, comparée au guide JSON publié **uniquement sur le disque local** ; build, SEO et navigateur ; retire ces fichiers puis reconstruit le build normal, même après un échec. Ne pas lancer en parallèle d’un autre build/serveur utilisant `.next`.
 - `npm run blog:test:preview` : lance un serveur de développement dédié, contrôle le shell complet et produit les captures des quatre largeurs/deux thèmes.
 
 Ces deux dernières commandes font partie de la CI. Aucun article synthétique de test, capture PNG ou PDF n’est versionné. L’export sémantique MDX `contracts/internationaliser-saas-v1.json` est conservé volontairement comme contrat de parité. Voir [AUDIT_FINAL_ETAPES_1_2_3.md](AUDIT_FINAL_ETAPES_1_2_3.md) pour le verdict et le budget de performance global restant.
 
-## Préparation du guide sans bascule publique
+## Guide publié en JSON
 
-`guide-premier-emploi-migration.json` est un brouillon de parité, accessible uniquement dans le preview de développement. Il utilise une clé de checklist propre pour préserver celle des lecteurs. Le guide publié reste en MDX jusqu’à l’étape 5. Voir [PREPARATION_ETAPE_5.md](PREPARATION_ETAPE_5.md).
+`guide-premier-emploi-developpeur.json` remplace le MDX au même slug. L’ancien brouillon `guide-premier-emploi-migration` est retiré ; le preview de développement utilise désormais le slug public. Sa checklist lit directement `vd_guide_checklist_v1`, avec les quatorze IDs et le format originaux : aucun transfert ni effacement de données. Tester ce preview partage donc la progression du guide sur la même origine locale.
+
+Les onze sections, les emphases, les liens, les modèles à copier, les dates et l’image sociale sont comparés au contrat historique indépendant `contracts/guide-content-v1.json`. Les composants historiques restent disponibles pour la recette d’interopérabilité et le futur nettoyage. Voir [ETAPE_5_MIGRATION_GUIDE.md](ETAPE_5_MIGRATION_GUIDE.md).

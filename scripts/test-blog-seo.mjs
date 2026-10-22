@@ -722,16 +722,22 @@ try {
       "hreflang réciproque sans traduction inventée " + route,
     );
 
-    if (article.metadata.renderer === "guide") {
+    if (
+      article.metadata.locale === "fr" &&
+      article.metadata.slug === "guide-premier-emploi-developpeur"
+    ) {
       check(
-        html.includes("checklist-progress-text") &&
+        article.format === "json" &&
+          html.includes("blog-ds__json-checklist") &&
           html.includes("Un CV lisible, adapté au poste visé"),
         "contenu du guide présent dans le HTML initial " + route,
       );
       check(
-        /class="[^"]*\bcheckbox-custom\b[^"]*"/.test(html) &&
-          html.includes("data-guide-print") &&
-          html.includes('id="share-btn"') &&
+        Array.from({ length: 14 }, (_, i) =>
+          html.includes(`data-id="chk-${i + 1}"`),
+        ).every(Boolean) &&
+          html.includes("Imprimer la page ou enregistrer au format PDF") &&
+          html.includes("Partager") &&
           html.includes('aria-label="Thème"'),
         "checklist, partage, impression et thème présents dans le HTML du guide",
       );

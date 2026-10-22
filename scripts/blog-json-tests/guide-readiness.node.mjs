@@ -1,12 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import ts from "typescript";
 import { validateJsonArticle } from "../../src/lib/blog/json-source.mjs";
 const read = (p) =>
   readFileSync(new URL(`../../${p}`, import.meta.url), "utf8");
 const article = JSON.parse(
-  read("src/content/blog-json/fr/guide-premier-emploi-migration.json"),
+  read("src/content/blog-json/fr/guide-premier-emploi-developpeur.json"),
 );
 const contract = JSON.parse(read("docs/blog/contracts/guide-content-v1.json"));
 const checklist = JSON.parse(
@@ -46,14 +46,29 @@ function text(b) {
       throw new Error(`Bloc non contrôlé : ${b.type}`);
   }
 }
-test("préparation du guide : texte complet, ordre et métadonnées conservés sans publier la migration", () => {
+test("guide publié : texte complet, ordre et métadonnées conservés", () => {
   const { renderer, ...meta } = contract.meta;
   assert.equal(renderer, "guide");
-  assert.deepEqual(
-    { ...article.meta, slug: meta.slug, status: meta.status },
-    meta,
+  assert.deepEqual(article.meta, meta);
+  assert.equal(article.meta.status, "published");
+  assert.equal(
+    existsSync(
+      new URL(
+        "../../src/content/blog/fr/guide-premier-emploi-developpeur.mdx",
+        import.meta.url,
+      ),
+    ),
+    false,
   );
-  assert.equal(article.meta.status, "draft");
+  assert.equal(
+    existsSync(
+      new URL(
+        "../../src/content/blog-json/fr/guide-premier-emploi-migration.json",
+        import.meta.url,
+      ),
+    ),
+    false,
+  );
   assert.equal(
     compact(article.introBlocks.map(text).join("")),
     compact(contract.intro),
@@ -70,11 +85,11 @@ test("préparation du guide : texte complet, ordre et métadonnées conservés s
   }
   assert.doesNotThrow(() => validateJsonArticle(article));
 });
-test("copie et sauvegarde : modèles exacts, 14 IDs et clé de preview distincte", () => {
+test("copie et sauvegarde : modèles exacts, 14 IDs et clé historique", () => {
   const blocks = article.sections.flatMap((s) => s.blocks);
   const list = blocks.find((b) => b.type === "checklist");
   assert.deepEqual(list.items, checklist.items);
-  assert.notEqual(list.storageKey, checklist.storageKey);
+  assert.equal(list.storageKey, checklist.storageKey);
   for (const [id, expected] of Object.entries(contract.copies))
     assert.equal(blocks.find((b) => b.id === id).code, expected);
   const invalid = structuredClone(article);

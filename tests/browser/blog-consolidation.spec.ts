@@ -333,10 +333,12 @@ test("le guide restaure les 14 cases et le format historique sans réattribuer l
     { key: contract.storageKey, value: saved },
   );
   await page.goto("/fr/blog/guide-premier-emploi-developpeur");
-  await expect(page.locator(".checkbox-custom:checked")).toHaveCount(14);
-  await expect(page.locator("#checklist-progress-text")).toHaveText(
-    "14/14 étapes terminées",
-  );
+  await expect(
+    page.locator(".blog-ds__json-checklist input:checked"),
+  ).toHaveCount(14);
+  await expect(
+    page.locator(".blog-ds__json-checklist-head [aria-live]"),
+  ).toHaveText("14/14 étapes terminées");
   for (const item of contract.items)
     await expect(
       page.locator(`label:has([data-id="${item.id}"])`),
@@ -395,7 +397,7 @@ test("captures des états focus, hover, variantes ouvertes et résultat métier"
   }
 });
 
-test("impression du SaaS JSON et du guide MDX lisible dans les deux thèmes", async ({
+test("impression des deux articles JSON lisible dans les deux thèmes", async ({
   page,
 }) => {
   mkdirSync("tests/visual-artifacts", { recursive: true });

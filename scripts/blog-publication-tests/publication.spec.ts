@@ -86,17 +86,17 @@ test("un fichier JSON suffit à publier les pages FR/EN avec leur interface et S
 test("aller-retour entre checklist historique et nouveau composant sans perte", async ({
   page,
 }) => {
-  await page.goto("/fr/blog/guide-premier-emploi-developpeur");
+  await page.goto("/fr/blog/json-legacy-audit");
   await page.locator('[data-id="chk-1"]').check();
   await page.locator('[data-id="chk-14"]').check();
-  await page.goto("/fr/blog/json-contract-audit");
+  await page.goto("/fr/blog/guide-premier-emploi-developpeur");
   await expect(page.locator("input:checked")).toHaveCount(2);
   await expect(page.locator("progress")).toHaveAttribute("value", "2");
   await page.locator('[data-id="chk-7"]').check();
-  await page.goto("/fr/blog/guide-premier-emploi-developpeur");
+  await page.goto("/fr/blog/json-legacy-audit");
   await expect(page.locator(".checkbox-custom:checked")).toHaveCount(3);
   await expect(page.locator('[data-id="chk-7"]')).toBeChecked();
-  await page.goto("/fr/blog/json-contract-audit");
+  await page.goto("/fr/blog/guide-premier-emploi-developpeur");
   page.once("dialog", (dialog) => dialog.dismiss());
   await page.getByRole("button", { name: "Réinitialiser" }).click();
   await expect(page.locator("input:checked")).toHaveCount(3);
@@ -105,6 +105,6 @@ test("aller-retour entre checklist historique et nouveau composant sans perte", 
   expect(
     await page.evaluate(() => localStorage.getItem("vd_guide_checklist_v1")),
   ).toBe("{}");
-  await page.goto("/fr/blog/guide-premier-emploi-developpeur");
+  await page.goto("/fr/blog/json-legacy-audit");
   await expect(page.locator(".checkbox-custom:checked")).toHaveCount(0);
 });

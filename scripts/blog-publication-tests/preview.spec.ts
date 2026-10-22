@@ -93,15 +93,23 @@ for (const theme of ["light", "dark"] as const) {
         animations: "disabled",
       });
     }
+    const guide = await page.goto(
+      "/fr/blog/json-preview?slug=guide-premier-emploi-developpeur",
+    );
+    expect(guide?.status()).toBe(200);
+    await expect(page.locator("h1")).toHaveText(
+      "Comment décrocher son premier emploi de développeur en 2026 ?",
+    );
+    await expect(page.locator(".blog-ds__json-checklist input")).toHaveCount(
+      14,
+    );
     expect(errors).toEqual([]);
     expect(
       (await page.goto("/fr/blog/json-preview?slug=article-absent"))?.status(),
     ).toBe(404);
     expect(
       (
-        await page.goto(
-          "/fr/blog/json-preview?slug=guide-premier-emploi-developpeur",
-        )
+        await page.goto("/fr/blog/json-preview?slug=mdx-compatibility-fixture")
       )?.status(),
     ).toBe(404);
   });

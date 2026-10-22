@@ -1,5 +1,7 @@
 # Préparation de l’étape 5 — guide et identité commune
 
+> Document historique de préparation à `05da53b`. La bascule autorisée séparément est décrite dans [ETAPE_5_MIGRATION_GUIDE.md](ETAPE_5_MIGRATION_GUIDE.md). Les mentions de brouillon ci-dessous décrivent l’état avant cette bascule.
+
 ## Verdict et périmètre
 
 Les corrections du tableau et la préparation du moteur permettent de passer à l’étape 5. **La bascule publique du guide n’est pas effectuée dans ce lot**, conformément à la demande de signaler quand cette étape peut commencer. Les deux URLs publiques conservent leur contenu et leur SEO ; `main` et la production ne sont pas modifiés.

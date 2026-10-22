@@ -4,21 +4,44 @@ import { expect, test } from "@playwright/test";
 const contract = JSON.parse(
   readFileSync("docs/blog/contracts/guide-content-v1.json", "utf8"),
 );
-const draft = "/fr/blog/json-preview?slug=guide-premier-emploi-migration";
+const guide = "/fr/blog/guide-premier-emploi-developpeur";
 test.beforeEach(() => {
   mkdirSync("tests/visual-artifacts", { recursive: true });
 });
 for (const theme of ["light", "dark"]) {
-  test(`guide préparé : parité, copie et identité commune (${theme})`, async ({
+  test(`guide publié : parité, copie et identité commune (${theme})`, async ({
     page,
   }) => {
     await page.addInitScript((t) => localStorage.setItem("theme", t), theme);
-    const response = await page.goto(draft);
+    const response = await page.goto(guide);
     expect(response?.status()).toBe(200);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
-      "content",
-      /noindex/,
-    );
+    test.setTimeout(180000);
+    await expect(page).toHaveTitle(contract.seo.title);
+    const head = await page
+      .locator("head meta,head link[rel=canonical],head link[rel=alternate]")
+      .evaluateAll((nodes) =>
+        nodes.map((n) =>
+          Object.fromEntries(
+            Array.from(n.attributes).map((a) => [a.name, a.value]),
+          ),
+        ),
+      );
+    for (const expected of contract.seo.meta)
+      expect(head).toContainEqual(expected);
+    const structured = await page
+      .locator('script[type="application/ld+json"]')
+      .evaluateAll((nodes) =>
+        nodes.flatMap((n) => {
+          const data = JSON.parse(n.textContent!);
+          return data["@graph"] ?? [data];
+        }),
+      );
+    for (const expected of contract.seo.jsonLd)
+      expect(structured).toContainEqual(expected);
+    const links = await page
+      .locator("main a[href]")
+      .evaluateAll((nodes) => nodes.map((n) => n.getAttribute("href")));
+    for (const href of contract.links) expect(links).toContain(href);
     const sections = await page
       .locator("#blog-article-body > .blog-ds__section")
       .evaluateAll((ns) =>
@@ -56,9 +79,14 @@ for (const theme of ["light", "dark"]) {
         return {
           overflow: document.documentElement.scrollWidth > innerWidth,
           duplicates: ids.length !== new Set(ids).size,
+          broken: Array.from(
+            document.querySelectorAll<HTMLAnchorElement>('main a[href^="#"]'),
+          )
+            .map((a) => decodeURIComponent(a.hash.slice(1)))
+            .filter((id) => id && !document.getElementById(id)),
         };
       });
-      expect(dom).toEqual({ overflow: false, duplicates: false });
+      expect(dom).toEqual({ overflow: false, duplicates: false, broken: [] });
       const axe = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
         .analyze();
@@ -76,7 +104,7 @@ for (const theme of ["light", "dark"]) {
           };
         });
       await page.screenshot({
-        path: `tests/visual-artifacts/blog-guide-preparation-${theme}-${width}.png`,
+        path: `tests/visual-artifacts/blog-guide-migration-${theme}-${width}.png`,
         fullPage: true,
         animations: "disabled",
       });
@@ -93,7 +121,7 @@ for (const theme of ["light", "dark"]) {
           };
         }),
       ).toEqual(styles);
-      await page.goto(draft);
+      await page.goto(guide);
     }
     await expect(
       page.locator(".blog-ds__byline-metadata time").nth(1),
@@ -123,18 +151,26 @@ for (const theme of ["light", "dark"]) {
     await page.locator('[data-id="chk-1"]').check();
     expect(
       await page.evaluate(() => localStorage.getItem("vd_guide_checklist_v1")),
-    ).toBeNull();
+    ).toBe(JSON.stringify({ "chk-1": true }));
+    await page.reload();
+    await expect(page.locator('[data-id="chk-1"]')).toBeChecked();
+    const first = page.locator('[data-id="chk-1"]');
+    await first.focus();
+    await page.keyboard.press("Space");
+    await expect(first).not.toBeChecked();
+    await page.keyboard.press("Space");
+    await expect(first).toBeChecked();
     await page.emulateMedia({ media: "print" });
     await expect(page.locator(".blog-ds__print-only")).toBeVisible();
     await page.pdf({
-      path: `tests/visual-artifacts/blog-guide-preparation-${theme}.pdf`,
+      path: `tests/visual-artifacts/blog-guide-migration-${theme}.pdf`,
       format: "A4",
       printBackground: true,
     });
   });
 }
 
-test("régression développement : tableau valide et aucune erreur console au chargement et en navigation", async ({
+test("régression hydratation : tableau valide et aucune erreur console au chargement et en navigation", async ({
   page,
   request,
 }) => {
@@ -171,7 +207,7 @@ test("régression développement : tableau valide et aucune erreur console au ch
   ).toBe(true);
   await page.locator('[data-id="chk-1"]').check();
   await expect(page.locator('[data-id="chk-1"]')).toBeChecked();
-  await page.goto(draft);
+  await page.goto(guide);
   await page.locator('[data-id="chk-1"]').check();
   await page.locator(".blog-ds__next-article").click();
   await expect(page).toHaveURL(/internationaliser-saas-lancement$/);

@@ -20,7 +20,7 @@ npm run build
 npm run blog:test:seo
 ```
 
-La fixture `json-demo-blog.json` est une démonstration technique ; ne pas la transformer en article publié. Le SaaS est désormais un exemple publié en JSON ; le guide reste en MDX jusqu’à l’étape 5 demandée séparément. Ne jamais créer les deux formats pour la même paire locale/slug.
+La fixture `json-demo-blog.json` est une démonstration technique ; ne pas la transformer en article publié. Le SaaS et le guide sont deux exemples publiés en JSON, dans le même shell éditorial. Ne jamais créer les deux formats pour la même paire locale/slug.
 
 Pour tester le moteur lui-même : `npm run test:e2e`, `npm run blog:test:publication` et `npm run blog:test:preview`, successivement. Le pilote de publication emploie des données synthétiques temporaires et remet le build normal en place.
 

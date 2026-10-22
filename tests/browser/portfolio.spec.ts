@@ -218,7 +218,7 @@ test("mobile menu, footer links by keyboard, FAQ and guide persistence", async (
   await expect(faq).toHaveAttribute("aria-expanded", "true");
   await expect(panel).toHaveAttribute("aria-hidden", "false");
   await page.goto("/fr/blog/guide-premier-emploi-developpeur");
-  const checkbox = page.locator(".checkbox-custom").first();
+  const checkbox = page.locator(".blog-ds__json-checklist input").first();
   await checkbox.check();
   await expect
     .poll(() =>

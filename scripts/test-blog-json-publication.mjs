@@ -116,19 +116,24 @@ try {
       JSON.stringify(article, null, 2),
     );
   }
-  const route = "src/app/(localized)/[locale]/blog/json-contract-audit";
-  directory(route);
+  const legacyRoute = "src/app/(localized)/[locale]/blog/json-legacy-audit";
+  directory(legacyRoute);
   create(
-    path.join(route, "page.tsx"),
+    path.join(legacyRoute, "page.tsx"),
     `
-import { readFileSync } from "node:fs";
-import JsonChecklist from "@/features/blog/json/JsonChecklist";
+import GuideBody from "@/features/guide/GuideBody";
+import GuideInteractive from "@/features/guide/GuideInteractive";
 export const dynamic = "force-static";
 export function generateStaticParams() { return [{locale: "fr"}]; }
 export const metadata = {robots: {index: false, follow: false}};
-export default function ContractHarness() {
-  const contract = JSON.parse(readFileSync("docs/blog/contracts/guide-checklist-v1.json", "utf8"));
-  return <main id="main" className="blog-ds"><h1>Test technique checklist</h1><JsonChecklist storageKey={contract.storageKey} items={contract.items} /></main>;
+export default function LegacyHarness() {
+  const values = {
+    ARTICLE_BREADCRUMB_ARIA: "Fil d’Ariane", ARTICLE_HOME_URL: "/fr", ARTICLE_BLOG_URL: "/fr/blog",
+    ARTICLE_TITLE: "Test technique historique", ARTICLE_EXCERPT: "Fixture historique", ARTICLE_CATEGORY: "Test",
+    ARTICLE_PUBLISHED_AT: "11 octobre 2026", ARTICLE_PUBLISHED_ISO: "2026-10-11",
+    ARTICLE_UPDATED_AT: "21 octobre 2026", ARTICLE_UPDATED_ISO: "2026-10-21", ARTICLE_UPDATED_CLASS: "", ARTICLE_READING_TIME: "9"
+  };
+  return <div className="guide-page"><GuideInteractive><GuideBody values={values} /></GuideInteractive></div>;
 }`,
   );
   await run("npm", ["run", "build"]);

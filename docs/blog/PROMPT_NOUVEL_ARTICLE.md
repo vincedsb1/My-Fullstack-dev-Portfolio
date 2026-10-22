@@ -13,4 +13,4 @@ Renseigner le sujet, l’objectif, le public, la langue, les notes, les ressourc
 7. Prévisualiser en développement avec `/fr/blog/json-preview?slug=<slug>` ; vérifier mobile, clair/sombre, clavier, lecture et interactions. Le titre est le H1 ; les sections produisent les H2 ; les titres de blocs sont H3/H4.
 8. Exécuter `npm run blog:validate`, `npm run blog:test:json`, `npm run lint`, `npx tsc --noEmit`, `npm run build`, `npm run blog:test:seo`. Pour une évolution du moteur, exécuter aussi les tests navigateur et les pilotes de publication/prévisualisation.
 9. Vérifier les routes, le canonical, l’image sociale et le sitemap depuis le build local. Rapporter les contrôles rouges et les vérifications non réalisées.
-10. Donner l’URL finale et les fichiers modifiés. Ne pas publier, pousser ou déployer sans autorisation correspondante. Ne pas migrer les deux articles MDX pendant une simple création d’article.
+10. Donner l’URL finale et les fichiers modifiés. Ne pas publier, pousser ou déployer sans autorisation correspondante. Ne pas nettoyer les moteurs historiques pendant une simple création d’article ; ce nettoyage relève de l’étape 6.

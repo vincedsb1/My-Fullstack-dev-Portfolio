@@ -1,7 +1,7 @@
 import { mkdirSync } from "node:fs";
 import { test, expect } from "@playwright/test";
 
-/** Test navigateur sans publication du brouillon JSON et avec le SaaS publié en JSON et le guide conservé en MDX. */
+/** Test navigateur sans publication du brouillon JSON et avec les deux articles publiés en JSON. */
 test("showcase : contrat JSON et cinq widgets SaaS", async ({ page }) => {
   const response = await page.goto("/fr/blog/showcase");
   expect(response?.status()).toBe(200);
@@ -45,7 +45,7 @@ test("showcase : contrat JSON et cinq widgets SaaS", async ({ page }) => {
   }
 });
 
-test("articles JSON et MDX restent publiés ; preview JSON reste invisible en production", async ({
+test("les deux articles JSON restent publiés ; preview JSON reste invisible en production", async ({
   page,
 }) => {
   for (const url of [
@@ -81,7 +81,7 @@ test("figer la référence visuelle du Showcase et de l’article SaaS", async (
       ],
       [
         "/fr/blog/guide-premier-emploi-developpeur",
-        "guide-legacy",
+        "guide-json",
         [320, 390, 820, 1440],
       ],
     ] as const) {
