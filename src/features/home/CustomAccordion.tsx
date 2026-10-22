@@ -24,9 +24,9 @@ function AccordionItemComponent({
         aria-controls={`faq-panel-${question
           .replace(/\s+/g, "-")
           .toLowerCase()}`}
-        className="w-full flex items-center justify-between py-6 px-4 text-left hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-800/50 transition-colors rounded-lg"
+        className="group flex w-full items-center justify-between rounded-lg px-4 py-6 text-left"
       >
-        <h3 className="text-base 3xs:text-lg font-semibold text-neutral-700 dark:text-neutral-300 flex-1">
+        <h3 className="min-w-0 flex-1 text-base font-semibold leading-relaxed tracking-tight text-gray-900 transition-colors group-hover:text-red-600 dark:text-neutral-50 dark:group-hover:text-red-400 3xs:text-lg">
           {question}
         </h3>
         <ChevronDown
@@ -44,7 +44,7 @@ function AccordionItemComponent({
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="pb-6 px-4 text-neutral-600 dark:text-neutral-400 text-base leading-relaxed">
+        <div className="px-4 pb-6 text-base font-normal leading-relaxed text-gray-600 dark:text-gray-400">
           {answer}
         </div>
       </div>

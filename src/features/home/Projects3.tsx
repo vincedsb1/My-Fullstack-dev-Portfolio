@@ -135,7 +135,11 @@ export default async function Projects({
                   </div>
                   <div className="order-1 flex min-w-0 flex-col md:order-2">
                     <div
-                      className={`relative min-h-64 flex-1 overflow-hidden rounded-[1.5rem] ${
+                      className={`relative overflow-hidden rounded-[1.5rem] ${
+                        p.id === "allaw"
+                          ? "aspect-square w-full flex-none min-h-0"
+                          : "min-h-64 flex-1"
+                      } ${
                         p.transparent
                           ? "bg-transparent dark:bg-transparent"
                           : "bg-neutral-100 dark:bg-neutral-900"
@@ -143,7 +147,11 @@ export default async function Projects({
                     >
                       <ProjectVisualFrame
                         visual={p.visual}
-                        className="h-full min-h-64 w-full"
+                        className={
+                          p.id === "allaw"
+                            ? "h-full w-full"
+                            : "h-full min-h-64 w-full"
+                        }
                         sizes="(max-width: 768px) 100vw, 45vw"
                         priority
                       />

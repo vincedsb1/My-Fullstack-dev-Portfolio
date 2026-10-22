@@ -51,21 +51,24 @@ async function FAQ() {
     >
       <div
         id="faqTitleTopContainer"
-        className="w-full text-neutral-700 dark:text-neutral-300 font-bold text-2xl flex flex-row items-center mb-2"
+        className="mb-2 flex w-full flex-row items-center text-neutral-700 dark:text-neutral-300"
         data-reveal
       >
-        <div id="faqIcon" className="w-12">
+        <div id="faqIcon" className="w-12 shrink-0">
           <HelpCircle size={32} className="mr-6" />
         </div>
-        <h2 id="faqTitle" className="text-2xl 3xs:text-3xl">
+        <h2
+          id="faqTitle"
+          className="text-2xl font-bold tracking-tight 3xs:text-3xl"
+        >
           {t("title").replace(/ \?/g, "\u00A0?")}
         </h2>
       </div>
       <div id="faqTitleBotContainer" className="w-full flex flex-row">
-        <div id="faqIconBlank" className="w-12" />
+        <div id="faqIconBlank" className="w-12 shrink-0" />
         <div
           id="faqIntroContainer"
-          className="flex flex-row text-base 3xs:text-xl text-neutral-400 dark:text-neutral-500 mb-16 leading-tight"
+          className="mb-16 flex flex-row text-base font-light leading-relaxed text-[#707070] dark:text-neutral-400 md:text-lg"
           data-reveal
         >
           {t("intro")}
