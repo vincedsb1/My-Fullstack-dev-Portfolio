@@ -9,9 +9,11 @@ import ProjectQuickActionsDialog from "./ProjectQuickActionsDialog";
 export default function ProjectCard({
   project: p,
   labels,
+  typography = "default",
 }: {
   project: ProjectCardModel;
   labels: Record<string, string>;
+  typography?: "default" | "home";
 }) {
   const [open, setOpen] = useState(false);
   return (
@@ -25,11 +27,27 @@ export default function ProjectCard({
           aria-label={`${labels.openActions}: ${p.name}`}
         >
           <div className="flex-grow">
-            <div className="mb-3 flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
-              <h3 className="min-w-0 text-2xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 3xs:text-3xl">
+            <div
+              className={`mb-3 flex flex-wrap items-start justify-between gap-3 ${
+                typography === "default" ? "sm:flex-nowrap" : ""
+              }`}
+            >
+              <h3
+                className={`min-w-0 text-2xl font-semibold tracking-tight ${
+                  typography === "home"
+                    ? "text-gray-900 dark:text-neutral-50"
+                    : "text-neutral-950 dark:text-neutral-50 3xs:text-3xl"
+                }`}
+              >
                 {p.name}
               </h3>
-              <span className="mt-1 inline-flex shrink-0 rounded-full border border-neutral-200 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">
+              <span
+                className={`mt-1 inline-flex shrink-0 rounded-full border border-neutral-200 px-2.5 py-1 font-semibold uppercase tracking-[0.16em] dark:border-neutral-700 ${
+                  typography === "home"
+                    ? "text-xs text-neutral-600 dark:text-neutral-300"
+                    : "text-[10px] text-neutral-500 dark:text-neutral-400"
+                }`}
+              >
                 {p.kindLabel}
               </span>
             </div>

@@ -2,7 +2,7 @@
 
 Inventaire initial vérifié le 22 octobre 2026 sur la page d'accueil française et anglaise. Les styles indiqués dans la colonne « Style actuel » décrivent l'état relevé avant la mise en œuvre.
 
-**Avancement :** Compétences est la seule section harmonisée à ce stade. Son titre adopte l'interlettrage resserré des autres titres, son sous-titre utilise Inter 16–18 px/300 avec `#707070` en clair et `neutral-400` en sombre, et ses catégories passent en graisse 600. Les bulles restent en 14 px/500, conformément au plan. Projets, Blog, Parcours et FAQ restent à traiter.
+**Avancement :** Compétences et Projets sont harmonisées. Leurs sous-titres utilisent Inter 16–18 px/300 avec `#707070` en clair et `neutral-400` en sombre. Les catégories de Compétences sont en graisse 600 et ses bulles restent en 14 px/500. Dans Projets, les descriptions vedettes passent en graisse 300 avec les mots forts en 500 et les gris de la Hero/footer ; le grand nom reste en 36–48 px/700. « Autres projets » et les titres des petites cartes utilisent 24 px/600, leurs types 12 px/600. Les résumés 14 px/400, les technologies 12 px/500 et les actions 14 px/600 étaient déjà conformes, comme les textes du dialogue. La variante des cartes est limitée à l'accueil pour préserver les archives. Blog, Parcours et FAQ restent à traiter.
 
 ## Périmètre et références fixes
 

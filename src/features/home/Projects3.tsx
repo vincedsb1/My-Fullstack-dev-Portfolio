@@ -38,7 +38,7 @@ export default async function Projects({
             className="mb-4 flex w-full flex-row items-center text-neutral-700 dark:text-neutral-300"
             data-reveal
           >
-            <div className="w-12" aria-hidden="true">
+            <div className="w-12 shrink-0" aria-hidden="true">
               <Rocket size={32} className="mr-6" />
             </div>
             <h2
@@ -49,9 +49,9 @@ export default async function Projects({
             </h2>
           </div>
           <div className="flex w-full flex-row">
-            <div className="w-12" aria-hidden="true" />
+            <div className="w-12 shrink-0" aria-hidden="true" />
             <p
-              className="max-w-2xl text-sm text-neutral-500 dark:text-neutral-400 md:text-base"
+              className="max-w-2xl text-base font-light leading-relaxed text-[#707070] dark:text-neutral-400 md:text-lg"
               data-reveal
             >
               {t("subtitle")}
@@ -78,23 +78,27 @@ export default async function Projects({
                 <div className="grid flex-1 gap-8 md:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] md:gap-12">
                   <div className="order-2 flex flex-col items-start md:order-1">
                     <div className="mb-4 flex flex-wrap items-center gap-3">
-                      <span className="inline-flex rounded-full bg-neutral-100 px-4 py-1 text-xs font-medium text-neutral-700 dark:bg-neutral-700 dark:text-neutral-100">
+                      <span className="inline-flex rounded-full bg-neutral-100 px-4 py-1 text-xs font-semibold text-neutral-700 dark:bg-neutral-700 dark:text-neutral-300">
                         {p.kindLabel}
                       </span>
                     </div>
-                    <h3 className="text-4xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 md:text-5xl">
+                    <h3 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white md:text-5xl">
                       {p.name}
                     </h3>
                     {p.carouselDescriptionKey ? (
-                      <div className="mt-5 max-w-xl space-y-5 text-base leading-relaxed text-neutral-600 dark:text-neutral-300 md:text-lg">
+                      <div className="mt-5 max-w-xl space-y-5 text-base font-light leading-relaxed text-gray-600 dark:text-gray-400 md:text-lg">
                         {t.rich(p.carouselDescriptionKey, {
                           paragraph: (chunks) => <p>{chunks}</p>,
-                          strong: (chunks) => <strong>{chunks}</strong>,
+                          strong: (chunks) => (
+                            <strong className="font-medium text-gray-900 dark:text-neutral-100">
+                              {chunks}
+                            </strong>
+                          ),
                           break: () => <br />,
                         })}
                       </div>
                     ) : (
-                      <p className="mt-5 max-w-xl text-base leading-relaxed text-neutral-600 dark:text-neutral-300 md:text-lg">
+                      <p className="mt-5 max-w-xl text-base font-light leading-relaxed text-gray-600 dark:text-gray-400 md:text-lg">
                         {p.featuredDescription}
                       </p>
                     )}
@@ -158,7 +162,7 @@ export default async function Projects({
         </div>
         <div className="mt-16" data-reveal>
           <div className="mb-6 mt-12 flex flex-wrap items-end justify-between gap-4 md:mt-16">
-            <h3 className="text-2xl font-semibold text-neutral-950 dark:text-neutral-50 md:text-3xl">
+            <h3 className="text-2xl font-semibold tracking-tight text-neutral-700 dark:text-neutral-300">
               {t("othersTitle")}
             </h3>
             <a
@@ -174,6 +178,7 @@ export default async function Projects({
               <ProjectCard
                 key={p.id}
                 project={p}
+                typography="home"
                 labels={Object.fromEntries(
                   [
                     "openActions",
