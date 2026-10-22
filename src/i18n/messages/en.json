@@ -1,0 +1,365 @@
+{
+  "common": {
+    "email": "Email",
+    "copied": "Copied!",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "twitter": "X",
+    "malt": "Malt",
+    "cv": "Resume",
+    "phone": "Phone",
+    "copy": "Copy"
+  },
+  "header": {
+    "tagline": "Web development · Product vision",
+    "firstName": "Vincent",
+    "lastName": "DESBROSSES",
+    "jobTitleStart": "Senior Fullstack Developer",
+    "jobTitleEnd": "React & Next.js",
+    "descriptionStart": "I design and build web applications with their users in mind. From product thinking to production, I combine ",
+    "descriptionHighlight": "technical quality",
+    "descriptionEnd": ", user experience, and maintainability.",
+    "contactAction": "Contact me",
+    "resumeAction": "My résumé",
+    "profileAlt": "Portrait of Vincent DESBROSSES",
+    "socialNavigation": "Social media",
+    "social": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "x": "X (Twitter)",
+      "malt": "Malt",
+      "blog": "Blog",
+      "linkedinAria": "Vincent DESBROSSES on LinkedIn",
+      "githubAria": "Vincent DESBROSSES on GitHub",
+      "xAria": "Vincent DESBROSSES on X",
+      "maltAria": "Vincent DESBROSSES on Malt",
+      "blogAria": "Vincent DESBROSSES's blog",
+      "frenchBlogAria": "Vincent DESBROSSES's blog in French"
+    }
+  },
+  "footer": {
+    "title": "Interested in <gradient>working together?</gradient>",
+    "description": "Are you hiring a Fullstack developer or would you like to discuss a product? <strong>Let's talk about your challenges</strong> and how I can contribute.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "profileAlt": "Portrait of Vincent DESBROSSES",
+    "copyright": "© {year} {name}. All rights reserved.",
+    "technical": "Designed and developed with React & Next.js"
+  },
+  "blogHome": {
+    "eyebrow": "Notes and experience",
+    "title": "Blog",
+    "description": "I share thoughts on web development, software architecture, artificial intelligence, and building digital products.",
+    "frenchNotice": "Articles are currently published in French.",
+    "link": "Read the blog (in French)"
+  },
+  "skills": {
+    "title": "Skills",
+    "intro": "A diverse set of strong skills for your projects.",
+    "designProduct": "Design & Product",
+    "frontend": "Front-end",
+    "backend": "Back-end",
+    "desktop": "Desktop",
+    "devops": "DevOps",
+    "aiAssistedDevelopment": "AI-assisted Development"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "I've successfully delivered a variety of projects. Here's a snapshot of my recent work.",
+    "othersTitle": "Other Projects",
+    "viewProject": "View Project",
+    "viewDetails": "View details",
+    "accessProject": "Access project",
+    "viewOnGithub": "View on GitHub",
+    "archives": "Archive",
+    "archiveCount": "{count, plural, one {# project} other {# projects}}",
+    "archivesTitle": "Project archive",
+    "archivesIntro": "Explore eight additional projects, presented through the same lens of evidence, context and technical decisions.",
+    "backToPortfolio": "Back to portfolio",
+    "projectPreview": "project preview",
+    "technologies": "Main technologies",
+    "projectActions": "Project actions",
+    "openActions": "Open project actions",
+    "closeDialog": "Close project actions dialog",
+    "kind": {
+      "platform": "Platform",
+      "saas": "SaaS",
+      "web-app": "Web app",
+      "native-app": "Native app",
+      "extension": "Extension",
+      "tool": "Tool",
+      "showcase": "Showcase"
+    },
+    "previousProjectAriaLabel": "Previous Project",
+    "nextProjectAriaLabel": "Next Project",
+    "goToProjectAriaLabel": "Go to project",
+    "featuredNavigation": "Featured project navigation",
+    "autoplayProgress": "Progress before the next project",
+    "currentProject": "Current project: {name}",
+    "viewProjectAriaLabel": "View project",
+    "openProject": "Open project",
+    "aiSystem": {
+      "name": "AiSystem",
+      "description": "A macOS app to centralize and sync shared resources for Claude and Codex.",
+      "carouselDescription": "<paragraph>AiSystem is a native macOS app that centralizes project rules, documents, and AI skills to prevent inconsistencies between development assistants such as Claude and Codex.</paragraph><paragraph>I built the SwiftUI interface and local Python/Bash workflows to organize a shared source library, check versions, and control synchronization across projects.</paragraph>"
+    },
+    "codeMaster": {
+      "name": "CodeMaster",
+      "description": "PWA for technical training via interactive quizzes with gamification."
+    },
+    "allaw": {
+      "name": "Allaw",
+      "description": "LegalTech platform combining professional search, appointments and client case management.",
+      "carouselDescription": "<paragraph>Allaw is a LegalTech platform connecting individuals with legal professionals. It brings together search, appointment booking and practice tools for managing client cases.</paragraph><paragraph>I built the case-management module from scratch, from data structures to interfaces, and worked on multi-office pages. I also created a shared UI component library for the team.</paragraph>"
+    },
+    "iconise": {
+      "name": "Iconise",
+      "description": "A guided workflow to design, refine, and export application icons.",
+      "carouselDescription": "<paragraph>Iconise helps app makers design their icons through a guided workflow, turning an initial brief into visual directions, refined options, and files ready to use in their product.</paragraph><paragraph>The full-stack implementation connects project and iteration management with image generation, transactional credits, billing integrations, and final icon exports.</paragraph>"
+    },
+    "suggst": {
+      "name": "Suggst",
+      "description": "Context-aware answers to meeting questions, directly from a native macOS app.",
+      "carouselDescription": "<paragraph>Suggst is a native macOS app for professional meetings and video calls. It helps users answer questions by combining captured speech with reusable reference notes and meeting-specific context.</paragraph><paragraph>I shaped Suggst's product positioning, defined its core interface terminology and guided product iterations, checking user flows and fixes directly in the application.</paragraph>",
+      "illustration": {
+        "label": "Suggst macOS app window, ready to start listening",
+        "listening": "Live",
+        "ready": "Suggst is ready.",
+        "start": "Start"
+      }
+    },
+    "truthify": {
+      "name": "Truthify",
+      "description": "Text and YouTube transcript analysis with claim-by-claim reliability scores.",
+      "carouselDescription": "<paragraph>Truthify is a web app for exploring the reliability of claims in text or YouTube transcripts, breaking content into individual arguments with assessments and reliability scores.</paragraph><paragraph>I built the analysis workflow, from content chunking to progressive results, connecting a React interface and Next.js APIs to OpenAI-powered processing and PostgreSQL storage.</paragraph>"
+    },
+    "legalConstat": {
+      "name": "Legal Constat",
+      "description": "Platform connecting individuals with bailiffs + CRM."
+    },
+    "smartflow": {
+      "name": "SmartFlow",
+      "description": "Flashcards and an automatic review schedule to help knowledge stick.",
+      "carouselDescription": "<paragraph>SmartFlow is a web app that helps students and other learners turn knowledge into flashcards and review it at the right time through a spaced-repetition schedule designed around each card.</paragraph><paragraph>I developed the card creation and review flows, a scheduling engine for due dates, and a progress dashboard, backed by an API, PostgreSQL persistence, and automated tests.</paragraph>"
+    },
+    "decorNature": {
+      "name": "Décor Nature",
+      "description": "Showcase website for a painting and decoration company."
+    },
+    "aimoto": {
+      "name": "Aimoto",
+      "description": "A local lab to experiment with, backtest and compare daily Bitcoin forecasts.",
+      "carouselDescription": "<paragraph>Aimoto is a local lab for daily Bitcoin analysis. It brings together data preparation, predictive model evaluation and historical comparisons to support structured research experiments.</paragraph><paragraph>I worked on the Next.js interface and Python services, covering experiment setup, execution tracking, results exploration and reliability checks across the application's research workflow.</paragraph>"
+    },
+    "liic": {
+      "name": "LIIC",
+      "description": "Chrome extension for generating AI-powered LinkedIn comments."
+    },
+    "teslaApp": {
+      "name": "Is Tesla Worth It?",
+      "description": "A calculator to compare the total cost of ownership between two vehicles."
+    },
+    "emmausConnect": {
+      "name": "Emmaüs Connect",
+      "description": "Platform for managing and refurbishing donated smartphones."
+    },
+    "wilderGame": {
+      "name": "Wilder Game",
+      "description": "A web-based quiz game about movie release dates."
+    },
+    "legalDirectory": {
+      "name": "QuickFlow",
+      "description": "Ideation platform streamlining democratic decision-making."
+    }
+  },
+  "caseStudy": {
+    "mainNavigation": "Case study navigation",
+    "backToProjects": "Projects",
+    "overview": "Overview",
+    "challenges": "Challenges",
+    "contact": "Contact",
+    "toggleTheme": "Toggle theme",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "fixtureNotice": "Validation fixture — not published",
+    "draftNotice": "Editorial draft — information to be completed",
+    "year": "Delivery",
+    "role": "Contribution",
+    "type": "Type",
+    "overviewEyebrow": "Overview",
+    "problem": "The problem",
+    "solution": "The solution",
+    "audience": "Target audience",
+    "context": "Context",
+    "scope": "Scope",
+    "contribution": "Contribution",
+    "contributionAndScope": "Role & scope",
+    "videoTitle": "Demonstration",
+    "videoPlay": "Play the {project} video",
+    "videoClose": "Close video",
+    "videoRegion": "{project} case study video player",
+    "videoUnsupported": "Your browser cannot play this video.",
+    "videoUnavailable": "Video demonstration unavailable.",
+    "workflowTitle": "User workflow",
+    "previousStep": "Previous step",
+    "nextStep": "Next step",
+    "architectureTitle": "Technical architecture",
+    "architectureRelation": "Relation",
+    "asyncFlow": "Asynchronous flow",
+    "galleryTitle": "Project gallery",
+    "openImage": "Enlarge media",
+    "closeLightbox": "Close viewer",
+    "challengesEyebrow": "Difficulties encountered",
+    "challengesTitle": "Technical challenges",
+    "constraint": "Constraint",
+    "decision": "Decision",
+    "tradeoff": "Trade-off",
+    "observableResult": "Observable result",
+    "limitationsTitle": "Limitations and open points",
+    "decisionsTitle": "Technical decisions",
+    "outcomesTitle": "Outcomes and learnings",
+    "stackTitle": "Main technical stack",
+    "previousProject": "Previous project",
+    "nextProject": "Next project",
+    "contactTitle": "A project to build together?",
+    "contactDescription": "Let’s discuss architecture, product or your next application.",
+    "contactEmail": "Contact me by email",
+    "contactMalt": "View my Malt profile"
+  },
+  "timeline": {
+    "title": "Journey",
+    "intro": "Explore my professional journey and discover my experience.",
+    "experiences": [
+      {
+        "company": "Independent",
+        "position": "Entrepreneur & Fullstack Developer",
+        "period": "Jun. 2026 → now",
+        "description": "I design and build applications independently, handling the full lifecycle from product idea and architecture to development, testing, and deployment."
+      },
+      {
+        "company": "Allaw",
+        "position": "Fullstack Developer",
+        "period": "Jul. 2024 → Jun. 2026",
+        "description": "Developed and improved fullstack web experiences, contributing across product, interface, and application architecture."
+      },
+      {
+        "company": "Twenty Soft",
+        "position": "Fullstack developper",
+        "period": "Sept. 2023 → Juil. 2024",
+        "description": "I offer my freelance services as a fullstack JavaScript developer."
+      },
+      {
+        "company": "Jurisoft",
+        "position": "Fullstack developper",
+        "period": "Jul. 2023 → Sep. 2023",
+        "description": "Focused on elevating the front-end experience for legalconstat.fr using a tech stack that included ReactJS, Symfony, and SCSS."
+      },
+      {
+        "company": "Alpha Web",
+        "position": "Product owner",
+        "period": "2018 → 2023",
+        "description": "Managed five web/mobile apps using Scrum, focusing on UX/UI design and API architecture"
+      },
+      {
+        "company": "Hair Net system",
+        "position": "Customer Support Manager",
+        "period": "2014 → 2018",
+        "description": "Guided a tech team, resolving issues with developers, using HTML5/CSS for data analysis and solution development."
+      },
+      {
+        "company": "Bolloré Ports",
+        "position": "System Administrator",
+        "period": "2008 → 2010",
+        "description": "Managed multi-site server environments, working closely with web developers to ensure optimized storage and security features."
+      },
+      {
+        "company": "Town Hall of Thorigny",
+        "position": "Fullstack developper",
+        "period": "2007",
+        "description": "Focused on end-to-end web solutions using PHP, MySQL, HTML, CSS, and JavaScript for a municipal website project."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Do you have any questions?",
+    "intro": "Find answers to the most frequently asked questions.",
+    "items": [
+      {
+        "question": "What inspired you to work in web development?",
+        "answer": "Discovering computers early made me love creating and experimenting. The web showed me a space where creativity and technical problem-solving meet, and that blend is what inspired me to pursue it as a career."
+      },
+      {
+        "question": "What do you look for in a professional environment to do your best work?",
+        "answer": "I perform at my best when there’s trust, real autonomy, a clear product vision, and a healthy work environment where everyone can move forward with focus."
+      },
+      {
+        "question": "What type of organization allows you to be most effective in your daily work?",
+        "answer": "Asynchronous operations with well-planned checkpoints. I'm at my best when I can organize my focus blocks, document properly, and move forward without constant interruptions."
+      },
+      {
+        "question": "What makes my profile an asset for a company?",
+        "answer": "I’m autonomous across the entire workflow: concept, design, specs, code, tests, and delivery. I bring a pragmatic product mindset, integrate quickly, take initiative, and enjoy both building and refining a project."
+      },
+      {
+        "question": "What role do AI tools play in how you work today?",
+        "answer": "They’re central to my workflow. I regularly test new models to save time, explore ideas, and maximize efficiency in a field that evolves extremely fast."
+      }
+    ]
+  },
+  "metadata": {
+    "title": "Fullstack React and Next.js developer",
+    "description": "Fullstack React and Next.js developer. Explore my web and macOS applications, technical case studies and articles, then get in touch about your project."
+  },
+  "site": {
+    "projects": "Projects",
+    "blog": "Blog",
+    "blogFrench": "Blog in French",
+    "career": "Experience",
+    "contact": "Contact me",
+    "viewProjects": "View projects",
+    "skip": "Skip to content",
+    "navigation": "Main navigation",
+    "menu": "Open menu",
+    "close": "Close",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "language": "Language",
+    "copyEmail": "Copy email address",
+    "copyError": "Copy unavailable. Select the address:",
+    "resume": "Download résumé",
+    "pause": "Pause slideshow",
+    "play": "Resume slideshow",
+    "carousel": "carousel",
+    "slide": "slide",
+    "slidePosition": "{index} of {total}",
+    "notFound": "Page not found",
+    "notFoundDescription": "This page does not exist or has moved.",
+    "home": "Home",
+    "error": "The page could not be displayed.",
+    "retry": "Try again",
+    "allProjects": "All case studies",
+    "archiveDescription": "Explore {count} additional portfolio projects.",
+    "readArticle": "Read article",
+    "readFrenchArticle": "Read this French article",
+    "relatedProjects": "Related projects",
+    "breadcrumb": "Breadcrumb"
+  },
+  "blog": {
+    "breadcrumb": "Breadcrumb",
+    "readingTime": "{count} min read",
+    "updated": "Updated",
+    "allArticles": "All articles",
+    "eyebrow": "Articles and advice",
+    "published": "Published articles",
+    "empty": "New articles will appear here.",
+    "copied": "Link copied",
+    "shareArticle": "Share article",
+    "share": "Share",
+    "invalidVideo": "Invalid YouTube video ID.",
+    "playVideo": "Play video: {title}",
+    "openYouTube": "Open on YouTube",
+    "print": "Save article as PDF"
+  }
+}
