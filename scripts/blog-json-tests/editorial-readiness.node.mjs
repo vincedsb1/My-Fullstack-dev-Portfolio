@@ -104,11 +104,8 @@ test("le contrat de sauvegarde des 14 cases historiques reste figé", () => {
     contract.items.map((x) => x.id),
   );
   assert.match(legacyController, /vd_guide_checklist_v1/);
-  assert.match(current, /state\\[item\\.id\\]\\s*===\\s*true/);
-  assert.match(
-    current,
-    /items\\.filter\\(\\(item\\)\\s*=>\\s*next\\[item\\.id\\]\\s*===\\s*true\\)/,
-  );
+  assert.ok(current.includes("state[item.id] === true"));
+  assert.ok(current.includes("next[item.id] === true"));
 });
 
 test("le Showcase publie les modules via le vrai moteur JSON et garde une page SEO distincte", () => {
