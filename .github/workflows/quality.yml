@@ -15,8 +15,8 @@ jobs:
       - run: npm run lint
       - run: npm test
       - run: npm run build
-      - run: npm run audit:verify
       - run: npx tsc --noEmit
       - run: npm run blog:test:seo
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
+      - run: npm run audit:verify

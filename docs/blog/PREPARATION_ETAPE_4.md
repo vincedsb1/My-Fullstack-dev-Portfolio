@@ -50,3 +50,9 @@
 ## Retour arrière
 
 La préparation ne modifie aucun des deux articles publiés. La future migration sera réversible par retour à la version MDX/React de référence ; ne jamais renommer la clé de stockage de la checklist.
+
+## Contrôles observés (première CI de la préparation)
+
+- `npm ci`, `npm audit --audit-level=moderate`, `npm run blog:test:json` (14 tests), `npm run lint`, `npm test` et `npm run build` : **réussis**.
+- `npm run audit:verify` : **échec indépendant du moteur JSON** : budget JavaScript de la page d'accueil mesuré à 221,42 Kio gzip pour un plafond de 150 Kio. La source de cette hausse n'a pas été isolée ; **ne pas relever ce plafond sans analyse**.
+- Afin de ne pas cacher d'autres erreurs derrière cet audit global, le workflow exécute TypeScript, SEO et E2E avant l'audit de performance final. La préparation visuelle continue de nécessiter les captures de référence.
