@@ -150,7 +150,11 @@ export default async function Projects({
                         className={
                           p.id === "allaw"
                             ? "h-full w-full"
-                            : "h-full min-h-64 w-full"
+                            : `h-full min-h-64 w-full${
+                                p.id === "smartflow"
+                                  ? " flex flex-col justify-center"
+                                  : ""
+                              }`
                         }
                         sizes="(max-width: 768px) 100vw, 45vw"
                         priority

@@ -1,0 +1,23 @@
+.currentPulse {
+  animation: current-pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes current-pulse-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .currentPulse {
+    animation: none;
+    opacity: 0.4;
+  }
+}

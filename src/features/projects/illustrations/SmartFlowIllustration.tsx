@@ -32,7 +32,7 @@ export default function SmartFlowIllustration({
   return (
     <figure
       aria-hidden="true"
-      className={`mx-auto block w-full max-w-[33rem] min-w-0 ${className}`}
+      className={`mx-auto w-full max-w-[33rem] min-w-0 ${className}`}
       data-smartflow-illustration="portable"
     >
       <div className="mx-1 min-w-0 origin-center rotate-[0.35deg] rounded-[24px] border border-[#e5e7eb] bg-[#f9fafb] shadow-[0_34px_74px_-40px_rgba(17,24,39,0.45)] dark:border-[#353535] dark:bg-[#2a2a2a] dark:shadow-[0_30px_66px_-44px_rgba(0,0,0,0.72)] sm:rotate-[0.75deg]">

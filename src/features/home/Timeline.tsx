@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Calendar } from "lucide-react";
+import styles from "./Timeline.module.css";
 
 interface Experience {
   company: string;
@@ -15,7 +16,7 @@ async function Timeline() {
   return (
     <div
       id="timelineContainer"
-      className="flex w-full flex-col items-center justify-center px-4 md:px-6"
+      className="mx-auto flex w-full max-w-[840px] flex-col items-center justify-center px-4 md:px-0"
     >
       <div
         id="projectsTitleTopContainer"
@@ -45,79 +46,97 @@ async function Timeline() {
 
       <div
         id="timelineCardsContainer"
-        className="flex w-full flex-col"
+        className="relative w-full"
         data-reveal
       >
-        {experiences &&
-          experiences.map((experience) => (
-            <div
-              key={experience.company}
-              id={`timelineCard${experience.company}`}
-              className="relative w-full flex flex-col hover:bg-gradient-to-r hover:from-transparent hover:to-neutral-200 dark:hover:to-neutral-800 min-h-48 rounded-2xl items-center group"
-            >
-              <div
-                id={`timelineCardTop${experience.company}`}
-                className="mb-3 mt-12 flex min-h-10 w-full flex-row"
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-8 left-4 top-8 z-0 w-[2px] -translate-x-1/2 bg-neutral-200/80 dark:bg-neutral-800 md:left-6"
+        />
+        <ol className="relative z-10 space-y-6 md:space-y-8">
+          {experiences?.map((experience, index) => {
+            const isCurrent = index === 0;
+
+            return (
+              <li
+                key={experience.company}
+                id={`timelineCard${experience.company}`}
+                className="group relative flex items-start gap-4 md:gap-6"
               >
                 <div
                   id={`timelinePuceContainer${experience.company}`}
-                  className="mx-4 flex h-10 w-6 shrink-0 items-center justify-center 2xs:mx-6 3xs:mx-10"
+                  className="relative z-10 flex w-8 flex-none justify-center pt-7 md:w-12"
                 >
-                  <div
+                  {isCurrent && (
+                    <span
+                      aria-hidden="true"
+                      className={`absolute left-1/2 top-[25px] -ml-2.5 h-5 w-5 rounded-full bg-orange-500/30 ${styles.currentPulse}`}
+                    />
+                  )}
+                  <span
                     id={`timelinePuce${experience.company}`}
-                    className="w-6 h-6 rounded-full bg-neutral-300 dark:bg-neutral-700 shrink-0 group-hover:bg-red-500 hover:ring-2 group-hover:ring-neutral-300 dark:group-hover:ring-neutral-400 ring-0 ring-inset group-hover:ring-4 transition-all"
+                    className={`relative z-20 shrink-0 rounded-full ring-4 ring-neutral-100 transition-all duration-300 group-hover:scale-125 motion-reduce:transition-none motion-reduce:group-hover:scale-100 dark:ring-neutral-900 ${
+                      isCurrent
+                        ? "h-3.5 w-3.5 bg-orange-500 shadow-[0_0_12px_rgba(249,115,22,0.8)]"
+                        : index === 1
+                          ? "h-3 w-3 bg-neutral-300 group-hover:bg-red-500 group-hover:ring-red-500/20 dark:bg-neutral-600"
+                          : "h-3 w-3 bg-neutral-300 group-hover:bg-neutral-500 dark:bg-neutral-600 dark:group-hover:bg-neutral-300"
+                    }`}
                   />
                 </div>
-                <div
-                  id={`timelineCompagnyNameJob${experience.company}`}
-                  className="flex min-w-0 flex-grow flex-col justify-center transition-all group-hover:pl-3"
+
+                <article
+                  className={`min-w-0 flex-1 rounded-2xl border p-6 transition-all duration-300 motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:rounded-3xl md:p-8 ${
+                    isCurrent
+                      ? "border-orange-500/30 bg-white shadow-[0_10px_30px_rgba(249,115,22,0.06)] hover:-translate-y-1 hover:border-orange-500/50 dark:border-orange-500/20 dark:bg-neutral-800/80 dark:hover:border-orange-500/50 dark:shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+                      : "border-neutral-200/70 bg-white/60 shadow-sm hover:-translate-y-0.5 hover:border-neutral-300 hover:bg-white hover:shadow-md dark:border-neutral-700/60 dark:bg-neutral-800/40 dark:hover:border-neutral-600 dark:hover:bg-neutral-800/80"
+                  }`}
                 >
-                  <h3
-                    id={`timelineCompagny${experience.company}`}
-                    className="text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-50 3xs:text-xl"
-                  >
-                    {experience.company}
-                  </h3>
                   <div
-                    id={`timelineJob${experience.company}`}
-                    className="text-base font-medium leading-normal text-gray-600 dark:text-gray-300"
+                    id={`timelineCardTop${experience.company}`}
+                    className="mb-3 flex flex-col justify-between gap-2 sm:flex-row sm:items-baseline"
                   >
-                    {experience.position}
-                  </div>
-                </div>
-                <div
-                  id={`timelinePeriod${experience.company}`}
-                  className="max-w-[40%] flex items-start justify-end break-words pr-4 text-right text-sm font-medium leading-relaxed text-[#707070] transition-all group-hover:pr-2 dark:text-neutral-400 3xs:pr-8 3xs:group-hover:pr-5"
-                >
-                  {experience.period}
-                </div>
-              </div>
-              <div
-                id={`timelineCardBot${experience.company}`}
-                className="mt-3 flex min-h-28 w-full flex-row 3xs:mt-0"
-              >
-                <div
-                  id={`timelineLineContainer${experience.company}`}
-                  className="mx-4 w-6 shrink-0 2xs:mx-6 3xs:mx-10"
-                >
-                  {experiences &&
-                    experiences.indexOf(experience) <
-                      experiences.length - 1 && (
+                    <div id={`timelineCompagnyNameJob${experience.company}`}>
+                      <h3
+                        id={`timelineCompagny${experience.company}`}
+                        className="text-lg font-semibold tracking-tight text-gray-900 dark:text-neutral-50 3xs:text-xl"
+                      >
+                        {experience.company}
+                      </h3>
                       <div
-                        id={`timelineLine${experience.company}`}
-                        className="pointer-events-none absolute bottom-[-3.5rem] left-[26px] top-20 z-10 w-1 bg-neutral-200 dark:bg-neutral-800 2xs:left-[34px] 3xs:left-[50px]"
-                      />
-                    )}
-                </div>
-                <div
-                  id={`timelineDescription${experience.company}`}
-                  className="flex min-w-0 flex-grow flex-col items-start justify-start text-sm font-normal leading-relaxed text-gray-600 transition-all group-hover:pl-3 dark:text-gray-400 2xs:text-base"
-                >
-                  {experience.description}
-                </div>
-              </div>
-            </div>
-          ))}
+                        id={`timelineJob${experience.company}`}
+                        className="text-base font-medium leading-normal text-gray-600 dark:text-gray-300"
+                      >
+                        {experience.position}
+                      </div>
+                    </div>
+                    <div
+                      id={`timelinePeriod${experience.company}`}
+                      className={`w-fit max-w-full whitespace-nowrap rounded-full px-3 py-1 text-right text-sm font-medium leading-relaxed text-[#707070] dark:text-neutral-400 ${
+                        isCurrent
+                          ? "bg-orange-500/10 dark:bg-orange-500/15"
+                          : "bg-neutral-100 dark:bg-neutral-700/60"
+                      }`}
+                    >
+                      {experience.period}
+                    </div>
+                  </div>
+                  <div
+                    id={`timelineCardBot${experience.company}`}
+                    className="mt-3 3xs:mt-0"
+                  >
+                    <div
+                      id={`timelineDescription${experience.company}`}
+                      className="text-sm font-normal leading-relaxed text-gray-600 dark:text-gray-400 2xs:text-base"
+                    >
+                      {experience.description}
+                    </div>
+                  </div>
+                </article>
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </div>
   );
