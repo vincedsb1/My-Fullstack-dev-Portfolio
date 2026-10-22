@@ -152,30 +152,39 @@ export default function JsonArticlePage({
                       />
                     </div>
                   ) : null}
-                  <BlogAuthorCard
-                    locale={locale}
-                    description={article.author?.description}
-                  />
-                  {related.map((rel) => (
-                    <BlogNextArticle
-                      key={rel.slug}
-                      title={rel.title}
-                      href={`/${locale}/blog/${rel.slug}`}
-                      eyebrow={
-                        fr ? "Pour continuer la lecture" : "Continue reading"
-                      }
+                  <div className="blog-ds__article-end">
+                    <BlogAuthorCard
+                      locale={locale}
+                      description={article.author?.description}
                     />
-                  ))}
+                    {related.length || article.meta.relatedProjects?.length ? (
+                      <div className="blog-ds__related-links">
+                        {related.map((rel) => (
+                          <BlogNextArticle
+                            key={rel.slug}
+                            title={rel.title}
+                            href={`/${locale}/blog/${rel.slug}`}
+                            eyebrow={
+                              fr
+                                ? "Pour continuer la lecture"
+                                : "Continue reading"
+                            }
+                          />
+                        ))}
+                        {article.meta.relatedProjects?.length ? (
+                          <RelatedProjects
+                            compact
+                            locale={locale}
+                            slugs={article.meta.relatedProjects}
+                          />
+                        ) : null}
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             </BlogReadingLayout>
           </article>
-          {article.meta.relatedProjects?.length ? (
-            <RelatedProjects
-              locale={locale}
-              slugs={article.meta.relatedProjects}
-            />
-          ) : null}
         </main>
         <BlogBackToTop targetId="blog-article-top" locale={locale} />
       </div>

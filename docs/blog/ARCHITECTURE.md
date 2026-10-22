@@ -105,7 +105,7 @@ Voir [JSON_ENGINE.md](JSON_ENGINE.md) pour le schéma et [AUDIT_FINAL_ETAPES_1_2
 
 `InternationalisationHeroArt.tsx` extrait l’illustration serveur existante ; le gabarit historique et le registre `saas-hero` partagent cette seule implémentation. Le Showcase utilise ce même visuel. Les cinq modules de `InternationalisationArticleModules.tsx` sont inchangés.
 
-Les options JSON facultatives `hero.eyebrow`, `hero.titleHighlight`, `readingNote` et `legacyAnchors` préservent les détails éditoriaux et les anciens fragments sans branchement par slug dans le moteur. La biographie française et les portraits réutilisent la carte auteur commune et `Avatar` du portfolio. Ces options ne sont pas nécessaires pour écrire un article standard.
+Les options JSON facultatives `hero.eyebrow`, `hero.titleHighlight`, `readingNote` et `legacyAnchors` préservent les détails éditoriaux et les anciens fragments sans branchement par slug dans le moteur. La biographie française réutilise la signature auteur commune ; seul le hero éditorial conserve un portrait `Avatar`, le footer étant fourni par le portfolio. Ces options ne sont pas nécessaires pour écrire un article standard.
 
 ## Migration du guide (étape 5)
 

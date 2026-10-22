@@ -29,27 +29,6 @@
     "top": "article-top",
     "content": "article-body"
   },
-  "readingNote": {
-    "title": "Le point de départ",
-    "content": [
-      {
-        "text": "Prévoir l’international. "
-      },
-      {
-        "text": "Mesurer sa valeur.",
-        "bold": true
-      },
-      {
-        "text": "\n"
-      },
-      {
-        "text": "Le projet Iconise",
-        "link": {
-          "href": "https://iconise.fyi/"
-        }
-      }
-    ]
-  },
   "introBlocks": [
     {
       "type": "lead",

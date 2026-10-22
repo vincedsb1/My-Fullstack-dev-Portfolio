@@ -31,6 +31,7 @@ import {
   type BlogTocItem,
 } from "./BlogReadingControls";
 import ShareButtons from "../ShareButtons";
+import { RelatedProjects } from "../RelatedProjects";
 
 const fixture = readJsonBlogArticleFile(
   path.join(process.cwd(), "src/content/blog-json/fr/json-demo-blog.json"),
@@ -527,9 +528,9 @@ export default function BlogShowcase() {
               eyebrow="Auteur et navigation"
             >
               <p>
-                La conclusion, la carte auteur, le partage et les liens de
-                poursuite composent un footer éditorial constant. Les
-                destinations, elles, proviendront des métadonnées JSON.
+                Une signature sans portrait et des liens secondaires prolongent
+                la lecture dans la même colonne, sans accumulation de cartes.
+                Les destinations viennent des métadonnées JSON.
               </p>
               <div className="blog-ds__button-row">
                 <BlogButton href="#blog-showcase-top" variant="text">
@@ -539,11 +540,16 @@ export default function BlogShowcase() {
                   Tous les articles
                 </BlogButton>
               </div>
-              <BlogAuthorCard headingLevel={3} />
-              <BlogNextArticle
-                title="Faut-il internationaliser son SaaS dès le lancement ?"
-                href="/fr/blog/internationaliser-saas-lancement"
-              />
+              <div className="blog-ds__article-end">
+                <BlogAuthorCard headingLevel={3} />
+                <div className="blog-ds__related-links">
+                  <BlogNextArticle
+                    title="Faut-il internationaliser son SaaS dès le lancement ?"
+                    href="/fr/blog/internationaliser-saas-lancement"
+                  />
+                  <RelatedProjects compact locale="fr" slugs={["iconise"]} />
+                </div>
+              </div>
             </BlogSection>
             <BlogSection
               id="json-fixture"

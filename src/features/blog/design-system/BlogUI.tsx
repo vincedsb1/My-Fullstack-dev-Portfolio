@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Avatar } from "@/components/ui/Avatar";
 import type { ReactNode } from "react";
-import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import type { BlogTone } from "@/lib/blog/json-types";
 export { default as BlogCodeSample } from "./BlogCodeSample";
@@ -406,20 +406,15 @@ export function BlogAuthorCard({
       className="blog-ds__author-card"
       aria-label={locale === "fr" ? "À propos de l’auteur" : "About the author"}
     >
-      <div className="blog-ds__author-avatar">
-        <Avatar size={75} alt="" className="" />
-      </div>
-      <div>
-        <p className="blog-ds__module-eyebrow">
-          {locale === "fr" ? "Derrière ces articles" : "About the author"}
-        </p>
+      <div className="blog-ds__author-heading">
+        <span>{locale === "fr" ? "Un article de" : "Written by"}</span>
         <Title className="blog-ds__author-name">Vincent DESBROSSES</Title>
-        {bio ? <p>{bio}</p> : null}
         <Link href={`/${locale}`}>
           {locale === "fr" ? "Découvrir mes projets" : "View my projects"}{" "}
-          <ArrowUpRight size={15} aria-hidden="true" />
+          <ArrowUpRight size={13} aria-hidden="true" />
         </Link>
       </div>
+      {bio ? <p>{bio}</p> : null}
     </aside>
   );
 }
@@ -436,13 +431,10 @@ export function BlogNextArticle({
   return (
     <Link href={href} className="blog-ds__next-article">
       <div>
-        <span className="blog-ds__next-label">
-          <BookOpen size={15} aria-hidden="true" />
-          {eyebrow}
-        </span>
-        <strong>{title}</strong>
+        <span className="blog-ds__next-label">{eyebrow}</span>
+        <span className="blog-ds__next-title">{title}</span>
       </div>
-      <ArrowRight size={24} aria-hidden="true" />
+      <ArrowRight size={17} aria-hidden="true" />
     </Link>
   );
 }

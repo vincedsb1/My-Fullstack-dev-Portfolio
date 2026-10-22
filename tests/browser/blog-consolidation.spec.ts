@@ -71,6 +71,18 @@ for (const theme of ["light", "dark"] as const) {
           expect(result.violations, `${route}, ${theme}, ${width}`).toEqual([]);
         }
       }
+      if (route !== "showcase") {
+        const end = page.locator(".blog-ds__article-end");
+        await expect(end).toHaveCount(1);
+        await expect(end.locator("img")).toHaveCount(0);
+        await expect(end.locator(".blog-ds__next-article")).toHaveCount(1);
+        await expect(page.locator(".blog-ds__reading-note")).toHaveCount(0);
+        if (route === "internationaliser-saas-lancement") {
+          await expect(
+            end.locator('a[href="/fr/projets/iconise"]'),
+          ).toHaveCount(1);
+        }
+      }
       if (route === "showcase") {
         await page.locator("#fondations .blog-ds__accordion summary").click();
         const expanded = await new AxeBuilder({ page })

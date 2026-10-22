@@ -79,7 +79,10 @@ test("options éditoriales : illustration serveur bornée, extrait de titre et c
   duplicate.legacyAnchors.content = "accessible";
   assert.throws(() => validateJsonArticle(duplicate), /dupliqué/);
   const unsafe = fresh();
-  unsafe.readingNote.content[0].link = { href: "javascript:alert(1)" };
+  unsafe.readingNote = {
+    title: "Note",
+    content: [{ text: "Lien", link: { href: "javascript:alert(1)" } }],
+  };
   assert.throws(() => validateJsonArticle(unsafe), /URL interdite/);
   const blockHero = fresh();
   blockHero.sections[0].blocks.push({ type: "custom", component: "saas-hero" });
