@@ -202,6 +202,7 @@ export default function JsonBlockRenderer({
             return (
               <BlogCodeSample
                 key={key}
+                id={block.id}
                 label={block.title ?? block.language}
                 code={block.code}
                 language={block.language}
@@ -218,6 +219,7 @@ export default function JsonBlockRenderer({
             return (
               <JsonChecklist
                 key={key}
+                printNote={block.printNote}
                 storageKey={block.storageKey}
                 items={block.items}
                 locale={locale}

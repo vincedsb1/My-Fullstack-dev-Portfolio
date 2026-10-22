@@ -20,10 +20,12 @@ export default function JsonChecklist({
   storageKey,
   items,
   locale = "fr",
+  printNote,
 }: {
   storageKey?: string;
   items: ReadonlyArray<{ id: string; label: string }>;
   locale?: "fr" | "en";
+  printNote?: string;
 }) {
   const [volatile, setVolatile] = useState<string | null>(null);
   const snapshot = useCallback(() => {
@@ -125,6 +127,11 @@ export default function JsonChecklist({
           {fr
             ? "Le stockage est indisponible. La progression est conservée uniquement sur cette page."
             : "Storage is unavailable. Progress is kept only on this page."}
+        </p>
+      ) : null}
+      {printNote ? (
+        <p className="blog-ds__print-only">
+          <em>{printNote}</em>
         </p>
       ) : null}
     </section>

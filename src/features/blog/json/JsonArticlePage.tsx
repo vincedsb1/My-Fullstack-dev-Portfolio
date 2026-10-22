@@ -29,10 +29,22 @@ export default function JsonArticlePage({
 }) {
   const locale = article.meta.locale;
   const fr = locale === "fr";
-  const publishedLabel = new Intl.DateTimeFormat(fr ? "fr-FR" : "en-US", {
+  const dateFormatter = new Intl.DateTimeFormat(fr ? "fr-FR" : "en-US", {
     dateStyle: "long",
     timeZone: "UTC",
-  }).format(new Date(`${article.meta.publishedAt}T00:00:00.000Z`));
+  });
+  const publishedLabel = dateFormatter.format(
+    new Date(`${article.meta.publishedAt}T00:00:00.000Z`),
+  );
+  const updatedAt =
+    article.meta.updatedAt !== article.meta.publishedAt
+      ? article.meta.updatedAt
+      : undefined;
+  const updatedLabel = updatedAt
+    ? `${fr ? "Mis à jour le" : "Updated"} ${dateFormatter.format(
+        new Date(`${updatedAt}T00:00:00.000Z`),
+      )}`
+    : undefined;
   const toc = article.sections.map((section) => ({
     id: section.id,
     label: section.title,
@@ -62,6 +74,8 @@ export default function JsonArticlePage({
               excerpt={article.meta.excerpt}
               publishedLabel={publishedLabel}
               publishedAt={article.meta.publishedAt}
+              updatedAt={updatedAt}
+              updatedLabel={updatedLabel}
               authorRole={fr ? "Développeur Fullstack" : "Full-stack developer"}
               readingLabel={`${readingMinutes} ${
                 fr ? "min de lecture" : "min read"
@@ -138,7 +152,10 @@ export default function JsonArticlePage({
                       />
                     </div>
                   ) : null}
-                  <BlogAuthorCard locale={locale} />
+                  <BlogAuthorCard
+                    locale={locale}
+                    description={article.author?.description}
+                  />
                   {related.map((rel) => (
                     <BlogNextArticle
                       key={rel.slug}

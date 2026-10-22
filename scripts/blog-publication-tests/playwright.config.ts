@@ -3,7 +3,9 @@ const preview = process.env.BLOG_PREVIEW === "1";
 const port = process.env.BLOG_PUBLICATION_PORT ?? (preview ? "3108" : "3107");
 export default defineConfig({
   testDir: ".",
-  testMatch: preview ? "preview.spec.ts" : "publication.spec.ts",
+  testMatch: preview
+    ? ["preview.spec.ts", "guide-readiness.spec.ts"]
+    : "publication.spec.ts",
   workers: 1,
   use: {
     baseURL: `http://localhost:${port}`,

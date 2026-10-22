@@ -40,7 +40,7 @@ Le preview refuse les slugs absents, les fichiers MDX et les chemins arbitraires
 
 Champs facultatifs de `meta` : `updatedAt`, `cover`, `coverAlt`, `translationKey`, `seoTitle`, `relatedProjects`. Les dates sont des jours ISO existants ; `updatedAt` ne peut précéder `publishedAt`. `coverAlt` est obligatoire avec une couverture. `seoTitle` est limité à 39 caractères hors suffixe, comme en MDX. Les projets liés doivent être réellement publiés dans la langue de l’article.
 
-`hero.primaryCta` reçoit `{label, target: "content"}`. `hero.visual` accepte `metric-panel` ou `saas-hero` (illustration serveur française, réservée au hero). `hero.eyebrow` remplace facultativement le libellé de catégorie affiché ; `hero.titleHighlight` accentue la première occurrence d’un extrait exact du titre sans modifier le H1 ni les métadonnées. `introBlocks` précède les sections ; `afterBlocks` les suit. `related.slugs` contient des articles publiés dans la même langue ; aucun lien suivant fictif n’est ajouté par défaut.
+`hero.primaryCta` reçoit `{label, target: "content"}`. `hero.visual` accepte `metric-panel` ou `saas-hero` (illustration serveur française, réservée au hero). `hero.eyebrow` remplace facultativement le libellé de catégorie affiché ; `hero.titleHighlight` accentue la première occurrence d’un extrait exact du titre sans modifier le H1 ni les métadonnées. `author.description` remplace facultativement la biographie de la carte auteur. Le hero affiche la date de mise à jour lorsqu’elle diffère de la publication. `introBlocks` précède les sections ; `afterBlocks` les suit. `related.slugs` contient des articles publiés dans la même langue ; aucun lien suivant fictif n’est ajouté par défaut.
 
 ## Blocs standards
 
@@ -55,8 +55,8 @@ Champs facultatifs de `meta` : `updatedAt`, `cover`, `coverAlt`, `translationKey
 | `table` | `caption`, `columns: string[]`, `rows: string[][]` ; nombre de cellules contrôlé |
 | `figure` | `src`, `alt`, `caption?`, `width?`, `height?` ; dimensions fournies ensemble, valeurs positives ≤ 8 192 ; défaut 1 200 × 675 |
 | `video` | `provider: youtube`, `id` de 11 caractères, `title` |
-| `code` | `language`, `code`, `title?`, `copyable?` ; langue/titre conservés même sans copie |
-| `checklist` | `storageKey`, `items: [{id,label}]` |
+| `code` | `language`, `code`, `title?`, `copyable?`, `id?` (unique et validé) ; langue/titre conservés même sans copie |
+| `checklist` | `storageKey`, `items: [{id,label}]`, `printNote?` (note en italique, visible uniquement à l’impression) |
 | `accordion` | `items: [{title,blocks}]`, via l’accordéon commun |
 | `custom` | `component` connu et `props` strictement validées |
 
@@ -110,3 +110,7 @@ Le scan JSON a une inclusion de traçage explicite et bornée dans `next.config.
 - `npm run blog:test:preview` : lance un serveur de développement dédié, contrôle le shell complet et produit les captures des quatre largeurs/deux thèmes.
 
 Ces deux dernières commandes font partie de la CI. Aucun article synthétique de test, capture PNG ou PDF n’est versionné. L’export sémantique MDX `contracts/internationaliser-saas-v1.json` est conservé volontairement comme contrat de parité. Voir [AUDIT_FINAL_ETAPES_1_2_3.md](AUDIT_FINAL_ETAPES_1_2_3.md) pour le verdict et le budget de performance global restant.
+
+## Préparation du guide sans bascule publique
+
+`guide-premier-emploi-migration.json` est un brouillon de parité, accessible uniquement dans le preview de développement. Il utilise une clé de checklist propre pour préserver celle des lecteurs. Le guide publié reste en MDX jusqu’à l’étape 5. Voir [PREPARATION_ETAPE_5.md](PREPARATION_ETAPE_5.md).

@@ -1,0 +1,997 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "seoTitle": "Premier emploi de développeur : guide",
+    "title": "Comment décrocher son premier emploi de développeur en 2026 ?",
+    "description": "CV, LinkedIn, portfolio, projets, réseau et entretiens : des conseils concrets pour décrocher un premier emploi de développeur.",
+    "excerpt": "Une méthode concrète pour construire sa crédibilité, trouver des opportunités et préparer ses entretiens de développeur junior.",
+    "slug": "guide-premier-emploi-migration",
+    "locale": "fr",
+    "category": "Carrière",
+    "publishedAt": "2026-10-11",
+    "updatedAt": "2026-10-21",
+    "status": "draft"
+  },
+  "hero": {
+    "eyebrow": "Carrière • Développement Web",
+    "primaryCta": {
+      "label": "Commencer la lecture",
+      "target": "content"
+    }
+  },
+  "introBlocks": [
+    {
+      "type": "lead",
+      "content": [
+        {
+          "text": "Trouver son premier emploi dans le développement ne repose pas uniquement sur ses compétences techniques. Il faut aussi savoir les démontrer, inspirer confiance et multiplier les occasions de rencontrer les bonnes personnes."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "J'ai rassemblé ici les conseils que je partage régulièrement avec des développeurs juniors, avec une méthode concrète pour passer à l'action."
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "les-trois-piliers",
+      "title": "Construire les trois piliers de sa crédibilité",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Avant de multiplier les candidatures, prépare trois supports à jour : un CV, un profil LinkedIn et un portfolio."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Un recruteur doit pouvoir repérer le poste que tu vises et trouver des exemples concrets de ce que tu sais faire."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Un CV lisible, adapté au poste visé"
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Mise en page :",
+                "bold": true
+              },
+              {
+                "text": " Choisis un modèle sobre et aéré, avec une structure de texte lisible. Évite les designs trop complexes ou uniquement graphiques."
+              }
+            ],
+            [
+              {
+                "text": "Clarté :",
+                "bold": true
+              },
+              {
+                "text": " Rédige des descriptions courtes, centrées sur tes missions et réalisations. Écarte les détails sans rapport avec le poste."
+              }
+            ],
+            [
+              {
+                "text": "Preuves :",
+                "bold": true
+              },
+              {
+                "text": " Donne des exemples concrets de réalisations."
+              }
+            ],
+            [
+              {
+                "text": "Relecture :",
+                "bold": true
+              },
+              {
+                "text": " Fais relire ton CV et demande à une IA de relever les formulations ambiguës. Vérifie chaque suggestion avant de la garder."
+              }
+            ],
+            [
+              {
+                "text": "Format :",
+                "bold": true
+              },
+              {
+                "text": " Prévois une version PDF propre et légère, avec une structure lisible par les logiciels de recrutement (ATS)."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "Une photo impeccable :",
+          "tone": "info",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": " Pour tes candidatures en France, considère une photo soignée comme indispensable. Choisis un portrait professionnel avec un visage bien éclairé, un léger sourire, un cadrage net et un fond sobre. Elle participe à la première impression du recruteur et l'aide à t'identifier parmi les candidatures : prends le temps de te mettre en valeur."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Place le poste visé et les technologies principales près du haut de la page."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Un LinkedIn qui explique ton positionnement"
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Titre explicite :",
+                "bold": true
+              },
+              {
+                "text": " Indique le poste recherché et les technologies que tu utilises."
+              }
+            ],
+            [
+              {
+                "text": "Complétude :",
+                "bold": true
+              },
+              {
+                "text": " Détaille tes expériences pertinentes, tes projets et ajoute tes compétences techniques. Affiche tes liens GitHub et Portfolio."
+              }
+            ],
+            [
+              {
+                "text": "Clarté :",
+                "bold": true
+              },
+              {
+                "text": " Explique la valeur que tu apportes, évite les formulations vagues et les listes de buzzwords."
+              }
+            ],
+            [
+              {
+                "text": "Preuve sociale :",
+                "bold": true
+              },
+              {
+                "text": " Demande des recommandations à d'anciens collègues ou formateurs."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Exemple de titre efficace"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Développeur Fullstack Junior | React • TypeScript • Node.js | Recherche CDI",
+              "code": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Garde le même intitulé de poste et les mêmes compétences clés sur ton CV et LinkedIn."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Un portfolio qui démontre tes compétences"
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Sélection :",
+                "bold": true
+              },
+              {
+                "text": " Présente ta spécialisation et sélectionne tes projets les plus pertinents. Montre des applications réelles et fonctionnelles."
+              }
+            ],
+            [
+              {
+                "text": "Contexte :",
+                "bold": true
+              },
+              {
+                "text": " Pour chaque projet, explique le problème résolu, les technologies utilisées et justifie tes choix techniques."
+              }
+            ],
+            [
+              {
+                "text": "Accès :",
+                "bold": true
+              },
+              {
+                "text": " Donne un accès facile aux démonstrations en ligne et aux dépôts GitHub."
+              }
+            ],
+            [
+              {
+                "text": "Qualité technique :",
+                "bold": true
+              },
+              {
+                "text": " Teste l'affichage sur mobile, l'accessibilité au clavier et les performances. Vérifie les liens et corrige les erreurs repérées."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Pour un projet collectif, distingue clairement ta contribution de celle de l'équipe."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Ces supports ne garantissent pas un emploi. Ils donnent au recruteur des exemples concrets pour examiner ton profil et les projets que tu peux présenter."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "developper-reseau",
+      "title": "Développer activement son réseau",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Les annonces ne sont pas le seul point d'entrée. En échangeant avec des personnes du métier, tu peux demander conseil et parfois apprendre qu'une équipe prépare un recrutement."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Identifier les bonnes personnes"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Ne te limite pas aux recruteurs. Cherche à entrer en contact avec ceux qui comprennent ton métier et ont des besoins :"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "CTO Tech Leads Engineering Managers Lead Developers Fondateurs Product Managers"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Envoie quelques invitations ciblées et personnalise chaque message."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Contacter directement les décisionnaires"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Écris un message bref qui explique ton profil et ce qui t'intéresse dans l'entreprise. Pour un premier échange, tu peux aussi demander un conseil ou proposer ton aide, plutôt que d'ouvrir directement par une demande de poste."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "id": "msg-template",
+          "language": "text",
+          "title": "Modèle de message d'approche",
+          "code": "Bonjour [Prénom],\n\nJe découvre votre travail chez [Entreprise] et je m'intéresse particulièrement à [élément précis du produit ou de l'équipe technique].\n\nJe suis développeur junior spécialisé en [technologies] et je recherche actuellement [type d'opportunité].\n\nAuriez-vous un conseil à me donner pour me rapprocher d'une équipe comme la vôtre ?\n\nMerci pour votre temps."
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "⚠️ Il s'agit d'un modèle à personnaliser absolument selon le contexte, pas d'un message à envoyer en masse."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trouver-opportunites",
+      "title": "Multiplier les opportunités",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "La recherche demande de la régularité. Combine réponses aux offres, candidatures spontanées et prises de contact directes."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Consulte plusieurs plateformes, pas seulement LinkedIn. Va sur les sites carrières des entreprises."
+              }
+            ],
+            [
+              {
+                "text": "Repère les entreprises qui utilisent ta stack technique."
+              }
+            ],
+            [
+              {
+                "text": "N'attends pas de correspondre à 100% aux critères d'une annonce pour postuler."
+              }
+            ],
+            [
+              {
+                "text": "Adapte tes candidatures pour les entreprises qui t'intéressent vraiment."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "quote",
+          "content": [
+            {
+              "text": "Ne cherche pas uniquement les géants de la tech.",
+              "bold": true
+            },
+            {
+              "text": " Les PME, agences web, éditeurs logiciels spécialisés, entreprises régionales et startups moins visibles représentent d'excellentes opportunités pour débuter."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "creer-contenu",
+      "title": "Créer du contenu pour être visible",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Produire du contenu permet de montrer ta progression, de partager tes connaissances et de ne plus être un profil anonyme. L'objectif n'est pas de devenir influenceur, mais de documenter ton travail."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Idées de contenus actionnables"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Retour d'expérience"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "\"J'ai rencontré ce problème de performance. Voici comment je l'ai résolu.\""
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Apprentissage"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "\"Voici trois choses que j'ai comprises en apprenant TypeScript cette semaine.\""
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Démonstration"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "\"Courte vidéo montrant le fonctionnement de ma nouvelle application.\""
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Comparaison"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "\"REST ou GraphQL : voici les différences pratiques que j'ai observées.\""
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Conseils de publication"
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Régularité :",
+                "bold": true
+              },
+              {
+                "text": " Définis une cadence soutenable. Ne sacrifie pas ton apprentissage technique pour créer du contenu."
+              }
+            ],
+            [
+              {
+                "text": "Authenticité :",
+                "bold": true
+              },
+              {
+                "text": " Écris avec tes mots. L'IA peut corriger, mais l'expérience doit être la tienne."
+              }
+            ],
+            [
+              {
+                "text": "Interactions :",
+                "bold": true
+              },
+              {
+                "text": " Laisse des commentaires pertinents sous les publications de professionnels et participe régulièrement aux discussions techniques."
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparer-entretiens",
+      "title": "Se préparer aux entretiens",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Prépare tes entretiens autour de quatre situations fréquentes :"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "A. Entretien RH & Motivation"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Sache présenter ton parcours et tes motivations en quelques phrases. Si tu es en reconversion, explique ce qui t'a conduit vers le développement. Prépare des questions à poser sur l'entreprise."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "id": "prompt-template",
+          "language": "text",
+          "title": "Prompt IA d'entraînement",
+          "code": "Joue le rôle d'un recruteur technique exigeant qui fait passer un entretien à un développeur junior. Pose-moi les questions une par une. Attends ma réponse avant de continuer. Après chaque réponse, évalue sa clarté, sa pertinence et identifie les éléments manquants."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "B. Algorithmique & Live Coding"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Entraîne-toi sur "
+            },
+            {
+              "text": "CodinGame",
+              "link": {
+                "href": "https://www.codingame.com/start/"
+              }
+            },
+            {
+              "text": " ou LeetCode. Décompose le problème avant de coder et explique ton raisonnement à voix haute. La méthode compte autant que le résultat."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "C. Questions Techniques"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Maîtrise les fondamentaux de ta stack. Comprends les concepts plutôt que de réciter des définitions. Sois capable de dire \"je ne sais pas, mais voici comment je chercherais\"."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "D. Études de cas & Architecture"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "On peut te demander d'imaginer l'architecture d'une app simple. Identifie le besoin métier, choisis la BDD, le front, l'API et justifie tes compromis techniques."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "organiser-recherche",
+      "title": "Organiser sa recherche",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Tiens un tableau (Notion, Excel) pour noter les candidatures envoyées, les relances prévues et les réponses reçues."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "caption": "Exemple de tableau de suivi des candidatures",
+          "columns": [
+            "Entreprise",
+            "Poste",
+            "Statut",
+            "Prochaine action"
+          ],
+          "rows": [
+            [
+              "Entreprise A",
+              "Dev React",
+              "Candidature envoyée",
+              "Noter une date de relance"
+            ],
+            [
+              "Entreprise B",
+              "Développeur full stack",
+              "Entretien programmé",
+              "Préparer les questions techniques"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rencontrer-professionnels",
+      "title": "Sortir des candidatures en ligne",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Les meetups techniques, job datings et conférences locales donnent l'occasion d'échanger directement avec des professionnels. Après la rencontre, ajoute-les sur LinkedIn et rappelle le sujet dont vous avez parlé."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dix-conseils",
+      "title": "Dix conseils supplémentaires pour se démarquer",
+      "number": true,
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "#1 Définir un positionnement clair",
+              "description": [
+                {
+                  "text": "Mieux vaut être identifiable sur une stack précise que se dire expert en tout."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action : Définis en une phrase ton poste et ta stack."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#2 Maîtriser les fondamentaux",
+              "description": [
+                {
+                  "text": "Les bases de JavaScript, HTML/CSS, HTTP et SQL te serviront sur différents projets, même si les frameworks changent."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action : Révise l'asynchrone, la manipulation du DOM et les API."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#3 Soigner son GitHub",
+              "description": [
+                {
+                  "text": "C'est la preuve concrète de ta manière de coder et de documenter."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action : Épingle quelques projets représentatifs avec des README explicatifs."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#4 Construire un vrai produit",
+              "description": [
+                {
+                  "text": "Un projet abouti comme "
+                },
+                {
+                  "text": "Smartflow, présenté dans mon portfolio",
+                  "link": {
+                    "href": "/fr#projectsContainer"
+                  }
+                },
+                {
+                  "text": ", avec conception, architecture, choix de stack, maquettes et tests, est plus parlant qu'une liste de tutoriels inachevés."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action : Choisis un périmètre adapté et documente tes choix techniques ainsi que la gestion des erreurs."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#5 Montrer comment tu travailles en équipe",
+              "description": [
+                {
+                  "text": "Une contribution open source ou un hackathon peut te donner une situation concrète à raconter en entretien."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action : Décris ton rôle, les décisions prises en équipe et la répartition du travail."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#6 Personnaliser ses candidatures",
+              "description": [
+                {
+                  "text": "Une candidature ciblée te permet de relier ton profil aux besoins de l'offre."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action : Relie une compétence demandée à un exemple tiré de tes projets."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#7 Activer la cooptation",
+              "description": [
+                {
+                  "text": "Tes anciens camarades ou formateurs peuvent te renseigner sur les entreprises qui recrutent."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action : Demande des mises en relation ciblées."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#8 Développer ses soft skills",
+              "description": [
+                {
+                  "text": "Savoir expliquer un blocage et demander de l'aide fait aussi partie du travail en équipe."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action : Présente ce que tu as essayé, le résultat et l'aide qu'il te faut."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#9 Utiliser l'IA intelligemment",
+              "description": [
+                {
+                  "text": "Un assistant pour accélérer, pas une béquille qui code à ta place."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action : Comprends et teste chaque ligne suggérée par l'IA."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#10 Ajuster sa recherche",
+              "description": [
+                {
+                  "text": "Après plusieurs candidatures sans réponse, vérifie si les offres visées correspondent à ton profil."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action : Compare les offres à ton CV et à tes projets, puis ajuste ta cible ou leur présentation."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "erreurs-a-eviter",
+      "title": "Ce qu'il faut éviter",
+      "number": true,
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": " Postuler avec un CV bâclé ou inachevé. Avant la première candidature, finalise un CV irréprochable : clair, sans fautes, bien présenté et adapté au poste. Ce travail de préparation est la base pour être compétitif et éviter de griller tes premières opportunités."
+              }
+            ],
+            [
+              {
+                "text": " Confondre la multiplication aveugle des candidatures avec l'efficacité."
+              }
+            ],
+            [
+              {
+                "text": " Confondre popularité sur LinkedIn et réelles compétences de développeur."
+              }
+            ],
+            [
+              {
+                "text": " Prétendre maîtriser des technologies qu'on ne comprend pas vraiment en profondeur."
+              }
+            ],
+            [
+              {
+                "text": " Présenter un projet généré à 100% par IA sans pouvoir en expliquer l'architecture."
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "checklist-finale",
+      "title": "Ta checklist pour passer à l'action",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Coche les étapes réalisées. Ta progression est sauvegardée dans ce navigateur."
+            }
+          ]
+        },
+        {
+          "type": "checklist",
+          "storageKey": "vd_guide_migration_preview_v1",
+          "items": [
+            {
+              "id": "chk-1",
+              "label": "Mon CV est clair, aéré et a été relu."
+            },
+            {
+              "id": "chk-2",
+              "label": "Mon profil LinkedIn est complet et précis."
+            },
+            {
+              "id": "chk-3",
+              "label": "Mon portfolio présente mes meilleurs projets en ligne."
+            },
+            {
+              "id": "chk-4",
+              "label": "Mon GitHub démontre mes compétences (README soignés)."
+            },
+            {
+              "id": "chk-5",
+              "label": "J'ai défini mon poste cible et ma stack principale."
+            },
+            {
+              "id": "chk-6",
+              "label": "J'ai identifié une liste d'entreprises pertinentes."
+            },
+            {
+              "id": "chk-7",
+              "label": "J'ai commencé à contacter des professionnels sur LinkedIn."
+            },
+            {
+              "id": "chk-8",
+              "label": "Je dispose d'un outil de suivi (Notion, Excel) pour mes candidatures."
+            },
+            {
+              "id": "chk-9",
+              "label": "Je m'entraîne régulièrement aux tests techniques (algo/live coding)."
+            },
+            {
+              "id": "chk-10",
+              "label": "J'ai préparé mon pitch de présentation personnelle (2 min)."
+            },
+            {
+              "id": "chk-11",
+              "label": "Je sais justifier l'architecture de mes projets personnels."
+            },
+            {
+              "id": "chk-12",
+              "label": "J'ai identifié des meetups ou événements tech près de chez moi."
+            },
+            {
+              "id": "chk-13",
+              "label": "J'ai défini une routine de recherche soutenable dans la durée."
+            },
+            {
+              "id": "chk-14",
+              "label": "J'analyse mes résultats (retours positifs/négatifs) pour m'améliorer."
+            }
+          ],
+          "printNote": "(La version interactive de la checklist est disponible sur la version web du guide)."
+        }
+      ]
+    },
+    {
+      "id": "faire-avancer-recherche",
+      "title": "Pour faire avancer ta recherche",
+      "number": false,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Commence par mettre à jour ton CV et choisir quelques projets que tu peux présenter. Cible ensuite des entreprises qui recrutent sur ta stack, suis tes démarches et ajuste tes candidatures selon les échanges obtenus."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "author": {
+    "description": "Je conçois et développe des applications web modernes en portant une attention particulière à l'expérience utilisateur, à la qualité logicielle et à la compréhension des besoins produit."
+  },
+  "related": {
+    "slugs": [
+      "internationaliser-saas-lancement"
+    ]
+  }
+}

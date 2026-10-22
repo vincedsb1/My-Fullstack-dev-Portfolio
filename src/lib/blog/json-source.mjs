@@ -260,11 +260,18 @@ function blocks(value, file, at, ctx, depth = 0) {
           error(file, p, "width et height doivent être fournis ensemble");
         break;
       case "code":
-        keys(b, ["type", "code", "language"], ["title", "copyable"], file, p);
+        keys(
+          b,
+          ["type", "code", "language"],
+          ["title", "copyable", "id"],
+          file,
+          p,
+        );
         string(b.code, file, `${p}.code`);
         string(b.language, file, `${p}.language`);
         optString(b.title, file, `${p}.title`);
         bool(b.copyable, file, `${p}.copyable`);
+        if (b.id !== undefined) registerId(b.id, file, `${p}.id`, ctx);
         break;
       case "video":
         keys(b, ["type", "provider", "id", "title"], [], file, p);
@@ -275,7 +282,8 @@ function blocks(value, file, at, ctx, depth = 0) {
         string(b.title, file, `${p}.title`);
         break;
       case "checklist": {
-        keys(b, ["type", "storageKey", "items"], [], file, p);
+        keys(b, ["type", "storageKey", "items"], ["printNote"], file, p);
+        optString(b.printNote, file, `${p}.printNote`);
         string(b.storageKey, file, `${p}.storageKey`);
         if (!/^vd_[a-z0-9_]+$/.test(b.storageKey))
           error(
@@ -378,6 +386,7 @@ export function validateJsonArticle(
       "related",
       "legacyAnchors",
       "readingNote",
+      "author",
     ],
     file,
     "article",
@@ -477,6 +486,10 @@ export function validateJsonArticle(
     storageKeys: new Set(),
     lastHeading: 1,
   };
+  if (article.author !== undefined) {
+    keys(article.author, ["description"], [], file, "author");
+    string(article.author.description, file, "author.description");
+  }
   if (article.legacyAnchors !== undefined) {
     keys(article.legacyAnchors, [], ["top", "content"], file, "legacyAnchors");
     for (const [key, id] of Object.entries(article.legacyAnchors))

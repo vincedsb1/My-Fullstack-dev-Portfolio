@@ -54,11 +54,13 @@ export type ArticleBlock =
       language: string;
       title?: string;
       copyable?: boolean;
+      id?: string;
     }
   | { type: "video"; provider: "youtube"; id: string; title: string }
   | {
       type: "checklist";
       storageKey: string;
+      printNote?: string;
       items: Array<{ id: string; label: string }>;
     }
   | {
@@ -93,6 +95,7 @@ export type JsonBlogArticle = {
   /** Ancres publiques du rendu précédent, conservées lors d’une migration. */
   legacyAnchors?: { top?: string; content?: string };
   readingNote?: { title: string; content: RichText };
+  author?: { description: string };
   introBlocks?: ArticleBlock[];
   sections: Array<{
     id: string;

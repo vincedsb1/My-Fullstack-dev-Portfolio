@@ -54,11 +54,13 @@ export default async function BlogCodeSample({
   code,
   language = "text",
   copyable = true,
+  id,
 }: {
   label: string;
   code: string;
   language?: string;
   copyable?: boolean;
+  id?: string;
 }) {
   const tree: Root = {
     type: "root",
@@ -90,7 +92,7 @@ export default async function BlogCodeSample({
   }
   const colored = findCode(tree.children);
   return (
-    <div className="blog-ds__code" data-language={language}>
+    <div className="blog-ds__code" data-language={language} id={id}>
       <div className="blog-ds__code-toolbar">
         <span>{label}</span>
         {copyable ? <CopyButton code={code} /> : null}

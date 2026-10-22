@@ -65,6 +65,8 @@ export function BlogArticleHero({
   ctaLabel = "Commencer la lecture",
   ctaTarget = "blog-article-body",
   titleHighlight,
+  updatedAt,
+  updatedLabel,
 }: {
   category: string;
   title: string;
@@ -79,6 +81,8 @@ export function BlogArticleHero({
   ctaLabel?: string;
   ctaTarget?: string;
   titleHighlight?: string;
+  updatedAt?: string;
+  updatedLabel?: string;
 }) {
   const index = titleHighlight ? title.indexOf(titleHighlight) : -1;
   const titleContent =
@@ -122,6 +126,9 @@ export function BlogArticleHero({
             ) : (
               <span>{publishedLabel}</span>
             )}
+            {updatedAt && updatedLabel ? (
+              <time dateTime={updatedAt}>{updatedLabel}</time>
+            ) : null}
             <span>{readingLabel}</span>
           </div>
         </div>

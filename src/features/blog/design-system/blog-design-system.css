@@ -402,3 +402,8 @@
 .blog-ds .blog-related-projects { background: var(--blog-surface); color: var(--blog-ink); border-color: var(--blog-line); }
 .blog-ds .blog-related-projects a { color: var(--blog-accent); }
 @media print { .blog-ds .blog-related-projects { break-inside: avoid; } }
+/* Texte éditorial copiable et dates du shell commun. */
+.blog-ds__code[data-language="text"] pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.blog-ds__print-only { display: none; }
+@media (max-width: 900px) { .blog-ds__byline-metadata { flex-wrap: wrap; } }
+@media print { .blog-ds__print-only { display: block; } }

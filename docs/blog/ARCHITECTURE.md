@@ -106,3 +106,7 @@ Voir [JSON_ENGINE.md](JSON_ENGINE.md) pour le schéma et [AUDIT_FINAL_ETAPES_1_2
 `InternationalisationHeroArt.tsx` extrait l’illustration serveur existante ; le gabarit historique et le registre `saas-hero` partagent cette seule implémentation. Le Showcase utilise ce même visuel. Les cinq modules de `InternationalisationArticleModules.tsx` sont inchangés.
 
 Les options JSON facultatives `hero.eyebrow`, `hero.titleHighlight`, `readingNote` et `legacyAnchors` préservent les détails éditoriaux et les anciens fragments sans branchement par slug dans le moteur. La biographie française et les portraits réutilisent la carte auteur commune et `Avatar` du portfolio. Ces options ne sont pas nécessaires pour écrire un article standard.
+
+## Préparation de l’étape 5
+
+Le brouillon JSON `guide-premier-emploi-migration` permet de comparer le contenu du guide dans le même shell que le SaaS. Il ne remplace pas sa route publique, reste hors index/sitemap et utilise une clé de checklist distincte. Les espaces JSX invalides du tableau historique sont corrigés dès ce lot et contrôlés en développement (console et navigation). Les compléments facultatifs du moteur et les critères de bascule sont détaillés dans [PREPARATION_ETAPE_5.md](PREPARATION_ETAPE_5.md).

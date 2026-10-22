@@ -9,7 +9,8 @@ Branche de consolidation : `dev04`, issue de `dev03` à `8ec765f38b3bc0e69b41a72
 3. [CREER_UN_ARTICLE.md](CREER_UN_ARTICLE.md), [JSON_ENGINE.md](JSON_ENGINE.md), [ARTICLE_TEMPLATE.json](ARTICLE_TEMPLATE.json) : création d’un article standard en JSON local.
 4. [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) : composants effectivement partagés, variantes et impression.
 5. [ETAPE_4_MIGRATION_SAAS.md](ETAPE_4_MIGRATION_SAAS.md) : migration, parité et recette ; [PREPARATION_ETAPE_4.md](PREPARATION_ETAPE_4.md) garde les critères d’entrée.
-6. [contracts/internationaliser-saas-v1.json](contracts/internationaliser-saas-v1.json) : export du rendu MDX avant migration, contenu et SEO ; [contracts/guide-checklist-v1.json](contracts/guide-checklist-v1.json) : clé, format, 14 IDs et libellés à conserver.
+6. [PREPARATION_ETAPE_5.md](PREPARATION_ETAPE_5.md) : corrections du tableau, brouillon commun du guide et critères de bascule.
+7. [contracts/internationaliser-saas-v1.json](contracts/internationaliser-saas-v1.json) : export du rendu MDX avant migration, contenu et SEO ; [contracts/guide-checklist-v1.json](contracts/guide-checklist-v1.json) : clé, format, 14 IDs et libellés à conserver.
 
 [01_inventaire_reference_visuelle_blog.md](01_inventaire_reference_visuelle_blog.md) et [03_audit_critique_showcase_blog.md](03_audit_critique_showcase_blog.md) conservent l’analyse historique du prototype. Leur actualisation `dev04` distingue ce qui a été résolu des observations de l’ancien commit. L’[aperçu HTML](previews/showcase-preview.html) est historique et non contractuel ; la référence est la route React.
 
