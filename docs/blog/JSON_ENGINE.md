@@ -1,12 +1,12 @@
 # Moteur JSON v1
 
-Référence consolidée : `dev04`, 22 octobre 2026. Le JSON est le format par défaut des nouveaux articles standards. Le SaaS (étape 4) et le guide (étape 5) sont publiés en JSON avec les mêmes composants.
+Référence consolidée : `dev04`, 22 octobre 2026. Le JSON est le format par défaut des nouveaux articles standards. Le SaaS (étape 4) et le guide (étape 5) sont publiés en JSON dans les deux langues, avec les mêmes composants.
 
 ## Écrire et prévisualiser
 
-1. Copier [ARTICLE_TEMPLATE.json](ARTICLE_TEMPLATE.json) dans `src/content/blog-json/fr/<slug>.json` et rédiger le contenu réel.
+1. Copier [ARTICLE_TEMPLATE.json](ARTICLE_TEMPLATE.json) dans `src/content/blog-json/<locale>/<slug>.json` et rédiger le contenu réel.
 2. Conserver des IDs et une éventuelle clé de checklist stables. Ranger les images dans `public/blog/<slug>/`.
-3. Lancer `npm run blog:validate` puis `npm run dev`. Ouvrir `/fr/blog/json-preview?slug=<slug>` pour un brouillon ; sans query, la fixture de démonstration est affichée.
+3. Lancer `npm run blog:validate` puis `npm run dev`. Ouvrir `/<locale>/blog/json-preview?slug=<slug>` pour un brouillon ; sans query, la fixture de démonstration française est affichée sur le preview FR. Le preview EN exige un slug anglais existant.
 4. Vérifier le contenu, le clavier, les deux thèmes et le mobile. Utiliser `status: "published"` pour une publication demandée, `draft` pour une préparation.
 5. Exécuter `npm run blog:test:json`, `npm run build`, `npm run blog:test:seo`. L’article, son index, ses métadonnées, son image sociale et son entrée sitemap sont générés automatiquement. Aucun registre de pages ou import d’article à modifier.
 
@@ -40,7 +40,7 @@ Le preview refuse les slugs absents, les fichiers MDX et les chemins arbitraires
 
 Champs facultatifs de `meta` : `updatedAt`, `cover`, `coverAlt`, `translationKey`, `seoTitle`, `relatedProjects`. Les dates sont des jours ISO existants ; `updatedAt` ne peut précéder `publishedAt`. `coverAlt` est obligatoire avec une couverture. `seoTitle` est limité à 39 caractères hors suffixe, comme en MDX. Les projets liés doivent être réellement publiés dans la langue de l’article.
 
-`hero.primaryCta` reçoit `{label, target: "content"}`. `hero.visual` accepte `metric-panel` ou `saas-hero` (illustration serveur française, réservée au hero). `hero.eyebrow` remplace facultativement le libellé de catégorie affiché ; `hero.titleHighlight` accentue la première occurrence d’un extrait exact du titre sans modifier le H1 ni les métadonnées. `author.description` remplace facultativement la biographie de la signature auteur. Le hero affiche la date de mise à jour lorsqu’elle diffère de la publication. `introBlocks` précède les sections ; `afterBlocks` les suit. `related.slugs` contient des articles publiés dans la même langue ; aucun lien suivant fictif n’est ajouté par défaut.
+`hero.primaryCta` reçoit `{label, target: "content"}`. `hero.visual` accepte `metric-panel` ou `saas-hero` (illustration serveur FR/EN, réservée au hero). `hero.eyebrow` remplace facultativement le libellé de catégorie affiché ; `hero.titleHighlight` accentue la première occurrence d’un extrait exact du titre sans modifier le H1 ni les métadonnées. `author.description` remplace facultativement la biographie de la signature auteur. Le hero affiche la date de mise à jour lorsqu’elle diffère de la publication. `introBlocks` précède les sections ; `afterBlocks` les suit. `related.slugs` contient des articles publiés dans la même langue ; aucun lien suivant fictif n’est ajouté par défaut.
 
 ## Blocs standards
 
@@ -70,7 +70,7 @@ La liste des noms, props admises, langues et IDs DOM est centralisée dans `src/
 
 | ID | Props / implémentation |
 |---|---|
-| `saas-hero` | zéro props, illustration serveur historique ; placement hero uniquement, FR |
+| `saas-hero` | zéro props, illustration serveur historique localisée ; placement hero uniquement |
 | `metric-panel` | `{value, label, caption?}`, rendu serveur |
 | `saas-mosaic` | zéro props, mosaïque historique |
 | `saas-language-demo` | zéro props, deux sélecteurs indépendants |
@@ -78,7 +78,7 @@ La liste des noms, props admises, langues et IDs DOM est centralisée dans `src/
 | `saas-acquisition-funnel` | zéro props, funnel conceptuel à quatre étapes |
 | `saas-decision-tree` | zéro props, huit combinaisons de réponses et reset |
 
-Les cinq widgets SaaS sont FR uniquement, une occurrence chacun par article. `JsonCustomRegistry` adapte les composants existants et leur CSS encapsulé ; il n’en copie pas la logique. Leurs IDs participent à la détection des collisions avec les sections et titres.
+Les cinq widgets SaaS fonctionnent en FR et EN, une occurrence chacun par article. Leurs libellés proviennent de `src/i18n/messages/{fr,en}.json` sous `blogSaas` ; la langue de la démonstration peut différer volontairement de celle du site. `JsonCustomRegistry` adapte les composants existants et leur CSS encapsulé ; il n’en copie pas la logique. Leurs IDs participent à la détection des collisions avec les sections et titres.
 
 Ajouter un module réellement nouveau exige du code React et une entrée de registre contrôlée. Écrire un article avec les blocs standards ou ces modules existants exige seulement du JSON et, si nécessaire, des médias.
 
@@ -86,7 +86,7 @@ Ajouter un module réellement nouveau exige du code React et une entrée de regi
 
 Une checklist sauvegarde uniquement les cases cochées, sous la forme `{"id":true}`. La lecture ignore les valeurs non booléennes, données corrompues et tableaux. La progression suit les vrais items ; reset, rechargement et synchronisation entre onglets sont testés. Lorsque le stockage est refusé, les cases restent utilisables dans la page et un message explique que la progression n’est pas enregistrée.
 
-Les clés respectent `^vd_[a-z0-9_]+$` (par exemple `vd_mon_article_v1`). Deux checklists d’un article, ou de deux articles publiés, ne peuvent partager la même clé. `vd_guide_checklist_v1` est réservée au guide FR à son slug historique, avec les 14 IDs ordonnés `chk-1` à `chk-14`. Le contrat complet est [contracts/guide-checklist-v1.json](contracts/guide-checklist-v1.json). Ne pas renommer cette clé ni réattribuer les IDs. Le reset de ce composant demande confirmation, comme le guide.
+Les clés respectent `^vd_[a-z0-9_]+$` (par exemple `vd_mon_article_v1`). Deux checklists d’un article, ou de deux articles publiés, ne peuvent partager la même clé. Seule exception : `vd_guide_checklist_v1` est partagée par les guides FR `guide-premier-emploi-developpeur` et EN `first-developer-job-guide`, associés par `translationKey: first-developer-job-guide`, avec les 14 IDs ordonnés `chk-1` à `chk-14`. Le contrat complet est [contracts/guide-checklist-v1.json](contracts/guide-checklist-v1.json). Ne pas renommer cette clé ni réattribuer les IDs. Le reset de ce composant demande confirmation, comme le guide.
 
 `legacyAnchors: {top?, content?}` conserve les anciens fragments d’un article migré. Ces IDs sont validés dans le même espace que les autres ancres ; les liens existants vers `#article-top` et `#article-body` du SaaS restent valables. `readingNote: {title, content: RichNode[]}` reste une option de note éditoriale de sommaire, au serveur, avec les mêmes contrôles de texte et de liens. Le SaaS ne l’utilise plus : son sommaire reste seul pour alléger la colonne. Ne pas ajouter de note par défaut aux futurs articles.
 
@@ -98,7 +98,7 @@ Les IDs de sections, `${id}-heading`, titres explicites, shell et widgets doiven
 
 Les routes génériques utilisent `generateStaticParams`, `dynamicParams=false` et les mêmes métadonnées/JSON-LD pour les deux formats. Canonical, Open Graph, Twitter, BlogPosting, BreadcrumbList, sitemap, index et images 1 200 × 630 proviennent de ce catalogue. Aucun patcher SEO ni page par article.
 
-Le shell accepte FR/EN. Un article EN publié exige une vraie version FR publiée avec le même `translationKey`. Les traductions ne sont pas générées. Les fixtures EN du test de publication sont des données synthétiques temporaires, retirées avant livraison ; aucun article EN n’est ajouté au site.
+Le shell accepte FR/EN. Un article EN publié exige une vraie version FR publiée avec le même `translationKey`. Les traductions demandées sont rédigées dans leur propre source ; aucune copie FR sous une URL EN. Les deux traductions réelles sont permanentes. Les fixtures supplémentaires du test de publication restent des données synthétiques temporaires, retirées avant livraison.
 
 Le scan JSON a une inclusion de traçage explicite et bornée dans `next.config.mjs` ; les racines injectables des tests ne doivent pas faire embarquer tout le dépôt.
 
@@ -116,3 +116,9 @@ Ces deux dernières commandes font partie de la CI. Aucun article synthétique d
 `guide-premier-emploi-developpeur.json` remplace le MDX au même slug. L’ancien brouillon `guide-premier-emploi-migration` est retiré ; le preview de développement utilise désormais le slug public. Sa checklist lit directement `vd_guide_checklist_v1`, avec les quatorze IDs et le format originaux : aucun transfert ni effacement de données. Tester ce preview partage donc la progression du guide sur la même origine locale.
 
 Les onze sections, les emphases, les liens, les modèles à copier, les dates et l’image sociale sont comparés au contrat historique indépendant `contracts/guide-content-v1.json`. Les composants historiques restent disponibles pour la recette d’interopérabilité et le futur nettoyage. Voir [ETAPE_5_MIGRATION_GUIDE.md](ETAPE_5_MIGRATION_GUIDE.md).
+
+## Création d’une paire FR/EN
+
+Les fichiers de chaque langue utilisent le schéma natif v1, sans enveloppe supplémentaire. Une paire partage `meta.translationKey` ; `locale`, titre, description, chapeau, catégorie, sections et autres textes visibles sont localisés. Les IDs de sections et d’items restent identiques entre variantes pour la maintenance. Les relations `related.slugs` pointent vers la variante publiée dans la langue courante. Un dossier préparatoire bilingue peut contenir un tableau `articles`, mais il doit être extrait en deux fichiers natifs avant validation ; le renderer ne lit pas cette enveloppe.
+
+Voir [MISE_EN_PLACE_FR_EN.md](MISE_EN_PLACE_FR_EN.md) pour les routes réelles et la recette.

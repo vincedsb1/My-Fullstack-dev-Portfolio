@@ -9,7 +9,6 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Avatar } from "@/components/ui/Avatar";
 import { getPathname } from "@/i18n/paths";
 import type { Locale } from "@/i18n/routing";
-import { getPublishedArticles } from "@/lib/blog/articles";
 import { AUTHOR, SOCIAL_LINKS } from "@/lib/site";
 import { heroInter } from "./heroFont";
 import styles from "./Header.module.css";
@@ -17,8 +16,7 @@ import styles from "./Header.module.css";
 export default async function Hero() {
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations("header");
-  const blogLocale = getPublishedArticles(locale).length ? locale : "fr";
-  const blogHref = getPathname({ locale: blogLocale, href: "/blog" });
+  const blogHref = getPathname({ locale, href: "/blog" });
   const socialLinks = [
     {
       key: "linkedin",
@@ -56,10 +54,7 @@ export default async function Hero() {
       key: "blog",
       href: blogHref,
       label: t("social.blog"),
-      ariaLabel:
-        blogLocale === locale
-          ? t("social.blogAria")
-          : t("social.frenchBlogAria"),
+      ariaLabel: t("social.blogAria"),
       external: false,
       Icon: ArticleIcon,
     },

@@ -419,10 +419,12 @@ test("impression des deux articles JSON lisible dans les deux thèmes", async ({
       theme,
     );
     for (const slug of [
-      "internationaliser-saas-lancement",
-      "guide-premier-emploi-developpeur",
+      "fr/blog/internationaliser-saas-lancement",
+      "fr/blog/guide-premier-emploi-developpeur",
+      "en/blog/internationalize-saas-at-launch",
+      "en/blog/first-developer-job-guide",
     ]) {
-      await page.goto(`/fr/blog/${slug}`);
+      await page.goto(`/${slug}`);
       await expect(page.locator("html")).toHaveClass(new RegExp(theme));
       await page.emulateMedia({ media: "print" });
       await expect(page.locator("body > header")).toBeHidden();
@@ -453,7 +455,10 @@ test("impression des deux articles JSON lisible dans les deux thèmes", async ({
       });
       expect(titleContrast).toBeGreaterThanOrEqual(7);
       await page.pdf({
-        path: `tests/visual-artifacts/blog-print-${slug}-${theme}.pdf`,
+        path: `tests/visual-artifacts/blog-print-${slug.replaceAll(
+          "/",
+          "-",
+        )}-${theme}.pdf`,
         format: "A4",
         printBackground: true,
       });

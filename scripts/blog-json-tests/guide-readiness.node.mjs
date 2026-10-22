@@ -49,7 +49,9 @@ function text(b) {
 test("guide publié : texte complet, ordre et métadonnées conservés", () => {
   const { renderer, ...meta } = contract.meta;
   assert.equal(renderer, "guide");
-  assert.deepEqual(article.meta, meta);
+  const { translationKey, ...currentMeta } = article.meta;
+  assert.equal(translationKey, "first-developer-job-guide");
+  assert.deepEqual(currentMeta, meta);
   assert.equal(article.meta.status, "published");
   assert.equal(
     existsSync(

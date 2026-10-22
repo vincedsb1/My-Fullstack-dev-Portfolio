@@ -400,7 +400,7 @@ export function BlogAuthorCard({
     description ??
     (locale === "fr"
       ? "Développeur Fullstack. Je conçois des applications web et partage les réflexions qui accompagnent leur création."
-      : undefined);
+      : "Full-stack developer. I build web applications and share the thinking behind their creation.");
   return (
     <aside
       className="blog-ds__author-card"

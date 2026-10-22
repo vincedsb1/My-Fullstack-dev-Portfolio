@@ -26,8 +26,13 @@ for (const theme of ["light", "dark"]) {
           ),
         ),
       );
-    for (const expected of contract.seo.meta)
+    for (const expected of contract.seo.meta.filter(
+      (m: { rel?: string }) => m.rel !== "alternate",
+    ))
       expect(head).toContainEqual(expected);
+    await expect(
+      page.locator('link[rel="alternate"][hreflang="en"]'),
+    ).toHaveAttribute("href", /\/en\/blog\/first-developer-job-guide$/);
     const structured = await page
       .locator('script[type="application/ld+json"]')
       .evaluateAll((nodes) =>
@@ -208,7 +213,7 @@ test("régression hydratation : tableau valide et aucune erreur console au charg
   await page.locator('[data-id="chk-1"]').check();
   await expect(page.locator('[data-id="chk-1"]')).toBeChecked();
   await page.goto(guide);
-  await page.locator('[data-id="chk-1"]').check();
+  await expect(page.locator('[data-id="chk-1"]')).toBeChecked();
   await page.locator(".blog-ds__next-article").click();
   await expect(page).toHaveURL(/internationaliser-saas-lancement$/);
   expect(errors).toEqual([]);

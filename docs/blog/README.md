@@ -1,6 +1,6 @@
 # Blog — documents de référence
 
-Branche de consolidation : `dev04`, issue de `dev03` à `8ec765f38b3bc0e69b41a7230f2404e8c5a5e902`. Les étapes 1 à 3 sont auditées. Les étapes 4 et 5 migrent les deux articles vers le même moteur JSON, à URLs, contenus et SEO constants ; la checklist du guide conserve les sauvegardes historiques. Le nettoyage de l’étape 6 reste distinct. Aucun déploiement en production.
+Branche de consolidation : `dev04`, issue de `dev03` à `8ec765f38b3bc0e69b41a7230f2404e8c5a5e902`. Les étapes 1 à 3 sont auditées. Les étapes 4 et 5 migrent les deux articles vers le même moteur JSON, à URLs, contenus et SEO constants ; la checklist du guide conserve les sauvegardes historiques. Le nettoyage de l’étape 6 reste distinct. Les deux sujets sont désormais disponibles en français et en anglais ; voir [MISE_EN_PLACE_FR_EN.md](MISE_EN_PLACE_FR_EN.md). Aucun déploiement en production.
 
 ## Lire et écrire
 
@@ -16,7 +16,7 @@ Branche de consolidation : `dev04`, issue de `dev03` à `8ec765f38b3bc0e69b41a72
 
 ## Points d’entrée
 
-- `src/content/blog-json/fr/<slug>.json` : nouveaux articles ; `src/content/blog/` : fixture MDX technique non publiée.
+- `src/content/blog-json/<locale>/<slug>.json` : nouveaux articles ; `src/content/blog/` : fixture MDX technique non publiée.
 - `src/lib/blog/` : types, validation, registre de contrats et catalogue unifié.
 - `src/features/blog/design-system/` : bibliothèque éditoriale ; `src/features/blog/json/` : renderer, shell et checklist.
 - `/fr/blog/showcase` : catalogue réel, non indexé.

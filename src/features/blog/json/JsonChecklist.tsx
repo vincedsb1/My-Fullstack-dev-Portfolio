@@ -94,7 +94,11 @@ export default function JsonChecklist({
           onClick={() => {
             if (
               storageKey === "vd_guide_checklist_v1" &&
-              !window.confirm("Réinitialiser toute la checklist ?")
+              !window.confirm(
+                fr
+                  ? "Réinitialiser toute la checklist ?"
+                  : "Reset the entire checklist?",
+              )
             )
               return;
             update({});

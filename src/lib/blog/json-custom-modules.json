@@ -2,7 +2,6 @@
   "saas-hero": {
     "required": [],
     "optional": [],
-    "locale": "fr",
     "placement": "hero",
     "ids": []
   },
@@ -15,14 +14,12 @@
   "saas-mosaic": {
     "required": [],
     "optional": [],
-    "locale": "fr",
     "unique": true,
     "ids": ["blog-language-mosaic-title"]
   },
   "saas-language-demo": {
     "required": [],
     "optional": [],
-    "locale": "fr",
     "unique": true,
     "heading": true,
     "ids": [
@@ -34,7 +31,6 @@
   "saas-language-matrix": {
     "required": [],
     "optional": [],
-    "locale": "fr",
     "unique": true,
     "heading": true,
     "ids": ["blog-language-matrix-title"]
@@ -42,7 +38,6 @@
   "saas-acquisition-funnel": {
     "required": [],
     "optional": [],
-    "locale": "fr",
     "unique": true,
     "heading": true,
     "ids": ["blog-funnel-title"]
@@ -50,7 +45,6 @@
   "saas-decision-tree": {
     "required": [],
     "optional": [],
-    "locale": "fr",
     "unique": true,
     "heading": true,
     "ids": ["blog-decision-title"]

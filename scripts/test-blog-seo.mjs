@@ -803,12 +803,12 @@ try {
     const response = await request(baseUrl, "/en/blog");
     const html = await response.text();
     check(
-      response.status === 404,
-      "/en/blog reste en 404 sans article anglais",
+      response.status === 200,
+      "/en/blog reste disponible avec un état vide anglais",
     );
     check(
       meta(html, "robots")?.includes("noindex"),
-      "404 anglais explicitement exclu de l’index",
+      "index anglais vide explicitement exclu de l’index",
     );
   }
 

@@ -103,6 +103,23 @@ for (const theme of ["light", "dark"] as const) {
     await expect(page.locator(".blog-ds__json-checklist input")).toHaveCount(
       14,
     );
+    for (const slug of [
+      "first-developer-job-guide",
+      "internationalize-saas-at-launch",
+    ]) {
+      const english = await page.goto(`/en/blog/json-preview?slug=${slug}`);
+      expect(english?.status()).toBe(200);
+      await expect(page.locator("html")).toHaveAttribute("lang", "en");
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+        "content",
+        /noindex/,
+      );
+      await expect(page.locator("h1")).toContainText(
+        slug === "first-developer-job-guide"
+          ? "first developer job"
+          : "internationalize your SaaS",
+      );
+    }
     expect(errors).toEqual([]);
     expect(
       (await page.goto("/fr/blog/json-preview?slug=article-absent"))?.status(),

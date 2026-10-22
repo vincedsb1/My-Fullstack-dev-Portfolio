@@ -2,7 +2,7 @@
 
 ## Sources et rendu
 
-Les deux articles publiés, `guide-premier-emploi-developpeur` et `internationaliser-saas-lancement`, vivent sous `src/content/blog-json/fr/`. Le moteur JSON v1 charge `src/content/blog-json/<locale>/<slug>.json` (format versionné et validé) et `JsonArticlePage` leur fournit le même shell éditorial. Le catalogue accepte encore MDX pendant la transition ; seule la fixture technique `mdx-compatibility-fixture.mdx`, en brouillon, subsiste dans cette source.
+Les deux sujets publiés vivent sous `src/content/blog-json/{fr,en}/` : guide `guide-premier-emploi-developpeur` / `first-developer-job-guide`, et SaaS `internationaliser-saas-lancement` / `internationalize-saas-at-launch`. Les deux variantes de chaque sujet partagent une clé de traduction stable. Le moteur JSON v1 charge `src/content/blog-json/<locale>/<slug>.json` (format versionné et validé) et `JsonArticlePage` leur fournit le même shell éditorial. Le catalogue accepte encore MDX pendant la transition ; seule la fixture technique `mdx-compatibility-fixture.mdx`, en brouillon, subsiste dans cette source.
 
 `src/lib/blog/article-source.mjs` lit les fichiers locaux avec `yaml`, valide leurs métadonnées, repère les collisions de routes et vérifie les relations de traduction. Il s’assure aussi que le titre du frontmatter reste l’unique H1 et que les images locales référencées existent sous `public/blog/`. `scripts/validate-blog-links.mjs`, appelé par `npm run blog:validate`, vérifie que les liens internes ciblent une route existante et publiée et que les ressources locales existent. `src/lib/blog/articles.ts` expose les articles publiés, leur ordre, leurs versions traduites, leur temps de lecture et leur URL d’image sociale.
 
@@ -20,7 +20,7 @@ Ce renderer historique n’est plus utilisé par une route publiée ; il est con
 
 - `/fr/blog` liste les articles français publiés.
 - `/fr/blog/<slug>` rend un article publié.
-- `/en/blog` et les routes anglaises sans article répondent 404. Une route anglaise publiée doit partager un `translationKey` avec un article français publié.
+- `/en/blog` liste les publications anglaises. Un index de langue vide reste accessible, en `noindex` et hors sitemap ; une route d’article sans source publiée reste en 404. Une route anglaise publiée doit partager un `translationKey` avec un article français publié.
 - Les traductions peuvent avoir des slugs différents et sont associées par `translationKey` ; seuls les articles traduits entre les langues produisent des liens hreflang.
 
 `generateMetadata()` lit la même source que les pages. Les liens canonical et hreflang ne mentionnent que les versions réellement publiées. Les pages d’article publient un JSON-LD `BlogPosting` avec les dates et l’auteur réels, ainsi qu’un `BreadcrumbList` aligné sur le fil d’Ariane visible.
@@ -61,7 +61,7 @@ Les images MDX peuvent être écrites avec la syntaxe Markdown standard ; des di
 
 Le registre `src/features/blog/ArticleLayouts.tsx` associe `default`, `guide` et
 `editorial` aux gabarits. L’ancien article MDX exportait `GuideArticle` ; `GuideBody.tsx` assemble ses sections typées sous `src/features/guide/sections/`, sans injection de HTML brut ;
-son contrôleur conserve la clé `vd_guide_checklist_v1`. Les styles du guide ne sont
+son contrôleur conserve la clé `vd_guide_checklist_v1`, désormais partagée avec la traduction anglaise canonique du guide. Les styles du guide ne sont
 chargés que par son composant. Tous les gabarits utilisent l’en-tête, le pied de
 page et les contrôles de thème/langue communs. `seoTitle` permet un titre SEO
 court sans changer le H1. `relatedProjects` référence uniquement des fiches
@@ -84,7 +84,7 @@ Ne pas utiliser l'ancien patcher SEO de l'archive : les contrôles du moteur JSO
 
 ## Modules React contrôlés
 
-Le registre JSON exposé par `JsonCustomRegistry.tsx` admet désormais les cinq widgets SaaS existants **sans les réimplémenter** ; ils se rendent sous l’enveloppe CSS de leur article d'origine. Les widgets sont FR-only pour le moment. Les champs JSON `seoTitle` et `relatedProjects` sont facultatifs ; les vidéos YouTube passent par le composant de consentement déjà présent dans le blog. Les décisions, la politique de migration et les critères de qualité sont consignés dans [PREPARATION_ETAPE_4.md](PREPARATION_ETAPE_4.md).
+Le registre JSON exposé par `JsonCustomRegistry.tsx` admet désormais les cinq widgets SaaS existants **sans les réimplémenter** ; ils se rendent sous l’enveloppe CSS de leur article d'origine. Les widgets et l’illustration du hero utilisent les messages `blogSaas` FR/EN sans duplication de leur logique. Les champs JSON `seoTitle` et `relatedProjects` sont facultatifs ; les vidéos YouTube passent par le composant de consentement déjà présent dans le blog. Les décisions, la politique de migration et les critères de qualité sont consignés dans [PREPARATION_ETAPE_4.md](PREPARATION_ETAPE_4.md).
 
 
 ## Contrats consolidés et recette
@@ -114,3 +114,9 @@ Les options JSON facultatives `hero.eyebrow`, `hero.titleHighlight`, `readingNot
 Aucun composant, style ou branchement de rendu générique n’a été nécessaire pour cette bascule. Les fichiers `src/features/guide/` restent conservés, de même que les renderers MDX et les anciens styles SaaS ; leur retrait relève de l’étape 6. La fixture MDX technique évite un glob dynamique vide avec Turbopack et n’a ni route publiée, ni image sociale, ni présence au sitemap.
 
 Le pilote de publication crée temporairement une route utilisant les vrais `GuideBody` et `GuideInteractive` pour tester l’aller-retour des sauvegardes avec le guide JSON public. Les routes techniques sont retirées et le build normal est restauré à la fin du pilote. La recette partagée du guide tourne sur le build de production local et en développement, sans duplication de logique de test. Voir [ETAPE_5_MIGRATION_GUIDE.md](ETAPE_5_MIGRATION_GUIDE.md).
+
+## Disponibilité française et anglaise
+
+La navigation conserve la langue choisie depuis l’accueil, l’index et les pages d’erreur. Le sélecteur associe les articles par `translationKey`, même avec des slugs différents ; une traduction absente renvoie à l’index de la langue cible. Le preview de développement accepte FR et EN et reste fermé en production.
+
+La paire canonique du guide conserve les 14 IDs et la clé historique dans les deux langues. Cette seule exception est contrôlée dans le validateur ; les autres checklists publiées doivent conserver des clés distinctes. Voir [MISE_EN_PLACE_FR_EN.md](MISE_EN_PLACE_FR_EN.md).

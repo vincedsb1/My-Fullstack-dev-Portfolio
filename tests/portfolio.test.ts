@@ -119,11 +119,21 @@ describe("metadata and sitemap", () => {
       `${SITE_URL}/fr/blog/example`,
     );
   });
-  it("keeps untranslated English blog routes out and dates every URL", () => {
+  it("includes translated English blog routes and dates every URL", () => {
     const entries = sitemap();
     const urls = entries.map((e) => e.url);
     expect(new Set(urls).size).toBe(urls.length);
-    expect(urls).not.toContain(`${SITE_URL}/en/blog`);
+    expect(urls).toContain(`${SITE_URL}/en/blog`);
+    expect(urls).toContain(`${SITE_URL}/en/blog/first-developer-job-guide`);
+    expect(urls).toContain(
+      `${SITE_URL}/en/blog/internationalize-saas-at-launch`,
+    );
+    const translated = entries.find((e) =>
+      e.url.endsWith("/en/blog/first-developer-job-guide"),
+    )!;
+    expect(translated.alternates?.languages?.fr).toBe(
+      `${SITE_URL}/fr/blog/guide-premier-emploi-developpeur`,
+    );
     expect(urls).toContain(`${SITE_URL}/fr/projets`);
     expect(urls).toContain(`${SITE_URL}/en/projects`);
     expect(

@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "seoTitle": "Internationalize your SaaS at launch?",
+    "relatedProjects": [
+      "iconise"
+    ],
+    "title": "Should you internationalize your SaaS at launch?",
+    "description": "Internationalizing a SaaS at launch: how to weigh translation, technical complexity and acquisition against real demand.",
+    "excerpt": "Planning for internationalization can make sense, but translating into six languages from day one does not guarantee visibility or customers.",
+    "slug": "internationalize-saas-at-launch",
+    "locale": "en",
+    "category": "Product",
+    "publishedAt": "2026-10-22",
+    "status": "published",
+    "translationKey": "saas-internationalization-launch"
+  },
+  "hero": {
+    "eyebrow": "Product & reflection / Lessons learned",
+    "titleHighlight": "internationalize",
+    "primaryCta": {
+      "label": "Explore the question",
+      "target": "content"
+    },
+    "visual": {
+      "component": "saas-hero"
+    }
+  },
+  "legacyAnchors": {
+    "top": "article-top",
+    "content": "article-body"
+  },
+  "introBlocks": [
+    {
+      "type": "lead",
+      "content": [
+        {
+          "text": "When building a SaaS, offering several languages seems like a great idea. More languages means potentially more users, right?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "That is what I thought while developing "
+        },
+        {
+          "text": "Iconise",
+          "link": {
+            "href": "https://iconise.fyi/"
+          }
+        },
+        {
+          "text": ", my AI-assisted icon creation app."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "So I prepared the application for six languages: French, English, German, Spanish, Brazilian Portuguese and Japanese."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "But looking back, I find myself asking: "
+        },
+        {
+          "text": "does a technically accessible feature necessarily make a good product decision?",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "type": "custom",
+      "component": "saas-mosaic"
+    }
+  ],
+  "sections": [
+    {
+      "id": "accessible",
+      "title": "Internationalization has never been more accessible",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "With frameworks such as Next.js, libraries such as next-intl and AI-assisted translation tools, internationalizing an application has become relatively straightforward."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "There is still work to do, of course: translations, error messages, emails, regional formats, testing… But the technical barriers have come down considerably."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "The problem is that this ease can encourage us to build features without really questioning their value."
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "content": [
+            {
+              "text": "Just because we can do something quickly does not necessarily mean we should.",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "complexite",
+      "title": "On Iconise, the complexity went beyond translation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Iconise generates content using artificial intelligence. I therefore had to distinguish between two settings:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "The interface language, chosen by the user."
+              }
+            ],
+            [
+              {
+                "text": "The language of the generated content, associated with each project."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "A French user can work on an application intended for the Japanese market without having to switch their entire interface to Japanese."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "This distinction is useful for the user experience, but it adds complexity."
+            }
+          ]
+        },
+        {
+          "type": "custom",
+          "component": "saas-language-demo"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "With six languages for each setting, that means "
+            },
+            {
+              "text": "36 possible combinations",
+              "bold": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "I checked twelve of them in an initial round of testing that still needed to be taken further."
+            }
+          ]
+        },
+        {
+          "type": "custom",
+          "component": "saas-language-matrix"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "And that is just one example. Every new feature also means maintaining translations and checking their consistency."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "marches",
+      "title": "Six languages does not mean six markets won",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "This is probably the most important point."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Translating your application into German does not mean German users will automatically discover it."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Even with localized URLs, "
+            },
+            {
+              "text": "hreflang",
+              "code": true
+            },
+            {
+              "text": " tags and a multilingual sitemap, there is still work to do on SEO, acquisition and, above all, the value proposition."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "You need to understand what users in each market are looking for, how to reach them and what might convince them to use the product."
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "content": [
+            {
+              "text": "Internationalization opens the door to new markets. It does not guarantee that you will find customers there.",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "demande",
+      "title": "Measure demand rather than adding more languages",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "To assess whether this decision makes sense, I think we need to look beyond the number of languages available."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "The journey looks more like a funnel than a simple switch:"
+            }
+          ]
+        },
+        {
+          "type": "custom",
+          "component": "saas-acquisition-funnel"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "A few indicators can be useful:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Traffic from the different language versions."
+              }
+            ],
+            [
+              {
+                "text": "The number of sign-ups."
+              }
+            ],
+            [
+              {
+                "text": "The percentage of users who actually start a project."
+              }
+            ],
+            [
+              {
+                "text": "The conversion rate to paying customers."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "By comparing these figures with the countries and languages involved, we can start to identify markets with real potential."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Of course, these numbers do not tell the whole story. They can show where users drop off, but not necessarily why."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "decision",
+      "title": "So, should you internationalize from the start?",
+      "blocks": [
+        {
+          "type": "highlight",
+          "content": [
+            {
+              "text": "My position is quite simple: "
+            },
+            {
+              "text": "plan the technical foundations for internationalization from the start, but do not necessarily translate the entire application immediately.",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Starting with one or two languages and expanding gradually as demand emerges can be a more reasonable strategy."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "On the other hand, for a product that is naturally international, offering several languages at launch can be entirely justified."
+            }
+          ]
+        },
+        {
+          "type": "custom",
+          "component": "saas-decision-tree"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "So I do not consider my choice on Iconise a mistake. But I will need to measure its impact before I can say it was a good investment."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Ultimately, the question is not how many languages our application can support, but how many genuinely add value for users and the product."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "afterBlocks": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "What comes next needs to be measured."
+        }
+      ]
+    }
+  ],
+  "related": {
+    "slugs": [
+      "first-developer-job-guide"
+    ]
+  }
+}

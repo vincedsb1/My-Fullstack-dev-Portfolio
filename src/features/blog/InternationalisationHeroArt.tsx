@@ -1,9 +1,11 @@
 import type { CSSProperties } from "react";
+import { useTranslations } from "next-intl";
 import { Globe2, MoveUpRight } from "lucide-react";
 import styles from "./InternationalisationArticle.module.css";
 
 /** Illustration serveur partagée par le rendu historique et le registre JSON. */
 export default function InternationalisationHeroArt() {
+  const t = useTranslations("blogSaas.hero");
   return (
     <div
       className={`${styles.heroArt} blog-ds__saas-hero-art`}
@@ -11,7 +13,7 @@ export default function InternationalisationHeroArt() {
     >
       <div className={styles.artTop}>
         <span>
-          <Globe2 size={16} /> Internationalisation
+          <Globe2 size={16} /> {t("name")}
         </span>
         <span>FR → 世界</span>
       </div>
@@ -21,7 +23,7 @@ export default function InternationalisationHeroArt() {
         <span>6</span>
       </div>
       <p className={styles.artCaption}>
-        Langue de l’interface <span>×</span> langue du contenu
+        {t("interface")} <span>×</span> {t("content")}
       </p>
       <div className={styles.artGrid}>
         {Array.from({ length: 36 }, (_, index) => (
@@ -36,17 +38,17 @@ export default function InternationalisationHeroArt() {
         <p>
           <strong>36</strong>
           <span>
-            combinaisons.
+            {t("combinations")}
             <br />
-            Une décision produit.
+            {t("decision")}
           </span>
         </p>
         <MoveUpRight size={30} strokeWidth={1} />
       </div>
       <div className={styles.artSticker}>
-        Plus de langues.
+        {t("more")}
         <br />
-        <strong>Plus de valeur ?</strong>
+        <strong>{t("value")}</strong>
       </div>
     </div>
   );

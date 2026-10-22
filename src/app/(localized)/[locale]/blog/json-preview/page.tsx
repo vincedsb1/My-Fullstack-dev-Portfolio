@@ -10,7 +10,7 @@ import { getPublishedArticles } from "@/lib/blog/articles";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  return [{ locale: "fr" }];
+  return [{ locale: "fr" }, { locale: "en" }];
 }
 export const metadata: Metadata = {
   title: "Prévisualisation JSON du blog (développement)",
@@ -26,7 +26,7 @@ export default async function JsonPreview({
   // En production, sortir avant toute lecture des données ou de la query.
   if (process.env.NODE_ENV === "production") notFound();
   const { locale } = await params;
-  if (locale !== "fr") notFound();
+  if (locale !== "fr" && locale !== "en") notFound();
   const slug = (await searchParams).slug ?? "json-demo-blog";
   if (typeof slug !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug))
     notFound();

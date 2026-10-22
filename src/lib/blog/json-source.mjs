@@ -13,6 +13,12 @@ const LOCALES = new Set(["fr", "en"]);
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const ID = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
+const GUIDE_STORAGE_KEY = "vd_guide_checklist_v1";
+const GUIDE_TRANSLATION_KEY = "first-developer-job-guide";
+const GUIDE_SLUGS = {
+  fr: "guide-premier-emploi-developpeur",
+  en: "first-developer-job-guide",
+};
 const TONES = ["neutral", "accent", "info", "success", "warning"];
 export const registeredJsonCustomModules = Object.freeze(
   Object.keys(customDefs),
@@ -306,16 +312,17 @@ function blocks(value, file, at, ctx, depth = 0) {
           string(it.label, file, `${q}.label`);
         });
         if (
-          b.storageKey === "vd_guide_checklist_v1" &&
-          (ctx.slug !== "guide-premier-emploi-developpeur" ||
-            ctx.locale !== "fr" ||
+          b.storageKey === GUIDE_STORAGE_KEY &&
+          (ctx.slug !== GUIDE_SLUGS[ctx.locale] ||
+            (ctx.locale === "en" &&
+              ctx.translationKey !== GUIDE_TRANSLATION_KEY) ||
             b.items.length !== 14 ||
             b.items.some((item, index) => item.id !== `chk-${index + 1}`))
         )
           error(
             file,
             p,
-            "la clé historique du guide exige son slug FR et les 14 IDs chk-1 à chk-14",
+            "la clé historique du guide exige son slug FR/EN, sa traduction associée et les 14 IDs chk-1 à chk-14",
           );
         break;
       }
@@ -470,6 +477,7 @@ export function validateJsonArticle(
   const ctx = {
     slug: m.slug,
     locale: m.locale,
+    translationKey: m.translationKey,
     publicRoot,
     ids: new Set([
       "blog-article-body",
@@ -668,13 +676,25 @@ export function validateMergedBlogArticles(records) {
     routes.add(key);
     if (m.status === "published") {
       for (const key of r.storageKeys ?? []) {
-        if (checklistOwners.has(key))
+        const owner = checklistOwners.get(key);
+        // Seule la paire canonique du guide partage son contrat historique.
+        const sharedGuide =
+          owner &&
+          key === GUIDE_STORAGE_KEY &&
+          [owner, r].every(
+            (record) =>
+              record.format === "json" &&
+              record.metadata.translationKey === GUIDE_TRANSLATION_KEY &&
+              record.metadata.slug === GUIDE_SLUGS[record.metadata.locale],
+          ) &&
+          owner.metadata.locale !== m.locale;
+        if (owner && !sharedGuide)
           error(
             r.filePath,
             "storageKey",
-            `clé de stockage déjà publiée par ${checklistOwners.get(key)}`,
+            `clé de stockage déjà publiée par ${owner.metadata.locale}/${owner.metadata.slug}`,
           );
-        checklistOwners.set(key, `${m.locale}/${m.slug}`);
+        checklistOwners.set(key, r);
       }
       for (const [set, value, name] of [
         [titles, m.title, "title"],

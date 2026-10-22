@@ -159,7 +159,14 @@ test("SaaS JSON : SEO pré-rendu identique au MDX et image sociale inchangée", 
       .map((n) => JSON.stringify(Object.fromEntries(Object.entries(n).sort())))
       .sort();
   expect(seo.title).toBe(baseline.seo.title);
-  expect(sorted(seo.meta)).toEqual(sorted(baseline.seo.meta));
+  const withoutAlternates = (items: Array<Record<string, string>>) =>
+    items.filter((m) => m.rel !== "alternate");
+  expect(sorted(withoutAlternates(seo.meta))).toEqual(
+    sorted(withoutAlternates(baseline.seo.meta)),
+  );
+  await expect(
+    page.locator('link[rel="alternate"][hreflang="en"]'),
+  ).toHaveAttribute("href", /\/en\/blog\/internationalize-saas-at-launch$/);
   expect(seo.jsonLd).toEqual(baseline.seo.jsonLd);
   const image = await request.get(`${route}/social-image`);
   expect(image.status()).toBe(200);

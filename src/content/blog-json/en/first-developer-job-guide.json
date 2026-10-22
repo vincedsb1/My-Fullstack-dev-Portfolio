@@ -1,0 +1,997 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "seoTitle": "Your first developer job: a guide",
+    "title": "How to land your first developer job in 2026",
+    "description": "Resume, LinkedIn, portfolio, projects, networking and interviews: practical advice for landing your first developer job.",
+    "excerpt": "A practical approach to building credibility, finding opportunities and preparing for interviews as a junior developer.",
+    "slug": "first-developer-job-guide",
+    "locale": "en",
+    "category": "Career",
+    "publishedAt": "2026-10-22",
+    "status": "published",
+    "translationKey": "first-developer-job-guide"
+  },
+  "hero": {
+    "eyebrow": "Career • Web Development",
+    "primaryCta": {
+      "label": "Start reading",
+      "target": "content"
+    }
+  },
+  "introBlocks": [
+    {
+      "type": "lead",
+      "content": [
+        {
+          "text": "Finding your first job in development is not just about technical skills. You also need to demonstrate them, build trust and create more opportunities to meet the right people."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "I have brought together the advice I regularly share with junior developers, with a practical approach to taking action."
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "les-trois-piliers",
+      "title": "Build the three pillars of your credibility",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Before sending out more applications, get three things up to date: your resume, your LinkedIn profile and your portfolio."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "A recruiter should be able to identify the role you are targeting and find concrete examples of what you can do."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "A readable resume tailored to the role"
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Layout:",
+                "bold": true
+              },
+              {
+                "text": " Choose a clean, spacious template with a readable text structure. Avoid overly complex or purely graphical designs."
+              }
+            ],
+            [
+              {
+                "text": "Clarity:",
+                "bold": true
+              },
+              {
+                "text": " Write short descriptions focused on your responsibilities and achievements. Leave out details unrelated to the role."
+              }
+            ],
+            [
+              {
+                "text": "Evidence:",
+                "bold": true
+              },
+              {
+                "text": " Give concrete examples of your achievements."
+              }
+            ],
+            [
+              {
+                "text": "Proofreading:",
+                "bold": true
+              },
+              {
+                "text": " Have someone review your resume and ask an AI tool to flag ambiguous wording. Check each suggestion before keeping it."
+              }
+            ],
+            [
+              {
+                "text": "Format:",
+                "bold": true
+              },
+              {
+                "text": " Prepare a clean, lightweight PDF with a structure that applicant tracking systems (ATS) can read."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "A polished photo:",
+          "tone": "info",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": " For applications in France, consider a well-presented photo essential. Choose a professional portrait with a well-lit face, a slight smile, clear framing and a simple background. It helps shape the recruiter's first impression and identify you among applicants: take the time to present yourself well."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Place your target role and main technologies near the top of the page."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "A LinkedIn profile that explains your positioning"
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Clear headline:",
+                "bold": true
+              },
+              {
+                "text": " State the role you are looking for and the technologies you use."
+              }
+            ],
+            [
+              {
+                "text": "Completeness:",
+                "bold": true
+              },
+              {
+                "text": " Detail your relevant experience and projects, and add your technical skills. Include links to your GitHub and portfolio."
+              }
+            ],
+            [
+              {
+                "text": "Clarity:",
+                "bold": true
+              },
+              {
+                "text": " Explain the value you bring. Avoid vague wording and lists of buzzwords."
+              }
+            ],
+            [
+              {
+                "text": "Social proof:",
+                "bold": true
+              },
+              {
+                "text": " Ask former colleagues or instructors for recommendations."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Example of an effective headline"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Junior Fullstack Developer | React • TypeScript • Node.js | Seeking a permanent role",
+              "code": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Use the same job title and key skills on your resume and LinkedIn."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "A portfolio that demonstrates your skills"
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Selection:",
+                "bold": true
+              },
+              {
+                "text": " Present your specialization and select your most relevant projects. Show real, working applications."
+              }
+            ],
+            [
+              {
+                "text": "Context:",
+                "bold": true
+              },
+              {
+                "text": " For each project, explain the problem you solved, the technologies you used and the reasons behind your technical choices."
+              }
+            ],
+            [
+              {
+                "text": "Access:",
+                "bold": true
+              },
+              {
+                "text": " Make live demos and GitHub repositories easy to access."
+              }
+            ],
+            [
+              {
+                "text": "Technical quality:",
+                "bold": true
+              },
+              {
+                "text": " Test the mobile layout, keyboard accessibility and performance. Check links and fix any errors you find."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "For a team project, clearly distinguish your contribution from the team's work."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "These materials do not guarantee a job. They give recruiters concrete examples to assess your profile and the projects you can present."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "developper-reseau",
+      "title": "Actively build your network",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Job listings are not the only way in. By talking to people in the industry, you can ask for advice and sometimes learn that a team is preparing to hire."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Identify the right people"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Do not limit yourself to recruiters. Try to connect with people who understand your work and have relevant needs:"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "CTOs Tech Leads Engineering Managers Lead Developers Founders Product Managers"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Send a few targeted invitations and personalize each message."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Contact decision-makers directly"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Write a short message explaining your background and what interests you about the company. For an initial conversation, you can also ask for advice or offer help, rather than opening with a request for a job."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "id": "msg-template",
+          "language": "text",
+          "title": "Outreach message template",
+          "code": "Hello [First name],\n\nI came across your work at [Company] and am particularly interested in [specific aspect of the product or engineering team].\n\nI am a junior developer specializing in [technologies] and am currently looking for [type of opportunity].\n\nDo you have any advice on how I could get closer to a team like yours?\n\nThank you for your time.\n"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "⚠️ This template must be personalized for the context. It is not a message to send in bulk."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trouver-opportunites",
+      "title": "Expand your opportunities",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Job searching takes consistency. Combine responses to job listings, speculative applications and direct outreach."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Check several platforms, not just LinkedIn. Visit companies' careers pages."
+              }
+            ],
+            [
+              {
+                "text": "Identify companies that use your technology stack."
+              }
+            ],
+            [
+              {
+                "text": "Do not wait until you meet 100% of a listing's criteria before applying."
+              }
+            ],
+            [
+              {
+                "text": "Tailor your applications to the companies that genuinely interest you."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "quote",
+          "content": [
+            {
+              "text": "Do not focus only on tech giants.",
+              "bold": true
+            },
+            {
+              "text": " Small and medium-sized businesses, web agencies, specialist software vendors, regional companies and less visible startups offer excellent opportunities to get started."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "creer-contenu",
+      "title": "Create content to become more visible",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Creating content lets you show your progress, share your knowledge and become more than an anonymous profile. The goal is not to become an influencer, but to document your work."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Practical content ideas"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Lessons from experience"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "\"I ran into this performance issue. Here is how I solved it.\""
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Learning"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "\"Here are three things I understood while learning TypeScript this week.\""
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Demo"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "\"A short video showing how my new application works.\""
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Comparison"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "\"REST or GraphQL: here are the practical differences I have observed.\""
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Publishing tips"
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Consistency:",
+                "bold": true
+              },
+              {
+                "text": " Set a sustainable pace. Do not sacrifice your technical learning to create content."
+              }
+            ],
+            [
+              {
+                "text": "Authenticity:",
+                "bold": true
+              },
+              {
+                "text": " Write in your own words. AI can help with corrections, but the experience should be yours."
+              }
+            ],
+            [
+              {
+                "text": "Interaction:",
+                "bold": true
+              },
+              {
+                "text": " Leave relevant comments on professionals' posts and regularly take part in technical discussions."
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparer-entretiens",
+      "title": "Prepare for interviews",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Prepare for interviews around four common situations:"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "A. HR interview and motivation"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Be ready to introduce your background and motivation in a few sentences. If you are changing careers, explain what led you to development. Prepare questions about the company."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "id": "prompt-template",
+          "language": "text",
+          "title": "AI practice prompt",
+          "code": "Act as a demanding technical recruiter interviewing a junior developer. Ask me questions one at a time. Wait for my answer before continuing. After each answer, assess its clarity and relevance, and identify what is missing."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "B. Algorithms and live coding"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Practice on "
+            },
+            {
+              "text": "CodinGame",
+              "link": {
+                "href": "https://www.codingame.com/start/"
+              }
+            },
+            {
+              "text": " or LeetCode. Break down the problem before coding and explain your reasoning out loud. Your approach matters as much as the result."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "C. Technical questions"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Master the fundamentals of your stack. Understand the concepts rather than reciting definitions. Be able to say, \"I do not know, but here is how I would investigate.\""
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "D. Case studies and architecture"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "You may be asked to design the architecture of a simple app. Identify the business need, choose the database, front end and API, and explain your technical trade-offs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "organiser-recherche",
+      "title": "Organize your search",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Keep a tracking table in Notion or Excel to record applications sent, planned follow-ups and responses received."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "caption": "Example application tracking table",
+          "columns": [
+            "Company",
+            "Role",
+            "Status",
+            "Next action"
+          ],
+          "rows": [
+            [
+              "Company A",
+              "React developer",
+              "Application sent",
+              "Set a follow-up date"
+            ],
+            [
+              "Company B",
+              "Fullstack developer",
+              "Interview scheduled",
+              "Prepare technical questions"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rencontrer-professionnels",
+      "title": "Go beyond online applications",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Technical meetups, recruitment events and local conferences give you opportunities to talk directly with professionals. After meeting someone, connect on LinkedIn and mention what you discussed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dix-conseils",
+      "title": "Ten more tips to stand out",
+      "number": true,
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "#1 Define clear positioning",
+              "description": [
+                {
+                  "text": "It is better to be known for a specific stack than to describe yourself as an expert in everything."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action: Define your target role and stack in one sentence."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#2 Master the fundamentals",
+              "description": [
+                {
+                  "text": "The basics of JavaScript, HTML/CSS, HTTP and SQL will serve you across projects, even as frameworks change."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action: Review asynchronous programming, DOM manipulation and APIs."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#3 Take care of your GitHub",
+              "description": [
+                {
+                  "text": "It provides concrete evidence of how you code and document your work."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action: Pin a few representative projects with explanatory READMEs."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#4 Build a real product",
+              "description": [
+                {
+                  "text": "A complete project such as "
+                },
+                {
+                  "text": "Smartflow, featured in my portfolio",
+                  "link": {
+                    "href": "/en#projectsContainer"
+                  }
+                },
+                {
+                  "text": ", with design, architecture, stack choices, mockups and tests, says more than a list of unfinished tutorials."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action: Choose a manageable scope and document your technical choices and error handling."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#5 Show how you work in a team",
+              "description": [
+                {
+                  "text": "An open-source contribution or a hackathon can give you a concrete experience to discuss in an interview."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action: Describe your role, the decisions made as a team and how the work was shared."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#6 Personalize your applications",
+              "description": [
+                {
+                  "text": "A targeted application lets you connect your profile to the role's requirements."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action: Link a requested skill to an example from your projects."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#7 Ask for referrals",
+              "description": [
+                {
+                  "text": "Former classmates or instructors can tell you about companies that are hiring."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action: Ask for targeted introductions."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#8 Develop your soft skills",
+              "description": [
+                {
+                  "text": "Explaining a problem and asking for help are also part of teamwork."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action: Explain what you tried, the result and the help you need."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#9 Use AI thoughtfully",
+              "description": [
+                {
+                  "text": "An assistant to help you move faster, not a crutch that writes code for you."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action: Understand and test every line suggested by AI."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "#10 Adjust your search",
+              "description": [
+                {
+                  "text": "After several applications without a response, check whether the roles you are targeting match your profile."
+                }
+              ],
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Action: Compare the listings with your resume and projects, then adjust your targets or how you present them."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "erreurs-a-eviter",
+      "title": "What to avoid",
+      "number": true,
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": " Applying with a rushed or unfinished resume. Before your first application, finish a polished resume: clear, free of mistakes, well presented and tailored to the role. This preparation is the foundation for being competitive and avoiding wasting your first opportunities."
+              }
+            ],
+            [
+              {
+                "text": " Confusing a high volume of indiscriminate applications with effectiveness."
+              }
+            ],
+            [
+              {
+                "text": " Confusing LinkedIn popularity with real development skills."
+              }
+            ],
+            [
+              {
+                "text": " Claiming to master technologies you do not really understand in depth."
+              }
+            ],
+            [
+              {
+                "text": " Presenting a project generated entirely by AI without being able to explain its architecture."
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "checklist-finale",
+      "title": "Your checklist for taking action",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Check off the steps you have completed. Your progress is saved in this browser."
+            }
+          ]
+        },
+        {
+          "type": "checklist",
+          "storageKey": "vd_guide_checklist_v1",
+          "items": [
+            {
+              "id": "chk-1",
+              "label": "My resume is clear, well spaced and has been proofread."
+            },
+            {
+              "id": "chk-2",
+              "label": "My LinkedIn profile is complete and precise."
+            },
+            {
+              "id": "chk-3",
+              "label": "My portfolio presents my best projects online."
+            },
+            {
+              "id": "chk-4",
+              "label": "My GitHub demonstrates my skills with well-written READMEs."
+            },
+            {
+              "id": "chk-5",
+              "label": "I have defined my target role and main stack."
+            },
+            {
+              "id": "chk-6",
+              "label": "I have identified a list of relevant companies."
+            },
+            {
+              "id": "chk-7",
+              "label": "I have started contacting professionals on LinkedIn."
+            },
+            {
+              "id": "chk-8",
+              "label": "I have a tracking tool, such as Notion or Excel, for my applications."
+            },
+            {
+              "id": "chk-9",
+              "label": "I regularly practice technical tests, including algorithms and live coding."
+            },
+            {
+              "id": "chk-10",
+              "label": "I have prepared my two-minute personal introduction."
+            },
+            {
+              "id": "chk-11",
+              "label": "I can explain the architecture of my personal projects."
+            },
+            {
+              "id": "chk-12",
+              "label": "I have identified meetups or tech events near me."
+            },
+            {
+              "id": "chk-13",
+              "label": "I have defined a sustainable job-search routine."
+            },
+            {
+              "id": "chk-14",
+              "label": "I analyze positive and negative responses to improve."
+            }
+          ],
+          "printNote": "(The interactive checklist is available in the web version of this guide)."
+        }
+      ]
+    },
+    {
+      "id": "faire-avancer-recherche",
+      "title": "Move your search forward",
+      "number": false,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Start by updating your resume and choosing a few projects you can present. Target companies hiring for your stack, track your applications and adjust them based on the conversations you have."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "author": {
+    "description": "I design and build modern web applications, with particular attention to user experience, software quality and understanding product needs."
+  },
+  "related": {
+    "slugs": [
+      "internationalize-saas-at-launch"
+    ]
+  }
+}

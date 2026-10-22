@@ -9,7 +9,7 @@ export type RichNode = {
   link?: { href: string; external?: boolean };
 };
 export type RichText = RichNode[];
-/** Modules éditoriaux choisis via un registre fermé. Les cinq widgets SaaS restent FR tant que leurs copies EN ne sont pas rédigées. */
+/** Modules éditoriaux choisis via un registre fermé. Les widgets SaaS partagent leur logique et utilisent les messages FR/EN du site. */
 export type SaaSModuleName = Exclude<
   keyof typeof import("./json-custom-modules.json"),
   "metric-panel" | "saas-hero"

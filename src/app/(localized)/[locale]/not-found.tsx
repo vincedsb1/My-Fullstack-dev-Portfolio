@@ -19,7 +19,7 @@ export default async function NotFound() {
           <ButtonLink href={getProjectsPath(locale)} variant="secondary">
             {t("projects")}
           </ButtonLink>
-          <ButtonLink href="/fr/blog" variant="secondary">
+          <ButtonLink href={`/${locale}/blog`} variant="secondary">
             {t("blog")}
           </ButtonLink>
         </div>

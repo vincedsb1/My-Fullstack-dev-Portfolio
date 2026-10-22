@@ -133,7 +133,7 @@ test("language menu and native project dialog", async ({ page }) => {
     page
       .getByRole("navigation", { name: "Langue", exact: true })
       .getByRole("link", { name: "🇬🇧 English" }),
-  ).toHaveAttribute("href", "/en");
+  ).toHaveAttribute("href", "/en/blog/internationalize-saas-at-launch");
   await page.goto("/fr/projets/archives");
   const trigger = page.locator('[aria-haspopup="dialog"]').first();
   await trigger.click();

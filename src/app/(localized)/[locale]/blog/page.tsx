@@ -33,7 +33,6 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const locale = getBlogLocale((await params).locale);
   const articles = getPublishedArticles(locale);
-  if (locale === "en" && articles.length === 0) notFound();
 
   const seo = getBlogIndexSeo(articles, locale);
   const url = baseUrl + "/" + locale + "/blog";
@@ -47,6 +46,7 @@ export async function generateMetadata({
     description: seo.description,
     alternates: languages,
     image: `/${locale}/blog/blog-index-image.png`,
+    noindex: articles.length === 0,
   });
 }
 
@@ -57,7 +57,6 @@ export default async function BlogPage({
 }) {
   const locale = getBlogLocale((await params).locale);
   const articles = getPublishedArticles(locale);
-  if (locale === "en" && articles.length === 0) notFound();
 
   const seo = getBlogIndexSeo(articles, locale);
   return <BlogIndex articles={articles} locale={locale} seo={seo} />;

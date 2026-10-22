@@ -40,7 +40,7 @@ test("registre JSON couvre les cinq interactions de l’article SaaS", () => {
   assert.doesNotThrow(() => validate(fixture));
 });
 
-test("les composants métier sont bornés, non dupliqués et non disponibles en EN sans traduction", () => {
+test("les composants métier sont bornés, non dupliqués et disponibles en FR/EN", () => {
   const unknown = fresh();
   unknown.sections[0].blocks.push({
     type: "custom",
@@ -57,7 +57,7 @@ test("les composants métier sont bornés, non dupliqués et non disponibles en 
   assert.throws(() => validate(extra), /champ inconnu/);
   const english = fresh();
   english.meta.locale = "en";
-  assert.throws(() => validate(english), /réservé au contenu français/);
+  assert.doesNotThrow(() => validate(english));
   const hero = fresh();
   hero.hero.visual = { component: "saas-language-matrix" };
   assert.throws(() => validate(hero), /ne peut pas être utilisé dans le hero/);

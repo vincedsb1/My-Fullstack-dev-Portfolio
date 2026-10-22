@@ -9,12 +9,11 @@ import ThemeToggle from "@/components/theme/ThemeToggle";
 import HeaderNavigation from "./HeaderNavigation";
 export default async function SiteHeader({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "site" });
-  const blogLocale = getPublishedArticles(locale).length ? locale : "fr";
   const links = [
     { href: getProjectsPath(locale), label: t("projects") },
     {
-      href: `/${blogLocale}/blog`,
-      label: blogLocale === locale ? t("blog") : t("blogFrench"),
+      href: `/${locale}/blog`,
+      label: t("blog"),
     },
     { href: `/${locale}#parcours`, label: t("career") },
     { href: `/${locale}#contact`, label: t("contact") },

@@ -1,6 +1,5 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { validateJsonArticle } from "../../src/lib/blog/json-source.mjs";
 
@@ -43,19 +42,16 @@ test("migration SaaS : intégralité du contenu, emphases, code, liens et ordre 
     ]),
   ];
   assert.deepEqual(actual, expected);
-  assert.equal(
-    createHash("sha256")
-      .update(read("src/features/blog/InternationalisationArticleModules.tsx"))
-      .digest("hex"),
-    baseline.source.widgetsSha256,
-    "Les cinq modules métier conservent leur implémentation",
-  );
+  // Le fichier des widgets est désormais localisé. La parité FR et les huit
+  // branches métier sont contrôlées sur leur rendu réel, pas par un hash source.
 });
 
 test("migration SaaS : métadonnées inchangées et navigation historique conservée", () => {
   const { renderer, ...meta } = baseline.metadata;
   assert.equal(renderer, "editorial");
-  assert.deepEqual(article.meta, meta);
+  const { translationKey, ...currentMeta } = article.meta;
+  assert.equal(translationKey, "saas-internationalization-launch");
+  assert.deepEqual(currentMeta, meta);
   assert.deepEqual(article.related.slugs, ["guide-premier-emploi-developpeur"]);
   assert.deepEqual(article.legacyAnchors, {
     top: "article-top",

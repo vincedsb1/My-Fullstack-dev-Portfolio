@@ -83,16 +83,10 @@ export default function LocaleLinks({
               ? a.slug === slug
               : current?.key && a.key === current.key),
         );
-        return target
-          ? `/${l}/blog/${target.slug}`
-          : articles.some((a) => a.locale === l)
-          ? paths[l].blog
-          : paths[l].home;
+        return target ? `/${l}/blog/${target.slug}` : paths[l].blog;
       }
       case "/blog":
-        return articles.some((a) => a.locale === l)
-          ? paths[l].blog
-          : paths[l].home;
+        return paths[l].blog;
       case "/projects":
       case "/projects/archive":
       case "/preview/ui":
