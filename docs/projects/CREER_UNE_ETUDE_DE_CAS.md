@@ -10,7 +10,7 @@ HTTP de contenu n’est nécessaire. Les routes existantes génèrent les pages 
 | Élément                                                                    | Source                                                                               |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | Ordre des sections, layout, espacements, couleurs, animations, responsive  | `src/app/components/projects/ProjectCaseStudyTemplate.tsx` et ses composants enfants |
-| Titres de sections, navigation, contact et libellés génériques             | Entrée `caseStudy` de `src/i18n/fr.json` et `src/i18n/en.json`                       |
+| Titres de sections, navigation, contact et libellés génériques             | Entrée `caseStudy` de `src/i18n/messages/fr.json` et `src/i18n/messages/en.json`     |
 | Textes, workflow, architecture, défis, technologies et résultats du projet | `src/content/projects/manifests/<locale>/<slug>.json`                                |
 | Titre et libellés accessibles propres à la vidéo                           | Objet `video` du JSON ; libellés génériques localisés en secours                     |
 | Identité du projet, liens externes vérifiés, ordre et statut par langue    | `src/content/projects/catalog.ts`                                                    |
@@ -123,3 +123,12 @@ enregistre-les dans le catalogue et le registre. Conserve les styles, les
 espacements, l’ordre des sections et les animations. Utilise uniquement les médias
 et traductions disponibles. Signale les informations manquantes sans les inventer,
 puis valide les données, le build et le rendu responsive dans les deux thèmes.
+
+## Dates et métadonnées
+
+Chaque manifeste déclare `updatedAt` avec une date ISO réelle, issue de sa dernière
+révision de contenu. Le validateur refuse les dates impossibles. Les titres SEO
+restent limités à 39 caractères pour tenir en 60 caractères avec le suffixe du
+site. Le template fournit les métadonnées, l’image sociale 1200 × 630, les liens
+FR/EN et le fil d’Ariane. Les modèles d’affichage sont calculés côté serveur ;
+les composants client ne doivent pas importer les chargeurs de manifestes.

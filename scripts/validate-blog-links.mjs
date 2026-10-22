@@ -48,6 +48,7 @@ function listAppRoutePatterns(directory = appRoot, parentSegments = []) {
   for (const entry of entries) {
     const entryPath = path.join(directory, entry.name);
     if (entry.isDirectory()) {
+      if (entry.name === "[...rest]" || entry.name === "preview") continue;
       const isRouteGroup =
         (entry.name.startsWith("(") && entry.name.endsWith(")")) ||
         entry.name.startsWith("@");
@@ -70,6 +71,10 @@ function listAppRoutePatterns(directory = appRoot, parentSegments = []) {
 
 function routePatternMatches(pathname, pattern) {
   const requestedSegments = pathname.split("/").filter(Boolean);
+  if (requestedSegments[0] === "fr" && requestedSegments[1] === "projets") {
+    requestedSegments[1] = "projects";
+    if (requestedSegments[2] === "archives") requestedSegments[2] = "archive";
+  }
   const routeSegments =
     requestedSegments[0] && supportedLocales.has(requestedSegments[0])
       ? ["[locale]", ...requestedSegments.slice(1)]

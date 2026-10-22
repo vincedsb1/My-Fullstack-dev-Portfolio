@@ -1,84 +1,48 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
+import { locales, type Locale } from "@/i18n/routing";
 import {
   getAvailableCaseStudy,
   getAvailableProjectSlugs,
-  getProjectFromCatalog,
 } from "@/content/projects/loaders";
 import { getProjectDetailPath } from "@/lib/projects/routes";
-import { ProjectCaseStudyRoutePage } from "../../../../components/projects/ProjectCaseStudyRoutePage";
-import type { ProjectLocale } from "@/content/projects/types";
-
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://vincent.desbrosses.net";
-
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { ProjectCaseStudyRoutePage } from "@/features/projects/ProjectCaseStudyRoutePage";
 export const dynamic = "force-static";
 export const dynamicParams = false;
-
 export function generateStaticParams() {
-  return getAvailableProjectSlugs("en").map((slug) => ({
-    locale: "en",
-    slug,
-  }));
+  return locales.flatMap((locale) =>
+    getAvailableProjectSlugs(locale).map((slug) => ({ locale, slug })),
+  );
 }
-
-function getEnglishLocale(value: string): ProjectLocale {
-  if (value !== "en") notFound();
-  return "en";
-}
-
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>;
-}): Promise<Metadata> {
-  const { locale: rawLocale, slug } = await params;
-  const locale = getEnglishLocale(rawLocale);
-  const project = getProjectFromCatalog(slug);
+  params: Promise<{ locale: Locale; slug: string }>;
+}) {
+  const { locale, slug } = await params;
   const manifest = getAvailableCaseStudy(locale, slug);
-  if (!project || !manifest) notFound();
-  const url = `${baseUrl}${getProjectDetailPath(locale, slug)}`;
-  const image = manifest.seo.socialImage?.src
-    ? `${baseUrl}${manifest.seo.socialImage.src}`
-    : `${baseUrl}/pp.jpg`;
-  const languages: Record<string, string> = { en: url };
-  if (getAvailableCaseStudy("fr", slug)) {
-    languages.fr = `${baseUrl}${getProjectDetailPath("fr", slug)}`;
-  }
-  return {
-    title: `${manifest.seo.title} | Vincent DESBROSSES`,
+  if (!manifest) notFound();
+  return buildPageMetadata({
+    locale,
+    path: getProjectDetailPath(locale, slug),
+    title: manifest.seo.title,
     description: manifest.seo.description,
-    robots: manifest.seo.noindex ? { index: false, follow: false } : undefined,
-    alternates: {
-      canonical: url,
-      languages,
-    },
-    openGraph: {
-      title: manifest.seo.title,
-      description: manifest.seo.description,
-      url,
-      siteName: "Vincent DESBROSSES",
-      type: "article",
-      locale: "en_US",
-      images: [
-        { url: image, width: 1200, height: 630, alt: manifest.seo.title },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: manifest.seo.title,
-      description: manifest.seo.description,
-      images: [image],
-    },
-  };
+    type: "article",
+    noindex: manifest.seo.noindex,
+    alternates: Object.fromEntries(
+      locales
+        .filter((l) => getAvailableCaseStudy(l, slug))
+        .map((l) => [l, getProjectDetailPath(l, slug)]),
+    ),
+  });
 }
-
-export default async function EnglishProjectCaseStudy({
+export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ locale: Locale; slug: string }>;
 }) {
-  const { locale: rawLocale, slug } = await params;
-  const locale = getEnglishLocale(rawLocale);
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
   return <ProjectCaseStudyRoutePage locale={locale} slug={slug} />;
 }

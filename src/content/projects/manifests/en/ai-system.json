@@ -10,7 +10,7 @@
     "category": "macOS application"
   },
   "seo": {
-    "title": "AiSystem — Managing AI resources on macOS",
+    "title": "AiSystem — shared AI resource library",
     "description": "A macOS app to centralize, inspect and distribute shared AI skills and reference documents across projects and development assistants.",
     "noindex": false
   },
@@ -20,7 +20,7 @@
     "pill": "Native macOS app",
     "visual": {
       "type": "image",
-      "src": "/aiSystem.png",
+      "src": "/aiSystem.webp",
       "alt": "Illustrated preview of AiSystem: overview and resource synchronization for Claude and Codex.",
       "width": 1920,
       "height": 1440
@@ -190,5 +190,6 @@
     "bash",
     "xcode",
     "json"
-  ]
+  ],
+  "updatedAt": "2026-10-22"
 }

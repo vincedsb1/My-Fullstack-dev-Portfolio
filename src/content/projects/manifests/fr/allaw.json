@@ -10,7 +10,7 @@
     "category": "LegalTech · SaaS B2B"
   },
   "seo": {
-    "title": "Allaw — Étude de cas développeur full-stack",
+    "title": "Allaw — plateforme LegalTech",
     "description": "Conception de dossiers clients, de pages Office multi-agences et de composants partagés pour une plateforme LegalTech en Next.js.",
     "noindex": false
   },
@@ -20,7 +20,7 @@
     "pill": "Plateforme LegalTech",
     "visual": {
       "type": "image",
-      "src": "/allaw.jpg",
+      "src": "/allaw.webp",
       "alt": "Montage des interfaces Allaw : recherche de professionnels, rendez-vous et dossiers",
       "width": 5760,
       "height": 4096
@@ -169,5 +169,6 @@
       "title": "Bibliothèque UI réutilisable",
       "description": "Package NPM de composants enrichi au fil des développements et utilisable par les autres développeurs frontend."
     }
-  ]
+  ],
+  "updatedAt": "2026-10-22"
 }

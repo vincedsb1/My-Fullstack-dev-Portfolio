@@ -11,7 +11,7 @@ const notStarted = (): Record<ProjectLocale, ProjectLocalePublication> => ({
   en: { status: "not-started" },
 });
 
-const source = "src/app/components/Projects3.tsx";
+const source = "src/features/home/Projects3.tsx";
 
 export const projectCatalog: readonly ProjectCatalogEntry[] = [
   {
@@ -37,10 +37,8 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     cardVisual: {
       id: "allaw-card",
       type: "image",
-      src: "/allaw.jpg",
+      src: "/allaw.webp",
       alt: "",
-      width: 1200,
-      height: 900,
       verified: true,
       priority: true,
     },
@@ -54,7 +52,13 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
         manifestFile: "src/content/projects/manifests/en/allaw.json",
       },
     },
-    evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
+    evidence: {
+      sourceFiles: [
+        source,
+        "src/i18n/messages/fr.json",
+        "src/i18n/messages/en.json",
+      ],
+    },
   },
   {
     id: "iconise",
@@ -70,6 +74,8 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     maturity: "implementation-verified",
     technologies: ["nextjs", "typescript", "postgresql", "gemini"],
     links: {},
+    featuredVisual: { type: "illustration", imageId: "iconise-product-figure" },
+    featuredTransparent: true,
     illustration: "iconise",
     caseStudyByLocale: {
       fr: {
@@ -108,6 +114,8 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     maturity: "not-audited",
     technologies: ["swift", "xcode", "openai"],
     links: {},
+    featuredVisual: { type: "illustration", imageId: "suggst" },
+    featuredTransparent: true,
     illustration: "suggst",
     caseStudyByLocale: {
       fr: {
@@ -146,6 +154,8 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
         lastCheckedAt: "2026-10-21",
       },
     },
+    featuredVisual: { type: "illustration", imageId: "smartflow" },
+    featuredTransparent: true,
     illustration: "smartflow",
     caseStudyByLocale: {
       fr: {
@@ -160,8 +170,8 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     evidence: {
       sourceFiles: [
         source,
-        "src/i18n/fr.json",
-        "src/i18n/en.json",
+        "src/i18n/messages/fr.json",
+        "src/i18n/messages/en.json",
         "src/content/projects/manifests/fr/smartflow.json",
         "src/content/projects/manifests/en/smartflow.json",
       ],
@@ -190,10 +200,8 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     cardVisual: {
       id: "ai-system-card",
       type: "image",
-      src: "/aiSystem.png",
+      src: "/aiSystem.webp",
       alt: "",
-      width: 1920,
-      height: 1440,
       verified: true,
     },
     caseStudyByLocale: {
@@ -209,14 +217,14 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     evidence: {
       sourceFiles: [
         source,
-        "src/i18n/fr.json",
-        "src/i18n/en.json",
+        "src/i18n/messages/fr.json",
+        "src/i18n/messages/en.json",
         "src/content/projects/manifests/fr/ai-system.json",
         "src/content/projects/manifests/en/ai-system.json",
       ],
       notes: [
         "Contenus issus du JSON éditorial fourni ; publication autorisée par le propriétaire du portfolio.",
-        "Aperçu existant /aiSystem.png réutilisé ; les captures supplémentaires restent à fournir et à expurger.",
+        "Aperçu existant /aiSystem.webp réutilisé ; les captures supplémentaires restent à fournir et à expurger.",
       ],
     },
   },
@@ -237,10 +245,8 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     cardVisual: {
       id: "aimoto-card",
       type: "image",
-      src: "/aimoto.png",
+      src: "/aimoto.webp",
       alt: "",
-      width: 1920,
-      height: 1080,
       verified: true,
     },
     caseStudyByLocale: {
@@ -256,8 +262,8 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     evidence: {
       sourceFiles: [
         source,
-        "src/i18n/fr.json",
-        "src/i18n/en.json",
+        "src/i18n/messages/fr.json",
+        "src/i18n/messages/en.json",
         "src/content/projects/manifests/fr/aimoto.json",
         "src/content/projects/manifests/en/aimoto.json",
       ],
@@ -283,6 +289,8 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
         lastCheckedAt: "2026-10-20",
       },
     },
+    featuredVisual: { type: "illustration", imageId: "truthify" },
+    featuredTransparent: true,
     illustration: "truthify",
     caseStudyByLocale: {
       fr: {
@@ -297,8 +305,8 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     evidence: {
       sourceFiles: [
         source,
-        "src/i18n/fr.json",
-        "src/i18n/en.json",
+        "src/i18n/messages/fr.json",
+        "src/i18n/messages/en.json",
         "src/content/projects/manifests/fr/truthify.json",
         "src/content/projects/manifests/en/truthify.json",
       ],
@@ -326,14 +334,18 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     cardVisual: {
       id: "codemaster-card",
       type: "image",
-      src: "/codemaster.png",
+      src: "/codemaster.webp",
       alt: "",
-      width: 1200,
-      height: 900,
       verified: true,
     },
     caseStudyByLocale: notStarted(),
-    evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
+    evidence: {
+      sourceFiles: [
+        source,
+        "src/i18n/messages/fr.json",
+        "src/i18n/messages/en.json",
+      ],
+    },
   },
   {
     id: "decorNature",
@@ -357,14 +369,18 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     cardVisual: {
       id: "decor-nature-card",
       type: "image",
-      src: "/decornature.png",
+      src: "/decornature.webp",
       alt: "",
-      width: 1200,
-      height: 900,
       verified: true,
     },
     caseStudyByLocale: notStarted(),
-    evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
+    evidence: {
+      sourceFiles: [
+        source,
+        "src/i18n/messages/fr.json",
+        "src/i18n/messages/en.json",
+      ],
+    },
   },
   {
     id: "teslaApp",
@@ -388,14 +404,18 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     cardVisual: {
       id: "tesla-card",
       type: "image",
-      src: "/isteslaworthit.png",
+      src: "/isteslaworthit.webp",
       alt: "",
-      width: 1200,
-      height: 900,
       verified: true,
     },
     caseStudyByLocale: notStarted(),
-    evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
+    evidence: {
+      sourceFiles: [
+        source,
+        "src/i18n/messages/fr.json",
+        "src/i18n/messages/en.json",
+      ],
+    },
   },
   {
     id: "liic",
@@ -413,14 +433,18 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     cardVisual: {
       id: "liic-card",
       type: "image",
-      src: "/liic.png",
+      src: "/liic.webp",
       alt: "",
-      width: 1200,
-      height: 900,
       verified: true,
     },
     caseStudyByLocale: notStarted(),
-    evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
+    evidence: {
+      sourceFiles: [
+        source,
+        "src/i18n/messages/fr.json",
+        "src/i18n/messages/en.json",
+      ],
+    },
   },
   {
     id: "wilderGame",
@@ -444,14 +468,18 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     cardVisual: {
       id: "wilder-game-card",
       type: "image",
-      src: "/wildersgame.jpg",
+      src: "/wildersgame.webp",
       alt: "",
-      width: 1200,
-      height: 900,
       verified: true,
     },
     caseStudyByLocale: notStarted(),
-    evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
+    evidence: {
+      sourceFiles: [
+        source,
+        "src/i18n/messages/fr.json",
+        "src/i18n/messages/en.json",
+      ],
+    },
   },
   {
     id: "legalDirectory",
@@ -469,15 +497,19 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     cardVisual: {
       id: "quickflow-card",
       type: "image",
-      src: "/quickflow.png",
+      src: "/quickflow.webp",
       alt: "",
-      width: 1200,
-      height: 900,
       verified: true,
     },
     legacyIds: ["quickflow"],
     caseStudyByLocale: notStarted(),
-    evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
+    evidence: {
+      sourceFiles: [
+        source,
+        "src/i18n/messages/fr.json",
+        "src/i18n/messages/en.json",
+      ],
+    },
   },
   {
     id: "legalConstat",
@@ -501,14 +533,18 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     cardVisual: {
       id: "legal-constat-card",
       type: "image",
-      src: "/legalconstat.png",
+      src: "/legalconstat.webp",
       alt: "",
-      width: 1200,
-      height: 900,
       verified: true,
     },
     caseStudyByLocale: notStarted(),
-    evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
+    evidence: {
+      sourceFiles: [
+        source,
+        "src/i18n/messages/fr.json",
+        "src/i18n/messages/en.json",
+      ],
+    },
   },
   {
     id: "emmausConnect",
@@ -532,14 +568,18 @@ export const projectCatalog: readonly ProjectCatalogEntry[] = [
     cardVisual: {
       id: "emmaus-connect-card",
       type: "image",
-      src: "/emmausconnect.png",
+      src: "/emmausconnect.webp",
       alt: "",
-      width: 1200,
-      height: 900,
       verified: true,
     },
     caseStudyByLocale: notStarted(),
-    evidence: { sourceFiles: [source, "src/i18n/fr.json", "src/i18n/en.json"] },
+    evidence: {
+      sourceFiles: [
+        source,
+        "src/i18n/messages/fr.json",
+        "src/i18n/messages/en.json",
+      ],
+    },
   },
 ];
 

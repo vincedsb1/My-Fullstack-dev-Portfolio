@@ -1,6 +1,6 @@
-import { createBlogSocialImage } from "../../../../../components/blog/BlogSocialImage";
+import { createBlogSocialImage } from "../../../../../../features/blog/BlogSocialImage";
 import { getPublishedArticle, getPublishedArticles } from "@/lib/blog/articles";
-import { createGuideSocialImage } from "../../../../../guide-premier-emploi-developpeur/guideSocialImage";
+import { createGuideSocialImage } from "../../../../../../features/guide/guideSocialImage";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;

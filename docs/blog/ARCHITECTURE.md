@@ -8,11 +8,11 @@ Les articles vivent dans `src/content/blog/<locale>/<slug>.mdx`. Le frontmatter 
 
 Les pages utilisent les Server Components de l’App Router. `generateStaticParams()` énumère les paires locale/slug publiées et `dynamicParams = false` ferme les routes inconnues. Le chargeur officiel `@next/mdx` compile les imports locaux pendant le build ; Vercel sert ensuite le HTML généré sans lire ni compiler le fichier à chaque visite. Le contenu MDX est du code du dépôt, de confiance. Ne jamais y injecter de contenu utilisateur ou distant.
 
-`@next/mdx` compile les fichiers MDX locaux pendant le build. `remark-frontmatter` repère le YAML et `remark-mdx-frontmatter` le convertit en export MDX (les métadonnées affichées sont lues séparément par le validateur). `remark-gfm` prend en charge les tableaux, listes de tâches et autres extensions GitHub. `rehype-pretty-code` colore le code pendant la génération. Les blocs `<Callout>`, `<Figure>`, `<Diagram>` et `<YouTubeEmbed>` sont exposés dans `src/app/components/blog/MdxComponents.tsx`.
+`@next/mdx` compile les fichiers MDX locaux pendant le build. `remark-frontmatter` repère le YAML et `remark-mdx-frontmatter` le convertit en export MDX (les métadonnées affichées sont lues séparément par le validateur). `remark-gfm` prend en charge les tableaux, listes de tâches et autres extensions GitHub. `rehype-pretty-code` colore le code pendant la génération. Les blocs `<Callout>`, `<Figure>`, `<Diagram>` et `<YouTubeEmbed>` sont exposés dans `src/features/blog/MdxComponents.tsx`.
 
 ## Articles React spécialisés
 
-Un article peut déclarer `renderer: guide` dans son frontmatter pour réutiliser un rendu React interactif enregistré. Le guide du premier emploi reste dans `src/app/guide-premier-emploi-developpeur/` afin de conserver sa checklist, ses ancres, sa progression, sa persistance locale, la copie, le partage, l’impression, le thème et ses icônes. Son contenu et ses interactions partagent les routes, métadonnées, images sociales et le sitemap du blog.
+Un article peut déclarer `renderer: guide` dans son frontmatter pour réutiliser un rendu React interactif enregistré. Le guide du premier emploi est rendu par des composants serveur typés dans `src/features/guide/` afin de conserver sa checklist, ses ancres, sa progression, sa persistance locale, la copie, le partage, l’impression, le thème et ses icônes. Son contenu et ses interactions partagent les routes, métadonnées, images sociales et le sitemap du blog.
 
 Ce renderer est réservé à cet article. Les articles ordinaires restent des fichiers MDX sans registre manuel à mettre à jour.
 
@@ -37,7 +37,7 @@ Les images MDX peuvent être écrites avec la syntaxe Markdown standard ; des di
 
 ## Partage social
 
-`src/app/[locale]/blog/blog-index-image.png/route.tsx` génère l’image de partage de l’index depuis ses catégories publiées. `src/app/[locale]/blog/[slug]/social-image/route.tsx` génère celle de chaque article ; le guide réutilise son image sociale existante. Les deux utilisent le même générateur PNG de 1200 × 630. Open Graph et Twitter déclarent dimensions, texte alternatif et image cohérente avec la page.
+`src/app/(localized)/[locale]/blog/blog-index-image.png/route.tsx` génère l’image de partage de l’index depuis ses catégories publiées. `src/app/(localized)/[locale]/blog/[slug]/social-image/route.tsx` génère celle de chaque article ; le guide réutilise son image sociale existante. Les deux utilisent le même générateur PNG de 1200 × 630. Open Graph et Twitter déclarent dimensions, texte alternatif et image cohérente avec la page.
 
 ## Validation et publication
 
@@ -45,14 +45,24 @@ Les images MDX peuvent être écrites avec la syntaxe Markdown standard ; des di
 
 ## Fichiers principaux
 
-- `src/app/[locale]/blog/page.tsx` : index et métadonnées du blog.
-- `src/app/[locale]/blog/[slug]/page.tsx` : articles, SEO et pré-rendu statique.
-- `src/app/[locale]/blog/[slug]/social-image/route.tsx` : images sociales statiques.
-- `src/app/[locale]/blog/blog-index-image.png/route.tsx` : image sociale de l’index.
-- `src/app/components/blog/` : cartes, navigation, layout partagé et composants MDX.
+- `src/app/(localized)/[locale]/blog/page.tsx` : index et métadonnées du blog.
+- `src/app/(localized)/[locale]/blog/[slug]/page.tsx` : articles, SEO et pré-rendu statique.
+- `src/app/(localized)/[locale]/blog/[slug]/social-image/route.tsx` : images sociales statiques.
+- `src/app/(localized)/[locale]/blog/blog-index-image.png/route.tsx` : image sociale de l’index.
+- `src/features/blog/` : cartes, navigation, layout partagé et composants MDX.
 - `src/content/blog/` : frontmatter et contenu éditorial.
 - `public/blog/` : images et schémas locaux.
 - `src/app/sitemap.ts` : index et articles publiés.
 - `scripts/validate-blog.mjs` : validation préalable au build.
 - `scripts/validate-blog-links.mjs` : contrôle des liens internes et ressources locales.
 - `scripts/test-blog-seo.mjs` : vérification SEO du build local.
+
+## Gabarits et navigation communs
+
+Le registre `src/features/blog/ArticleLayouts.tsx` associe `default`, `guide` et
+`editorial` aux gabarits. L’article MDX exporte `GuideArticle` ; `GuideBody.tsx` assemble ses sections typées sous `src/features/guide/sections/`, sans injection de HTML brut ;
+son contrôleur conserve la clé `vd_guide_checklist_v1`. Les styles du guide ne sont
+chargés que par son composant. Tous les gabarits utilisent l’en-tête, le pied de
+page et les contrôles de thème/langue communs. `seoTitle` permet un titre SEO
+court sans changer le H1. `relatedProjects` référence uniquement des fiches
+publiées dans la langue de l’article et produit des liens de détail visibles.

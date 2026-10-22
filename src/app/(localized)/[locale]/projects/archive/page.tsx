@@ -1,67 +1,34 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import ProjectArchivesPage from "../../../../components/projects/ProjectArchivesPage";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import type { Locale } from "@/i18n/routing";
+import { getArchiveProjects } from "@/content/projects/loaders";
 import { getArchivePath } from "@/lib/projects/routes";
-import type { ProjectLocale } from "@/content/projects/types";
-
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://vincent.desbrosses.net";
-
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import ProjectArchivesPage from "@/features/projects/ProjectArchivesPage";
 export const dynamic = "force-static";
-
-export function generateStaticParams() {
-  return [{ locale: "en" }];
-}
-
-function getEnglishLocale(value: string): ProjectLocale {
-  if (value !== "en") notFound();
-  return "en";
-}
-
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const locale = getEnglishLocale((await params).locale);
-  const title = "Project archive | Vincent DESBROSSES";
-  const description =
-    "Explore eight additional projects from Vincent DESBROSSES’ portfolio.";
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `${baseUrl}${getArchivePath(locale)}`,
-      languages: {
-        fr: `${baseUrl}${getArchivePath("fr")}`,
-        en: `${baseUrl}${getArchivePath("en")}`,
-      },
-    },
-    openGraph: {
-      title,
-      description,
-      url: `${baseUrl}${getArchivePath(locale)}`,
-      siteName: "Vincent DESBROSSES",
-      type: "website",
-      locale: "en_US",
-      images: [
-        { url: `${baseUrl}/pp.jpg`, width: 1084, height: 1084, alt: title },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [`${baseUrl}/pp.jpg`],
-    },
-  };
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "projects" });
+  const s = await getTranslations({ locale, namespace: "site" });
+  return buildPageMetadata({
+    locale,
+    path: getArchivePath(locale),
+    title: t("archivesTitle"),
+    description: s("archiveDescription", {
+      count: getArchiveProjects().length,
+    }),
+    alternates: { fr: getArchivePath("fr"), en: getArchivePath("en") },
+  });
 }
-
-export default async function EnglishProjectArchives({
+export default async function Page({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locale }>;
 }) {
-  const locale = getEnglishLocale((await params).locale);
+  const { locale } = await params;
+  setRequestLocale(locale);
   return <ProjectArchivesPage locale={locale} />;
 }

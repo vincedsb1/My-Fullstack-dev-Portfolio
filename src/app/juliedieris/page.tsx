@@ -1,14 +1,14 @@
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowUpRight, Mail, ShoppingBag } from "lucide-react";
 
 import cover from "../../../docs/Julie_Dieris-Le_Silence_de_la_Nuit-Cover.png";
-import DownloadModal from "./DownloadModal";
-import { AndroidIcon, WindowsIcon } from "./PlatformIcons";
+import DownloadModal from "@/features/juliedieris/DownloadModal";
+import { AndroidIcon, WindowsIcon } from "@/features/juliedieris/PlatformIcons";
 import styles from "./page.module.css";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://vincent.desbrosses.net";
+const baseUrl = SITE_URL;
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

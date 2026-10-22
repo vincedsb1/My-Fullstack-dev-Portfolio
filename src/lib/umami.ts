@@ -1,4 +1,4 @@
-const DEFAULT_SITE_URL = "https://vincent.desbrosses.net";
+import { SITE_URL } from "./site";
 
 export function getUmamiConfig() {
   if (
@@ -17,9 +17,7 @@ export function getUmamiConfig() {
 
   try {
     const umamiUrl = new URL(hostUrl);
-    const siteUrl = new URL(
-      process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL,
-    );
+    const siteUrl = new URL(SITE_URL);
 
     if (
       umamiUrl.protocol !== "https:" ||

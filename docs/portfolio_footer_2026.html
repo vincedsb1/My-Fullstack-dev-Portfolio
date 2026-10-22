@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincent DESBROSSES - Footer 2026</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff1f1',
+                            100: '#ffdfdf',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        *:focus-visible {
+            outline: 2px solid #f43f5e;
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+        
+        .rounded-full:focus-visible {
+            border-radius: 9999px;
+        }
+
+        /* Effet Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+        }
+        
+        .dark .glass {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Carte CTA Premium - Ajustement des couleurs sombres pour matcher la Hero (gris chauds/zinc) */
+        .premium-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255,255,255,1);
+        }
+
+        .dark .premium-card {
+            /* Suppression des tons bleu/slate, passage sur des tons zinc/neutres */
+            background: linear-gradient(145deg, rgba(39, 39, 42, 0.4) 0%, rgba(9, 9, 11, 0.6) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        /* Avatar Premium Aura - Identique à la Hero */
+        .premium-avatar-ring {
+            position: relative;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(244,63,94,0.6), rgba(251,146,60,0.6), rgba(244,63,94,0.1));
+            background-size: 200% 200%;
+            animation: gradientMove 4s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Background Grid */
+        .bg-grid {
+            background-size: 60px 60px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+        }
+
+        .dark .bg-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        /* Halos lumineux en arrière plan de la carte */
+        .card-glow {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(244,63,94,0.2) 0%, rgba(251,146,60,0.1) 40%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            filter: blur(20px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .premium-avatar-ring {
+                animation: none !important;
+            }
+            .card-glow {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#fafafa] text-gray-900 dark:bg-[#09090b] dark:text-gray-100 min-h-screen flex flex-col relative overflow-x-hidden selection:bg-brand-500 selection:text-white">
+
+    <div class="absolute inset-0 bg-grid z-[-2] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-t from-brand-500/5 to-transparent pointer-events-none z-[-1] dark:from-brand-500/10"></div>
+
+    <!-- Espace pour simuler le contenu au-dessus du footer -->
+    <div class="flex-grow flex items-center justify-center py-20 text-gray-400 dark:text-gray-600 font-medium text-sm tracking-widest uppercase">
+        ( Contenu du portfolio )
+    </div>
+
+    <footer class="w-full px-6 py-12 lg:py-16 relative z-10">
+        <div class="max-w-5xl mx-auto">
+            
+            <!-- Carte CTA Premium -->
+            <div class="premium-card rounded-[2rem] sm:rounded-[2.5rem] p-8 sm:p-10 lg:p-14 relative overflow-hidden group">
+                
+                <!-- Effets de lueur internes à la carte -->
+                <div class="card-glow top-0 right-0 translate-x-1/3 -translate-y-1/3 transition-transform duration-700 group-hover:scale-150 group-hover:opacity-70 opacity-40"></div>
+                <div class="card-glow bottom-0 left-0 -translate-x-1/3 translate-y-1/3 transition-transform duration-700 group-hover:scale-150 group-hover:opacity-70 opacity-40" style="background: radial-gradient(circle, rgba(251,146,60,0.15) 0%, rgba(244,63,94,0.05) 50%, rgba(0,0,0,0) 70%);"></div>
+
+                <div class="relative z-10 flex flex-col md:flex-row items-center md:items-start lg:items-center gap-8 lg:gap-12 text-center md:text-left">
+                    
+                    <!-- Avatar -->
+                    <div class="shrink-0 relative">
+                        <div class="premium-avatar-ring w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 rounded-full shadow-xl">
+                            <img 
+                                src="https://placehold.co/400x400/e2e8f0/475569?text=Vincent+D." 
+                                alt="Vincent DESBROSSES" 
+                                class="w-full h-full object-cover rounded-full border-[4px] border-[#fafafa] dark:border-[#09090b] transition-colors duration-500"
+                                style="background-color: #e2e8f0;"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Contenu Textuel -->
+                    <div class="flex-grow flex flex-col justify-center">
+                        <h2 class="text-3xl sm:text-4xl lg:text-[2.5rem] font-extrabold tracking-tight mb-4 text-gray-900 dark:text-white leading-tight">
+                            Envie de <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-400">travailler ensemble ?</span>
+                        </h2>
+                        
+                        <!-- Nouveau paragraphe ciblé recruteurs / produit -->
+                        <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl font-light leading-relaxed">
+                            Vous recrutez un développeur Fullstack ou souhaitez échanger autour d'un produit ? <strong class="text-gray-900 dark:text-gray-200 font-medium">Parlons de vos enjeux</strong> et de la manière dont je peux y contribuer.
+                        </p>
+
+                        <div class="flex flex-col min-[400px]:flex-row flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4 w-full">
+                            
+                            <!-- Bouton Primaire (Email) -->
+                            <a href="mailto:vincedsb@gmail.com" class="px-6 py-3.5 sm:px-8 sm:py-4 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold shadow-[0_4px_20px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:scale-[1.02] hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group whitespace-nowrap flex-nowrap shrink-0 w-full min-[400px]:w-auto">
+                                <i class="ph-bold ph-envelope-simple text-lg shrink-0"></i>
+                                Email
+                            </a>
+
+                            <!-- Bouton Secondaire (LinkedIn) - Icône monochrome au repos -->
+                            <a href="https://www.linkedin.com/in/vincent-desbrosses/" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 sm:px-8 sm:py-4 rounded-full glass font-semibold text-gray-800 dark:text-gray-200 hover:bg-white/60 dark:hover:bg-gray-800/60 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap flex-nowrap shrink-0 w-full min-[400px]:w-auto group">
+                                <i class="ph-fill ph-linkedin-logo text-xl text-gray-500 dark:text-gray-400 group-hover:text-brand-500 dark:group-hover:text-white transition-colors duration-300 shrink-0"></i>
+                                LinkedIn
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500 dark:text-gray-400 px-4">
+                <p>&copy; 2026 Vincent DESBROSSES. Tous droits réservés.</p>
+                
+                <div class="mt-4 sm:mt-0 flex items-center gap-1">
+                    <span>Conçu et développé avec React & Next.js</span>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+
+    <script>
+        const html = document.documentElement;
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+.guide-page {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.guide-page .text-neutral-400,
+.guide-page .text-neutral-500 {
+  color: #525252;
+}
+
+.dark .guide-page .text-neutral-400,
+.dark .guide-page .text-neutral-500,
+.dark .guide-page .text-neutral-600 {
+  color: #d4d4d4;
+}
+
+.dark .guide-page .toc-link:not(.active) {
+  color: #d4d4d4;
+}
+
+.guide-page #reading-progress {
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.1s ease-out;
+}
+
+.guide-page .editorial-content h2 {
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+
+.guide-page .editorial-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.guide-page .editorial-content p {
+  margin-bottom: 1.25rem;
+  color: #404040;
+  line-height: 1.75;
+}
+
+.guide-page .prose p {
+  margin-bottom: 1.25rem;
+  line-height: 1.75;
+}
+
+.dark .guide-page .editorial-content p {
+  color: #a3a3a3;
+}
+
+.guide-page .editorial-content ul {
+  margin-bottom: 1.25rem;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.guide-page .editorial-content li {
+  margin-bottom: 0.5rem;
+  color: #404040;
+  line-height: 1.6;
+}
+
+.dark .guide-page .editorial-content li {
+  color: #a3a3a3;
+}
+
+.guide-page .editorial-content strong {
+  color: #171717;
+  font-weight: 600;
+}
+
+.dark .guide-page .editorial-content strong {
+  color: #f5f5f5;
+}
+
+.guide-page .toc-link {
+  border-left: 2px solid transparent;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.guide-page .toc-link.active {
+  color: #dc2626;
+  border-left-color: #dc2626;
+  font-weight: 500;
+}
+
+.dark .guide-page .toc-link.active {
+  color: #fca5a5;
+  border-left-color: #fca5a5;
+}
+
+.guide-page .guide-category {
+  color: #b91c1c;
+}
+
+.dark .guide-page .guide-category {
+  color: #fca5a5;
+}
+
+.guide-page .checkbox-custom {
+  display: inline-flex;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  appearance: none;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #737373;
+  border-radius: 0.375rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.dark .guide-page .checkbox-custom {
+  border-color: #a3a3a3;
+}
+
+.guide-page .checkbox-custom:checked {
+  border-color: #dc2626;
+  background-color: #dc2626;
+}
+
+.guide-page .checkbox-custom:checked::after {
+  width: 0.375rem;
+  height: 0.625rem;
+  transform: rotate(45deg) translateY(-10%);
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  content: "";
+}
+
+.guide-page .checklist-item.checked span {
+  color: #525252;
+  text-decoration: line-through;
+}
+
+.dark .guide-page .checklist-item.checked span {
+  color: #d4d4d4;
+}
+
+.guide-page .no-scrollbar {
+  scrollbar-width: none;
+}
+
+.guide-page .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.guide-page #msg-template,
+.guide-page #prompt-template {
+  overflow-wrap: anywhere;
+}
+
+.guide-page .guide-toc summary::marker {
+  color: #dc2626;
+}
+
+@media (min-width: 768px) {
+  .guide-page .editorial-content h2 {
+    font-size: 1.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.guide-page) {
+    scroll-behavior: auto !important;
+  }
+
+  .guide-page,
+  .guide-page * {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  @page {
+    margin: 2cm;
+  }
+
+  body,
+  .guide-page {
+    background: white !important;
+    color: black !important;
+  }
+
+  .guide-page .no-print,
+  .guide-page nav,
+  .guide-page footer,
+  .guide-page .checklist-controls,
+  .guide-page button,
+  .guide-page .toc-sidebar,
+  .guide-page .guide-toc {
+    display: none !important;
+  }
+
+  .guide-page main {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .guide-page .editorial-content {
+    max-width: 100% !important;
+  }
+
+  .guide-page h1,
+  .guide-page h2,
+  .guide-page h3 {
+    color: black !important;
+    page-break-after: avoid;
+  }
+
+  .guide-page p,
+  .guide-page ul,
+  .guide-page li,
+  .guide-page .card {
+    color: #333 !important;
+    page-break-inside: avoid;
+  }
+
+  .guide-page a {
+    color: black !important;
+    text-decoration: none !important;
+  }
+
+  .guide-page .card {
+    border: 1px solid #ccc !important;
+    background: white !important;
+    box-shadow: none !important;
+  }
+
+  .guide-page a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+}

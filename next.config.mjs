@@ -1,9 +1,10 @@
+import bundleAnalyzer from "@next/bundle-analyzer";
 import createMDX from "@next/mdx";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin(
   // This is the default (also the `src` folder is supported).
-  "./i18n.ts",
+  "./src/i18n/request.ts",
 );
 
 const withMDX = createMDX({
@@ -45,9 +46,10 @@ const securityHeaders = [
 const nextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   skipTrailingSlashRedirect: true,
+  skipProxyUrlNormalize: true,
   images: {
     formats: ["image/avif", "image/webp"],
-    qualities: [75, 80, 100],
+    qualities: [75, 80],
     minimumCacheTTL: 31536000, // 1 year cache for optimized images
   },
   compress: true,
@@ -62,6 +64,16 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/CV%20Vincent%20DESBROSSES.pdf",
+        destination: "/cv-vincent-desbrosses-fr.pdf",
+        permanent: true,
+      },
+      {
+        source: "/Resume_Vincent_DESBROSSES.pdf",
+        destination: "/resume-vincent-desbrosses-en.pdf",
+        permanent: true,
+      },
       {
         source: "/guide-premier-emploi-developpeur",
         destination: "/fr/blog/guide-premier-emploi-developpeur",
@@ -86,4 +98,7 @@ const nextConfig = {
   },
 };
 
-export default withNextIntl(withMDX(nextConfig));
+const withAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
+export default withAnalyzer(withNextIntl(withMDX(nextConfig)));

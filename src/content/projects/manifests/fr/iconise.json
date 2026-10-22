@@ -10,7 +10,7 @@
     "category": "SaaS de conception d’icônes"
   },
   "seo": {
-    "title": "Iconise — création guidée d’icônes | Étude de cas",
+    "title": "Iconise — création guidée d’icônes",
     "description": "Conception fullstack d’Iconise : brief, exploration, itérations et exports PNG, SVG dérivé et favicons, avec une génération IA configurable.",
     "noindex": false
   },
@@ -69,17 +69,7 @@
         "type": "flow",
         "title": "Une planche, neuf pistes",
         "description": "Générer ou importer une planche de neuf propositions, puis sélectionner une case A–I pour poursuivre.",
-        "steps": [
-          "A",
-          "B",
-          "C",
-          "D",
-          "E",
-          "F",
-          "G",
-          "H",
-          "I"
-        ]
+        "steps": ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
       }
     },
     {
@@ -90,12 +80,7 @@
         "type": "flow",
         "title": "Réviser sans effacer",
         "description": "Ajuster la géométrie, la perception optique et le fond ; certaines étapes peuvent être sautées. Modifier une décision marque les étapes dépendantes à reprendre, sans supprimer les essais.",
-        "steps": [
-          "Choix",
-          "Géométrie",
-          "Optique",
-          "Fond"
-        ]
+        "steps": ["Choix", "Géométrie", "Optique", "Fond"]
       }
     },
     {
@@ -111,17 +96,8 @@
   ],
   "architecture": {
     "description": "Le serveur Next.js vérifie la session et le workspace, puis appelle les services métier. Les projets sont persistés via Drizzle et PostgreSQL ; Gemini et Stripe utilisent des adaptateurs séparés.",
-    "featuredNodeIds": [
-      "browser",
-      "next",
-      "domain",
-      "postgres"
-    ],
-    "featuredEdgeLabels": [
-      "Requêtes",
-      "Services métier",
-      "Accès aux données"
-    ],
+    "featuredNodeIds": ["browser", "next", "domain", "postgres"],
+    "featuredEdgeLabels": ["Requêtes", "Services métier", "Accès aux données"],
     "nodes": [
       {
         "id": "browser",
@@ -460,5 +436,6 @@
     "Des ADR historiques parlent de grilles 4×2 alors que le code courant utilise une grille 3×3 et une cible 4:3.",
     "Les tests n’ont pas été exécutés pendant l’audit ; aucun badge de CI verte ou chiffre de couverture n’est publié.",
     "Les prix codés ne doivent pas être présentés comme une offre commerciale actuelle sans validation."
-  ]
+  ],
+  "updatedAt": "2026-10-22"
 }

@@ -10,7 +10,7 @@
     "category": "Educational web app"
   },
   "seo": {
-    "title": "SmartFlow — flashcards and spaced repetition",
+    "title": "SmartFlow — study and revision",
     "description": "SmartFlow case study: flashcard creation, spaced repetition, scheduled reviews and a progress dashboard built with Next.js, TypeScript and PostgreSQL.",
     "noindex": false
   },
@@ -193,5 +193,6 @@
     "prisma",
     "postgresql",
     "playwright"
-  ]
+  ],
+  "updatedAt": "2026-10-22"
 }

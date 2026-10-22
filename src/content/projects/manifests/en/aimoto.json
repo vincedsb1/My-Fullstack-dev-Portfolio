@@ -10,7 +10,7 @@
     "category": "Local research application"
   },
   "seo": {
-    "title": "Aimoto | Bitcoin Forecasting and Backtesting",
+    "title": "Aimoto — Bitcoin forecasting lab",
     "description": "A local Bitcoin research lab for market data, predictive models, historical backtesting and execution tracking.",
     "noindex": false
   },
@@ -19,7 +19,7 @@
     "description": "Aimoto brings together data preparation, daily forecasting, backtesting and result comparison in a local research interface.",
     "visual": {
       "type": "image",
-      "src": "/aimoto.png",
+      "src": "/aimoto.webp",
       "alt": "Aimoto presentation montage: a historical Bitcoin forecast preview displayed on a laptop.",
       "width": 1920,
       "height": 1080
@@ -192,5 +192,6 @@
       "title": "Execution monitoring",
       "description": "A job queue, computation stages and status updates surfaced in the interface."
     }
-  ]
+  ],
+  "updatedAt": "2026-10-22"
 }

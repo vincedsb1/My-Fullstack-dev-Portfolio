@@ -61,8 +61,8 @@ export function getBlogIndexSeo(
       : "Articles and practical advice about web development.";
   const title =
     locale === "fr"
-      ? heading + " | Blog de Vincent DESBROSSES"
-      : heading + " | Vincent DESBROSSES Blog";
+      ? "Blog — développement web et produit"
+      : "Blog — web development and product";
   const description = shorten(
     heading + ". " + (featuredArticle?.description ?? fallback),
   );
