@@ -60,3 +60,14 @@ La préparation ne modifie aucun des deux articles publiés. La future migration
 ## Références visuelles automatisées
 
 Le test Playwright `tests/browser/blog-json.spec.ts` génère à chaque CI douze captures réelles, sans animations : Showcase aux largeurs 320/390/820/1440 et article SaaS historique à 390/1440, chacun en clair/sombre. Les fichiers sont archivés pendant 30 jours dans l'artefact GitHub Actions `blog-visual-reference-<SHA>`. Ce sont des **références de comparaison** à examiner, pas un verdict de conformité pixel-perfect. Le guide sera capturé à son tour avant sa propre migration.
+
+## Validation de la dernière préparation (commit `7e29ee42`)
+
+Le [run GitHub Actions #39819779089](https://github.com/vincedsb1/My-Fullstack-dev-Portfolio/actions/runs/39819779089) confirme :
+
+- **OK** : `npm ci`, audit de dépendances, **14 tests JSON**, ESLint, tests unitaires, compilation Next.js, TypeScript, tests SEO et tests navigateur Playwright.
+- **OK** : génération et archivage de **12 captures PNG** de référence (Showcase : 4 largeurs × 2 thèmes ; SaaS historique : 2 largeurs × 2 thèmes). Artefact : `blog-visual-reference-7e29ee4234dd74450e1714dd94bf3e4cf77cd2dd` (~9,9 Mo), téléchargeable dans le run.
+- **Échec connu restant** : `npm run audit:verify` sur le budget JavaScript global de **la page d’accueil**, 221,42 Kio gzip mesurés contre 150 Kio autorisés. Ne pas confondre ce contrôle global avec la validation des composants blog. Le seuil n’a pas été modifié.
+- **À valider visuellement par revue humaine** : les douze captures, les variations d’interactions focus/hover et le rendu print. Les captures sont la référence technique, pas une acceptation pixel-perfect automatique.
+
+**Conclusion :** préparation fonctionnelle du moteur et de la migration SaaS prête pour la phase d'inventaire et de conversion **en brouillon**. **Publication de la conversion bloquée** tant que la comparaison éditoriale/visuelle et la qualité globale du pipeline n’ont pas été clarifiées. Les deux articles publiés restent inchangés.
