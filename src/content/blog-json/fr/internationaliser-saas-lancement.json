@@ -13,7 +13,9 @@
     "translationKey": "saas-internationalization-launch",
     "category": "Produit",
     "publishedAt": "2026-10-19",
-    "status": "published"
+    "status": "published",
+    "cover": "/blog/internationaliser-saas-lancement/cover-photo.webp",
+    "coverAlt": "Vue aérienne d’immeubles illuminés à la tombée du jour."
   },
   "hero": {
     "eyebrow": "Produit & réflexion / Retour d’expérience",

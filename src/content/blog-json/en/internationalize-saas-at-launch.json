@@ -13,7 +13,9 @@
     "category": "Product",
     "publishedAt": "2026-10-22",
     "status": "published",
-    "translationKey": "saas-internationalization-launch"
+    "translationKey": "saas-internationalization-launch",
+    "cover": "/blog/internationalize-saas-at-launch/cover-photo.webp",
+    "coverAlt": "Aerial view of illuminated city buildings at dusk."
   },
   "hero": {
     "eyebrow": "Product & reflection / Lessons learned",

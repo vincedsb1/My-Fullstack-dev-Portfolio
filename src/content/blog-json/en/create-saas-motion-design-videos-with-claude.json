@@ -10,6 +10,8 @@
     "category": "Content creation",
     "publishedAt": "2026-10-22",
     "status": "published",
+    "cover": "/blog/create-saas-motion-design-videos-with-claude/cover-photo.webp",
+    "coverAlt": "Colorful light trails captured with a long exposure.",
     "seoTitle": "SaaS motion design with Claude"
   },
   "introBlocks": [

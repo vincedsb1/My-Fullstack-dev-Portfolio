@@ -11,7 +11,9 @@
     "category": "Carrière",
     "publishedAt": "2026-10-11",
     "updatedAt": "2026-10-21",
-    "status": "published"
+    "status": "published",
+    "cover": "/blog/guide-premier-emploi-developpeur/cover-photo.webp",
+    "coverAlt": "Personne travaillant sur un ordinateur portable près d’une fenêtre."
   },
   "hero": {
     "eyebrow": "Carrière • Développement Web",

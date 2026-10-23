@@ -46,11 +46,16 @@ function text(b) {
       throw new Error(`Bloc non contrôlé : ${b.type}`);
   }
 }
-test("guide publié : texte complet, ordre et métadonnées conservés", () => {
+test("guide publié : texte complet, ordre et métadonnées éditoriales conservés", () => {
   const { renderer, ...meta } = contract.meta;
   assert.equal(renderer, "guide");
-  const { translationKey, ...currentMeta } = article.meta;
+  const { translationKey, cover, coverAlt, ...currentMeta } = article.meta;
   assert.equal(translationKey, "first-developer-job-guide");
+  assert.equal(cover, "/blog/guide-premier-emploi-developpeur/cover-photo.webp");
+  assert.equal(
+    coverAlt,
+    "Personne travaillant sur un ordinateur portable près d’une fenêtre.",
+  );
   assert.deepEqual(currentMeta, meta);
   assert.equal(article.meta.status, "published");
   assert.equal(
