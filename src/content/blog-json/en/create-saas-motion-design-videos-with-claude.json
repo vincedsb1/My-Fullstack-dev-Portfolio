@@ -1,0 +1,362 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "locale": "en",
+    "translationKey": "claude-saas-motion-design-workflow",
+    "title": "How I Create Motion Design Videos for My SaaS Products with Claude",
+    "description": "My six-step workflow for planning, animating and exporting SaaS marketing videos with Claude instead of trying to do everything in one prompt.",
+    "excerpt": "Having made motion design videos in After Effects, I wanted to try Claude Opus for my SaaS marketing. Here’s the step-by-step process I use, and where I keep creative control.",
+    "slug": "create-saas-motion-design-videos-with-claude",
+    "category": "Content creation",
+    "publishedAt": "2026-10-22",
+    "status": "published",
+    "seoTitle": "SaaS motion design with Claude"
+  },
+  "introBlocks": [
+    {
+      "type": "lead",
+      "content": [
+        {
+          "text": "When I want to get the word out about a SaaS product, motion design is one way to show what it does rather than just describe it. I’ve made a number of videos in After Effects before, so I know how much work can go into them."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "I wanted to see what a different approach might look like with Claude Opus. But to get something that genuinely matched what I had in mind, "
+        },
+        {
+          "text": "one prompt wasn’t enough for me",
+          "bold": true
+        },
+        {
+          "text": ". So I broke the production process into six stages, with a decision or approval between each one."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "The goal isn’t to let AI make every decision. I use it to help with analysis, creative exploration and production, while keeping control of the message, visual direction and final result."
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "comprendre-le-produit",
+      "title": "Start with the product, not the animations",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Before thinking about transitions or colors, I give Claude enough context to understand the SaaS product: what it does, which problem it solves and who it is for. When those materials are available, I can draw on the source code, documentation, landing page and existing marketing content."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "The aim is to avoid making something visually polished but vague or disconnected from the product. I look for "
+            },
+            {
+              "text": "one central message",
+              "bold": true
+            },
+            {
+              "text": ", rather than a tour of every feature. Then I ask for several genuinely different advertising concepts and choose the one that feels most relevant."
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "content": [
+            {
+              "text": "An animation can use visual metaphors to explain an idea. It still shouldn’t imply that a feature exists if the product doesn’t actually offer it."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "I’ve documented this starting point and the expected deliverables in "
+            },
+            {
+              "text": "my six-step working notes"
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "explorer-la-direction-artistique",
+      "title": "Explore different visual directions",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Once I’ve chosen a concept, I ask Claude to explore different visual styles. Instead of comparing still images alone, I prefer to see "
+            },
+            {
+              "text": "short animated tests lasting a few seconds",
+              "bold": true
+            },
+            {
+              "text": ". They give me a better sense of motion, transitions, colors and the overall feel."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Ideally, each test uses the same short sequence. That way I’m comparing visual directions, not different stories. I can pick one approach and refine it before moving on."
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "content": [
+            {
+              "text": "Five seconds can tell you a lot about a style and how individual movements feel. It cannot tell you whether the entire ad is paced well. That comes later, with the full preview."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "construire-storyboard",
+      "title": "Build the script and storyboard",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "At this point, I know what the video needs to say and what it should look like. I can ask for a complete script and storyboard: the sequence of scenes, on-screen copy, transitions and what happens visually."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "I also plan space for the voiceover, pauses and sound cues. I’m not producing the final soundtrack yet. I’m checking that the whole idea will fit the intended duration. In a video of around 30 seconds, a few extra words or one long transition can throw the whole thing off balance."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "The storyboard helps me "
+            },
+            {
+              "text": "fix ideas before committing to the full animation",
+              "bold": true
+            },
+            {
+              "text": ". Changing a planned scene is much easier than rebuilding it after a complete render."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "previsualiser-le-film",
+      "title": "Render a full, low-resolution preview",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Once the storyboard is approved, I have the full video produced at preview resolution. I’m not aiming for the sharpest possible final export yet. I want to see the entire film from start to finish."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Now I can judge the overall pacing, how the animations connect, how long text stays on screen and where the narration will fit. That’s the difference from a five-second test: "
+            },
+            {
+              "text": "this is where I check that the whole film works",
+              "bold": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "If one section doesn’t work, I ask for a targeted change. There may be several rounds of refinement. The point is to settle the visuals before starting a heavier final render."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "title": "Two different things to validate",
+          "tone": "info",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Short prototypes help me choose the visual language. The full preview helps me validate the film, its progression and its timing."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ajouter-le-son",
+      "title": "Add music, sound effects and voiceover",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Once the visuals are stable enough, I move on to audio: music, sound effects and narration. I can record my own voice, work with someone else or experiment with voice processing using a tool such as ElevenLabs."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "What matters is that the voice comes in at the right moment and stays intelligible without getting buried under the music. I also prefer to keep the audio tracks separate while working. If I replace a voice take or adjust its volume, I shouldn’t have to render the animations again."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "At this stage, I can review something close to the intended audiovisual result without committing to the cost of a high-quality final video render."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exporter-et-verifier",
+      "title": "Render the final video and check it",
+      "number": true,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Once picture and sound are approved, I run the high-quality render and combine the video with the final audio mix. My production notes use Full HD at 60 frames per second as a default target. Those are working settings, not requirements for every project."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Then I check that transitions are smooth, text and logos are readable, colors look right and the audio is in sync. I also check what it looks like on a smaller screen: a composition that works on a desktop can be hard to read on a phone."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Depending on where the video will be used, I prepare a version with sound, a muted version for autoplay or a smaller web-friendly export. The goal isn’t to create as many files as possible. It’s to make "
+            },
+            {
+              "text": "the versions I’ll actually need for distribution",
+              "bold": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ce-que-je-retiens",
+      "title": "What I’ve learned from this approach",
+      "number": false,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "This workflow doesn’t make motion design automatic. I still need to write clear instructions, review the output, make decisions and sometimes revisit earlier choices. I also don’t have a reliable number for how much time it saves: that depends on the quality bar, the complexity of the film and the number of iterations."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "For me, the value is in "
+            },
+            {
+              "text": "not trying to solve concept, animation, voiceover and export in a single request",
+              "bold": true
+            },
+            {
+              "text": ". I approve one thing at a time and, as much as possible, avoid redoing work that already looks right."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "My pre-publishing checks",
+          "id": "controle-avant-diffusion"
+        },
+        {
+          "type": "checklist",
+          "storageKey": "vd_claude_motion_design_en_actions_v1",
+          "items": [
+            {
+              "id": "verifier-fonctionnalites",
+              "label": "Check that every feature shown actually exists."
+            },
+            {
+              "id": "valider-direction",
+              "label": "Approve the concept and visual direction before building the full film."
+            },
+            {
+              "id": "relire-apercu",
+              "label": "Watch the full preview and review pacing and legibility."
+            },
+            {
+              "id": "valider-audio",
+              "label": "Listen to the final mix and check voice synchronization."
+            },
+            {
+              "id": "tester-export",
+              "label": "Check the exported file, including on a phone-sized screen."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
