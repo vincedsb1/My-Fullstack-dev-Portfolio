@@ -14,8 +14,9 @@ async function Timeline() {
   const experiences = t.raw("experiences") as Experience[];
 
   return (
-    <div
-      id="timelineContainer"
+    <section
+      id="parcours"
+      aria-labelledby="timelineTitle"
       className="mx-auto flex w-full max-w-[840px] flex-col items-center justify-center px-4 md:px-0"
     >
       <div
@@ -134,7 +135,7 @@ async function Timeline() {
           })}
         </ol>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -188,6 +188,9 @@
 }
 
 @media print {
+  .guide-page [class*="bg-"] { background: white !important; box-shadow: none !important; }
+  .guide-page :is(span, time, strong), .guide-page [class*="text-"] { color: #303030 !important; }
+  .guide-page #checklist-progress-bar { background: #303030 !important; }
   @page {
     margin: 2cm;
   }

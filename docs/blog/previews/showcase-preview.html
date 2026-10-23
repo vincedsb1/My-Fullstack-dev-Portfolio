@@ -1,0 +1,376 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Blog Showcase — Aperçu autonome</title><meta name="robots" content="noindex,nofollow"/><style>html,body{margin:0;padding:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}html{scroll-behavior:smooth}*{box-sizing:border-box}a{text-decoration:none}button{cursor:pointer}:focus-visible{outline:2px solid #c62b28;outline-offset:4px}/* Blog Design System v1 — isolated from legacy blog.css and guide.css.
+   Source of truth: docs/blog/DESIGN_SYSTEM.md. Scope: .blog-ds. */
+.blog-ds,
+.blog-ds__theme-example[data-preview-theme="light"] {
+  --blog-bg: #f7f7f5;
+  --blog-surface: #ffffff;
+  --blog-ink: #20201f;
+  --blog-body: #50504d;
+  --blog-muted: #6f6f6a;
+  --blog-line: #e2e2dd;
+  --blog-soft: #eeeee9;
+  --blog-accent: #c62b28;
+  --blog-accent-hover: #aa211f;
+  --blog-accent-soft: #fff0ed;
+  --blog-accent-on: #ffffff;
+  --blog-success: #366f4f;
+  --blog-success-soft: #edf3ec;
+  --blog-warning: #966010;
+  --blog-warning-soft: #fff5e2;
+  --blog-info: #26577c;
+  --blog-info-soft: #edf4fa;
+  --blog-shadow: 0 24px 70px -50px rgb(32 32 31 / 0.25);
+  --blog-reading-width: 720px;
+  --blog-shell-width: 1248px;
+  --blog-radius-sm: 9px;
+  --blog-radius: 16px;
+  --blog-radius-lg: 22px;
+  --blog-space-1: 4px;
+  --blog-space-2: 8px;
+  --blog-space-3: 12px;
+  --blog-space-4: 16px;
+  --blog-space-6: 24px;
+  --blog-space-8: 32px;
+  --blog-space-12: 48px;
+  --blog-space-16: 64px;
+  --blog-space-24: 96px;
+}
+.dark .blog-ds,
+.blog-ds__theme-example[data-preview-theme="dark"] {
+  --blog-bg: #171817;
+  --blog-surface: #202220;
+  --blog-ink: #f2f2ed;
+  --blog-body: #c0c1b9;
+  --blog-muted: #a2a69e;
+  --blog-line: #343831;
+  --blog-soft: #292c27;
+  --blog-accent: #ff8e84;
+  --blog-accent-hover: #ffaaa1;
+  --blog-accent-soft: #382321;
+  --blog-accent-on: #171817;
+  --blog-success: #a6cfaf;
+  --blog-success-soft: #26392c;
+  --blog-warning: #f3c675;
+  --blog-warning-soft: #3b3020;
+  --blog-info: #98caed;
+  --blog-info-soft: #213442;
+  --blog-shadow: 0 24px 70px -50px rgb(0 0 0 / 0.68);
+}
+.blog-ds {
+  min-height: 100vh;
+  background: var(--blog-bg);
+  color: var(--blog-ink);
+  font-family: inherit;
+  -webkit-font-smoothing: antialiased;
+}
+.blog-ds *, .blog-ds *::before, .blog-ds *::after { box-sizing: border-box; }
+.blog-ds :is(a, button, input, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--blog-accent);
+  outline-offset: 4px;
+}
+.blog-ds a { color: inherit; text-decoration: none; }
+.blog-ds button { font: inherit; cursor: pointer; }
+.blog-ds button:disabled { cursor: not-allowed; opacity: .5; }
+.blog-ds :is(h1, h2, h3, p, ol, ul, figure, blockquote) { margin: 0; }
+.blog-ds__site-header {
+  position: sticky; z-index: 30; top: 0;
+  border-bottom: 1px solid var(--blog-line);
+  background: var(--blog-bg);
+  background: color-mix(in srgb, var(--blog-bg) 93%, transparent);
+  backdrop-filter: blur(18px);
+}
+.blog-ds__header-inner {
+  display: flex; align-items: center; gap: 24px;
+  min-height: 74px; max-width: var(--blog-shell-width);
+  padding: 0 36px; margin: 0 auto;
+}
+.blog-ds__wordmark { font-size: 15px; font-weight: 750; letter-spacing: -.04em; white-space: nowrap; }
+.blog-ds__wordmark span { color: var(--blog-accent); font-size: 21px; }
+.blog-ds__nav-blog { padding-left: 24px; border-left: 1px solid var(--blog-line); font-size: 13px; color: var(--blog-muted); }
+.blog-ds__nav-blog:hover, .blog-ds__footer a:hover { color: var(--blog-accent); }
+.blog-ds__header-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.blog-ds__header-actions :is(button, a) { color: var(--blog-body); border-color: var(--blog-line); }
+.blog-ds__header-actions :is(button, a):hover { border-color: var(--blog-accent); color: var(--blog-accent); }
+.blog-ds__utility-button { min-height: 40px; display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--blog-line); border-radius: 100px; padding: 0 13px; background: transparent; font-size: 12px; }
+.blog-ds__reading-progress { position: absolute; bottom: -1px; height: 2px; width: 100%; overflow: hidden; pointer-events: none; }
+.blog-ds__reading-progress > div { width: 100%; height: 100%; background: var(--blog-accent); transform: scaleX(0); transform-origin: left; }
+.blog-ds__main { margin: 0 auto; max-width: var(--blog-shell-width); padding: 0 36px; }
+.blog-ds__breadcrumb { margin: 31px 0 42px; font-size: 12px; color: var(--blog-muted); }
+.blog-ds__breadcrumb ol { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; padding: 0; list-style: none; }
+.blog-ds__breadcrumb li { display: flex; min-width: 0; gap: 10px; }
+.blog-ds__breadcrumb a:hover { color: var(--blog-accent); text-decoration: underline; text-underline-offset: 3px; }
+.blog-ds__breadcrumb [aria-current] { color: var(--blog-body); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: min(440px, 45vw); }
+.blog-ds__breadcrumb-separator { color: var(--blog-muted); }
+.blog-ds__hero { display: grid; grid-template-columns: 1fr; padding: 12px 0 70px; border-bottom: 1px solid var(--blog-line); }
+.blog-ds__hero--illustrated { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+.blog-ds__hero-copy { max-width: 780px; min-width: 0; }
+.blog-ds__eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; color: var(--blog-accent); }
+.blog-ds__eyebrow > span { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.blog-ds__hero-title { max-width: 800px; margin: 25px 0 24px !important; font-size: clamp(40px, 4.75vw, 68px); font-weight: 760; line-height: 1.08; letter-spacing: -.06em; text-wrap: balance; }
+.blog-ds__hero-dek { max-width: 620px; font-size: 18px; line-height: 1.72; color: var(--blog-body); }
+.blog-ds__byline { display: flex; gap: 12px; align-items: center; margin-top: 32px; font-size: 12px; }
+.blog-ds__avatar { display: grid; flex: 0 0 44px; height: 44px; place-items: center; border-radius: 50%; background: var(--blog-soft); border: 1px solid var(--blog-line); font-weight: 700; letter-spacing: -.04em; }
+.blog-ds__byline-author { display: grid; gap: 4px; }
+.blog-ds__byline-author strong { font-size: 12px; color: var(--blog-ink); }
+.blog-ds__byline-author span, .blog-ds__byline-metadata { font-size: 11px; color: var(--blog-muted); }
+.blog-ds__byline-metadata { display: grid; margin-left: auto; gap: 4px; text-align: right; }
+.blog-ds__button { display: inline-flex; min-height: 44px; gap: 16px; align-items: center; justify-content: center; padding: 0 18px; border: 1px solid var(--blog-line); border-radius: var(--blog-radius-sm); font-size: 13px; font-weight: 650; transition: background .2s, border-color .2s, color .2s, transform .2s; }
+.blog-ds__button:hover { transform: translateY(-1px); }
+.blog-ds__button--primary { background: var(--blog-accent); color: var(--blog-accent-on) !important; border-color: var(--blog-accent); }
+.blog-ds__button--primary:hover { background: var(--blog-accent-hover); border-color: var(--blog-accent-hover); color: var(--blog-accent-on); }
+.blog-ds__button--secondary { background: var(--blog-surface); color: var(--blog-ink); }
+.blog-ds__button--secondary:hover { border-color: var(--blog-accent); color: var(--blog-accent); }
+.blog-ds__button--text { padding: 0 6px; border-color: transparent; color: var(--blog-accent) !important; }
+.blog-ds__hero .blog-ds__button { margin-top: 33px; }
+.blog-ds__hero-visual { min-width: 0; }
+.blog-ds__hero-art { position: relative; transform: rotate(2deg); padding: 24px 25px 28px; border: 1px solid #cfdacb; border-radius: 8px 8px 54px 8px; background: #eaf0e5; color: #274a36; box-shadow: var(--blog-shadow); }
+.dark .blog-ds__hero-art { background: #2b3d2c; color: #cde2bf; border-color: #43583e; }
+.blog-ds__hero-art > p:first-child { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.blog-ds__hero-art-metric { display: flex; justify-content: center; align-items: center; gap: 24px; padding: 17px 0 0; font-size: clamp(62px, 7vw, 96px); font-weight: 500; letter-spacing: -.1em; }
+.blog-ds__hero-art-metric span { font-size: .42em; opacity: .65; }
+.blog-ds__hero-art-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; padding: 12px 0 18px; }
+.blog-ds__hero-art-grid span { aspect-ratio: 1.5; border-radius: 3px; border: 1px solid currentColor; opacity: .23; }
+.blog-ds__hero-art-grid span:nth-child(-n+12) { background: currentColor; opacity: .83; }
+.blog-ds__hero-art-caption { border-top: 1px solid currentColor; padding-top: 16px; font-size: 12px; opacity: .85; }
+.blog-ds__reading-layout { display: grid; grid-template-columns: 210px minmax(0, var(--blog-reading-width)); gap: 64px; justify-content: space-between; padding-top: 66px; }
+.blog-ds__reading-sidebar { min-width: 0; }
+.blog-ds__reading-main { min-width: 0; }
+.blog-ds__toc { position: sticky; top: 116px; }
+.blog-ds__toc-label, .blog-ds__section-eyebrow { color: var(--blog-muted); font-size: 10px; font-weight: 750; text-transform: uppercase; letter-spacing: .15em; }
+.blog-ds__toc-list { display: grid; padding: 0; margin-top: 22px !important; list-style: none; }
+.blog-ds__toc-list li { margin: 0; }
+.blog-ds__toc-list a { display: flex; gap: 12px; padding: 11px 0 11px 14px; border-left: 2px solid var(--blog-line); font-size: 12px; color: var(--blog-body); line-height: 1.4; }
+.blog-ds__toc-list a span { color: var(--blog-muted); font-variant-numeric: tabular-nums; font-size: 10px; }
+.blog-ds__toc-list a:hover, .blog-ds__toc-list a[aria-current] { border-left-color: var(--blog-accent); color: var(--blog-accent); }
+.blog-ds__toc-note { border-top: 1px solid var(--blog-line); margin-top: 27px !important; padding-top: 24px; color: var(--blog-muted); font-size: 12px; line-height: 1.7; }
+.blog-ds__toc-mobile { display: none; }
+.blog-ds__prose { color: var(--blog-body); font-size: 16px; line-height: 1.85; overflow-wrap: anywhere; }
+.blog-ds__prose > p { margin-bottom: 22px; }
+.blog-ds__prose strong { color: var(--blog-ink); }
+.blog-ds__prose a:not(.blog-ds__button) { color: var(--blog-accent); text-decoration: underline; text-underline-offset: 4px; }
+.blog-ds__lead { font-size: 21px; line-height: 1.65; letter-spacing: -.025em; color: var(--blog-ink); }
+.blog-ds__section { padding-top: 28px; margin-top: 64px; border-top: 1px solid var(--blog-line); scroll-margin-top: 112px; }
+.blog-ds__section-header { margin-bottom: 26px; }
+.blog-ds__section-number { display: block; margin-bottom: 15px; color: var(--blog-accent); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: .12em; }
+.blog-ds__section-eyebrow { margin-bottom: 10px !important; }
+.blog-ds__section h2 { font-size: clamp(27px, 3vw, 34px); font-weight: 700; line-height: 1.25; letter-spacing: -.045em; color: var(--blog-ink); text-wrap: balance; }
+.blog-ds__section h3 { font-size: 20px; font-weight: 700; line-height: 1.3; letter-spacing: -.03em; color: var(--blog-ink); }
+.blog-ds__section > p { margin: 17px 0 24px; }
+.blog-ds__section :is(ul, ol).blog-ds__text-list { margin: 18px 0 26px; padding-left: 23px; }
+.blog-ds__text-list li { padding-left: 5px; margin: 9px 0; }
+.blog-ds__text-list li::marker { color: var(--blog-accent); }
+.blog-ds__badge-row, .blog-ds__button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 24px 0; }
+.blog-ds__badge { display: inline-flex; min-height: 29px; align-items: center; border: 1px solid var(--blog-line); border-radius: 100px; padding: 5px 11px; background: var(--blog-soft); color: var(--blog-body); font-size: 11px; font-weight: 650; line-height: 1.2; }
+.blog-ds__badge[data-tone="accent"] { background: var(--blog-accent-soft); color: var(--blog-accent); border-color: transparent; }
+.blog-ds__badge[data-tone="success"] { background: var(--blog-success-soft); color: var(--blog-success); border-color: transparent; }
+.blog-ds__badge[data-tone="warning"] { background: var(--blog-warning-soft); color: var(--blog-warning); border-color: transparent; }
+.blog-ds__badge[data-tone="info"] { background: var(--blog-info-soft); color: var(--blog-info); border-color: transparent; }
+.blog-ds__card-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin: 24px 0; }
+.blog-ds__info-card { min-width: 0; border: 1px solid var(--blog-line); border-radius: var(--blog-radius); padding: 22px; background: var(--blog-surface); box-shadow: var(--blog-shadow); }
+.blog-ds__card-index { display: block; margin-bottom: 18px; color: var(--blog-accent); font-size: 12px; font-weight: 700; letter-spacing: .1em; }
+.blog-ds__info-card h3 { font-size: 18px; margin-bottom: 9px; }
+.blog-ds__info-card p { color: var(--blog-body); font-size: 13px; line-height: 1.7; }
+.blog-ds__card-action { border-top: 1px solid var(--blog-line); padding-top: 13px; margin-top: 15px; color: var(--blog-accent); font-size: 12px; font-weight: 650; }
+.blog-ds__callout { border: 1px solid var(--blog-line); border-left: 3px solid var(--blog-accent); border-radius: var(--blog-radius-sm); padding: 20px 22px; background: var(--blog-surface); margin: 25px 0; }
+.blog-ds__callout[data-tone="success"] { border-left-color: var(--blog-success); background: var(--blog-success-soft); }
+.blog-ds__callout[data-tone="warning"] { border-left-color: var(--blog-warning); background: var(--blog-warning-soft); }
+.blog-ds__callout[data-tone="info"] { border-left-color: var(--blog-info); background: var(--blog-info-soft); }
+.blog-ds__callout > strong { display: block; margin-bottom: 7px; font-size: 14px; }
+.blog-ds__callout div { font-size: 14px; line-height: 1.75; }
+.blog-ds__accordion { display: grid; gap: 9px; margin: 24px 0; }
+.blog-ds__accordion details { border: 1px solid var(--blog-line); border-radius: 10px; background: var(--blog-surface); overflow: hidden; }
+.blog-ds__accordion summary { cursor: pointer; padding: 15px 18px; font-size: 13px; font-weight: 700; color: var(--blog-ink); }
+.blog-ds__accordion details[open] summary { border-bottom: 1px solid var(--blog-line); }
+.blog-ds__accordion details p { padding: 15px 18px; color: var(--blog-body); font-size: 13px; line-height: 1.65; }
+.blog-ds__icon-list { list-style: none; padding: 0 !important; display: grid; gap: 13px; margin: 24px 0 !important; }
+.blog-ds__icon-list li { display: flex; align-items: start; gap: 12px; font-size: 14px; color: var(--blog-body); }
+.blog-ds__icon-list li > span { display: grid; place-items: center; flex: 0 0 23px; height: 23px; border-radius: 50%; color: var(--blog-accent); background: var(--blog-accent-soft); font-size: 17px; line-height: 1; }
+.blog-ds__avatar img, .blog-ds__author-avatar img { height: 100%; width: 100%; display: block; object-fit: cover; border-radius: inherit; }
+.blog-ds__quote { margin: 27px 0 !important; border-left: 3px solid var(--blog-accent); padding: 8px 0 8px 24px; }
+.blog-ds__quote blockquote { font-size: clamp(20px, 2.5vw, 26px); line-height: 1.55; color: var(--blog-ink); font-weight: 520; letter-spacing: -.025em; }
+.blog-ds__quote figcaption { margin-top: 14px; color: var(--blog-muted); font-size: 12px; }
+.blog-ds__module { margin: 30px 0; border-radius: var(--blog-radius); padding: 28px; border: 1px solid var(--blog-line); background: var(--blog-surface); color: var(--blog-ink); overflow: hidden; }
+.blog-ds__module[data-tone="success"] { background: var(--blog-success-soft); }
+.blog-ds__module[data-tone="info"] { background: var(--blog-info-soft); }
+.blog-ds__module-head { margin-bottom: 23px; }
+.blog-ds__module-eyebrow { color: var(--blog-success); text-transform: uppercase; font-weight: 750; font-size: 10px; letter-spacing: .14em; }
+.blog-ds__module-head h3 { margin: 8px 0; font-size: 24px; line-height: 1.25; letter-spacing: -.035em; }
+.blog-ds__module-head > p:not(.blog-ds__module-eyebrow) { font-size: 13px; line-height: 1.7; color: var(--blog-body); }
+.blog-ds__module-note, .blog-ds__hint { margin-top: 18px !important; font-size: 11px; color: var(--blog-muted); line-height: 1.6; }
+.blog-ds__figure { margin: 25px 0 !important; }
+.blog-ds__figure-media { min-height: 245px; display: grid; place-items: center; padding: 32px; background: var(--blog-soft); border: 1px solid var(--blog-line); border-radius: var(--blog-radius); }
+.blog-ds__figure figcaption { text-align: center; margin-top: 11px; font-size: 12px; color: var(--blog-muted); line-height: 1.6; }
+.blog-ds__flow-diagram { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; width: 100%; }
+.blog-ds__flow-diagram > span { min-width: 112px; flex: 1 1 112px; text-align: center; padding: 18px 10px; border: 1px solid var(--blog-line); border-radius: 12px; background: var(--blog-surface); font-weight: 650; font-size: 12px; color: var(--blog-ink); }
+.blog-ds__flow-diagram > i { color: var(--blog-accent); font-size: 19px; font-style: normal; }
+.blog-ds__code { margin: 25px 0; border: 1px solid var(--blog-line); border-radius: 12px; overflow: hidden; background: var(--blog-soft); }
+.blog-ds__code-toolbar { min-height: 46px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--blog-line); padding: 6px 14px 6px 18px; gap: 14px; font-size: 11px; color: var(--blog-muted); }
+.blog-ds__code-toolbar button { color: var(--blog-accent); font-size: 12px; }
+.blog-ds__code pre { font-size: 13px; line-height: 1.7; overflow: auto; padding: 20px; color: var(--blog-ink); }
+.blog-ds__table-scroll { overflow-x: auto; margin: 24px 0; border: 1px solid var(--blog-line); border-radius: 12px; }
+.blog-ds__table { border-collapse: collapse; width: 100%; min-width: 490px; text-align: left; font-size: 13px; }
+.blog-ds__table th, .blog-ds__table td { padding: 12px 16px; border-bottom: 1px solid var(--blog-line); }
+.blog-ds__table tr:last-child > * { border-bottom: 0; }
+.blog-ds__table th { color: var(--blog-ink); font-weight: 700; background: var(--blog-soft); }
+.blog-ds__table td { color: var(--blog-body); }
+.blog-ds__checklist-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.blog-ds__checklist-heading p { color: var(--blog-muted); font-size: 11px; }
+.blog-ds__checklist-heading strong { font-size: 14px; }
+.blog-ds__checklist-heading button, .blog-ds__decision-reset { display: inline-flex; align-items: center; gap: 6px; border: 0; background: transparent; color: var(--blog-accent); font-size: 12px; padding: 8px; }
+.blog-ds__checklist-track { height: 7px; margin: 15px 0 18px; border-radius: 100px; background: var(--blog-line); overflow: hidden; }
+.blog-ds__checklist-track > div { height: 100%; background: var(--blog-accent); border-radius: inherit; transition: width .2s; }
+.blog-ds__checklist-items { display: grid; gap: 8px; }
+.blog-ds__checklist-item { display: flex; align-items: center; gap: 11px; padding: 12px; border-radius: 9px; background: var(--blog-bg); font-size: 13px; color: var(--blog-ink); cursor: pointer; }
+.blog-ds__checklist-item > input { accent-color: var(--blog-accent); width: 18px; height: 18px; flex: 0 0 auto; cursor: pointer; }
+.blog-ds__checklist-item > span { flex: 1; line-height: 1.45; }
+.blog-ds__checklist-item[data-checked="true"] span { text-decoration: line-through; color: var(--blog-muted); }
+.blog-ds__checklist-item > svg { color: var(--blog-success); }
+.blog-ds__decision-question { padding: 14px 0; border: 0; border-bottom: 1px solid var(--blog-line); }
+.blog-ds__decision-question legend { width: 100%; display: flex; gap: 12px; color: var(--blog-ink); font-size: 13px; font-weight: 650; }
+.blog-ds__decision-question legend span { color: var(--blog-accent); }
+.blog-ds__decision-question > div { display: flex; gap: 8px; margin-top: 12px; }
+.blog-ds__decision-question button { border: 1px solid var(--blog-line); border-radius: 7px; padding: 9px 20px; color: var(--blog-body); background: var(--blog-surface); font-size: 12px; }
+.blog-ds__decision-question button[aria-pressed="true"] { color: var(--blog-accent-on); background: var(--blog-accent); border-color: var(--blog-accent); }
+.blog-ds__decision-result { margin-top: 20px; border: 1px solid var(--blog-line); border-radius: 12px; padding: 20px; background: var(--blog-bg); }
+.blog-ds__decision-result > span { font-size: 10px; color: var(--blog-muted); text-transform: uppercase; font-weight: 750; letter-spacing: .13em; }
+.blog-ds__decision-result > p { color: var(--blog-ink); font-size: 14px; margin-top: 9px; line-height: 1.7; }
+.blog-ds__decision-reset { margin-top: 10px; }
+.blog-ds__swatches { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin: 20px 0 26px; }
+.blog-ds__theme-example { border: 1px solid var(--blog-line); border-radius: 14px; padding: 18px; background: var(--blog-bg); color: var(--blog-ink); }
+.blog-ds__theme-example > p { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; font-weight: 750; margin-bottom: 13px; }
+.blog-ds__theme-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.blog-ds__theme-chip-row span { width: 29px; height: 29px; border-radius: 8px; border: 1px solid var(--blog-line); }
+.blog-ds__theme-chip-row span:nth-child(1) { background: var(--blog-bg); }
+.blog-ds__theme-chip-row span:nth-child(2) { background: var(--blog-surface); }
+.blog-ds__theme-chip-row span:nth-child(3) { background: var(--blog-ink); }
+.blog-ds__theme-chip-row span:nth-child(4) { background: var(--blog-accent); }
+.blog-ds__theme-chip-row span:nth-child(5) { background: var(--blog-success); }
+.blog-ds__theme-chip-row span:nth-child(6) { background: var(--blog-warning); }
+.blog-ds__theme-example small { display: block; margin-top: 13px; color: var(--blog-body); font-size: 11px; }
+.blog-ds__token-details { font-size: 12px; color: var(--blog-muted); line-height: 1.65; }
+.blog-ds__font-examples { display: grid; gap: 12px; margin: 23px 0; }
+.blog-ds__font-examples > div { display: grid; grid-template-columns: 62px minmax(0,1fr); align-items: baseline; gap: 14px; padding: 0 0 13px; border-bottom: 1px solid var(--blog-line); }
+.blog-ds__font-examples span { font-size: 11px; color: var(--blog-muted); }
+.blog-ds__type-display { font-size: clamp(29px, 5vw, 46px); font-weight: 760; letter-spacing: -.06em; line-height: 1.12; color: var(--blog-ink); }
+.blog-ds__type-heading { font-size: 27px; font-weight: 700; letter-spacing: -.04em; color: var(--blog-ink); }
+.blog-ds__type-body { font-size: 16px; line-height: 1.85; color: var(--blog-body); }
+.blog-ds__type-meta { font-size: 12px; font-weight: 600; color: var(--blog-muted); }
+.blog-ds__author-card { display: grid; grid-template-columns: 75px minmax(0,1fr); gap: 22px; background: var(--blog-soft); border: 1px solid var(--blog-line); border-radius: var(--blog-radius); padding: 27px; margin-top: 52px; }
+.blog-ds__author-avatar { display: grid; place-items: center; border-radius: 50%; background: var(--blog-surface); border: 2px solid var(--blog-accent); font-weight: 800; font-size: 22px; height: 75px; }
+.blog-ds__author-card h3 { font-size: 17px; margin: 7px 0 6px; }
+.blog-ds__author-card p:not(.blog-ds__module-eyebrow) { font-size: 13px; color: var(--blog-body); line-height: 1.7; }
+.blog-ds__author-card a { color: var(--blog-accent); margin-top: 10px; display: inline-flex; gap: 6px; align-items: center; font-size: 12px; font-weight: 650; }
+.blog-ds__next-article { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-top: 18px; padding: 27px; border: 1px solid var(--blog-line); border-radius: var(--blog-radius); background: var(--blog-surface); }
+.blog-ds__next-article:hover { border-color: var(--blog-accent); }
+.blog-ds__next-article > div { display: grid; gap: 12px; }
+.blog-ds__next-label { display: flex; gap: 8px; align-items: center; color: var(--blog-muted); font-size: 11px; }
+.blog-ds__next-article strong { color: var(--blog-ink); font-size: 19px; line-height: 1.35; letter-spacing: -.02em; }
+.blog-ds__next-article > svg { flex: 0 0 auto; color: var(--blog-accent); }
+.blog-ds__footer { display: flex; justify-content: space-between; gap: 25px; align-items: center; margin: 80px 0 0; border-top: 1px solid var(--blog-line); padding: 27px 0 45px; }
+.blog-ds__footer > a:last-child { display: flex; align-items: center; gap: 7px; color: var(--blog-body); font-size: 12px; }
+.blog-ds__back-top { display: grid; position: fixed; bottom: 20px; right: 20px; width: 44px; height: 44px; place-items: center; border-radius: 50%; background: var(--blog-accent); color: var(--blog-accent-on) !important; box-shadow: var(--blog-shadow); z-index: 40; }
+.blog-ds__showcase-label { padding: 7px 10px; border-radius: 100px; color: var(--blog-accent); background: var(--blog-accent-soft); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+@media (max-width: 1100px) {
+  .blog-ds__hero--illustrated { gap: 36px; }
+  .blog-ds__reading-layout { grid-template-columns: 175px minmax(0,1fr); gap: 40px; }
+}
+@media (max-width: 900px) {
+  .blog-ds__main, .blog-ds__header-inner { padding-left: 28px; padding-right: 28px; }
+  .blog-ds__hero--illustrated { grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 26px; }
+  .blog-ds__hero-title { font-size: 44px; }
+  .blog-ds__hero-dek { font-size: 16px; }
+  .blog-ds__byline { flex-wrap: wrap; }
+  .blog-ds__byline-metadata { width: 100%; display: flex; gap: 13px; margin-left: 55px; text-align: left; }
+  .blog-ds__reading-layout { display: block; max-width: 760px; margin: 0 auto; padding-top: 26px; }
+  .blog-ds__toc { position: static; margin-bottom: 38px; }
+  .blog-ds__toc-desktop { display: none; }
+  .blog-ds__toc-mobile { display: block; border: 1px solid var(--blog-line); border-radius: 10px; background: var(--blog-surface); }
+  .blog-ds__toc-mobile summary { display: flex; min-height: 53px; gap: 10px; align-items: center; padding: 12px 18px; font-size: 13px; font-weight: 650; cursor: pointer; }
+  .blog-ds__toc-mobile summary > span { margin-left: auto; color: var(--blog-muted); font-size: 11px; font-weight: 450; }
+  .blog-ds__toc-mobile nav { padding: 5px 17px 16px; }
+  .blog-ds__toc-mobile .blog-ds__toc-list { margin-top: 5px !important; }
+  .blog-ds__hero-art { padding: 20px; }
+}
+@media (max-width: 600px) {
+  .blog-ds__main, .blog-ds__header-inner { padding-left: 19px; padding-right: 19px; }
+  .blog-ds__header-inner { min-height: 64px; gap: 10px; }
+  .blog-ds__wordmark { font-size: 12px; }
+  .blog-ds__nav-blog, .blog-ds__utility-button { display: none; }
+  .blog-ds__header-actions > button:nth-last-child(2) { padding: 9px; }
+  .blog-ds__header-actions > button:nth-last-child(2) span { display: none; }
+  .blog-ds__breadcrumb { margin: 24px 0 27px; font-size: 11px; }
+  .blog-ds__breadcrumb [aria-current] { max-width: 180px; }
+  .blog-ds__hero { padding-bottom: 40px; }
+  .blog-ds__hero--illustrated { grid-template-columns: 1fr; gap: 35px; }
+  .blog-ds__hero-title { margin: 17px 0 20px !important; font-size: clamp(35px, 9vw, 52px); }
+  .blog-ds__hero-dek { font-size: 16px; }
+  .blog-ds__byline { margin-top: 24px; }
+  .blog-ds__hero-art { margin: 0 auto; max-width: 400px; transform: rotate(1deg); }
+  .blog-ds__hero-art-metric { font-size: 80px; }
+  .blog-ds__reading-layout { padding-top: 23px; }
+  .blog-ds__section { margin-top: 49px; padding-top: 24px; }
+  .blog-ds__section h2 { font-size: 27px; }
+  .blog-ds__lead { font-size: 19px; }
+  .blog-ds__prose { font-size: 15px; }
+  .blog-ds__card-grid, .blog-ds__swatches { grid-template-columns: 1fr; }
+  .blog-ds__module { padding: 20px 18px; }
+  .blog-ds__info-card { padding: 19px; }
+  .blog-ds__author-card { grid-template-columns: 56px 1fr; gap: 14px; padding: 20px; }
+  .blog-ds__author-avatar { height: 56px; font-size: 16px; }
+  .blog-ds__next-article { padding: 20px; }
+  .blog-ds__next-article strong { font-size: 17px; }
+  .blog-ds__footer { margin-top: 56px; }
+  .blog-ds__flow-diagram > i { display: none; }
+  .blog-ds__flow-diagram > span { flex-basis: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .blog-ds *, .blog-ds *::before, .blog-ds *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}
+@media print {
+  .blog-ds { --blog-bg: #fff; --blog-surface: #fff; --blog-ink: #171717; --blog-body: #303030; --blog-muted: #555; --blog-line: #ccc; --blog-soft: #f4f4f4; color: #171717; }
+  .blog-ds__site-header, .blog-ds__toc, .blog-ds__back-top, .blog-ds__footer, .blog-ds__button-row, .blog-ds__hero .blog-ds__button, .blog-ds__checklist-heading button, .blog-ds__decision-reset { display: none !important; }
+  .blog-ds__main { max-width: none; padding: 0; }
+  .blog-ds__hero { padding: 12px 0 20px; }
+  .blog-ds__hero-title { font-size: 34px; }
+  .blog-ds__hero-art { transform: none; }
+  .blog-ds__reading-layout { display: block; padding-top: 20px; }
+  .blog-ds__prose { font-size: 11pt; }
+  .blog-ds__section { break-before: auto; }
+  .blog-ds__section h2, .blog-ds__section h3 { break-after: avoid; }
+  .blog-ds__info-card, .blog-ds__module, .blog-ds__author-card, .blog-ds__figure { break-inside: avoid; }
+}
+</style></head><body><div class="blog-ds" id="blog-showcase-top">
+<header class="blog-ds__site-header"><nav class="blog-ds__header-inner" aria-label="Navigation principale"><a class="blog-ds__wordmark" href="#blog-showcase-top">Vincent DESBROSSES<span>.</span></a><a class="blog-ds__nav-blog" href="#blog-showcase-top">Le blog</a><div class="blog-ds__header-actions"><button class="blog-ds__utility-button" id="preview-pdf">Imprimer / PDF</button><button class="blog-ds__utility-button" id="preview-theme-toggle">Mode sombre</button></div></nav><div class="blog-ds__reading-progress"><div id="preview-progress"></div></div></header>
+<main class="blog-ds__main"><nav class="blog-ds__breadcrumb" aria-label="Fil d’Ariane"><ol><li><a href="#blog-showcase-top">Portfolio</a></li><li><span class="blog-ds__breadcrumb-separator">/</span><a href="#blog-showcase-top">Blog</a></li><li><span class="blog-ds__breadcrumb-separator">/</span><span aria-current="page">Showcase éditorial</span></li></ol></nav><div style="margin-bottom:18px"><span class="blog-ds__showcase-label">Page de référence · v1 · aperçu autonome</span></div>
+<header class="blog-ds__hero blog-ds__hero--illustrated"><div class="blog-ds__hero-copy"><p class="blog-ds__eyebrow"><span></span>Système éditorial / Portfolio</p><h1 class="blog-ds__hero-title">Un seul langage visuel. Des articles uniques.</h1><p class="blog-ds__hero-dek">La bibliothèque vivante du blog : couleurs, typographie, composants, médias et interactions. Une base commune qui laisse la place aux idées particulières de chaque article.</p><div class="blog-ds__byline"><div class="blog-ds__avatar" aria-hidden="true">VD</div><div class="blog-ds__byline-author"><strong>Vincent DESBROSSES</strong><span>Développeur Fullstack</span></div><div class="blog-ds__byline-metadata"><span>22 octobre 2026</span><span>Showcase de conception</span></div></div><a class="blog-ds__button blog-ds__button--primary" href="#blog-showcase-body">Explorer les composants ↓</a></div>
+<div class="blog-ds__hero-visual"><div class="blog-ds__hero-art"><p>L’art de structurer</p><div class="blog-ds__hero-art-metric">6 <span>×</span> 6</div><div class="blog-ds__hero-art-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><p class="blog-ds__hero-art-caption">Une grille cohérente. Des contenus singuliers.</p></div></div></header>
+<div class="blog-ds__reading-layout"><div class="blog-ds__reading-sidebar"><aside class="blog-ds__toc"><nav class="blog-ds__toc-desktop" aria-label="Sommaire de la page"><p class="blog-ds__toc-label">Dans cette page</p><ol class="blog-ds__toc-list"><li><a href="#fondations"><span>01</span>Fondations &amp; couleurs</a></li><li><a href="#typographie"><span>02</span>Typographie éditoriale</a></li><li><a href="#composants"><span>03</span>Cartes &amp; actions</a></li><li><a href="#contenu"><span>04</span>Contenu structuré</a></li><li><a href="#medias"><span>05</span>Figures &amp; code</a></li><li><a href="#interactions"><span>06</span>Modules interactifs</a></li><li><a href="#modules"><span>07</span>Composants personnalisés</a></li><li><a href="#navigation"><span>08</span>Fin d’article</a></li></ol><p class="blog-ds__toc-note">Un langage commun pour les articles, sans limiter les composants éditoriaux sur mesure.</p></nav><details class="blog-ds__toc-mobile"><summary>☷ Sommaire <span>8 sections</span></summary><nav aria-label="Sommaire mobile"><ol class="blog-ds__toc-list"><li><a href="#fondations"><span>01</span>Fondations &amp; couleurs</a></li><li><a href="#typographie"><span>02</span>Typographie éditoriale</a></li><li><a href="#composants"><span>03</span>Cartes &amp; actions</a></li><li><a href="#contenu"><span>04</span>Contenu structuré</a></li><li><a href="#medias"><span>05</span>Figures &amp; code</a></li><li><a href="#interactions"><span>06</span>Modules interactifs</a></li><li><a href="#modules"><span>07</span>Composants personnalisés</a></li><li><a href="#navigation"><span>08</span>Fin d’article</a></li></ol></nav></details></aside></div>
+<div class="blog-ds__reading-main"><div class="blog-ds__prose" id="blog-showcase-body"><p class="blog-ds__lead">Le blog ne doit pas être une collection de pages dessinées indépendamment. Cette page sert de référence pour les futures pages et met à l’épreuve les composants dans un véritable contexte de lecture.</p><p>Elle ne remplace <strong>aucun des deux articles publiés</strong> à cette étape. Elle propose une direction éditoriale inspirée de l’article consacré à l’internationalisation.</p>
+<section class="blog-ds__section" id="fondations"><div class="blog-ds__section-header"><span class="blog-ds__section-number">01</span><p class="blog-ds__section-eyebrow">Identité visuelle</p><h2>Fondations & couleurs</h2></div><p>Une palette sémantique réduit les différences entre articles. Les thèmes clair et sombre restent liés au thème global du portfolio.</p><div class="blog-ds__swatches"><div class="blog-ds__theme-example" data-preview-theme="light"><p>Light / surface papier</p><div class="blog-ds__theme-chip-row"><span></span><span></span><span></span><span></span><span></span><span></span></div><small>Fond · surface · texte · accent · succès · avertissement</small></div><div class="blog-ds__theme-example" data-preview-theme="dark"><p>Dark / surface profonde</p><div class="blog-ds__theme-chip-row"><span></span><span></span><span></span><span></span><span></span><span></span></div><small>Palette adaptée à la lecture nocturne</small></div></div><p class="blog-ds__token-details">Inter · accent rouge · papier neutre · vert sauge pour les modules explicatifs · conteneur 1 248 px · lecture 720 px.</p><div class="blog-ds__badge-row"><span class="blog-ds__badge" data-tone="neutral">Standard</span><span class="blog-ds__badge" data-tone="accent">Accent</span><span class="blog-ds__badge" data-tone="success">Confirmé</span><span class="blog-ds__badge" data-tone="warning">Attention</span><span class="blog-ds__badge" data-tone="info">Information</span></div><aside class="blog-ds__callout" data-tone="info"><strong>Règle de conception</strong><div>L’identité vient du design system. Un article choisit son contenu, pas sa propre palette ou ses propres marges.</div></aside></section>
+<section class="blog-ds__section" id="typographie"><div class="blog-ds__section-header"><span class="blog-ds__section-number">02</span><p class="blog-ds__section-eyebrow">Hiérarchie et lisibilité</p><h2>Typographie éditoriale</h2></div><p>Le titre d’article est l’unique H1. Les sections sont des H2 et les sous-sections des H3.</p><div class="blog-ds__font-examples"><div><span>Display</span><p class="blog-ds__type-display">Construire avec intention.</p></div><div><span>Section</span><p class="blog-ds__type-heading">Des titres qui donnent le rythme.</p></div><div><span>Texte</span><p class="blog-ds__type-body">Un corps de texte confortable, même lorsque l’article est long et technique.</p></div><div><span>Méta</span><p class="blog-ds__type-meta">DÉVELOPPEMENT · 7 MIN DE LECTURE</p></div></div><figure class="blog-ds__quote"><blockquote>Un composant n’a pas besoin d’être spectaculaire pour rendre une idée plus lisible.</blockquote><figcaption>Exemple de citation éditoriale</figcaption></figure></section>
+<section class="blog-ds__section" id="composants"><div class="blog-ds__section-header"><span class="blog-ds__section-number">03</span><p class="blog-ds__section-eyebrow">Composants réutilisables</p><h2>Cartes, badges et actions</h2></div><p>Les cartes partagent un cadre, une bordure et une typographie. Leur contenu reste libre.</p><div class="blog-ds__card-grid"><div class="blog-ds__info-card"><span class="blog-ds__card-index">01</span><h3>Comprendre</h3><p>Présenter un principe, expliquer sa portée et clarifier les choix.</p><div class="blog-ds__card-action">Une information prioritaire</div></div><div class="blog-ds__info-card"><span class="blog-ds__card-index">02</span><h3>Agir</h3><p>Décrire un conseil concret et proposer une étape immédiatement applicable.</p><div class="blog-ds__card-action">Une action identifiable</div></div></div><div class="blog-ds__button-row"><a href="#fondations" class="blog-ds__button blog-ds__button--primary">Action primaire →</a><a href="#typographie" class="blog-ds__button blog-ds__button--secondary">Action secondaire →</a><a href="#interactions" class="blog-ds__button blog-ds__button--text">Voir les interactions →</a></div><aside class="blog-ds__callout" data-tone="success"><strong>À retenir</strong><div>Les éléments répétitifs ont des variantes documentées, pas des classes libres dans les données JSON.</div></aside><aside class="blog-ds__callout" data-tone="warning"><strong>Point d’attention</strong><div>Une information ne doit jamais dépendre de la couleur seule.</div></aside></section>
+<section class="blog-ds__section" id="contenu"><div class="blog-ds__section-header"><span class="blog-ds__section-number">04</span><p class="blog-ds__section-eyebrow">Blocs rédactionnels</p><h2>Un contenu structuré, pas figé</h2></div><p>Le texte ordinaire conserve ses fonctionnalités : <strong>gras</strong>, <em>italique</em>, <a href="#contenu">liens</a>, listes, tableaux et paragraphes.</p><ul class="blog-ds__text-list"><li>H2 et H3 avec ancres stables.</li><li>Listes ordonnées et non ordonnées.</li><li>Paragraphes, encadrés, citations et liens contextualisés.</li></ul><div class="blog-ds__table-scroll"><table class="blog-ds__table"><thead><tr><th>Famille</th><th>Présentation</th><th>Statut</th></tr></thead><tbody><tr><td>Prose et citations</td><td>Style commun</td><td>Standard</td></tr><tr><td>Cartes et callouts</td><td>Variantes</td><td>Standard</td></tr><tr><td>Questionnaire</td><td>Module client</td><td>Interactif</td></tr><tr><td>Démo métier</td><td>Cadre + React</td><td>Custom</td></tr></tbody></table></div></section>
+<section class="blog-ds__section" id="medias"><div class="blog-ds__section-header"><span class="blog-ds__section-number">05</span><p class="blog-ds__section-eyebrow">Médias éditoriaux</p><h2>Figures, schémas et code</h2></div><p>Les figures prennent place dans un cadre commun, avec description et légende.</p><figure class="blog-ds__figure"><div class="blog-ds__figure-media" role="img" aria-label="Schéma en trois étapes des données au rendu"><div class="blog-ds__flow-diagram"><span>Données JSON</span><i>→</i><span>Blocs typés</span><i>→</i><span>Composants React</span></div></div><figcaption>Figure — architecture éditoriale schématique.</figcaption></figure><div class="blog-ds__code"><div class="blog-ds__code-toolbar"><span>TypeScript · exemple</span><button type="button" id="preview-code-copy">Copier</button></div><pre><code id="preview-code">type ArticleBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "callout"; tone: "info" | "warning"; text: string };</code></pre></div></section>
+<section class="blog-ds__section" id="interactions"><div class="blog-ds__section-header"><span class="blog-ds__section-number">06</span><p class="blog-ds__section-eyebrow">Comportements UI</p><h2>Des interactions prévisibles</h2></div><p>Les éléments interactifs respectent la même charte tout en restant indépendants. Ces exemples fonctionnent sans backend.</p><section class="blog-ds__module"><div class="blog-ds__module-head"><p class="blog-ds__module-eyebrow">Checklist</p><h3>Avancer étape par étape</h3><p>Cases, compteur et progression.</p></div><div class="blog-ds__module-content"><div class="blog-ds__checklist"><div class="blog-ds__checklist-heading"><div><p>Ta progression</p><strong id="preview-checks">0/3 étapes terminées</strong></div><button type="button" id="preview-check-reset">Réinitialiser</button></div><div class="blog-ds__checklist-track"><div id="preview-check-bar"></div></div><div class="blog-ds__checklist-items"><label class="blog-ds__checklist-item" data-checked="false"><input type="checkbox"><span>Un titre unique et une introduction claire</span></label><label class="blog-ds__checklist-item" data-checked="false"><input type="checkbox"><span>Des composants alignés sur le design system</span></label><label class="blog-ds__checklist-item" data-checked="false"><input type="checkbox"><span>Une vérification mobile et en mode sombre</span></label></div><p class="blog-ds__hint">Démonstration locale : aucune sauvegarde durable.</p></div></div></section><section class="blog-ds__module"><div class="blog-ds__module-head"><p class="blog-ds__module-eyebrow">Questionnaire</p><h3>Une décision en trois questions</h3><p>État, sélection explicite et résultat accessible.</p></div><div class="blog-ds__module-content"><div class="blog-ds__decision"><fieldset class="blog-ds__decision-question"><legend><span>01</span>Cette fonctionnalité répond-elle à un besoin identifié ?</legend><div><button type="button" aria-pressed="false">Oui</button><button type="button" aria-pressed="false">Non</button></div></fieldset><fieldset class="blog-ds__decision-question"><legend><span>02</span>Dispose-t-on d’un signal d’intérêt mesurable ?</legend><div><button type="button" aria-pressed="false">Oui</button><button type="button" aria-pressed="false">Non</button></div></fieldset><fieldset class="blog-ds__decision-question"><legend><span>03</span>Peut-on assurer sa maintenance ?</legend><div><button type="button" aria-pressed="false">Oui</button><button type="button" aria-pressed="false">Non</button></div></fieldset><div class="blog-ds__decision-result" role="status" aria-live="polite"><span>Résultat</span><p id="preview-answer">Réponds aux trois questions pour afficher une orientation.</p></div><button type="button" class="blog-ds__decision-reset" id="preview-quiz-reset">Recommencer</button></div></div></section></section>
+<section class="blog-ds__section" id="modules"><div class="blog-ds__section-header"><span class="blog-ds__section-number">07</span><p class="blog-ds__section-eyebrow">Cadre commun, contenu libre</p><h2>Liberté pour les composants custom</h2></div><p>Les modules spécialisés gardent leur logique métier, mais héritent du langage visuel.</p><section class="blog-ds__module" data-tone="success"><div class="blog-ds__module-head"><p class="blog-ds__module-eyebrow">Exemple de composant métier</p><h3>Une visualisation dans un cadre stable</h3></div><div class="blog-ds__module-content"><div class="blog-ds__flow-diagram"><span>Découverte</span><i>→</i><span>Usage</span><i>→</i><span>Valeur</span></div></div><p class="blog-ds__module-note">Illustration conceptuelle.</p></section></section>
+<section class="blog-ds__section" id="navigation"><div class="blog-ds__section-header"><span class="blog-ds__section-number">08</span><p class="blog-ds__section-eyebrow">Auteur et navigation</p><h2>Une fin d’article reconnaissable</h2></div><p>La conclusion, la carte auteur et l'article suivant composent un pied éditorial cohérent.</p><aside class="blog-ds__author-card"><div class="blog-ds__author-avatar">VD</div><div><p class="blog-ds__module-eyebrow">Derrière ces articles</p><h3>Vincent DESBROSSES</h3><p>Développeur Fullstack. Je partage mes expériences et mes réflexions autour du web et du produit.</p><a href="#blog-showcase-top">Découvrir mes projets ↗</a></div></aside><a class="blog-ds__next-article" href="#blog-showcase-top"><div><span class="blog-ds__next-label">Pour continuer la lecture</span><strong>Faut-il internationaliser son SaaS dès le lancement ?</strong></div><span>→</span></a></section>
+</div></div></div><footer class="blog-ds__footer"><a href="#blog-showcase-top" class="blog-ds__wordmark">Vincent DESBROSSES<span>.</span></a><a href="#blog-showcase-top">Tous les articles ↗</a></footer></main></div><script>
+(() => {
+const toggle = document.getElementById('preview-theme-toggle');
+const update = () => { const isDark = document.documentElement.classList.toggle('dark'); toggle.textContent = isDark ? 'Mode clair' : 'Mode sombre'; };
+toggle.addEventListener('click', update);
+const list = [...document.querySelectorAll('.blog-ds__checklist-item input')];
+const renderChecks=()=>{ const count=list.filter(x=>x.checked).length;document.getElementById('preview-checks').textContent=`${count}/${list.length} étapes terminées`;document.getElementById('preview-check-bar').style.width=`${count/list.length*100}%`; list.forEach(x=>x.closest('label').dataset.checked=x.checked?'true':'false'); };
+list.forEach(x=>x.addEventListener('change',renderChecks));
+document.getElementById('preview-check-reset').addEventListener('click',()=>{list.forEach(x=>x.checked=false);renderChecks();});
+const questions=[...document.querySelectorAll('.blog-ds__decision-question')];
+questions.forEach(q=>q.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{q.querySelectorAll('button').forEach(el=>el.setAttribute('aria-pressed',String(el===b)));const n=questions.filter(q=>q.querySelector('[aria-pressed="true"]')).length;if(n===3){const yes=questions.filter(q=>q.querySelector('[aria-pressed="true"]').textContent==='Oui').length;document.getElementById('preview-answer').textContent=yes>=2?'Les signaux semblent suffisants pour tester une première version limitée.':'Priorité à la validation du besoin avant de multiplier les fonctionnalités.';}})));
+document.getElementById('preview-quiz-reset').addEventListener('click',()=>{questions.forEach(q=>q.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed','false'))); document.getElementById('preview-answer').textContent='Réponds aux trois questions pour afficher une orientation.';});
+const updateScroll=()=>{const node=document.getElementById('blog-showcase-body');const top=node.getBoundingClientRect().top+window.scrollY;const height=Math.max(1,node.offsetHeight-window.innerHeight*.55);const progress=Math.max(0,Math.min(1,(window.scrollY-top+110)/height));document.getElementById('preview-progress').style.transform=`scaleX(${progress})`;document.querySelectorAll('.blog-ds__toc-list a').forEach(a=>{const section=document.getElementById(a.hash.substring(1));if(section) a.removeAttribute('aria-current');});let active;document.querySelectorAll('.blog-ds__section').forEach(el=>{if(el.getBoundingClientRect().top<=200)active=el.id;});if(active){document.querySelectorAll(`.blog-ds__toc-list a[href="#${active}"]`).forEach(el=>el.setAttribute('aria-current','location'));}};
+window.addEventListener('scroll',updateScroll,{passive:true});window.addEventListener('resize',updateScroll);updateScroll();
+document.getElementById('preview-pdf').addEventListener('click',()=>window.print());
+document.getElementById('preview-code-copy').addEventListener('click',async ()=>{await navigator.clipboard.writeText(document.getElementById('preview-code').textContent);document.getElementById('preview-code-copy').textContent='Copié';});
+})();
+</script></body></html>

@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import "./blog.css";
+import "@/features/blog/design-system/blog-design-system.css";
 export default async function BlogLayout({
   children,
   params,
@@ -14,9 +15,14 @@ export default async function BlogLayout({
   return (
     <NextIntlClientProvider
       locale={locale}
-      messages={{ blog: m.blog, common: m.common, site: m.site }}
+      messages={{
+        blog: m.blog,
+        common: m.common,
+        site: m.site,
+        blogSaas: m.blogSaas,
+      }}
     >
-      {children}
+      <div className="blog-layout">{children}</div>
     </NextIntlClientProvider>
   );
 }

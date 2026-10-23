@@ -1,5 +1,6 @@
 import { readdirSync, statSync } from "node:fs";
 import path from "node:path";
+import { validateBlogProjectReferences } from "../src/lib/blog/project-references.mjs";
 
 const publicRoot = path.resolve(process.cwd(), "public");
 const appRoot = path.resolve(process.cwd(), "src/app");
@@ -132,7 +133,13 @@ export function validateBlogLinks(articles) {
   for (const article of articles) {
     if (article.metadata.renderer === "guide") continue;
 
-    for (const destination of new Set(extractDestinations(article.body))) {
+    // Ne pas convertir les URL JSON en Markdown : les parenthèses/espaces y
+    // changeraient la destination analysée.
+    const destinations =
+      article.format === "json"
+        ? article.links
+        : extractDestinations(article.body);
+    for (const destination of new Set(destinations)) {
       const value = destination.trim();
       if (!value || value.startsWith("#") || value.startsWith("?")) continue;
 
@@ -194,6 +201,33 @@ export function validateBlogLinks(articles) {
               " » n'est pas publié ou n'existe pas.",
           );
         }
+        if (slug && url.hash) {
+          const target = published.find(
+            (item) =>
+              item.metadata.locale === locale && item.metadata.slug === slug,
+          );
+          if (
+            target?.format === "json" &&
+            !target.ids.includes(decodeURIComponent(url.hash.slice(1)))
+          )
+            fail(
+              article,
+              "l'ancre « " +
+                value +
+                " » n'existe pas dans l'article JSON cible.",
+            );
+        }
+      }
+
+      const projectPath = normalizedPath.match(
+        /^\/(fr|en)\/(?:projets|projects)\/([a-z0-9-]+)$/,
+      );
+      if (projectPath && !["archive", "archives"].includes(projectPath[2])) {
+        validateBlogProjectReferences(
+          [projectPath[2]],
+          projectPath[1],
+          (message) => fail(article, message),
+        );
       }
 
       if (

@@ -272,6 +272,17 @@
 }
 
 @media print {
+  html:has(.blog-layout), body:has(.blog-layout) {
+    background: white !important;
+    color: #171717 !important;
+    color-scheme: light !important;
+  }
+  .blog-layout, .blog-layout > div { background: white !important; color: #171717 !important; }
+  body:has(.blog-layout) > header,
+  body:has(.blog-layout) > footer,
+  body:has(.blog-layout) > .skip-link {
+    display: none !important;
+  }
   .blog-navigation,
   .blog-share-controls,
   .blog-reading-actions {

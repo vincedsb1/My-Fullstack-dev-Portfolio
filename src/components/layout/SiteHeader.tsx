@@ -1,7 +1,6 @@
 import LocaleLinks from "./LocaleLinks";
 import { getTranslations } from "next-intl/server";
 import { getPublishedArticles } from "@/lib/blog/articles";
-import { getProjectsPath } from "@/lib/projects/routes";
 import { getPathname } from "@/i18n/paths";
 import type { Locale } from "@/i18n/routing";
 import { SITE_NAME } from "@/lib/site";
@@ -9,15 +8,15 @@ import ThemeToggle from "@/components/theme/ThemeToggle";
 import HeaderNavigation from "./HeaderNavigation";
 export default async function SiteHeader({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "site" });
-  const blogLocale = getPublishedArticles(locale).length ? locale : "fr";
+  const homePath = getPathname({ locale, href: "/" });
   const links = [
-    { href: getProjectsPath(locale), label: t("projects") },
+    { href: `${homePath}#projects3`, label: t("projects") },
     {
-      href: `/${blogLocale}/blog`,
-      label: blogLocale === locale ? t("blog") : t("blogFrench"),
+      href: `/${locale}/blog`,
+      label: t("blog"),
     },
-    { href: `/${locale}#parcours`, label: t("career") },
-    { href: `/${locale}#contact`, label: t("contact") },
+    { href: `${homePath}#parcours`, label: t("career") },
+    { href: `${homePath}#contact`, label: t("contact") },
   ];
   return (
     <>

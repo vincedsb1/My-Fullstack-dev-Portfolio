@@ -42,8 +42,7 @@ export default async function Page({
   if (!locales.includes(locale)) notFound();
   setRequestLocale(locale);
   const projects = await getHomeProjects(locale);
-  const local = getPublishedArticles(locale);
-  const blogArticles = (local.length ? local : getPublishedArticles("fr"))
+  const blogArticles = getPublishedArticles(locale)
     .slice(0, 1)
     .map((a) => ({
       locale: a.metadata.locale,

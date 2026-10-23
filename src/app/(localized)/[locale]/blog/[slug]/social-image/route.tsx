@@ -24,7 +24,8 @@ export async function GET(
   const article = getPublishedArticle(locale, slug);
   if (!article) return new Response("Not found", { status: 404 });
 
-  return article.metadata.renderer === "guide"
+  // Cette image publique précède le moteur JSON : conserver son rendu à URL constante.
+  return locale === "fr" && slug === "guide-premier-emploi-developpeur"
     ? createGuideSocialImage()
     : createBlogSocialImage(article.metadata);
 }

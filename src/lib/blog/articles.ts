@@ -3,7 +3,7 @@ import "server-only";
 import {
   readAllBlogArticles,
   type BlogArticleMetadata,
-  type BlogArticleRecord,
+  type BlogArticleRecord as LegacyBlogArticleRecord,
   type BlogLocale,
 } from "./article-source.mjs";
 import { readFileSync } from "node:fs";
@@ -13,14 +13,28 @@ const guideContent = readFileSync(
   "utf8",
 );
 import { estimateReadingTime } from "./reading-time";
+import {
+  readAllJsonBlogArticles,
+  validateMergedBlogArticles,
+  getJsonReadingText,
+} from "./json-source.mjs";
+import type { JsonBlogRecord } from "./json-source.mjs";
 
-export type { BlogArticleMetadata, BlogArticleRecord, BlogLocale };
+export type { BlogArticleMetadata, BlogLocale };
+export type BlogArticleRecord = LegacyBlogArticleRecord | JsonBlogRecord;
+
+function readAllSources(): BlogArticleRecord[] {
+  return validateMergedBlogArticles([
+    ...readAllBlogArticles(),
+    ...readAllJsonBlogArticles(),
+  ]);
+}
 
 let cachedArticles: BlogArticleRecord[] | undefined;
 const readCached = () =>
   process.env.NODE_ENV === "development"
-    ? readAllBlogArticles()
-    : (cachedArticles ??= readAllBlogArticles());
+    ? readAllSources()
+    : (cachedArticles ??= readAllSources());
 
 export function getPublishedArticles(locale?: BlogLocale) {
   return readCached()
@@ -53,7 +67,11 @@ export function getPublishedTranslations(translationKey?: string) {
 
 export function getArticleReadingTime(article: BlogArticleRecord) {
   const source =
-    article.metadata.renderer === "guide" ? guideContent : article.body;
+    "format" in article && article.format === "json"
+      ? getJsonReadingText(article.data)
+      : article.metadata.renderer === "guide"
+      ? guideContent
+      : article.body;
   return estimateReadingTime(source);
 }
 

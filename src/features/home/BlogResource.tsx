@@ -119,7 +119,6 @@ export default async function BlogResource({
 }) {
   const t = await getTranslations("blogHome");
   const locale = await getLocale();
-  const blogLocale = articles[0]?.locale ?? "fr";
   const visibleArticles = articles.slice(0, 1);
 
   return (
@@ -146,11 +145,6 @@ export default async function BlogResource({
           <p className="max-w-2xl text-base font-light leading-relaxed text-[#707070] dark:text-neutral-400 md:text-lg">
             {t("description")}
           </p>
-          {locale === "en" && blogLocale !== "en" ? (
-            <p className="mt-3 text-sm font-medium text-[#707070] dark:text-neutral-400">
-              {t("frenchNotice")}
-            </p>
-          ) : null}
         </div>
       </header>
 
@@ -173,12 +167,10 @@ export default async function BlogResource({
 
       <div className="mt-10 flex sm:mt-14" data-reveal>
         <Link
-          href={`/${blogLocale}/blog`}
+          href={`/${locale}/blog`}
           className="group inline-flex items-center gap-3 rounded-lg text-base font-semibold text-gray-900 transition-colors hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-4 dark:text-neutral-100 dark:hover:text-red-400 dark:focus-visible:ring-offset-neutral-900"
         >
-          {blogLocale === "en" && locale === "en"
-            ? "Read all articles"
-            : t("link")}
+          {t("link")}
           <span className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 bg-white shadow-sm transition-[transform,border-color,box-shadow] duration-300 group-hover:border-neutral-400 group-hover:shadow-md motion-safe:group-hover:scale-105 dark:border-neutral-700 dark:bg-neutral-800 dark:group-hover:border-neutral-500">
             <ArrowRight
               aria-hidden="true"

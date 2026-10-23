@@ -8,7 +8,7 @@ référence visuelle. Ne pas dupliquer sa mise en page ; valider les contenus av
 
 Pour toute création ou modification d’article, lis d’abord [`docs/blog/ARCHITECTURE.md`](docs/blog/ARCHITECTURE.md), [`docs/blog/CREER_UN_ARTICLE.md`](docs/blog/CREER_UN_ARTICLE.md) et [`docs/blog/PROMPT_NOUVEL_ARTICLE.md`](docs/blog/PROMPT_NOUVEL_ARTICLE.md).
 
-Ajoute le contenu dans `src/content/blog/<locale>/<slug>.mdx`, valide avec `npm run blog:validate` et vérifie le pré-rendu avec `npm run build`. Les articles sont publiés par défaut ; ne fabrique pas de traductions, sources ou expériences.
+Les deux sujets du blog sont publiés en français et en anglais sous `src/content/blog-json/{fr,en}/`. Chaque paire partage un `translationKey` ; le moteur JSON et les widgets SaaS sont communs et localisés. Les composants historiques et la fixture MDX technique restent conservés jusqu’au nettoyage distinct de l’étape 6. Le moteur JSON v1 est disponible sous `src/content/blog-json/<locale>/<slug>.json` et documenté dans `docs/blog/JSON_ENGINE.md` : les nouveaux articles standards utilisent ce format par défaut ; pour tout nouvel article JSON, valider avec `npm run blog:validate`, `npm run blog:test:json`, puis `npm run build` et `npm run blog:test:seo`. Ne pas démarrer automatiquement le nettoyage de l’étape 6 ; traduire fidèlement les contenus lorsqu’une version localisée est demandée, sans inventer de sources ou d’expériences. Voir `docs/blog/MISE_EN_PLACE_FR_EN.md` pour les contrats de langue et de sauvegarde.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

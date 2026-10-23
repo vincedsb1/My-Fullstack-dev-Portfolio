@@ -3,6 +3,7 @@
 import { SurfaceButton } from "@/components/ui/Button";
 
 import { useMemo, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import type { CSSProperties } from "react";
 import { Check, Sparkles } from "lucide-react";
 
@@ -104,28 +105,36 @@ const highlightedCells = new Set([
   "en-ja",
 ]);
 
-function LanguageName({ code }: { code: LanguageCode }) {
-  return languageOptions.find((language) => language.code === code)?.label;
+function languageName(code: LanguageCode, locale: string) {
+  const english = {
+    fr: "French",
+    en: "English",
+    de: "German",
+    es: "Spanish",
+    pt: "Portuguese (BR)",
+    ja: "Japanese",
+  };
+  return locale === "en"
+    ? english[code]
+    : languageOptions.find((language) => language.code === code)!.label;
 }
 
 function LanguageMosaic() {
+  const t = useTranslations("blogSaas");
   return (
     <div
       className="blog-editorial-module blog-language-mosaic"
       aria-labelledby="blog-language-mosaic-title"
     >
       <div className="blog-editorial-module__header">
-        <p className="blog-editorial-module__eyebrow">Une même promesse</p>
+        <p className="blog-editorial-module__eyebrow">{t("mosaicEyebrow")}</p>
         <p
           id="blog-language-mosaic-title"
           className="blog-editorial-module__title"
         >
-          Six langues, une seule idée produit.
+          {t("mosaicTitle")}
         </p>
-        <p className="blog-editorial-module__intro">
-          La traduction élargit la porte d’entrée. Elle ne remplace pas le
-          travail de compréhension de chaque marché.
-        </p>
+        <p className="blog-editorial-module__intro">{t("mosaicIntro")}</p>
       </div>
       <div className="blog-language-mosaic__tiles" role="list">
         {languageOptions.map((language, index) => (
@@ -146,8 +155,11 @@ function LanguageMosaic() {
 }
 
 function LanguagePairDemo() {
-  const [interfaceLanguage, setInterfaceLanguage] =
-    useState<LanguageCode>("fr");
+  const locale = useLocale();
+  const t = useTranslations("blogSaas");
+  const [interfaceLanguage, setInterfaceLanguage] = useState<LanguageCode>(
+    locale === "en" ? "en" : "fr",
+  );
   const [contentLanguage, setContentLanguage] = useState<LanguageCode>("ja");
   const ui = interfaceCopy[interfaceLanguage];
   const content = contentCopy[contentLanguage];
@@ -158,17 +170,14 @@ function LanguagePairDemo() {
       aria-labelledby="blog-language-demo-title"
     >
       <div className="blog-editorial-module__header">
-        <p className="blog-editorial-module__eyebrow">01 / À toi d’essayer</p>
+        <p className="blog-editorial-module__eyebrow">{t("demoEyebrow")}</p>
         <h3
           id="blog-language-demo-title"
           className="blog-editorial-module__title"
         >
-          Deux langues, deux usages
+          {t("demoTitle")}
         </h3>
-        <p className="blog-editorial-module__intro">
-          Change les deux paramètres indépendamment : l’interface guide la
-          personne, tandis que le contenu vise son propre marché.
-        </p>
+        <p className="blog-editorial-module__intro">{t("demoIntro")}</p>
       </div>
 
       <div className="blog-language-demo__workbench">
@@ -177,7 +186,7 @@ function LanguagePairDemo() {
             className="blog-language-demo__control"
             htmlFor="interface-language"
           >
-            <span>Langue de l’interface</span>
+            <span>{t("interfaceLabel")}</span>
             <select
               id="interface-language"
               value={interfaceLanguage}
@@ -186,8 +195,12 @@ function LanguagePairDemo() {
               }
             >
               {languageOptions.map((language) => (
-                <option key={language.code} value={language.code}>
-                  {language.label}
+                <option
+                  key={language.code}
+                  value={language.code}
+                  lang={locale === "en" ? "en" : language.code}
+                >
+                  {languageName(language.code, locale)}
                 </option>
               ))}
             </select>
@@ -196,7 +209,7 @@ function LanguagePairDemo() {
             className="blog-language-demo__control"
             htmlFor="content-language"
           >
-            <span>Langue du contenu</span>
+            <span>{t("contentLabel")}</span>
             <select
               id="content-language"
               value={contentLanguage}
@@ -205,8 +218,12 @@ function LanguagePairDemo() {
               }
             >
               {languageOptions.map((language) => (
-                <option key={language.code} value={language.code}>
-                  {language.label}
+                <option
+                  key={language.code}
+                  value={language.code}
+                  lang={locale === "en" ? "en" : language.code}
+                >
+                  {languageName(language.code, locale)}
                 </option>
               ))}
             </select>
@@ -238,15 +255,14 @@ function LanguagePairDemo() {
           </p>
         </div>
       </div>
-      <p className="blog-editorial-module__note">
-        Exemple illustratif. La langue de travail et celle du projet restent
-        indépendantes.
-      </p>
+      <p className="blog-editorial-module__note">{t("demoNote")}</p>
     </section>
   );
 }
 
 function LanguageMatrix() {
+  const locale = useLocale();
+  const t = useTranslations("blogSaas");
   const [activeCell, setActiveCell] = useState("fr-ja");
   const activeInterface = activeCell.split("-")[0] as LanguageCode;
   const activeContent = activeCell.split("-")[1] as LanguageCode;
@@ -261,35 +277,27 @@ function LanguageMatrix() {
         36
       </span>
       <div className="blog-editorial-module__header blog-language-matrix__header">
-        <p className="blog-editorial-module__eyebrow">02 / La surface cachée</p>
+        <p className="blog-editorial-module__eyebrow">{t("matrixEyebrow")}</p>
         <h3
           id="blog-language-matrix-title"
           className="blog-editorial-module__title"
         >
-          Six fois six.
+          {t("matrixTitle")}
         </h3>
-        <p className="blog-editorial-module__intro">
-          Une langue pour l’interface, une autre pour le contenu : six fois six
-          paramètres à maintenir et à vérifier.
-        </p>
+        <p className="blog-editorial-module__intro">{t("matrixIntro")}</p>
       </div>
 
       <div className="blog-language-matrix__scroll" tabIndex={0}>
         <table>
-          <caption className="sr-only">
-            Matrice des langues de l’interface et du contenu
-          </caption>
+          <caption className="sr-only">{t("matrixCaption")}</caption>
           <thead>
             <tr>
-              <th
-                scope="col"
-                aria-label="Interface par ligne, contenu par colonne"
-              >
+              <th scope="col" aria-label={t("matrixAxis")}>
                 ↘
               </th>
               {languageOptions.map((language) => (
                 <th scope="col" key={language.code}>
-                  <abbr title={language.label}>
+                  <abbr title={languageName(language.code, locale)}>
                     {language.code === "pt"
                       ? "BR"
                       : language.code.toUpperCase()}
@@ -302,7 +310,7 @@ function LanguageMatrix() {
             {languageOptions.map((interfaceLanguage) => (
               <tr key={interfaceLanguage.code}>
                 <th scope="row">
-                  <abbr title={interfaceLanguage.label}>
+                  <abbr title={languageName(interfaceLanguage.code, locale)}>
                     {interfaceLanguage.code === "pt"
                       ? "BR"
                       : interfaceLanguage.code.toUpperCase()}
@@ -325,13 +333,16 @@ function LanguageMatrix() {
                         }`}
                         aria-pressed={isActive}
                         tabIndex={isActive ? 0 : -1}
-                        aria-label={`${
-                          interfaceLanguage.label
-                        } pour l’interface, ${
-                          contentLanguage.label
-                        } pour le contenu${
-                          isHighlighted ? ", case mise en évidence" : ""
-                        }`}
+                        aria-label={t("matrixCell", {
+                          interface: languageName(
+                            interfaceLanguage.code,
+                            locale,
+                          ),
+                          content: languageName(contentLanguage.code, locale),
+                          highlight: isHighlighted
+                            ? t("matrixCellHighlight")
+                            : "",
+                        })}
                         onClick={() => setActiveCell(cellId)}
                         onKeyDown={(event) => {
                           const buttons = event.currentTarget
@@ -380,73 +391,65 @@ function LanguageMatrix() {
       <div className="blog-language-matrix__legend">
         <span>
           <i />
-          12 cases mises en évidence
+          {t("matrixHighlighted")}
         </span>
         <span>
           <i />
-          24 autres possibilités
+          {t("matrixOther")}
         </span>
       </div>
       <p className="blog-language-matrix__selection" aria-live="polite">
         <strong>
-          {LanguageName({ code: activeInterface })} /{" "}
-          {LanguageName({ code: activeContent })}
+          {languageName(activeInterface, locale)} /{" "}
+          {languageName(activeContent, locale)}
         </strong>
         <span>
           {activeIsHighlighted
-            ? " — case mise en évidence dans cette visualisation."
-            : " — combinaison possible, non mise en évidence ici."}
+            ? t("matrixSelectedHighlight")
+            : t("matrixSelectedOther")}
         </span>
       </p>
-      <p className="blog-editorial-module__note">
-        Répartition illustrative des douze vérifications : les paires réellement
-        testées ne sont pas détaillées dans cet article. Sélectionne une case
-        pour explorer les possibilités.
-      </p>
+      <p className="blog-editorial-module__note">{t("matrixNote")}</p>
     </section>
   );
 }
 
 const funnelStages = [
   {
-    label: "Visiteurs",
-    detail: "découvrent une version localisée",
+    label: "visitors",
+    detail: "visitorsDetail",
     width: "100%",
   },
   {
-    label: "Inscriptions",
-    detail: "font le premier pas",
+    label: "signups",
+    detail: "signupsDetail",
     width: "80%",
   },
   {
-    label: "Projets démarrés",
-    detail: "testent la valeur du produit",
+    label: "projects",
+    detail: "projectsDetail",
     width: "60%",
   },
   {
-    label: "Clients payants",
-    detail: "confirment une valeur suffisante",
+    label: "customers",
+    detail: "customersDetail",
     width: "40%",
   },
 ] as const;
 
 function AcquisitionFunnel() {
+  const t = useTranslations("blogSaas");
   return (
     <section
       className="blog-editorial-module blog-funnel"
       aria-labelledby="blog-funnel-title"
     >
       <div className="blog-editorial-module__header">
-        <p className="blog-editorial-module__eyebrow">
-          Au-delà de la traduction
-        </p>
+        <p className="blog-editorial-module__eyebrow">{t("funnelEyebrow")}</p>
         <h3 id="blog-funnel-title" className="blog-editorial-module__title">
-          De la visibilité au client
+          {t("funnelTitle")}
         </h3>
-        <p className="blog-editorial-module__intro">
-          Une version localisée ouvre le parcours. Elle ne suffit pas à faire
-          progresser les utilisateurs jusqu’à l’achat.
-        </p>
+        <p className="blog-editorial-module__intro">{t("funnelIntro")}</p>
       </div>
       <ol className="blog-funnel__list">
         {funnelStages.map((stage, index) => (
@@ -462,15 +465,13 @@ function AcquisitionFunnel() {
           >
             <span className="blog-funnel__number">0{index + 1}</span>
             <span>
-              <strong>{stage.label}</strong>
-              <small>{stage.detail}</small>
+              <strong>{t(stage.label)}</strong>
+              <small>{t(stage.detail)}</small>
             </span>
           </li>
         ))}
       </ol>
-      <p className="blog-editorial-module__note">
-        Schéma conceptuel : les largeurs ne représentent pas des taux réels.
-      </p>
+      <p className="blog-editorial-module__note">{t("funnelNote")}</p>
     </section>
   );
 }
@@ -480,20 +481,20 @@ type QuestionKey = "international" | "demand" | "capacity";
 const decisionQuestions: Array<{ key: QuestionKey; label: string }> = [
   {
     key: "international",
-    label: "Ton produit est-il naturellement international dès le départ ?",
+    label: "questionInternational",
   },
   {
     key: "demand",
-    label: "As-tu déjà un signal de demande sur un marché précis ?",
+    label: "questionDemand",
   },
   {
     key: "capacity",
-    label:
-      "Peux-tu maintenir traductions, tests et acquisition pour chaque langue ?",
+    label: "questionCapacity",
   },
 ];
 
 function DecisionTree() {
+  const t = useTranslations("blogSaas");
   const [answers, setAnswers] = useState<Record<QuestionKey, boolean | null>>({
     international: null,
     demand: null,
@@ -505,30 +506,30 @@ function DecisionTree() {
 
     if (answers.international && answers.capacity) {
       return {
-        title: "Plusieurs langues peuvent se justifier dès le lancement.",
-        body: "Ton produit a une vocation internationale et tu peux assumer la maintenance. Lance-toi, puis mesure les parcours par marché.",
+        title: t("adviceInternationalTitle"),
+        body: t("adviceInternationalBody"),
       };
     }
 
     if (answers.demand && answers.capacity) {
       return {
-        title: "Commence par les marchés qui montrent déjà un signal.",
-        body: "Une ou deux langues ciblées peuvent transformer une demande observée en apprentissage concret, sans multiplier les surfaces trop tôt.",
+        title: t("adviceDemandTitle"),
+        body: t("adviceDemandBody"),
       };
     }
 
     if (answers.demand || answers.international) {
       return {
-        title: "Prépare l’architecture, puis élargis progressivement.",
-        body: "Il existe une raison d’explorer l’international, mais le meilleur premier pas est de limiter le nombre de langues et de mesurer la demande.",
+        title: t("adviceArchitectureTitle"),
+        body: t("adviceArchitectureBody"),
       };
     }
 
     return {
-      title: "Garde une ou deux langues et valide la demande.",
-      body: "Rien ne t’oblige à traduire toute l’application immédiatement. Prévois l’internationalisation techniquement, puis investis au moment où les signaux apparaissent.",
+      title: t("adviceValidateTitle"),
+      body: t("adviceValidateBody"),
     };
-  }, [answers]);
+  }, [answers, t]);
 
   return (
     <section
@@ -536,16 +537,11 @@ function DecisionTree() {
       aria-labelledby="blog-decision-title"
     >
       <div className="blog-editorial-module__header">
-        <p className="blog-editorial-module__eyebrow">
-          03 / Ton point de départ
-        </p>
+        <p className="blog-editorial-module__eyebrow">{t("decisionEyebrow")}</p>
         <h3 id="blog-decision-title" className="blog-editorial-module__title">
-          Faut-il internationaliser ?
+          {t("decisionTitle")}
         </h3>
-        <p className="blog-editorial-module__intro">
-          Trois questions pour transformer une intuition en décision
-          contextualisée.
-        </p>
+        <p className="blog-editorial-module__intro">{t("decisionIntro")}</p>
       </div>
 
       <div className="blog-decision-tree__questions">
@@ -553,11 +549,11 @@ function DecisionTree() {
           <fieldset key={question.key} className="blog-decision-tree__question">
             <legend>
               <span>0{index + 1}</span>
-              {question.label}
+              {t(question.label)}
             </legend>
             <div className="blog-decision-tree__choices">
               {[true, false].map((value) => {
-                const label = value ? "Oui" : "Non";
+                const label = value ? t("yes") : t("no");
                 const isSelected = answers[question.key] === value;
                 return (
                   <SurfaceButton
@@ -586,16 +582,16 @@ function DecisionTree() {
       <div className="blog-decision-tree__result" aria-live="polite">
         {recommendation ? (
           <>
-            <p className="blog-decision-tree__result-label">Recommandation</p>
+            <p className="blog-decision-tree__result-label">
+              {t("recommendation")}
+            </p>
             <p className="blog-decision-tree__result-title">
               {recommendation.title}
             </p>
             <p>{recommendation.body}</p>
           </>
         ) : (
-          <p>
-            Réponds aux trois questions pour afficher une piste de décision.
-          </p>
+          <p>{t("decisionPending")}</p>
         )}
       </div>
       {Object.values(answers).some((answer) => answer !== null) ? (
@@ -606,7 +602,7 @@ function DecisionTree() {
             setAnswers({ international: null, demand: null, capacity: null })
           }
         >
-          Recommencer
+          {t("restart")}
         </SurfaceButton>
       ) : null}
     </section>

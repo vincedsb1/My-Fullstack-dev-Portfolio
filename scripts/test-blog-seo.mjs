@@ -5,6 +5,10 @@ import path from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import nextEnv from "@next/env";
 import { readAllBlogArticles } from "../src/lib/blog/article-source.mjs";
+import {
+  readAllJsonBlogArticles,
+  validateMergedBlogArticles,
+} from "../src/lib/blog/json-source.mjs";
 import { validateBlogLinks } from "./validate-blog-links.mjs";
 
 nextEnv.loadEnvConfig(process.cwd());
@@ -14,7 +18,10 @@ if (!existsSync(path.join(process.cwd(), ".next", "BUILD_ID"))) {
   process.exit(1);
 }
 
-const articles = readAllBlogArticles();
+const articles = validateMergedBlogArticles([
+  ...readAllBlogArticles(),
+  ...readAllJsonBlogArticles(),
+]);
 const published = articles.filter(
   (article) => article.metadata.status === "published",
 );
@@ -159,7 +166,8 @@ function verifyContentImages(html, label) {
       (image) =>
         Object.hasOwn(image, "alt") &&
         ((image.width && image.height) ||
-          (image["data-nimg"] === "fill" && image.sizes)),
+          (image["data-nimg"] === "fill" &&
+            (image.sizes || /\.svg(?:[?#]|$)/i.test(image.src ?? "")))),
     ),
     "images avec texte alternatif et dimensions réservées " + label,
   );
@@ -507,7 +515,8 @@ try {
   );
   check(
     hasTranslatedPair
-      ? indexAlternates.length === 2 &&
+      ? indexAlternates.filter((link) => link.hreflang !== "x-default")
+          .length === 2 &&
           indexAlternates.some((link) => link.hreflang === "fr") &&
           indexAlternates.some((link) => link.hreflang === "en")
       : indexAlternates.filter((link) => link.hreflang !== "x-default")
@@ -572,7 +581,8 @@ try {
     );
     check(
       hasTranslatedPair
-        ? englishIndexAlternates.length === 2 &&
+        ? englishIndexAlternates.filter((link) => link.hreflang !== "x-default")
+            .length === 2 &&
             englishIndexAlternates.some((link) => link.hreflang === "fr") &&
             englishIndexAlternates.some((link) => link.hreflang === "en")
         : englishIndexAlternates.length === 1 &&
@@ -712,21 +722,30 @@ try {
       "hreflang réciproque sans traduction inventée " + route,
     );
 
-    if (article.metadata.renderer === "guide") {
+    if (
+      article.metadata.locale === "fr" &&
+      article.metadata.slug === "guide-premier-emploi-developpeur"
+    ) {
       check(
-        html.includes("checklist-progress-text") &&
+        article.format === "json" &&
+          html.includes("blog-ds__json-checklist") &&
           html.includes("Un CV lisible, adapté au poste visé"),
         "contenu du guide présent dans le HTML initial " + route,
       );
       check(
-        /class="[^"]*\bcheckbox-custom\b[^"]*"/.test(html) &&
-          html.includes("data-guide-print") &&
-          html.includes('id="share-btn"') &&
+        Array.from({ length: 14 }, (_, i) =>
+          html.includes(`data-id="chk-${i + 1}"`),
+        ).every(Boolean) &&
+          html.includes("Imprimer la page ou enregistrer au format PDF") &&
+          html.includes("Partager") &&
           html.includes('aria-label="Thème"'),
         "checklist, partage, impression et thème présents dans le HTML du guide",
       );
     } else {
-      const firstHeading = article.body.match(/^##\s+(.+)$/m)?.[1]?.trim();
+      const firstHeading =
+        article.format === "json"
+          ? article.data.sections[0]?.title
+          : article.body.match(/^##\s+(.+)$/m)?.[1]?.trim();
       check(
         Boolean(firstHeading) && html.includes(firstHeading),
         "premier titre et contenu MDX présents dans le HTML initial " + route,
@@ -784,12 +803,12 @@ try {
     const response = await request(baseUrl, "/en/blog");
     const html = await response.text();
     check(
-      response.status === 404,
-      "/en/blog reste en 404 sans article anglais",
+      response.status === 200,
+      "/en/blog reste disponible avec un état vide anglais",
     );
     check(
       meta(html, "robots")?.includes("noindex"),
-      "404 anglais explicitement exclu de l’index",
+      "index anglais vide explicitement exclu de l’index",
     );
   }
 
