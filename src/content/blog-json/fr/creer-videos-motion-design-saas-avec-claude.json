@@ -43,6 +43,21 @@
           "text": "L’idée n’est pas de laisser l’IA décider de tout. Je lui confie une partie de l’analyse, de la création et de l’exécution, tout en gardant la main sur le message, le style et le rendu final."
         }
       ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "Une illustration en vidéo",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "provider": "youtube",
+      "id": "nq7NTCmhApU",
+      "title": "Motion design avec Claude — illustration vidéo"
     }
   ],
   "sections": [

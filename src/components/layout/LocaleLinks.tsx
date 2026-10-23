@@ -4,6 +4,7 @@ import { usePathname as useActualPathname } from "next/navigation";
 import { ChevronDown, Globe } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { Locale } from "@/i18n/routing";
+import styles from "./SiteHeader.module.css";
 export default function LocaleLinks({
   locale,
   articles,
@@ -114,39 +115,38 @@ export default function LocaleLinks({
         aria-expanded={open}
         aria-controls="locale-menu"
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex min-h-11 items-center gap-1.5 rounded-control border border-border bg-surface-raised px-3 text-small font-semibold text-content transition-colors hover:border-accent"
+        className={`${styles.localeButton} inline-flex min-h-11 items-center gap-1.5 rounded-control border border-border bg-surface-raised px-3 text-small font-semibold text-content`}
       >
         <Globe aria-hidden="true" size={18} />
         <span>{locale.toUpperCase()}</span>
         <ChevronDown
           aria-hidden="true"
           size={16}
-          className={`transition-transform duration-fast ${
-            open ? "rotate-180" : ""
-          }`}
+          className={styles.localeChevron}
         />
       </button>
-      {open && (
-        <nav
-          id="locale-menu"
-          aria-label={label}
-          className="absolute right-0 top-full z-[60] mt-2 flex min-w-40 flex-col rounded-card border border-border bg-surface-raised p-2 shadow-overlay"
-        >
-          {(["fr", "en"] as const).map((l) => (
-            <a
-              key={l}
-              href={href(l)}
-              hrefLang={l}
-              lang={l}
-              aria-current={l === locale ? "page" : undefined}
-              onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-2 text-small text-content transition-colors hover:bg-surface-sunken hover:text-accent aria-[current=page]:font-bold"
-            >
-              {l === "fr" ? "🇫🇷 Français" : "🇬🇧 English"}
-            </a>
-          ))}
-        </nav>
-      )}
+      <nav
+        id="locale-menu"
+        aria-label={label}
+        aria-hidden={!open}
+        inert={!open}
+        data-open={open}
+        className={`${styles.localeMenu} absolute right-0 top-full z-[60] mt-2 flex min-w-40 flex-col rounded-card border border-border bg-surface-raised p-2 shadow-overlay`}
+      >
+        {(["fr", "en"] as const).map((l) => (
+          <a
+            key={l}
+            href={href(l)}
+            hrefLang={l}
+            lang={l}
+            aria-current={l === locale ? "page" : undefined}
+            onClick={() => setOpen(false)}
+            className="rounded-lg px-3 py-2 text-small text-content transition-colors hover:bg-surface-sunken hover:text-accent aria-[current=page]:font-bold"
+          >
+            {l === "fr" ? "🇫🇷 Français" : "🇬🇧 English"}
+          </a>
+        ))}
+      </nav>
     </div>
   );
 }

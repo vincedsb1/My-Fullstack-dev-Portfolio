@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { IconButton } from "@/components/ui/Button";
+import styles from "./SiteHeader.module.css";
 export default function HeaderNavigation({
   links,
   label,
@@ -60,7 +61,7 @@ export default function HeaderNavigation({
             href={link.href}
             onClick={() => setOpen(false)}
             aria-current={link.href === path ? "page" : undefined}
-            className="rounded-control px-3 py-2 text-small text-content-muted hover:text-accent aria-[current=page]:font-bold aria-[current=page]:text-content"
+            className={`${styles.navigationLink} rounded-control px-3 py-2 text-small text-content-muted aria-[current=page]:font-bold aria-[current=page]:text-content`}
           >
             {link.label}
           </a>
