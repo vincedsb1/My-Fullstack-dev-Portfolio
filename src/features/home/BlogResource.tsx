@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
+import SpotlightCard from "@/components/ui/SpotlightCard";
 import styles from "./BlogResource.module.css";
 
 export interface BlogHomeArticle {
@@ -33,10 +34,10 @@ function ArticleCard({
       : "Lire l’article";
 
   return (
-    <article className="h-full">
+    <SpotlightCard className={`${styles.card} h-full`} data-blog-card>
       <Link
         href={`/${article.locale}/blog/${article.slug}`}
-        className={`group flex h-full min-w-0 flex-col rounded-[2rem] border border-neutral-200/70 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.03),0_2px_8px_rgba(0,0,0,0.01)] transition-[transform,box-shadow,border-color] duration-300 hover:border-neutral-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06),0_4px_12px_rgba(0,0,0,0.02)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-4 motion-safe:hover:-translate-y-1 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600 dark:focus-visible:ring-offset-neutral-900 ${
+        className={`group flex h-full min-w-0 flex-col focus-visible:outline-none ${
           featured ? "gap-6 p-5 sm:p-8 md:flex-row md:gap-8" : "gap-6 p-5"
         }`}
       >
@@ -115,7 +116,7 @@ function ArticleCard({
           </span>
         </div>
       </Link>
-    </article>
+    </SpotlightCard>
   );
 }
 

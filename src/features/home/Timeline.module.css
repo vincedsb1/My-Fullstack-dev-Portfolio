@@ -1,3 +1,16 @@
+.currentCard[data-current="true"] {
+  border-color: rgb(249 115 22 / 0.3);
+}
+
+:global(.dark) .currentCard[data-current="true"] {
+  border-color: rgb(249 115 22 / 0.2);
+}
+
+.currentCard[data-current="true"]:hover,
+:global(.dark) .currentCard[data-current="true"]:hover {
+  border-color: rgb(249 115 22 / 0.5);
+}
+
 .currentPulse {
   animation: current-pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

@@ -8,6 +8,10 @@ Dans Parcours, les entreprises utilisent 18–20 px/600, les fonctions 16 px/500
 
 Dans la FAQ, le titre et le sous-titre reprennent les styles communs ; les questions sont en 16–18 px/600 et les réponses en 16 px/400 avec les gris du corps de texte. Au survol, seul le texte de la question passe au rouge (`red-600` en clair, `red-400` en sombre), sans changement de fond ni de couleur du chevron. L’ouverture, la fermeture et la rotation du chevron sont conservées.
 
+## Extension à la page de liste du blog — 23 octobre 2026
+
+La page `/fr/blog` et sa version anglaise reprennent la même hiérarchie : titre de page en 32–48 px/700 (36 px à partir de 390 px) et gris des titres de section, introduction en 16–18 px/300, titres de cartes en 24 px/600, extraits en 16–18 px/300 avec les gris de lecture Hero/footer. Les catégories utilisent 12 px/600 en capitales espacées ; dates et durées utilisent 12–14 px/500 en gris, sans capitales forcées. Le séparateur reste attaché à la date lors des retours à la ligne. L'état vide utilise 16 px/400. Les changements restent limités à `BlogIndex` et `BlogCard` ; les textes des articles et les styles globaux ne sont pas modifiés.
+
 ## Périmètre et références fixes
 
 - **Hero et footer : références visuelles, sans modification.** Conserver leurs tailles, graisses, couleurs, dégradés, espacements et interactions. Ne pas modifier non plus leurs CSS, la police locale de la Hero ou les règles globales qui changeraient leur rendu. Toute nouvelle règle sera limitée aux sections intermédiaires.

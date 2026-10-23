@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Calendar } from "lucide-react";
+import SpotlightCard from "@/components/ui/SpotlightCard";
 import styles from "./Timeline.module.css";
 
 interface Experience {
@@ -82,12 +83,12 @@ async function Timeline() {
                   />
                 </div>
 
-                <article
-                  className={`min-w-0 flex-1 rounded-2xl border p-6 transition-all duration-300 motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:rounded-3xl md:p-8 ${
-                    isCurrent
-                      ? "border-orange-500/30 bg-white shadow-[0_10px_30px_rgba(249,115,22,0.06)] hover:-translate-y-1 hover:border-orange-500/50 dark:border-orange-500/20 dark:bg-neutral-800/80 dark:hover:border-orange-500/50 dark:shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
-                      : "border-neutral-200/70 bg-white/60 shadow-sm hover:-translate-y-0.5 hover:border-neutral-300 hover:bg-white hover:shadow-md dark:border-neutral-700/60 dark:bg-neutral-800/40 dark:hover:border-neutral-600 dark:hover:bg-neutral-800/80"
+                <SpotlightCard
+                  className={`min-w-0 flex-1 p-6 md:p-8 ${
+                    isCurrent ? styles.currentCard : ""
                   }`}
+                  data-timeline-card
+                  data-current={isCurrent}
                 >
                   <div
                     id={`timelineCardTop${experience.company}`}
@@ -129,7 +130,7 @@ async function Timeline() {
                       {experience.description}
                     </div>
                   </div>
-                </article>
+                </SpotlightCard>
               </li>
             );
           })}

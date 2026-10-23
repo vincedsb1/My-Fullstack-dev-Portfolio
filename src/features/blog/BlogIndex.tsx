@@ -23,16 +23,16 @@ export default async function BlogIndex({
         className="mx-auto w-full max-w-5xl px-5 py-14 sm:px-8 sm:py-20"
       >
         <header className="mb-12 max-w-3xl">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-red-600 dark:text-red-400">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-red-600 dark:text-red-400">
             {t("eyebrow")}
           </p>
           <h1
             id="blog-index-title"
-            className="mb-5 break-words text-h1 font-bold tracking-tight"
+            className="mb-5 break-words text-[2rem] font-bold leading-tight tracking-tight text-neutral-700 dark:text-neutral-300 2xs:text-4xl md:text-5xl"
           >
             {seo.heading}
           </h1>
-          <p className="text-lg leading-relaxed text-neutral-600 dark:text-neutral-300">
+          <p className="text-base font-light leading-relaxed text-[#707070] dark:text-neutral-400 md:text-lg">
             {seo.introduction}
           </p>
         </header>
@@ -48,7 +48,7 @@ export default async function BlogIndex({
             ))}
           </section>
         ) : (
-          <p className="rounded-xl border border-neutral-200 p-6 text-neutral-600 dark:border-neutral-800 dark:text-neutral-300">
+          <p className="rounded-xl border border-neutral-200 p-6 text-base font-normal leading-relaxed text-gray-600 dark:border-neutral-800 dark:text-gray-400">
             {t("empty")}
           </p>
         )}

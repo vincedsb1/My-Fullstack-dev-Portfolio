@@ -34,6 +34,9 @@ import { getTranslations } from "next-intl/server";
 import { FigmaLogoIcon } from "@phosphor-icons/react/dist/ssr/FigmaLogo";
 import { GithubLogoIcon } from "@phosphor-icons/react/dist/ssr/GithubLogo";
 import type { ElementType } from "react";
+import cardStyles from "@/components/ui/SpotlightCard.module.css";
+import SkillsGrid from "./SkillsGrid";
+import styles from "./Skills.module.css";
 
 type Skill = {
   label: string;
@@ -154,45 +157,44 @@ async function Skills() {
         </div>
       </div>
 
-      <div
-        id="skillsCardsContainer"
-        className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
-      >
+      <SkillsGrid>
         {skillCategories.map((category, categoryIndex) => (
           <article
             key={category.id}
             id={`${category.id}SkillsCard`}
-            className="flex h-full min-w-0 flex-col rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-800 dark:hover:border-neutral-700"
+            className={`${cardStyles.surface} ${styles.card}`}
+            data-skill-card
             data-reveal
             data-reveal-delay={categoryIndex * 40}
           >
-            <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-700 dark:text-neutral-300">
-              {t(category.id)}
-            </h3>
+            <div className={styles.content}>
+              <h3 className={styles.title}>{t(category.id)}</h3>
 
-            <ul className="flex flex-wrap content-start gap-2">
-              {category.skills.map((skill) => {
-                const Icon = skill.icon;
+              <ul className={styles.pills}>
+                {category.skills.map((skill) => {
+                  const Icon = skill.icon;
 
-                return (
-                  <li
-                    key={skill.label}
-                    className="inline-flex max-w-full items-center gap-2 rounded-full border border-neutral-200 bg-neutral-100 px-3 py-2 text-sm font-medium leading-none text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900/60 dark:text-neutral-200"
-                  >
-                    <Icon
-                      size={16}
-                      strokeWidth={1.8}
-                      className="shrink-0 text-neutral-500 dark:text-neutral-400"
-                      aria-hidden="true"
-                    />
-                    <span>{skill.label}</span>
-                  </li>
-                );
-              })}
-            </ul>
+                  return (
+                    <li
+                      key={skill.label}
+                      className={styles.pill}
+                      data-skill-pill
+                    >
+                      <Icon
+                        size={14}
+                        strokeWidth={1.5}
+                        className={styles.icon}
+                        aria-hidden="true"
+                      />
+                      <span>{skill.label}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </article>
         ))}
-      </div>
+      </SkillsGrid>
     </div>
   );
 }

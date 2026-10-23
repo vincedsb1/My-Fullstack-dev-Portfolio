@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/Badge";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
@@ -85,23 +84,27 @@ export async function BlogCard({
           />
         </div>
         <div className="p-5 sm:p-7">
-          <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-[0.12em] text-red-600 dark:text-red-400">
-            <Badge variant="accent">{metadata.category}</Badge>
-            <span
-              aria-hidden="true"
-              className="size-1 rounded-full bg-current"
-            />
-            <time dateTime={metadata.publishedAt}>
-              {formatBlogDate(metadata.publishedAt, metadata.locale)}
-            </time>
+          <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium text-neutral-500 dark:text-neutral-400 sm:text-sm">
+            <span className="inline-flex items-center rounded-control bg-accent/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-red-700 dark:text-red-300">
+              {metadata.category}
+            </span>
+            <span className="inline-flex items-center gap-3">
+              <span
+                aria-hidden="true"
+                className="size-1 shrink-0 rounded-full bg-current"
+              />
+              <time dateTime={metadata.publishedAt}>
+                {formatBlogDate(metadata.publishedAt, metadata.locale)}
+              </time>
+            </span>
           </div>
-          <h2 className="mb-3 text-xl font-semibold leading-snug tracking-tight text-neutral-900 group-hover:text-red-700 dark:text-neutral-100 dark:group-hover:text-red-300 sm:text-2xl">
+          <h2 className="mb-3 text-2xl font-semibold leading-tight tracking-tight text-gray-900 transition-colors group-hover:text-red-600 dark:text-neutral-50 dark:group-hover:text-red-400">
             {metadata.title}
           </h2>
-          <p className="mb-5 leading-relaxed text-neutral-600 dark:text-neutral-300">
+          <p className="mb-5 text-base font-light leading-relaxed text-gray-600 dark:text-gray-400 md:text-lg">
             {metadata.excerpt}
           </p>
-          <span className="text-sm text-neutral-500 dark:text-content-subtle">
+          <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400 sm:text-sm">
             {t("readingTime", { count: readingMinutes })}
           </span>
         </div>
