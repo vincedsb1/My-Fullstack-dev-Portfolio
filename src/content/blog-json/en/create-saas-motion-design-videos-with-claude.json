@@ -43,6 +43,21 @@
           "text": "The goal isn’t to let AI make every decision. I use it to help with analysis, creative exploration and production, while keeping control of the message, visual direction and final result."
         }
       ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "A video illustration",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "provider": "youtube",
+      "id": "nq7NTCmhApU",
+      "title": "Motion design with Claude — video illustration"
     }
   ],
   "sections": [

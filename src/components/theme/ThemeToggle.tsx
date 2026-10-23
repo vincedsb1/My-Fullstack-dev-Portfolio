@@ -2,6 +2,7 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "./ThemeContext";
+import styles from "@/components/layout/SiteHeader.module.css";
 
 export default function ThemeToggle({
   labels,
@@ -20,14 +21,11 @@ export default function ThemeToggle({
       aria-label={labels.theme}
       title={`${labels.theme} : ${current}`}
       onClick={() => setTheme(dark ? "light" : "dark")}
-      className="relative inline-flex min-h-11 w-[4.75rem] items-center justify-between rounded-full border border-border bg-surface-sunken px-2 text-content-muted transition-colors duration-fast hover:border-accent"
+      className={styles.themeToggle}
     >
-      <span
-        aria-hidden="true"
-        className="absolute left-1 top-1 size-[2.125rem] translate-x-0 rounded-full bg-surface-raised shadow-card transition-transform duration-base motion-reduce:transition-none dark:translate-x-7"
-      />
-      <Sun aria-hidden="true" size={18} className="relative z-10" />
-      <Moon aria-hidden="true" size={18} className="relative z-10" />
+      <span aria-hidden="true" className={styles.themeThumb} />
+      <Sun aria-hidden="true" size={18} className={styles.themeIcon} />
+      <Moon aria-hidden="true" size={18} className={styles.themeIcon} />
     </button>
   );
 }

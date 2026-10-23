@@ -38,7 +38,8 @@ export default function YouTubeEmbed({
           <Image
             src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
             alt=""
-            fill
+            width={480}
+            height={360}
             sizes="(max-width: 760px) 100vw, 760px"
             loading="lazy"
             unoptimized
