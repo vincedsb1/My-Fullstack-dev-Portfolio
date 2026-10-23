@@ -10,7 +10,9 @@
     "category": "Career",
     "publishedAt": "2026-10-22",
     "status": "published",
-    "translationKey": "first-developer-job-guide"
+    "translationKey": "first-developer-job-guide",
+    "cover": "/blog/first-developer-job-guide/cover-photo.webp",
+    "coverAlt": "Person working on a laptop near a window."
   },
   "hero": {
     "eyebrow": "Career • Web Development",

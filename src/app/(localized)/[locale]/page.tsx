@@ -52,6 +52,7 @@ export default async function Page({
       category: a.metadata.category,
       publishedAt: a.metadata.publishedAt,
       image: a.metadata.cover ?? getArticleSocialImagePath(a.metadata),
+      hasCover: Boolean(a.metadata.cover),
       readingMinutes: getArticleReadingTime(a),
     }));
   const t = await getTranslations("header");

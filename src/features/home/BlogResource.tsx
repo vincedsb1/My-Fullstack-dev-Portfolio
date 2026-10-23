@@ -12,6 +12,7 @@ export interface BlogHomeArticle {
   category: string;
   publishedAt: string;
   image: string;
+  hasCover: boolean;
   readingMinutes: number;
 }
 
@@ -40,10 +41,14 @@ function ArticleCard({
         }`}
       >
         <div
-          className={`relative isolate aspect-[1200/630] shrink-0 overflow-hidden bg-neutral-900 ${
+          className={`relative isolate aspect-[1200/630] shrink-0 overflow-hidden ${
             featured
               ? "rounded-3xl md:aspect-auto md:min-h-[300px] md:w-[46%]"
               : "rounded-[1.25rem]"
+          } ${
+            article.hasCover
+              ? "bg-neutral-100 dark:bg-neutral-800"
+              : "bg-neutral-900"
           }`}
         >
           <Image
@@ -55,7 +60,9 @@ function ArticleCard({
                 ? "(max-width: 767px) calc(100vw - 96px), (max-width: 1024px) 42vw, 430px"
                 : "(max-width: 639px) calc(100vw - 72px), (max-width: 1024px) 42vw, 285px"
             }
-            className="object-contain transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
+            className={`transition-transform duration-700 ease-out motion-safe:group-hover:scale-105 ${
+              article.hasCover ? "object-cover" : "object-contain"
+            }`}
           />
         </div>
 
