@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Compétences Interactive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; 
+            /* Ajout d'un fond très subtil pour faire ressortir l'effet verre (glassmorphism) des cartes */
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(224, 242, 254, 0.4), transparent 25%), 
+                radial-gradient(circle at 85% 30%, rgba(241, 245, 249, 0.8), transparent 25%);
+        }
+
+        /* Style de la carte principale */
+        .skill-card {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.6); /* Plus transparent */
+            border: 1px solid rgba(255, 255, 255, 0.8); /* Bordure blanche délicate */
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Effet "frosted" accentué */
+            backdrop-filter: blur(12px); 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.5); /* Inner glow léger */
+        }
+
+        .skill-card:hover {
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 
+                        0 10px 15px -5px rgba(0, 0, 0, 0.03),
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 1);
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Le halo de lumière qui suit la souris (Spotlight effect) */
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 1rem;
+            background: radial-gradient(
+                800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                rgba(241, 245, 249, 0.8), /* Lumière très subtile au centre */
+                transparent 40%
+            );
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none; /* Pour ne pas bloquer les hovers sur les enfants */
+            z-index: 0;
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Contenu de la carte mis au premier plan par rapport à la lumière */
+        .card-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Style et animation des petites piles (badges) */
+        .skill-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.875rem;
+            background-color: rgba(255, 255, 255, 0.4); /* Très subtil */
+            border: 1px solid rgba(226, 232, 240, 0.6); /* Bordure très claire */
+            border-radius: 9999px;
+            color: #475569; /* Gris plus doux */
+            font-size: 0.8125rem; /* Taille légèrement réduite */
+            font-weight: 400; /* Plus fin et élégant */
+            /* Transition plus fluide pour une glisse élégante */
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                        background-color 0.3s, border-color 0.3s, color 0.3s;
+            will-change: transform;
+            cursor: default;
+        }
+
+        .skill-pill:hover {
+            background-color: #ffffff;
+            border-color: #cbd5e1;
+            color: #0f172a;
+            box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Petits SVGs intégrés */
+        .skill-icon {
+            width: 14px; /* Icône affinée */
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.5; /* Trait allégé */
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            color: #94a3b8; /* Gris très discret par défaut */
+            transition: color 0.3s;
+        }
+
+        .skill-pill:hover .skill-icon {
+            color: #3b82f6; /* Petite touche colorée au survol du badge */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 md:p-12">
+
+    <!-- Container Principal (Grille) -->
+    <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- CARTE 1 : DESIGN ET PRODUIT -->
+        <div class="skill-card p-6 h-full flex flex-col">
+            <div class="card-content flex-grow">
+                <h3 class="text-xs font-bold text-gray-800 tracking-[0.1em] uppercase mb-5">Design et Produit</h3>
+                <div class="flex flex-wrap gap-2.5">
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"></path><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"></path><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"></path><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"></path><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"></path></svg>
+                        Figma
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        Storybook
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                        Adobe XD
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="2" y2="22"></line><path d="M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+                        Zeplin
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="8" cy="10" r="1"></circle><circle cx="12" cy="6" r="1"></circle><circle cx="16" cy="10" r="1"></circle><path d="M12 16c2.21 0 4-1.79 4-4H8c0 2.21 1.79 4 4 4z"></path></svg>
+                        UX/UI
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="M4.93 4.93l1.41 1.41"></path><path d="M17.66 17.66l1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="M6.34 17.66l-1.41 1.41"></path><path d="M19.07 4.93l-1.41 1.41"></path></svg>
+                        Product Thinking
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARTE 2 : FRONT-END -->
+        <div class="skill-card p-6 h-full flex flex-col">
+            <div class="card-content flex-grow">
+                <h3 class="text-xs font-bold text-gray-800 tracking-[0.1em] uppercase mb-5">Front-End</h3>
+                <div class="flex flex-wrap gap-2.5">
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        Next.js
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"></circle><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"></ellipse><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(150 12 12)"></ellipse><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)"></ellipse></svg>
+                        React
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><path d="M4 7V4h16v3"></path><path d="M9 20h6"></path><path d="M12 4v16"></path></svg>
+                        TypeScript
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        JavaScript
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><path d="M12 2.5a5.5 5.5 0 0 1 5.5 5.5v3.5a5.5 5.5 0 0 1-5.5 5.5h-5.5"></path><path d="M17.5 11.5a5.5 5.5 0 0 1 5.5 5.5v4.5"></path></svg>
+                        Tailwind CSS
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><path d="M4 7V4h16v3"></path><path d="M9 20h6"></path><path d="M12 4v16"></path></svg>
+                        CSS / SCSS
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARTE 3 : BACK-END -->
+        <div class="skill-card p-6 h-full flex flex-col">
+            <div class="card-content flex-grow">
+                <h3 class="text-xs font-bold text-gray-800 tracking-[0.1em] uppercase mb-5">Back-End</h3>
+                <div class="flex flex-wrap gap-2.5">
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        Node.js
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+                        Python
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        Express.js
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                        PostgreSQL
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 4 13"></path><path d="M11 20V4"></path><path d="M11 20a7 7 0 0 0 7-7v-3"></path><path d="M11 4a7 7 0 0 1 7 7"></path></svg>
+                        MongoDB
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                        MySQL
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><path d="M22 12l-10-8-10 8"></path><path d="M22 12l-10 8-10-8"></path></svg>
+                        Prisma
+                    </div>
+                    <div class="skill-pill">
+                        <svg class="skill-icon" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                        REST APIs
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Le rayon d'action de la souris pour repousser les éléments (en pixels)
+        const REPULSION_RADIUS = 90; // Rayon réduit (effet plus proche)
+        // La force maximale de répulsion (en pixels)
+        const MAX_PUSH = 8; // Force réduite (mouvement plus court)
+
+        // On sélectionne toutes les cartes
+        const cards = document.querySelectorAll('.skill-card');
+
+        cards.forEach(card => {
+            // Effet déclenché quand la souris bouge sur la carte
+            card.addEventListener('mousemove', (e) => {
+                // 1. GESTION DE LA LUMIÈRE (Spotlight)
+                const rect = card.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+                
+                // Mise à jour des variables CSS pour placer le radial-gradient
+                card.style.setProperty('--mouse-x', `${mouseX}px`);
+                card.style.setProperty('--mouse-y', `${mouseY}px`);
+
+                // 2. GESTION DU CHAMP DE FORCE MAGNÉTIQUE (Pills repulsion)
+                const pills = card.querySelectorAll('.skill-pill');
+                
+                pills.forEach(pill => {
+                    const pillRect = pill.getBoundingClientRect();
+                    
+                    // Calcul du centre exact du badge par rapport à la vue
+                    const pillCenterX = pillRect.left + (pillRect.width / 2);
+                    const pillCenterY = pillRect.top + (pillRect.height / 2);
+                    
+                    // Différence de position entre la souris et le badge
+                    const dx = pillCenterX - e.clientX;
+                    const dy = pillCenterY - e.clientY;
+                    
+                    // Théorème de Pythagore pour obtenir la distance réelle
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    // Si la souris est assez proche du badge
+                    if (distance < REPULSION_RADIUS) {
+                        // Calcul de la force (plus on est proche, plus la force est proche de 1)
+                        const force = (REPULSION_RADIUS - distance) / REPULSION_RADIUS;
+                        
+                        // Vecteur de direction (normalisé) * force * puissance max
+                        const moveX = (dx / distance) * force * MAX_PUSH;
+                        const moveY = (dy / distance) * force * MAX_PUSH;
+                        
+                        // Application de la transformation (déplacement fluide, SANS effet de zoom)
+                        pill.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                    } else {
+                        // Retour à la normale si la souris est trop loin
+                        pill.style.transform = 'translate(0px, 0px)';
+                    }
+                });
+            });
+
+            // Quand on quitte la carte, on réinitialise doucement la position de tous les badges
+            card.addEventListener('mouseleave', () => {
+                const pills = card.querySelectorAll('.skill-pill');
+                pills.forEach(pill => {
+                    pill.style.transform = 'translate(0px, 0px)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

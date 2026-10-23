@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname as useActualPathname } from "next/navigation";
-import { ChevronDown, Globe } from "lucide-react";
+import { ChevronDown, Languages } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { Locale } from "@/i18n/routing";
 import styles from "./SiteHeader.module.css";
@@ -115,14 +115,18 @@ export default function LocaleLinks({
         aria-expanded={open}
         aria-controls="locale-menu"
         onClick={() => setOpen((value) => !value)}
-        className={`${styles.localeButton} inline-flex min-h-11 items-center gap-1.5 rounded-control border border-border bg-surface-raised px-3 text-small font-semibold text-content`}
+        className={`${styles.localeButton} inline-flex min-h-11 items-center gap-1.5 rounded-control border border-border bg-surface-raised px-3 text-small font-normal text-content`}
       >
-        <Globe aria-hidden="true" size={18} />
+        <Languages
+          aria-hidden="true"
+          size={18}
+          className="text-content-muted"
+        />
         <span>{locale.toUpperCase()}</span>
         <ChevronDown
           aria-hidden="true"
           size={16}
-          className={styles.localeChevron}
+          className={`${styles.localeChevron} text-content-muted`}
         />
       </button>
       <nav
@@ -141,9 +145,10 @@ export default function LocaleLinks({
             lang={l}
             aria-current={l === locale ? "page" : undefined}
             onClick={() => setOpen(false)}
-            className="rounded-lg px-3 py-2 text-small text-content transition-colors hover:bg-surface-sunken hover:text-accent aria-[current=page]:font-bold"
+            className="flex items-center gap-2.5 rounded-[1rem] px-3 py-2 text-small text-content transition-colors hover:bg-surface-sunken hover:text-accent aria-[current=page]:font-bold"
           >
-            {l === "fr" ? "🇫🇷 Français" : "🇬🇧 English"}
+            <span aria-hidden="true">{l === "fr" ? "🇫🇷" : "🇬🇧"}</span>
+            <span>{l === "fr" ? "Français" : "English"}</span>
           </a>
         ))}
       </nav>

@@ -1,0 +1,79 @@
+.surface {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid #dfdfdfcc;
+  border-radius: 1rem;
+  background-color: rgb(255 255 255 / 0.6);
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.02),
+    inset 0 0 0 1px rgb(255 255 255 / 0.5);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.surface::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgb(241 245 249 / 0.8),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  content: "";
+}
+
+:global(.dark) .surface {
+  background-color: rgb(38 38 38 / 0.6);
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.12),
+    inset 0 0 0 1px rgb(255 255 255 / 0.04);
+}
+
+:global(.dark) .surface::before {
+  background: radial-gradient(
+    800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgb(100 116 139 / 0.16),
+    transparent 40%
+  );
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .surface:hover {
+    transform: translateY(-4px);
+    background-color: rgb(255 255 255 / 0.85);
+    box-shadow:
+      0 20px 40px -10px rgb(0 0 0 / 0.08),
+      0 10px 15px -5px rgb(0 0 0 / 0.03),
+      inset 0 0 0 1px rgb(255 255 255 / 0.9);
+  }
+
+  .surface:hover::before {
+    opacity: 1;
+  }
+
+  :global(.dark) .surface:hover {
+    background-color: rgb(38 38 38 / 0.85);
+    box-shadow:
+      0 20px 40px -10px rgb(0 0 0 / 0.4),
+      0 10px 15px -5px rgb(0 0 0 / 0.15),
+      inset 0 0 0 1px rgb(255 255 255 / 0.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface,
+  .surface::before {
+    transition: none;
+  }
+
+  .surface:hover {
+    transform: none;
+  }
+}

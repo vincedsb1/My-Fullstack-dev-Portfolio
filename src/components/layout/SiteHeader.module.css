@@ -26,7 +26,7 @@
   position: absolute;
   top: 3px;
   bottom: 3px;
-  left: 5px;
+  left: 4px;
   width: 36px;
   border-radius: 50%;
   background: rgb(var(--surface-raised));
@@ -35,13 +35,21 @@
 }
 
 :global(.dark) .themeThumb {
-  transform: translateX(40px);
+  transform: translateX(42px);
 }
 
 .themeIcon {
   position: relative;
   z-index: 1;
   justify-self: center;
+}
+
+.themeIcon:first-of-type {
+  transform: translateX(-1px);
+}
+
+.themeIcon:last-of-type {
+  transform: translateX(1px);
 }
 
 .localeButton {
@@ -83,7 +91,6 @@
   display: inline-flex;
   transition:
     color 180ms ease,
-    background-color 180ms ease,
     transform 180ms ease;
 }
 
@@ -105,7 +112,6 @@
 
 .navigationLink:hover,
 .navigationLink:focus-visible {
-  background: rgb(var(--text) / 0.05);
   color: rgb(var(--text));
   transform: translateY(-1px);
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import SpotlightCard from "@/components/ui/SpotlightCard";
 import type { ProjectCardModel } from "@/content/projects/view-models";
 import ProjectVisualFrame from "./ProjectVisualFrame";
 import { TechnologyBadges } from "./TechnologyBadges";
@@ -18,7 +19,10 @@ export default function ProjectCard({
   const [open, setOpen] = useState(false);
   return (
     <>
-      <article className="group flex h-full flex-col rounded-[1.5rem] border border-neutral-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-neutral-800 dark:bg-neutral-900 md:p-6">
+      <SpotlightCard
+        className="group flex h-full flex-col p-5 md:p-6"
+        data-project-card
+      >
         <button
           type="button"
           onClick={() => setOpen(true)}
@@ -69,7 +73,7 @@ export default function ProjectCard({
             />
           </div>
         </button>
-      </article>
+      </SpotlightCard>
       <ProjectQuickActionsDialog
         project={p}
         labels={labels}
