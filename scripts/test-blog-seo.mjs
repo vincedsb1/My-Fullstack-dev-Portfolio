@@ -616,7 +616,7 @@ try {
       titleOf(html),
     );
     check(
-      h1 === article.metadata.title,
+      h1 === article.metadata.title.replace(/\s+/g, " ").trim(),
       "H1 article depuis le frontmatter " + route,
     );
     check(

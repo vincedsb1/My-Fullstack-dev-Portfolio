@@ -1,0 +1,2300 @@
+{
+  "questionnaireId": "portrait-professionnel-universel",
+  "version": "1.3.0",
+  "locale": "fr",
+  "interface": {
+    "icone": {
+      "bibliotheque": "lucide-react",
+      "format": "nom_du_composant_PascalCase"
+    },
+    "miseEnValeur": "La valeur est une sous-chaîne exacte de question ; la mettre en évidence sans utiliser dangerouslySetInnerHTML.",
+    "exemple": "Afficher sous la question comme dans la maquette HTML, avec le libellé Exemple.",
+    "echelle": "Afficher cinq réponses sur une échelle, plus Je ne sais pas / pas concerné séparément. Conserver neutre distinct de ne_sais_pas.",
+    "choix_multiple": "Afficher libelle, description et icone ; conserver les identifiants des choix et autoriser jusqu’à deux sélections. Les questions q015 et q080 font partie du parcours unique de 30 questions.",
+    "donnees": "Questionnaire unique de 30 questions. IDs d’origine et scoring conservés pour les questions retenues ; le mode court désigne désormais ce parcours de 30 questions. La priorité q080.revenus est distincte de la stabilité financière : elle reste exploitable comme choix qualitatif et par les bonus du moteur."
+  },
+  "modes": [
+    {
+      "id": "court",
+      "nombreQuestions": 30
+    }
+  ],
+  "sections": [
+    {
+      "id": "raisonnement",
+      "titre": "Raisonnement et manière de résoudre les problèmes",
+      "questions": [
+        {
+          "id": "q001",
+          "question": "Face à un problème, je préfère chercher la cause plutôt que suivre une solution toute faite.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Quand quelque chose tombe en panne, je préfère comprendre pourquoi plutôt qu’appliquer une astuce sans explication.",
+          "miseEnValeur": "chercher la cause",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Search"
+          },
+          "scoring": {
+            "dimension": "analyse",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q002",
+          "question": "Avant une décision, je réfléchis aux conséquences sur tout ce qui l’entoure.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Changer les horaires d’une activité peut aussi modifier l’organisation des collègues et des clients.",
+          "miseEnValeur": "conséquences sur tout ce qui l’entoure",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Network"
+          },
+          "scoring": {
+            "dimension": "systemique",
+            "direction": 1,
+            "weight": 1
+          }
+        }
+      ],
+      "titreCourt": "Raisonnement"
+    },
+    {
+      "id": "creation",
+      "titre": "Créativité et plaisir de réaliser",
+      "questions": [
+        {
+          "id": "q012",
+          "question": "J’aime transformer une idée en quelque chose de concret.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Fabriquer un objet, organiser un événement ou lancer un projet me plaît.",
+          "miseEnValeur": "quelque chose de concret",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Hammer"
+          },
+          "scoring": {
+            "dimension": "construction",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q014",
+          "question": "Je préfère passer plus de temps sur les finitions plutôt que terminer au plus vite.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Même quand un projet fonctionne déjà, je peux consacrer du temps à améliorer les détails.",
+          "miseEnValeur": "plus de temps sur les finitions",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Sparkles"
+          },
+          "scoring": {
+            "dimension": "exigence",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q015",
+          "question": "Dans un projet, quelles étapes préférez-vous ?",
+          "modes": [
+            "court"
+          ],
+          "type": "choix_multiple",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 2,
+          "reponsesPossibles": [
+            {
+              "id": "imaginer",
+              "libelle": "Imaginer",
+              "description": "Chercher des idées et des possibilités",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Lightbulb"
+              },
+              "signaux": [
+                "ideation"
+              ]
+            },
+            {
+              "id": "concevoir",
+              "libelle": "Concevoir",
+              "description": "Décider comment le projet va fonctionner",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Layers"
+              },
+              "signaux": [
+                "systemique"
+              ]
+            },
+            {
+              "id": "construire",
+              "libelle": "Réaliser",
+              "description": "Fabriquer, mettre en place, régler les problèmes",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Wrench"
+              },
+              "signaux": [
+                "construction"
+              ]
+            },
+            {
+              "id": "peaufiner",
+              "libelle": "Peaufiner",
+              "description": "Soigner les détails et les finitions",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Sparkles"
+              },
+              "signaux": [
+                "exigence"
+              ]
+            },
+            {
+              "id": "raconter",
+              "libelle": "Présenter",
+              "description": "Expliquer le projet et montrer le résultat",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "MessageSquare"
+              },
+              "signaux": [
+                "expression_publique"
+              ]
+            },
+            {
+              "id": "impact",
+              "libelle": "Voir les effets",
+              "description": "Constater ce que le projet change pour les gens",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Activity"
+              },
+              "signaux": [
+                "impact"
+              ]
+            },
+            {
+              "id": "organiser",
+              "libelle": "Organiser",
+              "description": "Planifier les étapes et répartir le travail",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "ListTodo"
+              },
+              "signaux": [
+                "structure"
+              ]
+            }
+          ],
+          "exemple": "Pensez aux moments que vous aimez le plus, même si vous n’y êtes pas encore très à l’aise. Choisissez jusqu’à deux réponses.",
+          "miseEnValeur": "quelles étapes",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Star"
+          },
+          "consigne": "Choisissez jusqu’à deux réponses."
+        },
+        {
+          "id": "q018",
+          "question": "J’aime créer du contenu pour raconter des histoires ou partager des idées.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Écrire, dessiner, faire des vidéos ou des podcasts m’intéresse.",
+          "miseEnValeur": "créer du contenu",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Clapperboard"
+          },
+          "scoring": {
+            "dimension": "expression_creative",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q019",
+          "question": "Je préfère commencer par une version simple, puis l’améliorer petit à petit.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Je fais d’abord une version qui marche, puis j’ajoute les détails.",
+          "miseEnValeur": "une version simple",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Layers"
+          },
+          "scoring": {
+            "dimension": "pragmatisme",
+            "direction": 1,
+            "weight": 1
+          }
+        }
+      ],
+      "titreCourt": "Créativité"
+    },
+    {
+      "id": "apprentissage",
+      "titre": "Curiosité et apprentissage",
+      "questions": [
+        {
+          "id": "q021",
+          "question": "Je me renseigne sur des sujets qui ne me servent pas forcément dans mon quotidien.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Je peux lire ou regarder des contenus sur l’histoire, la science ou un autre domaine, juste par curiosité.",
+          "miseEnValeur": "qui ne me servent pas forcément",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Globe"
+          },
+          "scoring": {
+            "dimension": "curiosite",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q022",
+          "question": "Pour apprendre, je préfère chercher et essayer par moi-même plutôt que suivre un cours encadré.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "J’utilise des vidéos, des livres ou des essais personnels avant de demander une formation structurée.",
+          "miseEnValeur": "par moi-même",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "BookOpen"
+          },
+          "scoring": {
+            "dimension": "autoapprentissage",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q023",
+          "question": "Je préfère comprendre un sujet en profondeur, même si cela prend du temps.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Je vais au-delà d’un résumé pour comprendre les détails et le fonctionnement du sujet.",
+          "miseEnValeur": "en profondeur",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Microscope"
+          },
+          "scoring": {
+            "dimension": "profondeur",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q024",
+          "question": "Je me lasse quand je travaille trop longtemps sur les mêmes types de tâches.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Après plusieurs semaines d’activités semblables, j’ai envie de découvrir autre chose.",
+          "miseEnValeur": "Je me lasse",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Compass"
+          },
+          "scoring": {
+            "dimension": "variete",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q025",
+          "question": "Pour découvrir quelque chose, je préfère essayer directement plutôt que commencer par la théorie.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Face à un nouvel outil, je le teste avant de lire toutes les explications.",
+          "miseEnValeur": "essayer directement",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Hand"
+          },
+          "scoring": {
+            "dimension": "experimentation",
+            "direction": 1,
+            "weight": 1
+          }
+        }
+      ],
+      "titreCourt": "Curiosité"
+    },
+    {
+      "id": "organisation",
+      "titre": "Organisation et rythme de travail",
+      "questions": [
+        {
+          "id": "q031",
+          "question": "Je préfère choisir ma manière de travailler, même si je dois gérer seul les imprévus.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Organiser mes étapes moi-même me convient mieux que suivre une méthode imposée.",
+          "miseEnValeur": "choisir ma manière de travailler",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "SlidersHorizontal"
+          },
+          "scoring": {
+            "dimension": "autonomie",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q040",
+          "question": "Je préfère être responsable d’un projet entier plutôt que d’une seule petite partie.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Suivre un projet de l’idée au résultat m’attire plus que réaliser une tâche isolée.",
+          "miseEnValeur": "responsable d’un projet entier",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Flag"
+          },
+          "scoring": {
+            "dimension": "responsabilite",
+            "direction": 1,
+            "weight": 1
+          }
+        }
+      ],
+      "titreCourt": "Organisation"
+    },
+    {
+      "id": "relations",
+      "titre": "Énergie sociale et communication",
+      "questions": [
+        {
+          "id": "q041",
+          "question": "Après beaucoup de discussions, j’ai besoin de temps seul pour récupérer.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Après une journée pleine de réunions ou de rencontres, j’ai besoin de calme.",
+          "miseEnValeur": "temps seul pour récupérer",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Moon"
+          },
+          "scoring": {
+            "dimension": "introversion",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q044",
+          "question": "J’aime présenter mes idées devant un groupe.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Quand je connais bien un sujet, j’aime l’expliquer devant plusieurs personnes.",
+          "miseEnValeur": "présenter mes idées",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Presentation"
+          },
+          "scoring": {
+            "dimension": "expression_publique",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q045",
+          "question": "J’ai besoin de parler ou de travailler avec d’autres personnes chaque jour.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Une journée sans échanger avec des collègues me paraît longue.",
+          "miseEnValeur": "avec d’autres personnes chaque jour",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "MessagesSquare"
+          },
+          "scoring": {
+            "dimension": "collaboration",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q048",
+          "question": "J’aimerais consacrer une partie de mon travail à former ou accompagner d’autres personnes.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Expliquer une méthode à quelqu’un et suivre ses progrès pourrait faire partie de mon métier.",
+          "miseEnValeur": "former ou accompagner",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "HandHeart"
+          },
+          "scoring": {
+            "dimension": "aide_autrui",
+            "direction": 1,
+            "weight": 1
+          }
+        }
+      ],
+      "titreCourt": "Énergie sociale"
+    },
+    {
+      "id": "management",
+      "titre": "Autorité, conflits et management",
+      "questions": [
+        {
+          "id": "q051",
+          "question": "Je préfère participer aux décisions, même si les discussions prennent plus de temps.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Donner mon avis avant un choix collectif me convient mieux que recevoir une décision déjà prise.",
+          "miseEnValeur": "participer aux décisions",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Scale"
+          },
+          "scoring": {
+            "dimension": "horizontalite",
+            "direction": 1,
+            "weight": 1
+          }
+        }
+      ],
+      "titreCourt": "Leadership"
+    },
+    {
+      "id": "commerce",
+      "titre": "Vente, négociation et entrepreneuriat",
+      "questions": [
+        {
+          "id": "q061",
+          "question": "J’aime contacter des inconnus pour leur proposer un service.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Je serais à l’aise pour appeler ou écrire à un client qui ne m’a rien demandé.",
+          "miseEnValeur": "contacter des inconnus",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Send"
+          },
+          "scoring": {
+            "dimension": "prospection",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q062",
+          "question": "J’aime convaincre quelqu’un d’acheter ce que je propose.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Présenter les avantages d’un produit pour conclure une vente peut me stimuler.",
+          "miseEnValeur": "convaincre quelqu’un d’acheter",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "ShoppingBag"
+          },
+          "scoring": {
+            "dimension": "vente",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q064",
+          "question": "Créer ma propre activité est une option que j’envisage sérieusement.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Cela pourrait être un service indépendant, une petite entreprise ou un produit à vendre.",
+          "miseEnValeur": "j’envisage sérieusement",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Store"
+          },
+          "scoring": {
+            "dimension": "entrepreneuriat",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q065",
+          "question": "Je pourrais accepter des revenus irréguliers pendant longtemps pour lancer un projet.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Je serais prêt à traverser des mois difficiles, pendant une longue période, pour développer mon activité.",
+          "miseEnValeur": "revenus irréguliers pendant longtemps",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "TrendingUp"
+          },
+          "scoring": {
+            "dimension": "risque_financier",
+            "direction": 1,
+            "weight": 1
+          }
+        }
+      ],
+      "titreCourt": "Entrepreneuriat"
+    },
+    {
+      "id": "aspirations",
+      "titre": "Motivations et environnement préféré",
+      "questions": [
+        {
+          "id": "q072",
+          "question": "Je choisirais un revenu un peu plus faible s’il était beaucoup plus stable.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Entre un revenu fixe prévisible et des gains variables potentiellement plus élevés, je privilégierais la régularité.",
+          "miseEnValeur": "beaucoup plus stable",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "ShieldCheck"
+          },
+          "scoring": {
+            "dimension": "stabilite",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q074",
+          "question": "Je serais prêt à choisir un projet moins intéressant pour moi s’il aidait davantage les autres.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Entre deux projets, je pourrais privilégier celui qui répond le mieux à un besoin concret.",
+          "miseEnValeur": "aidait davantage les autres",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "HandHeart"
+          },
+          "scoring": {
+            "dimension": "impact",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q075",
+          "question": "Je préférerais un travail manuel ou physique plutôt qu’un travail de bureau.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Réparer ou fabriquer des choses me plairait plus que passer mes journées à traiter des dossiers.",
+          "miseEnValeur": "travail manuel ou physique",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Hammer"
+          },
+          "scoring": {
+            "dimension": "travail_physique",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q077",
+          "question": "J’aime me déplacer souvent pour mon travail.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Aller chez des clients ou changer souvent de lieu de travail me plaît.",
+          "miseEnValeur": "me déplacer souvent",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Car"
+          },
+          "scoring": {
+            "dimension": "mobilite",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q078",
+          "question": "Je préfère développer un même projet pendant plusieurs années plutôt qu’en changer souvent.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Faire grandir une activité existante me motive plus que repartir régulièrement de zéro.",
+          "miseEnValeur": "pendant plusieurs années",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "CalendarCheck"
+          },
+          "scoring": {
+            "dimension": "continuite",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q079",
+          "question": "J’accepterais un travail moins stimulant s’il me laissait beaucoup plus de temps libre.",
+          "modes": [
+            "court"
+          ],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "X"
+              }
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Minus"
+              }
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Circle"
+              }
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Check"
+              }
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CheckCheck"
+              }
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "CircleHelp"
+              }
+            }
+          ],
+          "exemple": "Je pourrais choisir des missions plus simples pour avoir plus de temps pour moi.",
+          "miseEnValeur": "beaucoup plus de temps libre",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Hourglass"
+          },
+          "scoring": {
+            "dimension": "liberte_temps",
+            "direction": 1,
+            "weight": 1
+          }
+        },
+        {
+          "id": "q080",
+          "question": "Pour les années à venir, quels sont vos objectifs les plus importants ?",
+          "modes": [
+            "court"
+          ],
+          "type": "choix_multiple",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 2,
+          "reponsesPossibles": [
+            {
+              "id": "temps",
+              "libelle": "Temps libre",
+              "description": "Avoir du temps pour moi et mes proches",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Clock"
+              },
+              "signaux": [
+                "liberte_temps"
+              ]
+            },
+            {
+              "id": "securite",
+              "libelle": "Sécurité financière",
+              "description": "Avoir des revenus stables et de l’épargne de côté",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "ShieldCheck"
+              },
+              "signaux": [
+                "stabilite"
+              ]
+            },
+            {
+              "id": "revenus",
+              "libelle": "Gagner davantage",
+              "description": "Augmenter nettement mes revenus",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "TrendingUp"
+              },
+              "signaux": []
+            },
+            {
+              "id": "creer",
+              "libelle": "Créer mes projets",
+              "description": "Donner vie à mes propres idées",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Lightbulb"
+              },
+              "signaux": [
+                "ideation",
+                "construction"
+              ]
+            },
+            {
+              "id": "apprendre",
+              "libelle": "Apprendre",
+              "description": "Découvrir de nouvelles choses et progresser",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "BookOpen"
+              },
+              "signaux": [
+                "curiosite",
+                "analyse"
+              ]
+            },
+            {
+              "id": "impact",
+              "libelle": "Être utile",
+              "description": "Améliorer concrètement la vie des autres",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "HandHeart"
+              },
+              "signaux": [
+                "impact"
+              ]
+            },
+            {
+              "id": "collectif",
+              "libelle": "Bien m’entourer",
+              "description": "Travailler avec des gens que j’apprécie",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Users"
+              },
+              "signaux": [
+                "collaboration",
+                "respect"
+              ]
+            },
+            {
+              "id": "reconnaissance",
+              "libelle": "Être reconnu",
+              "description": "Que la qualité de mon travail soit reconnue",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "Award"
+              },
+              "signaux": [
+                "reconnaissance"
+              ]
+            },
+            {
+              "id": "liberte_geo",
+              "libelle": "Travailler où je veux",
+              "description": "Choisir d’où je travaille et quand je me déplace",
+              "icone": {
+                "bibliotheque": "lucide-react",
+                "nom": "MapPin"
+              },
+              "signaux": [
+                "teletravail",
+                "mobilite"
+              ]
+            }
+          ],
+          "exemple": "Pensez à ce qui comptera le plus pour vous dans quelques années. Choisissez jusqu’à deux réponses.",
+          "miseEnValeur": "objectifs les plus importants",
+          "icone": {
+            "bibliotheque": "lucide-react",
+            "nom": "Goal"
+          },
+          "consigne": "Choisissez jusqu’à deux réponses."
+        }
+      ],
+      "titreCourt": "Motivations"
+    }
+  ]
+}

@@ -70,7 +70,7 @@ La liste des noms, props admises, langues et IDs DOM est centralisée dans `src/
 
 | ID | Props / implémentation |
 |---|---|
-| `career-strategy-assistant` | zéro props, une occurrence par article ; bouton et dialogue de questionnaire FR/EN, chargé à l’ouverture |
+| `career-strategy-assistant` | zéro props, une occurrence par article ; bouton et dialogue du parcours narratif FR/EN, chargé à l’ouverture |
 | `saas-hero` | zéro props, illustration serveur historique localisée ; placement hero uniquement |
 | `metric-panel` | `{value, label, caption?}`, rendu serveur |
 | `saas-mosaic` | zéro props, mosaïque historique |
@@ -81,7 +81,7 @@ La liste des noms, props admises, langues et IDs DOM est centralisée dans `src/
 
 Les cinq widgets SaaS fonctionnent en FR et EN, une occurrence chacun par article. Leurs libellés proviennent de `src/i18n/messages/{fr,en}.json` sous `blogSaas` ; la langue de la démonstration peut différer volontairement de celle du site. `JsonCustomRegistry` adapte les composants existants et leur CSS encapsulé ; il n’en copie pas la logique. Leurs IDs participent à la détection des collisions avec les sections et titres.
 
-Le module `career-strategy-assistant` utilise les données validées sous `src/content/career-strategy/`. `npm run career:prepare`, exécuté avant dev/build/tests unitaires, produit les ressources statiques localisées et versionnées chargées à l’ouverture. Le calcul reste local ; la sauvegarde des réponses est facultative et distincte des checklists. Voir [ASSISTANT_STRATEGIES_IA.md](ASSISTANT_STRATEGIES_IA.md).
+Le module `career-strategy-assistant` est un parcours narratif statique : deux questions, un retournement, cinq pistes et une conclusion. Ses textes vivent dans `src/i18n/messages/{fr,en}.json` sous `careerStrategy` ; aucune réponse n’est calculée, stockée ni transmise. Voir [ASSISTANT_STRATEGIES_IA.md](ASSISTANT_STRATEGIES_IA.md).
 
 Ajouter un module réellement nouveau exige du code React et une entrée de registre contrôlée. Écrire un article avec les blocs standards ou ces modules existants exige seulement du JSON et, si nécessaire, des médias.
 

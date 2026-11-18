@@ -43,5 +43,3 @@ next-env.d.ts
 # Captures de référence Playwright, archivées dans les artefacts CI
 tests/visual-artifacts/
 
-# Generated career questionnaire resources (career:prepare)
-/public/career-strategy/

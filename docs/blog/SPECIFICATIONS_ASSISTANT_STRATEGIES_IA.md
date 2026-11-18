@@ -1,5 +1,7 @@
 # Assistant de portrait et de stratégies face à l’IA
 
+> **Document historique.** Depuis le 18 novembre 2026, le diagnostic décrit ici est remplacé par un parcours narratif statique (deux questions, retournement, cinq pistes). Voir [ASSISTANT_STRATEGIES_IA.md](ASSISTANT_STRATEGIES_IA.md).
+
 ## Spécifications fonctionnelles et techniques — cadrage des choix produit confirmé
 
 - Date : 18 novembre 2026.

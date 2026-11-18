@@ -1,0 +1,1813 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Portrait Professionnel — Design Éditorial 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Surfaces & Profondeur (Light) */
+      --bg-app: #F5F6F8;
+      --bg-panel: rgba(255, 255, 255, 0.86);
+      --bg-card: #FFFFFF;
+      --bg-card-hover: #FAFAFC;
+      --bg-subtle: rgba(15, 23, 42, 0.04);
+
+      /* Accent Principal */
+      --brand-50: #EEF2FF;
+      --brand-100: #E0E7FF;
+      --brand-400: #818CF8;
+      --brand-500: #6366F1;
+      --brand-600: #4F46E5;
+      --brand-glow: rgba(99, 102, 241, 0.25);
+
+      /* Nuances sémantiques douces et modernes */
+      --tone-1: #E11D48; /* Pas du tout */
+      --tone-2: #F43F5E; /* Plutôt non */
+      --tone-3: #64748B; /* Neutre */
+      --tone-4: #0D9488; /* Plutôt oui */
+      --tone-5: #059669; /* Tout à fait */
+
+      /* Mesh ambiant très léger */
+      --mesh-1: hsla(228, 100%, 95%, 1);
+      --mesh-2: hsla(265, 90%, 96%, 1);
+      --mesh-3: hsla(195, 95%, 95%, 1);
+
+      /* Typographie & Contrastes */
+      --text-primary: #0F172A;
+      --text-regular: #334155;
+      --text-secondary: #64748B;
+      --text-tertiary: #94A3B8;
+
+      /* Bordures & Ombres */
+      --border-subtle: rgba(15, 23, 42, 0.06);
+      --border-medium: rgba(15, 23, 42, 0.12);
+      --border-glass: rgba(255, 255, 255, 0.8);
+
+      --shadow-panel: 0 24px 60px -16px rgba(15, 23, 42, 0.07), 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+      --shadow-card: 0 2px 8px rgba(15, 23, 42, 0.03), 0 0 0 1px var(--border-subtle);
+      --shadow-card-hover: 0 12px 24px -6px rgba(15, 23, 42, 0.08), 0 0 0 1px var(--border-medium);
+
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg-app: #111113;
+      --bg-panel: rgba(24, 24, 27, 0.88);
+      --bg-card: #1F1F23;
+      --bg-card-hover: #27272C;
+      --bg-subtle: rgba(255, 255, 255, 0.05);
+
+      --mesh-1: hsla(235, 25%, 14%, 1);
+      --mesh-2: hsla(270, 20%, 12%, 1);
+      --mesh-3: hsla(200, 20%, 13%, 1);
+
+      --text-primary: #F8FAFC;
+      --text-regular: #CBD5E1;
+      --text-secondary: #94A3B8;
+      --text-tertiary: #64748B;
+
+      --border-subtle: rgba(255, 255, 255, 0.07);
+      --border-medium: rgba(255, 255, 255, 0.14);
+      --border-glass: rgba(255, 255, 255, 0.06);
+
+      --shadow-panel: 0 32px 64px -16px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+      --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.25), 0 0 0 1px var(--border-subtle);
+      --shadow-card-hover: 0 12px 24px -6px rgba(0, 0, 0, 0.45), 0 0 0 1px var(--border-medium);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background-color: var(--bg-app);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.35s ease, color 0.35s ease;
+    }
+
+    .bg-mesh {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        radial-gradient(at 15% 10%, var(--mesh-1) 0px, transparent 55%),
+        radial-gradient(at 85% 20%, var(--mesh-2) 0px, transparent 55%),
+        radial-gradient(at 50% 95%, var(--mesh-3) 0px, transparent 55%);
+      filter: blur(80px);
+    }
+
+    button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--brand-500); outline-offset: 3px; border-radius: 10px; }
+
+    .app-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(16px, 4vw, 48px) 20px;
+    }
+
+    .glass-panel {
+      width: 100%;
+      max-width: 780px;
+      background: var(--bg-panel);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid var(--border-glass);
+      border-radius: 28px;
+      box-shadow: var(--shadow-panel);
+      padding: clamp(24px, 4.5vw, 44px);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* --- 1. HEADER ULTRA-COMPACT & ÉPURÉ --- */
+    .quiz-header {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: clamp(28px, 4.5vw, 40px);
+    }
+
+    .header-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .breadcrumb-section {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .breadcrumb-section strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .breadcrumb-sep {
+      color: var(--text-tertiary);
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .progress-stats {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-secondary);
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+    }
+
+    .time-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-tertiary);
+      font-size: 12.5px;
+    }
+
+    .mode-switch {
+      display: inline-flex;
+      background: var(--bg-subtle);
+      padding: 2px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .mode-btn {
+      padding: 3px 9px;
+      font-size: 11.5px;
+      font-weight: 600;
+      border-radius: 6px;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+
+    .mode-btn.active {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Barre de progression segmentée fine (8 chapitres) */
+    .chapters-bar {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 5px;
+      width: 100%;
+    }
+
+    .chapter-track {
+      height: 4px;
+      background: var(--bg-subtle);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .chapter-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--brand-500);
+      border-radius: 100px;
+      transition: width 0.45s var(--ease-smooth);
+    }
+
+    /* --- 2. BLOC QUESTION ALIGNÉ À GAUCHE + FILIGRANE SUBTIL --- */
+    .question-stage {
+      display: flex;
+      flex-direction: column;
+      transition: opacity 0.2s ease, transform 0.26s var(--ease-smooth);
+    }
+
+    .question-stage.is-leaving {
+      opacity: 0;
+      transform: translateX(-18px);
+    }
+
+    .question-stage.is-entering {
+      animation: stageEnter 0.34s var(--ease-spring) forwards;
+    }
+
+    @keyframes stageEnter {
+      from { opacity: 0; transform: translateX(18px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .question-hero {
+      position: relative;
+      padding: 8px 0 8px 0;
+      text-align: left;
+      min-height: 124px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Icône filigrane en faible contraste à droite pour ancrage visuel inconscient */
+    .question-watermark {
+      position: absolute;
+      right: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 128px;
+      height: 128px;
+      color: var(--brand-500);
+      opacity: 0.065;
+      pointer-events: none;
+    }
+
+    /* Typographie éditoriale : corps régulier + surlignage organique façon Stabilo */
+    .question-title {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: clamp(22px, 3.1vw, 28px);
+      font-weight: 400;
+      color: var(--text-regular);
+      line-height: 1.5;
+      letter-spacing: -0.022em;
+      max-width: 620px;
+    }
+
+    .question-title strong {
+      position: relative;
+      font-weight: 600;
+      color: var(--text-primary);
+      padding: 0 4px;
+      z-index: 1;
+      display: inline;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+      background-image: linear-gradient(
+        104deg,
+        rgba(99, 102, 241, 0) 0.9%,
+        rgba(99, 102, 241, 0.22) 2.4%,
+        rgba(99, 102, 241, 0.16) 5.8%,
+        rgba(99, 102, 241, 0.24) 93%,
+        rgba(99, 102, 241, 0.12) 98%,
+        rgba(99, 102, 241, 0) 100%
+      );
+      background-repeat: no-repeat;
+      background-size: 100% 42%;
+      background-position: 0 86%;
+      border-radius: 3px;
+    }
+
+    [data-theme="dark"] .question-title strong {
+      color: #FFFFFF;
+      background-image: linear-gradient(
+        104deg,
+        rgba(129, 140, 248, 0) 0.9%,
+        rgba(129, 140, 248, 0.38) 2.4%,
+        rgba(129, 140, 248, 0.28) 5.8%,
+        rgba(129, 140, 248, 0.36) 93%,
+        rgba(129, 140, 248, 0.18) 98%,
+        rgba(129, 140, 248, 0) 100%
+      );
+    }
+
+    /* Note d'exemple éditoriale : aérienne, discrète et sans boîte lourde */
+    .question-context {
+      position: relative;
+      z-index: 1;
+      margin-top: 14px;
+      padding-left: 14px;
+      border-left: 1.5px solid rgba(99, 102, 241, 0.32);
+      max-width: 580px;
+    }
+
+    .context-text {
+      margin: 0;
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .context-lead {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-tertiary);
+      margin-right: 6px;
+    }
+
+    /* --- 3. RÉPONSES : CARTES SCULPTÉES AVEC SPOTLIGHT SOURIS --- */
+    .answers-area {
+      margin-top: clamp(32px, 4.5vw, 42px);
+    }
+
+    .likert-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    @keyframes cardCascade {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .likert-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      border-radius: 20px;
+      padding: 22px 12px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      text-align: center;
+      transition: transform 0.3s var(--ease-spring), box-shadow 0.3s var(--ease-smooth), border-color 0.25s ease, background-color 0.25s ease;
+      overflow: hidden;
+      isolation: isolate;
+      --mx: 50%;
+      --my: 0%;
+    }
+
+    .question-stage.is-entering .likert-card {
+      opacity: 0;
+      animation: cardCascade 0.42s var(--ease-spring) forwards;
+      animation-delay: calc(var(--i, 0) * 45ms + 60ms);
+    }
+
+    .likert-card[data-score="1"] { --tone: var(--tone-1); }
+    .likert-card[data-score="2"] { --tone: var(--tone-2); }
+    .likert-card[data-score="3"] { --tone: var(--tone-3); }
+    .likert-card[data-score="4"] { --tone: var(--tone-4); }
+    .likert-card[data-score="5"] { --tone: var(--tone-5); }
+
+    /* Spotlight dynamique suivant le curseur de la souris */
+    .likert-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(
+        130px circle at var(--mx) var(--my),
+        color-mix(in srgb, var(--tone) 22%, transparent) 0%,
+        transparent 80%
+      );
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .likert-card:hover {
+      background: var(--bg-card-hover);
+      box-shadow: 0 14px 28px -8px color-mix(in srgb, var(--tone) 22%, rgba(15, 23, 42, 0.08)), 0 0 0 1px color-mix(in srgb, var(--tone) 38%, var(--border-subtle));
+      transform: translateY(-4px);
+    }
+
+    .likert-card:hover::after {
+      opacity: 1;
+    }
+
+    .likert-card:active {
+      transform: translateY(-1px) scale(0.97);
+    }
+
+    /* Pastille icône sculptée avec double anneau subtil */
+    .likert-glyph {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--tone) 9%, var(--bg-subtle));
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tone) 22%, transparent);
+      color: var(--tone);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s var(--ease-spring);
+    }
+
+    .likert-card:hover .likert-glyph {
+      background: color-mix(in srgb, var(--tone) 15%, var(--bg-card));
+      box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--tone) 45%, transparent), 0 6px 14px -4px color-mix(in srgb, var(--tone) 30%, transparent);
+      transform: scale(1.08);
+    }
+
+    .likert-text {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-regular);
+      line-height: 1.35;
+      transition: color 0.2s ease;
+    }
+
+    .likert-card:hover .likert-text {
+      color: var(--text-primary);
+    }
+
+    .likert-kbd {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      background: var(--bg-subtle);
+      padding: 2px 7px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    /* État Sélectionné */
+    .likert-card.selected {
+      background: color-mix(in srgb, var(--tone) 8%, var(--bg-card));
+      border-color: var(--tone);
+      box-shadow: 0 12px 26px -8px color-mix(in srgb, var(--tone) 32%, transparent), 0 0 0 1.5px var(--tone);
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .likert-card.selected::after {
+      opacity: 1;
+    }
+
+    .likert-card.selected .likert-glyph {
+      background: var(--tone);
+      color: #FFFFFF;
+      box-shadow: 0 6px 14px -3px color-mix(in srgb, var(--tone) 45%, transparent);
+    }
+
+    .likert-card.selected .likert-text {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .likert-card.selected .likert-kbd {
+      background: var(--tone);
+      color: #FFFFFF;
+    }
+
+    /* Option neutre / pas concerné centrée sous les cartes */
+    .neutral-exit-row {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-unsure {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 8px 18px;
+      border-radius: 100px;
+      background: var(--bg-subtle);
+      border: 1px solid transparent;
+      transition: all 0.22s var(--ease-spring);
+    }
+
+    .btn-unsure:hover {
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border-color: var(--border-medium);
+      box-shadow: var(--shadow-card);
+      transform: translateY(-1px);
+    }
+
+    .btn-unsure.selected {
+      color: var(--brand-600);
+      background: var(--brand-50);
+      border-color: var(--brand-400);
+      font-weight: 600;
+    }
+
+    [data-theme="dark"] .btn-unsure.selected {
+      color: var(--brand-400);
+      background: rgba(99, 102, 241, 0.16);
+      border-color: var(--brand-500);
+    }
+
+    /* --- MODE CHOIX MULTIPLE SCANNABLE (q015, q080) --- */
+    .multi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .multi-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      border-radius: 18px;
+      padding: 15px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+      transition: all 0.28s var(--ease-spring);
+      overflow: hidden;
+      isolation: isolate;
+      --mx: 50%;
+      --my: 50%;
+    }
+
+    .question-stage.is-entering .multi-card {
+      opacity: 0;
+      animation: cardCascade 0.4s var(--ease-spring) forwards;
+      animation-delay: calc(var(--i, 0) * 40ms + 50ms);
+    }
+
+    .multi-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(
+        180px circle at var(--mx) var(--my),
+        rgba(99, 102, 241, 0.14) 0%,
+        transparent 75%
+      );
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .multi-card:hover:not(:disabled) {
+      background: var(--bg-card-hover);
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-3px);
+    }
+
+    .multi-card:hover:not(:disabled)::after {
+      opacity: 1;
+    }
+
+    .multi-card.selected {
+      background: color-mix(in srgb, var(--brand-500) 6%, var(--bg-card));
+      border-color: var(--brand-500);
+      box-shadow: 0 10px 24px -8px var(--brand-glow), 0 0 0 1.5px var(--brand-500);
+      transform: translateY(-2px);
+    }
+
+    [data-theme="dark"] .multi-card.selected {
+      background: rgba(99, 102, 241, 0.14);
+    }
+
+    .multi-card:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+    }
+
+    .multi-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.28s var(--ease-spring);
+    }
+
+    .multi-card:hover:not(:disabled) .multi-icon {
+      color: var(--brand-500);
+      background: var(--brand-50);
+    }
+
+    [data-theme="dark"] .multi-card:hover:not(:disabled) .multi-icon {
+      background: rgba(99, 102, 241, 0.18);
+      color: var(--brand-400);
+    }
+
+    .multi-card.selected .multi-icon {
+      background: var(--brand-500);
+      color: #FFFFFF;
+      box-shadow: 0 6px 14px -4px var(--brand-glow);
+    }
+
+    .multi-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .multi-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .multi-desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.35;
+    }
+
+    .multi-rank {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      color: transparent;
+      transition: all 0.22s var(--ease-spring);
+    }
+
+    .multi-card.selected .multi-rank {
+      background: var(--brand-500);
+      border-color: var(--brand-500);
+      color: #FFFFFF;
+      transform: scale(1.08);
+    }
+
+    /* --- 4. FOOTER NAVIGATION DU QUESTIONNAIRE --- */
+    .quiz-footer {
+      margin-top: clamp(28px, 4.5vw, 38px);
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 16px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all 0.22s var(--ease-spring);
+    }
+
+    .btn-back {
+      color: var(--text-secondary);
+      background: var(--bg-subtle);
+    }
+
+    .btn-back:hover:not(:disabled) {
+      color: var(--text-primary);
+      transform: translateX(-2px);
+    }
+
+    .btn-back:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .btn-continue {
+      background: linear-gradient(180deg, var(--brand-500), var(--brand-600));
+      color: #FFFFFF;
+      box-shadow: 0 6px 16px -4px var(--brand-glow);
+    }
+
+    .btn-continue:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+
+    .btn-continue:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .shortcut-hint {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .shortcut-hint kbd {
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      padding: 1px 5px;
+      border-radius: 5px;
+      color: var(--text-secondary);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      padding: 9px 15px;
+      border-radius: 100px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+
+    /* --- 0. PAGE D'ACCUEIL (ÉTAPE DE CHOIX DU FORMAT — ÉDITION 2026) --- */
+    .hidden { display: none !important; }
+
+    #welcomeView {
+      animation: welcomeReveal 0.55s var(--ease-spring) forwards;
+    }
+
+    @keyframes welcomeReveal {
+      from { opacity: 0; transform: translateY(12px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .brand-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .brand-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brand-500);
+      box-shadow: 0 0 0 3px var(--brand-50);
+    }
+    [data-theme="dark"] .brand-pulse {
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    .btn-close-modal {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      background: var(--bg-subtle);
+      transition: all 0.25s var(--ease-spring);
+    }
+    .btn-close-modal:hover {
+      color: var(--text-primary);
+      background: var(--border-medium);
+      transform: rotate(90deg);
+    }
+
+    /* Stepper global ultra-fin avec numérotation discrète */
+    .journey-stepper {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      padding: 5px 8px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 100px;
+      margin-bottom: clamp(24px, 3.8vw, 32px);
+    }
+
+    .journey-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      padding: 4px 10px;
+      border-radius: 100px;
+      transition: all 0.25s ease;
+    }
+
+    .journey-step.active {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+    }
+
+    .journey-pill {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.45;
+    }
+
+    .journey-step.active .journey-pill {
+      background: var(--brand-500);
+      opacity: 1;
+      box-shadow: 0 0 8px var(--brand-glow);
+    }
+
+    .welcome-hero {
+      text-align: left;
+      max-width: 600px;
+      margin-bottom: clamp(26px, 4vw, 34px);
+    }
+
+    .welcome-title {
+      margin: 0 0 12px 0;
+      font-size: clamp(27px, 4vw, 36px);
+      font-weight: 400;
+      color: var(--text-regular);
+      line-height: 1.22;
+      letter-spacing: -0.032em;
+    }
+
+    .welcome-title strong {
+      font-weight: 600;
+      color: var(--text-primary);
+      padding: 0 4px;
+      background-image: linear-gradient(
+        104deg,
+        rgba(99, 102, 241, 0) 0.9%,
+        rgba(99, 102, 241, 0.2) 2.4%,
+        rgba(99, 102, 241, 0.14) 5.8%,
+        rgba(99, 102, 241, 0.22) 93%,
+        rgba(99, 102, 241, 0.1) 98%,
+        rgba(99, 102, 241, 0) 100%
+      );
+      background-repeat: no-repeat;
+      background-size: 100% 38%;
+      background-position: 0 86%;
+    }
+    [data-theme="dark"] .welcome-title strong {
+      color: #FFFFFF;
+      background-image: linear-gradient(
+        104deg,
+        rgba(129, 140, 248, 0) 0.9%,
+        rgba(129, 140, 248, 0.34) 2.4%,
+        rgba(129, 140, 248, 0.24) 5.8%,
+        rgba(129, 140, 248, 0.32) 93%,
+        rgba(129, 140, 248, 0.16) 98%,
+        rgba(129, 140, 248, 0) 100%
+      );
+    }
+
+    .welcome-subtitle {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    /* Cartes Bento haute précision avec halo très doux et lueur de bordure */
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .format-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      border-radius: 24px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-smooth), border-color 0.25s ease, background-color 0.25s ease;
+      overflow: hidden;
+      isolation: isolate;
+      --mx: 50%;
+      --my: 50%;
+    }
+
+    /* Halo intérieur très subtil et soyeux */
+    .format-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(
+        260px circle at var(--mx) var(--my),
+        rgba(99, 102, 241, 0.055) 0%,
+        transparent 75%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    [data-theme="dark"] .format-card::after {
+      background: radial-gradient(
+        260px circle at var(--mx) var(--my),
+        rgba(129, 140, 248, 0.08) 0%,
+        transparent 75%
+      );
+    }
+
+    .format-card:hover {
+      background: var(--bg-card-hover);
+      box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(99, 102, 241, 0.22);
+      transform: translateY(-4px);
+    }
+
+    .format-card:hover::after {
+      opacity: 1;
+    }
+
+    .format-card.selected {
+      background: color-mix(in srgb, var(--brand-500) 3.5%, var(--bg-card));
+      border-color: rgba(99, 102, 241, 0.65);
+      box-shadow: 0 16px 36px -12px rgba(99, 102, 241, 0.22), 0 0 0 1.5px var(--brand-500);
+      transform: translateY(-3px);
+    }
+
+    [data-theme="dark"] .format-card.selected {
+      background: rgba(99, 102, 241, 0.09);
+    }
+
+    /* Scène visuelle vectorielle multi-plans en tête de carte */
+    .format-visual {
+      height: 128px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(99, 102, 241, 0.06) 0%, rgba(99, 102, 241, 0.015) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.09);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      color: var(--brand-600);
+      transition: all 0.35s var(--ease-spring);
+    }
+
+    /* Grille de points architecturale très fine en fond de scène */
+    .format-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(99, 102, 241, 0.16) 1px, transparent 1px);
+      background-size: 14px 14px;
+      mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 35%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 35%, transparent 100%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    [data-theme="dark"] .format-visual {
+      background: linear-gradient(145deg, rgba(99, 102, 241, 0.14) 0%, rgba(99, 102, 241, 0.03) 100%);
+      border-color: rgba(129, 140, 248, 0.14);
+      color: var(--brand-400);
+    }
+
+    .format-orb-bg {
+      position: absolute;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, transparent 70%);
+      transition: transform 0.45s var(--ease-spring);
+    }
+
+    .format-card:hover .format-orb-bg {
+      transform: scale(1.28);
+    }
+
+    .format-visual svg {
+      position: relative;
+      z-index: 1;
+      transition: transform 0.4s var(--ease-spring);
+    }
+
+    .format-card:hover .format-visual svg {
+      transform: scale(1.08) translateY(-2px);
+    }
+
+    .format-badge-tag {
+      position: absolute;
+      top: 11px;
+      left: 11px;
+      z-index: 2;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    .format-card.selected .format-badge-tag {
+      color: var(--brand-600);
+      border-color: rgba(99, 102, 241, 0.25);
+    }
+    [data-theme="dark"] .format-card.selected .format-badge-tag {
+      color: var(--brand-400);
+    }
+
+    .format-check {
+      position: absolute;
+      top: 11px;
+      right: 11px;
+      z-index: 2;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: transparent;
+      transition: all 0.28s var(--ease-spring);
+    }
+
+    .format-card.selected .format-check {
+      background: var(--brand-500);
+      border-color: var(--brand-500);
+      color: #FFFFFF;
+      transform: scale(1.06);
+      box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+    }
+
+    .format-header-line {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .format-title {
+      font-size: 17.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .format-duration-pill {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--brand-600);
+      background: var(--brand-50);
+      padding: 2px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    [data-theme="dark"] .format-duration-pill {
+      color: var(--brand-400);
+      background: rgba(99, 102, 241, 0.16);
+    }
+
+    .format-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0 0 14px 0;
+      flex: 1;
+    }
+
+    .format-specs {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+    }
+
+    .format-spec-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .welcome-footer {
+      margin-top: clamp(26px, 4vw, 34px);
+      padding-top: 20px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .btn-article-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 9px 14px;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+    }
+    .btn-article-link:hover {
+      color: var(--text-primary);
+      background: var(--bg-subtle);
+    }
+
+    .btn-start {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 14px;
+      font-size: 14.5px;
+      font-weight: 600;
+      background: linear-gradient(180deg, var(--brand-500) 0%, var(--brand-600) 100%);
+      color: #FFFFFF;
+      box-shadow: 0 8px 20px -5px rgba(99, 102, 241, 0.38), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+      transition: all 0.28s var(--ease-spring);
+    }
+
+    .btn-start:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px -5px rgba(99, 102, 241, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+    }
+
+    .btn-start:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+
+    .btn-start svg {
+      transition: transform 0.25s var(--ease-spring);
+    }
+    .btn-start:hover svg {
+      transform: translateX(3px);
+    }
+
+    @media (max-width: 640px) {
+      .glass-panel { padding: 22px 18px; border-radius: 22px; }
+      .format-grid { grid-template-columns: 1fr; gap: 12px; }
+      .format-visual { height: 92px; }
+      .welcome-footer { flex-direction: column-reverse; align-items: stretch; }
+      .btn-start, .btn-article-link { justify-content: center; }
+      .question-watermark { width: 88px; height: 88px; right: 0; top: 10px; transform: none; }
+      .likert-grid {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+      .likert-card {
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 13px 16px;
+        gap: 14px;
+      }
+      .likert-card::after {
+        background: radial-gradient(circle at 0% 50%, color-mix(in srgb, var(--tone) 16%, transparent) 0%, transparent 72%);
+      }
+      .likert-glyph { width: 36px; height: 36px; border-radius: 11px; flex-shrink: 0; }
+      .likert-kbd { margin-left: auto; }
+      .shortcut-hint { display: none; }
+      .multi-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-mesh" aria-hidden="true"></div>
+
+  <main class="app-wrapper">
+    <div class="glass-panel">
+
+      <!-- =========================================================
+           ÉTAPE 0 : ÉCRAN D'ACCUEIL & CHOIX DU FORMAT
+           ========================================================= -->
+      <div id="welcomeView">
+        <div class="modal-topbar">
+          <div class="brand-eyebrow">
+            <span class="brand-pulse"></span>
+            Mon portrait et mes pistes
+          </div>
+          <button type="button" class="btn-close-modal" id="btnCloseTop" aria-label="Fermer et revenir à l’article" title="Revenir à l’article">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <nav class="journey-stepper" aria-label="Étapes du parcours">
+          <span class="journey-step active"><span class="journey-pill"></span>1. Choix</span>
+          <span class="journey-step"><span class="journey-pill"></span>2. Questions</span>
+          <span class="journey-step"><span class="journey-pill"></span>3. Révision</span>
+          <span class="journey-step"><span class="journey-pill"></span>4. Portrait</span>
+          <span class="journey-step"><span class="journey-pill"></span>5. Pistes</span>
+        </nav>
+
+        <div class="welcome-hero">
+          <h1 class="welcome-title">Prenez le temps de <strong>réfléchir à la suite</strong></h1>
+          <p class="welcome-subtitle">Choisissez votre format. Il n’y a pas de bonne réponse : répondez spontanément selon vos préférences actuelles.</p>
+        </div>
+
+        <div class="format-grid" role="radiogroup" aria-label="Format du questionnaire">
+          <!-- Carte Version Courte -->
+          <button type="button" class="format-card selected" data-select-mode="court" aria-checked="true" role="radio">
+            <div class="format-visual">
+              <div class="format-orb-bg"></div>
+              <span class="format-badge-tag">Essentiel</span>
+              <span class="format-check">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9.5" stroke-opacity="0.35"/>
+                <circle cx="12" cy="12" r="6"/>
+                <polygon points="15.2 8.8 13.6 13.6 8.8 15.2 10.4 10.4 15.2 8.8" fill="currentColor" fill-opacity="0.12"/>
+              </svg>
+            </div>
+            <div class="format-header-line">
+              <span class="format-title">Version courte</span>
+              <span class="format-duration-pill">6–10 min</span>
+            </div>
+            <p class="format-desc">Idéal pour dégager rapidement vos grands moteurs et premières pistes d’orientation.</p>
+            <div class="format-specs">
+              <span class="format-spec-item">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                40 questions
+              </span>
+              <span>·</span>
+              <span class="format-spec-item">8 dimensions clés</span>
+            </div>
+          </button>
+
+          <!-- Carte Version Approfondie -->
+          <button type="button" class="format-card" data-select-mode="complet" aria-checked="false" role="radio">
+            <div class="format-visual">
+              <div class="format-orb-bg"></div>
+              <span class="format-badge-tag">Recommandé</span>
+              <span class="format-check">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2.5 2.5 7.5 12 12.5 21.5 7.5 12 2.5" fill="currentColor" fill-opacity="0.1"/>
+                <polyline points="2.5 12.5 12 17.5 21.5 12.5"/>
+                <polyline points="2.5 17.5 12 22.5 21.5 17.5" stroke-opacity="0.5"/>
+              </svg>
+            </div>
+            <div class="format-header-line">
+              <span class="format-title">Version approfondie</span>
+              <span class="format-duration-pill">12–20 min</span>
+            </div>
+            <p class="format-desc">Une analyse complète et nuancée sur 8 dimensions pour un portrait détaillé.</p>
+            <div class="format-specs">
+              <span class="format-spec-item">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                80 questions
+              </span>
+              <span>·</span>
+              <span class="format-spec-item">Nuances fines</span>
+            </div>
+          </button>
+        </div>
+
+        <div class="welcome-footer">
+          <button type="button" class="btn-article-link" id="btnBackToArticle">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Revenir à l’article
+          </button>
+
+          <button type="button" class="btn-start" id="btnStartQuiz">
+            Commencer le questionnaire
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- =========================================================
+           ÉTAPE 1+ : QUESTIONNAIRE INTERACTIF
+           ========================================================= -->
+      <div id="quizView" class="hidden">
+        <!-- HEADER MINIMALISTE SUR UNE LIGNE + BARRE DE PROGRESSION -->
+        <header class="quiz-header">
+          <div class="header-meta-row">
+            <div class="breadcrumb-section" id="sectionBreadcrumb">
+              <span>Chapitre 1/8</span>
+              <span class="breadcrumb-sep">·</span>
+              <strong>Raisonnement</strong>
+            </div>
+
+            <div class="header-controls">
+              <div class="progress-stats">
+                <span class="time-chip" id="timeRemaining">~5 min</span>
+                <span id="questionCounter">1 / 40</span>
+              </div>
+              <div class="mode-switch" role="group" aria-label="Durée du questionnaire">
+                <button class="mode-btn active" data-mode="court">40 Q</button>
+                <button class="mode-btn" data-mode="complet">80 Q</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="chapters-bar" id="chaptersBar" aria-hidden="true"></div>
+        </header>
+
+        <!-- SCÈNE CENTRALE ALIGNÉE À GAUCHE -->
+        <section class="question-stage" id="questionStage" aria-live="polite">
+          <!-- Contenu injecté dynamiquement -->
+        </section>
+
+        <!-- FOOTER DISCRET -->
+        <footer class="quiz-footer">
+          <button class="btn-nav btn-back" id="btnPrev" type="button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Précédente
+          </button>
+
+          <span class="shortcut-hint">Raccourcis : <kbd>1</kbd> à <kbd>5</kbd> pour répondre · <kbd>←</kbd> retour</span>
+
+          <button class="btn-nav btn-continue" id="btnNext" type="button" style="display:none;">
+            Continuer
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </footer>
+      </div>
+
+    </div>
+  </main>
+
+  <button class="theme-toggle" id="themeToggle" type="button">🌓 Mode sombre</button>
+
+  <script>
+    const SECTIONS = [
+      { id: "raisonnement", titre: "Raisonnement" },
+      { id: "creation", titre: "Créativité" },
+      { id: "apprentissage", titre: "Curiosité" },
+      { id: "organisation", titre: "Organisation" },
+      { id: "relations", titre: "Énergie sociale" },
+      { id: "management", titre: "Leadership" },
+      { id: "commerce", titre: "Entrepreneuriat" },
+      { id: "aspirations", titre: "Motivations" }
+    ];
+
+    // Questions issues de ton JSON avec mise en valeur typographique (<strong> sur les mots-clés)
+    // et icône filigrane en arrière-plan pour ancrage visuel immédiat
+    const DEMO_QUESTIONS = [
+      {
+        id: "q001",
+        sectionIndex: 0,
+        questionHTML: "J’aime comprendre les <strong>causes profondes</strong> d’un problème avant de chercher une solution.",
+        exemple: "Disséquer la racine d’un dysfonctionnement plutôt que d’appliquer un correctif rapide.",
+        type: "echelle",
+        watermark: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M11 8v6M8 11h6"/></svg>`
+      },
+      {
+        id: "q002",
+        sectionIndex: 0,
+        questionHTML: "J’aime comprendre comment différents éléments d’un <strong>système s’influencent</strong>.",
+        exemple: "Anticiper comment une décision produit impacte à la fois le support, le marketing et la technique.",
+        type: "echelle",
+        watermark: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`
+      },
+      {
+        id: "q004",
+        sectionIndex: 0,
+        questionHTML: "Je préfère une solution <strong>suffisamment bonne et utilisable</strong> à une solution idéale difficile à terminer.",
+        exemple: "Livrer une première version fonctionnelle aujourd’hui plutôt que viser la perfection dans trois mois.",
+        type: "echelle",
+        watermark: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`
+      },
+      {
+        id: "q015",
+        sectionIndex: 1,
+        questionHTML: "Quelles <strong>étapes d’un projet</strong> vous plaisent le plus ?",
+        exemple: "Sélectionnez jusqu’à 2 étapes qui vous procurent le plus d’énergie au quotidien.",
+        type: "choix_multiple",
+        min: 1,
+        max: 2,
+        watermark: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+        reponsesPossibles: [
+          {
+            id: "imaginer",
+            titre: "Explorer & Imaginer",
+            desc: "Trouver l’idée de départ et les opportunités",
+            icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>`
+          },
+          {
+            id: "concevoir",
+            titre: "Structurer & Concevoir",
+            desc: "Dessiner l’architecture et le fonctionnement",
+            icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`
+          },
+          {
+            id: "construire",
+            titre: "Construire & Résoudre",
+            desc: "Fabriquer concrètement et lever les blocages",
+            icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>`
+          },
+          {
+            id: "peaufiner",
+            titre: "Peaufiner les détails",
+            desc: "Soigner la finition et la qualité finale",
+            icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275L12 3z"/></svg>`
+          },
+          {
+            id: "raconter",
+            titre: "Présenter & Expliquer",
+            desc: "Mettre en récit et convaincre autour du projet",
+            icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`
+          },
+          {
+            id: "impact",
+            titre: "Mesurer l’impact",
+            desc: "Observer les bénéfices réels chez les utilisateurs",
+            icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`
+          }
+        ]
+      }
+    ];
+
+    // Glyphes expressifs progressifs pour remplacer les simples ronds
+    const SCALE_CHOICES = [
+      {
+        score: 1,
+        id: "pas_du_tout",
+        label: "Pas du tout d’accord",
+        glyph: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`
+      },
+      {
+        score: 2,
+        id: "plutot_non",
+        label: "Plutôt pas d’accord",
+        glyph: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>`
+      },
+      {
+        score: 3,
+        id: "neutre",
+        label: "Ni d’accord ni pas d’accord",
+        glyph: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/></svg>`
+      },
+      {
+        score: 4,
+        id: "plutot_oui",
+        label: "Plutôt d’accord",
+        glyph: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`
+      },
+      {
+        score: 5,
+        id: "tout_a_fait",
+        label: "Tout à fait d’accord",
+        glyph: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 6 7 17 2 12"/><polyline points="22 10 11 21 9 19"/></svg>`
+      }
+    ];
+
+    let currentIdx = 0;
+    let mode = "court";
+    const answers = {};
+    let isTransitioning = false;
+
+    const welcomeView = document.getElementById("welcomeView");
+    const quizView = document.getElementById("quizView");
+    const stage = document.getElementById("questionStage");
+    const btnPrev = document.getElementById("btnPrev");
+    const btnNext = document.getElementById("btnNext");
+    const chaptersBar = document.getElementById("chaptersBar");
+
+    // --- GESTION DE LA PAGE D'ACCUEIL ---
+    function syncModeButtons(selectedMode) {
+      mode = selectedMode;
+      document.querySelectorAll(".format-card").forEach(card => {
+        const isSel = card.dataset.selectMode === mode;
+        card.classList.toggle("selected", isSel);
+        card.setAttribute("aria-checked", isSel ? "true" : "false");
+      });
+      document.querySelectorAll(".mode-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.mode === mode);
+      });
+    }
+
+    document.querySelectorAll(".format-card").forEach(card => {
+      card.addEventListener("pointermove", (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+        card.style.setProperty("--my", `${e.clientY - rect.top}px`);
+      });
+      card.addEventListener("click", () => {
+        syncModeButtons(card.dataset.selectMode);
+      });
+    });
+
+    function openQuiz() {
+      welcomeView.classList.add("hidden");
+      quizView.classList.remove("hidden");
+      currentIdx = 0;
+      renderQuestion(true);
+    }
+
+    function backToWelcome() {
+      quizView.classList.add("hidden");
+      welcomeView.classList.remove("hidden");
+    }
+
+    document.getElementById("btnStartQuiz").addEventListener("click", openQuiz);
+    document.getElementById("btnBackToArticle").addEventListener("click", () => {
+      // Simulation visuelle discrète en maquette
+      const btn = document.getElementById("btnBackToArticle");
+      const original = btn.innerHTML;
+      btn.textContent = "Retour vers l’article du blog…";
+      setTimeout(() => { btn.innerHTML = original; }, 1400);
+    });
+    document.getElementById("btnCloseTop").addEventListener("click", () => {
+      document.getElementById("btnBackToArticle").click();
+    });
+
+    SECTIONS.forEach((_, i) => {
+      const track = document.createElement("div");
+      track.className = "chapter-track";
+      track.innerHTML = `<div class="chapter-fill" id="chap-fill-${i}"></div>`;
+      chaptersBar.appendChild(track);
+    });
+
+    function updateHeader() {
+      const q = DEMO_QUESTIONS[currentIdx];
+      const totalSimulated = mode === "complet" ? 80 : 40;
+      const displayNumber = currentIdx === 3 ? (mode === "complet" ? 15 : 8) : currentIdx + 1;
+      const minsLeft = Math.max(1, Math.ceil(((totalSimulated - displayNumber + 1) * 4) / 60));
+
+      document.getElementById("sectionBreadcrumb").innerHTML = `
+        <span>Chapitre ${q.sectionIndex + 1}/8</span>
+        <span class="breadcrumb-sep">·</span>
+        <strong>${SECTIONS[q.sectionIndex].titre}</strong>
+      `;
+      document.getElementById("questionCounter").textContent = `${displayNumber} / ${totalSimulated}`;
+      document.getElementById("timeRemaining").textContent = `~${minsLeft} min`;
+
+      SECTIONS.forEach((_, idx) => {
+        const fill = document.getElementById(`chap-fill-${idx}`);
+        if (idx < q.sectionIndex) {
+          fill.style.width = "100%";
+        } else if (idx === q.sectionIndex) {
+          const pct = Math.min(100, Math.round(((currentIdx + 1) / 4) * 100));
+          fill.style.width = `${pct}%`;
+        } else {
+          fill.style.width = "0%";
+        }
+      });
+
+      btnPrev.disabled = false;
+    }
+
+    function renderQuestion(animate = true) {
+      const q = DEMO_QUESTIONS[currentIdx];
+      const saved = answers[q.id];
+
+      if (animate) {
+        stage.classList.remove("is-entering");
+        void stage.offsetWidth;
+        stage.classList.add("is-entering");
+      }
+
+      let answersHTML = "";
+
+      if (q.type === "echelle") {
+        btnNext.style.display = "none";
+        const cards = SCALE_CHOICES.map((opt, idx) => {
+          const isSelected = saved === opt.id;
+          return `
+            <button type="button" class="likert-card ${isSelected ? "selected" : ""}" style="--i:${idx}" data-score="${opt.score}" data-val="${opt.id}">
+              <span class="likert-glyph">${opt.glyph}</span>
+              <span class="likert-text">${opt.label}</span>
+              <span class="likert-kbd">${opt.score}</span>
+            </button>
+          `;
+        }).join("");
+
+        answersHTML = `
+          <div class="likert-grid" role="radiogroup">
+            ${cards}
+          </div>
+          <div class="neutral-exit-row">
+            <button type="button" class="btn-unsure ${saved === "ne_sais_pas" ? "selected" : ""}" data-val="ne_sais_pas">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Je ne sais pas / pas concerné
+            </button>
+          </div>
+        `;
+      } else {
+        const selectedArr = Array.isArray(saved) ? saved : [];
+        btnNext.style.display = "inline-flex";
+        btnNext.disabled = selectedArr.length < q.min;
+        const multiCards = q.reponsesPossibles.map((rep, idx) => {
+          const rankIdx = selectedArr.indexOf(rep.id);
+          const isSel = rankIdx > -1;
+          const isMaxed = !isSel && selectedArr.length >= q.max;
+          return `
+            <button type="button" class="multi-card ${isSel ? "selected" : ""}" style="--i:${idx}" data-multi="${rep.id}" ${isMaxed ? "disabled" : ""}>
+              <span class="multi-icon">${rep.icon}</span>
+              <span class="multi-content">
+                <span class="multi-title">${rep.titre}</span>
+                <span class="multi-desc">${rep.desc}</span>
+              </span>
+              <span class="multi-rank">${isSel ? rankIdx + 1 : ""}</span>
+            </button>
+          `;
+        }).join("");
+
+        answersHTML = `<div class="multi-grid">${multiCards}</div>`;
+      }
+
+      stage.innerHTML = `
+        <div class="question-hero">
+          <div class="question-watermark" aria-hidden="true">${q.watermark}</div>
+          <h1 class="question-title">${q.questionHTML}</h1>
+          ${q.exemple ? `
+            <div class="question-context">
+              <p class="context-text"><span class="context-lead">Exemple</span>${q.exemple}</p>
+            </div>
+          ` : ""}
+        </div>
+        <div class="answers-area">
+          ${answersHTML}
+        </div>
+      `;
+
+      bindEvents();
+      updateHeader();
+    }
+
+    function advanceAutomatically() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      setTimeout(() => {
+        stage.classList.add("is-leaving");
+        setTimeout(() => {
+          stage.classList.remove("is-leaving");
+          currentIdx = (currentIdx + 1) % DEMO_QUESTIONS.length;
+          renderQuestion(true);
+          isTransitioning = false;
+        }, 190);
+      }, 260);
+    }
+
+    function bindEvents() {
+      const q = DEMO_QUESTIONS[currentIdx];
+
+      // Effet spotlight dynamique suivant la souris sur toutes les cartes
+      stage.querySelectorAll(".likert-card, .multi-card").forEach(card => {
+        card.addEventListener("pointermove", (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+          card.style.setProperty("--my", `${e.clientY - rect.top}px`);
+        });
+      });
+
+      if (q.type === "echelle") {
+        stage.querySelectorAll("[data-val]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            answers[q.id] = btn.dataset.val;
+            stage.querySelectorAll("[data-val]").forEach(b => b.classList.remove("selected"));
+            btn.classList.add("selected");
+            advanceAutomatically();
+          });
+        });
+      } else {
+        stage.querySelectorAll("[data-multi]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const val = btn.dataset.multi;
+            const current = Array.isArray(answers[q.id]) ? [...answers[q.id]] : [];
+            const idx = current.indexOf(val);
+            if (idx > -1) current.splice(idx, 1);
+            else if (current.length < q.max) current.push(val);
+            answers[q.id] = current;
+            renderQuestion(false);
+          });
+        });
+      }
+    }
+
+    btnPrev.addEventListener("click", () => {
+      if (isTransitioning) return;
+      if (currentIdx === 0) {
+        backToWelcome();
+      } else {
+        currentIdx--;
+        renderQuestion(true);
+      }
+    });
+
+    btnNext.addEventListener("click", () => {
+      if (!isTransitioning) {
+        currentIdx = (currentIdx + 1) % DEMO_QUESTIONS.length;
+        renderQuestion(true);
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!welcomeView.classList.contains("hidden")) {
+        if (e.key === "Enter") openQuiz();
+        return;
+      }
+      const q = DEMO_QUESTIONS[currentIdx];
+      if (q.type === "echelle" && ["1", "2", "3", "4", "5"].includes(e.key)) {
+        const target = stage.querySelector(`.likert-card[data-score="${e.key}"]`);
+        if (target) target.click();
+      } else if (e.key === "ArrowLeft") {
+        btnPrev.click();
+      }
+    });
+
+    document.querySelectorAll(".mode-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        syncModeButtons(btn.dataset.mode);
+        updateHeader();
+      });
+    });
+
+    const themeBtn = document.getElementById("themeToggle");
+    themeBtn.addEventListener("click", () => {
+      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+      document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
+      themeBtn.textContent = isDark ? "🌓 Mode sombre" : "☀️ Mode clair";
+    });
+  </script>
+</body>
+</html>

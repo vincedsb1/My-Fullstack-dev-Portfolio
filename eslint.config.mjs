@@ -16,7 +16,6 @@ const config = [
       "next-env.d.ts",
       // ESM TypeScript declaration; ESLint treats .d.mts as JavaScript here.
       "src/lib/blog/json-source.d.mts",
-      "src/features/career-strategy/schema.d.mts",
       "vincent.desbrosses.net-audit/**",
       // Archived blog deliveries retained as references, not app source.
       "docs/blog/blog_design_system_showcase_etape2/**",

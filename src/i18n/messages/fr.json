@@ -328,7 +328,6 @@
     "language": "Langue",
     "copyEmail": "Copier l’adresse e-mail",
     "copyError": "Copie indisponible. Sélectionnez l’adresse :",
-    "resume": "Télécharger le CV",
     "pause": "Mettre en pause",
     "play": "Reprendre le défilement",
     "carousel": "carrousel",
@@ -427,91 +426,138 @@
   },
   "careerStrategy": {
     "entryEyebrow": "Votre prochaine étape",
-    "entryTitle": "Construire mon portrait et explorer mes pistes",
-    "entryDescription": "40 ou 80 questions pour faire le point sur vos préférences, puis découvrir un socle commun et quatre pistes à explorer.",
+    "entryTitle": "Explorer mes pistes professionnelles",
+    "entryDescription": "30 questions pour faire le point sur vos préférences et découvrir des pistes pour préparer votre avenir.",
     "launch": "Commencer le questionnaire",
-    "dialogTitle": "Mon portrait et mes pistes",
+    "dialogTitle": "Mes pistes professionnelles",
     "close": "Fermer l’assistant",
     "loading": "Chargement du questionnaire…",
-    "loadError": "Le questionnaire n’a pas pu être chargé. Vos réponses déjà saisies restent disponibles pendant cette visite.",
+    "loadError": "Le questionnaire n’a pas pu être chargé. Vérifiez votre connexion, puis réessayez.",
     "retry": "Réessayer",
-    "welcomeTitle": "Prenez le temps de réfléchir à la suite",
-    "welcomeDescription": "Choisissez votre format. Il n’y a pas de bonne réponse : répondez selon vos préférences actuelles.",
-    "short": "Version courte",
-    "full": "Version approfondie",
-    "shortDescription": "40 questions · Environ 6 à 10 minutes",
-    "fullDescription": "80 questions · Environ 12 à 20 minutes",
-    "start": "Commencer",
-    "back": "Précédent",
-    "next": "Continuer",
-    "reviewTitle": "Vérifier mes réponses",
-    "reviewDescription": "Relisez vos réponses avant de construire votre portrait. Vous pouvez modifier chaque section.",
-    "editSection": "Modifier cette section",
-    "makePortrait": "Construire mon portrait",
-    "portraitTitle": "Votre portrait de préférences",
-    "portraitDescription": "Ce profil décrit des préférences déclarées, pas des compétences prouvées. Les indices peu étayés sont signalés.",
-    "showStrategies": "Voir mes pistes de stratégie",
-    "strategiesTitle": "Cinq pistes pour préparer la suite",
-    "strategiesDescription": "Un socle commun à tous, puis quatre directions sélectionnées à partir des préférences renseignées.",
-    "genericDescription": "Vos réponses ne permettent pas un classement personnalisé suffisamment étayé. Voici un socle commun et quatre pistes générales.",
-    "editAnswers": "Revoir mes réponses",
-    "backPortrait": "Revenir au portrait",
-    "restart": "Recommencer",
-    "restartConfirm": "Effacer toutes vos réponses et votre sauvegarde pour recommencer ?",
-    "returnArticle": "Revenir à l’article",
-    "modeLabel": "Format du questionnaire",
-    "modeChangeConfirm": "Passer en version courte et supprimer les réponses approfondies ?",
-    "sectionProgress": "Section {current} sur {total}",
-    "answersProgress": "{count} réponses sur {total}",
-    "phaseWelcome": "Choix",
-    "phaseQuestions": "Questions",
-    "phaseReview": "Révision",
-    "phasePortrait": "Portrait",
+    "welcomeSteps": "Étapes du parcours",
+    "phaseWelcome": "Aperçu",
+    "welcomeQuestionCount": "{count} questions",
     "phaseResults": "Pistes",
-    "required": "Répondez à cette question pour continuer.",
-    "fixErrors": "Certaines questions attendent votre réponse.",
-    "chooseUpTo": "Choisissez une ou deux réponses.",
-    "maxChoices": "Deux réponses maximum. Décochez un choix pour en sélectionner un autre.",
-    "calculationError": "Le résultat n’a pas pu être calculé. Vérifiez vos réponses et réessayez.",
-    "noData": "Aucune réponse exploitable pour cette rubrique.",
-    "neutralGroup": "Les réponses de cette rubrique ne font pas ressortir de préférence nette.",
-    "tentative": "Indice à confirmer",
-    "observed": "Tendance déclarée",
-    "divergent": "Vos réponses sur cette dimension sont contrastées.",
-    "evidence": "{count, plural, one {# réponse exploitable} other {# réponses exploitables}}",
-    "details": "Voir les dimensions renseignées",
-    "uncertaintyTitle": "Ce qui reste à préciser",
-    "uncertainty": "Les dimensions fondées sur une seule réponse ou des réponses contrastées demandent à être confirmées par votre expérience. Les dimensions non renseignées ne sont pas déduites.",
-    "priorities": "Priorités déclarées",
-    "why": "Pourquoi cette piste ?",
-    "conflict": "À confronter à vos préférences :",
-    "actions": "Premières actions",
-    "reservations": "Points de vigilance",
-    "limitation": "Limite",
-    "foundation": "Socle commun · proposé à tous",
-    "general": "Piste générale · personnalisation insuffisante",
-    "exploratory": "Piste exploratoire · peu de signaux concordants",
-    "matched": "Correspondance indicative avec vos préférences déclarées",
-    "saveLabel": "Enregistrer ma progression sur cet appareil",
-    "saveHelp": "Facultatif. Sauvegarde pendant 30 jours après votre dernière modification. Partagée entre les versions française et anglaise sur cet appareil.",
-    "privacy": "Le calcul se fait dans votre navigateur. Vos réponses ne sont pas envoyées à un serveur. Fermer cette fenêtre conserve votre session ; pour reprendre après un rechargement ou une nouvelle visite, activez la sauvegarde locale.",
-    "saving": "Enregistrement…",
-    "saved": "Progression enregistrée sur cet appareil.",
-    "saveFailed": "Sauvegarde indisponible. Vous pouvez continuer, mais les nouvelles réponses restent uniquement dans cette visite.",
-    "memory": "Progression conservée uniquement pendant cette visite.",
-    "resumeTitle": "Une progression est disponible",
-    "resume": "Reprendre ma progression",
-    "resumeDescription": "Reprenez vos réponses enregistrées sur cet appareil, ou recommencez un nouveau questionnaire.",
-    "removeSaved": "Supprimer la sauvegarde",
-    "invalidSaved": "La progression enregistrée est incompatible ou illisible. Vous pouvez recommencer.",
-    "expiredSaved": "La sauvegarde a expiré après 30 jours. Vous pouvez commencer un nouveau questionnaire.",
-    "conflictTitle": "La sauvegarde a changé dans un autre onglet",
-    "conflictDescription": "L’enregistrement automatique est suspendu pour préserver votre saisie. Choisissez la version à conserver.",
-    "useExternal": "Reprendre la sauvegarde de l’autre onglet",
-    "keepCurrent": "Conserver et enregistrer ma saisie actuelle",
-    "externalDeleted": "La sauvegarde a été supprimée dans un autre onglet. Cette session reste disponible en mémoire.",
-    "versionNote": "Pistes recalculées avec le moteur {engine} et le catalogue {catalog}.",
-    "disclaimer": "Questionnaire exploratoire non validé scientifiquement. Il ne prédit ni votre risque de perte d’emploi, ni la réussite d’une reconversion.",
-    "savingPaused": "Enregistrement suspendu : choisissez la version à conserver."
+    "welcomeTitle": "Vos priorités <focus>de carrière</focus>",
+    "welcomeDescription": "Il n’y a ni bonne ni mauvaise réponse. Répondez spontanément selon ce qui vous anime aujourd’hui pour découvrir votre fonctionnement et vos pistes d’orientation.",
+    "welcomeDuration": "≈ 3 min",
+    "welcomeThemesCount": "{count} axes",
+    "welcomeOutcomeTiming": "Instantané",
+    "welcomeCards": {
+      "pace": {
+        "title": "Rythme fluide",
+        "description": "{count} questions courtes. Le questionnaire avance automatiquement après chaque réponse."
+      },
+      "themes": {
+        "title": "Vision complète",
+        "description": "Raisonnement, créativité, apprentissage, organisation, relations, leadership, entrepreneuriat et motivations."
+      },
+      "outcome": {
+        "title": "Des pistes concrètes",
+        "description": "Des pistes d’action pour préparer la suite, dès la fin du questionnaire."
+      }
+    },
+    "start": "Commencer les {count} questions",
+    "returnArticle": "Revenir à l’article",
+    "quizChapter": "Chapitre {current}/{total}",
+    "quizChapters": {
+      "raisonnement": "Raisonnement"
+    },
+    "quizExample": "Exemple",
+    "quizPrevious": "Précédent",
+    "quizShortcuts": "Raccourcis : <keycap>1</keycap> à <keycap>5</keycap> pour répondre · <keycap>←</keycap> retour",
+    "storyShortcuts": "Raccourcis : <keycap>←</keycap> <keycap>→</keycap> pour naviguer",
+    "next": "Suivant",
+    "answerLabels": {
+      "pas_du_tout": "Pas du tout d’accord",
+      "plutot_non": "Plutôt pas d’accord",
+      "neutre": "Ni d’accord ni pas d’accord",
+      "plutot_oui": "Plutôt d’accord",
+      "tout_a_fait": "Tout à fait d’accord",
+      "ne_sais_pas": "Je ne sais pas / pas concerné"
+    },
+    "questions": {
+      "q001": {
+        "prompt": "Face à un problème, je préfère chercher la cause plutôt que suivre une solution toute faite.",
+        "highlight": "chercher la cause",
+        "context": "Quand quelque chose tombe en panne, je préfère comprendre pourquoi plutôt qu’appliquer une astuce sans explication."
+      },
+      "q002": {
+        "prompt": "Avant une décision, je réfléchis aux conséquences sur tout ce qui l’entoure.",
+        "highlight": "conséquences sur tout ce qui l’entoure",
+        "context": "Changer les horaires d’une activité peut aussi modifier l’organisation des collègues et des clients."
+      }
+    },
+    "story": {
+      "progressStart": "{total} pistes",
+      "progress": "{current} / {total}",
+      "progressLabel": "Progression dans les cinq pistes",
+      "stepLabel": "Piste {current} : {title}",
+      "pillarNumber": "Piste {current}",
+      "actionsTitle": "Pour commencer",
+      "twist": {
+        "eyebrow": "Changement de programme",
+        "title": "Bon… on va s’arrêter là.",
+        "p1": "J’allais vous poser encore {remaining} questions. Mais les grands leviers pour préparer l’avenir sont souvent les mêmes pour tout le monde.",
+        "p2": "Ce qui change, c’est surtout lesquels vous pouvez commencer à développer.",
+        "p3": "Alors, passons directement aux cinq pistes que je retiens.",
+        "cta": "Découvrir les 5 pistes",
+        "highlight": "s’arrêter là"
+      },
+      "pillar": {
+        "eyebrow": "Les 5 pistes"
+      },
+      "conclusion": {
+        "eyebrow": "Fin du parcours",
+        "title": "Voilà. Pas besoin de {total} questions.",
+        "p1": "Ces pistes ne sont ni des garanties ni des obligations. Juste des directions pour préparer un avenir professionnel qui pourrait changer plus vite que prévu.",
+        "p2": "L’essentiel, c’est de commencer à y réfléchir dès aujourd’hui.",
+        "signoff": "Merci d’avoir joué le jeu !",
+        "cta": "Terminer",
+        "highlight": "Pas besoin"
+      }
+    },
+    "pillars": {
+      "skills": {
+        "short": "Compétences",
+        "title": "Développer des compétences qui conservent de la valeur",
+        "text": "Un métier ancré dans le monde physique, ou une expertise que l’IA renforce plutôt qu’elle ne remplace. Mais utiliser l’IA ne suffira pas : si les entreprises embauchent moins, il faudra apporter quelque chose de distinctif, comme une expertise sectorielle, l’expérience du terrain ou un réseau.",
+        "action1": "Identifier ce qui distingue vos compétences de celles facilement automatisables.",
+        "action2": "Développer une expertise complémentaire réellement utile.",
+        "highlight": "conservent de la valeur"
+      },
+      "wealth": {
+        "short": "Patrimoine",
+        "title": "Construire progressivement un patrimoine",
+        "text": "Épargne de précaution, placements diversifiés, actifs productifs : l’objectif est de moins dépendre de son seul salaire. Ce n’est pas une garantie : investir comporte des risques et demande du temps.",
+        "action1": "Constituer une réserve adaptée à vos dépenses.",
+        "action2": "Étudier une stratégie d’investissement diversifiée et durable.",
+        "highlight": "patrimoine"
+      },
+      "business": {
+        "short": "Entreprise",
+        "title": "Posséder une entreprise",
+        "text": "Avec une équipe et des processus autonomes, une entreprise crée de la valeur au-delà de votre propre travail. Elle peut aussi être concurrencée ou disparaître : l’enjeu est qu’elle ne repose pas entièrement sur vous.",
+        "action1": "Identifier un problème récurrent que des clients sont prêts à payer pour résoudre.",
+        "action2": "Bâtir des processus reproductibles, de moins en moins dépendants de vous.",
+        "highlight": "entreprise"
+      },
+      "products": {
+        "short": "Produits",
+        "title": "Créer des produits qui génèrent des revenus",
+        "text": "Un logiciel, une formation ou un objet se vend plusieurs fois sans refaire tout le travail. Pas besoin d’une équipe : c’est un actif reproductible. L’IA facilite la création, mais trouver des clients reste difficile.",
+        "action1": "Repérer un besoin pour lequel des gens paient déjà.",
+        "action2": "Tester une première vente avant d’y investir trop de temps.",
+        "highlight": "produits"
+      },
+      "audience": {
+        "short": "Audience",
+        "title": "Construire une audience et un canal de distribution",
+        "text": "Créer devient facile ; se faire connaître, beaucoup moins. Une communauté ou une liste de contacts aide à vendre, à lancer un produit et à saisir des opportunités, sans dépendre des intermédiaires.",
+        "action1": "Choisir un public précis et lui apporter régulièrement quelque chose d’utile.",
+        "action2": "Garder le contact avec lui sans dépendre des algorithmes des plateformes.",
+        "highlight": "audience"
+      }
+    }
   }
 }

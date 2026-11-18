@@ -4,45 +4,28 @@ import { ArrowRight, Compass, RotateCw } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { Dialog } from "@/components/ui/Dialog";
-import type { Bundle, Locale } from "./types";
 import type AssistantComponent from "./Assistant";
 import styles from "./Assistant.module.css";
-export default function Trigger({
-  locale,
-  resourceUrl,
-  contentVersion,
-}: {
-  locale: Locale;
-  resourceUrl: string;
-  contentVersion: string;
-}) {
+export default function Trigger() {
   const t = useTranslations("careerStrategy"),
     dialogId = useId();
   const [open, setOpen] = useState(false),
     [pending, setPending] = useState(false),
     [failed, setFailed] = useState(false);
-  const [loaded, setLoaded] = useState<{
-    Component: typeof AssistantComponent;
-    bundle: Bundle;
-  } | null>(null);
+  const [Component, setComponent] = useState<typeof AssistantComponent | null>(
+    null,
+  );
+  // The backdrop closes the dialog only once the two questions are behind us.
+  const [revealed, setRevealed] = useState(false);
   const close = useCallback(() => setOpen(false), []);
   async function launch() {
     setOpen(true);
-    if (loaded || pending) return;
+    if (Component || pending) return;
     setPending(true);
     setFailed(false);
     try {
-      const [module, response] = await Promise.all([
-        import("./Assistant"),
-        fetch(resourceUrl, { credentials: "omit" }),
-      ]);
-      if (!response.ok) throw new Error("resource");
-      const bundle = module.parseResource(
-        await response.json(),
-        locale,
-        contentVersion,
-      );
-      setLoaded({ Component: module.default, bundle });
+      const loaded = await import("./Assistant");
+      setComponent(() => loaded.default);
     } catch {
       setFailed(true);
     } finally {
@@ -74,15 +57,11 @@ export default function Trigger({
         closeLabel={t("close")}
         dialogId={dialogId}
         className={styles.dialog}
-        closeOnBackdrop={false}
+        closeOnBackdrop={revealed}
         lockScroll
       >
-        {loaded ? (
-          <loaded.Component
-            bundle={loaded.bundle}
-            open={open}
-            onClose={close}
-          />
+        {Component ? (
+          <Component open={open} onClose={close} onReveal={setRevealed} />
         ) : (
           <div className={styles.loading} aria-busy={pending}>
             <Compass size={36} aria-hidden />

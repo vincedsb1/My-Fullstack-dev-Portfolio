@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "meta": {
-    "title": "I Think AI Could Replace 80% of Knowledge Work Jobs. And I Believe We Need to Prepare Now.",
+    "title": "Will AI Make Our Jobs Obsolete? Why I Decided to Prepare",
     "seoTitle": "AI and Jobs: Preparing for the Future",
     "description": "Why I worry about extensive automation of knowledge work, what the research says and how to think through a personal strategy for the years ahead.",
     "excerpt": "The 80% figure is my hypothesis, not a statistic. Here is why I take this risk seriously and how I want to help people think about their future.",
@@ -10,14 +10,16 @@
     "locale": "en",
     "translationKey": "ai-knowledge-work-personal-strategy",
     "publishedAt": "2026-11-18",
-    "status": "published"
+    "status": "published",
+    "cover": "/blog/ai-knowledge-work-jobs-prepare-future/cover-photo.webp",
+    "coverAlt": "Silhouette of a man standing by a window in a dark room."
   },
   "introBlocks": [
     {
       "type": "lead",
       "content": [
         {
-          "text": "We may be at the beginning of an economic and social transformation far greater than we realise. Here is why I think the next ten years could reshape our relationship with work, and why I decided to create a tool to help people think about their future."
+          "text": "We may be at the start of an economic and social upheaval far deeper than we imagine. I want to explain why I think the next ten years could change our relationship with work, and why I built a tool to help people think about their own future."
         }
       ]
     }
@@ -31,11 +33,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "I will start with a fairly radical claim: "
-            },
-            {
-              "text": "I think that, within five to ten years, artificial intelligence could make up to 80% of today’s knowledge work jobs carried out mainly at a computer redundant.",
-              "bold": true
+              "text": "I’ll start with a fairly radical claim: within five to ten years, artificial intelligence could make up to 80% of today’s knowledge work jobs done at a computer redundant."
             }
           ]
         },
@@ -43,7 +41,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "That figure does not come from a study. It is my personal hypothesis, and I do not claim I can prove it today."
+              "text": "That figure comes from no study. It’s my own intuition, and I can’t prove it today."
             }
           ]
         },
@@ -51,7 +49,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "I am a developer. I work with these technologies, use them to build applications and see how quickly they improve. The more I use them, the harder I find it to imagine our workplaces continuing as they are."
+              "text": "I’m a developer. I use these tools every day to build applications, and I can see how quickly they’re improving. The more I use them, the harder it is to imagine our workplaces carrying on as they are."
             }
           ]
         },
@@ -59,7 +57,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "Just a few years ago, developing an application took weeks or months of work. Today, some tasks that used to take several days can be completed in minutes. That does not apply everywhere yet, mistakes still happen and complexity has not disappeared. But I find the direction of travel hard to ignore."
+              "text": "A few years ago, building an application took weeks or even months. Now some tasks that used to take me several days take a few minutes. That’s not true of everything: AI still makes mistakes, and a project’s complexity doesn’t magically disappear. But I find it hard to ignore the direction things are going."
             }
           ]
         },
@@ -67,7 +65,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "Above all, I see no reason to assume that progress will simply stop where it is today."
+              "text": "And I see no reason for progress to stop where it is."
             }
           ]
         }
@@ -75,13 +73,13 @@
     },
     {
       "id": "bouleversement-economique",
-      "title": "The real upheaval will be economic",
+      "title": "The real shock will be economic",
       "blocks": [
         {
           "type": "paragraph",
           "content": [
             {
-              "text": "AI is often presented as a tool that will make us more productive. That is true. But I think the discussion too often stops at that first consequence."
+              "text": "AI is often presented as a tool that will make us more productive. That’s true, but too often the discussion ends there."
             }
           ]
         },
@@ -89,7 +87,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "Imagine a company employing ten people to deliver a digital service. With AI, perhaps three people could soon do the same work, or more. The company would then have several options: produce more, lower its prices, develop new services… or reduce its workforce."
+              "text": "Take a company with ten people providing a digital service. If AI means three people can do the same work tomorrow, the company has several options: produce more, cut prices, launch new services… or reduce headcount."
             }
           ]
         },
@@ -97,7 +95,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "Some people believe higher productivity will create enough new activity to offset the jobs lost. That is possible. Economic history has already shown that innovation can create occupations nobody anticipated."
+              "text": "Some people think productivity gains will generate enough new activity to make up for the jobs lost. That’s possible. Innovation has often created jobs that no one saw coming."
             }
           ]
         },
@@ -105,40 +103,33 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "But something feels different to me this time: "
+              "text": "This time, though, something feels different. AI is getting better at the very things that have helped us adapt in the past: learning, reasoning, creating and solving problems. It can already take over some tasks. If new jobs emerge, there’s no guarantee that they won’t be automated in turn."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Even if companies keep their staff, they can simply hire fewer people. Unemployment could grow through layoffs and through opportunities quietly disappearing."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "We’re already seeing some signals. In August 2026, "
             },
             {
-              "text": "AI is not just replacing individual tasks. It is making progress in the very abilities we use to learn, reason, create and devise solutions.",
-              "bold": true
-            },
-            {
-              "text": " If new occupations emerge, what guarantees that they will not quickly be automated too?"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "text": "Even if companies keep their employees, they could simply stop hiring as many people. Unemployment would then come not only from redundancies, but also from opportunities gradually disappearing."
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "text": "There are already signs worth watching. In August 2026, a "
-            },
-            {
-              "text": "Stanford study",
+              "text": "Stanford researchers",
               "link": {
                 "href": "https://digitaleconomy.stanford.edu/news/canariesaug26/",
                 "external": true
               }
             },
             {
-              "text": " found that employment among Americans aged 22 to 25 in the occupations most exposed to AI was around 19% below where it would have been had it kept pace with less exposed occupations. This is a relative gap, not 19% of jobs eliminated by AI. The researchers stress that their data cannot establish how much of this gap was caused by generative AI, nor support a conclusion of widespread job displacement across the economy."
+              "text": " updated their study of employment among Americans aged 22 to 25. In jobs with the highest AI exposure, employment among that group is about 19% below where it would be if it had kept pace with employment in less exposed jobs. That’s a relative gap: it doesn’t mean that AI eliminated 19% of jobs. The researchers say they can’t tell how much of the gap is due to generative AI, and they don’t find widespread job losses across the economy. The gap does, however, seem to come mainly from fewer hires, which echoes the concern I raised above."
             }
           ]
         },
@@ -149,14 +140,14 @@
               "text": "In France, a "
             },
             {
-              "text": "Coface study published on 17 November 2026",
+              "text": "Coface study",
               "link": {
                 "href": "https://www.coface.com/fr/actualites-economie-conseils-d-experts/ia-et-emploi-quatre-ans-apres-le-lancement-de-chatgpt-les-offres-d-emploi-des-metiers-les-plus-exposes-decrochent",
                 "external": true
               }
             },
             {
-              "text": " also observes job postings falling behind in the most exposed occupations, without being able to establish a definite causal link."
+              "text": " published on 17 November 2026 also shows job postings falling behind in the most exposed occupations, including roles for experienced workers. It can’t establish that AI caused the drop."
             }
           ]
         },
@@ -164,7 +155,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "These studies do not prove my 80% scenario. But they show that the question is no longer purely theoretical."
+              "text": "These studies don’t prove my 80% scenario. They show that the question has moved beyond theory."
             }
           ]
         }
@@ -172,13 +163,13 @@
     },
     {
       "id": "inegalites",
-      "title": "A society that could become far more unequal",
+      "title": "A society that could become much more unequal",
       "blocks": [
         {
           "type": "paragraph",
           "content": [
             {
-              "text": "What worries me most is not just the disappearance of certain jobs. It is the possible consequences for society as a whole."
+              "text": "My biggest concern goes beyond the jobs that might disappear. I worry about the effects on society as a whole."
             }
           ]
         },
@@ -186,7 +177,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "In an economy where automated systems handled a growing share of production, who would capture the productivity gains? Employees? Consumers through lower prices? Or mainly companies and the owners of these technologies?"
+              "text": "If automated systems handle a growing share of production, who will benefit from the productivity gains? Employees? Consumers paying lower prices? Or mainly businesses and the owners of those technologies?"
             }
           ]
         },
@@ -194,7 +185,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "I fear wealth could become increasingly concentrated. On one side, people able to own businesses, products, infrastructure or capital. On the other, a growing number of people whose skills had lost some of their economic value."
+              "text": "I fear wealth will become increasingly concentrated. On one side are people who own businesses, products, infrastructure or capital. On the other is a growing share of the population whose skills are losing value on the job market."
             }
           ]
         },
@@ -212,7 +203,7 @@
               }
             },
             {
-              "text": " has already identified this risk: AI could increase wealth inequality by raising returns on capital. The scale of that effect will depend in part on how the gains are distributed."
+              "text": " has already pointed to this risk: AI could widen wealth inequality by increasing returns on capital. Much depends on how the gains are shared."
             }
           ]
         },
@@ -220,7 +211,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "I also fear greater social and political polarisation. If some people see their career prospects deteriorate while others rapidly grow wealthier, trust in our institutions could come under severe strain. That could lead to more insecurity, social tension, resentment and political instability."
+              "text": "I’m also worried about greater social and political polarisation. If some people see their career prospects dim while others get rich quickly, trust in our institutions could take a hit. That could bring more insecurity, tension, resentment and political instability."
             }
           ]
         },
@@ -228,7 +219,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "None of this is inevitable. Public policy, redistribution, training and social protections will play a substantial role."
+              "text": "None of this is inevitable. Public policy, redistribution, training and social protection will all matter."
             }
           ]
         },
@@ -236,7 +227,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "Other projections are more optimistic: in 2025, the "
+              "text": "There are more optimistic projections. In 2025, the "
             },
             {
               "text": "World Economic Forum",
@@ -246,7 +237,7 @@
               }
             },
             {
-              "text": " projected a net increase of 78 million jobs by 2030, based on surveyed employers’ expectations and taking several major economic transformations into account, not just AI."
+              "text": " projected a net increase of 78 million jobs worldwide by 2030. The estimate is based on the expectations of employers surveyed and takes account of several major shifts, including AI."
             }
           ]
         },
@@ -254,7 +245,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "But I would rather consider a difficult scenario and prepare for it than rely entirely on society absorbing this transition without too much damage."
+              "text": "But I’d rather consider the difficult scenario and prepare for it than stake everything on our collective ability to absorb the shock with minimal harm."
             }
           ]
         }
@@ -262,13 +253,13 @@
     },
     {
       "id": "reflechir-maintenant",
-      "title": "I do not want to wait until the problem affects me personally",
+      "title": "I don’t want to wait until it affects me",
       "blocks": [
         {
           "type": "paragraph",
           "content": [
             {
-              "text": "Faced with this prospect, it would be easy to feel powerless. What can one person do about such a large transformation? I think that is precisely why we need to start thinking now."
+              "text": "Faced with a change this big, it’s easy to feel powerless. What can one person do? That’s exactly why I think we should start thinking about it now."
             }
           ]
         },
@@ -276,7 +267,15 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "Not necessarily to change jobs tomorrow, and certainly not to rush into abandoning a career built over years. But to ask a question we have rarely needed to consider this seriously:"
+              "text": "There’s no need to switch careers tomorrow or walk away from years of work. But it’s time to ask a question we’ve rarely needed to take this seriously:"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "content": [
+            {
+              "text": "If my skills lost much of their value over the next ten years, what could I rely on to keep living well?"
             }
           ]
         },
@@ -284,8 +283,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "If my professional skills lost much of their value over the next ten years, what could I rely on to keep making a decent living?",
-              "bold": true
+              "text": "For some people, the answer will be to specialise in a field that’s harder to automate. Others might go independent, build up assets, create a product or develop skills that involve working in the physical world."
             }
           ]
         },
@@ -293,7 +291,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "For some, the answer might be to develop expertise in a field that is harder to automate. For others, it could mean becoming self-employed, building assets, developing a product or acquiring skills tied to the physical world."
+              "text": "There’s probably no universal strategy. Someone who likes starting businesses, taking risks and selling will have different options from someone who values stability, prefers working alone and hates approaching potential customers."
             }
           ]
         },
@@ -301,15 +299,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "There is probably no universal strategy. Someone who enjoys starting businesses, taking risks and selling their services will not have the same options as someone who values stability above all, prefers working alone and hates looking for customers."
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "text": "That is exactly what made me want to create a tool."
+              "text": "That’s what made me want to build a tool."
             }
           ]
         }
@@ -323,7 +313,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "I wondered whether it would be possible to help people step back and reflect on how they work, their motivations and their preferences, then suggest directions to explore over the coming years. The idea is neither to predict their future nor to tell them which occupation to choose, but to introduce possibilities they might not have considered."
+              "text": "I wondered if I could help people take a step back from their situation and spot some directions to explore over the coming years. I wanted to help people find options they might not have thought of. Predicting their future or telling them which job to choose was never the aim."
             }
           ]
         },
@@ -331,7 +321,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "I designed a questionnaire to build a personal and professional profile from closed-ended questions."
+              "text": "Take two examples. A creative, independent person who wants to start a business but feels uncomfortable selling could explore building a small product that earns recurring revenue, ideally with a partner who enjoys sales."
             }
           ]
         },
@@ -339,7 +329,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "It explores several dimensions: how we reason, our relationship with creativity, our ability to learn, our need for autonomy, our preferences for interacting with others, and our attitudes towards entrepreneurship, financial risk and stability."
+              "text": "Someone else who enjoys meeting people and doing practical work could consider moving gradually into a role that combines close contact with customers, technical skills and hands-on work in the field."
             }
           ]
         },
@@ -347,7 +337,21 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "For example, do you enjoy building projects? Are you comfortable with uncertainty? Do you prefer working alone or in a team? Do you like selling? How much does control over your time matter to you?"
+              "text": "Both people are preparing for the same risk, but their paths look very different."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fonctionnement-outil",
+      "title": "Your turn",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "I put together a short interactive journey to explore five directions for thinking about how AI could affect work."
             }
           ]
         },
@@ -355,7 +359,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "These questions may seem far removed from artificial intelligence. Yet the answers can make a substantial difference to the strategies worth considering."
+              "text": "It starts out like a classic questionnaire. I’ll let you discover the rest: it only takes a few minutes."
             }
           ]
         },
@@ -363,76 +367,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "Take two examples. A creative, independent person drawn to entrepreneurship but uncomfortable with selling might explore building a small product that generates recurring revenue, perhaps with a partner whose skills complement their own."
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "text": "Someone else who enjoys human interaction and practical activities might consider gradually moving into an occupation combining local relationships, technical skills and hands-on work. Both people are responding to the same risk, but their strategies may be very different."
-            }
-          ]
-        },
-        {
-          "type": "heading",
-          "level": 3,
-          "id": "fonctionnement-outil",
-          "text": "How does the tool work?"
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "text": "The questionnaire offers a short version with 40 questions and an in-depth version with 80 questions."
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "text": "An algorithm analyses your stated preferences and offers "
-            },
-            {
-              "text": "five directions: a common foundation for everyone and four strategies selected from a catalogue",
-              "bold": true
-            },
-            {
-              "text": ". Each strategy comes with an explanation: why it might suit the profile, what its advantages and limitations would be, and which first steps could be considered."
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "text": "I deliberately chose a deterministic system rather than AI-generated recommendations. The rules are defined in advance: the same answers produce the same results. The aim is to offer a consistent, understandable starting point."
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "text": "The questionnaire is not a scientifically validated psychological test. It does not know your actual skills, your full financial situation or the opportunities available in your sector. It therefore cannot determine what will work for you."
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "text": "The aim is to help you structure your thinking and explore several options without having to start from a blank page."
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "text": "The financial foundation is suggested to everyone: it does not describe your actual circumstances. If your answers are too neutral or uncertain, the tool says so and offers four general directions instead of a personalised ranking. You can save your progress on this device and resume later in French or English."
+              "text": "It isn’t a psychological test or personalised advice. Just a starting point to structure your thinking without starting from a blank page."
             }
           ]
         },
@@ -450,7 +385,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "One idea often comes up in discussions about artificial intelligence: we should develop skills that machines will never be able to replace. Personally, I am not convinced this is the best approach."
+              "text": "An idea comes up a lot in conversations about AI: we should develop skills that machines will never be able to replace. I’m not convinced."
             }
           ]
         },
@@ -458,7 +393,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "First, because we do not really know what these systems will be capable of in ten years. Second, because a skill can remain useful while losing a great deal of its value in the labour market. Being excellent at your job does not guarantee that a company will still need to pay as many people to do it."
+              "text": "For one thing, nobody really knows what these systems will be capable of in ten years. For another, a skill can still be useful while losing much of its value on the job market. Being excellent at your job doesn’t guarantee that a company will still need to pay as many people to do it."
             }
           ]
         },
@@ -466,7 +401,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "I prefer to think about it differently: rather than focusing only on becoming irreplaceable, why not try to become gradually less dependent on our ability to sell our labour?"
+              "text": "I prefer to look at it differently. What if we tried to become a little less dependent over time on our ability to sell our labour, without devoting all our efforts to becoming irreplaceable?"
             }
           ]
         },
@@ -474,7 +409,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "That could involve owning assets, developing an additional source of income, learning to use AI effectively, building a professional reputation, maintaining a network or having skills that transfer across several sectors."
+              "text": "That could mean owning assets, developing a second source of income, learning to use AI well, building a reputation, keeping up a professional network or developing skills you can use across several sectors."
             }
           ]
         },
@@ -482,7 +417,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "These are possibilities, not guarantees. A product can fail, an investment can lose value and a career change can prove difficult. But developing more options can help us avoid depending on a single outcome."
+              "text": "These are possibilities. A product can fail, an investment can lose value, and a career change can prove difficult. But having several options means you aren’t staking everything on one."
             }
           ]
         }
@@ -490,13 +425,13 @@
     },
     {
       "id": "anticiper",
-      "title": "In ten years, I would like to know I planned ahead",
+      "title": "In ten years, I’d like to know I planned ahead",
       "blocks": [
         {
           "type": "paragraph",
           "content": [
             {
-              "text": "I may be wrong about the scale of this transformation. Perhaps AI will create far more jobs than it destroys. Perhaps progress will slow down. Perhaps we will collectively find new economic balances. I hope we do."
+              "text": "I could be wrong about the scale of what’s happening. Maybe AI will create many more jobs than it destroys. Maybe progress will slow down. Maybe we’ll find a new balance together. I sincerely hope so."
             }
           ]
         },
@@ -504,7 +439,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "But if my scenario comes close to reality, people who started thinking and diversifying their options today could have valuable room to manoeuvre. I do not want to wait until I face this situation personally before I start asking the right questions."
+              "text": "But if my scenario comes close to reality, those who start thinking about it and making more options for themselves today will have valuable room to manoeuvre. I don’t want to wait until it affects me directly to start asking the right questions."
             }
           ]
         },
@@ -512,7 +447,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "I think we are living through a major transition, and the next five to ten years could profoundly change how we work, earn a living and organise society."
+              "text": "I think we’re going through a major transition, and the next five to ten years could change the way we work, make a living and organise society."
             }
           ]
         },
@@ -520,11 +455,15 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "The question I want to ask therefore goes beyond choosing an occupation: "
-            },
+              "text": "The question I want to ask goes beyond which job to choose:"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "content": [
             {
-              "text": "“How can I build a position today that will let me retain some freedom, even if the world of work changes radically?”",
-              "bold": true
+              "text": "How can I do things now that give me some freedom later, even if the world of work changes radically?"
             }
           ]
         },
@@ -532,7 +471,7 @@
           "type": "paragraph",
           "content": [
             {
-              "text": "That is the reflection I would like to encourage with this article and this tool."
+              "text": "That’s what I wanted to encourage people to think about, with this article and with the tool."
             }
           ]
         }

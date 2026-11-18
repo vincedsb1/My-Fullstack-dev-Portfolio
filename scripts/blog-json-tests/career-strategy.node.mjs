@@ -19,7 +19,14 @@ for (const [locale, slug] of [
   test(`career strategy ${locale}: native JSON module accepts zero props, rejects duplicate and arbitrary props`, () => {
     const article = read(locale, slug);
     assert.doesNotThrow(() => validateJsonArticle(article));
-    const section = article.sections.find((s) => s.id === "outil-strategie");
+    const section = article.sections.find(
+      (s) => s.id === "fonctionnement-outil",
+    );
+    const text = JSON.stringify(article);
+    assert.doesNotMatch(
+      text,
+      /Quelques précisions pratiques|A few practical points/,
+    );
     assert.equal(
       section.blocks.filter(
         (b) =>
