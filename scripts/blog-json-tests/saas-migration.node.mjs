@@ -49,7 +49,15 @@ test("migration SaaS : intégralité du contenu, emphases, code, liens et ordre 
 test("migration SaaS : métadonnées inchangées et navigation historique conservée", () => {
   const { renderer, ...meta } = baseline.metadata;
   assert.equal(renderer, "editorial");
-  const { translationKey, ...currentMeta } = article.meta;
+  const { translationKey, cover, coverAlt, ...currentMeta } = article.meta;
+  assert.equal(
+    cover,
+    "/blog/internationaliser-saas-lancement/cover-photo.webp",
+  );
+  assert.equal(
+    coverAlt,
+    "Vue aérienne d’immeubles illuminés à la tombée du jour.",
+  );
   assert.equal(translationKey, "saas-internationalization-launch");
   assert.deepEqual(currentMeta, meta);
   assert.deepEqual(article.related.slugs, ["guide-premier-emploi-developpeur"]);

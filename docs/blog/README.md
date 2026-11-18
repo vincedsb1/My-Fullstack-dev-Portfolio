@@ -12,6 +12,8 @@ Branche de consolidation : `dev04`, issue de `dev03` à `8ec765f38b3bc0e69b41a72
 6. [ETAPE_5_MIGRATION_GUIDE.md](ETAPE_5_MIGRATION_GUIDE.md) : bascule publique du guide, identité commune, contenu et sauvegardes ; [PREPARATION_ETAPE_5.md](PREPARATION_ETAPE_5.md) conserve les critères d’entrée.
 7. [contracts/internationaliser-saas-v1.json](contracts/internationaliser-saas-v1.json) : export du rendu MDX avant migration, contenu et SEO ; [contracts/guide-checklist-v1.json](contracts/guide-checklist-v1.json) : clé, format, 14 IDs et libellés à conserver.
 
+8. [ASSISTANT_STRATEGIES_IA.md](ASSISTANT_STRATEGIES_IA.md) : module de questionnaire/portrait/conseils, ressources FR/EN et sauvegarde locale facultative ; [spécifications](SPECIFICATIONS_ASSISTANT_STRATEGIES_IA.md).
+
 [01_inventaire_reference_visuelle_blog.md](01_inventaire_reference_visuelle_blog.md) et [03_audit_critique_showcase_blog.md](03_audit_critique_showcase_blog.md) conservent l’analyse historique du prototype. Leur actualisation `dev04` distingue ce qui a été résolu des observations de l’ancien commit. L’[aperçu HTML](previews/showcase-preview.html) est historique et non contractuel ; la référence est la route React.
 
 ## Points d’entrée

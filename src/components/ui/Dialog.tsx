@@ -9,12 +9,20 @@ export function Dialog({
   title,
   closeLabel,
   children,
+  className = "",
+  dialogId,
+  closeOnBackdrop = true,
+  lockScroll = false,
 }: {
   open: boolean;
   onClose: () => void;
   title: string;
   closeLabel: string;
   children: ReactNode;
+  className?: string;
+  dialogId?: string;
+  closeOnBackdrop?: boolean;
+  lockScroll?: boolean;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   const id = useId();
@@ -22,18 +30,25 @@ export function Dialog({
     const dialog = ref.current;
     if (!dialog) return;
     const previous = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    if (open && lockScroll) document.body.style.overflow = "hidden";
     if (open && !dialog.open) dialog.showModal();
     else if (!open && dialog.open) dialog.close();
     return () => {
+      if (open && lockScroll) document.body.style.overflow = previousOverflow;
       if (dialog.open) dialog.close();
       if (open) previous?.focus({ preventScroll: true });
     };
-  }, [open]);
+  }, [open, lockScroll]);
   return (
     <dialog
       ref={ref}
+      id={dialogId}
       aria-labelledby={id}
-      onCancel={onClose}
+      onCancel={(event) => {
+        event.preventDefault();
+        onClose();
+      }}
       onKeyDown={(event) => {
         if (event.key !== "Tab") return;
         const elements = Array.from(
@@ -60,6 +75,7 @@ export function Dialog({
       onClick={(e) => {
         const bounds = e.currentTarget.getBoundingClientRect();
         if (
+          closeOnBackdrop &&
           e.target === e.currentTarget &&
           (e.clientX < bounds.left ||
             e.clientX > bounds.right ||
@@ -68,7 +84,7 @@ export function Dialog({
         )
           onClose();
       }}
-      className="m-auto max-h-[90dvh] w-11/12 max-w-3xl overflow-auto rounded-panel border border-border bg-surface-raised p-6 text-content shadow-overlay backdrop:bg-black/70 backdrop:backdrop-blur-sm"
+      className={`m-auto max-h-[90dvh] w-11/12 max-w-3xl overflow-auto rounded-panel border border-border bg-surface-raised p-6 text-content shadow-overlay backdrop:bg-black/70 backdrop:backdrop-blur-sm ${className}`}
     >
       <div className="mb-6 flex items-center justify-between gap-4">
         <h2 id={id} className="text-h3 font-bold">

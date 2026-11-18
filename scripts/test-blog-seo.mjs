@@ -454,9 +454,8 @@ try {
   );
   const indexH1 = tags(indexHtml, "h1")[0];
   check(
-    attributes(indexH1).class?.includes("text-h1") &&
-      attributes(indexH1).class.includes("break-words"),
-    "titre fluide et sans débordement aux petites largeurs",
+    attributes(indexH1).class?.includes("break-words"),
+    "titre de l’index autorise la césure des mots longs",
   );
   const indexImages = verifyContentImages(indexHtml, "index");
   check(

@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "npm run blog:validate && npm run projects:validate",
-    "prebuild": "npm run blog:validate && npm run projects:validate",
+    "predev": "npm run career:prepare && npm run blog:validate && npm run projects:validate",
+    "prebuild": "npm run career:prepare && npm run blog:validate && npm run projects:validate",
     "dev": "next dev -p 3006",
     "build": "next build",
     "start": "next start",
@@ -20,7 +20,9 @@
     "analyze": "ANALYZE=true next build --webpack",
     "blog:test:json": "node --test scripts/blog-json-tests/*.node.mjs",
     "blog:test:publication": "node scripts/test-blog-json-publication.mjs",
-    "blog:test:preview": "BLOG_PREVIEW=1 playwright test --config scripts/blog-publication-tests/playwright.config.ts"
+    "blog:test:preview": "BLOG_PREVIEW=1 playwright test --config scripts/blog-publication-tests/playwright.config.ts",
+    "career:prepare": "node scripts/prepare-career-strategy.mjs",
+    "pretest": "npm run career:prepare"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

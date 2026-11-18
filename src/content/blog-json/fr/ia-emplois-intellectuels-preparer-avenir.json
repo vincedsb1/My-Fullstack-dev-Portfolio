@@ -1,0 +1,542 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "title": "Je pense que l’IA pourrait remplacer 80 % des emplois intellectuels. Et je crois qu’il faut s’y préparer maintenant.",
+    "seoTitle": "IA et emploi : se préparer maintenant",
+    "description": "Pourquoi je redoute une forte automatisation des métiers intellectuels, ce que disent les études et comment réfléchir à une stratégie personnelle.",
+    "excerpt": "Les 80 % sont mon hypothèse, pas une statistique. Voici pourquoi je prends ce risque au sérieux et comment je veux aider chacun à réfléchir à son avenir.",
+    "category": "Carrière",
+    "slug": "ia-emplois-intellectuels-preparer-avenir",
+    "locale": "fr",
+    "translationKey": "ai-knowledge-work-personal-strategy",
+    "publishedAt": "2026-11-18",
+    "status": "published"
+  },
+  "introBlocks": [
+    {
+      "type": "lead",
+      "content": [
+        {
+          "text": "Nous sommes peut-être au début d’une transformation économique et sociale bien plus importante que nous ne l’imaginons. Voici pourquoi je pense que les dix prochaines années pourraient bouleverser notre rapport au travail, et pourquoi j’ai décidé de créer un outil pour aider chacun à réfléchir à son avenir."
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "une-conviction",
+      "title": "Une conviction qui peut sembler excessive",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Je vais commencer par une affirmation assez radicale : "
+            },
+            {
+              "text": "je pense que, d’ici cinq à dix ans, l’intelligence artificielle pourrait rendre inutiles jusqu’à 80 % des postes actuels dans les métiers intellectuels exercés principalement derrière un ordinateur.",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Ce chiffre n’est pas issu d’une étude. C’est mon hypothèse personnelle, et je ne prétends pas pouvoir la démontrer aujourd’hui."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Je suis développeur. Je travaille avec ces technologies, je les utilise pour construire des applications et j’observe à quelle vitesse elles progressent. Plus je les utilise, plus j’ai du mal à imaginer que nos organisations professionnelles puissent rester telles qu’elles sont."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Il y a encore quelques années, développer une application nécessitait des semaines ou des mois de travail. Aujourd’hui, certaines tâches qui demandaient plusieurs journées peuvent être réalisées en quelques minutes. Ce n’est pas encore universel, les erreurs existent et la complexité ne disparaît pas. Mais la trajectoire me semble difficile à ignorer."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Et surtout, je ne vois aucune raison de penser que cette progression va simplement s’arrêter au niveau actuel."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bouleversement-economique",
+      "title": "Le véritable bouleversement sera économique",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "On présente souvent l’IA comme un outil qui va nous rendre plus productifs. C’est vrai. Mais je trouve qu’on s’arrête beaucoup trop souvent à cette première conséquence."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Imaginons une entreprise qui emploie dix personnes pour produire un service numérique. Demain, grâce à l’IA, trois personnes pourraient peut-être réaliser le même travail, voire davantage. L’entreprise aurait alors plusieurs possibilités : produire plus, baisser ses prix, développer de nouveaux services… ou réduire ses effectifs."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Certains pensent que la hausse de productivité créera suffisamment de nouvelles activités pour compenser les emplois supprimés. C’est possible. L’histoire économique nous a déjà montré que les innovations pouvaient créer des métiers que personne n’avait anticipés."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Mais cette fois, quelque chose me semble différent : "
+            },
+            {
+              "text": "l’IA ne remplace pas seulement certaines tâches. Elle progresse sur notre capacité même à apprendre, raisonner, créer et produire des solutions.",
+              "bold": true
+            },
+            {
+              "text": " Si de nouveaux métiers apparaissent, qu’est-ce qui garantit qu’ils ne seront pas eux aussi rapidement automatisés ?"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Même si les entreprises conservent leurs salariés, elles pourraient simplement cesser de recruter autant. Le chômage ne viendrait alors pas uniquement des licenciements, mais aussi de la disparition progressive des opportunités."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "On commence d’ailleurs à observer des signaux. En août 2026, une "
+            },
+            {
+              "text": "étude de Stanford",
+              "link": {
+                "href": "https://digitaleconomy.stanford.edu/news/canariesaug26/",
+                "external": true
+              }
+            },
+            {
+              "text": " constatait que, chez les Américains de 22 à 25 ans, l’emploi dans les professions les plus exposées à l’IA était inférieur d’environ 19 % à ce qu’aurait donné une évolution parallèle aux métiers moins exposés. Il s’agit d’un écart relatif, pas de 19 % d’emplois supprimés par l’IA. Les chercheurs précisent que leurs données ne permettent pas d’établir quelle part de cet écart est causée par l’IA générative, ni de conclure à des suppressions d’emplois généralisées à l’échelle de l’économie."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "En France, une "
+            },
+            {
+              "text": "étude de Coface publiée le 17 novembre 2026",
+              "link": {
+                "href": "https://www.coface.com/fr/actualites-economie-conseils-d-experts/ia-et-emploi-quatre-ans-apres-le-lancement-de-chatgpt-les-offres-d-emploi-des-metiers-les-plus-exposes-decrochent",
+                "external": true
+              }
+            },
+            {
+              "text": " observe également un décrochage des offres d’emploi dans les professions les plus exposées, sans pouvoir en établir une causalité certaine."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Ces études ne prouvent pas mon scénario des 80 %. Mais elles montrent que la question n’est plus uniquement théorique."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inegalites",
+      "title": "Une société qui pourrait devenir beaucoup plus inégalitaire",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Ce qui m’inquiète le plus n’est pas seulement la disparition de certains emplois. Ce sont les conséquences possibles sur l’ensemble de notre société."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Dans une économie où une part croissante de la production serait assurée par des systèmes automatisés, qui récupérerait les gains de productivité ? Les salariés ? Les consommateurs grâce à des prix plus faibles ? Ou principalement les entreprises et les propriétaires de ces technologies ?"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Je crains une concentration croissante de la richesse. D’un côté, des personnes capables de posséder des entreprises, des produits, des infrastructures ou du capital. De l’autre, une population toujours plus nombreuse dont les compétences auraient perdu une partie de leur valeur économique."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Le "
+            },
+            {
+              "text": "Fonds monétaire international",
+              "link": {
+                "href": "https://www.imf.org/en/publications/staff-discussion-notes/issues/2024/01/14/gen-ai-artificial-intelligence-and-the-future-of-work-542379",
+                "external": true
+              }
+            },
+            {
+              "text": " a déjà identifié ce risque : l’IA pourrait accroître les inégalités de patrimoine en augmentant les revenus du capital. L’ampleur de cet effet dépendra notamment de la manière dont les gains seront distribués."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Je crains également une polarisation sociale et politique plus importante. Si une partie de la population voit ses perspectives professionnelles se dégrader tandis qu’une autre s’enrichit rapidement, la confiance dans nos institutions pourrait être mise à rude épreuve. On pourrait alors connaître davantage de précarité, de tensions sociales, de ressentiment et d’instabilité politique."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Rien de tout cela n’est inévitable. Les politiques publiques, la redistribution, la formation et les protections sociales joueront un rôle considérable."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "D’autres projections sont d’ailleurs plus optimistes : le "
+            },
+            {
+              "text": "Forum économique mondial",
+              "link": {
+                "href": "https://www.weforum.org/publications/the-future-of-jobs-report-2025/2-jobs-outlook",
+                "external": true
+              }
+            },
+            {
+              "text": " envisageait en 2025 une création nette de 78 millions d’emplois d’ici 2030, à partir des attentes d’employeurs interrogés et en tenant compte de plusieurs grandes transformations économiques, pas uniquement de l’IA."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Mais je préfère envisager un scénario difficile et m’y préparer, plutôt que de miser entièrement sur le fait que notre société saura absorber cette transition sans trop de dégâts."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reflechir-maintenant",
+      "title": "Je ne veux pas attendre que le problème me concerne directement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Face à cette perspective, il serait facile de se sentir impuissant. Que peut faire un individu face à une transformation aussi importante ? Je pense justement que c’est maintenant qu’il faut commencer à réfléchir."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Pas nécessairement pour changer de métier demain. Encore moins pour abandonner précipitamment une carrière construite pendant des années. Mais pour se poser une question que nous avons rarement eu besoin de nous poser aussi sérieusement :"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Si mes compétences professionnelles perdaient une grande partie de leur valeur dans les dix prochaines années, sur quoi pourrais-je m’appuyer pour continuer à vivre correctement ?",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Pour certains, la réponse pourrait être de développer une expertise dans un domaine moins facilement automatisable. Pour d’autres, de créer une activité indépendante, de construire un patrimoine, de développer un produit ou d’acquérir des compétences associées au monde physique."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Il n’existe probablement pas de stratégie universelle. Une personne qui aime entreprendre, prendre des risques et vendre ses services n’aura pas les mêmes possibilités qu’une personne qui recherche avant tout la stabilité, préfère travailler seule et déteste la prospection commerciale."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "C’est précisément ce qui m’a donné envie de créer un outil."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "outil-strategie",
+      "title": "Un outil pour réfléchir à sa propre stratégie",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Je me suis demandé s’il serait possible d’aider chacun à prendre du recul sur son fonctionnement, ses motivations et ses préférences, puis de lui proposer des directions à explorer pour les prochaines années. L’idée n’est ni de prédire son avenir, ni de lui dire quel métier exercer, mais de lui faire découvrir des pistes auxquelles il n’aurait pas nécessairement pensé."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "J’ai donc conçu un questionnaire permettant de dresser un portrait personnel et professionnel à partir de questions fermées."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Il explore plusieurs dimensions : notre manière de raisonner, notre rapport à la créativité, notre capacité à apprendre, notre besoin d’autonomie, nos préférences relationnelles, notre rapport à l’entrepreneuriat, au risque financier et à la stabilité."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Par exemple, est-ce que vous aimez construire des projets ? Êtes-vous à l’aise avec l’incertitude ? Préférez-vous travailler seul ou en équipe ? Aimez-vous vendre ? Quelle importance accordez-vous à la liberté de votre temps ?"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Ces questions peuvent sembler éloignées de l’intelligence artificielle. Pourtant, leurs réponses peuvent profondément modifier les stratégies envisageables."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Prenons deux exemples. Une personne créative, autonome, attirée par l’entrepreneuriat mais peu à l’aise avec la vente pourrait explorer la création d’un petit produit générant des revenus récurrents, éventuellement avec un partenaire complémentaire."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Une autre, qui apprécie les interactions humaines et les activités concrètes, pourrait envisager une reconversion progressive vers un métier associant relation de proximité, compétences techniques et interventions physiques. Ces deux personnes cherchent à répondre au même risque, mais leurs stratégies peuvent être très différentes."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "fonctionnement-outil",
+          "text": "Comment fonctionne l’outil ?"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Le questionnaire propose une version courte de 40 questions et une version approfondie de 80 questions."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "À partir des réponses, un algorithme analyse les préférences déclarées et propose "
+            },
+            {
+              "text": "cinq pistes : un socle commun à tous et quatre stratégies sélectionnées dans un catalogue",
+              "bold": true
+            },
+            {
+              "text": ". Chaque stratégie est accompagnée d’une explication : pourquoi elle pourrait correspondre au profil, quels seraient ses avantages, ses limites et quelles premières actions pourraient être envisagées."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "J’ai volontairement choisi un système déterministe plutôt qu’une génération de recommandations par intelligence artificielle. Les règles sont définies à l’avance : mêmes réponses, mêmes résultats. L’objectif est d’offrir un point de départ cohérent et compréhensible."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Le questionnaire n’est pas un test psychologique scientifiquement validé. Il ne connaît ni vos compétences réelles, ni votre situation financière complète, ni les opportunités disponibles dans votre secteur. Il ne peut donc pas déterminer ce qui fonctionnera pour vous."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "L’objectif est de vous aider à structurer votre réflexion et à explorer plusieurs options, sans devoir commencer par une page blanche."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Le socle financier est proposé à tous : il ne décrit pas votre situation réelle. Si vos réponses sont trop neutres ou incertaines, l’outil le signale et propose quatre pistes générales plutôt qu’un classement personnalisé. Vous pouvez enregistrer votre progression sur cet appareil pour reprendre plus tard, en français ou en anglais."
+            }
+          ]
+        },
+        {
+          "type": "custom",
+          "component": "career-strategy-assistant"
+        }
+      ]
+    },
+    {
+      "id": "moins-dependant",
+      "title": "L’objectif n’est pas de devenir irremplaçable",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Il y a une idée qui revient souvent dans les discussions sur l’intelligence artificielle : il faudrait développer des compétences que les machines ne pourront jamais remplacer. Personnellement, je ne suis pas convaincu que ce soit la meilleure approche."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "D’abord parce que nous ne savons pas réellement de quoi ces systèmes seront capables dans dix ans. Ensuite parce qu’une compétence peut rester utile tout en perdant énormément de valeur sur le marché du travail. Être excellent dans son métier ne garantit pas qu’une entreprise aura encore besoin de payer autant de personnes pour l’exercer."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Je préfère donc raisonner autrement : plutôt que de chercher uniquement à devenir irremplaçable, pourquoi ne pas essayer de devenir progressivement moins dépendant de notre capacité à vendre notre travail ?"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Cela peut passer par plusieurs choses : posséder des actifs, développer une source de revenus complémentaire, apprendre à exploiter efficacement l’IA, construire une réputation professionnelle, entretenir un réseau ou disposer de compétences transférables dans plusieurs secteurs."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Ce sont des pistes, pas des garanties. Un produit peut échouer, un investissement peut perdre de la valeur et une reconversion peut se révéler difficile. Mais multiplier les possibilités peut permettre de ne pas dépendre d’une seule issue."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "anticiper",
+      "title": "Dans dix ans, j’aimerais pouvoir me dire que j’ai anticipé",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Je me trompe peut-être sur l’ampleur de cette transformation. Peut-être que l’IA créera beaucoup plus d’emplois qu’elle n’en détruira. Peut-être que les progrès ralentiront. Peut-être que nous trouverons collectivement de nouveaux équilibres économiques. Et je l’espère."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Mais si mon scénario se rapproche de la réalité, les personnes qui auront commencé à réfléchir et à diversifier leurs possibilités dès aujourd’hui pourraient disposer d’une marge de manœuvre précieuse. Je n’ai pas envie d’attendre d’être personnellement confronté à cette situation pour commencer à me poser les bonnes questions."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "Je pense que nous vivons une période de transition majeure, et que les cinq à dix prochaines années pourraient modifier profondément notre manière de travailler, de gagner notre vie et d’organiser notre société."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "La question que j’ai envie de poser dépasse donc le choix d’un métier : "
+            },
+            {
+              "text": "« Comment construire aujourd’hui une situation qui me permettra de conserver une certaine liberté, même si le monde du travail change radicalement ? »",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "C’est cette réflexion que j’aimerais encourager avec cet article et cet outil."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

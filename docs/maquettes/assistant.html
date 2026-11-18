@@ -1,0 +1,1230 @@
+<!doctype html>
+<html lang="fr" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Assistant Guidé — Vision 2026</title>
+  
+  <style>
+    :root {
+      /* Palette de base (Zinc/Slate premium - Light) */
+      --gray-25: #FCFDFD;
+      --gray-50: #FAFAFA;
+      --gray-100: #F4F4F5;
+      --gray-200: #E4E4E7;
+      --gray-300: #D4D4D8;
+      --gray-400: #A1A1AA;
+      --gray-500: #71717A;
+      --gray-600: #52525B;
+      --gray-700: #3F3F46;
+      --gray-900: #18181B;
+
+      /* Brand (Indigo électrique) - Indépendante et conservée */
+      --brand-50: #EEF2FF;
+      --brand-100: #E0E7FF;
+      --brand-400: #818CF8;
+      --brand-500: #6366F1;
+      --brand-600: #4F46E5;
+      --brand-glow: rgba(99, 102, 241, 0.4);
+
+      /* Surfaces & Glassmorphism (Light) */
+      --bg-app: #F8F9FB;
+      --bg-panel: rgba(255, 255, 255, 0.7);
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-card-hover: rgba(255, 255, 255, 1);
+      --bg-card-selected: rgba(238, 242, 255, 0.7);
+      
+      /* Mesh Gradient Colors (Light) */
+      --mesh-1: hsla(220, 100%, 95%, 1);
+      --mesh-2: hsla(280, 100%, 97%, 1);
+      --mesh-3: hsla(190, 100%, 95%, 1);
+
+      /* Text (Light) */
+      --text-primary: #09090B;
+      --text-secondary: #52525B;
+      --text-tertiary: #A1A1AA;
+
+      /* Borders (Light) */
+      --border-subtle: rgba(0, 0, 0, 0.04);
+      --border-medium: rgba(0, 0, 0, 0.08);
+      --border-glass: rgba(255, 255, 255, 0.6);
+      --border-selected: var(--brand-500);
+      
+      /* Elevations (Light) */
+      --shadow-glass: 0 24px 48px -12px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(255,255,255,0.5) inset;
+      --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.01), 0 0 0 1px var(--border-subtle);
+      --shadow-card-hover: 0 12px 32px -8px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.03), 0 0 0 1px var(--border-medium);
+      --shadow-card-selected: 0 8px 24px -8px var(--brand-glow), 0 0 0 2px var(--brand-500);
+      --shadow-btn: inset 0 1px 1px rgba(255,255,255,0.2), 0 4px 12px var(--brand-glow);
+
+      /* Geometrie & Typographie Système Standalone */
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --radius-panel: 32px;
+      --radius-card: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+
+      /* Animations */
+      --ease-spring: cubic-bezier(0.2, 0.9, 0.3, 1.1);
+      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+      --ui-lab-button-radius-ratio: 0.4;
+}
+
+    /* Mode Dark validé : Warm Dark (Charcoal/Taupe/Ivoire) */
+    [data-theme="dark"] {
+      --bg-app: #151413;
+      --bg-panel: rgba(32, 30, 29, 0.85); /* #201E1D ajusté avec alpha pour le blur */
+      --bg-card: #292625;
+      --bg-card-hover: #292625;
+      --bg-card-selected: rgba(99, 102, 241, 0.1); /* Brand non marron */
+      
+      /* Mesh warm très subtil */
+      --mesh-1: hsla(30, 10%, 15%, 1);
+      --mesh-2: hsla(20, 15%, 12%, 1);
+      --mesh-3: hsla(40, 10%, 14%, 1);
+
+      --text-primary: #F0EFEA;
+      --text-secondary: #A39E98;
+      --text-tertiary: #7b766f;
+
+      --border-subtle: #312E2C;
+      --border-medium: #413D3A;
+      --border-glass: rgba(49, 46, 44, 0.04);
+      
+      --shadow-glass: 0 32px 64px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255,255,255,0.03) inset;
+      --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-subtle);
+      --shadow-card-hover: 0 16px 40px -8px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border-medium);
+      --shadow-card-selected: 0 8px 32px -8px var(--brand-glow), 0 0 0 2px var(--brand-500);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg-app: #151413;
+        --bg-panel: rgba(32, 30, 29, 0.85);
+        --bg-card: #292625;
+        --bg-card-hover: #292625;
+        --bg-card-selected: rgba(99, 102, 241, 0.1);
+        --mesh-1: hsla(30, 10%, 15%, 1);
+        --mesh-2: hsla(20, 15%, 12%, 1);
+        --mesh-3: hsla(40, 10%, 14%, 1);
+        --text-primary: #F0EFEA;
+        --text-secondary: #A39E98;
+        --text-tertiary: #7b766f;
+        --border-subtle: #312E2C;
+        --border-medium: #413D3A;
+        --border-glass: rgba(49, 46, 44, 0.04);
+        --shadow-glass: 0 32px 64px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255,255,255,0.03) inset;
+        --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-subtle);
+        --shadow-card-hover: 0 16px 40px -8px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border-medium);
+        --shadow-card-selected: 0 8px 32px -8px var(--brand-glow), 0 0 0 2px var(--brand-500);
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      background-color: var(--bg-app);
+      transition: background-color 0.5s var(--ease-smooth), color 0.5s var(--ease-smooth);
+    }
+
+    .bg-mesh {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: 
+        radial-gradient(at 20% 0%, var(--mesh-1) 0px, transparent 50%),
+        radial-gradient(at 80% 20%, var(--mesh-2) 0px, transparent 50%),
+        radial-gradient(at 40% 80%, var(--mesh-3) 0px, transparent 50%);
+      filter: blur(80px) saturate(150%);
+      opacity: 0.8;
+      animation: meshPulse 20s ease-in-out infinite alternate;
+      transition: all 0.5s var(--ease-smooth);
+    }
+
+    @keyframes meshPulse {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.1) translate(-2%, 2%); }
+    }
+
+    h1, h2, p, button, fieldset { margin: 0; padding: 0; border: none; }
+    button { font: inherit; color: inherit; background: transparent; cursor: pointer; outline: none; }
+    
+    :focus-visible { outline: 2px solid var(--brand-500); outline-offset: 4px; border-radius: 6px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    .hidden { display: none !important; }
+
+    .app-wrapper {
+      padding: clamp(24px, 5vw, 64px) 24px;
+      display: flex;
+      justify-content: center;
+      flex: 1;
+      align-items: center;
+    }
+
+    .glass-panel {
+      width: 100%;
+      max-width: 900px;
+      background: var(--bg-panel);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-panel);
+      box-shadow: var(--shadow-glass);
+      padding: clamp(32px, 5vw, 56px);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      min-height: 600px;
+    }
+
+    .wizard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+
+    .stepper-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--border-subtle);
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 4px;
+      background: var(--text-tertiary);
+      transition: all 0.5s var(--ease-spring);
+      position: relative;
+    }
+
+    .step-dot.completed { background: var(--brand-500); opacity: 0.5; }
+    .step-dot.active { width: 24px; background: var(--brand-500); box-shadow: 0 0 12px var(--brand-glow); }
+
+    .stepper-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+    }
+
+    .step-title-group {
+      text-align: center;
+      margin-bottom: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .step-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--brand-600);
+      background: var(--brand-50);
+      padding: 6px 16px;
+      border-radius: 100px;
+    }
+    [data-theme="dark"] .step-eyebrow { background: rgba(99, 102, 241, 0.15); color: var(--brand-400); }
+
+    .optional-badge {
+      background: transparent;
+      border: 1px solid currentColor;
+      padding: 2px 8px;
+      border-radius: 100px;
+      font-size: 10px;
+    }
+
+    .step-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .step-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .wizard-content {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-panel {
+      display: none;
+      flex-direction: column;
+      animation: smoothReveal 0.6s var(--ease-spring) forwards;
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+    }
+
+    .step-panel.active { display: flex; }
+
+    @keyframes smoothReveal {
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .card-radio {
+      position: relative;
+      display: block;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .card-radio input { position: absolute; opacity: 0; width: 0; height: 0; }
+
+    .card-surface {
+      position: relative;
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: all 0.4s var(--ease-spring);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .card-radio:hover .card-surface {
+      background: var(--bg-card-hover);
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-4px);
+    }
+
+    .card-radio input:focus-visible + .card-surface {
+      outline: 2px solid var(--brand-500);
+      outline-offset: 4px;
+    }
+
+    .card-radio input:checked + .card-surface {
+      background: var(--bg-card-selected);
+      box-shadow: var(--shadow-card-selected);
+      transform: translateY(0) scale(1.01);
+    }
+
+    .card-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--bg-app);
+      box-shadow: 0 2px 8px var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      transition: all 0.4s var(--ease-spring);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .card-radio input:checked + .card-surface .card-icon-wrap {
+      background: var(--brand-500);
+      color: white;
+      box-shadow: 0 8px 16px var(--brand-glow);
+      transform: scale(1.05);
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+      transition: color 0.3s ease;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .premium-check {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--brand-500);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.5) rotate(-15deg);
+      transition: all 0.4s var(--ease-spring);
+      box-shadow: 0 4px 12px var(--brand-glow);
+    }
+
+    .premium-check svg {
+      width: 14px; height: 14px; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; fill: none;
+      stroke-dasharray: 20; stroke-dashoffset: 20;
+    }
+
+    .card-radio input:checked + .card-surface .premium-check { opacity: 1; transform: scale(1) rotate(0); }
+    .card-radio input:checked + .card-surface .premium-check svg { transition: stroke-dashoffset 0.4s 0.2s ease-out; stroke-dashoffset: 0; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    
+    /* Mode Large (Étape 2) */
+    .card-large .card-surface { padding: 0; gap: 0; }
+    .card-large-illu {
+      height: 180px;
+      background: var(--bg-app);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .card-large-body { padding: 24px; }
+    .card-large .premium-check { top: 16px; right: 16px; }
+
+    /* Mode Horizontal (Étape 4) */
+    .grid-list { display: flex; flex-direction: column; gap: 16px; max-width: 700px; margin: 0 auto; width: 100%; }
+    .card-horizontal .card-surface { flex-direction: row; align-items: center; padding: 20px 24px; gap: 24px; border-radius: var(--radius-md); }
+    .card-horizontal .card-icon-wrap { margin-bottom: 0; flex-shrink: 0; }
+    .card-horizontal .premium-check { position: relative; top: auto; right: auto; margin-left: auto; flex-shrink: 0; }
+    .card-horizontal .card-title { margin-bottom: 4px; }
+
+    .wizard-nav {
+      margin-top: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: calc(54px * var(--ui-lab-button-radius-ratio));
+      transition: all 0.3s var(--ease-spring);
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+    }
+
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); }
+    .btn:active:not(:disabled) { transform: scale(0.96); }
+
+    .btn-primary {
+      background: linear-gradient(180deg, var(--brand-500) 0%, var(--brand-600) 100%);
+      color: #FFF;
+      box-shadow: var(--shadow-btn);
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    .btn-primary:hover:not(:disabled) {
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 8px 20px var(--brand-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-card);
+    }
+    .btn-ghost:hover:not(:disabled) {
+      color: var(--text-primary);
+      background: var(--bg-card-hover);
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-icon { width: 18px; height: 18px; stroke-width: 2.5; stroke: currentColor; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+    .summary-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-card);
+      padding: 8px;
+      box-shadow: var(--shadow-card);
+      backdrop-filter: blur(12px);
+      max-width: 700px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .summary-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-radius: var(--radius-md);
+      transition: background 0.3s;
+    }
+    .summary-row:hover { background: var(--border-subtle); }
+    .summary-row:not(:last-child) { border-bottom: 1px solid var(--border-subtle); border-radius: 0; }
+
+    .summary-content { display: flex; flex-direction: column; gap: 4px; overflow: hidden; }
+    .summary-label { font-size: 13px; color: var(--text-tertiary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .summary-value { font-size: 16px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;}
+    .summary-empty { color: var(--text-tertiary); font-style: italic; font-weight: 500; font-size: 14px; }
+    
+    .btn-edit {
+      color: var(--text-secondary);
+      width: 36px; height: 36px;
+      border-radius: calc(36px * var(--ui-lab-button-radius-ratio));
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+      background: var(--bg-app);
+      box-shadow: 0 2px 4px var(--border-subtle);
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    .btn-edit:hover { color: var(--brand-600); transform: scale(1.1); }
+    .btn-edit svg { width: 16px; height: 16px; }
+
+    .state-view { display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: absolute; inset: 0; background: var(--bg-panel); backdrop-filter: blur(16px); z-index: 20; border-radius: inherit; }
+    
+    /* Soft Skeleton Loading */
+    .is-loading .loading-view { display: flex; align-items: stretch; justify-content: flex-start; text-align: left; padding: clamp(32px, 5vw, 56px); }
+    .skeleton-box { background: var(--border-subtle); border-radius: var(--radius-sm); animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    
+    .is-error .error-view { display: flex; }
+    .error-icon { width: 64px; height: 64px; border-radius: 20px; background: rgba(239, 68, 68, 0.1); color: #EF4444; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(239, 68, 68, 0.2); }
+    
+    /* Styling approprié pour le Readonly sur les inputs natifs disabled */
+    .card-radio input:disabled ~ .card-surface { cursor: default; }
+    .card-radio input:disabled:not(:checked) ~ .card-surface { opacity: 0.7; background: var(--bg-card); }
+    .card-radio input:disabled:not(:checked) ~ .card-surface:hover { transform: none; box-shadow: var(--shadow-card); }
+    .card-radio input:disabled:checked ~ .card-surface { border: 1px solid var(--border-medium); background: var(--border-subtle); box-shadow: none; transform: none; }
+    .card-radio input:disabled:checked ~ .card-surface .card-icon-wrap { background: var(--bg-app); color: var(--text-primary); box-shadow: none; transform: none; }
+    .card-radio input:disabled:checked ~ .card-surface .premium-check { background: var(--text-tertiary); box-shadow: none; }
+
+    @media (max-width: 768px) {
+      .app-wrapper { padding: 16px; }
+      .glass-panel { padding: 32px 20px; border-radius: 24px; }
+      .wizard-header { flex-direction: column; gap: 24px; align-items: flex-start; margin-bottom: 32px; }
+      .step-title { font-size: 24px; }
+      .grid-2 { grid-template-columns: 1fr; gap: 16px; }
+      /* La grid-3 compacte passe en 2 colonnes pour préserver la lisibilité/ratio */
+      .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .wizard-nav { flex-direction: column-reverse; align-items: stretch; gap: 12px; margin-top: 40px; }
+      .btn { width: 100%; justify-content: center;
+ border-radius: calc(54px * var(--ui-lab-button-radius-ratio));
+}
+      .card-horizontal .card-surface { flex-direction: column; text-align: center; gap: 12px; }
+      .card-horizontal .premium-check { position: absolute; top: 16px; right: 16px; margin: 0; }
+    }
+    
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Support Prefers-Reduced-Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .bg-mesh { animation: none !important; }
+      .step-panel { animation: none !important; opacity: 1 !important; transform: none !important; transition: none !important; display: none; }
+      .step-panel.active { display: flex !important; }
+      .card-surface { transition: none !important; transform: none !important; }
+      .premium-check { transition: none !important; }
+      .premium-check svg { transition: none !important; stroke-dashoffset: 0 !important; }
+      .btn { transition: none !important; transform: none !important;
+ border-radius: calc(54px * var(--ui-lab-button-radius-ratio));
+}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Arrière-plan Mesh -->
+  <div class="bg-mesh" aria-hidden="true"></div>
+
+  <!-- Screen Reader Announcements -->
+  <div id="ariaLive" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <main class="app-wrapper">
+    <div class="glass-panel">
+      
+      <header class="wizard-header">
+        <div class="stepper-container" aria-hidden="true">
+          <div class="step-dot active" id="seg-1"></div>
+          <div class="step-dot" id="seg-2"></div>
+          <div class="step-dot" id="seg-3"></div>
+          <div class="step-dot" id="seg-4"></div>
+          <div class="step-dot" id="seg-5"></div>
+        </div>
+        <!-- Stepper accessible pour SR -->
+        <div class="stepper-label" id="stepperText">Étape 1 sur 5</div>
+      </header>
+
+      <div class="wizard-content" id="wizardContent">
+        
+        <!-- LOADING VIEW -->
+        <div class="state-view loading-view" aria-hidden="true">
+           <div class="skeleton-box" style="width: 140px; height: 28px; border-radius: 100px; margin: 0 auto 12px auto;"></div>
+           <div class="skeleton-box" style="width: 60%; height: 48px; margin: 0 auto 12px auto;"></div>
+           <div class="skeleton-box" style="width: 40%; height: 24px; margin: 0 auto 48px auto;"></div>
+           <div class="grid-2" style="width: 100%;">
+             <div class="skeleton-box" style="height: 180px; border-radius: 24px;"></div>
+             <div class="skeleton-box" style="height: 180px; border-radius: 24px;"></div>
+             <div class="skeleton-box" style="height: 180px; border-radius: 24px;"></div>
+             <div class="skeleton-box" style="height: 180px; border-radius: 24px;"></div>
+           </div>
+        </div>
+
+        <!-- ERROR VIEW -->
+        <div class="state-view error-view" aria-hidden="true">
+          <div class="error-icon">
+             <svg width="32" height="32" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+          </div>
+          <h2 class="step-title" style="font-size: 24px;">Connexion interrompue</h2>
+          <p class="step-desc" style="margin-top: 8px;">Impossible de synchroniser les options de configuration.</p>
+          <button class="btn btn-primary" onclick="setScenario('default')" style="margin-top: 24px;">Réessayer</button>
+        </div>
+
+        <!-- Sémantique corrigée : section (plus de tabpanel) -->
+        <section class="step-panel active" id="step-1" aria-labelledby="title-step-1">
+          <div class="step-title-group">
+            <span class="step-eyebrow">Objectif Principal</span>
+            <h1 class="step-title" id="title-step-1">Que souhaitez-vous accomplir ?</h1>
+            <p class="step-desc" id="desc-step-1">Sélectionnez le domaine d'analyse pour orienter notre intelligence artificielle.</p>
+          </div>
+          
+          <fieldset>
+            <legend class="sr-only">Choix de l'objectif principal</legend>
+            <div class="grid-2">
+              
+              <label class="card-radio">
+                <input type="radio" name="objective" value="Audience">
+                <div class="card-surface">
+                  <div class="card-icon-wrap">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  </div>
+                  <div class="card-title" id="card-t-1">Croissance d'Audience</div>
+                  <div class="card-desc" id="card-d-1">Identifier les segments à fort potentiel et les meilleurs canaux d'acquisition.</div>
+                  <div class="premium-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+              <label class="card-radio">
+                <input type="radio" name="objective" value="Rétention">
+                <div class="card-surface">
+                  <div class="card-icon-wrap">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                  </div>
+                  <div class="card-title">Analyse de Rétention</div>
+                  <div class="card-desc">Comprendre les causes de churn et modéliser la fidélisation long terme.</div>
+                  <div class="premium-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+              <label class="card-radio">
+                <input type="radio" name="objective" value="Conversion">
+                <div class="card-surface">
+                  <div class="card-icon-wrap">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                  </div>
+                  <div class="card-title">Optimisation Conversion</div>
+                  <div class="card-desc">Auditer le funnel d'achat pour maximiser le revenu par visiteur (ARPU).</div>
+                  <div class="premium-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+              <label class="card-radio">
+                <input type="radio" name="objective" value="Produit">
+                <div class="card-surface">
+                  <div class="card-icon-wrap">
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                  </div>
+                  <div class="card-title">Usage Produit</div>
+                  <div class="card-desc">Mesurer l'adoption des nouvelles fonctionnalités et parcours in-app.</div>
+                  <div class="premium-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="step-panel" id="step-2" aria-labelledby="title-step-2">
+          <div class="step-title-group">
+            <span class="step-eyebrow">Puissance de calcul</span>
+            <h2 class="step-title" id="title-step-2">Définissez la profondeur</h2>
+            <p class="step-desc">Le mode détermine le volume de données scannées et le temps d'exécution algorithmique.</p>
+          </div>
+          
+          <fieldset>
+            <legend class="sr-only">Choix du mode d'analyse</legend>
+            <div class="grid-2 card-large">
+              
+              <label class="card-radio">
+                <input type="radio" name="mode" value="Rapide">
+                <div class="card-surface">
+                  <div class="card-large-illu">
+                    <svg width="100%" height="100%" viewBox="0 0 300 180" preserveAspectRatio="xMidYMid slice">
+                      <defs>
+                        <linearGradient id="gFast" x1="0" y1="0" x2="1" y2="0">
+                          <stop offset="0%" stop-color="var(--brand-400)" stop-opacity="0"/>
+                          <stop offset="50%" stop-color="var(--brand-500)"/>
+                          <stop offset="100%" stop-color="var(--brand-400)" stop-opacity="0"/>
+                        </linearGradient>
+                      </defs>
+                      <path d="M -50 90 Q 75 60 150 90 T 350 90" fill="none" stroke="url(#gFast)" stroke-width="6" stroke-linecap="round"/>
+                      <path d="M -50 110 Q 100 130 180 90 T 350 70" fill="none" stroke="url(#gFast)" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+                      <circle cx="150" cy="90" r="12" fill="var(--brand-500)" style="filter: drop-shadow(0 0 8px var(--brand-glow))"/>
+                    </svg>
+                  </div>
+                  <div class="card-large-body">
+                    <div class="card-title">Synthèse Instantanée</div>
+                    <div class="card-desc">Basée sur un échantillonnage statistique (10%). Idéal pour valider rapidement une intuition macro.</div>
+                  </div>
+                  <div class="premium-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+              <label class="card-radio">
+                <input type="radio" name="mode" value="Profond">
+                <div class="card-surface">
+                  <div class="card-large-illu">
+                     <svg width="100%" height="100%" viewBox="0 0 300 180" preserveAspectRatio="xMidYMid slice">
+                      <defs>
+                        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                          <rect width="20" height="20" fill="none" stroke="var(--brand-500)" stroke-width="1" opacity="0.15"/>
+                        </pattern>
+                      </defs>
+                      <rect width="100%" height="100%" fill="url(#grid)" />
+                      <rect x="130" y="50" width="40" height="80" rx="8" fill="var(--brand-500)" style="filter: drop-shadow(0 8px 16px var(--brand-glow))"/>
+                      <rect x="80" y="70" width="30" height="60" rx="6" fill="var(--text-tertiary)" opacity="0.3"/>
+                      <rect x="190" y="60" width="30" height="70" rx="6" fill="var(--text-tertiary)" opacity="0.3"/>
+                    </svg>
+                  </div>
+                  <div class="card-large-body">
+                    <div class="card-title">Analyse Exhaustive</div>
+                    <div class="card-desc">Examen croisé sur 100% de l'historique avec détection d'anomalies IA. Nécessite 2-3 minutes.</div>
+                  </div>
+                  <div class="premium-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="step-panel" id="step-3" aria-labelledby="title-step-3">
+          <div class="step-title-group">
+            <span class="step-eyebrow">Restitution <span class="optional-badge">Optionnel</span></span>
+            <h2 class="step-title" id="title-step-3">Format d'export privilégié</h2>
+            <p class="step-desc">Comment souhaitez-vous consommer les résultats générés ? Vous pouvez ignorer cette étape.</p>
+          </div>
+          
+          <fieldset>
+            <legend class="sr-only">Format de restitution</legend>
+            <div class="grid-3">
+              
+              <label class="card-radio">
+                <input type="radio" name="format" value="Dashboard">
+                <div class="card-surface" style="padding: 16px; align-items: center; text-align: center; justify-content: center;">
+                  <div class="card-icon-wrap" style="width: 40px; height: 40px; margin-bottom: 12px; border-radius: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg></div>
+                  <span class="card-title" id="card-format-1" style="font-size: 14px; margin: 0; line-height: 1.3;">Dashboard Live</span>
+                  <div class="premium-check" style="top: 8px; right: 8px; width: 18px; height: 18px;"><svg viewBox="0 0 24 24" style="width: 10px; height: 10px;"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+              
+              <label class="card-radio">
+                <input type="radio" name="format" value="Rapport PDF">
+                <div class="card-surface" style="padding: 16px; align-items: center; text-align: center; justify-content: center;">
+                  <div class="card-icon-wrap" style="width: 40px; height: 40px; margin-bottom: 12px; border-radius: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+                  <span class="card-title" style="font-size: 14px; margin: 0; line-height: 1.3;">Rapport PDF</span>
+                  <div class="premium-check" style="top: 8px; right: 8px; width: 18px; height: 18px;"><svg viewBox="0 0 24 24" style="width: 10px; height: 10px;"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+              <label class="card-radio">
+                <input type="radio" name="format" value="Export CSV">
+                <div class="card-surface" style="padding: 16px; align-items: center; text-align: center; justify-content: center;">
+                  <div class="card-icon-wrap" style="width: 40px; height: 40px; margin-bottom: 12px; border-radius: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></div>
+                  <span class="card-title" style="font-size: 14px; margin: 0; line-height: 1.3;">Données Brutes</span>
+                  <div class="premium-check" style="top: 8px; right: 8px; width: 18px; height: 18px;"><svg viewBox="0 0 24 24" style="width: 10px; height: 10px;"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+              <label class="card-radio">
+                <input type="radio" name="format" value="Présentation">
+                <div class="card-surface" style="padding: 16px; align-items: center; text-align: center; justify-content: center;">
+                  <div class="card-icon-wrap" style="width: 40px; height: 40px; margin-bottom: 12px; border-radius: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
+                  <span class="card-title" style="font-size: 14px; margin: 0; line-height: 1.3;">Slideshow</span>
+                  <div class="premium-check" style="top: 8px; right: 8px; width: 18px; height: 18px;"><svg viewBox="0 0 24 24" style="width: 10px; height: 10px;"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+              <label class="card-radio">
+                <input type="radio" name="format" value="Alerte Email">
+                <div class="card-surface" style="padding: 16px; align-items: center; text-align: center; justify-content: center;">
+                  <div class="card-icon-wrap" style="width: 40px; height: 40px; margin-bottom: 12px; border-radius: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
+                  <span class="card-title" style="font-size: 14px; margin: 0; line-height: 1.3;">Digest Email</span>
+                  <div class="premium-check" style="top: 8px; right: 8px; width: 18px; height: 18px;"><svg viewBox="0 0 24 24" style="width: 10px; height: 10px;"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+              <label class="card-radio">
+                <input type="radio" name="format" value="API JSON">
+                <div class="card-surface" style="padding: 16px; align-items: center; text-align: center; justify-content: center;">
+                  <div class="card-icon-wrap" style="width: 40px; height: 40px; margin-bottom: 12px; border-radius: 10px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                  <span class="card-title" style="font-size: 14px; margin: 0; line-height: 1.3;">API Endpoint</span>
+                  <div class="premium-check" style="top: 8px; right: 8px; width: 18px; height: 18px;"><svg viewBox="0 0 24 24" style="width: 10px; height: 10px;"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="step-panel" id="step-4" aria-labelledby="title-step-4">
+          <div class="step-title-group">
+            <span class="step-eyebrow">Segmentation</span>
+            <h2 class="step-title" id="title-step-4">Granularité des données</h2>
+            <p class="step-desc">À quel niveau de précision l'algorithme doit-il descendre pour agréger vos informations ?</p>
+          </div>
+          
+          <fieldset>
+            <legend class="sr-only">Choix de la granularité</legend>
+            <div class="grid-list card-horizontal">
+              
+              <label class="card-radio">
+                <input type="radio" name="level" value="Global">
+                <div class="card-surface">
+                  <div class="card-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+                  <div style="flex:1;">
+                    <div class="card-title" id="card-level-1">Métrique Globale (Tenant)</div>
+                    <div class="card-desc">Vue macroscopique, idéale pour les rapports exécutifs.</div>
+                  </div>
+                  <div class="premium-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+              <label class="card-radio">
+                <input type="radio" name="level" value="Régional">
+                <div class="card-surface">
+                  <div class="card-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+                  <div style="flex:1;">
+                    <div class="card-title">Découpage par Marché</div>
+                    <div class="card-desc">Segmentation par pays, région ou unité d'affaires.</div>
+                  </div>
+                  <div class="premium-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+              <label class="card-radio">
+                <input type="radio" name="level" value="Individuel">
+                <div class="card-surface">
+                  <div class="card-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></div>
+                  <div style="flex:1;">
+                    <div class="card-title">Comportement Utilisateur</div>
+                    <div class="card-desc">Micro-analyse au niveau de l'utilisateur final. Requis pour le prédictif.</div>
+                  </div>
+                  <div class="premium-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                </div>
+              </label>
+
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="step-panel" id="step-5" aria-labelledby="title-step-5">
+          <div class="step-title-group">
+            <span class="step-eyebrow">Dernière étape</span>
+            <h2 class="step-title" id="title-step-5">Vérifiez vos paramètres</h2>
+            <p class="step-desc">Votre environnement d'analyse est prêt à être instancié.</p>
+          </div>
+          
+          <div class="summary-box">
+            
+            <div class="summary-row">
+              <div class="summary-content">
+                <span class="summary-label">Objectif Principal</span>
+                <div class="summary-value" id="sum-objective"><span class="summary-empty">En attente</span></div>
+              </div>
+              <button class="btn-edit" onclick="goToStep(1)" aria-label="Modifier l'objectif" title="Modifier">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              </button>
+            </div>
+
+            <div class="summary-row">
+              <div class="summary-content">
+                <span class="summary-label">Puissance de calcul</span>
+                <div class="summary-value" id="sum-mode"><span class="summary-empty">En attente</span></div>
+              </div>
+              <button class="btn-edit" onclick="goToStep(2)" aria-label="Modifier le mode" title="Modifier">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              </button>
+            </div>
+
+            <div class="summary-row">
+              <div class="summary-content">
+                <span class="summary-label">Format de restitution</span>
+                <div class="summary-value" id="sum-format"><span class="summary-empty">Non renseigné (Optionnel)</span></div>
+              </div>
+              <button class="btn-edit" onclick="goToStep(3)" aria-label="Modifier le format" title="Modifier">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              </button>
+            </div>
+
+            <div class="summary-row">
+              <div class="summary-content">
+                <span class="summary-label">Granularité</span>
+                <div class="summary-value" id="sum-level"><span class="summary-empty">En attente</span></div>
+              </div>
+              <button class="btn-edit" onclick="goToStep(4)" aria-label="Modifier la granularité" title="Modifier">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+              </button>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+      <nav class="wizard-nav">
+        <div>
+          <button class="btn btn-ghost hidden" id="btnPrev" type="button">
+            <svg class="btn-icon" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Retour
+          </button>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end;">
+          <button class="btn btn-ghost hidden" id="btnSkip" type="button">Ignorer</button>
+          <button class="btn btn-primary" id="btnNext" type="button" disabled>
+            Continuer
+            <svg class="btn-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+          <button class="btn btn-primary hidden" id="btnConfirm" type="button">
+            Lancer l'analyse
+            <svg class="btn-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </button>
+        </div>
+      </nav>
+
+    </div>
+  </main>
+
+  <style>
+    .scenario-fab { position: fixed; bottom: 32px; right: 32px; z-index: 999; }
+    .fab-btn {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-glass); color: var(--text-primary);
+      padding: 12px 20px; border-radius: 100px; font-size: 14px; font-weight: 700;
+      display: flex; align-items: center; gap: 8px; backdrop-filter: blur(12px);
+      transition: all 0.3s var(--ease-spring);
+    }
+    .fab-btn:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); }
+    .scenario-popover {
+      position: absolute; bottom: calc(100% + 16px); right: 0;
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-glass); border-radius: 16px; padding: 8px;
+      display: flex; flex-direction: column; min-width: 220px;
+      opacity: 0; transform: scale(0.95) translateY(10px); pointer-events: none;
+      transition: all 0.3s var(--ease-spring); transform-origin: bottom right;
+      backdrop-filter: blur(24px);
+    }
+    .scenario-popover.open { opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; }
+    .scenario-option { padding: 10px 16px; font-size: 13px; text-align: left; border-radius: 10px; color: var(--text-secondary); transition: all 0.2s; font-weight: 500;}
+    .scenario-option:hover, .scenario-option:focus-visible { background: var(--bg-card-hover); color: var(--text-primary); }
+    .scenario-option.active { background: var(--brand-50); color: var(--brand-600); font-weight: 700; }
+    [data-theme="dark"] .scenario-option.active { background: rgba(99,102,241,0.2); color: var(--brand-400); }
+  </style>
+
+  <div class="scenario-fab">
+    <button class="fab-btn" aria-expanded="false" aria-controls="labPopover" id="labBtn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+      Lab
+    </button>
+    <div class="scenario-popover" id="labPopover" role="menu">
+      <button class="scenario-option active" role="menuitem" data-scenario="default">Flux normal</button>
+      <button class="scenario-option" role="menuitem" data-scenario="overflow">Débordement de texte</button>
+      <button class="scenario-option" role="menuitem" data-scenario="optional">Étape facultative (3)</button>
+      <hr style="border:0; border-top: 1px solid var(--border-subtle); margin: 6px 0;">
+      <button class="scenario-option" role="menuitem" data-scenario="loading">État de Chargement</button>
+      <button class="scenario-option" role="menuitem" data-scenario="error">État d'Erreur</button>
+      <button class="scenario-option" role="menuitem" data-scenario="readonly">Mode Lecture Seule</button>
+      <hr style="border:0; border-top: 1px solid var(--border-subtle); margin: 6px 0;">
+      <button class="scenario-option" role="menuitem" onclick="document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark')">Toggle Dark Mode</button>
+    </div>
+  </div>
+
+  <script>
+    const TOTAL_STEPS = 5;
+    let currentStep = 1;
+    
+    const stepsConfig = {
+      1: { type: 'mandatory', name: 'objective' },
+      2: { type: 'mandatory', name: 'mode' },
+      3: { type: 'optional', name: 'format' },
+      4: { type: 'mandatory', name: 'level' },
+      5: { type: 'summary' }
+    };
+
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const btnSkip = document.getElementById('btnSkip');
+    const btnConfirm = document.getElementById('btnConfirm');
+    const stepperText = document.getElementById('stepperText');
+    const ariaLive = document.getElementById('ariaLive');
+
+    function announce(msg) { ariaLive.textContent = msg; }
+
+    function resetFinalCTA() {
+      btnConfirm.disabled = false;
+      btnConfirm.innerHTML = `Lancer l'analyse <svg class="btn-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+      btnConfirm.style.background = '';
+      btnConfirm.style.boxShadow = '';
+    }
+
+    function updateProgressUI() {
+      stepperText.textContent = `Étape ${currentStep} sur ${TOTAL_STEPS}`;
+      for (let i = 1; i <= TOTAL_STEPS; i++) {
+        const seg = document.getElementById(`seg-${i}`);
+        seg.classList.remove('completed', 'active');
+        if (i < currentStep) {
+          seg.classList.add('completed');
+        } else if (i === currentStep) {
+          seg.classList.add('active');
+        }
+      }
+    }
+
+    function updateNavigationUI() {
+      if (currentStep === 1) {
+        btnPrev.classList.add('hidden');
+      } else {
+        btnPrev.classList.remove('hidden');
+      }
+
+      if (currentStep === TOTAL_STEPS) {
+        btnNext.classList.add('hidden');
+        btnSkip.classList.add('hidden');
+        btnConfirm.classList.remove('hidden');
+      } else {
+        btnConfirm.classList.add('hidden');
+        btnNext.classList.remove('hidden');
+        
+        const config = stepsConfig[currentStep];
+        const isReadonly = document.getElementById('wizardContent').classList.contains('is-readonly');
+        
+        if (config.type === 'optional') {
+          const hasSelection = document.querySelector(`input[name="${config.name}"]:checked`);
+          if (hasSelection || isReadonly) {
+            btnSkip.classList.add('hidden');
+            btnNext.disabled = false;
+            btnNext.innerHTML = 'Continuer <svg class="btn-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+          } else {
+            btnSkip.classList.remove('hidden');
+            btnNext.classList.add('hidden');
+          }
+        } else {
+          btnSkip.classList.add('hidden');
+          const hasSelection = document.querySelector(`input[name="${config.name}"]:checked`);
+          btnNext.disabled = !hasSelection && !isReadonly;
+          btnNext.innerHTML = 'Continuer <svg class="btn-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+        }
+      }
+    }
+
+    function generateSummary() {
+      const keys = ['objective', 'mode', 'format', 'level'];
+      keys.forEach(k => {
+        const el = document.getElementById(`sum-${k}`);
+        const selected = document.querySelector(`input[name="${k}"]:checked`);
+        if (selected) {
+           el.innerHTML = `<span style="color:var(--brand-600);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> <span>${selected.value}</span>`;
+        } else {
+           el.innerHTML = `<span class="summary-empty">Non renseigné</span>`;
+        }
+      });
+    }
+
+    function goToStep(stepNumber) {
+      if (stepNumber < 1 || stepNumber > TOTAL_STEPS) return;
+      
+      const oldPanel = document.getElementById(`step-${currentStep}`);
+      oldPanel.style.animation = 'none';
+      oldPanel.classList.remove('active');
+      
+      currentStep = stepNumber;
+      
+      const newPanel = document.getElementById(`step-${currentStep}`);
+      newPanel.classList.add('active');
+      
+      newPanel.style.animation = 'none';
+      newPanel.offsetHeight; 
+      newPanel.style.animation = null; 
+
+      if (currentStep === TOTAL_STEPS) {
+        generateSummary();
+        resetFinalCTA();
+      } else {
+        resetFinalCTA();
+      }
+
+      updateProgressUI();
+      updateNavigationUI();
+      
+      const stepTitle = document.querySelector(`#step-${currentStep} .step-title`).textContent;
+      announce(`Étape ${currentStep} sur ${TOTAL_STEPS} — ${stepTitle}`);
+      
+      if(window.innerWidth < 768) {
+         window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', updateNavigationUI);
+    });
+
+    btnNext.addEventListener('click', () => goToStep(currentStep + 1));
+    btnSkip.addEventListener('click', () => goToStep(currentStep + 1));
+    btnPrev.addEventListener('click', () => goToStep(currentStep - 1));
+    
+    btnConfirm.addEventListener('click', () => {
+      btnConfirm.disabled = true;
+      btnConfirm.innerHTML = `<svg class="btn-icon" style="animation: spin 1s linear infinite;" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg> Initialisation...`;
+      setTimeout(() => {
+        announce('Workflow lancé.');
+        btnConfirm.innerHTML = `Terminé <svg class="btn-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+        btnConfirm.style.background = 'linear-gradient(180deg, #10B981 0%, #059669 100%)';
+        btnConfirm.style.boxShadow = 'inset 0 1px 1px rgba(255,255,255,0.3), 0 4px 12px rgba(16, 185, 129, 0.4)';
+      }, 1500);
+    });
+
+    // Gestion du LAB
+    const wizardContent = document.getElementById('wizardContent');
+    const labBtn = document.getElementById('labBtn');
+    const labPopover = document.getElementById('labPopover');
+    const originalTexts = new Map();
+
+    function toggleLab(force) {
+      const isOpen = force !== undefined ? force : !labPopover.classList.contains('open');
+      if (isOpen) {
+        labPopover.classList.add('open');
+        labBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        labPopover.classList.remove('open');
+        labBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    function toggleReadonlyStrategy(force) {
+      const radios = document.querySelectorAll('input[type="radio"]');
+      radios.forEach(r => r.disabled = force);
+      if(force) {
+         wizardContent.classList.add('is-readonly');
+      } else {
+         wizardContent.classList.remove('is-readonly');
+      }
+    }
+
+    function toggleOverflow(enable) {
+      const targets = [
+          { id: 'title-step-1', long: 'Que souhaitez-vous accomplir pour propulser votre stratégie globale cette année ?' },
+          { id: 'desc-step-1', long: 'Sélectionnez le domaine d\'analyse principal pour orienter notre intelligence artificielle avancée vers les KPIs les plus pertinents pour votre organisation complexe et tentaculaire.' },
+          { id: 'card-t-1', long: 'Croissance d\'Audience Internationale B2B' },
+          { id: 'card-d-1', long: 'Identifier les segments à fort potentiel, les meilleurs canaux d\'acquisition, optimiser le coût par lead et générer une cartographie des opportunités.' },
+          { id: 'card-format-1', long: 'Tableau de bord de suivi en temps réel' },
+          { id: 'card-level-1', long: 'Métrique Globale (Tenant) consolidée avec filtres' }
+      ];
+
+      targets.forEach(t => {
+          const el = document.getElementById(t.id);
+          if (!el) return;
+          if (!originalTexts.has(t.id)) originalTexts.set(t.id, el.textContent);
+          el.textContent = enable ? t.long : originalTexts.get(t.id);
+      });
+    }
+
+    labBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleLab(); });
+    
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.scenario-fab')) toggleLab(false);
+    });
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && labPopover.classList.contains('open')) {
+          toggleLab(false);
+          labBtn.focus();
+      }
+    });
+
+    document.querySelectorAll('.scenario-option[data-scenario]').forEach(option => {
+      option.addEventListener('click', (e) => {
+        const scenario = e.currentTarget.dataset.scenario;
+        document.querySelectorAll('.scenario-option[data-scenario]').forEach(opt => opt.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        
+        wizardContent.classList.remove('is-loading', 'is-error');
+        toggleReadonlyStrategy(false);
+        toggleOverflow(false);
+        
+        if (scenario === 'loading') wizardContent.classList.add('is-loading');
+        else if (scenario === 'error') wizardContent.classList.add('is-error');
+        else if (scenario === 'readonly') {
+          document.querySelector('input[name="objective"][value="Conversion"]').checked = true;
+          document.querySelector('input[name="mode"][value="Profond"]').checked = true;
+          document.querySelector('input[name="level"][value="Individuel"]').checked = true;
+          toggleReadonlyStrategy(true);
+        }
+        else if (scenario === 'overflow') {
+          toggleOverflow(true);
+          goToStep(1);
+        }
+        else if (scenario === 'optional') {
+          document.querySelectorAll('input[name="format"]').forEach(r => r.checked = false);
+          goToStep(3);
+        }
+        
+        updateNavigationUI();
+        toggleLab(false);
+      });
+    });
+
+    goToStep(1);
+  </script>
+</body>
+</html>
