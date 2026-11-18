@@ -1,3 +1,4 @@
+import CareerStrategyModule from "@/features/career-strategy/Module";
 import type { CustomModule, SaaSModuleName } from "@/lib/blog/json-types";
 import { BlogModuleFrame } from "../design-system/BlogUI";
 import InternationalisationArticleModule from "../InternationalisationArticleModules";
@@ -28,6 +29,8 @@ export function JsonCustomModule({
   placement?: "hero" | "block";
 }) {
   switch (module.component) {
+    case "career-strategy-assistant":
+      return <CareerStrategyModule />;
     case "saas-hero":
       return <InternationalisationHeroArt />;
     case "metric-panel":

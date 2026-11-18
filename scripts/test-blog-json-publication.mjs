@@ -28,17 +28,46 @@ function directory(dir) {
 function run(command, args, env = {}, signal = abort.signal) {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, {
-      stdio: "inherit",
+      stdio: ["inherit", "inherit", "pipe"],
       env: { ...process.env, ...env },
       signal: signal ?? undefined,
     });
+    let stderr = "";
+    child.stderr.on("data", (chunk) => {
+      process.stderr.write(chunk);
+      stderr = (stderr + chunk.toString()).slice(-32768);
+    });
     child.on("error", reject);
-    child.on("exit", (code) =>
+    child.on("close", (code) =>
       code === 0
         ? resolve()
-        : reject(new Error(`${command} ${args.join(" ")}: exit ${code}`)),
+        : reject(
+            Object.assign(
+              new Error(`${command} ${args.join(" ")}: exit ${code}`),
+              { stderr },
+            ),
+          ),
     );
   });
+}
+async function build(signal = abort.signal) {
+  try {
+    await run("npm", ["run", "build"], {}, signal);
+  } catch (error) {
+    // Next's one-use upgrade reminder is consumed by a build. The pilot builds
+    // both a fixture and the normal site; retry only the explicit retry notice.
+    const stderr = error instanceof Error ? Reflect.get(error, "stderr") : "";
+    if (
+      typeof stderr !== "string" ||
+      !stderr.includes("SecurityFatalError") ||
+      !stderr.includes("Retry the same command")
+    )
+      throw error;
+    console.info(
+      "[blog:publication] Relance unique après le rappel de sécurité Next.js ; aucune dépendance modifiée.",
+    );
+    await run("npm", ["run", "build"], {}, signal);
+  }
 }
 async function freePort() {
   const server = createServer();
@@ -136,7 +165,7 @@ export default function LegacyHarness() {
   return <div className="guide-page"><GuideInteractive><GuideBody values={values} /></GuideInteractive></div>;
 }`,
   );
-  await run("npm", ["run", "build"]);
+  await build();
   await run("npm", ["run", "blog:test:seo"]);
   await run(
     "npx",
@@ -157,7 +186,7 @@ export default function LegacyHarness() {
     "[blog:publication] Sources temporaires retirées ; restauration du build normal.",
   );
   // Ne pas laisser un build incluant les fixtures prêtes à être déployées.
-  await run("npm", ["run", "build"], {}, null);
+  await build(null);
 }
 if (failure) throw failure;
 console.info(

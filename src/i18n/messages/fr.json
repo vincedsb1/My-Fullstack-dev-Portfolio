@@ -328,7 +328,6 @@
     "language": "Langue",
     "copyEmail": "Copier l’adresse e-mail",
     "copyError": "Copie indisponible. Sélectionnez l’adresse :",
-    "resume": "Télécharger le CV",
     "pause": "Mettre en pause",
     "play": "Reprendre le défilement",
     "carousel": "carrousel",
@@ -423,6 +422,142 @@
       "decision": "Une décision produit.",
       "more": "Plus de langues.",
       "value": "Plus de valeur ?"
+    }
+  },
+  "careerStrategy": {
+    "entryEyebrow": "Votre prochaine étape",
+    "entryTitle": "Explorer mes pistes professionnelles",
+    "entryDescription": "30 questions pour faire le point sur vos préférences et découvrir des pistes pour préparer votre avenir.",
+    "launch": "Commencer le questionnaire",
+    "dialogTitle": "Mes pistes professionnelles",
+    "close": "Fermer l’assistant",
+    "loading": "Chargement du questionnaire…",
+    "loadError": "Le questionnaire n’a pas pu être chargé. Vérifiez votre connexion, puis réessayez.",
+    "retry": "Réessayer",
+    "welcomeSteps": "Étapes du parcours",
+    "phaseWelcome": "Aperçu",
+    "welcomeQuestionCount": "{count} questions",
+    "phaseResults": "Pistes",
+    "welcomeTitle": "Vos priorités <focus>de carrière</focus>",
+    "welcomeDescription": "Il n’y a ni bonne ni mauvaise réponse. Répondez spontanément selon ce qui vous anime aujourd’hui pour découvrir votre fonctionnement et vos pistes d’orientation.",
+    "welcomeDuration": "≈ 3 min",
+    "welcomeThemesCount": "{count} axes",
+    "welcomeOutcomeTiming": "Instantané",
+    "welcomeCards": {
+      "pace": {
+        "title": "Rythme fluide",
+        "description": "{count} questions courtes. Le questionnaire avance automatiquement après chaque réponse."
+      },
+      "themes": {
+        "title": "Vision complète",
+        "description": "Raisonnement, créativité, apprentissage, organisation, relations, leadership, entrepreneuriat et motivations."
+      },
+      "outcome": {
+        "title": "Des pistes concrètes",
+        "description": "Des pistes d’action pour préparer la suite, dès la fin du questionnaire."
+      }
+    },
+    "start": "Commencer les {count} questions",
+    "returnArticle": "Revenir à l’article",
+    "quizChapter": "Chapitre {current}/{total}",
+    "quizChapters": {
+      "raisonnement": "Raisonnement"
+    },
+    "quizExample": "Exemple",
+    "quizPrevious": "Précédent",
+    "quizShortcuts": "Raccourcis : <keycap>1</keycap> à <keycap>5</keycap> pour répondre · <keycap>←</keycap> retour",
+    "storyShortcuts": "Raccourcis : <keycap>←</keycap> <keycap>→</keycap> pour naviguer",
+    "next": "Suivant",
+    "answerLabels": {
+      "pas_du_tout": "Pas du tout d’accord",
+      "plutot_non": "Plutôt pas d’accord",
+      "neutre": "Ni d’accord ni pas d’accord",
+      "plutot_oui": "Plutôt d’accord",
+      "tout_a_fait": "Tout à fait d’accord",
+      "ne_sais_pas": "Je ne sais pas / pas concerné"
+    },
+    "questions": {
+      "q001": {
+        "prompt": "Face à un problème, je préfère chercher la cause plutôt que suivre une solution toute faite.",
+        "highlight": "chercher la cause",
+        "context": "Quand quelque chose tombe en panne, je préfère comprendre pourquoi plutôt qu’appliquer une astuce sans explication."
+      },
+      "q002": {
+        "prompt": "Avant une décision, je réfléchis aux conséquences sur tout ce qui l’entoure.",
+        "highlight": "conséquences sur tout ce qui l’entoure",
+        "context": "Changer les horaires d’une activité peut aussi modifier l’organisation des collègues et des clients."
+      }
+    },
+    "story": {
+      "progressStart": "{total} pistes",
+      "progress": "{current} / {total}",
+      "progressLabel": "Progression dans les cinq pistes",
+      "stepLabel": "Piste {current} : {title}",
+      "pillarNumber": "Piste {current}",
+      "actionsTitle": "Pour commencer",
+      "twist": {
+        "eyebrow": "Changement de programme",
+        "title": "Bon… on va s’arrêter là.",
+        "p1": "J’allais vous poser encore {remaining} questions. Mais les grands leviers pour préparer l’avenir sont souvent les mêmes pour tout le monde.",
+        "p2": "Ce qui change, c’est surtout lesquels vous pouvez commencer à développer.",
+        "p3": "Alors, passons directement aux cinq pistes que je retiens.",
+        "cta": "Découvrir les 5 pistes",
+        "highlight": "s’arrêter là"
+      },
+      "pillar": {
+        "eyebrow": "Les 5 pistes"
+      },
+      "conclusion": {
+        "eyebrow": "Fin du parcours",
+        "title": "Voilà. Pas besoin de {total} questions.",
+        "p1": "Ces pistes ne sont ni des garanties ni des obligations. Juste des directions pour préparer un avenir professionnel qui pourrait changer plus vite que prévu.",
+        "p2": "L’essentiel, c’est de commencer à y réfléchir dès aujourd’hui.",
+        "signoff": "Merci d’avoir joué le jeu !",
+        "cta": "Terminer",
+        "highlight": "Pas besoin"
+      }
+    },
+    "pillars": {
+      "skills": {
+        "short": "Compétences",
+        "title": "Développer des compétences qui conservent de la valeur",
+        "text": "Un métier ancré dans le monde physique, ou une expertise que l’IA renforce plutôt qu’elle ne remplace. Mais utiliser l’IA ne suffira pas : si les entreprises embauchent moins, il faudra apporter quelque chose de distinctif, comme une expertise sectorielle, l’expérience du terrain ou un réseau.",
+        "action1": "Identifier ce qui distingue vos compétences de celles facilement automatisables.",
+        "action2": "Développer une expertise complémentaire réellement utile.",
+        "highlight": "conservent de la valeur"
+      },
+      "wealth": {
+        "short": "Patrimoine",
+        "title": "Construire progressivement un patrimoine",
+        "text": "Épargne de précaution, placements diversifiés, actifs productifs : l’objectif est de moins dépendre de son seul salaire. Ce n’est pas une garantie : investir comporte des risques et demande du temps.",
+        "action1": "Constituer une réserve adaptée à vos dépenses.",
+        "action2": "Étudier une stratégie d’investissement diversifiée et durable.",
+        "highlight": "patrimoine"
+      },
+      "business": {
+        "short": "Entreprise",
+        "title": "Posséder une entreprise",
+        "text": "Avec une équipe et des processus autonomes, une entreprise crée de la valeur au-delà de votre propre travail. Elle peut aussi être concurrencée ou disparaître : l’enjeu est qu’elle ne repose pas entièrement sur vous.",
+        "action1": "Identifier un problème récurrent que des clients sont prêts à payer pour résoudre.",
+        "action2": "Bâtir des processus reproductibles, de moins en moins dépendants de vous.",
+        "highlight": "entreprise"
+      },
+      "products": {
+        "short": "Produits",
+        "title": "Créer des produits qui génèrent des revenus",
+        "text": "Un logiciel, une formation ou un objet se vend plusieurs fois sans refaire tout le travail. Pas besoin d’une équipe : c’est un actif reproductible. L’IA facilite la création, mais trouver des clients reste difficile.",
+        "action1": "Repérer un besoin pour lequel des gens paient déjà.",
+        "action2": "Tester une première vente avant d’y investir trop de temps.",
+        "highlight": "produits"
+      },
+      "audience": {
+        "short": "Audience",
+        "title": "Construire une audience et un canal de distribution",
+        "text": "Créer devient facile ; se faire connaître, beaucoup moins. Une communauté ou une liste de contacts aide à vendre, à lancer un produit et à saisir des opportunités, sans dépendre des intermédiaires.",
+        "action1": "Choisir un public précis et lui apporter régulièrement quelque chose d’utile.",
+        "action2": "Garder le contact avec lui sans dépendre des algorithmes des plateformes.",
+        "highlight": "audience"
+      }
     }
   }
 }

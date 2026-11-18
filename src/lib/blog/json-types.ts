@@ -10,9 +10,13 @@ export type RichNode = {
 };
 export type RichText = RichNode[];
 /** Modules éditoriaux choisis via un registre fermé. Les widgets SaaS partagent leur logique et utilisent les messages FR/EN du site. */
-export type SaaSModuleName = Exclude<
+export type SaaSModuleName = Extract<
   keyof typeof import("./json-custom-modules.json"),
-  "metric-panel" | "saas-hero"
+  | "saas-mosaic"
+  | "saas-language-demo"
+  | "saas-language-matrix"
+  | "saas-acquisition-funnel"
+  | "saas-decision-tree"
 >;
 export type CustomModule =
   | {
@@ -20,7 +24,8 @@ export type CustomModule =
       props: { value: string; label: string; caption?: string };
     }
   | { component: SaaSModuleName; props?: Record<string, never> }
-  | { component: "saas-hero"; props?: Record<string, never> };
+  | { component: "saas-hero"; props?: Record<string, never> }
+  | { component: "career-strategy-assistant"; props?: Record<string, never> };
 export type ArticleBlock =
   | { type: "paragraph" | "lead" | "highlight"; content: RichText }
   | { type: "heading"; level: 3 | 4; text: string; id?: string }

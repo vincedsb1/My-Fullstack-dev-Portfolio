@@ -48,5 +48,12 @@
     "unique": true,
     "heading": true,
     "ids": ["blog-decision-title"]
+  },
+  "career-strategy-assistant": {
+    "required": [],
+    "optional": [],
+    "unique": true,
+    "heading": true,
+    "ids": []
   }
 }

@@ -1,0 +1,2801 @@
+{
+  "questionnaireId": "portrait-professionnel-universel",
+  "version": "1.0.0",
+  "locale": "fr",
+  "modes": [
+    {
+      "id": "court",
+      "nombreQuestions": 40
+    },
+    {
+      "id": "complet",
+      "nombreQuestions": 80
+    }
+  ],
+  "sections": [
+    {
+      "id": "raisonnement",
+      "titre": "Raisonnement et manière de résoudre les problèmes",
+      "questions": [
+        {
+          "id": "q001",
+          "question": "J’aime comprendre les causes profondes d’un problème avant de chercher une solution.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q002",
+          "question": "J’aime comprendre comment différents éléments d’un système s’influencent.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q003",
+          "question": "Je vérifie volontiers les affirmations plutôt que de me fier au consensus.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q004",
+          "question": "Je préfère une solution suffisamment bonne et utilisable à une solution idéale difficile à terminer.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q005",
+          "question": "Je peux avancer dans un projet même si toutes les informations ne sont pas encore disponibles.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q006",
+          "question": "Comparer plusieurs scénarios et anticiper leurs conséquences m’intéresse.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q007",
+          "question": "Je réfléchis naturellement aux effets indirects et à long terme d’une décision.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q008",
+          "question": "J’apprécie qu’on me contredise à l’aide d’arguments solides et de preuves.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q009",
+          "question": "Les incohérences et les détails imprécis me dérangent, même s’ils semblent mineurs.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q010",
+          "question": "Je préfère réfléchir aux concepts plutôt que passer à leur réalisation concrète.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "creation",
+      "titre": "Créativité et plaisir de réaliser",
+      "questions": [
+        {
+          "id": "q011",
+          "question": "J’imagine souvent de nouvelles idées, de nouveaux projets ou de nouvelles façons de faire.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q012",
+          "question": "Transformer une idée en quelque chose de concret me procure beaucoup de satisfaction.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q013",
+          "question": "L’apparence, le design ou l’esthétique d’un résultat comptent beaucoup pour moi.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q014",
+          "question": "J’aime perfectionner un résultat jusqu’à atteindre un haut niveau de qualité.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q015",
+          "question": "Quelles étapes d’un projet vous plaisent le plus ? Choisissez jusqu’à deux réponses.",
+          "modes": ["court", "complet"],
+          "type": "choix_multiple",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 2,
+          "reponsesPossibles": [
+            {
+              "id": "imaginer",
+              "libelle": "Imaginer l’idée et explorer les possibilités"
+            },
+            {
+              "id": "concevoir",
+              "libelle": "Concevoir la structure et le fonctionnement"
+            },
+            {
+              "id": "construire",
+              "libelle": "Construire concrètement et résoudre les problèmes"
+            },
+            {
+              "id": "peaufiner",
+              "libelle": "Améliorer les détails et la finition"
+            },
+            {
+              "id": "raconter",
+              "libelle": "Présenter et expliquer le résultat"
+            },
+            {
+              "id": "impact",
+              "libelle": "Voir les effets sur les personnes qui l’utilisent"
+            },
+            {
+              "id": "organiser",
+              "libelle": "Organiser le projet et coordonner les étapes"
+            }
+          ]
+        },
+        {
+          "id": "q016",
+          "question": "Je prends plaisir à lancer un nouveau projet, même lorsque son issue est incertaine.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q017",
+          "question": "Les difficultés rencontrées pendant la réalisation d’un projet me stimulent.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q018",
+          "question": "J’aime raconter des histoires, créer des contenus ou trouver des formes originales d’expression.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q019",
+          "question": "Je privilégie souvent une première version fonctionnelle, quitte à l’améliorer ensuite.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q020",
+          "question": "Je peux rester motivé par les tâches d’entretien et de finition d’une création déjà terminée.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "apprentissage",
+      "titre": "Curiosité et apprentissage",
+      "questions": [
+        {
+          "id": "q021",
+          "question": "J’explore spontanément de nombreux sujets, sans lien direct avec mon activité principale.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q022",
+          "question": "Je suis à l’aise pour apprendre seul, avec des ressources que je sélectionne moi-même.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q023",
+          "question": "J’aime approfondir un sujet jusqu’à en comprendre les mécanismes en détail.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q024",
+          "question": "J’ai besoin de découvrir régulièrement de nouveaux sujets ou types de projets.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q025",
+          "question": "Pour apprendre, je préfère essayer concrètement plutôt que seulement lire ou écouter.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q026",
+          "question": "Je consacre volontiers du temps libre à comprendre quelque chose qui m’intrigue.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q027",
+          "question": "Devenir une référence dans une spécialité précise m’attire.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q028",
+          "question": "Je cherche à comprendre pourquoi une méthode fonctionne, et pas seulement comment l’appliquer.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q029",
+          "question": "Je préfère approfondir les mêmes sujets pendant des années plutôt qu’en découvrir fréquemment d’autres.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q030",
+          "question": "Apprendre de nouvelles compétences par moi-même m’apporte de la satisfaction.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "organisation",
+      "titre": "Organisation et rythme de travail",
+      "questions": [
+        {
+          "id": "q031",
+          "question": "Je préfère décider moi-même de mes méthodes de travail.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q032",
+          "question": "J’aime travailler avec des objectifs explicites et un cadre suffisamment défini.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q033",
+          "question": "Les interruptions fréquentes réduisent fortement ma satisfaction au travail.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q034",
+          "question": "Les délais serrés et l’urgence me stimulent.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q035",
+          "question": "Je peux apprécier un travail qui comporte beaucoup de tâches répétitives.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q036",
+          "question": "Je supporte mal qu’une personne supervise en détail chacune de mes actions.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q037",
+          "question": "Je peux travailler efficacement sans plan préalable ni organisation définie.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q038",
+          "question": "Je préfère avancer longtemps sur une tâche plutôt que jongler entre plusieurs demandes.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q039",
+          "question": "Quand les priorités changent souvent, je reste énergique et serein.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q040",
+          "question": "J’aime porter un projet de sa définition initiale jusqu’au résultat final.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "relations",
+      "titre": "Énergie sociale et communication",
+      "questions": [
+        {
+          "id": "q041",
+          "question": "Après une journée très riche en interactions sociales, j’ai besoin de calme et de solitude.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q042",
+          "question": "Rencontrer de nouvelles personnes lors d’une soirée me donne généralement de l’énergie.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q043",
+          "question": "Je préfère une discussion approfondie à deux à une conversation en grand groupe.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q044",
+          "question": "J’aime présenter mes idées devant un public lorsque je maîtrise le sujet.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q045",
+          "question": "J’ai besoin d’échanger ou de collaborer avec d’autres personnes plusieurs fois par jour.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q046",
+          "question": "Je choisis régulièrement de passer du temps seul pour récupérer de l’énergie.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q047",
+          "question": "Expliquer des idées ou transmettre des connaissances me plaît.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q048",
+          "question": "Aider directement quelqu’un à progresser me procure de la satisfaction.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q049",
+          "question": "Je préfère prendre les décisions importantes collectivement plutôt qu’individuellement.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q050",
+          "question": "Je me sens généralement à l’aise pour engager une conversation avec des inconnus.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "management",
+      "titre": "Autorité, conflits et management",
+      "questions": [
+        {
+          "id": "q051",
+          "question": "Je supporte mal les décisions hiérarchiques qui ne sont pas expliquées ou justifiées.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q052",
+          "question": "Lorsque je suis en désaccord, j’essaie de défendre mon point de vue avec des arguments.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q053",
+          "question": "Encadrer une équipe et suivre le travail d’autres personnes m’intéresse.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q054",
+          "question": "Quand je travaille avec d’autres, je préfère leur laisser une grande liberté sur les méthodes.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q055",
+          "question": "Me sentir respecté et apprécié au travail est essentiel pour m’y investir durablement.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q056",
+          "question": "Je sais poser une limite claire lorsqu’une personne ne respecte pas ses engagements.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q057",
+          "question": "Je préférerais avoir la responsabilité hiérarchique d’une équipe plutôt qu’un rôle d’expertise sans management.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q058",
+          "question": "Je peux facilement appliquer une consigne même lorsqu’elle me semble arbitraire.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q059",
+          "question": "J’évite de défendre mon désaccord si cela risque de créer une tension relationnelle.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q060",
+          "question": "Je prends plaisir à accompagner une personne dans son apprentissage et son développement.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "commerce",
+      "titre": "Vente, négociation et entrepreneuriat",
+      "questions": [
+        {
+          "id": "q061",
+          "question": "Prendre contact avec des inconnus pour leur proposer une offre me plaît.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q062",
+          "question": "Convaincre une personne d’acheter un produit ou un service me stimule.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q063",
+          "question": "Négocier des tarifs ou des contrats dans un cadre professionnel me plaît.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q064",
+          "question": "Créer et développer ma propre activité m’attire.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q065",
+          "question": "Je suis prêt à accepter des revenus irréguliers pendant une longue période pour développer un projet.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q066",
+          "question": "Négocier de manière ponctuelle et ludique, sans enjeu professionnel important, peut m’amuser.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q067",
+          "question": "J’apprécierais de consacrer une part importante de mon temps à la relation client et aux ventes.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q068",
+          "question": "Je préfère créer un produit dont les ventes peuvent fonctionner avec peu d’interventions commerciales personnelles.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q069",
+          "question": "Chercher activement de nouveaux clients, partenaires ou contrats m’intéresse.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q070",
+          "question": "Je privilégierais généralement un revenu fixe à une opportunité plus rémunératrice mais très incertaine.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aspirations",
+      "titre": "Motivations et environnement préféré",
+      "questions": [
+        {
+          "id": "q071",
+          "question": "Pouvoir décider librement de l’usage de mon temps est l’un de mes objectifs de vie majeurs.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q072",
+          "question": "Avoir des revenus prévisibles et réguliers est très important pour mon bien-être.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q073",
+          "question": "Être reconnu pour la qualité de mon travail est un puissant moteur pour moi.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q074",
+          "question": "Je veux que mon activité apporte un bénéfice concret à d’autres personnes.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q075",
+          "question": "Je préférerais une activité principalement manuelle ou physique à une activité surtout intellectuelle.",
+          "modes": ["court", "complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q076",
+          "question": "Pouvoir travailler à distance constitue un avantage important pour moi.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q077",
+          "question": "Les déplacements professionnels réguliers me plaisent.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q078",
+          "question": "Je peux rester plusieurs années sur le même projet si le cadre humain me convient et si je continue à progresser.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q079",
+          "question": "Je serais prêt à accepter une activité moins stimulante intellectuellement si elle me donnait beaucoup plus de liberté de temps.",
+          "modes": ["complet"],
+          "type": "echelle",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 1,
+          "reponsesPossibles": [
+            {
+              "id": "pas_du_tout",
+              "libelle": "Pas du tout d’accord"
+            },
+            {
+              "id": "plutot_non",
+              "libelle": "Plutôt pas d’accord"
+            },
+            {
+              "id": "neutre",
+              "libelle": "Ni d’accord ni pas d’accord"
+            },
+            {
+              "id": "plutot_oui",
+              "libelle": "Plutôt d’accord"
+            },
+            {
+              "id": "tout_a_fait",
+              "libelle": "Tout à fait d’accord"
+            },
+            {
+              "id": "ne_sais_pas",
+              "libelle": "Je ne sais pas / pas concerné"
+            }
+          ]
+        },
+        {
+          "id": "q080",
+          "question": "Parmi ces objectifs, lesquels seraient les plus importants à long terme ? Choisissez jusqu’à deux réponses.",
+          "modes": ["complet"],
+          "type": "choix_multiple",
+          "nombreMinimumDeReponses": 1,
+          "nombreMaximumDeReponses": 2,
+          "reponsesPossibles": [
+            {
+              "id": "temps",
+              "libelle": "Disposer librement de mon temps"
+            },
+            {
+              "id": "securite",
+              "libelle": "Avoir une sécurité financière durable"
+            },
+            {
+              "id": "revenus",
+              "libelle": "Atteindre un niveau de revenus élevé"
+            },
+            {
+              "id": "creer",
+              "libelle": "Imaginer et construire mes propres projets"
+            },
+            {
+              "id": "apprendre",
+              "libelle": "Continuer à apprendre et résoudre des problèmes"
+            },
+            {
+              "id": "impact",
+              "libelle": "Avoir un impact positif sur les autres"
+            },
+            {
+              "id": "collectif",
+              "libelle": "Travailler avec des personnes que j’apprécie"
+            },
+            {
+              "id": "reconnaissance",
+              "libelle": "Être reconnu pour mon travail"
+            },
+            {
+              "id": "liberte_geo",
+              "libelle": "Pouvoir choisir où je travaille et me déplace"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

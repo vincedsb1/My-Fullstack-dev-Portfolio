@@ -51,7 +51,10 @@ test("guide publié : texte complet, ordre et métadonnées éditoriales conserv
   assert.equal(renderer, "guide");
   const { translationKey, cover, coverAlt, ...currentMeta } = article.meta;
   assert.equal(translationKey, "first-developer-job-guide");
-  assert.equal(cover, "/blog/guide-premier-emploi-developpeur/cover-photo.webp");
+  assert.equal(
+    cover,
+    "/blog/guide-premier-emploi-developpeur/cover-photo.webp",
+  );
   assert.equal(
     coverAlt,
     "Personne travaillant sur un ordinateur portable près d’une fenêtre.",

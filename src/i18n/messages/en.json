@@ -328,7 +328,6 @@
     "language": "Language",
     "copyEmail": "Copy email address",
     "copyError": "Copy unavailable. Select the address:",
-    "resume": "Download résumé",
     "pause": "Pause slideshow",
     "play": "Resume slideshow",
     "carousel": "carousel",
@@ -423,6 +422,142 @@
       "decision": "One product decision.",
       "more": "More languages.",
       "value": "More value?"
+    }
+  },
+  "careerStrategy": {
+    "entryEyebrow": "Your next step",
+    "entryTitle": "Explore my career options",
+    "entryDescription": "30 questions to reflect on your preferences and discover ways to prepare for your future.",
+    "launch": "Start the questionnaire",
+    "dialogTitle": "My career options",
+    "close": "Close the assistant",
+    "loading": "Loading the questionnaire…",
+    "loadError": "The questionnaire could not be loaded. Check your connection, then try again.",
+    "retry": "Try again",
+    "welcomeSteps": "Questionnaire steps",
+    "phaseWelcome": "Overview",
+    "welcomeQuestionCount": "{count} questions",
+    "phaseResults": "Directions",
+    "welcomeTitle": "What matters most in <focus>your career?</focus>",
+    "welcomeDescription": "There are no right or wrong answers. Go with what feels true today to see what drives you and which paths you could explore.",
+    "welcomeDuration": "≈ 3 min",
+    "welcomeThemesCount": "{count} themes",
+    "welcomeOutcomeTiming": "Instant",
+    "welcomeCards": {
+      "pace": {
+        "title": "Quick to complete",
+        "description": "{count} short questions. The questionnaire moves on automatically after each answer."
+      },
+      "themes": {
+        "title": "A broad view",
+        "description": "Reasoning, creativity, learning, organisation, relationships, leadership, entrepreneurship and motivation."
+      },
+      "outcome": {
+        "title": "Practical next steps",
+        "description": "Practical directions for what comes next, as soon as you finish."
+      }
+    },
+    "start": "Start the {count} questions",
+    "returnArticle": "Return to the article",
+    "quizChapter": "Chapter {current}/{total}",
+    "quizChapters": {
+      "raisonnement": "Reasoning"
+    },
+    "quizExample": "Example",
+    "quizPrevious": "Previous",
+    "quizShortcuts": "Shortcuts: <keycap>1</keycap> to <keycap>5</keycap> to answer · <keycap>←</keycap> back",
+    "storyShortcuts": "Shortcuts: <keycap>←</keycap> <keycap>→</keycap> to navigate",
+    "next": "Next",
+    "answerLabels": {
+      "pas_du_tout": "Strongly disagree",
+      "plutot_non": "Somewhat disagree",
+      "neutre": "Neither agree nor disagree",
+      "plutot_oui": "Somewhat agree",
+      "tout_a_fait": "Strongly agree",
+      "ne_sais_pas": "I do not know / not applicable"
+    },
+    "questions": {
+      "q001": {
+        "prompt": "When I face a problem, I’d rather look for the cause than follow a ready-made solution.",
+        "highlight": "look for the cause",
+        "context": "When something breaks, I’d rather understand why than try a fix without knowing how it works."
+      },
+      "q002": {
+        "prompt": "Before making a decision, I think about its effects on everything around it.",
+        "highlight": "effects on everything around it",
+        "context": "Changing the hours of an activity can also affect how colleagues and customers organise their time."
+      }
+    },
+    "story": {
+      "progressStart": "{total} directions",
+      "progress": "{current} / {total}",
+      "progressLabel": "Progress through the five directions",
+      "stepLabel": "Direction {current}: {title}",
+      "pillarNumber": "Direction {current}",
+      "actionsTitle": "Where to start",
+      "twist": {
+        "eyebrow": "Change of plan",
+        "title": "Right… let’s stop there.",
+        "p1": "I was about to ask you {remaining} more questions. But the main levers for preparing for the future are often the same for everyone.",
+        "p2": "What really differs is which ones you can start developing.",
+        "p3": "So let’s go straight to the five directions I’ve settled on.",
+        "cta": "Discover the 5 directions",
+        "highlight": "stop there"
+      },
+      "pillar": {
+        "eyebrow": "The 5 directions"
+      },
+      "conclusion": {
+        "eyebrow": "End of the journey",
+        "title": "There you go. No need for {total} questions.",
+        "p1": "These directions are neither guarantees nor obligations. Just a few ways to prepare for a working life that could change faster than expected.",
+        "p2": "What matters is to start thinking about it today.",
+        "signoff": "Thanks for playing along!",
+        "cta": "Finish",
+        "highlight": "No need"
+      }
+    },
+    "pillars": {
+      "skills": {
+        "short": "Skills",
+        "title": "Develop skills that keep their value",
+        "text": "A trade rooted in the physical world, or expertise that AI strengthens rather than replaces. But using AI won’t be enough: if companies hire less, you’ll need something distinctive, such as industry expertise, field experience or a network.",
+        "action1": "Identify what sets your skills apart from those that are easy to automate.",
+        "action2": "Develop complementary expertise that is genuinely useful.",
+        "highlight": "keep their value"
+      },
+      "wealth": {
+        "short": "Wealth",
+        "title": "Gradually build wealth",
+        "text": "Emergency savings, diversified investments, productive assets: the aim is to depend less on your salary alone. It isn’t a guarantee: investing carries risk and takes time.",
+        "action1": "Build a cash reserve that matches your expenses.",
+        "action2": "Explore a diversified, long-term investment strategy.",
+        "highlight": "wealth"
+      },
+      "business": {
+        "short": "Business",
+        "title": "Own a business",
+        "text": "With a team and processes that run on their own, a business creates value beyond your own work. It can also face competition or disappear: the point is that it doesn’t rest entirely on you.",
+        "action1": "Identify a recurring problem that customers will pay to solve.",
+        "action2": "Build repeatable processes that depend less and less on you.",
+        "highlight": "business"
+      },
+      "products": {
+        "short": "Products",
+        "title": "Create products that generate income",
+        "text": "Software, a course or a physical item can be sold many times without redoing all the work. No team required: it’s a repeatable asset. AI makes creating easier, but finding customers is still hard.",
+        "action1": "Spot a need that people already pay for.",
+        "action2": "Test a first sale before investing too much time.",
+        "highlight": "products"
+      },
+      "audience": {
+        "short": "Audience",
+        "title": "Build an audience and a distribution channel",
+        "text": "Creating is getting easy; getting noticed, much less so. A community or a contact list helps you sell, launch a product and find opportunities without relying on intermediaries.",
+        "action1": "Choose a specific audience and regularly bring them something useful.",
+        "action2": "Stay in touch with them without depending on platform algorithms.",
+        "highlight": "audience"
+      }
     }
   }
 }

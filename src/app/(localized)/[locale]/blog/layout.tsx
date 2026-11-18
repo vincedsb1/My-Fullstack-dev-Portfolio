@@ -20,6 +20,7 @@ export default async function BlogLayout({
         common: m.common,
         site: m.site,
         blogSaas: m.blogSaas,
+        careerStrategy: m.careerStrategy,
       }}
     >
       <div className="blog-layout">{children}</div>

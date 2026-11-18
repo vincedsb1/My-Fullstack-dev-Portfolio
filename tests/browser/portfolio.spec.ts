@@ -124,7 +124,7 @@ test("language menu and native project dialog", async ({ page }) => {
   await page.getByRole("button", { name: "Langue : Français" }).click();
   await page
     .getByRole("navigation", { name: "Langue", exact: true })
-    .getByRole("link", { name: "🇬🇧 English" })
+    .getByRole("link", { name: "English", exact: true })
     .click();
   await expect(page).toHaveURL(/\/en\/projects\/iconise$/);
   await page.goto("/fr/blog/internationaliser-saas-lancement");
@@ -132,7 +132,7 @@ test("language menu and native project dialog", async ({ page }) => {
   await expect(
     page
       .getByRole("navigation", { name: "Langue", exact: true })
-      .getByRole("link", { name: "🇬🇧 English" }),
+      .getByRole("link", { name: "English", exact: true }),
   ).toHaveAttribute("href", "/en/blog/internationalize-saas-at-launch");
   await page.goto("/fr/projets/archives");
   const trigger = page.locator('[aria-haspopup="dialog"]').first();
